@@ -246,4 +246,14 @@ export class Intercom extends AwesomeCordovaNativePlugin {
   setBottomPadding(bottomPadding: string | number): Promise<any> {
     return;
   }
+
+  /**
+   * Programmatically display a Survey
+   * @param surveyId {string}
+   * @returns {Promise<any>} Returns a promise
+   */
+  @Cordova()
+  displaySurvey(surveyId: string): Promise<any> {
+    return;
+  }
 }

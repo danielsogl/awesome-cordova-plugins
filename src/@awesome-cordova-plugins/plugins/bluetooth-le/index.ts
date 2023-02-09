@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaProperty, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { AwesomeCordovaNativePlugin, Cordova, CordovaProperty, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 /* Available status of device */
@@ -535,10 +535,10 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
    * Retrieved paired Bluetooth LE devices. In iOS, devices that are "paired" to will not return during a normal scan.
    * Callback is "instant" compared to a scan.
    * @param {{ services: string[] }} An array of service IDs to filter the retrieval by. If no service IDs are specified, no devices will be returned.
-   * @returns {Promise<{ devices: DeviceInfo[] }>}
+   * @returns {Promise<DeviceInfo[]>}
    */
   @Cordova({ callbackOrder: 'reverse' })
-  retrieveConnected(params?: { services?: string[] }): Promise<{ devices: DeviceInfo[] }> {
+  retrieveConnected(params?: { services?: string[] }): Promise<DeviceInfo[]> {
     return;
   }
 
@@ -548,7 +548,7 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
    * Bond with a device.
    * The device doesn't need to be connected to initiate bonding. Android support only.
    * @param {{ address: string }} params The address/identifier provided by the scan's return object
-   * @returns {(Observable<{ status: DeviceInfo }>)}
+   * @returns {(Observable<DeviceInfo>)}
    * success:
    *    The first success callback should always return with status == bonding.
    *    If the bond is created, the callback will return again with status == bonded.
@@ -557,7 +557,7 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
    *    The callback that will be triggered when the bond operation fails
    */
   @Cordova({ callbackOrder: 'reverse', observable: true })
-  bond(params: { address: string }): Observable<{ status: DeviceInfo }> {
+  bond(params: { address: string }): Observable<DeviceInfo> {
     return;
   }
 
@@ -566,12 +566,12 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
    * @param params.address
    * Unbond with a device. The device doesn't need to be connected to initiate bonding. Android support only.
    * @param {{address: string}} params The address/identifier
-   * @returns {Promise<{ status: DeviceInfo }>}
+   * @returns {Promise<DeviceInfo>}
    *    success: The success callback should always return with status == unbonded, that is passed with device object
    *    error: The callback that will be triggered when the unbond operation fails
    */
   @Cordova({ callbackOrder: 'reverse' })
-  unbond(params: { address: string }): Promise<{ status: DeviceInfo }> {
+  unbond(params: { address: string }): Promise<DeviceInfo> {
     return;
   }
 
@@ -582,7 +582,7 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
    * @param connectError   The callback that will be triggered when the connect operation fails
    * @param params         The connection params
    * @param {ConnectionParams} params
-   * @returns {(Observable<{ status: DeviceInfo }>)}
+   * @returns {(Observable<DeviceInfo>)}
    *    success: device object with status
    *    error: The callback that will be triggered when the unbond operation fails
    */
@@ -670,10 +670,10 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
    * Discover the service's characteristics.
    * Not providing an array of characteristics will return all characteristics and take longer to discover. iOS support only.
    * @param {CharacteristicParams} params Characteristic params
-   * @returns {Promise<{ characteristics: Characteristics }>} The service id and an Array of characteristics
+   * @returns {Promise<Characteristics>} The service id and an Array of characteristics
    */
   @Cordova({ callbackOrder: 'reverse' })
-  characteristics(params: CharacteristicParams): Promise<{ characteristics: Characteristics }> {
+  characteristics(params: CharacteristicParams): Promise<Characteristics> {
     return;
   }
 
@@ -681,10 +681,10 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
    * @name descriptors (iOS)
    * Discover the characteristic's descriptors. iOS support only.
    * @param {DescriptorParams} params
-   * @returns {Promise<{ descriptors: Descriptors }>}
+   * @returns {Promise<Descriptors>}
    */
   @Cordova({ callbackOrder: 'reverse' })
-  descriptors(params: DescriptorParams): Promise<{ descriptors: Descriptors }> {
+  descriptors(params: DescriptorParams): Promise<Descriptors> {
     return;
   }
 
@@ -926,6 +926,72 @@ export class BluetoothLE extends AwesomeCordovaNativePlugin {
    */
   @Cordova({ callbackOrder: 'reverse' })
   requestLocation(): Promise<{ requestLocation: boolean }> {
+    return;
+  }
+
+  /**
+   * @name hasPermissionBtScan (useful only for Android 12+ / API 31+)
+   * Determine whether scan privileges in Android API 31+
+   * Will return an error if called on iOS or Android versions prior to 12.0.
+   * @returns {Promise<{ hasPermission: boolean }>}
+   */
+  @Cordova({ callbackOrder: 'reverse' })
+  hasPermissionBtScan(): Promise<{ hasPermission: boolean }> {
+    return;
+  }
+
+  /**
+   * @name requestPermissionBtScan (useful only for Android 12+ / API 31)
+   * Request scan privileges in Android API 31.
+   * Will return an error if called on iOS or Android versions prior to 12.0.
+   * @returns {Promise<{ requestPermission: boolean }>}
+   */
+  @Cordova({ callbackOrder: 'reverse' })
+  requestPermissionBtScan(): Promise<{ requestPermission: boolean }> {
+    return;
+  }
+
+  /**
+   * @name hasPermissionBtConnect (useful only for Android 12+ / API 31)
+   * Determine if device has the permission to connect or not.
+   * Will return an error if called on iOS or Android versions prior to 12.0.
+   * @returns {Promise<{ hasPermission: boolean }>}
+   */
+  @Cordova({ callbackOrder: 'reverse' })
+  hasPermissionBtConnect(): Promise<{ hasPermission: boolean }> {
+    return;
+  }
+
+  /**
+   * @name requestPermissionBtConnect (useful only for Android 12+ / API 31)
+   * Prompt permission settings page. requestPermissionBtConnect property returns whether connect permission has been granted or not.
+   * Will return an error if called on iOS or Android versions prior to 12.0.
+   * @returns {Promise<{ requestPermission: boolean }>}
+   */
+  @Cordova({ callbackOrder: 'reverse' })
+  requestPermissionBtConnect(): Promise<{ requestPermission: boolean }> {
+    return;
+  }
+
+  /**
+   * @name hasPermissionBtAdvertise (useful only for Android 12+ / API 31)
+   * Determine if device has the permission to advertise or not.
+   * Will return an error if called on iOS or Android versions prior to 12.0.
+   * @returns {Promise<{ hasPermission: boolean }>}
+   */
+  @Cordova({ callbackOrder: 'reverse' })
+  hasPermissionBtAdvertise(): Promise<{ hasPermission: boolean }> {
+    return;
+  }
+
+  /**
+   * @name requestPermissionBtAdvertise (useful only for Android 12+ / API 31)
+   * Prompt permission settings page. requestPermissionBtAdvertise property returns whether connect permission has been granted or not.
+   * Will return an error if called on iOS or Android versions prior to 12.0.
+   * @returns {Promise<{ requestPermission: boolean }>}
+   */
+  @Cordova({ callbackOrder: 'reverse' })
+  requestPermissionBtAdvertise(): Promise<{ requestPermission: boolean }> {
     return;
   }
 

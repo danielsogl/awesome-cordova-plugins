@@ -2,22 +2,6 @@ import { Injectable } from '@angular/core';
 import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
-/**
- * @deprecated use ATTRIBUTION_NETWORK instead
- *
- * Enum for attribution networks
- * @readonly
- * @enum {number}
- */
-export enum ATTRIBUTION_NETWORKS {
-  APPLE_SEARCH_ADS = 0,
-  ADJUST = 1,
-  APPSFLYER = 2,
-  BRANCH = 3,
-  TENJIN = 4,
-  FACEBOOK = 5,
-}
-
 export enum ATTRIBUTION_NETWORK {
   APPLE_SEARCH_ADS = 0,
   ADJUST = 1,
@@ -69,18 +53,6 @@ export enum BILLING_FEATURE {
    * Launch a price change confirmation flow.
    */
   PRICE_CHANGE_CONFIRMATION,
-}
-
-/**
- * @deprecated use PURCHASE_TYPE instead
- *
- * Enum for attribution networks
- * @readonly
- * @enum {string}
- */
-export enum ProductType {
-  SUBS = 'subs',
-  INAPP = 'inapp',
 }
 
 export enum PRORATION_MODE {
@@ -172,6 +144,10 @@ export enum INTRO_ELIGIBILITY_STATUS {
    * The user is eligible for a free trial or intro pricing for this product.
    */
   INTRO_ELIGIBILITY_STATUS_ELIGIBLE,
+  /**
+   * There is no free trial or intro pricing for this product.
+   */
+  INTRO_ELIGIBILITY_STATUS_NO_INTRO_OFFER_EXISTS,
 }
 
 /**
@@ -211,7 +187,7 @@ export enum INTRO_ELIGIBILITY_STATUS {
  *  constructor(public platform: Platform, private purchases: Purchases) {
  *      platform.ready().then(() => {
  *          this.purchases.setDebugLogsEnabled(true); // Enable to get debug logs
- *          this.purchases.setup("my_api_key", "my_app_user_id");
+ *          this.purchases.configure("my_api_key", "my_app_user_id");
  *      }
  *  }
  * ```
@@ -229,15 +205,15 @@ export enum INTRO_ELIGIBILITY_STATUS {
  * PurchasesOfferings
  * PurchasesOffering
  * PurchasesPackage
- * PurchasesProduct
- * PurchaserInfo
+ * PurchasesStoreProduct
+ * CustomerInfo
  * PurchasesEntitlementInfos
  * PurchasesEntitlementInfo
- * PurchasesTransaction
+ * PurchasesStoreTransaction
  */
 @Plugin({
   pluginName: 'Purchases',
-  plugin: 'cordova-plugin-purchases@2.4.0',
+  plugin: 'cordova-plugin-purchases@3.2.1',
   pluginRef: 'Purchases', // the variable reference to call the plugin, example: navigator.geolocation
   repo: 'https://github.com/RevenueCat/cordova-plugin-purchases', // the github repository URL for the plugin
   platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
@@ -246,7 +222,6 @@ export enum INTRO_ELIGIBILITY_STATUS {
   providedIn: 'root',
 })
 export class Purchases extends AwesomeCordovaNativePlugin {
-  static ATTRIBUTION_NETWORKS = ATTRIBUTION_NETWORK;
   /**
    * Enum for attribution networks
    *
@@ -295,6 +270,8 @@ export class Purchases extends AwesomeCordovaNativePlugin {
   static INTRO_ELIGIBILITY_STATUS = INTRO_ELIGIBILITY_STATUS;
 
   /**
+   * @deprecated Use {@link configureWith} instead. It accepts a {@link PurchasesConfiguration} object which offers more flexibility.
+   *
    * Sets up Purchases with your API key and an app user id.
    *
    * @param {string} apiKey RevenueCat API Key. Needs to be a String
@@ -307,28 +284,14 @@ export class Purchases extends AwesomeCordovaNativePlugin {
    * suite, otherwise it will use standardUserDefaults. Default is null, which will make the SDK use standardUserDefaults.
    */
   @Cordova({ sync: true })
-  setup(apiKey: string, appUserID?: string | null, observerMode = false, userDefaultsSuiteName?: string): void {}
+  configure(apiKey: string, appUserID?: string | null, observerMode = false, userDefaultsSuiteName?: string): void {}
 
   /**
-   * Set this to true if you are passing in an appUserID but it is anonymous, this is true by default if you didn't pass an appUserID
-   * If a user tries to purchase a product that is active on the current app store account, we will treat it as a restore and alias
-   * the new ID with the previous id.
-   *
-   * @param allowSharing {boolean} true if enabled, false to disabled
+   * Sets up Purchases with your API key and an app user id.
+   * @param {PurchasesConfiguration} Object containing configuration parameters
    */
   @Cordova({ sync: true })
-  setAllowSharingStoreAccount(allowSharing: boolean): void {}
-
-  /**
-   * Add a dict of attribution information
-   *
-   * @deprecated Use the set<NetworkId> functions instead.
-   * @param {object} data Attribution data from any of the attribution networks in Purchases.ATTRIBUTION_NETWORKS
-   * @param {ATTRIBUTION_NETWORK} network Which network, see Purchases.ATTRIBUTION_NETWORK
-   * @param {string?} networkUserId An optional unique id for identifying the user. Needs to be a string.
-   */
-  @Cordova({ sync: true })
-  addAttributionData(data: { [key: string]: any }, network: ATTRIBUTION_NETWORK, networkUserId?: string): void {}
+  configureWith({ apiKey, appUserID, observerMode, userDefaultsSuiteName, useAmazon }: PurchasesConfiguration): void {}
 
   /**
    * Gets the Offerings configured in the dashboard
@@ -345,21 +308,18 @@ export class Purchases extends AwesomeCordovaNativePlugin {
    *
    * @param {string[]} productIdentifiers Array of product identifiers
    * @param {PURCHASE_TYPE} type Optional type of products to fetch, can be inapp or subs. Subs by default
-   * @returns {Promise<PurchasesProduct[]>} Will return a [PurchasesError] if the products are not properly configured in RevenueCat or if there is another error retrieving them.
+   * @returns {Promise<PurchasesStoreProduct[]>} Will return a [PurchasesError] if the products are not properly configured in RevenueCat or if there is another error retrieving them.
    */
   @Cordova({
     successIndex: 1,
     errorIndex: 2,
   })
-  getProducts(productIdentifiers: string[], type: PURCHASE_TYPE = PURCHASE_TYPE.SUBS): Promise<PurchasesProduct[]> {
+  getProducts(
+    productIdentifiers: string[],
+    type: PURCHASE_TYPE = PURCHASE_TYPE.SUBS
+  ): Promise<PurchasesStoreProduct[]> {
     return;
   }
-
-  /**
-   * @typedef {Object} MakePurchaseResponse
-   * @property {string} productIdentifier - The product identifier that has been purchased
-   * @property {PurchaserInfo} purchaserInfo - The new PurchaserInfo after the successful purchase
-   */
 
   /**
    * Make a purchase
@@ -379,7 +339,7 @@ export class Purchases extends AwesomeCordovaNativePlugin {
     productIdentifier: string,
     upgradeInfo?: UpgradeInfo | null,
     type: PURCHASE_TYPE = PURCHASE_TYPE.SUBS
-  ): Promise<{ productIdentifier: string; purchaserInfo: PurchaserInfo }> {
+  ): Promise<{ productIdentifier: string; customerInfo: CustomerInfo }> {
     return;
   }
 
@@ -399,17 +359,17 @@ export class Purchases extends AwesomeCordovaNativePlugin {
   purchasePackage(
     aPackage: PurchasesPackage,
     upgradeInfo?: UpgradeInfo | null
-  ): Promise<{ productIdentifier: string; purchaserInfo: PurchaserInfo }> {
+  ): Promise<{ productIdentifier: string; customerInfo: CustomerInfo }> {
     return;
   }
 
   /**
    * Restores a user's previous purchases and links their appUserIDs to any user's also using those purchases.
    *
-   * @returns {Promise<PurchaserInfo>} Errors are of type [PurchasesError]
+   * @returns {Promise<CustomerInfo>} Errors are of type [PurchasesError]
    */
   @Cordova()
-  restoreTransactions(): Promise<PurchaserInfo> {
+  restorePurchases(): Promise<CustomerInfo> {
     return;
   }
 
@@ -428,7 +388,7 @@ export class Purchases extends AwesomeCordovaNativePlugin {
    * to identify a user without calling configure.
    *
    * @param {string} appUserID The appUserID that should be linked to the currently user
-   * @returns {Promise<LogInResult>} an object that contains the purchaserInfo after logging in, as well as a boolean indicating
+   * @returns {Promise<LogInResult>} an object that contains the customerInfo after logging in, as well as a boolean indicating
    * whether the user has just been created for the first time in the RevenueCat backend.
    */
   @Cordova()
@@ -440,45 +400,10 @@ export class Purchases extends AwesomeCordovaNativePlugin {
    * Logs out the Purchases client clearing the saved appUserID. This will generate a random user id and save it in the cache.
    * If the current user is already anonymous, this will produce a PurchasesError.
    *
-   * @returns {Promise<PurchaserInfo>} new purchaser info after resetting.
+   * @returns {Promise<CustomerInfo>} new purchaser info after resetting.
    */
   @Cordova()
-  logOut(): Promise<PurchaserInfo> {
-    return;
-  }
-
-  /**
-   * @deprecated, use logIn instead.
-   * This function will alias two appUserIDs together.
-   * @param newAppUserID {String} The new appUserID that should be linked to the currently identified appUserID. Needs to be a string.
-   * @returns {Promise<PurchaserInfo>} Errors are of type [PurchasesError] and get normally triggered if there
-   * is an error retrieving the new purchaser info for the new user or if there is an error creating the alias.
-   */
-  @Cordova()
-  createAlias(newAppUserID: string): Promise<PurchaserInfo> {
-    return;
-  }
-
-  /**
-   * @deprecated, use logIn instead.
-   * This function will identify the current user with an appUserID. Typically this would be used after a logout to identify a new user without calling configure
-   * @param newAppUserID {String} The new appUserID that should be linked to the currently identified appUserID. Needs to be a string.
-   * @returns {Promise<PurchaserInfo>} Errors are of type [PurchasesError] and get normally triggered if there
-   * is an error retrieving the new purchaser info for the new user.
-   */
-  @Cordova()
-  identify(newAppUserID: string): Promise<PurchaserInfo> {
-    return;
-  }
-
-  /**
-   * @deprecated, use logOut instead.
-   * Resets the Purchases client clearing the saved appUserID. This will generate a random user id and save it in the cache.
-   * @returns {Promise<PurchaserInfo>} Errors are of type [PurchasesError] and get normally triggered if there
-   * is an error retrieving the new purchaser info for the new user.
-   */
-  @Cordova()
-  reset(): Promise<PurchaserInfo> {
+  logOut(): Promise<CustomerInfo> {
     return;
   }
 
@@ -486,25 +411,25 @@ export class Purchases extends AwesomeCordovaNativePlugin {
    * Gets the current purchaser info. This call will return the cached purchaser info unless the cache is stale, in which case,
    * it will make a network call to retrieve it from the servers.
    *
-   * @returns {Promise<PurchaserInfo>} Errors are of type [PurchasesError] and get normally triggered if there
+   * @returns {Promise<CustomerInfo>} Errors are of type [PurchasesError] and get normally triggered if there
    * is an error retrieving the purchaser info.
    */
   @Cordova()
-  getPurchaserInfo(): Promise<PurchaserInfo> {
+  getCustomerInfo(): Promise<CustomerInfo> {
     return;
   }
 
   /**
    * Returns an observable that can be used to receive updates on the purchaser info
    *
-   * @returns {Observable<PurchaserInfo>}
+   * @returns {Observable<CustomerInfo>}
    */
   @Cordova({
     eventObservable: true,
-    event: 'onPurchaserInfoUpdated',
+    event: 'onCustomerInfoUpdated',
     element: 'window',
   })
-  onPurchaserInfoUpdated(): Observable<PurchaserInfo> {
+  onCustomerInfoUpdated(): Observable<CustomerInfo> {
     return;
   }
 
@@ -541,6 +466,12 @@ export class Purchases extends AwesomeCordovaNativePlugin {
    */
   @Cordova({ sync: true })
   setAutomaticAppleSearchAdsAttributionCollection(enabled: boolean): void {}
+
+  /**
+   * Enable automatic collection of Apple Search Ads attribution using AdServices. Disabled by default.
+   */
+  @Cordova({ sync: true })
+  enableAdServicesAttributionTokenCollection(): void {}
 
   /**
    * @returns {Promise<boolean>} A boolean indicating if the `appUserID` has been generated
@@ -596,17 +527,17 @@ export class Purchases extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * Invalidates the cache for purchaser information.
+   * Invalidates the cache for customer information.
    *
    * Most apps will not need to use this method; invalidating the cache can leave your app in an invalid state.
-   * Refer to https://docs.revenuecat.com/docs/purchaserinfo#section-get-user-information for more information on
+   * Refer to https://docs.revenuecat.com/docs/customer-info#section-get-user-information for more information on
    * using the cache properly.
    *
-   * This is useful for cases where purchaser information might have been updated outside of the
+   * This is useful for cases where customer information might have been updated outside of the
    * app, like if a promotional subscription is granted through the RevenueCat dashboard.
    */
   @Cordova({ sync: true })
-  invalidatePurchaserInfoCache(): void {}
+  invalidateCustomerInfoCache(): void {}
 
   /**
    * iOS only. Presents a code redemption sheet, useful for redeeming offer codes
@@ -660,54 +591,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
    */
   @Cordova({ sync: true })
   setPushToken(pushToken: string | null): void {}
-
-  /**
-   * Subscriber attribute associated with the install media source for the user
-   *
-   * @param mediaSource Empty String or null will delete the subscriber attribute.
-   */
-  @Cordova({ sync: true })
-  setMediaSource(mediaSource: string | null): void {}
-
-  /**
-   * Subscriber attribute associated with the install campaign for the user
-   *
-   * @param campaign Empty String or null will delete the subscriber attribute.
-   */
-  @Cordova({ sync: true })
-  setCampaign(campaign: string | null): void {}
-
-  /**
-   * Subscriber attribute associated with the install ad group for the user
-   *
-   * @param adGroup Empty String or null will delete the subscriber attribute.
-   */
-  @Cordova({ sync: true })
-  setAdGroup(adGroup: string | null): void {}
-
-  /**
-   * Subscriber attribute associated with the install ad for the user
-   *
-   * @param ad Empty String or null will delete the subscriber attribute.
-   */
-  @Cordova({ sync: true })
-  setAd(ad: string | null): void {}
-
-  /**
-   * Subscriber attribute associated with the install keyword for the user
-   *
-   * @param keyword Empty String or null will delete the subscriber attribute.
-   */
-  @Cordova({ sync: true })
-  setKeyword(keyword: string | null): void {}
-
-  /**
-   * Subscriber attribute associated with the install ad creative for the user
-   *
-   * @param creative Empty String or null will delete the subscriber attribute.
-   */
-  @Cordova({ sync: true })
-  setCreative(creative: string | null): void {}
 
   /**
    * Subscriber attribute associated with the Adjust Id for the user
@@ -764,6 +647,81 @@ export class Purchases extends AwesomeCordovaNativePlugin {
   setAirshipChannelID(airshipChannelID: string | null): void {}
 
   /**
+   * Subscriber attribute associated with the Firebase App Instance ID for the user
+   * Required for the RevenueCat Firebase integration
+   *
+   * @param firebaseAppInstanceID Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setFirebaseAppInstanceID(firebaseAppInstanceID: string | null): void {}
+
+  /**
+   * Subscriber attribute associated with the Mixpanel Distinct ID for the user
+   * Required for the RevenueCat Mixpanel integration
+   *
+   * @param mixpanelDistinctID Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setMixpanelDistinctID(mixpanelDistinctID: string | null): void {}
+
+  /**
+   * Subscriber attribute associated with the CleverTap ID for the user
+   * Required for the RevenueCat CleverTap integration
+   *
+   * @param cleverTapID Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setCleverTapID(cleverTapID: string | null): void {}
+
+  /**
+   * Subscriber attribute associated with the install media source for the user
+   *
+   * @param mediaSource Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setMediaSource(mediaSource: string | null): void {}
+
+  /**
+   * Subscriber attribute associated with the install campaign for the user
+   *
+   * @param campaign Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setCampaign(campaign: string | null): void {}
+
+  /**
+   * Subscriber attribute associated with the install ad group for the user
+   *
+   * @param adGroup Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setAdGroup(adGroup: string | null): void {}
+
+  /**
+   * Subscriber attribute associated with the install ad for the user
+   *
+   * @param ad Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setAd(ad: string | null): void {}
+
+  /**
+   * Subscriber attribute associated with the install keyword for the user
+   *
+   * @param keyword Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setKeyword(keyword: string | null): void {}
+
+  /**
+   * Subscriber attribute associated with the install ad creative for the user
+   *
+   * @param creative Empty String or null will delete the subscriber attribute.
+   */
+  @Cordova({ sync: true })
+  setCreative(creative: string | null): void {}
+
+  /**
    * Automatically collect subscriber attributes associated with the device identifiers.
    * $idfa, $idfv, $ip on iOS
    * $gpsAdId, $androidId, $ip on Android
@@ -778,9 +736,8 @@ export class Purchases extends AwesomeCordovaNativePlugin {
    * Note: Billing features are only relevant to Google Play Android users.
    * For other stores and platforms, billing features won't be checked.
    *
-   * @param feature An array of feature types to check for support. Feature types must be one of
+   * @param features An array of feature types to check for support. Feature types must be one of
    *       [BILLING_FEATURE]. By default, is an empty list and no specific feature support will be checked.
-   * @param features
    * @returns {Promise<boolean>} Or [PurchasesError] if there is an error.
    */
   @Cordova()
@@ -796,21 +753,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
   @Cordova({ sync: true })
   setProxyURL(url: string): void {}
 }
-
-/**
- * @deprecated use PurchasesProduct instead
- */
-export interface RCProduct {}
-
-/**
- * @deprecated use PurchaserInfo instead
- */
-export interface RCPurchaserInfo {}
-
-/**
- * @deprecated use PurchasesError instead
- */
-export interface RCError {}
 /**
  * The EntitlementInfo object gives you access to all of the information about the status of a user entitlement.
  */
@@ -884,11 +826,38 @@ export interface PurchasesEntitlementInfos {
    * Map of active EntitlementInfo (`PurchasesEntitlementInfo`) objects keyed by entitlement identifier.
    */
   readonly active: { [key: string]: PurchasesEntitlementInfo };
+  /**
+   * Dictionary of active ``EntitlementInfo`` objects keyed by their identifiers.
+   * @ Note: When queried from the sandbox environment, it only returns entitlements active in sandbox.
+   * When queried from production, this only returns entitlements active in production.
+   */
+  readonly activeInCurrentEnvironment: { [key: string]: PurchasesEntitlementInfo };
+  /**
+   * Dictionary of active ``EntitlementInfo`` objects keyed by their identifiers.
+   *
+   * @note: these can be active on any environment.
+   */
+  readonly activeInAnyEnvironment: { [key: string]: PurchasesEntitlementInfo };
 }
 
-export interface PurchaserInfo {
+export interface PurchasesStoreTransaction {
   /**
-   * Entitlements attached to this purchaser info
+   * RevenueCat Id associated to the transaction.
+   */
+  readonly transactionIdentifier: string;
+  /**
+   * Product Id associated with the transaction.
+   */
+  readonly productIdentifier: string;
+  /**
+   * Purchase date of the transaction in ISO 8601 format.
+   */
+  readonly purchaseDate: string;
+}
+
+export interface CustomerInfo {
+  /**
+   * Entitlements attached to this customer info
    */
   readonly entitlements: PurchasesEntitlementInfos;
   /**
@@ -903,7 +872,7 @@ export interface PurchaserInfo {
    * Returns all the non-subscription purchases a user has made.
    * The purchases are ordered by purchase date in ascending order.
    */
-  readonly nonSubscriptionTransactions: PurchasesTransaction[];
+  readonly nonSubscriptionTransactions: PurchasesStoreTransaction[];
   /**
    * The latest expiration date of all purchased skus
    */
@@ -952,22 +921,65 @@ export interface PurchaserInfo {
   readonly managementURL: string | null;
 }
 
-export interface PurchasesTransaction {
+export interface PurchasesIntroPrice {
   /**
-   * RevenueCat Id associated to the transaction.
+   * Price in the local currency.
    */
-  readonly revenueCatId: string;
+  readonly price: number;
   /**
-   * Product Id associated with the transaction.
+   * Formatted price, including its currency sign, such as €3.99.
    */
-  readonly productId: string;
+  readonly priceString: string;
   /**
-   * Purchase date of the transaction in ISO 8601 format.
+   * Number of subscription billing periods for which the user will be given the discount, such as 3.
    */
-  readonly purchaseDate: string;
+  readonly cycles: number;
+  /**
+   * Billing period of the discount, specified in ISO 8601 format.
+   */
+  readonly period: string;
+  /**
+   * Unit for the billing period of the discount, can be DAY, WEEK, MONTH or YEAR.
+   */
+  readonly periodUnit: string;
+  /**
+   * Number of units for the billing period of the discount.
+   */
+  readonly periodNumberOfUnits: number;
 }
 
-export interface PurchasesProduct {
+export interface PurchasesStoreProductDiscount {
+  /**
+   * Identifier of the discount.
+   */
+  readonly identifier: string;
+  /**
+   * Price in the local currency.
+   */
+  readonly price: number;
+  /**
+   * Formatted price, including its currency sign, such as €3.99.
+   */
+  readonly priceString: string;
+  /**
+   * Number of subscription billing periods for which the user will be given the discount, such as 3.
+   */
+  readonly cycles: number;
+  /**
+   * Billing period of the discount, specified in ISO 8601 format.
+   */
+  readonly period: string;
+  /**
+   * Unit for the billing period of the discount, can be DAY, WEEK, MONTH or YEAR.
+   */
+  readonly periodUnit: string;
+  /**
+   * Number of units for the billing period of the discount.
+   */
+  readonly periodNumberOfUnits: number;
+}
+
+export interface PurchasesStoreProduct {
   /**
    * Product Id.
    */
@@ -987,35 +999,19 @@ export interface PurchasesProduct {
   /**
    * Formatted price of the item, including its currency sign, such as €3.99.
    */
-  readonly price_string: string;
+  readonly priceString: string;
   /**
    * Currency code for price and original price.
    */
-  readonly currency_code: string;
+  readonly currencyCode: string;
   /**
-   * Introductory price of a subscription in the local currency.
+   * Introductory price.
    */
-  readonly intro_price: number | null;
+  readonly introPrice: PurchasesIntroPrice | null;
   /**
-   * Formatted introductory price of a subscription, including its currency sign, such as €3.99.
+   * Collection of discount offers for a product. Null for Android.
    */
-  readonly intro_price_string: string | null;
-  /**
-   * Billing period of the introductory price, specified in ISO 8601 format.
-   */
-  readonly intro_price_period: string | null;
-  /**
-   * Number of subscription billing periods for which the user will be given the introductory price, such as 3.
-   */
-  readonly intro_price_cycles: number | null;
-  /**
-   * Unit for the billing period of the introductory price, can be DAY, WEEK, MONTH or YEAR.
-   */
-  readonly intro_price_period_unit: string | null;
-  /**
-   * Number of units for the billing period of the introductory price.
-   */
-  readonly intro_price_period_number_of_units: number | null;
+  readonly discounts: PurchasesStoreProductDiscount[] | null;
 }
 
 /**
@@ -1034,7 +1030,7 @@ export interface PurchasesPackage {
   /**
    * Product assigned to this package.
    */
-  readonly product: PurchasesProduct;
+  readonly product: PurchasesStoreProduct;
   /**
    * Offering this package belongs to.
    */
@@ -1143,13 +1139,43 @@ export interface IntroEligibility {
  */
 export interface LogInResult {
   /**
-   * The Purchaser Info for the user.
+   * The Customer Info for the user.
    */
-  readonly purchaserInfo: PurchaserInfo;
+  readonly customerInfo: CustomerInfo;
   /**
    * True if the call resulted in a new user getting created in the RevenueCat backend.
    */
   readonly created: boolean;
+}
+
+/**
+ * Holds parameters to initialize the SDK.
+ */
+export interface PurchasesConfiguration {
+  /**
+   * RevenueCat API Key. Needs to be a string
+   */
+  apiKey: string;
+  /**
+   * A unique id for identifying the user
+   */
+  appUserID?: string | null;
+  /**
+   * An optional boolean. Set this to TRUE if you have your own IAP implementation and
+   * want to use only RevenueCat's backend. Default is FALSE. If you are on Android and setting this to ON, you will have
+   * to acknowledge the purchases yourself.
+   */
+  observerMode?: boolean;
+  /**
+   * An optional string. iOS-only, will be ignored for Android.
+   * Set this if you would like the RevenueCat SDK to store its preferences in a different NSUserDefaults
+   * suite, otherwise it will use standardUserDefaults. Default is null, which will make the SDK use standardUserDefaults.
+   */
+  userDefaultsSuiteName?: string;
+  /**
+   * An optional boolean. Android only. Required to configure the plugin to be used in the Amazon Appstore.
+   */
+  useAmazon?: boolean;
 }
 
 export type ShouldPurchasePromoProductListener = (deferredPurchase: () => void) => void;

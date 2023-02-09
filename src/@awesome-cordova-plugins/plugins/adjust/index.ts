@@ -65,6 +65,9 @@ export class AdjustConfig {
   private allowiAdInfoReading: boolean = null; // iOS only
   private allowIdfaReading: boolean = null; // iOS only
   private allowAdServicesInfoReading: boolean = null; // iOS only
+  private coppaCompliantEnabled: boolean = null; 
+  private playStoreKidsAppEnabled: boolean = null; // Android only
+  private linkMeEnabled: boolean = null; // iOS only
 
   private attributionCallback: (attribution: AdjustAttribution) => void = null;
   private eventTrackingSucceededCallback: (event: AdjustEventSuccess) => void = null;
@@ -119,6 +122,14 @@ export class AdjustConfig {
     this.eventBufferingEnabled = eventBufferingEnabled;
   }
 
+  setCoppaCompliantEnabled(coppaCompliantEnabled: boolean) {
+    this.coppaCompliantEnabled = coppaCompliantEnabled;
+  }
+
+  setPlayStoreKidsAppEnabled(playStoreKidsAppEnabled: boolean) {
+    this.playStoreKidsAppEnabled = playStoreKidsAppEnabled;
+  }
+
   setUserAgent(userAgent: string) {
     this.userAgent = userAgent;
   }
@@ -157,6 +168,10 @@ export class AdjustConfig {
 
   setAllowAdServicesInfoReading(allowAdServicesInfoReading: boolean) {
     this.allowAdServicesInfoReading = allowAdServicesInfoReading;
+  }
+
+  setLinkMeEnabled(linkMeEnabled: boolean) {
+    this.linkMeEnabled = linkMeEnabled;
   }
 
   setAttributionCallbackListener(attributionCallback: (attribution: AdjustAttribution) => void) {
@@ -320,6 +335,7 @@ export class AdjustPlayStoreSubscription {
 export class AdjustThirdPartySharing {
   private isEnabled: boolean;
   private granularOptions: string[] = [];
+  private partnerSharingSettings: any[] = [];
 
   constructor(isEnabled: boolean) {
     this.isEnabled = isEnabled;
@@ -329,6 +345,12 @@ export class AdjustThirdPartySharing {
     this.granularOptions.push(partnerName);
     this.granularOptions.push(key);
     this.granularOptions.push(value);
+  }
+
+  addPartnerSharingSetting(partnerName: string, key: string, value: boolean): void {
+    this.partnerSharingSettings.push(partnerName);
+    this.partnerSharingSettings.push(key);
+    this.partnerSharingSettings.push(value);
   }
 }
 
@@ -391,6 +413,7 @@ export interface AdjustAttribution {
   costType: string;
   costAmount: string;
   costCurrency: string;
+  fbInstallReferrer: string; // Android only
 }
 
 export interface AdjustSessionSuccess {
@@ -454,7 +477,11 @@ export enum AdjustAdRevenueSource {
   AdRevenueSourceAppLovinMAX = 'applovin_max_sdk',
   AdRevenueSourceMopub = 'mopub',
   AdRevenueSourceAdMob = 'admob_sdk',
-  AdRevenueSourceIronsource = 'ironsource_sdk',
+  AdRevenueSourceIronSource = 'ironsource_sdk',
+  AdRevenueSourceAdMost = "admost_sdk",
+  AdRevenueSourceUnity = "unity_sdk",
+  AdRevenueSourceHeliumChartboost = "helium_chartboost_sdk",
+  AdRevenueSourcePublisher = "publisher_sdk",
 }
 
 /**
@@ -463,6 +490,7 @@ export enum AdjustAdRevenueSource {
  * This is the Ionic Cordova SDK of Adjust™. You can read more about Adjust™ at adjust.com.
  *
  * Requires Cordova plugin: `com.adjust.sdk`. For more info, please see the [Adjust Cordova SDK](https://github.com/adjust/cordova_sdk)
+ *
  * @usage
  * ```typescript
  *  import { Adjust, AdjustConfig, AdjustEnvironment } from '@awesome-cordova-plugins/adjust/ngx';
@@ -505,6 +533,7 @@ export enum AdjustAdRevenueSource {
 })
 @Injectable()
 export class Adjust extends AwesomeCordovaNativePlugin {
+
   /**
    * This method initializes Adjust SDK
    *
@@ -623,7 +652,7 @@ export class Adjust extends AwesomeCordovaNativePlugin {
   gdprForgetMe(): void {}
 
   /**
-   * You can now notify Adjust when a user has exercised their right to stop sharing their data with partners for marketing purposes, but has allowed it to be shared for statistics purposes.
+   * You can now notify Adjust when a user has exercised their right to stop sharing their data with partners for marketing purposes, but has allowed it to be shared for statistics purposes. 
    * Calling the following method will instruct the Adjust SDK to communicate the user's choice to disable data sharing to the Adjust backend
    */
   @Cordova({ sync: true })
@@ -669,6 +698,12 @@ export class Adjust extends AwesomeCordovaNativePlugin {
   getAdid(): Promise<string> {
     return;
   }
+
+  /**
+   * Instruct to Adjust SDK to check current state of att_status
+   */
+  @Cordova({ sync: true })
+  checkForNewAttStatus(): void {}
 
   /**
    * If you want to access information about a user's current attribution whenever you need it, you can make a call to this function
@@ -768,6 +803,16 @@ export class Adjust extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   getAppTrackingAuthorizationStatus(): Promise<number> {
+    return;
+  }
+
+  /**
+   * To obtain the last deep link which has opened your iOS app, call this function
+   *
+   * @returns {Promise<string>} Returns a promise with iOS deep link string value
+   */
+  @Cordova()
+  getLastDeeplink(): Promise<string> {
     return;
   }
 }

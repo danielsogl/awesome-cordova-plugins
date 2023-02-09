@@ -1,7 +1,7 @@
 **I'm submitting a ...**  (check one with "x")
-[ ] bug report
-[ ] feature request
-[ ] support request => Please do not submit support requests here, use one of these channels: https://forum.ionicframework.com/ or https://ionicworldwide.herokuapp.com/
+- [ ] bug report
+- [ ] feature request
+- [ ] support request => Please do not submit support requests here, use the discussions section https://github.com/danielsogl/awesome-cordova-plugins/discussions
 
 **Current behavior:**
 <!-- Describe how the bug manifests. -->

@@ -12,15 +12,18 @@ import { Observable } from 'rxjs';
 /**
  * dceLicense: License of Dynamsoft Camera Enhancer
  * resolution: use EnumResolution
+ * rotate: convert frame to bitmap and rotate it
  */
 export interface ScanOptions {
   dceLicense?: string;
   resolution?: number;
+  rotate?: boolean;
 }
 
 export interface FrameResult {
   frameWidth: number;
   frameHeight: number;
+  frameRotation: number;
   results: BarcodeResult[];
 }
 
@@ -44,7 +47,7 @@ export enum EnumResolution {
   RESOLUTION_720P = 2,
   RESOLUTION_1080P = 3,
   RESOLUTION_2K = 4,
-  RESOLUTION_4K = 5
+  RESOLUTION_4K = 5,
 }
 
 /**
@@ -181,6 +184,26 @@ export class BarcodeScanner extends AwesomeCordovaNativePlugin {
    */
   @Cordova({ successIndex: 1, errorIndex: 2 })
   switchTorch(desiredStatus: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * set zoom
+   * @param factor {number} zoom factor
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova({ successIndex: 1, errorIndex: 2 })
+  setZoom(factor: number): Promise<any> {
+    return;
+  }
+
+  /**
+   * set focus
+   * @param point focus point
+   * @return {Promise<any>} Returns a promise
+   */
+  @Cordova({ successIndex: 1, errorIndex: 2 })
+  setFocus(point: { x: number; y: number }): Promise<any> {
     return;
   }
 }

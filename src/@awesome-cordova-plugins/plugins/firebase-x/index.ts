@@ -112,7 +112,26 @@ export interface FirebaseUser {
    */
   name?: string;
 }
-
+export interface MessagePayloadAps {
+  alert?: {
+    title: string;
+    body: string;
+  }
+}
+export interface MessagePayload {
+  title?: string;
+  body?: string;
+  collapse_key?: string;
+  from?: string;
+  id?: string;
+  messageType?: string;
+  notification_foreground?: string;
+  sent_time?: string;
+  show_notification?: string;
+  ttl?: string;
+  tap?: 'background' | 'foreground';
+  aps?: MessagePayloadAps;
+}
 /**
  * @name Firebase X
  * @description
@@ -237,7 +256,7 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   @Cordova({
     observable: true,
   })
-  onMessageReceived(): Observable<any> {
+  onMessageReceived<T = { [key: string]: string }>(): Observable<MessagePayload & T> {
     return;
   }
 
