@@ -420,6 +420,17 @@ export class LoginParameters {
    * The passed credentials will be used based on this flag.
    */
   requireClientCredentials: boolean;
+
+  /**
+   * Required for SAML-SSO login. This should be the redirect URL as configured in UMP under Application Properties.
+   * Instead of a hard-coded value, consider deribing this URL value the base UMP URL.
+   */
+  redirectURL: string;
+
+  /**
+   * Send the version number of the app which needs to be propagated to UMP. You should be able to view this under the devices section in UMP Admin Cockpit.
+   */
+  appVersion: string;
 }
 export class LoginResult extends UnviredResult {
   type: LoginListenerType;
