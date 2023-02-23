@@ -294,4 +294,12 @@ export class Webim extends AwesomeCordovaNativePlugin {
   onLogging(): Observable<unknown> {
     return;
   }
+
+  @Cordova({
+    observable: true,
+    clearFunction: 'close',
+  })
+  onChatState(): Observable<unknown> {
+    return;
+  }
 }
