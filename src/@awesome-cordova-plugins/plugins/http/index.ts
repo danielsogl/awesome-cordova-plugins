@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Cordova, CordovaProperty, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
+export interface OnProgress {
+  isProgress: boolean;
+  transferred: number;
+  total: number;
+}
 export interface HTTPResponse {
   /**
    * The HTTP status number of the response or a negative internal error code.
@@ -523,10 +528,18 @@ export class HTTP extends AwesomeCordovaNativePlugin {
    * @param headers {Object} The headers to set for this request
    * @param filePath {string} The local path(s) of the file(s) to upload
    * @param name {string} The name(s) of the parameter to pass the file(s) along as
+   * @param onProgress {function} A callback that is called when is progress
    * @returns {Promise<any>} returns a FileEntry promise that will resolve on success, and reject on failure
    */
   @Cordova()
-  uploadFile(url: string, body: any, headers: any, filePath: string | string[], name: string | string[]): Promise<any> {
+  uploadFile(
+    url: string,
+    body: any,
+    headers: any,
+    filePath: string | string[],
+    name: string | string[],
+    onProgress: (response: OnProgress) => void
+  ): Promise<any> {
     return;
   }
 
@@ -537,6 +550,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
    * @param headers {Object} The headers to set for this request
    * @param filePath {string} The local path(s) of the file(s) to upload
    * @param name {string} The name(s) of the parameter to pass the file(s) along as
+   * @param onProgress {function} A callback that is called when is progress
    * @param success {function} A callback that is called when the request succeed
    * @param failure {function} A callback that is called when the request failed
    * @returns {string} returns a string that represents the requestId
@@ -551,6 +565,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
     headers: any,
     filePath: string | string[],
     name: string | string[],
+    onProgress: (response: OnProgress) => void,
     success: (result: any) => void,
     failure: (error: any) => void
   ): string {
@@ -563,10 +578,17 @@ export class HTTP extends AwesomeCordovaNativePlugin {
    * @param body {Object} The body of the request
    * @param headers {Object} The headers to set for this request
    * @param filePath {string} The path to download the file to, including the file name.
+   * @param onProgress {function} A callback that is called when is progress
    * @returns {Promise<any>} returns a FileEntry promise that will resolve on success, and reject on failure
    */
   @Cordova()
-  downloadFile(url: string, body: any, headers: any, filePath: string): Promise<any> {
+  downloadFile(
+    url: string,
+    body: any,
+    headers: any,
+    filePath: string,
+    onProgress: (response: OnProgress) => void
+  ): Promise<any> {
     return;
   }
 
@@ -576,6 +598,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
    * @param body {Object} The body of the request
    * @param headers {Object} The headers to set for this request
    * @param filePath {string} The path to download the file to, including the file name.
+   * @param onProgress {function} A callback that is called when is progress
    * @param success {function} A callback that is called when the request succeed
    * @param failure {function} A callback that is called when the request failed
    * @returns {string} returns a string that represents the requestId
@@ -589,6 +612,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
     body: any,
     headers: any,
     filePath: string,
+    onProgress: (response: OnProgress) => void,
     success: (result: any) => void,
     failure: (error: any) => void
   ): string {
