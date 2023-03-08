@@ -326,6 +326,7 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * @description Sets whether or not the SDK should use the adaptive framerate feature to capture video.
+   * @kind **iOS only**
    */
   @Cordova({ sync: true })
   setAdaptiveFrameRateEnabled(options: { isEnabled: boolean }): void {
@@ -334,30 +335,10 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * @description A boolean that determines whether the SDK uses the adaptive framerate functionality for video capture.
+   * @kind **iOS only**
    */
   @Cordova()
   getAdaptiveFrameRateEnabled(): Promise<boolean> {
-    return;
-  }
-
-  /**
-   * @description Sets whether or not Android's Surface should be recorded by the video capture.
-   *
-   * @kind **Android only**
-   */
-  @Cordova({ sync: true })
-  setSurfaceCaptureEnabled(options: { isEnabled: boolean }): void {
-    return;
-  }
-
-  /**
-   * @description A boolean that determines whether or not Android's Surface is recorded by the video capture.
-   *
-   * @kind **Android only**
-   * @param options.successCallback - Callback to be invoked with the current value
-   */
-  @Cordova()
-  getSurfaceCaptureEnabled(): Promise<boolean> {
     return;
   }
 
