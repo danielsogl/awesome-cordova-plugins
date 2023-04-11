@@ -65,6 +65,16 @@ export class SmsRetrieverAz extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * This function stop watching message.
+   *
+   * @returns {Promise<string>} Returns a promise that resolves when successfully remove sms listener.
+   */
+  @Cordova()
+  stopWatch(): Promise<string> {
+    return;
+  }
+
+  /**
    * This function is to get hash string of APP.
    *
    * @returns {Promise<string>} Returns a promise that resolves when successfully generate hash of APP.
