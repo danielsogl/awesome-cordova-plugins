@@ -15,23 +15,23 @@ export enum SmsRetrieverStatus {
 }
 
 /**
- * @name SmsRetrieverAz
+ * @name SmsRetrieverApi
  * @description
  * This plugin retries the SMS which arrive without requiring READ permissions.
  * @usage
  * ```typescript
- * import { SmsRetrieverAz } from '@awesome-cordova-plugins/sms-retriever-az/ngx';
+ * import { SmsRetrieverApi } from '@awesome-cordova-plugins/sms-retriever-api/ngx';
  *
  *
- * constructor(private smsRetrieverAz: SmsRetrieverAz) { }
+ * constructor(private SmsRetrieverApi: SmsRetrieverApi) { }
  *
  * ...
  *
  *
- * this.smsRetrieverAz.getHashString()
+ * this.SmsRetrieverApi.getHashString()
  *   .then((res: any) => console.log(res))
  *   .catch((error: any) => console.error(error));
- * this.smsRetrieverAz.startWatch()
+ * this.SmsRetrieverApi.startWatch()
  *   .subscribe(
  *    (res: any) => console.log(res),
  *    (error: any) => console.error(error),
@@ -51,7 +51,7 @@ export enum SmsRetrieverStatus {
   platforms: ['Android'],
 })
 @Injectable()
-export class SmsRetrieverAz extends AwesomeCordovaNativePlugin {
+export class SmsRetrieverApi extends AwesomeCordovaNativePlugin {
   /**
    * This function start watching message arrive event and retrieve message text.
    *
@@ -85,7 +85,7 @@ export class SmsRetrieverAz extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * This function is to get phone number.
+   * Opens a dialog to select your mobile numbers saved in phone and returns selected phone number.
    *
    * @returns {Promise<string>} Returns a promise that resolves when successfully get phone number
    */
