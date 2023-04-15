@@ -85,6 +85,16 @@ export class SmsRetrieverAz extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * This function is to get phone number.
+   *
+   * @returns {Promise<string>} Returns a promise that resolves when successfully get phone number
+   */
+  @Cordova()
+  getPhoneNumber(): Promise<string> {
+    return;
+  }
+
+  /**
    * Watch incoming SMS event listener
    *
    * @returns {Observable<IncomingSMS>}
