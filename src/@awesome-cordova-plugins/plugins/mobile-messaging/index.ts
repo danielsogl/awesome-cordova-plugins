@@ -407,7 +407,7 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
   @Cordova({
     observable: true,
   })
-  submitEventImmediately(event: CustomEvent): Promise<void> {
+  submitEventImmediately(event: CustomEvent): Observable<any> {
     return;
   }
 
