@@ -55,7 +55,7 @@ export interface PDFGeneratorOptions {
   pluginName: 'PDFGenerator',
   plugin: 'cordova-pdf-generator',
   pluginRef: 'cordova.plugins.pdf',
-  repo: 'https://github.com/cesarvr/pdf-generator',
+  repo: 'https://github.com/IDPLive/pdf-generator',
   platforms: ['Android', 'iOS'],
 })
 @Injectable({
