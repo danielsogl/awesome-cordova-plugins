@@ -538,26 +538,6 @@ export class HTTP extends AwesomeCordovaNativePlugin {
   /**
    *
    * @param url {string} The url to send the request to
-   * @param options
-   * @returns {Promise<any>} returns a FileEntry promise that will resolve on success, and reject on failure
-   */
-  @Cordova()
-  uploadFileWithOptions(
-    url: string,
-    options: {
-      params: any;
-      headers: any;
-      filePath: string | string[];
-      name: string | string[];
-      onProgress: (response: OnProgress) => void;
-    }
-  ): Promise<any> {
-    return;
-  }
-
-  /**
-   *
-   * @param url {string} The url to send the request to
    * @param body {Object} The body of the request
    * @param headers {Object} The headers to set for this request
    * @param filePath {string} The local path(s) of the file(s) to upload
@@ -592,25 +572,6 @@ export class HTTP extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   downloadFile(url: string, body: any, headers: any, filePath: string): Promise<any> {
-    return;
-  }
-
-  /**
-   *
-   * @param url {string} The url to send the request to
-   * @param options
-   * @returns {Promise<any>} returns a FileEntry promise that will resolve on success, and reject on failure
-   */
-  @Cordova()
-  downloadFileWithOptions(
-    url: string,
-    options: {
-      params: any;
-      headers: any;
-      filePath: string;
-      onProgress: (response: OnProgress) => void;
-    }
-  ): Promise<any> {
     return;
   }
 
@@ -652,6 +613,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
    * @param options.filePath {string} file path(s) to be used during upload and download see uploadFile and downloadFile for detailed information
    * @param options.name {string} name(s) to be used during upload see uploadFile for detailed information
    * @param options.responseType {string} response type, defaults to text
+   * @param options.onProgress {function} A callback that is called when is progress
    * @returns {Promise<HTTPResponse>} returns a promise that will resolve on success, and reject on failure
    */
   @Cordova()
@@ -667,6 +629,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
       filePath?: string | string[];
       name?: string | string[];
       responseType?: 'text' | 'arraybuffer' | 'blob' | 'json';
+      onProgress?: (response: OnProgress) => void;
     }
   ): Promise<HTTPResponse> {
     return;
