@@ -17,19 +17,18 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * ```
  */
 @Plugin({
-  pluginName: 'SmtpClient',
+  pluginName: 'SMTPClient',
   plugin: 'cordova-plugin-smtp-client',
-  pluginRef: 'window.plugins.smtp-client',
+  pluginRef: 'smtpClient',
   repo: 'https://github.com/CWBudde/cordova-plugin-smtp-client',
   install: 'ionic cordova plugin add cordova-plugin-smtp-client',
-  installVariables: ['REVERSED_CLIENT_ID'],
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class SmtpClient extends AwesomeCordovaNativePlugin {
   /**
    * The sendMail function.
-   * 
+   *
    * var mailSettings = {
    *   emailFrom: "emailFrom@domain.com",
    *   emailTo: "emailTo@domain.com",
@@ -40,14 +39,14 @@ export class SmtpClient extends AwesomeCordovaNativePlugin {
    *   subject: "email subject",
    *   textBody: "write something within the body of the email"
    * };
-   *     
+   *
    * var successCallback = function(message) {
    *  alert(message);
    * }
    *
    * var errorCallback = function(message) {
    *   alert("Error sending the email");
-   * }	
+   * }
    *
    * @param mailSettings
    * @param successCallback
