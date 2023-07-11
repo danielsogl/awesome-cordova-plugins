@@ -218,6 +218,7 @@
   * [Dynamsoft Barcode Scanner](plugins/dynamsoft-barcode-scanner.md)
   * [GCDWebServer](plugins/gcdwebserver.md)
   * [Smtp Client](plugins/smtp-client.md)
+  * [Cashfree PG](plugins/cashfree-pg/README.md)
 * [Installation](installation.md)
 * [FAQ](faq.md)
 
