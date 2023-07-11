@@ -1,3 +1,27 @@
+# [6.4.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.3.0...v6.4.0) (2023-07-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency tslib to v2.5.0 ([#4552](https://github.com/danielsogl/awesome-cordova-plugins/issues/4552)) [skip ci] ([7e533f4](https://github.com/danielsogl/awesome-cordova-plugins/commit/7e533f48b9112fd4f8c6807d86362526985b395b))
+* **deps:** update dependency tslib to v2.6.0 ([#4595](https://github.com/danielsogl/awesome-cordova-plugins/issues/4595)) ([b600651](https://github.com/danielsogl/awesome-cordova-plugins/commit/b600651f02e56e446e49b2ae40418d46e0dca09b))
+* **mobile-messaging:** correct return type of submitEvent ([#4564](https://github.com/danielsogl/awesome-cordova-plugins/issues/4564)) ([0527afe](https://github.com/danielsogl/awesome-cordova-plugins/commit/0527afe93578810b4084e0da330574f956b0a7b5))
+* **mobile-messaging:** fix event (un)register and saveUser ([#4569](https://github.com/danielsogl/awesome-cordova-plugins/issues/4569)) ([fbd523f](https://github.com/danielsogl/awesome-cordova-plugins/commit/fbd523f36a7214b1e933cca8765fece744ea8192))
+
+
+### Features
+
+* **cashfree-pg:** support cordova-plugin-cashfree-pg 1.0.2 ([#4572](https://github.com/danielsogl/awesome-cordova-plugins/issues/4572)) ([8047c9a](https://github.com/danielsogl/awesome-cordova-plugins/commit/8047c9ad5203f9d6b53a663907c5f07c24fe565b))
+* **http:** onProgress param to  sendRequest  method ([#4512](https://github.com/danielsogl/awesome-cordova-plugins/issues/4512)) ([4cd48b4](https://github.com/danielsogl/awesome-cordova-plugins/commit/4cd48b4d0e72770962857c96c001c5597b504772))
+* **newrelic:** add shutdown method ([#4571](https://github.com/danielsogl/awesome-cordova-plugins/issues/4571)) ([178f566](https://github.com/danielsogl/awesome-cordova-plugins/commit/178f56625e63aa679b592995750d109e05f421c1))
+* **smartlook:** rewrite smartlook ionic plugin ([#4510](https://github.com/danielsogl/awesome-cordova-plugins/issues/4510)) ([baa207b](https://github.com/danielsogl/awesome-cordova-plugins/commit/baa207b724b78ed1d40abec6bada933dab829f96))
+* **sms-retriever-api:** add plugin ([#4528](https://github.com/danielsogl/awesome-cordova-plugins/issues/4528)) ([e3af183](https://github.com/danielsogl/awesome-cordova-plugins/commit/e3af183e0c3d51292e14f4285dd8c71e4c564b39))
+* **smtp-client:** add plugin ([#4585](https://github.com/danielsogl/awesome-cordova-plugins/issues/4585)) ([2b6c297](https://github.com/danielsogl/awesome-cordova-plugins/commit/2b6c297da81958f9f1b3fa58c1a6ddfb3520d220))
+* **urbanairship:** Add locale override methods ([#4579](https://github.com/danielsogl/awesome-cordova-plugins/issues/4579)) ([126d44f](https://github.com/danielsogl/awesome-cordova-plugins/commit/126d44faf37b341ad05a4ecf4146c5c4e5d1ccdf))
+* **zip:** add callback param so the progress function can be calleds ([#4519](https://github.com/danielsogl/awesome-cordova-plugins/issues/4519)) ([f9110cb](https://github.com/danielsogl/awesome-cordova-plugins/commit/f9110cb4295b964ce89aef8fe3c56e71a09bb320))
+
+
+
 # [6.3.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.2.0...v6.3.0) (2022-12-31)
 
 
