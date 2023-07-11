@@ -35,7 +35,7 @@
     "@types/fs-extra": "11.0.1",
     "@types/jest": "27.5.2",
     "@types/lodash": "4.14.195",
-    "@types/node": "18.16.3",
+    "@types/node": "18.16.19",
     "@types/rimraf": "3.0.2",
     "@types/webpack": "5.28.0",
     "@typescript-eslint/eslint-plugin": "5.62.0",
