@@ -1,258 +1,55 @@
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
-export class SmartlookSetupConfigBuilder {
-  private readonly _smartlookSetupConfig: SmartlookSetupConfig;
+export type RecordingMaskType = 'COVERING' | 'ERASING';
 
-  constructor(smartlookAPIKey: string) {
-    this._smartlookSetupConfig = new SmartlookSetupConfig(smartlookAPIKey);
-  }
+export type RecordingMaskRect = {
+  left: number;
+  top: number;
+  width: number;
+  height: number;
+};
 
-  fps(fps: number): SmartlookSetupConfigBuilder {
-    this._smartlookSetupConfig.fps = fps;
-    return this;
-  }
-
-  renderingMode(renderingMode: SmartlookRenderingMode): SmartlookSetupConfigBuilder {
-    this._smartlookSetupConfig.renderingMode = renderingMode.getRenderingModeString();
-    return this;
-  }
-
-  startNewSession(startNewSession: boolean): SmartlookSetupConfigBuilder {
-    this._smartlookSetupConfig.startNewSession = startNewSession;
-    return this;
-  }
-
-  startNewSessionAndUser(startNewSessionAndUser: boolean): SmartlookSetupConfigBuilder {
-    this._smartlookSetupConfig.startNewSessionAndUser = startNewSessionAndUser;
-    return this;
-  }
-
-  eventTrackingModes(eventTrackingModes: SmartlookEventTrackingModes): SmartlookSetupConfigBuilder {
-    this._smartlookSetupConfig.eventTrackingModes = eventTrackingModes.getEventTrackingModeStringArray();
-    return this;
-  }
-
-  build(): SmartlookSetupConfig {
-    return this._smartlookSetupConfig;
-  }
+/**
+ * @description Creates an overlay that masks a specified screen part to protect it from unwanted recording.
+ * @param maskType - Represents the type of a mask element.
+ * @param maskRect - Defines an area of the recording mask.
+ */
+export interface RecordingMask {
+  maskType: RecordingMaskType;
+  maskRect: RecordingMaskRect;
 }
 
-export class SmartlookSetupConfig {
-  private smartlookAPIKey: string;
-  fps: number;
-  renderingMode: string;
-  startNewSession: boolean;
-  startNewSessionAndUser: boolean;
-  eventTrackingModes: string[];
+export type RecordingMaskList = RecordingMask[];
 
-  constructor(smartlookAPIKey: string) {
-    this.smartlookAPIKey = smartlookAPIKey;
-  }
+export enum RenderingMode {
+  NO_RENDERING = 0,
+  NATIVE = 1,
+  WIREFRAME = 2,
 }
 
-export class SmartlookResetSession {
-  private resetUser: boolean;
-
-  constructor(resetUser: boolean) {
-    this.resetUser = resetUser;
-  }
+export enum RecordingStatus {
+  Recording = 0,
+  NotStarted = 1,
+  Stopped = 2,
+  BellowMinSdkVersion = 3,
+  ProjectLimitReached = 4,
+  StorageLimitReached = 5,
+  InternalError = 6,
+  NotRunningInSwiftUIContext = 7,
+  UnsupportedPlatform = 8,
 }
 
-export class SmartlookUserIdentifier {
-  private identifier: string;
-  private sessionProperties: {};
-
-  constructor(identifier: string, sessionProperties?: {}) {
-    this.identifier = identifier;
-    this.sessionProperties = sessionProperties;
-  }
-}
-
-export class SmartlookEventTrackingMode {
-  private eventTrackingMode: string;
-
-  static FULL_TRACKING(): SmartlookEventTrackingMode {
-    return new SmartlookEventTrackingMode('full_tracking');
-  }
-
-  static IGNORE_USER_INTERACTION(): SmartlookEventTrackingMode {
-    return new SmartlookEventTrackingMode('ignore_user_interaction');
-  }
-
-  static IGNORE_NAVIGATION_INTERACTION(): SmartlookEventTrackingMode {
-    return new SmartlookEventTrackingMode('ignore_navigation_interaction');
-  }
-
-  static IGNORE_RAGE_CLICKS(): SmartlookEventTrackingMode {
-    return new SmartlookEventTrackingMode('ignore_rage_clicks');
-  }
-
-  static NO_TRACKING(): SmartlookEventTrackingMode {
-    return new SmartlookEventTrackingMode('no_tracking');
-  }
-
-  getEventTrackingModeString(): string {
-    return this.eventTrackingMode;
-  }
-
-  constructor(eventTrackingMode: string) {
-    this.eventTrackingMode = eventTrackingMode;
-  }
-}
-
-export class SmartlookEventTrackingModes {
-  private eventTrackingModes: string[];
-
-  constructor(eventTrackingModes: SmartlookEventTrackingMode[]) {
-    this.eventTrackingModes = eventTrackingModes.map((eventTrackingMode) =>
-      eventTrackingMode.getEventTrackingModeString()
-    );
-  }
-
-  getEventTrackingModeStringArray(): string[] {
-    return this.eventTrackingModes;
-  }
-}
-
-export class SmartlookViewState {
-  static START = 'start';
-  static STOP = 'stop';
-}
-
-export class SmartlookNavigationEvent {
-  private name: string;
-  private viewState: string;
-
-  constructor(name: string, viewState?: string) {
-    this.name = name;
-    this.viewState = this.viewState;
-  }
-}
-
-export class SmartlookCustomEvent {
-  private name: string;
-  private eventProperties: {};
-
-  constructor(name: string, eventProperties?: {}) {
-    this.name = name;
-    this.eventProperties = eventProperties;
-  }
-}
-
-export class SmartlookTimedCustomEventStart {
-  private name: string;
-  private eventProperties: {};
-
-  constructor(name: string, eventProperties?: {}) {
-    this.name = name;
-    this.eventProperties = eventProperties;
-  }
-}
-
-export class SmartlookTimedCustomEventStop {
-  private eventId: string;
-  private eventProperties: {};
-
-  constructor(eventId: string, eventProperties?: {}) {
-    this.eventId = eventId;
-    this.eventProperties = eventProperties;
-  }
-}
-
-export class SmartlookTimedCustomEventCancel {
-  private eventId: string;
-  private reason: string;
-  private eventProperties: {};
-
-  constructor(eventId: string, reason: string, eventProperties?: {}) {
-    this.eventId = eventId;
-    this.reason = reason;
-    this.eventProperties = eventProperties;
-  }
-}
-
-export class SmartlookGlobalEventProperties {
-  private globalEventProperties: {};
-  private immutable: boolean;
-
-  constructor(globalEventProperties: {}, immutable: boolean) {
-    this.globalEventProperties = globalEventProperties;
-    this.immutable = immutable;
-  }
-}
-
-export class SmartlookGlobalEventProperty {
-  private key: string;
-  private value: string;
-  private immutable: boolean;
-
-  constructor(key: string, value: string, immutable: boolean) {
-    this.key = key;
-    this.value = value;
-    this.immutable = immutable;
-  }
-}
-
-export class SmartlookGlobalEventPropertyKey {
-  private key: string;
-
-  constructor(key: string) {
-    this.key = key;
-  }
-}
-
-export class SmartlookReferrer {
-  private referrer: string;
-  private source: string;
-
-  constructor(referrer: string, source: string) {
-    this.referrer = referrer;
-    this.source = source;
-  }
-}
-
-export class SmartlookDashboardSessionUrl {
-  private withCurrentTimestamp: boolean;
-
-  constructor(withCurrentTimestamp: boolean) {
-    this.withCurrentTimestamp = withCurrentTimestamp;
-  }
-}
-
-export interface SmartlookIntegrationListener {
-  onSessionReady: (dashboardSessionUrl: string) => any;
-  onVisitorReady: (dashboardVisitorUrl: string) => any;
-}
-
-export class SmartlookRenderingMode {
-  private renderingMode: string;
-
-  static NO_RENDERING(): SmartlookRenderingMode {
-    return new SmartlookRenderingMode('no_rendering');
-  }
-
-  static NATIVE(): SmartlookRenderingMode {
-    return new SmartlookRenderingMode('native');
-  }
-
-  getRenderingModeString(): string {
-    return this.renderingMode;
-  }
-
-  constructor(renderingMode: string) {
-    this.renderingMode = renderingMode;
-  }
-}
+export type UrlCallbackShape = (url: string) => void;
 
 /**
  * @name Smartlook
  * @description
  * Official Smartlook SDK plugin.
- * Full documentation can be found here: https://smartlook.github.io/docs/sdk/ionic/
+ * Full documentation can be found here: https://mobile.developer.smartlook.com/reference/ionic-sdk-installation
  * @usage
  * ```typescript
- * import { Smartlook, SmartlookSetupConfig } from '@awesome-cordova-plugins/smartlook/ngx';
+ * import { Smartlook } from '@awesome-cordova-plugins/smartlook/ngx';
  *
  * ...
  *
@@ -260,31 +57,12 @@ export class SmartlookRenderingMode {
  * export class AppComponent {
  *     constructor(private smartlook: Smartlook) {
  *        this.platform.ready().then(() => {
- *            this.smartlook.setupAndStartRecording(new SmartlookSetupConfig("YOUR API KEY"));
+ *            this.smartlook.setProjectKey({ key: "YOUR PROJECT KEY" });
+ *            this.smartlook.start();
  *        }
  *     }
  * }
  * ```
- * @classes
- * SmartlookSetupConfigBuilder
- * SmartlookSetupConfig
- * SmartlookResetSession
- * SmartlookUserIdentifier
- * SmartlookEventTrackingMode
- * SmartlookNavigationEvent
- * SmartlookViewState
- * SmartlookCustomEvent
- * SmartlookTimedCustomEventStart
- * SmartlookTimedCustomEventStop
- * SmartlookTimedCustomEventCancel
- * SmartlookGlobalEventProperties
- * SmartlookGlobalEventProperty
- * SmartlookGlobalEventPropertyKey
- * SmartlookReferrer
- * SmartlookDashboardSessionUrl
- * SmartlookRenderingMode
- * SmartlookEventTrackingMode
- * SmartlookEventTrackingModes
  */
 @Plugin({
   pluginName: 'Smartlook',
@@ -296,55 +74,302 @@ export class SmartlookRenderingMode {
 @Injectable()
 export class Smartlook extends AwesomeCordovaNativePlugin {
   /**
-   * Setup and start Smartlook SDK recording.
+   * @description Starts the recording, even when no project key is set.
+   * See the docs for more infromation.
+   */
+  @Cordova({ sync: true })
+  start(): void {
+    return;
+  }
+
+  /**
+   * @description Stops the recording.
+   */
+  @Cordova({ sync: true })
+  stop(): void {
+    return;
+  }
+
+  /**
+   * @description Resets the SDK to a default state.
+   */
+  @Cordova({ sync: true })
+  reset(): void {
+    return;
+  }
+
+  /**
+   * @description Logs a new event in the application.
+   * @param options.eventName - Application event name
+   * @param options.props - optional event properties object
+   */
+  @Cordova({ sync: true })
+  trackEvent(options: { eventName: string; props?: Record<string, string> }): void {
+    return;
+  }
+
+  /**
+   * @description Logs a new selector event in the application.
+   * @param options.eventName - Application event name
+   * @param options.props - optional event properties object
+   * @kind **iOS only**
+   */
+  @Cordova({ sync: true })
+  trackSelector(options: { selectorName: string; props?: Record<string, string> }): void {
+    return;
+  }
+
+  /**
+   * Logs a new navigation sreen-entering event in the application.
+   * @param options.eventName - Application event name
+   * @param options.props - optional event properties object
+   */
+  @Cordova({ sync: true })
+  trackNavigationEnter(options: { eventName: string; props?: Record<string, string> }): void {
+    return;
+  }
+
+  /**
+   * Logs a new navigation sreen-exiting event in the application.
+   * @param options.eventName - Application event name
+   * @param options.props - optional event properties object
+   */
+  @Cordova({ sync: true })
+  trackNavigationExit(options: { eventName: string; props?: Record<string, string> }): void {
+    return;
+  }
+
+  /**
+   * Sets a new SDK referrer.
+   * @param options.referrer - Application referrer name
+   * @param options.source - Referrer source name
    *
-   * @param config SmartlookSetupConfig object.
-   * @param config.smartlookAPIKey (required) Smartlook API key (you can obtain it in your dashboard).
-   * @param config.fps (optional) recorded video framerate (allowed values 2-10 fps).
-   * @param options.renderingMode (optional) Mode defining the video output of recording.
-   * @param options.startNewSession (optional) If true new session is going to be created
-   * @param options.startNewSessionAndUser (optional) If true new session and visitor is going to be created
+   * @kind **Android only**
    */
   @Cordova({ sync: true })
-  setupAndStartRecording(config: SmartlookSetupConfig): void {
+  setReferrer(options: { referrer: string; source: string }): void {
     return;
   }
 
   /**
-   * Setup/initialize Smartlook SDK. This method DOESN'T start the recording (@see start())
+   * @description Sets a user-passed global event property.
+   * @param options.eventName - Global event name
+   * @param options.props - optional event properties object
+   */
+  @Cordova({ sync: true })
+  putGlobalEventProperty(options: { propertyName: string; value: string }): void {
+    return;
+  }
+
+  /**
+   * @description Retrieves a user-passed event property.
+   * @param options.eventName - Global event name to retrieve
+   */
+  @Cordova()
+  getGlobalEventProperty(options: { propertyName: string }): Promise<string> {
+    return;
+  }
+
+  /**
+   * @description Removes a user-passed event property.
+   * @param options.eventName - Global event name to remove
+   */
+  @Cordova({ sync: true })
+  removeGlobalEventProperty(options: { propertyName: string }): void {
+    return;
+  }
+
+  /**
+   * @description Clears all user-passed event properties.
+   */
+  @Cordova({ sync: true })
+  clearGlobalEventProperties(): void {
+    return;
+  }
+
+  /**
+   * @description Sets new identification for the recorded user.
+   * @param options.identifier - User identifier
+   */
+  @Cordova({ sync: true })
+  setUserIdentifier(options: { identifier: string }): void {
+    return;
+  }
+
+  /**
+   * @description Sets user’s full name.
+   * @param options.name - User's full name
+   */
+  @Cordova({ sync: true })
+  setUserName(options: { name: string }): void {
+    return;
+  }
+
+  /**
+   * @description Sets user’s email address.
+   * @param options.email - User's email address
+   */
+  @Cordova({ sync: true })
+  setUserEmail(options: { email: string }): void {
+    return;
+  }
+
+  /**
+   * @description Sets or adds a new value to the user properties.
+   * @param options.propertyName - User property name
+   * @param options.value - User property value
+   */
+  @Cordova({ sync: true })
+  setUserProperty(options: { propertyName: string; value: string }): void {
+    return;
+  }
+
+  /**
+   * @description Retrieves a user property value with a given property name (a key).
+   * @param options.propertyName - User property name
+   * @param options.successCallback - Callback to be invoked with the user property value
+   */
+  @Cordova()
+  getUserProperty(options: { propertyName: string }): Promise<string> {
+    return;
+  }
+
+  /**
+   * @description Removes a user property given a property name (a key).
+   */
+  @Cordova({ sync: true })
+  removeUserProperty(options: { propertyName: string }): void {
+    return;
+  }
+
+  /**
+   * @description Initializes a new user for recording.
+   */
+  @Cordova({ sync: true })
+  openNewUser(): void {
+    return;
+  }
+
+  /**
+   * @description Opens a new recording session.
+   */
+  @Cordova({ sync: true })
+  openNewSession(): void {
+    return;
+  }
+
+  /**
+   * @description Retrieves the unique URL of the currently recorded user.
+   * @param options.successCallback - Callback to be invoked with the user URL
+   */
+  @Cordova()
+  getUserUrl(): Promise<string> {
+    return;
+  }
+
+  /**
+   * @description Retrieves the unique URL of this recording session.
+   * @param options.successCallback - Callback to be invoked with the session URL
+   */
+  @Cordova()
+  getSessionUrl(): Promise<string> {
+    return;
+  }
+
+  /**
+   * @description Retrieves the unique session URL with the exact location on the timeline.
+   * @param options.successCallback - Callback to be invoked with the session URL
+   */
+  @Cordova()
+  getSessionUrlWithTimestamp(): Promise<string> {
+    return;
+  }
+
+  /**
+   * @description Sets a proxy host name for data transfer.
+   * @param options.relayProxyHost - Proxy host name
    *
-   * @param config SmartlookSetupConfig object.
-   * @param config.smartlookAPIKey (required) Smartlook API key (you can obtain it in your dashboard).
-   * @param config.fps (optional) recorded video framerate (allowed values 2-10 fps).
-   * @param options.renderingMode (optional) Mode defining the video output of recording.
-   * @param options.startNewSession (optional) If true new session is going to be created
-   * @param options.startNewSessionAndUser (optional) If true new session and visitor is going to be created
+   * @kind **Android only**
    */
   @Cordova({ sync: true })
-  setup(config: SmartlookSetupConfig): void {
+  setRelayProxyHost(options: { relaxyProxyHost: string }): void {
     return;
   }
 
   /**
-   * Start SDK recording.
+   * @description Sets video capturing framerate.
+   * @param options.frameRate - Framerate to be set. Must be between `2` and `10` frames per second.
    */
   @Cordova({ sync: true })
-  startRecording(): void {
+  setFrameRate(options: { frameRate: number }): void {
     return;
   }
 
   /**
-   * Stop SDK recording. Recording will start again when you call start().
+   * Retrieves the video capturing framerate.
+   * @param options.successCallback - Callback to be invoked with the current framerate
    */
-  @Cordova({ sync: true })
-  stopRecording(): void {
+  @Cordova()
+  getFrameRate(): Promise<number> {
     return;
   }
 
   /**
-   * Check if SDK is currently recording.
+   * @description Sets whether or not Android's `Jobs` are used for uploading.
    *
-   * @returns {Promise<boolean>} Returns a promise with isRecording boolean.
+   * @kind **Android only**
+   */
+  @Cordova({ sync: true })
+  setJobUploadEnabled(options: { isEnabled: boolean }): void {
+    return;
+  }
+
+  /**
+   * @description Sets whether or not the SDK should use the adaptive framerate feature to capture video.
+   * @kind **iOS only**
+   */
+  @Cordova({ sync: true })
+  setAdaptiveFrameRateEnabled(options: { isEnabled: boolean }): void {
+    return;
+  }
+
+  /**
+   * @description A boolean that determines whether the SDK uses the adaptive framerate functionality for video capture.
+   * @kind **iOS only**
+   */
+  @Cordova()
+  getAdaptiveFrameRateEnabled(): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * @description Enables the tracking of all events.
+   */
+  @Cordova({ sync: true })
+  eventTrackingEnableAll(): void {
+    return;
+  }
+
+  /**
+   * @description Disabled the tracking of all events.
+   */
+  @Cordova({ sync: true })
+  eventTrackingDisableAll(): void {
+    return;
+  }
+
+  /**
+   * @description Sets a unique project key.
+   * @param options.key - Project key
+   */
+  @Cordova({ sync: true })
+  setProjectKey(options: { key: string }): void {
+    return;
+  }
+
+  /**
+   * @description Determines whether or not the SDK is recording.
+   * @param options.successCallback - Callback to be invoked with the current value
    */
   @Cordova()
   isRecording(): Promise<boolean> {
@@ -352,259 +377,184 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * Resets current session and new session in dashboard is created.
-   *
-   * @param resetSession SmartlookResetSession object.
-   * @param resetSession.resetUser If set to TRUE new visitor is created in the dashboard.
-   */
-  @Cordova({ sync: true })
-  resetSession(resetSession: SmartlookResetSession): void {
-    return;
-  }
-
-  /**
-   * When you start sensitive mode SDK records blank videos (single color) but SDK still sends analytic events.
-   */
-  @Cordova({ sync: true })
-  startFullscreenSensitiveMode(): void {
-    return;
-  }
-
-  /**
-   * Stop sensitive mode -> SDK records video.
-   */
-  @Cordova({ sync: true })
-  stopFullscreenSensitiveMode(): void {
-    return;
-  }
-
-  /**
-   * Check if fullscreen sensitive mode is active.
-   *
-   * @returns {Promise<boolean>} Returns a promise with isFullscreenSensitiveModeActive boolean.
+   * @description Retrieves a string containing the current project key.
+   * @param options.successCallback - Callback to be invoked with the current project key
    */
   @Cordova()
-  isFullscreenSensitiveModeActive(): Promise<boolean> {
+  getProjectKey(): Promise<string> {
     return;
   }
 
   /**
-   * Identify user.
+   * @description Enables the tracking of all user's interaction events.
    *
-   * @param identifier SmartlookUserIdentifier object.
-   * @param identifier.idenfier (required) id that can be used to identify user and his records.
-   *                            You will see this Id in Smartlook dashboard so you can pair records with concrete user.
-   * @param identifier.sessionProperties (optional) custom session properties object.
+   * @kind **Android only**
+   * @param options.isEnabled - A boolean that determines whether or not the tracking of all user's interaction events is enabled.
    */
   @Cordova({ sync: true })
-  setUserIdentifier(identifier: SmartlookUserIdentifier): void {
+  setEventTrackingInteractionUserStatus(options: { isEnabled: boolean }): void {
     return;
   }
 
   /**
-   * You can configure which events are being tracked by setting eventTrackingMode.
-   *
-   * @param eventTrackingMode Can be on of:
-   *                          - EventTrackingMode.FULL_TRACKING ... track everything
-   *                          - EventTrackingMode.IGNORE_USER_INTERACTION ... will not track touches
-   *                            focus, keyboard, selector events
-   *                          - EventTrackingMode.IGNORE_NAVIGATION_INTERACTION ... will not track screen names
-   *                          - EventTrackingMode.IGNORE_RAGE_CLICKS ... will not track rage clicks
-   *                          - EventTrackingMode.NO_TRACKING ... not gonna track any events
+   * @description Sets whether or not "rage" clicks are automatically tracked.
+   * @param options.isEnabled - A boolean that determines whether or not "rage" clicks are automatically tracked.
    */
   @Cordova({ sync: true })
-  setEventTrackingMode(eventTrackingMode: SmartlookEventTrackingMode): void {
+  setEventTrackingInteractionRageClickStatus(options: { isEnabled: boolean }): void {
     return;
   }
 
   /**
-   * You can configure which events are being tracked by setting eventTrackingMode.
-   *
-   * @param eventTrackingModes Array of EventTrackingModes.
+   * @description Sets tracking properties to default values.
    */
   @Cordova({ sync: true })
-  setEventTrackingModes(eventTrackingModes: SmartlookEventTrackingModes): void {
+  restoreDefault(): void {
     return;
   }
 
   /**
-   * Track custom navigation event.
-   *
-   * @param navigationEvent SmartlookNavigationEvent object.
-   * @param navigationEvent.name Controler/Activity/Page name.
-   * @param navigationEvent.viewState One of SmartlookViewState.START or SmartlookViewState.STOP.
+   * @description Sets whether or not a WebView class should be considered sensitive.
+   * @default True by default in the SDK.
+   * @param options.isSensitive - A boolean that determines whether or not the WebView class should be considered sensitive.
    */
   @Cordova({ sync: true })
-  trackNavigationEvent(navigationEvent: SmartlookNavigationEvent) {
+  setWebViewSensitivity(options: { isSensitive: boolean }): void {
     return;
   }
 
   /**
-   * Track custom event.
-   *
-   * @param timedEvent SmartlookTimedCustomEventStart object.
-   * @param timedEvent.name (required) string used to identify event in dashboard.
-   * @param timedEvent.eventProperties (optional) timed event properties object. These properties
-   *                                    are going to be merged with properties passed in stop/cancel.
-   * @returns {Promise<string>} Returns a promise with eventId string (@see stopTimedCustomEvent(), @see cancelTimedCustomEvent()).
+   * @description Retrieves the current SDK's rendering mode.
+   * @param options.successCallback - Callback to be invoked with the current rendering mode
    */
   @Cordova()
-  startTimedCustomEvent(timedEvent: SmartlookTimedCustomEventStart): Promise<string> {
+  getRenderingMode(): Promise<RenderingMode> {
     return;
   }
 
   /**
-   * Stops timed event. Duration from according start is calculated and send with the event.
-   *
-   * @param timedEvent SmartlookTimedCustomEventStop object.
-   * @param timedEvent.eventId (required) Unique event id that is used to identify this event.
-   * @param timedEvent.eventProperties (optional) timed event properties object. These properties
-   *                                    are going to be merged with properties passed in start.
-   */
-  @Cordova({ sync: true })
-  stopTimedCustomEvent(timedEvent: SmartlookTimedCustomEventStop): void {
-    return;
-  }
-
-  /**
-   * Cancels timed event. It calculates event duration and notes that this event has failed.
-   *
-   * @param timedEvent SmartlookTimedCustomEventCancel object.
-   * @param timedEvent.eventId (required) Unique event id that is used to identify this event.
-   * @param timedEvent.reason (required) Short string description explaining why the event was canceled.
-   * @param timedEvent.eventProperties (optional) timed event properties object. These properties
-   *                                    are going to be merged with properties passed in start.
-   */
-  @Cordova({ sync: true })
-  cancelTimedCustomEvent(timedEvent: SmartlookTimedCustomEventCancel): void {
-    return;
-  }
-
-  /**
-   * Track custom event.
-   *
-   * @param event SmartlookCustomEvent object.
-   * @param event.name (required) string used to identify event.
-   * @param event.eventProperties (optional) event properties object.
-   */
-  @Cordova({ sync: true })
-  trackCustomEvent(event: SmartlookCustomEvent): void {
-    return;
-  }
-
-  /**
-   * Set global event properties that will be added to every tracked event.
-   *
-   * @param properties SmartlookGlobalEventProperties object.
-   * @param properties.globalEventProperties (required) global event properties object.
-   * @param properties.immutable (required) If set to TRUE these properties have higher priority
-   *                              than mutable ones and also they cannot be changed (only removed).
-   */
-  @Cordova({ sync: true })
-  setGlobalEventProperties(properties: SmartlookGlobalEventProperties): void {
-    return;
-  }
-
-  /**
-   * Check if SDK is currently recording.
-   *
-   * @param property SmartlookGlobalEventProperty object.
-   * @param property.key (required) global property key.
-   * @param property.value (required) global property value.
-   * @param property.immutable (required) If set to TRUE these properties have higher priority
-   *                           than mutable ones and also they cannot be changed (only removed).
-   */
-  @Cordova({ sync: true })
-  setGlobalEventProperty(property: SmartlookGlobalEventProperty): void {
-    return;
-  }
-
-  /**
-   * Remove property from global event properties.
-   *
-   * @param property SmartlookGlobalEventPropertyKey object.
-   * @param property.key (required) Global property key.
-   */
-  @Cordova({ sync: true })
-  removeGlobalEventProperty(property: SmartlookGlobalEventPropertyKey): void {
-    return;
-  }
-
-  /**
-   * Remove all properties from global event properties.
-   */
-  @Cordova({ sync: true })
-  removeAllGlobalEventProperties(): void {
-    return;
-  }
-
-  /**
-   * Possibility to manually set referrer and source of the installation visible in dashboard
-   * and accessible via filters.
-   *
-   * @param referrer SmartlookReferrer object.
-   * @param referrer.referrer (required) Desired referrer value.
-   * @param referrer.source (required) Desired source, i.e. com.android.vending or com.amazon.venezia.
-   */
-  @Cordova({ sync: true })
-  setReferrer(referrer: SmartlookReferrer): void {
-    return;
-  }
-
-  /**
-   * Obtain session URL leading to our dashboard.
-   *
-   * @param smartlookDashboardSessionUrl SmartlookDashboardSessionUrl object.
-   * @param smartlookDashboardSessionUrl.withCurrentTimestamp If set to TRUE record will start at current timestamp.
-   * @returns {Promise<string>} Returns a promise with dashboard session URL string.
+   * @description Retrieves the current recording status. The default SDK value is `NotStarted`.
+   * @param options.successCallback - Callback to be invoked with the current recording status
    */
   @Cordova()
-  getDashboardSessionUrl(smartlookDashboardSessionUrl: SmartlookDashboardSessionUrl): Promise<string> {
+  getRecordingStatus(): Promise<RecordingStatus> {
     return;
   }
 
   /**
-   * Obtain visitor URL leading to our dashboard.
-   *
-   * @returns {Promise<string>} Returns a promise with dashboard visitor URL string.
+   * @description Retrieves a number representing the current framerate.
+   * @param options.successCallback - Callback to be invoked with the current framerate
    */
   @Cordova()
-  getDashboardVisitorUrl(): Promise<string> {
+  getStateFrameRate(): Promise<number> {
     return;
   }
 
   /**
-   * Integration listener can be used to obtain dashboard URL for current session and visitor.
-   * These URLs can be propagated to various analytic tools/SDKs.
+   * @description Sets SDK's video rendering mode for captured data.
+   * @param options.renderingMode - Rendering mode to be set. @see RenderingMode
+   */
+  @Cordova({ sync: true })
+  setRenderingMode(options: { renderingMode: RenderingMode }): void {
+    return;
+  }
+
+  /**
+   * @description Registers a listener that gets triggered when the User URL changes.
    *
-   * @param integrationListener SmartlookIntegrationListener object.
-   * @param integrationListener.onSessionReady Called when dashboard session URL is ready. Note that this URL can be accesed only by user
-   * that has access to Smartlook dashboard (it is not public share link).
-   * @param integrationListener.onVisitorReady Called when dashboard visitor URL is ready. Note that this URL can be accesed only by user
-   * that has access to Smartlook dashboard (it is not public share link).
+   * @param options.userUrlChangedCallback - Callback to be invoked when the User URL changes
    */
   @Cordova({ sync: true })
-  registerIntegrationListener(integrationListener: SmartlookIntegrationListener): void {
+  registerUserUrlChangedListener(options: { userUrlChangedCallback: UrlCallbackShape }): void {
     return;
   }
 
   /**
-   * By changing rendering mode you can adjust the way we render the application for recordings.
+   * @description Registers a listener that gets triggered when the Session URL changes.
    *
-   * @param options.renderingMode Mode defining the video output of recording. Curently only
-   *                              SmartlookRenderingMode.NO_RENDERING() and SmartlookRenderingMode.NATIVE() available.
-   * @param renderingMode
+   * @param options.sessionUrlChangedCallback - Callback to be invoked when the Session URL changes
    */
   @Cordova({ sync: true })
-  setRenderingMode(renderingMode: SmartlookRenderingMode): void {
+  registerSessionUrlChangedListener(options: { sessionUrlChangedCallback: UrlCallbackShape }): void {
     return;
   }
 
   /**
-   * Unregister Integration listener (@see registerIntegrationListener())
+   * @description Registers a listener that gets triggered when the native SDK's Rendering mode changes.
+   *
+   * @param options.renderingModeChangedCallback - Callback to be invoked when the native SDK's Rendering mode changes
+   * @kind **iOS only**
    */
   @Cordova({ sync: true })
-  unregisterIntegrationListener(): void {
+  registerRenderingModeChangedListener(options: {
+    renderingModeChangedCallback: (renderingMode: RenderingMode) => void;
+  }): void {
+    return;
+  }
+
+  /**
+   * @description Registers a listener that gets triggered when the native SDK's Recording status changes.
+   *
+   * @param options.recordingStatusChangedCallback - Callback to be invoked when the native SDK's Recording status changes
+   * @kind **iOS only**
+   */
+  @Cordova({ sync: true })
+  registerRecordingStatusChangedListener(options: {
+    recordingStatusChangedCallback: (recordingStatus: RecordingStatus) => void;
+  }): void {
+    return;
+  }
+
+  /**
+   * @description Removes the user URL change listener.
+   */
+  @Cordova({ sync: true })
+  removeUserUrlChangedListener(): void {
+    return;
+  }
+
+  /**
+   * @description Removes the session URL change listener.
+   */
+  @Cordova({ sync: true })
+  removeSessionUrlChangedListener(): void {
+    return;
+  }
+
+  /**
+   * @description Removes the rendering mode change listener.
+   */
+  @Cordova({ sync: true })
+  removeRenderingModeChangedListener(): void {
+    return;
+  }
+
+  /**
+   * @description Removes the recording status change listener.
+   */
+  @Cordova({ sync: true })
+  removeRecordingStatusChangedListener(): void {
+    return;
+  }
+
+  /**
+   * @description Creates a new @see RecordingMask .
+   *
+   * @param options.recordingMaskList - an array of recording mask elements containing their bounding rectangles and mask types.
+   * @see RecordingMaskRect , @see RecordingMaskType
+   */
+  @Cordova({ sync: true })
+  setRecordingMask(options: { recordingMaskList: RecordingMaskList }): void {
+    return;
+  }
+
+  /**
+   * @description Enables advanced SDK logging capabilities.
+   *
+   * @kind **Android only**
+   */
+  @Cordova({ sync: true })
+  enableLogs(): void {
     return;
   }
 }
