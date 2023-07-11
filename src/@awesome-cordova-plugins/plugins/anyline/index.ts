@@ -1,12 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
-export interface AnylineOptions {
-  // Valid License Key
-  licenseKey: string;
-
-  // Scanning options
-  config: any;
+export interface AnylineConfig {
+  [key: string]: any;
 }
 
 /**
@@ -38,14 +34,29 @@ export interface AnylineOptions {
 })
 @Injectable()
 export class Anyline extends AwesomeCordovaNativePlugin {
+  @Cordova()
+  checkLicense(licenseKey: string): Promise<any> {
+    return;
+  }
+
+  @Cordova()
+  initAnylineSDK(licenseKey: string): Promise<any> {
+    return;
+  }
+
+  @Cordova()
+  getSDKVersion(): Promise<any> {
+    return;
+  }
+
   /**
    * Scan
    *
-   * @param options {AnylineOptions} Scanning options
+   * @param config {AnylineConfig} Scanning options
    * @returns {Promise<any>} Returns a promise that resolves when Code is captured
    */
   @Cordova()
-  scan(options: AnylineOptions): Promise<any> {
+  scan(config: AnylineConfig): Promise<any> {
     return;
   }
 }
