@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Cordova, CordovaProperty, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
+export interface OnProgress {
+  isProgress: boolean;
+  transferred: number;
+  total: number;
+}
 export interface HTTPResponse {
   /**
    * The HTTP status number of the response or a negative internal error code.
@@ -608,6 +613,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
    * @param options.filePath {string} file path(s) to be used during upload and download see uploadFile and downloadFile for detailed information
    * @param options.name {string} name(s) to be used during upload see uploadFile for detailed information
    * @param options.responseType {string} response type, defaults to text
+   * @param options.onProgress {function} A callback that is called when is progress
    * @returns {Promise<HTTPResponse>} returns a promise that will resolve on success, and reject on failure
    */
   @Cordova()
@@ -623,6 +629,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
       filePath?: string | string[];
       name?: string | string[];
       responseType?: 'text' | 'arraybuffer' | 'blob' | 'json';
+      onProgress?: (response: OnProgress) => void;
     }
   ): Promise<HTTPResponse> {
     return;
