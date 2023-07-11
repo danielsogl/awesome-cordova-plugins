@@ -124,7 +124,6 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
 
-
   /**
    * Throws a demo run-time exception to test New Relic crash reporting.
    * @param {string} message An optional argument attached to the exception.
@@ -304,7 +303,7 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
   noticeNetworkFailure(url: string, method: string, startTime: Number, endTime: Number, failure: string): void {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
-  
+
   /**
    * Records JavaScript errors for ionic.
    * @param {Error} err The error to report.
@@ -315,5 +314,14 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
   recordError(err: Error): void {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
-  
+
+  /**
+   * Shut down the agent within the current application lifecycle during runtime.
+   */
+  @Cordova({
+    sync: true,
+  })
+  shutdown(): void {
+    return; // We add return; here to avoid any IDE / Compiler errors
+  }
 }
