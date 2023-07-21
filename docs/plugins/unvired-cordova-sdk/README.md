@@ -1,5 +1,4 @@
-# UnviredResult
-a SDK
+# Unvired Cordova SDK
 
 ```
 $ ionic cordova plugin add @awesome-cordova-plugins/unvired-cordova-sdk

@@ -1,13 +1,13 @@
 # Chooser
 
 ```
-$ ionic cordova plugin add cordova-plugin-chooser
+$ ionic cordova plugin add http://github.com/MaximBelov/cordova-plugin-chooser.git
 $ npm install @awesome-cordova-plugins/chooser
 ```
 
 ## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/chooser/)
 
-Plugin Repo: [https://github.com/cyph/cordova-plugin-chooser](https://github.com/cyph/cordova-plugin-chooser)
+Plugin Repo: [https://github.com/MaximBelov/cordova-plugin-chooser](https://github.com/MaximBelov/cordova-plugin-chooser)
 
 File chooser plugin for Cordova.
 

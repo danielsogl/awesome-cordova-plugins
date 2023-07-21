@@ -328,16 +328,19 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
    * @param event
    */
   @Cordova({
-    observable: true,
+    sync: true,
   })
-  register(event: Event): Observable<Message> {
+  register(event: Event, handler: Function): void {
     return;
   }
 
+  /**
+   * Alias for `register`.
+   */
   @Cordova({
-    observable: true,
+    sync: true,
   })
-  on(event: Event): Observable<Message> {
+  on(event: Event, handler: Function): void {
     return;
   }
 
@@ -350,16 +353,19 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
    * @param {Function} handler will be unregistered from event
    */
   @Cordova({
-    observable: true,
+    sync: true,
   })
-  unregister(event: Event): Observable<Message> {
+  unregister(event: Event, handler: Function): void {
     return;
   }
 
+  /**
+   * Alias for `unregister`.
+   */
   @Cordova({
-    observable: true,
+    sync: true,
   })
-  off(event: Event): Observable<Message> {
+  off(event: Event, handler: Function): void {
     return;
   }
 
@@ -407,7 +413,7 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
   @Cordova({
     observable: true,
   })
-  submitEventImmediately(event: CustomEvent): Promise<void> {
+  submitEventImmediately(event: CustomEvent): Observable<any> {
     return;
   }
 
@@ -419,7 +425,7 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
    * @param {Object} userData. An object containing user data
    */
   @Cordova()
-  saveUser(userData: UserData): Promise<any> {
+  saveUser(userData: UserData): Promise<UserData> {
     return;
   }
 

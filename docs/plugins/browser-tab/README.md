@@ -14,4 +14,7 @@ This plugin provides an interface to in-app browser tabs that exist on some mobi
 ## Supported platforms
 
 - Android
-- iOS
+  - iOS
+  
+
+

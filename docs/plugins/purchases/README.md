@@ -1,7 +1,7 @@
 # Purchases
 
 ```
-$ ionic cordova plugin add cordova-plugin-purchases@2.4.0
+$ ionic cordova plugin add cordova-plugin-purchases@3.2.1
 $ npm install @awesome-cordova-plugins/purchases
 ```
 

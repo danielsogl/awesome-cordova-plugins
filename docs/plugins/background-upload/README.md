@@ -1,7 +1,7 @@
 # BackgroundUpload
 
 ```
-$ ionic cordova plugin add cordova-plugin-background-upload
+$ ionic cordova plugin add @spoonconsulting/cordova-plugin-background-upload
 $ npm install @awesome-cordova-plugins/background-upload
 ```
 

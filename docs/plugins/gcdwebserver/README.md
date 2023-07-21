@@ -1,7 +1,7 @@
-# GCDWebServer
+# gcdwebserver
 
 ```
-$ ionic cordova plugin add cordova-plugin-gcdwebserver
+$ ''
 $ npm install @awesome-cordova-plugins/gcdwebserver
 ```
 
@@ -9,11 +9,11 @@ $ npm install @awesome-cordova-plugins/gcdwebserver
 
 Plugin Repo: [https://github.com/xulihang/cordova-plugin-gcdwebserver](https://github.com/xulihang/cordova-plugin-gcdwebserver)
 
-The [GCDWebServer](https://github.com/swisspol/GCDWebServer/) Plugin can start an HTTP server to serve static files.
+This plugin can start an HTTP server using GCDWebServer
 
 ## Supported platforms
 
-iOS
+- iOS
   
 
 
