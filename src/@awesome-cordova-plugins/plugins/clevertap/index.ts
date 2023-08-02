@@ -826,7 +826,28 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   markReadInboxMessageForId(messageId: string): Promise<any> {
     return;
   }
+  
+  /**
+   * Call this to Mark Read Inbox Messages For Ids in bulk
+   *
+   * @param messageIds {any} array of strings
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  markReadInboxMessagesForIds(messageIds: any): Promise<any> {
+    return;
+  }
 
+  /**
+   * Call this to dismiss Inbox
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  dismissInbox(): Promise<any> {
+    return;
+  }
+  
   /**
    * Call this to Mark Push Inbox Notification Viewed Event for Id
    *
@@ -1032,6 +1053,123 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
     return;
   }
 
+/****************************
+ * Product Experiences methods
+ ****************************/
+
+/**
+ Uploads variables to the server. Requires Development/Debug build/configuration.
+ * @returns {Promise<any>}
+*/
+  @Cordova()
+  syncVariables(): Promise<any> {
+    return;
+  }
+
+/**
+Uploads variables to the server.
+@param {boolean} isProduction Provide `true` if variables must be sync in Productuon build/configuration.
+* @returns {Promise<any>}
+*/
+  @Cordova()
+  syncVariablesinProd(isProduction: boolean): Promise<any> {
+    return;
+  }
+
+/**
+Forces variables to update from the server.
+* @returns {Promise<any>}
+*/
+  @Cordova()
+  fetchVariables(): Promise<any> {
+    return;
+  }
+
+/**
+Create variables. 
+* @returns {Promise<any>}
+@param {object} variables The JSON Object specifying the varibles to be created.
+*/
+  @Cordova()
+  defineVariables(variables: any): Promise<any> {
+    return;
+  }
+
+/**
+Get a variable or a group for the specified name.
+@param {string} name - name.
+* @returns {Promise<any>}
+*/
+  @Cordova()
+  getVariable(name: string): Promise<any> {
+    return;
+  }
+/**
+Get all variables via a JSON object.
+* @returns {Promise<any>}
+*/
+  @Cordova()
+  getVariables(): Promise<any> {
+    return;
+  }
+
+ /**
+Adds a callback to be invoked when variables are initialised with server values. Will be called each time new values are fetched.
+@param {function} handler The callback to add
+* @returns {Promise<any>}
+*/
+  @Cordova()
+  onVariablesChanged(): Promise<any> {
+    return;
+  }
+
+/**
+Called when the value of the variable changes.
+@param {name} string the name of the variable
+@param {function} handler The callback to add
+* @returns {Promise<any>}
+*/
+  @Cordova()
+  onValueChanged(name: string): Promise<any> {
+    return;
+  }
+
+/****************************
+ * Android 13 Push Primer
+ ****************************/
+
+  /**
+  * Method to prompt the push primer for android 13 onwards.
+  * @param {object} value - key-value belongs to the localInApp properties. Refer documentation for details.
+  * @returns {Promise<any>}
+  */
+  @Cordova()
+  promptPushPrimer(localInAppObject: any): Promise<any> {
+    return;
+  }
+
+  /**
+  * Method to prompt the hard permission dialog directly, if the push primer is not required.
+  * @param {string} showFallbackSettings - If the value is true then SDK shows an alert dialog which routes to app's notification settings page.
+  * @returns {Promise<any>}
+  */
+  @Cordova()
+  promptForPushPermission(showFallbackSettings: boolean): Promise<any> {
+    return;
+  }
+
+  /**
+  * Returns true/false based on whether push permission is granted or denied.
+  *
+  * @param {function(err, res)} non-null callback to retrieve the result
+  * @returns {Promise<any>}
+  */
+  @Cordova()
+  isPushPermissionGranted(): Promise<any> {
+    return;
+  }
+
+  
   /*******************
    * Developer Options
    ******************/
