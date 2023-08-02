@@ -1,3 +1,51 @@
+# [6.4.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.3.0...v6.4.0) (2023-07-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency tslib to v2.5.0 ([#4552](https://github.com/danielsogl/awesome-cordova-plugins/issues/4552)) [skip ci] ([7e533f4](https://github.com/danielsogl/awesome-cordova-plugins/commit/7e533f48b9112fd4f8c6807d86362526985b395b))
+* **deps:** update dependency tslib to v2.6.0 ([#4595](https://github.com/danielsogl/awesome-cordova-plugins/issues/4595)) ([b600651](https://github.com/danielsogl/awesome-cordova-plugins/commit/b600651f02e56e446e49b2ae40418d46e0dca09b))
+* **mobile-messaging:** correct return type of submitEvent ([#4564](https://github.com/danielsogl/awesome-cordova-plugins/issues/4564)) ([0527afe](https://github.com/danielsogl/awesome-cordova-plugins/commit/0527afe93578810b4084e0da330574f956b0a7b5))
+* **mobile-messaging:** fix event (un)register and saveUser ([#4569](https://github.com/danielsogl/awesome-cordova-plugins/issues/4569)) ([fbd523f](https://github.com/danielsogl/awesome-cordova-plugins/commit/fbd523f36a7214b1e933cca8765fece744ea8192))
+
+
+### Features
+
+* **cashfree-pg:** support cordova-plugin-cashfree-pg 1.0.2 ([#4572](https://github.com/danielsogl/awesome-cordova-plugins/issues/4572)) ([8047c9a](https://github.com/danielsogl/awesome-cordova-plugins/commit/8047c9ad5203f9d6b53a663907c5f07c24fe565b))
+* **http:** onProgress param to  sendRequest  method ([#4512](https://github.com/danielsogl/awesome-cordova-plugins/issues/4512)) ([4cd48b4](https://github.com/danielsogl/awesome-cordova-plugins/commit/4cd48b4d0e72770962857c96c001c5597b504772))
+* **newrelic:** add shutdown method ([#4571](https://github.com/danielsogl/awesome-cordova-plugins/issues/4571)) ([178f566](https://github.com/danielsogl/awesome-cordova-plugins/commit/178f56625e63aa679b592995750d109e05f421c1))
+* **smartlook:** rewrite smartlook ionic plugin ([#4510](https://github.com/danielsogl/awesome-cordova-plugins/issues/4510)) ([baa207b](https://github.com/danielsogl/awesome-cordova-plugins/commit/baa207b724b78ed1d40abec6bada933dab829f96))
+* **sms-retriever-api:** add plugin ([#4528](https://github.com/danielsogl/awesome-cordova-plugins/issues/4528)) ([e3af183](https://github.com/danielsogl/awesome-cordova-plugins/commit/e3af183e0c3d51292e14f4285dd8c71e4c564b39))
+* **smtp-client:** add plugin ([#4585](https://github.com/danielsogl/awesome-cordova-plugins/issues/4585)) ([2b6c297](https://github.com/danielsogl/awesome-cordova-plugins/commit/2b6c297da81958f9f1b3fa58c1a6ddfb3520d220))
+* **urbanairship:** Add locale override methods ([#4579](https://github.com/danielsogl/awesome-cordova-plugins/issues/4579)) ([126d44f](https://github.com/danielsogl/awesome-cordova-plugins/commit/126d44faf37b341ad05a4ecf4146c5c4e5d1ccdf))
+* **zip:** add callback param so the progress function can be calleds ([#4519](https://github.com/danielsogl/awesome-cordova-plugins/issues/4519)) ([f9110cb](https://github.com/danielsogl/awesome-cordova-plugins/commit/f9110cb4295b964ce89aef8fe3c56e71a09bb320))
+
+
+
+# [6.3.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.2.0...v6.3.0) (2022-12-31)
+
+
+### Bug Fixes
+
+* **chooser:** Update for support android 11+ ([#4436](https://github.com/danielsogl/awesome-cordova-plugins/issues/4436)) ([ba37646](https://github.com/danielsogl/awesome-cordova-plugins/commit/ba37646fc4b7cc86b497affa0ef932ad374b9080))
+
+
+### Features
+
+* **advanced-image-picker:** add plugin ([#4434](https://github.com/danielsogl/awesome-cordova-plugins/issues/4434)) ([63cfd44](https://github.com/danielsogl/awesome-cordova-plugins/commit/63cfd4488d17b5cdac8a8302b310acc6c308c5a2))
+* **brightness:** add brightness plugin ([#4454](https://github.com/danielsogl/awesome-cordova-plugins/issues/4454)) ([f02bc78](https://github.com/danielsogl/awesome-cordova-plugins/commit/f02bc78ec253f6388750e662571300c82e990b51))
+* **clevertap:** support clevertap-cordova 2.6.0 ([#4458](https://github.com/danielsogl/awesome-cordova-plugins/issues/4458)) ([74a80c0](https://github.com/danielsogl/awesome-cordova-plugins/commit/74a80c0953577478bd15fe16ab9edf28dcb27280)), closes [#3491](https://github.com/danielsogl/awesome-cordova-plugins/issues/3491)
+* **diagnostics:** add getBluetoothAuthorizationStatuses function ([#4442](https://github.com/danielsogl/awesome-cordova-plugins/issues/4442)) ([ff78ca7](https://github.com/danielsogl/awesome-cordova-plugins/commit/ff78ca7fb4335698076282ec9da99433939f276a))
+* **fbsdk:** add plugin ([#4431](https://github.com/danielsogl/awesome-cordova-plugins/issues/4431)) ([a095422](https://github.com/danielsogl/awesome-cordova-plugins/commit/a0954228896b53dc42db3cbf6d6e89764d83646d))
+* **ffmpeg:** add plugin ([#4435](https://github.com/danielsogl/awesome-cordova-plugins/issues/4435)) ([9b4502f](https://github.com/danielsogl/awesome-cordova-plugins/commit/9b4502f9297d1a0a579db3fd0165c98e0897625e))
+* **fingerprint-aio:** update plugin ([#4423](https://github.com/danielsogl/awesome-cordova-plugins/issues/4423)) ([0579e67](https://github.com/danielsogl/awesome-cordova-plugins/commit/0579e67e966eb0469bccd22ee88d0c4c9c375838))
+* **mobile-accessibility:** add mobile-accessibility plugin ([#4456](https://github.com/danielsogl/awesome-cordova-plugins/issues/4456)) ([e51a1a7](https://github.com/danielsogl/awesome-cordova-plugins/commit/e51a1a79efcfd99e05783d567472251277f1bf93))
+* **power-management:** add power management support ([#4443](https://github.com/danielsogl/awesome-cordova-plugins/issues/4443)) ([b283dc2](https://github.com/danielsogl/awesome-cordova-plugins/commit/b283dc2e761dd897556a8ed955a312b663ca9c5e))
+* **unique-device-id:** add unique-device-id plugin ([#4455](https://github.com/danielsogl/awesome-cordova-plugins/issues/4455)) ([7fe3ad1](https://github.com/danielsogl/awesome-cordova-plugins/commit/7fe3ad1daabeac6c8365ddfce4d2b44df94ed00b))
+* **wonderpush:** expose getters and setters ([#4441](https://github.com/danielsogl/awesome-cordova-plugins/issues/4441)) ([3b1d059](https://github.com/danielsogl/awesome-cordova-plugins/commit/3b1d0593daf5732ea9f6268af84a612a575a3941))
+
+
+
 # [6.2.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.1.0...v6.2.0) (2022-11-04)
 
 

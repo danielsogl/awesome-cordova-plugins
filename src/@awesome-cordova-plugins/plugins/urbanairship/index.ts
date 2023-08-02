@@ -1181,4 +1181,45 @@ export class UrbanAirShip extends AwesomeCordovaNativePlugin {
   openPreferenceCenter(prenferenceCenterId: string): Promise<any> {
     return;
   }
+
+  /**
+   * Overrides the locale setting.
+   *
+   * @param {string} locale language and optional country code.
+   * @param {function} [success] Success callback.
+   * @param {function(message)} [failure] Failure callback.
+   * @param {string} failure.message The error message.
+   * @since 14.3.0
+   */
+  @Cordova()
+  setCurrentLocale(locale: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Returns the currently set locale.
+   *
+   * @param {function(locale)} [success] Success callback.
+   * @param {string} success.locale The locale as a string.
+   * @param {function(message)} [failure] Failure callback.
+   * @param {string} failure.message The error message.
+   * @since 14.3.0
+   */
+  @Cordova()
+  getCurrentLocale(): Promise<string> {
+    return;
+  }
+
+  /**
+   * Resets the current locale.
+   *
+   * @param {function} [success] Success callback.
+   * @param {function(message)} [failure] Failure callback.
+   * @param {string} failure.message The error message.
+   * @since 14.3.0
+   */
+  @Cordova()
+  clearLocale(): Promise<any> {
+    return;
+  }
 }

@@ -29,10 +29,11 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  */
 @Plugin({
   pluginName: 'CloudSettings',
-  plugin: 'cordova-plugin-cloud-settings',
+  plugin: '@marysuon/cordova-plugin-cloud-settings',
   pluginRef: 'cordova.plugin.cloudsettings',
   repo: 'https://github.com/dpa99c/cordova-plugin-cloud-settings',
-  install: 'ionic cordova plugin add cordova-plugin-cloud-settings --variable ANDROID_BACKUP_SERVICE_KEY=myapikey',
+  install:
+    'ionic cordova plugin add @marysuon/cordova-plugin-cloud-settings --variable ANDROID_BACKUP_SERVICE_KEY=myapikey',
   installVariables: ['ANDROID_BACKUP_SERVICE_KEY'],
   platforms: ['Android', 'iOS'],
 })

@@ -33,11 +33,12 @@ export class Zip extends AwesomeCordovaNativePlugin {
    * Extracts files from a ZIP archive
    * @param {string} sourceZip  Source ZIP file
    * @param {string} destFolder Destination folder
+   * @param {Function} onSuccess   callback to be called on when done
    * @param {Function} onProgress  optional callback to be called on progress update
    * @returns {Promise<number>} returns a promise that resolves with a number. 0 is success, -1 is error
    */
   @Cordova()
-  unzip(sourceZip: string, destFolder: string, onProgress?: Function): Promise<number> {
+  unzip(sourceZip: string, destFolder: string, onSuccess: Function, onProgress?: Function): Promise<number> {
     return;
   }
 }
