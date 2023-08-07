@@ -1,5 +1,7 @@
-# SmartlookEventTrackingMode
-ova plugin add https://github.com/smartlook/cordova-smartlook.git
+# Smartlook
+
+```
+$ ionic cordova plugin add https://github.com/smartlook/cordova-smartlook.git
 $ npm install @awesome-cordova-plugins/smartlook
 ```
 
@@ -8,7 +10,7 @@ $ npm install @awesome-cordova-plugins/smartlook
 Plugin Repo: [https://github.com/smartlook/cordova-smartlook.git](https://github.com/smartlook/cordova-smartlook.git)
 
 Official Smartlook SDK plugin.
-Full documentation can be found here: https://smartlook.github.io/docs/sdk/ionic/
+Full documentation can be found here: https://mobile.developer.smartlook.com/reference/ionic-sdk-installation
 
 ## Supported platforms
 
