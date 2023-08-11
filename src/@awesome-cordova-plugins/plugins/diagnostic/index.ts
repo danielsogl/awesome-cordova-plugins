@@ -42,33 +42,46 @@ import { Cordova, CordovaProperty, AwesomeCordovaNativePlugin, Plugin } from '@a
 @Injectable()
 export class Diagnostic extends AwesomeCordovaNativePlugin {
   permission = {
-    READ_CALENDAR: 'READ_CALENDAR',
-    WRITE_CALENDAR: 'WRITE_CALENDAR',
-    CAMERA: 'CAMERA',
-    READ_CONTACTS: 'READ_CONTACTS',
-    WRITE_CONTACTS: 'WRITE_CONTACTS',
-    GET_ACCOUNTS: 'GET_ACCOUNTS',
-    ACCESS_FINE_LOCATION: 'ACCESS_FINE_LOCATION',
+    ACCEPT_HANDOVER: 'ACCEPT_HANDOVER',
+    ACCESS_BACKGROUND_LOCATION: 'ACCESS_BACKGROUND_LOCATION',
     ACCESS_COARSE_LOCATION: 'ACCESS_COARSE_LOCATION',
-    RECORD_AUDIO: 'RECORD_AUDIO',
-    READ_PHONE_STATE: 'READ_PHONE_STATE',
-    CALL_PHONE: 'CALL_PHONE',
+    ACCESS_FINE_LOCATION: 'ACCESS_FINE_LOCATION',
+    ACCESS_MEDIA_LOCATION: 'ACCESS_MEDIA_LOCATION',
+    ACTIVITY_RECOGNITION: 'ACTIVITY_RECOGNITION',
     ADD_VOICEMAIL: 'ADD_VOICEMAIL',
-    USE_SIP: 'USE_SIP',
-    PROCESS_OUTGOING_CALLS: 'PROCESS_OUTGOING_CALLS',
-    READ_CALL_LOG: 'READ_CALL_LOG',
-    WRITE_CALL_LOG: 'WRITE_CALL_LOG',
-    SEND_SMS: 'SEND_SMS',
-    RECEIVE_SMS: 'RECEIVE_SMS',
-    READ_SMS: 'READ_SMS',
-    RECEIVE_WAP_PUSH: 'RECEIVE_WAP_PUSH',
-    RECEIVE_MMS: 'RECEIVE_MMS',
-    WRITE_EXTERNAL_STORAGE: 'WRITE_EXTERNAL_STORAGE',
-    READ_EXTERNAL_STORAGE: 'READ_EXTERNAL_STORAGE',
+    ANSWER_PHONE_CALLS: 'ANSWER_PHONE_CALLS',
+    BLUETOOTH_ADVERTISE: 'BLUETOOTH_ADVERTISE',
+    BLUETOOTH_CONNECT: 'BLUETOOTH_CONNECT',
+    BLUETOOTH_SCAN: 'BLUETOOTH_SCAN',
     BODY_SENSORS: 'BODY_SENSORS',
-    BLUETOOTH_ADVERTISE: "BLUETOOTH_ADVERTISE",
-    BLUETOOTH_SCAN: "BLUETOOTH_SCAN",
-    BLUETOOTH_CONNECT: "BLUETOOTH_CONNECT",
+    BODY_SENSORS_BACKGROUND: 'BODY_SENSORS_BACKGROUND',
+    CALL_PHONE: 'CALL_PHONE',
+    CAMERA: 'CAMERA',
+    GET_ACCOUNTS: 'GET_ACCOUNTS',
+    NEARBY_WIFI_DEVICES: 'NEARBY_WIFI_DEVICES',
+    POST_NOTIFICATIONS: 'POST_NOTIFICATIONS',
+    PROCESS_OUTGOING_CALLS: 'PROCESS_OUTGOING_CALLS',
+    READ_CALENDAR: 'READ_CALENDAR',
+    READ_CALL_LOG: 'READ_CALL_LOG',
+    READ_CONTACTS: 'READ_CONTACTS',
+    READ_EXTERNAL_STORAGE: 'READ_EXTERNAL_STORAGE',
+    READ_MEDIA_AUDIO: 'READ_MEDIA_AUDIO',
+    READ_MEDIA_IMAGES: 'READ_MEDIA_IMAGES',
+    READ_MEDIA_VIDEO: 'READ_MEDIA_VIDEO',
+    READ_PHONE_NUMBERS: 'READ_PHONE_NUMBERS',
+    READ_PHONE_STATE: 'READ_PHONE_STATE',
+    READ_SMS: 'READ_SMS',
+    RECEIVE_MMS: 'RECEIVE_MMS',
+    RECEIVE_SMS: 'RECEIVE_SMS',
+    RECEIVE_WAP_PUSH: 'RECEIVE_WAP_PUSH',
+    RECORD_AUDIO: 'RECORD_AUDIO',
+    SEND_SMS: 'SEND_SMS',
+    USE_SIP: 'USE_SIP',
+    UWB_RANGING: 'UWB_RANGING',
+    WRITE_CALENDAR: 'WRITE_CALENDAR',
+    WRITE_CALL_LOG: 'WRITE_CALL_LOG',
+    WRITE_CONTACTS: 'WRITE_CONTACTS',
+    WRITE_EXTERNAL_STORAGE: 'WRITE_EXTERNAL_STORAGE',
   };
 
   @CordovaProperty()
@@ -83,6 +96,8 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
     DENIED_ALWAYS: string;
     RESTRICTED: string;
     GRANTED_WHEN_IN_USE: string;
+    EPHEMERAL: string;
+    PROVISIONAL: string;
   };
 
   locationAuthorizationMode = {
@@ -144,6 +159,25 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
     POWERED_ON: string;
     POWERING_ON: string;
     POWERING_OFF: string;
+  };
+
+  @CordovaProperty()
+  cpuArchitecture: {
+      MIPS: string;
+      MIPS_64: string;
+      UNKNOWN: string;
+      ARMv6: string;
+      ARMv7: string;
+      ARMv8: string;
+      X86: string;
+      X86_64: string;
+  };
+
+  @CordovaProperty()
+  remoteNotificationType: {
+      ALERT: string;
+      SOUND: string;
+      BADGE: string;
   };
 
   @CordovaProperty()
@@ -272,7 +306,17 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
     return;
   }
 
+
   // ANDROID AND IOS ONLY
+
+  /**
+   * Enables debug mode, which logs native plugin debug messages to the native and JS consoles.
+   * Debug mode is initially disabled on plugin initialisation.
+   */
+  @Cordova({ platforms: ['Android', 'iOS'] })
+  enableDebug(): Promise<void> {
+    return;
+  }
 
   /**
    * Returns true if the device setting for location is on. On Android this returns true if Location Mode is switched on. On iOS this returns true if Location Services is switched on.
@@ -304,6 +348,17 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   getLocationAuthorizationStatus(): Promise<any> {
     return;
   }
+
+  /**
+   * Returns the individual location authorization status for each type of location access (FINE, COARSE and BACKGROUND).
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova({ platforms: ['Android', 'iOS'] })
+  getLocationAuthorizationStatuses(): Promise<any> {
+    return;
+  }
+
 
   /**
    * Returns the location authorization status for the application.
@@ -514,7 +569,41 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   @Cordova({ platforms: ['Android', 'iOS'], sync: true })
   registerLocationStateChangeHandler(handler: Function): void {}
 
+  /**
+   * Returns CPU architecture of the current device.
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova({ platforms: ['Android, 'iOS'] })
+  getArchitecture(): Promise<any> {
+    return;
+  }  
+
+  /**
+   * Returns the current battery level of the device as a percentage.
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova({ platforms: ['Android, 'iOS'] })
+  getCurrentBatteryLevel(): Promise<any> {
+    return;
+  }  
+
   // ANDROID ONLY
+
+  /**
+   * Restarts the application.
+   * By default, a "warm" restart will be performed in which the main Cordova activity is immediately restarted, causing the Webview instance to be recreated.
+   * However, if the `cold` parameter is set to true, then the application will be "cold" restarted, meaning a system exit will be performed, causing the entire application to be restarted.
+   * This is useful if you want to fully reset the native application state but will cause the application to briefly disappear and re-appear..
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova({ platforms: ['Android'], callbackOrder: 'reverse' })
+  restart(cold: boolean): Promise<any> {
+    return;
+  }
+
 
   /**
    * Checks if high-accuracy locations are available to the app from GPS hardware.
@@ -565,12 +654,52 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Checks if airplane mode is enabled on device.
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova({ platforms: ['Android'] })
+  isAirplaneModeEnabled(): Promise<any> {
+    return;
+  }
+
+  /** 
+   * Checks if mobile data is enabled on device.
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova({ platforms: ['Android'] })
+  isMobileDataEnabled(): Promise<any> {
+    return;
+  }
+
+  /**
    * Returns the current location mode setting for the device.
    *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
   getLocationMode(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Returns details of the OS of the device on which the app is currently running
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova({ platforms: ['Android'] })
+  getDeviceOSVersion(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Returns details of the SDK levels used to build the app.
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova({ platforms: ['Android'] })
+  getBuildOSVersion(): Promise<any> {
     return;
   }
 
@@ -898,6 +1027,16 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    */
   @Cordova({ platforms: ['iOS'], callbackOrder: 'reverse' })
   requestCameraRollAuthorization(accessLevel?: string): Promise<any> {
+    return;
+  }
+
+ /**
+   * Presents limited library picker UI on iOS 14+
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova({ platforms: ['iOS'] })
+  presentLimitedLibraryPicker(): Promise<any> {
     return;
   }
 
