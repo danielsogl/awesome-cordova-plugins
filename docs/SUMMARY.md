@@ -219,6 +219,7 @@
   * [GCDWebServer](plugins/gcdwebserver.md)
   * [Smtp Client](plugins/smtp-client.md)
   * [Cashfree PG](plugins/cashfree-pg/README.md)
+  * [Save Dialog](plugins/save-dialog/README.md)
 * [Installation](installation.md)
 * [FAQ](faq.md)
 
