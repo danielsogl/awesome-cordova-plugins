@@ -592,4 +592,14 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
   resetMessageCounter() {
     return;
   }
+
+  /**
+   * Registers for Android POST_NOTIFICATIONS permission
+   *
+   * @name registerForAndroidRemoteNotifications
+   */
+  @Cordova()
+  registerForAndroidRemoteNotifications() {
+    return;
+  }
 }
