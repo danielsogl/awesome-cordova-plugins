@@ -1,27 +1,37 @@
-import * as ts from 'typescript';
-import * as fs from 'fs-extra';
-import * as path from 'path';
+import { readdirSync } from 'fs-extra';
 import { camelCase, clone } from 'lodash';
+import { join, resolve } from 'path';
+import {
+  ArrayLiteralExpression,
+  Decorator,
+  Expression,
+  factory,
+  Node,
+  ObjectLiteralElementLike,
+  ObjectLiteralExpression,
+  SyntaxKind,
+} from 'typescript';
+
 import { Logger } from '../logger';
 
-export const ROOT = path.resolve(__dirname, '../../');
+export const ROOT = resolve(__dirname, '../../');
 // tslint:disable-next-line:no-var-requires
-export const TS_CONFIG = clone(require(path.resolve(ROOT, 'tsconfig.json')));
+export const TS_CONFIG = clone(require(resolve(ROOT, 'tsconfig.json')));
 export const COMPILER_OPTIONS = TS_CONFIG.compilerOptions;
-export const PLUGINS_ROOT = path.join(ROOT, 'src/@ionic-native/plugins/');
-export const PLUGIN_PATHS = fs.readdirSync(PLUGINS_ROOT).map(d => path.join(PLUGINS_ROOT, d, 'index.ts'));
+export const PLUGINS_ROOT = join(ROOT, 'src/@awesome-cordova-plugins/plugins/');
+export const PLUGIN_PATHS = readdirSync(PLUGINS_ROOT).map((d) => join(PLUGINS_ROOT, d, 'index.ts'));
 
-export function getDecorator(node: ts.Node, index = 0): ts.Decorator {
+export function getDecorator(node: Node, index = 0): Decorator {
   if (node.decorators && node.decorators[index]) {
     return node.decorators[index];
   }
 }
 
-export function hasDecorator(decoratorName: string, node: ts.Node): boolean {
+export function hasDecorator(decoratorName: string, node: Node): boolean {
   return (
     node.decorators &&
     node.decorators.length &&
-    node.decorators.findIndex(d => getDecoratorName(d) === decoratorName) > -1
+    node.decorators.findIndex((d) => getDecoratorName(d) === decoratorName) > -1
   );
 }
 
@@ -38,28 +48,28 @@ export function getDecoratorArgs(decorator: any) {
   const properties: any[] = getRawDecoratorArgs(decorator);
   const args = {};
 
-  properties.forEach(prop => {
+  properties.forEach((prop) => {
     let val: number | boolean;
 
     switch (prop.initializer.kind) {
-      case ts.SyntaxKind.StringLiteral:
-      case ts.SyntaxKind.Identifier:
+      case SyntaxKind.StringLiteral:
+      case SyntaxKind.Identifier:
         val = prop.initializer.text;
         break;
 
-      case ts.SyntaxKind.ArrayLiteralExpression:
+      case SyntaxKind.ArrayLiteralExpression:
         val = prop.initializer.elements.map((e: any) => e.text);
         break;
 
-      case ts.SyntaxKind.TrueKeyword:
+      case SyntaxKind.TrueKeyword:
         val = true;
         break;
 
-      case ts.SyntaxKind.FalseKeyword:
+      case SyntaxKind.FalseKeyword:
         val = false;
         break;
 
-      case ts.SyntaxKind.NumericLiteral:
+      case SyntaxKind.NumericLiteral:
         val = Number(prop.initializer.text);
         break;
 
@@ -88,9 +98,14 @@ export function convertValueToLiteral(val: any) {
     return objectToObjectLiteral(val);
   }
   if (typeof val === 'number') {
-    return ts.createNumericLiteral(String(val));
+    return factory.createNumericLiteral(val);
   }
-  return ts.createLiteral(val);
+  if (typeof val === 'string') {
+    return factory.createStringLiteral(val);
+  }
+  if (typeof val === 'boolean') {
+    return val ? factory.createTrue() : factory.createFalse();
+  }
 }
 
 /**
@@ -99,25 +114,26 @@ export function convertValueToLiteral(val: any) {
  * @param obj key value object
  * @returns Typescript Object Literal Expression
  */
-function objectToObjectLiteral(obj: { [key: string]: any }): ts.ObjectLiteralExpression {
-  const newProperties: ts.ObjectLiteralElementLike[] = Object.keys(obj).map(
-    (key: string): ts.ObjectLiteralElementLike => {
-      return ts.createPropertyAssignment(ts.createLiteral(key), convertValueToLiteral(obj[key]) as ts.Expression);
-    }
-  );
+function objectToObjectLiteral(obj: { [key: string]: any }): ObjectLiteralExpression {
+  const newProperties: ObjectLiteralElementLike[] = Object.keys(obj).map((key: string): ObjectLiteralElementLike => {
+    return factory.createPropertyAssignment(
+      factory.createStringLiteral(key),
+      convertValueToLiteral(obj[key]) as Expression
+    );
+  });
 
-  return ts.createObjectLiteral(newProperties);
+  return factory.createObjectLiteralExpression(newProperties);
 }
 
 /**
  * FROM STENCIL
  * Convert a js array into typescript AST
- * @param list array
+ * @param list arrayÏ
  * @returns Typescript Array Literal Expression
  */
-function arrayToArrayLiteral(list: any[]): ts.ArrayLiteralExpression {
+function arrayToArrayLiteral(list: any[]): ArrayLiteralExpression {
   const newList: any[] = list.map(convertValueToLiteral);
-  return ts.createArrayLiteral(newList);
+  return factory.createArrayLiteralExpression(newList);
 }
 
 export function getMethodsForDecorator(decoratorName: string) {

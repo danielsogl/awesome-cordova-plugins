@@ -4,3 +4,7 @@ node_modules
 .vscode
 dist
 CHANGELOG.md
+.husky
+.prettierignore
+LICENSE
+docs/

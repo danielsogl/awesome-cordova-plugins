@@ -1,7 +1,13 @@
-import { cleanupNgx, generateDeclarationFiles, modifyMetadata, transpileNgx, transpileNgxCore } from '../build/ngx';
+import {
+  cleanupNgx,
+  generateLegacyBundles,
+  generateDeclarationFiles,
+  transpileNgx,
+  transpileNgxCore,
+} from '../build/ngx';
 
 transpileNgxCore();
 transpileNgx();
+generateLegacyBundles();
 generateDeclarationFiles();
-modifyMetadata();
 cleanupNgx();

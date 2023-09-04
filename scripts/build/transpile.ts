@@ -1,28 +1,37 @@
-import * as ts from 'typescript';
-import { pluginClassTransformer } from './transformers/plugin-class';
-import { importsTransformer } from './transformers/imports';
 import { clone } from 'lodash';
-import { emitInjectableClasses, extractInjectables } from './transformers/extract-injectables';
-import { COMPILER_OPTIONS, PLUGIN_PATHS, TS_CONFIG } from './helpers';
+import {
+  CompilerHost,
+  CompilerOptions,
+  createCompilerHost,
+  createProgram,
+  ModuleKind,
+  ModuleResolutionKind,
+  ScriptTarget,
+} from 'typescript';
 
-let host: ts.CompilerHost;
+import { COMPILER_OPTIONS, PLUGIN_PATHS, TS_CONFIG } from './helpers';
+import { emitInjectableClasses, extractInjectables } from './transformers/extract-injectables';
+import { importsTransformer } from './transformers/imports';
+import { pluginClassTransformer } from './transformers/plugin-class';
+
+let host: CompilerHost;
 
 export function getCompilerHost() {
-  if (!host) host = ts.createCompilerHost(TS_CONFIG);
+  if (!host) host = createCompilerHost(TS_CONFIG);
   return host;
 }
 
 export function getProgram(declaration = false, pluginPaths: string[] = PLUGIN_PATHS) {
-  const compilerOptions: ts.CompilerOptions = clone(COMPILER_OPTIONS);
+  const compilerOptions: CompilerOptions = clone(COMPILER_OPTIONS);
   compilerOptions.declaration = declaration;
-  compilerOptions.moduleResolution = ts.ModuleResolutionKind.NodeJs;
-  compilerOptions.target = ts.ScriptTarget.ES5;
-  compilerOptions.module = ts.ModuleKind.ES2015;
+  compilerOptions.moduleResolution = ModuleResolutionKind.NodeJs;
+  compilerOptions.target = ScriptTarget.ES5;
+  compilerOptions.module = ModuleKind.ES2015;
   compilerOptions.inlineSourceMap = true;
   compilerOptions.inlineSources = true;
   compilerOptions.lib = ['lib.dom.d.ts', 'lib.es5.d.ts', 'lib.es2015.d.ts', 'lib.es2016.d.ts', 'lib.es2017.d.ts'];
 
-  return ts.createProgram(pluginPaths, compilerOptions, getCompilerHost());
+  return createProgram(pluginPaths, compilerOptions, getCompilerHost());
 }
 
 export function generateDeclarations(sourceFiles?: string[]) {

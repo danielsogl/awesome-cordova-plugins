@@ -2,8 +2,8 @@
 module.exports = function parseOptional() {
   return {
     $runBefore: ['rendering-docs'],
-    $process: docs => {
-      docs.forEach(doc => {
+    $process: (docs) => {
+      docs.forEach((doc) => {
         if (doc.members && doc.members.length) {
           for (let i in doc.members) {
             if (doc.members[i].params && doc.members[i].params.length) {

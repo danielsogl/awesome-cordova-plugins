@@ -3,7 +3,6 @@
 const gulp = require('gulp'),
   minimist = require('minimist'),
   rename = require('gulp-rename'),
-  tslint = require('gulp-tslint'),
   replace = require('gulp-replace'),
   _ = require('lodash');
 
@@ -17,18 +16,6 @@ const flagConfig = {
 
 /* Docs tasks */
 require('./scripts/docs/gulp-tasks')(gulp, flags);
-
-gulp.task('lint', () => {
-  return gulp
-    .src('src/**/*.ts')
-    .pipe(
-      tslint({
-        formatter: 'verbose',
-        configuration: 'tslint.json',
-      })
-    )
-    .pipe(tslint.report());
-});
 
 gulp.task('plugin:create', () => {
   if (flags.n && flags.n !== '') {
@@ -44,7 +31,7 @@ gulp.task('plugin:create', () => {
       .pipe(replace('{{ pluginName }}', _.lowerFirst(pluginName)))
       .pipe(replace('{{ plugin-name }}', kebabCase))
       .pipe(rename('index.ts'))
-      .pipe(gulp.dest('./src/@ionic-native/plugins/' + kebabCase));
+      .pipe(gulp.dest('./src/@awesome-cordova-plugins/plugins/' + kebabCase));
   } else {
     console.log('Usage is: gulp plugin:create -n PluginName');
   }

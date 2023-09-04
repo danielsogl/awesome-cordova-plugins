@@ -5,14 +5,14 @@ module.exports = function removePrivateMembers() {
     description: 'Remove member docs with @private tags',
     $runAfter: ['tags-parsed'],
     $runBefore: ['rendering-docs'],
-    $process: docs => {
-      docs.forEach(doc => {
+    $process: (docs) => {
+      docs.forEach((doc) => {
         if (doc.members) {
-          doc.members = doc.members.filter(member => !member.tags.tagsByName.get('hidden'));
+          doc.members = doc.members.filter((member) => !member.tags.tagsByName.get('hidden'));
         }
 
         if (doc.statics) {
-          doc.statics = doc.statics.filter(staticMethod => !staticMethod.tags.tagsByName.get('hidden'));
+          doc.statics = doc.statics.filter((staticMethod) => !staticMethod.tags.tagsByName.get('hidden'));
         }
       });
 
