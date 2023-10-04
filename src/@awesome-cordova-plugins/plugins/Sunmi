@@ -1,0 +1,15 @@
+import { Injectable } from '@angular/core'; 
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+@Plugin(
+   { 
+      pluginName: 'HelloWorld', 
+      plugin: 'io.electrosoft.helloworld', 
+      pluginRef: 'cordova.plugins.HelloWorld', 
+      repo: '', 
+      platforms: ['Android']
+   }
+)
+@Injectable() 
+export class HelloWorld extends IonicNativePlugin {
+@Cordova() 
+  nativeToast(arg1: string, arg2: number): Promise<any> { return; } }
