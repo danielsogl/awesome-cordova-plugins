@@ -98,6 +98,7 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
     GRANTED_WHEN_IN_USE: string;
     EPHEMERAL: string;
     PROVISIONAL: string;
+    LIMITED: string;
   };
 
   locationAuthorizationMode = {
