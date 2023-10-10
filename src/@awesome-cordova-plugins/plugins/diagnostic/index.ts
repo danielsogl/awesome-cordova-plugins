@@ -574,7 +574,7 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    *
    * @returns {Promise<any>}
    */
-  @Cordova({ platforms: ['Android, 'iOS'] })
+  @Cordova({ platforms: ['Android', 'iOS'] })
   getArchitecture(): Promise<any> {
     return;
   }  
@@ -584,7 +584,7 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    *
    * @returns {Promise<any>}
    */
-  @Cordova({ platforms: ['Android, 'iOS'] })
+  @Cordova({ platforms: ['Android', 'iOS'] })
   getCurrentBatteryLevel(): Promise<any> {
     return;
   }  
