@@ -55,6 +55,23 @@ export enum BILLING_FEATURE {
   PRICE_CHANGE_CONFIRMATION,
 }
 
+export enum REFUND_REQUEST_STATUS {
+  /**
+   * Apple has received the refund request.
+   */
+  SUCCESS,
+
+  /**
+   * User canceled submission of the refund request.
+   */
+  USER_CANCELLED,
+
+  /**
+   * There was an error with the request. See message for more details.
+   */
+  ERROR,
+}
+
 export enum PRORATION_MODE {
   UNKNOWN_SUBSCRIPTION_UPGRADE_DOWNGRADE_POLICY = 0,
 
@@ -78,10 +95,11 @@ export enum PRORATION_MODE {
   IMMEDIATE_WITHOUT_PRORATION = 3,
 
   /**
-   * Replacement takes effect when the old plan expires, and the new price will
-   * be charged at the same time.
+   * Replacement takes effect immediately, and the user is charged full price
+   * of new plan and is given a full billing cycle of subscription,
+   * plus remaining prorated time from the old plan.
    */
-  DEFERRED = 4,
+  IMMEDIATE_AND_CHARGE_FULL_PRICE = 5,
 }
 
 export enum PACKAGE_TYPE {
@@ -150,10 +168,113 @@ export enum INTRO_ELIGIBILITY_STATUS {
   INTRO_ELIGIBILITY_STATUS_NO_INTRO_OFFER_EXISTS,
 }
 
+export enum LOG_LEVEL {
+  VERBOSE = 'VERBOSE',
+  DEBUG = 'DEBUG',
+  INFO = 'INFO',
+  WARN = 'WARN',
+  ERROR = 'ERROR',
+}
+
+/**
+ * Enum for in-app message types.
+ * This can be used if you disable automatic in-app message from showing automatically.
+ * Then, you can pass what type of messages you want to show in the `showInAppMessages`
+ * method in Purchases.
+ */
+export enum IN_APP_MESSAGE_TYPE {
+  // Make sure the enum values are in sync with those defined in iOS/Android
+  /**
+   * In-app messages to indicate there has been a billing issue charging the user.
+   */
+  BILLING_ISSUE = 0,
+
+  /**
+   * iOS-only. This message will show if you increase the price of a subscription and
+   * the user needs to opt-in to the increase.
+   */
+  PRICE_INCREASE_CONSENT = 1,
+
+  /**
+   * iOS-only. StoreKit generic messages.
+   */
+  GENERIC = 2,
+}
+
+export enum PRODUCT_CATEGORY {
+  /**
+   * A type of product for non-subscription.
+   */
+  NON_SUBSCRIPTION = 'NON_SUBSCRIPTION',
+
+  /**
+   * A type of product for subscriptions.
+   */
+  SUBSCRIPTION = 'SUBSCRIPTION',
+
+  /**
+   * A type of product for unknowns.
+   */
+  UNKNOWN = 'UNKNOWN',
+}
+
+/**
+ * Recurrence mode for a pricing phase
+ */
+export enum RECURRENCE_MODE {
+  /**
+   * Pricing phase repeats infinitely until cancellation
+   */
+  INFINITE_RECURRING = 1,
+
+  /**
+   * Pricing phase repeats for a fixed number of billing periods
+   */
+  FINITE_RECURRING = 2,
+
+  /**
+   * Pricing phase does not repeat
+   */
+  NON_RECURRING = 3,
+}
+
+/**
+ * Payment mode for offer pricing phases. Google Play only.
+ */
+export enum OFFER_PAYMENT_MODE {
+  /**
+   * Subscribers don't pay until the specified period ends
+   */
+  FREE_TRIAL = 'FREE_TRIAL',
+
+  /**
+   * Subscribers pay up front for a specified period
+   */
+  SINGLE_PAYMENT = 'SINGLE_PAYMENT',
+
+  /**
+   * Subscribers pay a discounted amount for a specified number of periods
+   */
+  DISCOUNTED_RECURRING_PAYMENT = 'DISCOUNTED_RECURRING_PAYMENT',
+}
+
+/**
+ * Time duration unit for Period.
+ */
+export enum PERIOD_UNIT {
+  DAY = 'DAY',
+  WEEK = 'WEEK',
+  MONTH = 'MONTH',
+  YEAR = 'YEAR',
+  UNKNOWN = 'UNKNOWN',
+}
+
 /**
  * @name Purchases
  * @description
- * Purchases is a cross platform solution for managing in-app subscriptions. A backend is also provided via [RevenueCat](https://www.revenuecat.com)
+ * *Purchases* is a client for the [RevenueCat](https://www.revenuecat.com/) subscription and purchase tracking system.
+ * It is an open source framework that provides a wrapper around `BillingClient`, `StoreKit` and the RevenueCat backend
+ * to make implementing in-app subscriptions easy - receipt validation and status tracking included!
  *
  * ## Features
  * |     | RevenueCat                                                                                                                                                   |
@@ -168,36 +289,30 @@ export enum INTRO_ELIGIBILITY_STATUS {
  * | 📮  | Great support - [Help Center](https://revenuecat.zendesk.com)                                                                                           |
  * | 🤩  | Awesome [new features](https://trello.com/b/RZRnWRbI/revenuecat-product-roadmap)                                                                             |
  *
+ * ## Capacitor
+ *
+ * The Cordova plugin is not guaranteed to be up to date and we are moving our efforts to the Capacitor plugin.
+ * Please consider using our [Capacitor plugin](https://docs.revenuecat.com/docs/capacitor) instead of the Cordova plugin and this wrapper.
+ *
  * ## Getting Started
  *
- * For more detailed information, you can view our complete documentation at [docs.revenuecat.com](https://docs.revenuecat.com/docs).
- * @usage
- * #### 1. Get a RevenueCat API key
- *
- * Log in to the [RevenueCat dashboard](https://app.revenuecat.com) and obtain a free API key for your application.
- *
- * #### 2. Initialize the SDK
- *
- * You should only configure _Purchases_ once (usually on app launch) as soon as your app has a unique user id for your user. This can be when a user logs in if you have accounts or on launch if you can generate a random user identifier.
- *
- * ```typescript
- *  import { Platform } from "@ionic/angular";
- *  import { Purchases } from "@awesome-cordova-plugins/purchases/ngx";
- *
- *  constructor(public platform: Platform, private purchases: Purchases) {
- *      platform.ready().then(() => {
- *          this.purchases.setDebugLogsEnabled(true); // Enable to get debug logs
- *          this.purchases.configure("my_api_key", "my_app_user_id");
- *      }
- *  }
- * ```
- *
- * #### 3. Quickstart
  * Please follow the [Quickstart Guide](https://docs.revenuecat.com/docs/) for more information on how to use the SDK
  *
+ * ## Latest changes to this plugin
+ *
+ * This latest release updates the plugin to use BillingClient 6 in Android. If you come from an older version of the
+ * RevenueCat SDK, see [Android Native - 5.x to 6.x Migration](https://www.revenuecat.com/docs/android-native-5x-to-6x-migration)
+ * for a more thorough explanation of the new Google subscription model announced with BillingClient 5 and how to take advantage of it.
+ *
+ * If your app supports product changes using [DEFERRED replacement mode](https://www.revenuecat.com/docs/managing-subscriptions#google-play),
+ * then you can either stick with the previous major version until support for DEFERRED is re-introduced in this major version,
+ * or you can remove DEFERRED replacement options from your app.
+ *
+ * @usage
+ *
  * ### Requirements
- * Requires XCode 11.0+ and minimum target iOS 9.0+
- * This plugin has been tested with cordova-plugin-purchases@
+ * Requires XCode 13.2+ and minimum target iOS 11.0+
+ * This plugin has been tested with cordova-plugin-purchases@5.x.x
  * @interfaces
  * PurchasesError
  * IntroEligibility
@@ -213,7 +328,7 @@ export enum INTRO_ELIGIBILITY_STATUS {
  */
 @Plugin({
   pluginName: 'Purchases',
-  plugin: 'cordova-plugin-purchases@3.2.1',
+  plugin: 'cordova-plugin-purchases@5.0.0',
   pluginRef: 'Purchases', // the variable reference to call the plugin, example: navigator.geolocation
   repo: 'https://github.com/RevenueCat/cordova-plugin-purchases', // the github repository URL for the plugin
   platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
@@ -239,11 +354,25 @@ export class Purchases extends AwesomeCordovaNativePlugin {
   static PURCHASE_TYPE = PURCHASE_TYPE;
 
   /**
+   * Supported product categories.
+   * @readonly
+   * @enum {string}
+   */
+  public static PRODUCT_CATEGORY = PRODUCT_CATEGORY;
+
+  /**
    * Enum for billing features.
    * Currently, these are only relevant for Google Play Android users:
    * https://developer.android.com/reference/com/android/billingclient/api/BillingClient.FeatureType
    */
   static BILLING_FEATURE = BILLING_FEATURE;
+
+  /**
+   * Enum with possible return states for beginning refund request.
+   * @readonly
+   * @enum {string}
+   */
+  static REFUND_REQUEST_STATUS = REFUND_REQUEST_STATUS;
 
   /**
    * Replace SKU's ProrationMode.
@@ -270,11 +399,27 @@ export class Purchases extends AwesomeCordovaNativePlugin {
   static INTRO_ELIGIBILITY_STATUS = INTRO_ELIGIBILITY_STATUS;
 
   /**
+   * Enum of different possible log levels.
+   *
+   * @readonly
+   * @enum {string}
+   */
+  static LOG_LEVEL = LOG_LEVEL;
+
+  /**
+   * Enum of different possible in-app message types.
+   *
+   * @readonly
+   * @enum {string}
+   */
+  static IN_APP_MESSAGE_TYPE = IN_APP_MESSAGE_TYPE;
+
+  /**
    * @deprecated Use {@link configureWith} instead. It accepts a {@link PurchasesConfiguration} object which offers more flexibility.
    *
    * Sets up Purchases with your API key and an app user id.
    *
-   * @param {string} apiKey RevenueCat API Key. Needs to be a String
+   * @param {string} apiKey RevenueCat API Key. Needs to be a string
    * @param {string?} appUserID A unique id for identifying the user
    * @param {boolean} observerMode An optional boolean. Set this to TRUE if you have your own IAP implementation and
    * want to use only RevenueCat's backend. Default is FALSE. If you are on Android and setting this to ON, you will have
@@ -288,10 +433,10 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets up Purchases with your API key and an app user id.
-   * @param {PurchasesConfiguration} Object containing configuration parameters
+   * @param {PurchasesConfiguration} configuration containing configuration parameters
    */
   @Cordova({ sync: true })
-  configureWith({ apiKey, appUserID, observerMode, userDefaultsSuiteName, useAmazon }: PurchasesConfiguration): void {}
+  configureWith(configuration: PurchasesConfiguration): void {}
 
   /**
    * Gets the Offerings configured in the dashboard
@@ -328,8 +473,10 @@ export class Purchases extends AwesomeCordovaNativePlugin {
    * @param {UpgradeInfo} upgradeInfo Android only. Optional UpgradeInfo you wish to upgrade from containing the oldSKU
    * and the optional prorationMode.
    * @param {PURCHASE_TYPE} type Optional type of product, can be inapp or subs. Subs by default
-   * @returns {Promise<MakePurchaseResponse>} A [PurchasesError] is triggered after an error or when the user cancels the purchase.
-   * If user cancelled, userCancelled will be true
+   * @returns {Promise<{ productIdentifier: string; customerInfo: CustomerInfo }>} A promise of an object containing
+   * a customer info object and a product identifier. Rejections return an error code,
+   * a boolean indicating if the user cancelled the purchase, and an object with more information. The promise will
+   * also be rejected if configure has not been called yet.
    */
   @Cordova({
     successIndex: 1,
@@ -346,11 +493,47 @@ export class Purchases extends AwesomeCordovaNativePlugin {
   /**
    * Make a purchase
    *
+   * @param {PurchasesStoreProduct} product The product you want to purchase
+   * @param {GoogleProductChangeInfo} googleProductChangeInfo Android only. Optional GoogleProductChangeInfo you
+   * wish to upgrade from containing the oldProductIdentifier and the optional prorationMode.
+   * @param {boolean} googleIsPersonalizedPrice Android and Google only. Optional boolean indicates personalized pricing on products available for purchase in the EU.
+   * For compliance with EU regulations. User will see "This price has been customized for you" in the purchase dialog when true.
+   * See https://developer.android.com/google/play/billing/integrate#personalized-price for more info.
+   *
+   * @returns {Promise<{ productIdentifier: string, customerInfo:CustomerInfo }>} A promise of an object containing
+   * a customer info object and a product identifier. Rejections return an error code,
+   * a boolean indicating if the user cancelled the purchase, and an object with more information. The promise will
+   * also be rejected if configure has not been called yet.
+   */
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2,
+  })
+  purchaseStoreProduct(
+    product: PurchasesStoreProduct,
+    googleProductChangeInfo?: GoogleProductChangeInfo | null,
+    googleIsPersonalizedPrice = false
+  ): Promise<{ productIdentifier: string; customerInfo: CustomerInfo }> {
+    return;
+  }
+
+  /**
+   * Make a purchase
+   *
    * @param {PurchasesPackage} aPackage The Package you wish to purchase. You can get the Packages by calling getOfferings
    * @param {UpgradeInfo} upgradeInfo Android only. Optional UpgradeInfo you wish to upgrade from containing the oldSKU
    * and the optional prorationMode.
-   * @returns {Promise<MakePurchaseResponse>} A [PurchasesError] is triggered after an error or when the user cancels the purchase.
-   * If user cancelled, userCancelled will be true
+   * @param {GoogleProductChangeInfo} googleProductChangeInfo Android only. Optional GoogleProductChangeInfo you
+   * wish to upgrade from containing the oldProductIdentifier and the optional prorationMode.
+   * @param {boolean} googleIsPersonalizedPrice Android and Google only. Optional boolean indicates personalized pricing
+   * on products available for purchase in the EU. For compliance with EU regulations.
+   * User will see "This price has been customized for you" in the purchase dialog when true.
+   * See https://developer.android.com/google/play/billing/integrate#personalized-price for more info.
+   *
+   * @returns {Promise<{ productIdentifier: string; customerInfo: CustomerInfo }>} A promise of an object containing
+   * a customer info object and a product identifier. Rejections return an error code,
+   * a boolean indicating if the user cancelled the purchase, and an object with more information. The promise will
+   * also be rejected if configure has not been called yet.
    */
   @Cordova({
     successIndex: 1,
@@ -358,7 +541,38 @@ export class Purchases extends AwesomeCordovaNativePlugin {
   })
   purchasePackage(
     aPackage: PurchasesPackage,
-    upgradeInfo?: UpgradeInfo | null
+    upgradeInfo?: UpgradeInfo | null,
+    googleProductChangeInfo?: GoogleProductChangeInfo | null,
+    googleIsPersonalizedPrice = false
+  ): Promise<{ productIdentifier: string; customerInfo: CustomerInfo }> {
+    return;
+  }
+
+  /**
+   * Google only. Make a purchase of a subscriptionOption
+   *
+   * @param {SubscriptionOption} subscriptionOption The SubscriptionOption you wish to purchase. You can get the
+   * SubscriptionOption from StoreProducts by calling getOfferings
+   * @param {GoogleProductChangeInfo} googleProductChangeInfo Android only. Optional GoogleProductChangeInfo you
+   * wish to upgrade from containing the oldProductIdentifier and the optional prorationMode.
+   * @param {boolean} googleIsPersonalizedPrice Android and Google only. Optional boolean indicates personalized pricing
+   * on products available for purchase in the EU. For compliance with EU regulations.
+   * User will see "This price has been customized for you" in the purchase dialog when true.
+   * See https://developer.android.com/google/play/billing/integrate#personalized-price for more info.
+   *
+   * @returns {Promise<{ productIdentifier: string; customerInfo: CustomerInfo }>} A promise of an object containing
+   * a customer info object and a product identifier. Rejections return an error code,
+   * a boolean indicating if the user cancelled the purchase, and an object with more information. The promise will
+   * also be rejected if configure has not been called yet.
+   */
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2,
+  })
+  public static purchaseSubscriptionOption(
+    subscriptionOption: SubscriptionOption,
+    googleProductChangeInfo?: GoogleProductChangeInfo | null,
+    googleIsPersonalizedPrice = false
   ): Promise<{ productIdentifier: string; customerInfo: CustomerInfo }> {
     return;
   }
@@ -366,7 +580,8 @@ export class Purchases extends AwesomeCordovaNativePlugin {
   /**
    * Restores a user's previous purchases and links their appUserIDs to any user's also using those purchases.
    *
-   * @returns {Promise<CustomerInfo>} Errors are of type [PurchasesError]
+   * @returns {Promise<CustomerInfo>} Will receive the new customer info after restoring transactions.
+   * Errors are of type [PurchasesError]
    */
   @Cordova()
   restorePurchases(): Promise<CustomerInfo> {
@@ -434,12 +649,41 @@ export class Purchases extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * @deprecated Use {@link setLogLevel} instead.
+   *
    * Enables/Disables debugs logs
    *
    * @param {boolean} enabled true to enable debug logs, false to disable
    */
   @Cordova({ sync: true })
   setDebugLogsEnabled(enabled: boolean): void {}
+
+  /**
+   * Used to set the log level. Useful for debugging issues with the lovely team @RevenueCat.
+   * @param {LOG_LEVEL} level the minimum log level to enable.
+   */
+  @Cordova({ sync: true })
+  setLogLevel(level: LOG_LEVEL): void {}
+
+  /**
+   * Set a custom log handler for redirecting logs to your own logging system.
+   * By default, this sends info, warning, and error messages.
+   * If you wish to receive Debug level messages, see [setLogLevel].
+   *
+   * @param {LogHandler} logHandler It will get called for each log event.
+   * Use this function to redirect the log to your own logging system
+   */
+  @Cordova({ sync: true })
+  setLogHandler(logHandler: LogHandler): void {}
+
+  /**
+   * iOS only.
+   *
+   * @param {boolean} enabled Set this property to true *only* when testing the ask-to-buy / SCA purchases flow.
+   * More information: http://errors.rev.cat/ask-to-buy
+   */
+  @Cordova({ sync: true })
+  setSimulatesAskToBuyInSandbox(enabled: boolean): void {}
 
   /**
    * This method will send all the purchases to the RevenueCat backend. Call this when using your own implementation
@@ -451,13 +695,25 @@ export class Purchases extends AwesomeCordovaNativePlugin {
   syncPurchases(): void {}
 
   /**
-   * iOS only.
+   * This method will send a purchase to the RevenueCat backend. This function should only be called if you are
+   * in Amazon observer mode or performing a client side migration of your current users to RevenueCat.
    *
-   * @param {boolean} enabled Set this property to true *only* when testing the ask-to-buy / SCA purchases flow.
-   * More information: http://errors.rev.cat/ask-to-buy
+   * The receipt IDs are cached if successfully posted so they are not posted more than once.
+   *
+   * @param {string} productID Product ID associated to the purchase.
+   * @param {string} receiptID ReceiptId that represents the Amazon purchase.
+   * @param {string} amazonUserID Amazon's userID. This parameter will be ignored when syncing a Google purchase.
+   * @param {(string|null|undefined)} isoCurrencyCode Product's currency code in ISO 4217 format.
+   * @param {(number|null|undefined)} price Product's price.
    */
   @Cordova({ sync: true })
-  setSimulatesAskToBuyInSandbox(enabled: boolean): void {}
+  syncObserverModeAmazonPurchase(
+    productID: string,
+    receiptID: string,
+    amazonUserID: string,
+    isoCurrencyCode?: string | null,
+    price?: number | null
+  ): void {}
 
   /**
    * Enable automatic collection of Apple Search Ads attribution. Disabled by default.
@@ -738,7 +994,9 @@ export class Purchases extends AwesomeCordovaNativePlugin {
    *
    * @param features An array of feature types to check for support. Feature types must be one of
    *       [BILLING_FEATURE]. By default, is an empty list and no specific feature support will be checked.
-   * @returns {Promise<boolean>} Or [PurchasesError] if there is an error.
+   *
+   * @returns {Promise<boolean>} Will be sent true if billing is supported, false otherwise. Or [PurchasesError] if
+   * there is an error.
    */
   @Cordova()
   canMakePayments(features: BILLING_FEATURE[] = []): Promise<boolean> {
@@ -752,6 +1010,76 @@ export class Purchases extends AwesomeCordovaNativePlugin {
    */
   @Cordova({ sync: true })
   setProxyURL(url: string): void {}
+
+  /**
+   * iOS 15+ only. Presents a refund request sheet in the current window scene for
+   * the latest transaction associated with the active entitlement.
+   *
+   * If the request was unsuccessful, no active entitlements could be found for
+   * the user, or multiple active entitlements were found for the user,
+   * the promise will return an error.
+   * If called in an unsupported platform (iOS < 15), an `unsupportedError` will be sent to the callback.
+   *
+   * Important: This method should only be used if your user can only have a single active entitlement at a given time.
+   * If a user could have more than one entitlement at a time, use `beginRefundRequestForEntitlement` instead.
+   *
+   * @returns {Promise<REFUND_REQUEST_STATUS>} The status of the refund request.
+   * Keep in mind the status could be REFUND_REQUEST_STATUS.USER_CANCELLED. Or [PurchasesError] if
+   * there is an error when beginning refund request for active entitlement.
+   */
+  @Cordova()
+  beginRefundRequestForActiveEntitlement(): Promise<REFUND_REQUEST_STATUS> {
+    return;
+  }
+
+  /**
+   * iOS 15+ only. Presents a refund request sheet in the current window scene for
+   * the latest transaction associated with the `entitlement`.
+   *
+   * If the request was unsuccessful, the promise will return an error.
+   * If called in an unsupported platform (iOS < 15), an `unsupportedError` will be sent to the callback.
+   *
+   * @param entitlementInfo The entitlement to begin a refund request for.
+   *
+   * @returns {Promise<REFUND_REQUEST_STATUS>} The status of the refund request.
+   * Keep in mind the status could be REFUND_REQUEST_STATUS.USER_CANCELLED. Or [PurchasesError] if
+   * there is an error when beginning refund request for active entitlement.
+   */
+  @Cordova()
+  beginRefundRequestForEntitlement(entitlementInfo: PurchasesEntitlementInfo): Promise<REFUND_REQUEST_STATUS> {
+    return;
+  }
+
+  /**
+   * iOS 15+ only. Presents a refund request sheet in the current window scene for
+   * the latest transaction associated with the `product`.
+   *
+   * If the request was unsuccessful, the promise will return an error.
+   * If called in an unsupported platform (iOS < 15), an `unsupportedError` will be sent to the callback.
+   *
+   * @param storeProduct The StoreProduct to begin a refund request for.
+   *
+   * @returns {Promise<REFUND_REQUEST_STATUS>} The status of the refund request.
+   * Keep in mind the status could be REFUND_REQUEST_STATUS.USER_CANCELLED. Or [PurchasesError] if
+   * there is an error when beginning refund request for active entitlement.
+   */
+  @Cordova()
+  beginRefundRequestForProduct(storeProduct: PurchasesStoreProduct): Promise<REFUND_REQUEST_STATUS> {
+    return;
+  }
+
+  /**
+   * Shows in-app messages available from the App Store or Google Play. You need to disable messages from showing
+   * automatically using [PurchasesConfiguration.shouldShowInAppMessagesAutomatically].
+   *
+   * Note: In iOS, this requires version 16+. In older versions the promise will be resolved successfully
+   * immediately.
+   *
+   * @param messageTypes An array of message types that the stores can display inside your app. Must be one of
+   *       [IN_APP_MESSAGE_TYPE]. By default, is undefined and all message types will be shown.
+   */
+  @Cordova({ sync: true })
+  showInAppMessages(messageTypes?: IN_APP_MESSAGE_TYPE[]): void {}
 }
 /**
  * The EntitlementInfo object gives you access to all of the information about the status of a user entitlement.
@@ -767,7 +1095,6 @@ export interface PurchasesEntitlementInfo {
   readonly isActive: boolean;
   /**
    * True if the underlying subscription is set to renew at the end of the billing period (expirationDate).
-   * Will always be True if entitlement is for lifetime access.
    */
   readonly willRenew: boolean;
   /**
@@ -834,7 +1161,6 @@ export interface PurchasesEntitlementInfos {
   readonly activeInCurrentEnvironment: { [key: string]: PurchasesEntitlementInfo };
   /**
    * Dictionary of active ``EntitlementInfo`` objects keyed by their identifiers.
-   *
    * @note: these can be active on any environment.
    */
   readonly activeInAnyEnvironment: { [key: string]: PurchasesEntitlementInfo };
@@ -1002,6 +1328,7 @@ export interface PurchasesStoreProduct {
   readonly priceString: string;
   /**
    * Currency code for price and original price.
+   * Contains the currency code value of defaultOption for Google Play.
    */
   readonly currencyCode: string;
   /**
@@ -1012,6 +1339,34 @@ export interface PurchasesStoreProduct {
    * Collection of discount offers for a product. Null for Android.
    */
   readonly discounts: PurchasesStoreProductDiscount[] | null;
+
+  /**
+   * Product category.
+   */
+  readonly productCategory: PRODUCT_CATEGORY | null;
+
+  /**
+   * Subscription period, specified in ISO 8601 format. For example,
+   * P1W equates to one week, P1M equates to one month,
+   * P3M equates to three months, P6M equates to six months,
+   * and P1Y equates to one year.
+   * Note: Not available for Amazon.
+   */
+  readonly subscriptionPeriod: string | null;
+
+  /**
+   * Default subscription option for a product. Google Play only.
+   */
+  readonly defaultOption: SubscriptionOption | null;
+  /**
+   * Collection of subscription options for a product. Google Play only.
+   */
+  readonly subscriptionOptions: SubscriptionOption[] | null;
+  /**
+   * Offering identifier the store product was presented from.
+   * Null if not using offerings or if fetched directly from store via getProducts.
+   */
+  readonly presentedOfferingIdentifier: string | null;
 }
 
 /**
@@ -1050,6 +1405,13 @@ export interface PurchasesOffering {
    * Offering description defined in RevenueCat dashboard.
    */
   readonly serverDescription: string;
+  /**
+   * Offering metadata defined in RevenueCat dashboard. To access values, you need
+   * to check the type beforehand. For example:
+   * const my_unknown_value: unknown = offering.metadata['my_key'];
+   * const my_string_value: string | undefined = typeof(my_unknown_value) === 'string' ? my_unknown_value : undefined;
+   */
+  readonly metadata: { [key: string]: unknown };
   /**
    * Array of `Package` objects available for purchase.
    */
@@ -1121,6 +1483,20 @@ export interface UpgradeInfo {
 }
 
 /**
+ * Holds the information used when upgrading from another sku. For Android use only.
+ */
+export interface GoogleProductChangeInfo {
+  /**
+   * The old product identifier to upgrade from.
+   */
+  readonly oldProductIdentifier: string;
+  /**
+   * The [PRORATION_MODE] to use when upgrading the given oldSKU.
+   */
+  readonly prorationMode?: PRORATION_MODE;
+}
+
+/**
  * Holds the introductory price status
  */
 export interface IntroEligibility {
@@ -1173,9 +1549,184 @@ export interface PurchasesConfiguration {
    */
   userDefaultsSuiteName?: string;
   /**
+   * iOS-only, will be ignored for Android.
+   * Set this to TRUE to enable StoreKit2.
+   * Default is FALSE.
+   *
+   * @deprecated RevenueCat currently uses StoreKit 1 for purchases, as its stability in production scenarios has
+   * proven to be more performant than StoreKit 2.
+   * We're collecting more data on the best approach, but StoreKit 1 vs StoreKit 2 is an implementation detail
+   * that you shouldn't need to care about.
+   * We recommend not using this parameter, letting RevenueCat decide for you which StoreKit implementation to use.
+   */
+  usesStoreKit2IfAvailable?: boolean;
+  /**
    * An optional boolean. Android only. Required to configure the plugin to be used in the Amazon Appstore.
    */
   useAmazon?: boolean;
+  /**
+   * Whether we should show store in-app messages automatically. Both Google Play and the App Store provide in-app
+   * messages for some situations like billing issues. By default, those messages will be shown automatically.
+   * This allows to disable that behavior, so you can display those messages at your convenience. For more information,
+   * check: https://rev.cat/storekit-message and https://rev.cat/googleplayinappmessaging
+   */
+  shouldShowInAppMessagesAutomatically?: boolean;
+}
+
+/**
+ * Contains all details associated with a SubscriptionOption
+ * Used only for Google
+ */
+export interface SubscriptionOption {
+  /**
+   * Identifier of the subscription option
+   * If this SubscriptionOption represents a base plan, this will be the basePlanId.
+   * If it represents an offer, it will be {basePlanId}:{offerId}
+   */
+  readonly id: string;
+
+  /**
+   * Identifier of the StoreProduct associated with this SubscriptionOption
+   * This will be {subId}:{basePlanId}
+   */
+  readonly storeProductId: string;
+
+  /**
+   * Identifer of the subscription associated with this SubscriptionOption
+   * This will be {subId}
+   */
+  readonly productId: string;
+
+  /**
+   * Pricing phases defining a user's payment plan for the product over time.
+   */
+  readonly pricingPhases: PricingPhase[];
+
+  /**
+   * Tags defined on the base plan or offer. Empty for Amazon.
+   */
+  readonly tags: string[];
+
+  /**
+   * True if this SubscriptionOption represents a subscription base plan (rather than an offer).
+   */
+  readonly isBasePlan: boolean;
+
+  /**
+   * The subscription period of fullPricePhase (after free and intro trials).
+   */
+  readonly billingPeriod: Period | null;
+
+  /**
+   * True if the subscription is pre-paid.
+   */
+  readonly isPrepaid: boolean;
+
+  /**
+   * The full price PricingPhase of the subscription.
+   * Looks for the last price phase of the SubscriptionOption.
+   */
+  readonly fullPricePhase: PricingPhase | null;
+
+  /**
+   * The free trial PricingPhase of the subscription.
+   * Looks for the first pricing phase of the SubscriptionOption where amountMicros is 0.
+   * There can be a freeTrialPhase and an introductoryPhase in the same SubscriptionOption.
+   */
+  readonly freePhase: PricingPhase | null;
+
+  /**
+   * The intro trial PricingPhase of the subscription.
+   * Looks for the first pricing phase of the SubscriptionOption where amountMicros is greater than 0.
+   * There can be a freeTrialPhase and an introductoryPhase in the same SubscriptionOption.
+   */
+  readonly introPhase: PricingPhase | null;
+
+  /**
+   * Offering identifier the subscription option was presented from
+   */
+  readonly presentedOfferingIdentifier: string | null;
+}
+
+/**
+ * Contains all the details associated with a PricingPhase
+ */
+export interface PricingPhase {
+  /**
+   * Billing period for which the PricingPhase applies
+   */
+  readonly billingPeriod: Period;
+
+  /**
+   * Recurrence mode of the PricingPhase
+   */
+  readonly recurrenceMode: RECURRENCE_MODE | null;
+
+  /**
+   * Number of cycles for which the pricing phase applies.
+   * Null for infiniteRecurring or finiteRecurring recurrence modes.
+   */
+  readonly billingCycleCount: number | null;
+
+  /**
+   * Price of the PricingPhase
+   */
+  readonly price: Price;
+
+  /**
+   * Indicates how the pricing phase is charged for finiteRecurring pricing phases
+   */
+  readonly offerPaymentMode: OFFER_PAYMENT_MODE | null;
+}
+
+/**
+ * Contains all the details associated with a Price
+ */
+export interface Price {
+  /**
+   * Formatted price of the item, including its currency sign. For example $3.00
+   */
+  readonly formatted: string;
+
+  /**
+   * Price in micro-units, where 1,000,000 micro-units equal one unit of the currency.
+   *
+   * For example, if price is "€7.99", price_amount_micros is 7,990,000. This value represents
+   * the localized, rounded price for a particular currency.
+   */
+  readonly amountMicros: number;
+
+  /**
+   * Returns ISO 4217 currency code for price and original price.
+   *
+   * For example, if price is specified in British pounds sterling, price_currency_code is "GBP".
+   * If currency code cannot be determined, currency symbol is returned.
+   */
+  readonly currencyCode: string;
+}
+
+/**
+ * Contains all the details associated with a Period
+ */
+export interface Period {
+  /**
+   * The number of period units: day, week, month, year, unknown
+   */
+  readonly unit: PERIOD_UNIT;
+
+  /**
+   * The increment of time that a subscription period is specified in
+   */
+  readonly value: number;
+
+  /**
+   * Specified in ISO 8601 format. For example, P1W equates to one week,
+   * P1M equates to one month, P3M equates to three months, P6M equates to six months,
+   * and P1Y equates to one year
+   */
+  readonly iso8601: string;
 }
 
 export type ShouldPurchasePromoProductListener = (deferredPurchase: () => void) => void;
+
+export type LogHandler = (logLevel: LOG_LEVEL, message: string) => void;
