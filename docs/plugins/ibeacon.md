@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-ibeacon
-$ npm install @awesome-cordova-plugins/ibeacon
+$ npm install @oneserve-cordova-plugins/ibeacon
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/ibeacon/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/ibeacon/)
 
 Plugin Repo: [https://github.com/petermetz/cordova-plugin-ibeacon](https://github.com/petermetz/cordova-plugin-ibeacon)
 

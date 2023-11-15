@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-fullscreen
-$ npm install @awesome-cordova-plugins/android-full-screen
+$ npm install @oneserve-cordova-plugins/android-full-screen
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/android-full-screen/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/android-full-screen/)
 
 Plugin Repo: [https://github.com/mesmotronic/cordova-plugin-fullscreen](https://github.com/mesmotronic/cordova-plugin-fullscreen)
 

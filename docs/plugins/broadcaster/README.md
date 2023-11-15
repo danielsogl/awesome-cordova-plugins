@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-broadcaster
-$ npm install @awesome-cordova-plugins/broadcaster
+$ npm install @oneserve-cordova-plugins/broadcaster
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/broadcaster/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/broadcaster/)
 
 Plugin Repo: [https://github.com/bsorrentino/cordova-broadcaster](https://github.com/bsorrentino/cordova-broadcaster)
 

@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-admob
-$ npm install @awesome-cordova-plugins/admob
+$ npm install @oneserve-cordova-plugins/admob
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/admob/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/admob/)
 
 Plugin Repo: [https://github.com/appfeel/admob-google-cordova](https://github.com/appfeel/admob-google-cordova)
 

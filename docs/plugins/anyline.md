@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add io-anyline-cordova
-$ npm install @awesome-cordova-plugins/anyline
+$ npm install @oneserve-cordova-plugins/anyline
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/anyline/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/anyline/)
 
 Plugin Repo: [https://github.com/Anyline/anyline-ocr-cordova-module](https://github.com/Anyline/anyline-ocr-cordova-module)
 

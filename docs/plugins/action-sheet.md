@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-actionsheet
-$ npm install @awesome-cordova-plugins/action-sheet
+$ npm install @oneserve-cordova-plugins/action-sheet
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/action-sheet/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/action-sheet/)
 
 Plugin Repo: [https://github.com/EddyVerbruggen/cordova-plugin-actionsheet](https://github.com/EddyVerbruggen/cordova-plugin-actionsheet)
 

@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-apprate
-$ npm install @awesome-cordova-plugins/app-rate
+$ npm install @oneserve-cordova-plugins/app-rate
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/app-rate/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/app-rate/)
 
 Plugin Repo: [https://github.com/pushandplay/cordova-plugin-apprate](https://github.com/pushandplay/cordova-plugin-apprate)
 

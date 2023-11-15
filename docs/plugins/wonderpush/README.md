@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add wonderpush-cordova-sdk --variable CLIENT_ID=YOUR_CLIENT_ID --variable CLIENT_SECRET=YOUR_CLIENT_SECRET 
-$ npm install @awesome-cordova-plugins/wonderpush
+$ npm install @oneserve-cordova-plugins/wonderpush
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/wonderpush/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/wonderpush/)
 
 Plugin Repo: [https://github.com/wonderpush/wonderpush-cordova-sdk](https://github.com/wonderpush/wonderpush-cordova-sdk)
 

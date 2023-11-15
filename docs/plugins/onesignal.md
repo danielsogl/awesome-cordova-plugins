@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add onesignal-cordova-plugin
-$ npm install @awesome-cordova-plugins/onesignal
+$ npm install @oneserve-cordova-plugins/onesignal
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/onesignal/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/onesignal/)
 
 Plugin Repo: [https://github.com/OneSignal/OneSignal-Cordova-SDK](https://github.com/OneSignal/OneSignal-Cordova-SDK)
 

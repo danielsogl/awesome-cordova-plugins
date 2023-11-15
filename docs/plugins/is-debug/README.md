@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-is-debug
-$ npm install @awesome-cordova-plugins/is-debug
+$ npm install @oneserve-cordova-plugins/is-debug
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/is-debug/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/is-debug/)
 
 Plugin Repo: [https://github.com/mattlewis92/cordova-plugin-is-debug](https://github.com/mattlewis92/cordova-plugin-is-debug)
 

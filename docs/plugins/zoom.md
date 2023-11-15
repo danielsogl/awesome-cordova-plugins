@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova.plugin.zoom
-$ npm install @awesome-cordova-plugins/zoom
+$ npm install @oneserve-cordova-plugins/zoom
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/zoom/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/zoom/)
 
 Plugin Repo: [https://github.com/zoom/zoom-sdk-ionic](https://github.com/zoom/zoom-sdk-ionic)
 

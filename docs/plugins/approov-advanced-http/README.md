@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-approov-advanced-http
-$ npm install @awesome-cordova-plugins/approov-advanced-http
+$ npm install @oneserve-cordova-plugins/approov-advanced-http
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/approov-advanced-http/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/approov-advanced-http/)
 
 Plugin Repo: [https://github.com/approov/quickstart-ionic-advancedhttp](https://github.com/approov/quickstart-ionic-advancedhttp)
 

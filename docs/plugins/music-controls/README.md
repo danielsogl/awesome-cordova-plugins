@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-music-controls2
-$ npm install @awesome-cordova-plugins/music-controls
+$ npm install @oneserve-cordova-plugins/music-controls
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/music-controls/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/music-controls/)
 
 Plugin Repo: [https://github.com/ghenry22/cordova-plugin-music-controls2](https://github.com/ghenry22/cordova-plugin-music-controls2)
 

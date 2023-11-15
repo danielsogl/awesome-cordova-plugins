@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-open-native-settings
-$ npm install @awesome-cordova-plugins/open-native-settings
+$ npm install @oneserve-cordova-plugins/open-native-settings
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/open-native-settings/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/open-native-settings/)
 
 Plugin Repo: [https://github.com/guyromb/Cordova-open-native-settings](https://github.com/guyromb/Cordova-open-native-settings)
 

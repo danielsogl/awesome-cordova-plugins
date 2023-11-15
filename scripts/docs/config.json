@@ -1,4 +1,4 @@
 {
   "v2DocsDir": "docs/native",
-  "pluginDir": "dist/@awesome-cordova-plugins/plugins"
+  "pluginDir": "dist/@oneserve-cordova-plugins/plugins"
 }

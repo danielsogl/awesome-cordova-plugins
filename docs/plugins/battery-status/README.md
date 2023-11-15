@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-battery-status
-$ npm install @awesome-cordova-plugins/battery-status
+$ npm install @oneserve-cordova-plugins/battery-status
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/battery-status/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/battery-status/)
 
 Plugin Repo: [https://github.com/apache/cordova-plugin-battery-status](https://github.com/apache/cordova-plugin-battery-status)
 

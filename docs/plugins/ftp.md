@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-ftp
-$ npm install @awesome-cordova-plugins/ftp
+$ npm install @oneserve-cordova-plugins/ftp
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/ftp/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/ftp/)
 
 Plugin Repo: [https://github.com/xfally/cordova-plugin-ftp](https://github.com/xfally/cordova-plugin-ftp)
 

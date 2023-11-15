@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-sms-plugin
-$ npm install @awesome-cordova-plugins/sms
+$ npm install @oneserve-cordova-plugins/sms
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/sms/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/sms/)
 
 Plugin Repo: [https://github.com/cordova-sms/cordova-sms-plugin](https://github.com/cordova-sms/cordova-sms-plugin)
 

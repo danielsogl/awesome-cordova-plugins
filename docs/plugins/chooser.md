@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-chooser
-$ npm install @awesome-cordova-plugins/chooser
+$ npm install @oneserve-cordova-plugins/chooser
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/chooser/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/chooser/)
 
 Plugin Repo: [https://github.com/cyph/cordova-plugin-chooser](https://github.com/cyph/cordova-plugin-chooser)
 

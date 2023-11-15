@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-telerik-imagepicker --variable PHOTO_LIBRARY_USAGE_DESCRIPTION="your usage message"
-$ npm install @awesome-cordova-plugins/image-picker
+$ npm install @oneserve-cordova-plugins/image-picker
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/image-picker/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/image-picker/)
 
 Plugin Repo: [https://github.com/Telerik-Verified-Plugins/ImagePicker](https://github.com/Telerik-Verified-Plugins/ImagePicker)
 

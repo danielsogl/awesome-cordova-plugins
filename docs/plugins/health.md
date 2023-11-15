@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-health
-$ npm install @awesome-cordova-plugins/health
+$ npm install @oneserve-cordova-plugins/health
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/health/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/health/)
 
 Plugin Repo: [https://github.com/dariosalvi78/cordova-plugin-health](https://github.com/dariosalvi78/cordova-plugin-health)
 

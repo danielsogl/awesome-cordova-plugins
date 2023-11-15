@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-appcenter-crashes
-$ npm install @awesome-cordova-plugins/app-center-crashes
+$ npm install @oneserve-cordova-plugins/app-center-crashes
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/app-center-crashes/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/app-center-crashes/)
 
 Plugin Repo: [https://github.com/Microsoft/appcenter-sdk-cordova/tree/master/cordova-plugin-appcenter-crashes](https://github.com/Microsoft/appcenter-sdk-cordova/tree/master/cordova-plugin-appcenter-crashes)
 

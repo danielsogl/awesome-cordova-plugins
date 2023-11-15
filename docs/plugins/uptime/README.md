@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-uptime
-$ npm install @awesome-cordova-plugins/uptime
+$ npm install @oneserve-cordova-plugins/uptime
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/uptime/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/uptime/)
 
 Plugin Repo: [https://github.com/s1lviu/cordova-plugin-uptime](https://github.com/s1lviu/cordova-plugin-uptime)
 

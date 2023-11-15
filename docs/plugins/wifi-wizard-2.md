@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-wifiwizard2
-$ npm install @awesome-cordova-plugins/wifi-wizard-2
+$ npm install @oneserve-cordova-plugins/wifi-wizard-2
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/wifi-wizard-2/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/wifi-wizard-2/)
 
 Plugin Repo: [https://github.com/tripflex/WifiWizard2](https://github.com/tripflex/WifiWizard2)
 

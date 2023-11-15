@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-file-transfer
-$ npm install @awesome-cordova-plugins/file-transfer
+$ npm install @oneserve-cordova-plugins/file-transfer
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/file-transfer/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/file-transfer/)
 
 Plugin Repo: [https://github.com/apache/cordova-plugin-file-transfer](https://github.com/apache/cordova-plugin-file-transfer)
 

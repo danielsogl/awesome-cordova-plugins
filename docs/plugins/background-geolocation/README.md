@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add @mauron85/cordova-plugin-background-geolocation
-$ npm install @awesome-cordova-plugins/background-geolocation
+$ npm install @oneserve-cordova-plugins/background-geolocation
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/background-geolocation/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/background-geolocation/)
 
 Plugin Repo: [https://github.com/mauron85/cordova-plugin-background-geolocation](https://github.com/mauron85/cordova-plugin-background-geolocation)
 

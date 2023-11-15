@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-geolocation --variable GEOLOCATION_USAGE_DESCRIPTION="To locate you"
-$ npm install @awesome-cordova-plugins/geolocation
+$ npm install @oneserve-cordova-plugins/geolocation
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/geolocation/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/geolocation/)
 
 Plugin Repo: [https://github.com/apache/cordova-plugin-geolocation](https://github.com/apache/cordova-plugin-geolocation)
 

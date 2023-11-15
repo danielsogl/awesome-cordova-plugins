@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add usabilla-cordova
-$ npm install @awesome-cordova-plugins/usabilla-cordova-sdk
+$ npm install @oneserve-cordova-plugins/usabilla-cordova-sdk
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/usabilla-cordova-sdk/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/usabilla-cordova-sdk/)
 
 Plugin Repo: [https://github.com/usabilla/usabilla-u4a-cordova](https://github.com/usabilla/usabilla-u4a-cordova)
 

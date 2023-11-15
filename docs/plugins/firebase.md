@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-firebase
-$ npm install @awesome-cordova-plugins/firebase
+$ npm install @oneserve-cordova-plugins/firebase
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/firebase/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/firebase/)
 
 Plugin Repo: [https://github.com/arnesson/cordova-plugin-firebase](https://github.com/arnesson/cordova-plugin-firebase)
 

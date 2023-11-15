@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add ionic-plugin-deeplinks --variable URL_SCHEME=myapp --variable DEEPLINK_SCHEME=https --variable DEEPLINK_HOST=example.com --variable ANDROID_PATH_PREFIX=/
-$ npm install @awesome-cordova-plugins/deeplinks
+$ npm install @oneserve-cordova-plugins/deeplinks
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/deeplinks/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/deeplinks/)
 
 Plugin Repo: [https://github.com/ionic-team/ionic-plugin-deeplinks](https://github.com/ionic-team/ionic-plugin-deeplinks)
 

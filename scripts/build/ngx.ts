@@ -35,7 +35,7 @@ export function getProgram(rootNames: string[] = createSourceFiles()) {
 
 // hacky way to export metadata only for core package
 export function transpileNgxCore() {
-  getProgram([resolve(ROOT, 'src/@awesome-cordova-plugins/core/index.ts')]).emit({
+  getProgram([resolve(ROOT, 'src/@oneserve-cordova-plugins/core/index.ts')]).emit({
     emitFlags: EmitFlags.Metadata,
     emitCallback: ({ program, writeFile, customTransformers, cancellationToken, targetSourceFile }) => {
       return program.emit(targetSourceFile, writeFile, cancellationToken, true, customTransformers);
@@ -58,7 +58,7 @@ export function generateDeclarationFiles() {
 
 export function generateLegacyBundles() {
   [
-    resolve(ROOT, 'dist/@awesome-cordova-plugins/core/index.js'),
+    resolve(ROOT, 'dist/@oneserve-cordova-plugins/core/index.js'),
     ...PLUGIN_PATHS.map((p) => p.replace(join(ROOT, 'src'), join(ROOT, 'dist')).replace('index.ts', 'ngx/index.js')),
   ].forEach((p) =>
     rollup({
@@ -67,7 +67,7 @@ export function generateLegacyBundles() {
         if (warning.code === 'UNUSED_EXTERNAL_IMPORT') return;
         warn(warning);
       },
-      external: ['@angular/core', '@awesome-cordova-plugins/core', 'rxjs', 'tslib'],
+      external: ['@angular/core', '@oneserve-cordova-plugins/core', 'rxjs', 'tslib'],
     }).then((bundle) =>
       bundle.write({
         file: join(dirname(p), 'bundle.js'),
@@ -77,7 +77,7 @@ export function generateLegacyBundles() {
   );
 }
 
-// remove reference to @awesome-cordova-plugins/core decorators
+// remove reference to @oneserve-cordova-plugins/core decorators
 export function modifyMetadata() {
   PLUGIN_PATHS.map((p) =>
     p.replace(join(ROOT, 'src'), join(ROOT, 'dist')).replace('index.ts', 'ngx/index.metadata.json')
@@ -102,7 +102,7 @@ export function modifyMetadata() {
 function removeIonicNativeDecorators(node: any) {
   if (node.decorators && node.decorators.length) {
     node.decorators = node.decorators.filter(
-      (d: { expression: { module: string } }) => d.expression.module !== '@awesome-cordova-plugins/core'
+      (d: { expression: { module: string } }) => d.expression.module !== '@oneserve-cordova-plugins/core'
     );
   }
 

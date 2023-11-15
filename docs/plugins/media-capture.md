@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-media-capture
-$ npm install @awesome-cordova-plugins/media-capture
+$ npm install @oneserve-cordova-plugins/media-capture
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/media-capture/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/media-capture/)
 
 Plugin Repo: [https://github.com/apache/cordova-plugin-media-capture](https://github.com/apache/cordova-plugin-media-capture)
 

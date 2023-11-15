@@ -9,10 +9,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-firebase-dynamiclinks --save --variable APP_DOMAIN="example.com" --variable APP_PATH="/"
-$ npm install @awesome-cordova-plugins/firebase-dynamic-links
+$ npm install @oneserve-cordova-plugins/firebase-dynamic-links
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/firebase-dynamic-links/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/firebase-dynamic-links/)
 
 Plugin Repo: [https://github.com/chemerisuk/cordova-plugin-firebase-dynamiclinks](https://github.com/chemerisuk/cordova-plugin-firebase-dynamiclinks)
 

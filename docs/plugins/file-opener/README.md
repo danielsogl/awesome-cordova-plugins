@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-file-opener2
-$ npm install @awesome-cordova-plugins/file-opener
+$ npm install @oneserve-cordova-plugins/file-opener
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/file-opener/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/file-opener/)
 
 Plugin Repo: [https://github.com/pwlin/cordova-plugin-file-opener2](https://github.com/pwlin/cordova-plugin-file-opener2)
 

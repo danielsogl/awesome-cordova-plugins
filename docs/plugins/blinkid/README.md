@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add blinkid-cordova --variable CAMERA_USAGE_DESCRIPTION="Enable your camera so that you can scan your ID to validate your account"
-$ npm install @awesome-cordova-plugins/blinkid
+$ npm install @oneserve-cordova-plugins/blinkid
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/blinkid/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/blinkid/)
 
 Plugin Repo: [https://github.com/BlinkID/blinkid-phonegap](https://github.com/BlinkID/blinkid-phonegap)
 

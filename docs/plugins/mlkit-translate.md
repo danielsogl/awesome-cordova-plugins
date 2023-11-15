@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-mlkit-translate
-$ npm install @awesome-cordova-plugins/mlkit-translate
+$ npm install @oneserve-cordova-plugins/mlkit-translate
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/mlkit-translate/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/mlkit-translate/)
 
 Plugin Repo: [https://github.com/rigelglen/cordova-plugin-mlkit-translate](https://github.com/rigelglen/cordova-plugin-mlkit-translate)
 

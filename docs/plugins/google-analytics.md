@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-google-analytics
-$ npm install @awesome-cordova-plugins/google-analytics
+$ npm install @oneserve-cordova-plugins/google-analytics
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/google-analytics/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/google-analytics/)
 
 Plugin Repo: [https://github.com/danwilson/google-analytics-plugin](https://github.com/danwilson/google-analytics-plugin)
 

@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-facebook-connect --variable APP_ID="123456789" --variable APP_NAME="myApplication"
-$ npm install @awesome-cordova-plugins/facebook
+$ npm install @oneserve-cordova-plugins/facebook
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/facebook/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/facebook/)
 
 Plugin Repo: [https://github.com/cordova-plugin-facebook-connect/cordova-plugin-facebook-connect](https://github.com/cordova-plugin-facebook-connect/cordova-plugin-facebook-connect)
 

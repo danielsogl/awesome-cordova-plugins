@@ -27,13 +27,13 @@ const webpackConfig: Configuration = {
   target: 'web',
   output: {
     path: DIST,
-    filename: 'awesome-cordova-plugins.min.js',
+    filename: 'oneserve-cordova-plugins.min.js',
   },
   resolve: {
     modules: ['node_modules'],
     extensions: ['.js'],
     alias: {
-      '@awesome-cordova-plugins/core': resolve(DIST, '@awesome-cordova-plugins/core/index.js'),
+      '@oneserve-cordova-plugins/core': resolve(DIST, '@oneserve-cordova-plugins/core/index.js'),
     },
   },
   module: {
@@ -69,8 +69,8 @@ function createIndexFile() {
   fileContent += `\nwindow.IonicNative = {\n`;
   fileContent += INJECTABLE_CLASSES.map((e) => e.className).join(',\n');
   fileContent += '\n};\n';
-  fileContent += `require('./@awesome-cordova-plugins/core/bootstrap').checkReady();\n`;
-  fileContent += `require('./@awesome-cordova-plugins/core/ng1').initAngular1(window.IonicNative);`;
+  fileContent += `require('./@oneserve-cordova-plugins/core/bootstrap').checkReady();\n`;
+  fileContent += `require('./@oneserve-cordova-plugins/core/ng1').initAngular1(window.IonicNative);`;
 
   writeFileSync(INDEX_PATH, fileContent, { encoding: 'utf-8' });
 }

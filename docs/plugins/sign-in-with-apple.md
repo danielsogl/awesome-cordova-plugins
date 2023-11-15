@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-sign-in-with-apple
-$ npm install @awesome-cordova-plugins/sign-in-with-apple
+$ npm install @oneserve-cordova-plugins/sign-in-with-apple
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/sign-in-with-apple/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/sign-in-with-apple/)
 
 Plugin Repo: [https://github.com/twogate/cordova-plugin-sign-in-with-apple](https://github.com/twogate/cordova-plugin-sign-in-with-apple)
 

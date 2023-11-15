@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-foreground-service
-$ npm install @awesome-cordova-plugins/foreground-service
+$ npm install @oneserve-cordova-plugins/foreground-service
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/foreground-service/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/foreground-service/)
 
 Plugin Repo: [https://github.com/DavidBriglio/cordova-plugin-foreground-service](https://github.com/DavidBriglio/cordova-plugin-foreground-service)
 

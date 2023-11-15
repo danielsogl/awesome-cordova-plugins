@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add uk.co.workingedge.phonegap.plugin.launchnavigator
-$ npm install @awesome-cordova-plugins/launch-navigator
+$ npm install @oneserve-cordova-plugins/launch-navigator
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/launch-navigator/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/launch-navigator/)
 
 Plugin Repo: [https://github.com/dpa99c/phonegap-launch-navigator](https://github.com/dpa99c/phonegap-launch-navigator)
 

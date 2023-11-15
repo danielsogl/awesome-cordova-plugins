@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add uk.co.workingedge.cordova.plugin.sqliteporter
-$ npm install @awesome-cordova-plugins/sqlite-porter
+$ npm install @oneserve-cordova-plugins/sqlite-porter
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/sqlite-porter/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/sqlite-porter/)
 
 Plugin Repo: [https://github.com/dpa99c/cordova-sqlite-porter](https://github.com/dpa99c/cordova-sqlite-porter)
 

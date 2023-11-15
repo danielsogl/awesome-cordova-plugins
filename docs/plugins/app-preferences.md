@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-app-preferences
-$ npm install @awesome-cordova-plugins/app-preferences
+$ npm install @oneserve-cordova-plugins/app-preferences
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/app-preferences/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/app-preferences/)
 
 Plugin Repo: [https://github.com/apla/me.apla.cordova.app-preferences](https://github.com/apla/me.apla.cordova.app-preferences)
 

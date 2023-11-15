@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-ios-keychain
-$ npm install @awesome-cordova-plugins/keychain
+$ npm install @oneserve-cordova-plugins/keychain
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/keychain/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/keychain/)
 
 Plugin Repo: [https://github.com/ionic-team/cordova-plugin-ios-keychain](https://github.com/ionic-team/cordova-plugin-ios-keychain)
 

@@ -24,7 +24,7 @@ export const EMIT_PATH = resolve(ROOT, 'injectable-classes.json');
 export function extractInjectables() {
   return (ctx: TransformationContext) => {
     return (tsSourceFile) => {
-      if (tsSourceFile.fileName.indexOf('src/@awesome-cordova-plugins/plugins') > -1) {
+      if (tsSourceFile.fileName.indexOf('src/@oneserve-cordova-plugins/plugins') > -1) {
         visitEachChild(
           tsSourceFile,
           (node) => {

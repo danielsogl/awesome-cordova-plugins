@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-stripe
-$ npm install @awesome-cordova-plugins/stripe
+$ npm install @oneserve-cordova-plugins/stripe
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/stripe/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/stripe/)
 
 Plugin Repo: [https://github.com/zyramedia/cordova-plugin-stripe](https://github.com/zyramedia/cordova-plugin-stripe)
 

@@ -3,11 +3,11 @@
 ordova SDK
 
 ```text
-$ ionic cordova plugin add @awesome-cordova-plugins/unvired-cordova-sdk
-$ npm install @awesome-cordova-plugins/unvired-cordova-sdk
+$ ionic cordova plugin add @oneserve-cordova-plugins/unvired-cordova-sdk
+$ npm install @oneserve-cordova-plugins/unvired-cordova-sdk
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/unvired-cordova-sdk/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/unvired-cordova-sdk/)
 
 Plugin Repo: [https://github.com/unvired/cordova-plugin-unvired-sdk/](https://github.com/unvired/cordova-plugin-unvired-sdk/)
 

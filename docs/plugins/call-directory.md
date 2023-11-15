@@ -2,10 +2,10 @@
 
 ```text
 $ cordova plugin add cordova-plugin-call-directory --variable EXT_NAME="Cordova-Directory" --variable ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES="NO"
-$ npm install @awesome-cordova-plugins/call-directory
+$ npm install @oneserve-cordova-plugins/call-directory
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/call-directory/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/call-directory/)
 
 Plugin Repo: [https://github.com/GEDYSIntraWare/cordova-plugin-call-directory](https://github.com/GEDYSIntraWare/cordova-plugin-call-directory)
 

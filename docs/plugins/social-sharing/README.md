@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-x-socialsharing
-$ npm install @awesome-cordova-plugins/social-sharing
+$ npm install @oneserve-cordova-plugins/social-sharing
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/social-sharing/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/social-sharing/)
 
 Plugin Repo: [https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin](https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin)
 

@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add com.telerik.plugins.nativepagetransitions
-$ npm install @awesome-cordova-plugins/native-page-transitions
+$ npm install @oneserve-cordova-plugins/native-page-transitions
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/native-page-transitions/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/native-page-transitions/)
 
 Plugin Repo: [https://github.com/Telerik-Verified-Plugins/NativePageTransitions](https://github.com/Telerik-Verified-Plugins/NativePageTransitions)
 

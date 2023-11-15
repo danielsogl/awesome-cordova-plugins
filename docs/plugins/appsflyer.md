@@ -2,10 +2,10 @@
 
 ```text
 $ Add to config.xml like stated on github and then start
-$ npm install @awesome-cordova-plugins/appsflyer
+$ npm install @oneserve-cordova-plugins/appsflyer
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/appsflyer/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/appsflyer/)
 
 Plugin Repo: [https://github.com/AppsFlyerSDK/cordova-plugin-appsflyer-sdk](https://github.com/AppsFlyerSDK/cordova-plugin-appsflyer-sdk)
 

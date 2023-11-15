@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add com-darryncampbell-cordova-plugin-intent
-$ npm install @awesome-cordova-plugins/web-intent
+$ npm install @oneserve-cordova-plugins/web-intent
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/web-intent/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/web-intent/)
 
 Plugin Repo: [https://github.com/darryncampbell/darryncampbell-cordova-plugin-intent](https://github.com/darryncampbell/darryncampbell-cordova-plugin-intent)
 

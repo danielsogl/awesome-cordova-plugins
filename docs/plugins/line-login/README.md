@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add https://github.com/nrikiji/cordova-line-login-plugin.git --variable LINE_CHANNEL_ID="your_line_channel_id"
-$ npm install @awesome-cordova-plugins/line-login
+$ npm install @oneserve-cordova-plugins/line-login
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/line-login/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/line-login/)
 
 Plugin Repo: [https://github.com/nrikiji/cordova-line-login-plugin](https://github.com/nrikiji/cordova-line-login-plugin)
 

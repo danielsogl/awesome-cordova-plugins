@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-native-spinner
-$ npm install @awesome-cordova-plugins/spinner-dialog
+$ npm install @oneserve-cordova-plugins/spinner-dialog
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/spinner-dialog/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/spinner-dialog/)
 
 Plugin Repo: [https://github.com/greybax/cordova-plugin-native-spinner](https://github.com/greybax/cordova-plugin-native-spinner)
 

@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add com.omarben.inappreview
-$ npm install @awesome-cordova-plugins/in-app-review
+$ npm install @oneserve-cordova-plugins/in-app-review
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/in-app-review/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/in-app-review/)
 
 Plugin Repo: [https://github.com/omaxlive/com.omarben.inappreview](https://github.com/omaxlive/com.omarben.inappreview)
 

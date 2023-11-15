@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-ionic-webview
-$ npm install @awesome-cordova-plugins/ionic-webview
+$ npm install @oneserve-cordova-plugins/ionic-webview
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/ionic-webview/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/ionic-webview/)
 
 Plugin Repo: [https://github.com/ionic-team/cordova-plugin-ionic-webview](https://github.com/ionic-team/cordova-plugin-ionic-webview)
 

@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-cloud-settings --variable ANDROID_BACKUP_SERVICE_KEY=myapikey
-$ npm install @awesome-cordova-plugins/cloud-settings
+$ npm install @oneserve-cordova-plugins/cloud-settings
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/cloud-settings/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/cloud-settings/)
 
 Plugin Repo: [https://github.com/dpa99c/cordova-plugin-cloud-settings](https://github.com/dpa99c/cordova-plugin-cloud-settings)
 

@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add phonegap-plugin-push
-$ npm install @awesome-cordova-plugins/push
+$ npm install @oneserve-cordova-plugins/push
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/push/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/push/)
 
 Plugin Repo: [https://github.com/phonegap/phonegap-plugin-push](https://github.com/phonegap/phonegap-plugin-push)
 

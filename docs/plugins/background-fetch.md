@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-background-fetch
-$ npm install @awesome-cordova-plugins/background-fetch
+$ npm install @oneserve-cordova-plugins/background-fetch
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/background-fetch/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/background-fetch/)
 
 Plugin Repo: [https://github.com/transistorsoft/cordova-plugin-background-fetch](https://github.com/transistorsoft/cordova-plugin-background-fetch)
 

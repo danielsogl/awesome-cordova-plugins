@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-ble-central
-$ npm install @awesome-cordova-plugins/ble
+$ npm install @oneserve-cordova-plugins/ble
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/ble/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/ble/)
 
 Plugin Repo: [https://github.com/don/cordova-plugin-ble-central](https://github.com/don/cordova-plugin-ble-central)
 

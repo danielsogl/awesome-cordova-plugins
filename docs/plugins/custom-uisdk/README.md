@@ -2,10 +2,10 @@
 
 ```
 $ ''
-$ npm install @awesome-cordova-plugins/custom-uisdk
+$ npm install @oneserve-cordova-plugins/custom-uisdk
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/custom-uisdk/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/custom-uisdk/)
 
 Plugin Repo: [https://github.com/paytm/paytm-customuisdk-cordova](https://github.com/paytm/paytm-customuisdk-cordova)
 

@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-starprnt
-$ npm install @awesome-cordova-plugins/star-prnt
+$ npm install @oneserve-cordova-plugins/star-prnt
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/star-prnt/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/star-prnt/)
 
 Plugin Repo: [https://github.com/auctifera-josed/starprnt](https://github.com/auctifera-josed/starprnt)
 

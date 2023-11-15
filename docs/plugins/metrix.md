@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add ir.metrix.sdk
-$ npm install @awesome-cordova-plugins/metrix
+$ npm install @oneserve-cordova-plugins/metrix
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/metrix/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/metrix/)
 
 Plugin Repo: [https://github.com/metrixorg/MetrixSDK-CordovaPlugin](https://github.com/metrixorg/MetrixSDK-CordovaPlugin)
 

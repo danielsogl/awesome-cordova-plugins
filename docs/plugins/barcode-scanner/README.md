@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add phonegap-plugin-barcodescanner
-$ npm install @awesome-cordova-plugins/barcode-scanner
+$ npm install @oneserve-cordova-plugins/barcode-scanner
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/barcode-scanner/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/barcode-scanner/)
 
 Plugin Repo: [https://github.com/phonegap/phonegap-plugin-barcodescanner](https://github.com/phonegap/phonegap-plugin-barcodescanner)
 

@@ -16,6 +16,6 @@
     "inlineSources": true,
     "sourceMap": true
   },
-  "include": ["src/@awesome-cordova-plugins/core/**/*.ts"],
-  "exclude": ["node_modules", "src/@awesome-cordova-plugins/core/**/*.spec.ts"]
+  "include": ["src/@oneserve-cordova-plugins/core/**/*.ts"],
+  "exclude": ["node_modules", "src/@oneserve-cordova-plugins/core/**/*.spec.ts"]
 }

@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-android-permissions
-$ npm install @awesome-cordova-plugins/android-permissions
+$ npm install @oneserve-cordova-plugins/android-permissions
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/android-permissions/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/android-permissions/)
 
 Plugin Repo: [https://github.com/NeoLSN/cordova-plugin-android-permissions](https://github.com/NeoLSN/cordova-plugin-android-permissions)
 

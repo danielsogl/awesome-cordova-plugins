@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-screen-orientation
-$ npm install @awesome-cordova-plugins/screen-orientation
+$ npm install @oneserve-cordova-plugins/screen-orientation
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/screen-orientation/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/screen-orientation/)
 
 Plugin Repo: [https://github.com/apache/cordova-plugin-screen-orientation](https://github.com/apache/cordova-plugin-screen-orientation)
 

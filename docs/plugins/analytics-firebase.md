@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-analytics
-$ npm install @awesome-cordova-plugins/analytics-firebase
+$ npm install @oneserve-cordova-plugins/analytics-firebase
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/analytics-firebase/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/analytics-firebase/)
 
 Plugin Repo: [https://github.com/appfeel/analytics-google](https://github.com/appfeel/analytics-google)
 

@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add call-number
-$ npm install @awesome-cordova-plugins/call-number
+$ npm install @oneserve-cordova-plugins/call-number
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/call-number/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/call-number/)
 
 Plugin Repo: [https://github.com/Rohfosho/CordovaCallNumberPlugin](https://github.com/Rohfosho/CordovaCallNumberPlugin)
 

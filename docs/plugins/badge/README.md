@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-badge
-$ npm install @awesome-cordova-plugins/badge
+$ npm install @oneserve-cordova-plugins/badge
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/badge/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/badge/)
 
 Plugin Repo: [https://github.com/katzer/cordova-plugin-badge](https://github.com/katzer/cordova-plugin-badge)
 

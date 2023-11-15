@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-biocatch
-$ npm install @awesome-cordova-plugins/biocatch
+$ npm install @oneserve-cordova-plugins/biocatch
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/biocatch/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/biocatch/)
 
 Plugin Repo: [https://bitbucket.org/carlos_orellana/ionic-plugin](https://bitbucket.org/carlos_orellana/ionic-plugin)
 

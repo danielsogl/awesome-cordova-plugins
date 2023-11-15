@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add https://github.com/moust/cordova-plugin-videoplayer.git
-$ npm install @awesome-cordova-plugins/video-player
+$ npm install @oneserve-cordova-plugins/video-player
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/video-player/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/video-player/)
 
 Plugin Repo: [https://github.com/moust/cordova-plugin-videoplayer](https://github.com/moust/cordova-plugin-videoplayer)
 

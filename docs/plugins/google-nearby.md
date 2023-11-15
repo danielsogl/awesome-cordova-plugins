@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-google-nearby --variable API_KEY="123456789"
-$ npm install @awesome-cordova-plugins/google-nearby
+$ npm install @oneserve-cordova-plugins/google-nearby
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/google-nearby/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/google-nearby/)
 
 Plugin Repo: [https://github.com/hahahannes/cordova-plugin-google-nearby](https://github.com/hahahannes/cordova-plugin-google-nearby)
 

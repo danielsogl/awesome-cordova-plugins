@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-document-scanner
-$ npm install @awesome-cordova-plugins/document-scanner
+$ npm install @oneserve-cordova-plugins/document-scanner
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/document-scanner/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/document-scanner/)
 
 Plugin Repo: [https://github.com/NeutrinosPlatform/cordova-plugin-document-scanner](https://github.com/NeutrinosPlatform/cordova-plugin-document-scanner)
 

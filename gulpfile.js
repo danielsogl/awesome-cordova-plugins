@@ -31,7 +31,7 @@ gulp.task('plugin:create', () => {
       .pipe(replace('{{ pluginName }}', _.lowerFirst(pluginName)))
       .pipe(replace('{{ plugin-name }}', kebabCase))
       .pipe(rename('index.ts'))
-      .pipe(gulp.dest('./src/@awesome-cordova-plugins/plugins/' + kebabCase));
+      .pipe(gulp.dest('./src/@oneserve-cordova-plugins/plugins/' + kebabCase));
   } else {
     console.log('Usage is: gulp plugin:create -n PluginName');
   }

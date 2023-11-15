@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-webserver2
-$ npm install @awesome-cordova-plugins/web-server
+$ npm install @oneserve-cordova-plugins/web-server
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/web-server/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/web-server/)
 
 Plugin Repo: [https://github.com/nguyenthanh1995/cordova-plugin-webserver2.git](https://github.com/nguyenthanh1995/cordova-plugin-webserver2.git)
 

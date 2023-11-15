@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-power-optimization
-$ npm install @awesome-cordova-plugins/power-optimization
+$ npm install @oneserve-cordova-plugins/power-optimization
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/power-optimization/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/power-optimization/)
 
 Plugin Repo: [https://github.com/snt1017/cordova-plugin-power-optimization](https://github.com/snt1017/cordova-plugin-power-optimization)
 

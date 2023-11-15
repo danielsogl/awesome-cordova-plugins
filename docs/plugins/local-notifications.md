@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-local-notification
-$ npm install @awesome-cordova-plugins/local-notifications
+$ npm install @oneserve-cordova-plugins/local-notifications
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/local-notifications/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/local-notifications/)
 
 Plugin Repo: [https://github.com/katzer/cordova-plugin-local-notifications](https://github.com/katzer/cordova-plugin-local-notifications)
 

@@ -52,7 +52,7 @@ module.exports = (currentVersion) => {
         readFilesProcessor.basePath = path.resolve(__dirname, '../../..');
 
         readTypeScriptModules.basePath = path.resolve(__dirname, '../../..');
-        readTypeScriptModules.sourceFiles = ['./src/@awesome-cordova-plugins/plugins/**/*.ts'];
+        readTypeScriptModules.sourceFiles = ['./src/@oneserve-cordova-plugins/plugins/**/*.ts'];
       })
 
       // Configure file writing

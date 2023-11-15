@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add kommunicate-cordova-plugin
-$ npm install @awesome-cordova-plugins/kommunicate
+$ npm install @oneserve-cordova-plugins/kommunicate
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/kommunicate/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/kommunicate/)
 
 Plugin Repo: [https://github.com/Kommunicate-io/Kommunicate-Cordova-Ionic-PhoneGap-Chat-Plugin](https://github.com/Kommunicate-io/Kommunicate-Cordova-Ionic-PhoneGap-Chat-Plugin)
 

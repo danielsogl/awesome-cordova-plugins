@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-statusbar
-$ npm install @awesome-cordova-plugins/status-bar
+$ npm install @oneserve-cordova-plugins/status-bar
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/status-bar/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/status-bar/)
 
 Plugin Repo: [https://github.com/apache/cordova-plugin-statusbar](https://github.com/apache/cordova-plugin-statusbar)
 

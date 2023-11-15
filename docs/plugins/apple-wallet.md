@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-apple-wallet
-$ npm install @awesome-cordova-plugins/apple-wallet
+$ npm install @oneserve-cordova-plugins/apple-wallet
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/apple-wallet/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/apple-wallet/)
 
 Plugin Repo: [https://github.com/tomavic/cordova-apple-wallet](https://github.com/tomavic/cordova-apple-wallet)
 

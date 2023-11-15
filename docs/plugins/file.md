@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-file
-$ npm install @awesome-cordova-plugins/file
+$ npm install @oneserve-cordova-plugins/file
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/file/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/file/)
 
 Plugin Repo: [https://github.com/apache/cordova-plugin-file](https://github.com/apache/cordova-plugin-file)
 
@@ -16,7 +16,7 @@ The File class implements static convenience functions to access files and direc
 Example:
 
 ```text
-import { File } from '@awesome-cordova-plugins/file/ngx';
+import { File } from '@oneserve-cordova-plugins/file/ngx';
 
 constructor(private file: File) { }
 

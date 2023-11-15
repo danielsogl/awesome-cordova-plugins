@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add com-infobip-plugins-mobilemessaging
-$ npm install @awesome-cordova-plugins/mobile-messaging
+$ npm install @oneserve-cordova-plugins/mobile-messaging
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/mobile-messaging/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/mobile-messaging/)
 
 Plugin Repo: [https://github.com/infobip/mobile-messaging-cordova-plugin](https://github.com/infobip/mobile-messaging-cordova-plugin)
 

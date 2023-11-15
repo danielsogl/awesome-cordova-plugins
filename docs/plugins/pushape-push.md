@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add pushape-cordova-push
-$ npm install @awesome-cordova-plugins/pushape-push
+$ npm install @oneserve-cordova-plugins/pushape-push
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/pushape-push/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/pushape-push/)
 
 Plugin Repo: [https://github.com/gluelabs/pushape-cordova-push](https://github.com/gluelabs/pushape-cordova-push)
 

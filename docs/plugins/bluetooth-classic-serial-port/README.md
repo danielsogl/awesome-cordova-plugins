@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-bluetooth-classic-serial-port
-$ npm install @awesome-cordova-plugins/bluetooth-classic-serial-port
+$ npm install @oneserve-cordova-plugins/bluetooth-classic-serial-port
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/bluetooth-classic-serial-port/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/bluetooth-classic-serial-port/)
 
 Plugin Repo: [https://github.com/MaximBelov/cordova-plugin-bluetooth-classic-serial-port](https://github.com/MaximBelov/cordova-plugin-bluetooth-classic-serial-port)
 

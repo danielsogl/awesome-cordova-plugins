@@ -11,12 +11,12 @@ function transformImports(file: SourceFile, ctx: TransformationContext, ngcBuild
     );
   }
 
-  // find the @awesome-cordova-plugins/core import statement
+  // find the @oneserve-cordova-plugins/core import statement
   const importStatement = (file.statements as any).find((s: any) => {
-    return s.kind === SyntaxKind.ImportDeclaration && s.moduleSpecifier.text === '@awesome-cordova-plugins/core';
+    return s.kind === SyntaxKind.ImportDeclaration && s.moduleSpecifier.text === '@oneserve-cordova-plugins/core';
   });
 
-  // we're only interested in files containing @awesome-cordova-plugins/core import statement
+  // we're only interested in files containing @oneserve-cordova-plugins/core import statement
   if (!importStatement) return file;
 
   const decorators: string[] = [];
@@ -45,7 +45,7 @@ function transformImports(file: SourceFile, ctx: TransformationContext, ngcBuild
     const methodNames = methodElements.map((el) => el.escapedText);
 
     importStatement.importClause.namedBindings.elements = [
-      factory.createIdentifier('AwesomeCordovaNativePlugin'),
+      factory.createIdentifier('OneserveCordovaNativePlugin'),
       ...methodElements,
       ...importStatement.importClause.namedBindings.elements.filter(
         (el) => keep.indexOf(el.name.text) !== -1 && methodNames.indexOf(el.name.text) === -1

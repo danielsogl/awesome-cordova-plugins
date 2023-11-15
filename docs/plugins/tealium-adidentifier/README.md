@@ -2,10 +2,10 @@
 
 ```
 $ ''
-$ npm install @awesome-cordova-plugins/tealium-adidentifier
+$ npm install @oneserve-cordova-plugins/tealium-adidentifier
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/tealium-adidentifier/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/tealium-adidentifier/)
 
 Plugin Repo: [https://github.com/Tealium/cordova-plugin](https://github.com/Tealium/cordova-plugin)
 

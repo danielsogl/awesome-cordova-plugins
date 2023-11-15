@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-cszbar
-$ npm install @awesome-cordova-plugins/zbar
+$ npm install @oneserve-cordova-plugins/zbar
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/zbar/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/zbar/)
 
 Plugin Repo: [https://github.com/tjwoon/csZBar](https://github.com/tjwoon/csZBar)
 

@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-3dtouch
-$ npm install @awesome-cordova-plugins/three-dee-touch
+$ npm install @oneserve-cordova-plugins/three-dee-touch
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/three-dee-touch/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/three-dee-touch/)
 
 Plugin Repo: [https://github.com/EddyVerbruggen/cordova-plugin-3dtouch](https://github.com/EddyVerbruggen/cordova-plugin-3dtouch)
 

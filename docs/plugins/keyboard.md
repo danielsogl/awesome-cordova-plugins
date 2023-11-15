@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-ionic-keyboard
-$ npm install @awesome-cordova-plugins/keyboard
+$ npm install @oneserve-cordova-plugins/keyboard
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/keyboard/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/keyboard/)
 
 Plugin Repo: [https://github.com/ionic-team/cordova-plugin-ionic-keyboard](https://github.com/ionic-team/cordova-plugin-ionic-keyboard)
 

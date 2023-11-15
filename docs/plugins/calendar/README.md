@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-calendar
-$ npm install @awesome-cordova-plugins/calendar
+$ npm install @oneserve-cordova-plugins/calendar
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/calendar/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/calendar/)
 
 Plugin Repo: [https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin](https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin)
 

@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-video-editor
-$ npm install @awesome-cordova-plugins/video-editor
+$ npm install @oneserve-cordova-plugins/video-editor
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/video-editor/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/video-editor/)
 
 Plugin Repo: [https://github.com/jbavari/cordova-plugin-video-editor](https://github.com/jbavari/cordova-plugin-video-editor)
 

@@ -1,13 +1,13 @@
 # Firebase Analytics
 
- This plugin is still in beta stage and may not work as expected. Please submit any issues to the [plugin repo](https://github.com/danielsogl/awesome-cordova-plugins/tree/8516b357edaca8fc543713ba99c42cfde0225f86/issues/README.md).
+ This plugin is still in beta stage and may not work as expected. Please submit any issues to the [plugin repo](https://github.com/oneserve/oneserve-cordova-plugins/tree/8516b357edaca8fc543713ba99c42cfde0225f86/issues/README.md).
 
 ```text
 $ ionic cordova plugin add cordova-plugin-firebase-analytics
-$ npm install @awesome-cordova-plugins/firebase-analytics
+$ npm install @oneserve-cordova-plugins/firebase-analytics
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/firebase-analytics/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/firebase-analytics/)
 
 Plugin Repo: [https://github.com/chemerisuk/cordova-plugin-firebase-analytics](https://github.com/chemerisuk/cordova-plugin-firebase-analytics)
 

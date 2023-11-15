@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-abbyy-rtr-sdk
-$ npm install @awesome-cordova-plugins/abbyy-rtr
+$ npm install @oneserve-cordova-plugins/abbyy-rtr
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/abbyy-rtr/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/abbyy-rtr/)
 
 Plugin Repo: [https://github.com/abbyysdk/RTR-SDK.Cordova](https://github.com/abbyysdk/RTR-SDK.Cordova)
 

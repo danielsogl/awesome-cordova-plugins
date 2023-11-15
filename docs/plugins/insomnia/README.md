@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-insomnia
-$ npm install @awesome-cordova-plugins/insomnia
+$ npm install @oneserve-cordova-plugins/insomnia
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/insomnia/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/insomnia/)
 
 Plugin Repo: [https://github.com/EddyVerbruggen/Insomnia-PhoneGap-Plugin](https://github.com/EddyVerbruggen/Insomnia-PhoneGap-Plugin)
 

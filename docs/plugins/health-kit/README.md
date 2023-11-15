@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add com.telerik.plugins.healthkit
-$ npm install @awesome-cordova-plugins/health-kit
+$ npm install @oneserve-cordova-plugins/health-kit
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/health-kit/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/health-kit/)
 
 Plugin Repo: [https://github.com/Telerik-Verified-Plugins/HealthKit](https://github.com/Telerik-Verified-Plugins/HealthKit)
 

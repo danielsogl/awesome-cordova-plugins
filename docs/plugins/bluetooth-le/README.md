@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-bluetoothle
-$ npm install @awesome-cordova-plugins/bluetooth-le
+$ npm install @oneserve-cordova-plugins/bluetooth-le
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/bluetooth-le/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/bluetooth-le/)
 
 Plugin Repo: [https://github.com/randdusing/cordova-plugin-bluetoothle](https://github.com/randdusing/cordova-plugin-bluetoothle)
 

@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-photo-library --variable PHOTO_LIBRARY_USAGE_DESCRIPTION="To choose photos"
-$ npm install @awesome-cordova-plugins/photo-library
+$ npm install @oneserve-cordova-plugins/photo-library
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/photo-library/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/photo-library/)
 
 Plugin Repo: [https://github.com/terikon/cordova-plugin-photo-library](https://github.com/terikon/cordova-plugin-photo-library)
 

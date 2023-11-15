@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova.plugins.diagnostic
-$ npm install @awesome-cordova-plugins/diagnostic
+$ npm install @oneserve-cordova-plugins/diagnostic
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/diagnostic/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/diagnostic/)
 
 Plugin Repo: [https://github.com/dpa99c/cordova-diagnostic-plugin](https://github.com/dpa99c/cordova-diagnostic-plugin)
 

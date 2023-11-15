@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-launch-review
-$ npm install @awesome-cordova-plugins/launch-review
+$ npm install @oneserve-cordova-plugins/launch-review
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/launch-review/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/launch-review/)
 
 Plugin Repo: [https://github.com/dpa99c/cordova-launch-review](https://github.com/dpa99c/cordova-launch-review)
 

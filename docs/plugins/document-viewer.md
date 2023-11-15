@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-document-viewer
-$ npm install @awesome-cordova-plugins/document-viewer
+$ npm install @oneserve-cordova-plugins/document-viewer
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/document-viewer/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/document-viewer/)
 
 Plugin Repo: [https://github.com/sitewaerts/cordova-plugin-document-viewer](https://github.com/sitewaerts/cordova-plugin-document-viewer)
 

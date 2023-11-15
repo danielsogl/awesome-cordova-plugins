@@ -1,10 +1,10 @@
 # UriHelper
 
 ionic cordova plugin add phonegap-nfc
-$ npm install @awesome-cordova-plugins/nfc
+$ npm install @oneserve-cordova-plugins/nfc
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/nfc/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/nfc/)
 
 Plugin Repo: [https://github.com/chariotsolutions/phonegap-nfc](https://github.com/chariotsolutions/phonegap-nfc)
 

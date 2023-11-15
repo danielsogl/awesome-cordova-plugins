@@ -1,9 +1,11 @@
-# AdjustPlayStoreSubscription
-plugin add com.adjust.sdk
-$ npm install @awesome-cordova-plugins/adjust
+# Adjust
+
+```
+$ ionic cordova plugin add com.adjust.sdk
+$ npm install @oneserve-cordova-plugins/adjust
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/adjust/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/adjust/)
 
 Plugin Repo: [https://github.com/adjust/cordova_sdk](https://github.com/adjust/cordova_sdk)
 

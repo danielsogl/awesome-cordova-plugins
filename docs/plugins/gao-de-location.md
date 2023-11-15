@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-gaodelocation-chenyu --variable  ANDROID_API_KEY=your android key --variable  IOS_API_KEY=your ios key
-$ npm install @awesome-cordova-plugins/gao-de-location
+$ npm install @oneserve-cordova-plugins/gao-de-location
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/gao-de-location/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/gao-de-location/)
 
 Plugin Repo: [https://github.com/waliu/cordova-plugin-gaodelocation-chenyu.git](https://github.com/waliu/cordova-plugin-gaodelocation-chenyu.git)
 

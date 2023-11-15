@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add com-sarriaroman-photoviewer
-$ npm install @awesome-cordova-plugins/photo-viewer
+$ npm install @oneserve-cordova-plugins/photo-viewer
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/photo-viewer/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/photo-viewer/)
 
 Plugin Repo: [https://github.com/sarriaroman/photoviewer](https://github.com/sarriaroman/photoviewer)
 

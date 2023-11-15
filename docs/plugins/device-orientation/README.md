@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-device-orientation
-$ npm install @awesome-cordova-plugins/device-orientation
+$ npm install @oneserve-cordova-plugins/device-orientation
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/device-orientation/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/device-orientation/)
 
 Plugin Repo: [https://github.com/apache/cordova-plugin-device-orientation](https://github.com/apache/cordova-plugin-device-orientation)
 

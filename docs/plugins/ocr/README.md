@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-mobile-ocr
-$ npm install @awesome-cordova-plugins/ocr
+$ npm install @oneserve-cordova-plugins/ocr
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/ocr/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/ocr/)
 
 Plugin Repo: [https://github.com/NeutrinosPlatform/cordova-plugin-mobile-ocr](https://github.com/NeutrinosPlatform/cordova-plugin-mobile-ocr)
 

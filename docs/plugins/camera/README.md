@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-camera
-$ npm install @awesome-cordova-plugins/camera
+$ npm install @oneserve-cordova-plugins/camera
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/camera/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/camera/)
 
 Plugin Repo: [https://github.com/apache/cordova-plugin-camera](https://github.com/apache/cordova-plugin-camera)
 

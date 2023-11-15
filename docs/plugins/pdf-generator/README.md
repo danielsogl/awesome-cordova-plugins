@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-pdf-generator
-$ npm install @awesome-cordova-plugins/pdf-generator
+$ npm install @oneserve-cordova-plugins/pdf-generator
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/pdf-generator/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/pdf-generator/)
 
 Plugin Repo: [https://github.com/cesarvr/pdf-generator](https://github.com/cesarvr/pdf-generator)
 

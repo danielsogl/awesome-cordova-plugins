@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-purchase --variable BILLING_KEY="<ANDROID_BILLING_KEY>"
-$ npm install @awesome-cordova-plugins/in-app-purchase-2
+$ npm install @oneserve-cordova-plugins/in-app-purchase-2
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/in-app-purchase-2/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/in-app-purchase-2/)
 
 Plugin Repo: [https://github.com/j3k0/cordova-plugin-purchase](https://github.com/j3k0/cordova-plugin-purchase)
 

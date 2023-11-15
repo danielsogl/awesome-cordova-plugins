@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-plugin-appcenter-analytics
-$ npm install @awesome-cordova-plugins/app-center-analytics
+$ npm install @oneserve-cordova-plugins/app-center-analytics
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/app-center-analytics/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/app-center-analytics/)
 
 Plugin Repo: [https://github.com/Microsoft/appcenter-sdk-cordova/tree/master/cordova-plugin-appcenter-analytics](https://github.com/Microsoft/appcenter-sdk-cordova/tree/master/cordova-plugin-appcenter-analytics)
 

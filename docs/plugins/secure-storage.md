@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-secure-storage-echo
-$ npm install @awesome-cordova-plugins/secure-storage
+$ npm install @oneserve-cordova-plugins/secure-storage
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/secure-storage/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/secure-storage/)
 
 Plugin Repo: [https://github.com/mibrito707/cordova-plugin-secure-storage-echo](https://github.com/mibrito707/cordova-plugin-secure-storage-echo)
 

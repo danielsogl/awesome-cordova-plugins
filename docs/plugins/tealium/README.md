@@ -2,10 +2,10 @@
 
 ```
 $ ''
-$ npm install @awesome-cordova-plugins/tealium
+$ npm install @oneserve-cordova-plugins/tealium
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/tealium/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/tealium/)
 
 Plugin Repo: [https://github.com/Tealium/cordova-plugin](https://github.com/Tealium/cordova-plugin)
 

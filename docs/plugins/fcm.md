@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-fcm-with-dependecy-updated
-$ npm install @awesome-cordova-plugins/fcm
+$ npm install @oneserve-cordova-plugins/fcm
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/fcm/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/fcm/)
 
 Plugin Repo: [https://github.com/andrehtissot/cordova-plugin-fcm-with-dependecy-updated](https://github.com/andrehtissot/cordova-plugin-fcm-with-dependecy-updated)
 

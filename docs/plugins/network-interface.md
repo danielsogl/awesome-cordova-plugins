@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-networkinterface
-$ npm install @awesome-cordova-plugins/network-interface
+$ npm install @oneserve-cordova-plugins/network-interface
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/network-interface/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/network-interface/)
 
 Plugin Repo: [https://github.com/salbahra/cordova-plugin-networkinterface](https://github.com/salbahra/cordova-plugin-networkinterface)
 

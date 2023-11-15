@@ -9,7 +9,7 @@
     "module": "es2015",
     "moduleResolution": "node",
     "paths": {
-      "@awesome-cordova-plugins/core": ["./dist/@awesome-cordova-plugins/core"]
+      "@oneserve-cordova-plugins/core": ["./dist/@oneserve-cordova-plugins/core"]
     },
     "outDir": "./dist",
     "rootDir": "src",
@@ -19,7 +19,7 @@
     "inlineSources": true,
     "inlineSourceMap": true
   },
-  "include": ["src/@awesome-cordova-plugins/plugins/**/*.ts"],
+  "include": ["src/@oneserve-cordova-plugins/plugins/**/*.ts"],
   "angularCompilerOptions": {
     "genDir": "aot"
   }

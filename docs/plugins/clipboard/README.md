@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add cordova-clipboard
-$ npm install @awesome-cordova-plugins/clipboard
+$ npm install @oneserve-cordova-plugins/clipboard
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/clipboard/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/clipboard/)
 
 Plugin Repo: [https://github.com/ihadeed/cordova-clipboard](https://github.com/ihadeed/cordova-clipboard)
 

@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-nativestorage
-$ npm install @awesome-cordova-plugins/native-storage
+$ npm install @oneserve-cordova-plugins/native-storage
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/native-storage/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/native-storage/)
 
 Plugin Repo: [https://github.com/TheCocoaProject/cordova-plugin-nativestorage](https://github.com/TheCocoaProject/cordova-plugin-nativestorage)
 

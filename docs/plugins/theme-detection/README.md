@@ -9,10 +9,10 @@
 
 ```
 $ cordova plugin add cordova-plugin-theme-detection
-$ npm install @awesome-cordova-plugins/theme-detection
+$ npm install @oneserve-cordova-plugins/theme-detection
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/theme-detection/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/theme-detection/)
 
 Plugin Repo: [https://github.com/mariusbackes/cordova-plugin-theme-detection](https://github.com/mariusbackes/cordova-plugin-theme-detection)
 

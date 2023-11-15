@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-android-notch
-$ npm install @awesome-cordova-plugins/android-notch
+$ npm install @oneserve-cordova-plugins/android-notch
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/android-notch/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/android-notch/)
 
 Plugin Repo: [https://github.com/tobspr/cordova-plugin-android-notch.git](https://github.com/tobspr/cordova-plugin-android-notch.git)
 

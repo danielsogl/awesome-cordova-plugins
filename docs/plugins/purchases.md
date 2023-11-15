@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-purchases@2.3.0
-$ npm install @awesome-cordova-plugins/purchases
+$ npm install @oneserve-cordova-plugins/purchases
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/purchases/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/purchases/)
 
 Plugin Repo: [https://github.com/RevenueCat/cordova-plugin-purchases](https://github.com/RevenueCat/cordova-plugin-purchases)
 
@@ -23,7 +23,7 @@ Purchases is a cross platform solution for managing in-app subscriptions. A back
 | 🔀 | [Integrations](https://www.revenuecat.com/integrations) - over a dozen integrations to easily send purchase data where you need it |
 | 💯 | Well maintained - [frequent releases](https://github.com/RevenueCat/cordova-plugin-purchases/releases) |
 | 📮 | Great support - [Help Center](https://revenuecat.zendesk.com) |
-| 🤩 | Awesome [new features](https://trello.com/b/RZRnWRbI/revenuecat-product-roadmap) |
+| 🤩 | Oneserve [new features](https://trello.com/b/RZRnWRbI/revenuecat-product-roadmap) |
 
 ## Getting Started
 

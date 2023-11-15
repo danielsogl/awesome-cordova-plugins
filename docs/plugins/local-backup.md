@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-local-backup
-$ npm install @awesome-cordova-plugins/local-backup
+$ npm install @oneserve-cordova-plugins/local-backup
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/local-backup/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/local-backup/)
 
 Plugin Repo: [https://github.com/MaximBelov/cordova-plugin-local-backup](https://github.com/MaximBelov/cordova-plugin-local-backup)
 

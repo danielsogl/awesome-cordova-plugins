@@ -2,10 +2,10 @@
 
 ```
 $ ionic cordova plugin add clevertap-cordova
-$ npm install @awesome-cordova-plugins/clevertap
+$ npm install @oneserve-cordova-plugins/clevertap
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/clevertap/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/clevertap/)
 
 Plugin Repo: [https://github.com/CleverTap/clevertap-cordova](https://github.com/CleverTap/clevertap-cordova)
 

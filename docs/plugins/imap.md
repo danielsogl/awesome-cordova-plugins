@@ -2,10 +2,10 @@
 
 ```text
 $ ionic cordova plugin add cordova-plugin-imap
-$ npm install @awesome-cordova-plugins/imap
+$ npm install @oneserve-cordova-plugins/imap
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/imap/)
+## [Usage Documentation](https://oneserve.gitbook.io/oneserve-cordova-plugins/plugins/imap/)
 
 Plugin Repo: [https://github.com/aleksandar888/cordova-plugin-imap.git](https://github.com/aleksandar888/cordova-plugin-imap.git)
 
