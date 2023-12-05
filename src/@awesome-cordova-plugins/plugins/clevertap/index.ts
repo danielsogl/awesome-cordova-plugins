@@ -97,11 +97,11 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Call this method to set a custom locale for the clevertap instance.
-   *
+   * @param locale {string}
    * @returns {Promise<any>}
    */  
   @Cordova()
-  setLocale(): Promise<any> {
+  setLocale(locale: string): Promise<any> {
     return;
   }
 
