@@ -14,7 +14,4 @@ Plugin Repo: [https://github.com/CWBudde/cordova-plugin-smtp-client](https://git
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
-
+- iOS
