@@ -1,3 +1,12 @@
+# [6.6.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.5.0...v6.6.0) (2023-12-19)
+
+
+### Features
+
+* **adjust:** update wrapper for Adjust Cordova SDK v4.35.1 ([#4696](https://github.com/danielsogl/awesome-cordova-plugins/issues/4696)) ([709049f](https://github.com/danielsogl/awesome-cordova-plugins/commit/709049f2e77455723c62f248e327e37e2ca8ddb2)), closes [#4600](https://github.com/danielsogl/awesome-cordova-plugins/issues/4600) [#4608](https://github.com/danielsogl/awesome-cordova-plugins/issues/4608) [#4617](https://github.com/danielsogl/awesome-cordova-plugins/issues/4617) [#3491](https://github.com/danielsogl/awesome-cordova-plugins/issues/3491)
+
+
+
 # [6.5.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.4.0...v6.5.0) (2023-12-19)
 
 
