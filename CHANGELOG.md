@@ -1,3 +1,19 @@
+# [6.5.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.4.0...v6.5.0) (2023-12-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency tslib to v2.6.1 ([#4610](https://github.com/danielsogl/awesome-cordova-plugins/issues/4610)) [skip ci] ([d30052d](https://github.com/danielsogl/awesome-cordova-plugins/commit/d30052d8cfadcbae95a5437dc8692c87b39c5294))
+* **deps:** update dependency tslib to v2.6.2 ([#4669](https://github.com/danielsogl/awesome-cordova-plugins/issues/4669)) [skip ci] ([5355e92](https://github.com/danielsogl/awesome-cordova-plugins/commit/5355e922acd5ea6c09a94bd82064eeae52926c06))
+* **diagnostic:** add LIMITED permissionStatus ([#4645](https://github.com/danielsogl/awesome-cordova-plugins/issues/4645)) ([3ba983a](https://github.com/danielsogl/awesome-cordova-plugins/commit/3ba983aa7f8a3ce382c164929cda37921056cfcc)), closes [#4600](https://github.com/danielsogl/awesome-cordova-plugins/issues/4600) [#4608](https://github.com/danielsogl/awesome-cordova-plugins/issues/4608) [#4617](https://github.com/danielsogl/awesome-cordova-plugins/issues/4617) [#3491](https://github.com/danielsogl/awesome-cordova-plugins/issues/3491)
+
+
+### Features
+
+* **clevertap:** support clevertap-cordova 2.7.2 ([#4683](https://github.com/danielsogl/awesome-cordova-plugins/issues/4683))  [skip ci] ([bddafc7](https://github.com/danielsogl/awesome-cordova-plugins/commit/bddafc779a65379c5d09fa74418830b81e2525a7)), closes [#3491](https://github.com/danielsogl/awesome-cordova-plugins/issues/3491)
+
+
+
 # [6.4.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.3.0...v6.4.0) (2023-07-11)
 
 
