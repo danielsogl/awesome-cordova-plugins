@@ -1,5 +1,19 @@
 {
-  "extends": [
-    "config:base"
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base", ":dependencyDashboard"],
+  "packageRules": [
+    {
+      "groupName": "Angular",
+      "packagePatterns": ["^@angular/", "^@angular-devkit/", "@schematics/angular"],
+      "allowedVersions": "<=12"
+    },
+    {
+      "matchPackageNames": ["zone.js"],
+      "allowedVersions": "<=11"
+    },
+    {
+      "matchPackageNames": ["typescript"],
+      "allowedVersions": "<=4"
+    }
   ]
 }
