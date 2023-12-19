@@ -1,7 +1,7 @@
-# Unvired Cordova SDK
-
-```
-$ ionic cordova plugin add @awesome-cordova-plugins/unvired-cordova-sdk
+# SyncResult
+ult
+ivateResult
+ionic cordova plugin add @awesome-cordova-plugins/unvired-cordova-sdk
 $ npm install @awesome-cordova-plugins/unvired-cordova-sdk
 ```
 

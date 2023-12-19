@@ -1,4 +1,5 @@
-# Push Notifications - WonderPush
+# UserPreferencesMethods
+nderPush
 
 ```
 $ ionic cordova plugin add wonderpush-cordova-sdk --variable CLIENT_ID=YOUR_CLIENT_ID --variable CLIENT_SECRET=YOUR_CLIENT_SECRET 

@@ -1,7 +1,5 @@
-# CFPaymentGateway
-
-```
-$ ionic cordova plugin add cordova-plugin-cashfree-pg
+# CFPaymentComponentBuilder
+nic cordova plugin add cordova-plugin-cashfree-pg
 $ npm install @awesome-cordova-plugins/cashfree-pg
 ```
 
