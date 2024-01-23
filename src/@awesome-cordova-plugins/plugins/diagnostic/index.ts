@@ -132,7 +132,7 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
     SENSORS: ['BODY_SENSORS'],
     SMS: ['SEND_SMS', 'RECEIVE_SMS', 'READ_SMS', 'RECEIVE_WAP_PUSH', 'RECEIVE_MMS'],
     STORAGE: ['READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE'],
-    NEARBY_DEVICES: ["BLUETOOTH_ADVERTISE", "BLUETOOTH_SCAN", "BLUETOOTH_CONNECT"],
+    NEARBY_DEVICES: ['BLUETOOTH_ADVERTISE', 'BLUETOOTH_SCAN', 'BLUETOOTH_CONNECT'],
   };
 
   locationMode = {
@@ -164,21 +164,21 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   @CordovaProperty()
   cpuArchitecture: {
-      MIPS: string;
-      MIPS_64: string;
-      UNKNOWN: string;
-      ARMv6: string;
-      ARMv7: string;
-      ARMv8: string;
-      X86: string;
-      X86_64: string;
+    MIPS: string;
+    MIPS_64: string;
+    UNKNOWN: string;
+    ARMv6: string;
+    ARMv7: string;
+    ARMv8: string;
+    X86: string;
+    X86_64: string;
   };
 
   @CordovaProperty()
   remoteNotificationType: {
-      ALERT: string;
-      SOUND: string;
-      BADGE: string;
+    ALERT: string;
+    SOUND: string;
+    BADGE: string;
   };
 
   @CordovaProperty()
@@ -307,7 +307,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
     return;
   }
 
-
   // ANDROID AND IOS ONLY
 
   /**
@@ -359,7 +358,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   getLocationAuthorizationStatuses(): Promise<any> {
     return;
   }
-
 
   /**
    * Returns the location authorization status for the application.
@@ -578,7 +576,7 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   @Cordova({ platforms: ['Android', 'iOS'] })
   getArchitecture(): Promise<any> {
     return;
-  }  
+  }
 
   /**
    * Returns the current battery level of the device as a percentage.
@@ -588,7 +586,7 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   @Cordova({ platforms: ['Android', 'iOS'] })
   getCurrentBatteryLevel(): Promise<any> {
     return;
-  }  
+  }
 
   // ANDROID ONLY
 
@@ -604,7 +602,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   restart(cold: boolean): Promise<any> {
     return;
   }
-
 
   /**
    * Checks if high-accuracy locations are available to the app from GPS hardware.
@@ -664,7 +661,7 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
     return;
   }
 
-  /** 
+  /**
    * Checks if mobile data is enabled on device.
    *
    * @returns {Promise<any>}
@@ -826,7 +823,7 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   getBluetoothAuthorizationStatus(): Promise<any> {
     return;
   }
-  
+
   /**
    * Returns the individual authorization status for each Bluetooth run-time permission on Android 12+ / API 31+
    * On Android 11 / API 30 and below, all will be returned as GRANTED if the manifest has BLUETOOTH since they are implicitly granted at build-time.
@@ -900,6 +897,17 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
     sync: true,
   })
   switchToNFCSettings(): void {}
+
+  /**
+   * Open notification settings for your app
+   * On Android versions lower than O, this will open the same page as switchToSettings().
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova({ platforms: ['Android'] })
+  switchToNotificationSettings(): Promise<any> {
+    return;
+  }
 
   /**
    * Checks if NFC hardware is present on device.
@@ -1031,7 +1039,7 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
     return;
   }
 
- /**
+  /**
    * Presents limited library picker UI on iOS 14+
    *
    * @returns {Promise<any>}
