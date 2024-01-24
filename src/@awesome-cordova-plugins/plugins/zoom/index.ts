@@ -15,7 +15,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * ...
  *
  * // Initialize Zoom SDK, need to be called when app fired up.
- * this.zoomService.initialize(API_KEY, API_SECRET)
+ * this.zoomService.initialize(JWT_TOKEN)
  *   .then((success: any) => console.log(success))
  *   .catch((error: any) => console.log(error));
  *
@@ -88,12 +88,11 @@ export class Zoom extends AwesomeCordovaNativePlugin {
   /**
    * Initialize Zoom SDK.
    *
-   * @param appKey    Zoom SDK app key.
-   * @param appSecret Zoom SDK app secret.
+   * @param jwtToken    Zoom SDK app key.
    * @returns {Promise<any>}
    */
   @Cordova()
-  initialize(appKey: string, appSecret: string): Promise<any> {
+  initialize(jwtToken: string): Promise<any> {
     return;
   }
 
