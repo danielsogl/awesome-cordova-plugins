@@ -81,6 +81,7 @@ export class AdjustConfig {
   private allowIdfaReading: boolean = null; // iOS only
   private allowAdServicesInfoReading: boolean = null; // iOS only
   private coppaCompliantEnabled: boolean = null;
+  private readDeviceInfoOnceEnabled: boolean = null;
   private playStoreKidsAppEnabled: boolean = null; // Android only
   private linkMeEnabled: boolean = null; // iOS only
   private finalAndroidAttributionEnabled: boolean = null; // Android only
@@ -142,6 +143,10 @@ export class AdjustConfig {
 
   setCoppaCompliantEnabled(coppaCompliantEnabled: boolean) {
     this.coppaCompliantEnabled = coppaCompliantEnabled;
+  }
+
+  setReadDeviceInfoOnceEnabled(readDeviceInfoOnceEnabled: boolean) {
+    this.readDeviceInfoOnceEnabled = readDeviceInfoOnceEnabled;
   }
 
   setPlayStoreKidsAppEnabled(playStoreKidsAppEnabled: boolean) {
@@ -230,9 +235,7 @@ export class AdjustConfig {
     this.conversionValueUpdatedCallback = conversionValueUpdatedCallback;
   }
 
-  setSkad4ConversionValueUpdatedCallbackListener(
-    skad4ConversionValueUpdatedCallback: (skad4Data: AdjustSkad4Data) => void
-  ) {
+  setSkad4ConversionValueUpdatedCallbackListener(skad4ConversionValueUpdatedCallback: (skad4Data: AdjustSkad4Data) => void) {
     this.skad4ConversionValueUpdatedCallback = skad4ConversionValueUpdatedCallback;
   }
 
@@ -543,6 +546,7 @@ export enum AdjustUrlStrategy {
   India = 'india',
   China = 'china',
   Cn = 'cn',
+  CnOnly = 'cn-only',
   DataResidencyEU = 'data-residency-eu',
   DataResidencyTR = 'data-residency-tr',
   DataResidencyUS = 'data-residency-us',
@@ -553,10 +557,12 @@ export enum AdjustAdRevenueSource {
   AdRevenueSourceMopub = 'mopub',
   AdRevenueSourceAdMob = 'admob_sdk',
   AdRevenueSourceIronSource = 'ironsource_sdk',
-  AdRevenueSourceAdMost = 'admost_sdk',
-  AdRevenueSourceUnity = 'unity_sdk',
-  AdRevenueSourceHeliumChartboost = 'helium_chartboost_sdk',
-  AdRevenueSourcePublisher = 'publisher_sdk',
+  AdRevenueSourceAdMost = "admost_sdk",
+  AdRevenueSourceUnity = "unity_sdk",
+  AdRevenueSourceHeliumChartboost = "helium_chartboost_sdk",
+  AdRevenueSourcePublisher = "publisher_sdk",
+  AdRevenueSourceTopOn = "topon_sdk",
+  AdRevenueSourceAdx = "adx_sdk",
 }
 
 /**
@@ -612,6 +618,7 @@ export enum AdjustAdRevenueSource {
 })
 @Injectable()
 export class Adjust extends AwesomeCordovaNativePlugin {
+
   /**
    * This method initializes Adjust SDK
    *
@@ -730,7 +737,7 @@ export class Adjust extends AwesomeCordovaNativePlugin {
   gdprForgetMe(): void {}
 
   /**
-   * You can now notify Adjust when a user has exercised their right to stop sharing their data with partners for marketing purposes, but has allowed it to be shared for statistics purposes.
+   * You can now notify Adjust when a user has exercised their right to stop sharing their data with partners for marketing purposes, but has allowed it to be shared for statistics purposes. 
    * Calling the following method will instruct the Adjust SDK to communicate the user's choice to disable data sharing to the Adjust backend
    */
   @Cordova({ sync: true })
@@ -898,15 +905,32 @@ export class Adjust extends AwesomeCordovaNativePlugin {
    * This method is used to verify the App Store purchase
    *
    * @param {AdjustAppStorePurchase} purchase Adjust App Store purchase object to be verified
+   * @returns {Promise<AdjustPurchaseVerificationInfo>} Returns a promise with purchase verification outcome
    */
   @Cordova()
-  verifyAppStorePurchase(purchase: AdjustAppStorePurchase): Promise<AdjustPurchaseVerificationInfo> {}
+  verifyAppStorePurchase(purchase: AdjustAppStorePurchase): Promise<AdjustPurchaseVerificationInfo> {
+    return;
+  }
 
   /**
    * This method is used to verify the Play Store purchase
    *
    * @param {AdjustPlayStorePurchase} purchase Adjust Play Store purchase object to be verified
+   * @returns {Promise<AdjustPurchaseVerificationInfo>} Returns a promise with purchase verification outcome
    */
   @Cordova()
-  verifyPlayStorePurchase(purchase: AdjustPlayStorePurchase): Promise<AdjustPurchaseVerificationInfo> {}
+  verifyPlayStorePurchase(purchase: AdjustPlayStorePurchase): Promise<AdjustPurchaseVerificationInfo> {
+    return;
+  }
+
+  /**
+   * This method is used to send and potentially resolve shortened deep links
+   *
+   * @param {string} deeplink Potentially shortened deep link that has opened your app
+   * @returns {Promise<string>} Returns a promise with either resolved (if it was resolved) or echoed deep link
+   */
+  @Cordova()
+  processDeeplink(deeplink: string): Promise<string> {
+    return;
+  }
 }
