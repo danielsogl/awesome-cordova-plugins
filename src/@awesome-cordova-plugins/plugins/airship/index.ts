@@ -12,14 +12,14 @@ import { Observable, Observer } from 'rxjs';
 declare const window: Window & { Airship: any };
 
 /**
- * @name AirShip
+ * @name Airship
  * @description
  * This plugin does something
  * @usage
  * ```typescript
- * import { AirShip } from '@awesome-cordova-plugins/airship/ngx';
+ * import { Airship } from '@awesome-cordova-plugins/airship/ngx';
  *
- * constructor(private airShip: AirShip) { }
+ * constructor(private airShip: Airship) { }
  *
  * ...
  *
@@ -33,7 +33,7 @@ declare const window: Window & { Airship: any };
  * ```
  */
 @Plugin({
-  pluginName: 'AirShip',
+  pluginName: 'Airship',
   plugin: '@ua/cordova-airship',
   pluginRef: 'Airship',
   repo: 'https://www.npmjs.com/package/@ua/cordova-airship',
@@ -41,7 +41,7 @@ declare const window: Window & { Airship: any };
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class AirShip extends AwesomeCordovaNativePlugin {
+export class Airship extends AwesomeCordovaNativePlugin {
   public actions: AirshipActions;
   public analytics: AirshipAnalytics;
   public channel: AirshipChannel;
