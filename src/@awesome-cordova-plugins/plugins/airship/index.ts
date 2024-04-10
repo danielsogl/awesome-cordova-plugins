@@ -742,7 +742,6 @@ export interface ItemBase {
 /**
  * A channel subscription item.
  * @typedef {object} ChannelSubscriptionItem
- * @memberof PreferenceCenter
  * @property {"channel_subscription"} type
  * @property {string} id the item identifier
  * @property {?CommonDisplay} display display information
@@ -808,7 +807,6 @@ export interface SectionBase {
 
 /**
  * @typedef {object} CommonSection
- * @memberof PreferenceCenter
  * @property {"section"} type
  * @property {string} id the section identifier
  * @property {?CommonDisplay} display display information
