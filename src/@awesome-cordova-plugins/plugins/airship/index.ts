@@ -1229,7 +1229,7 @@ export interface AirshipPushIOS {
    * @param success Success callback.
    * @param error Error callback.
    */
-  setQuietTimeEnabled(quietTime: iOS.QuietTime, success?: () => void, error?: (err: string) => void): void;
+  setQuietTime(quietTime: iOS.QuietTime, success?: () => void, error?: (err: string) => void): void;
 
   /**
    * Gets the quiet time settings.
