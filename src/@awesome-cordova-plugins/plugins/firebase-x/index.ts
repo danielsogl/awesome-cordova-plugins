@@ -116,7 +116,7 @@ export interface MessagePayloadAps {
   alert?: {
     title: string;
     body: string;
-  }
+  };
 }
 export interface MessagePayload {
   title?: string;
@@ -794,6 +794,26 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   activateFetched(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Asynchronously fetches and then activates the fetched configs.
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  fetchAndActivate(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Returns a Map of Firebase Remote Config key value pairs.
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getAll(): Promise<any> {
     return;
   }
 
