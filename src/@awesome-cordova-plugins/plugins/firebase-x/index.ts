@@ -811,7 +811,7 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   /**
    * Returns a Map of Firebase Remote Config key value pairs.
    *
-   * @param {Function} success - callback function which will be passed a {boolean} argument indicating whether result the current call activated the fetched config.
+   * @param {Function} success - callback function which will be passed an {object} argument where key is the remote config key and value is the value as a string. If the expected key value is a different primitive type then cast it to the appropriate type.
    * @param {Function} error - callback function which will be passed a {string} error message as an argument
    */
   @Cordova()
