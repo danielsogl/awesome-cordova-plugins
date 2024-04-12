@@ -802,10 +802,9 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
    *
    * @param {Function} success - callback function which will be passed a {boolean} argument indicating whether result the current call activated the fetched config.
    * @param {Function} error - callback function which will be passed a {string} error message as an argument
-   * @returns {Promise<any>}
    */
   @Cordova()
-  fetchAndActivate(success: () => void, error: (err: string) => void): Promise<any> {
+  fetchAndActivate(success: () => void, error: (err: string) => void): void {
     return;
   }
 
@@ -814,10 +813,9 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
    *
    * @param {Function} success - callback function which will be passed a {boolean} argument indicating whether result the current call activated the fetched config.
    * @param {Function} error - callback function which will be passed a {string} error message as an argument
-   * @returns {Promise<any>}
    */
   @Cordova()
-  getAll(success: () => void, error: (err: string) => void): Promise<any> {
+  getAll(success: () => void, error: (err: string) => void): void {
     return;
   }
 
