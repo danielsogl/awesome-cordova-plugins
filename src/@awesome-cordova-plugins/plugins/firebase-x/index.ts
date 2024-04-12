@@ -116,7 +116,7 @@ export interface MessagePayloadAps {
   alert?: {
     title: string;
     body: string;
-  }
+  };
 }
 export interface MessagePayload {
   title?: string;
@@ -830,13 +830,21 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * Android only. Change the settings for the FirebaseRemoteConfig object's operations.
+   * Change the settings for the FirebaseRemoteConfig object's operations.
    *
-   * @param {Object} settings
+   * @param {object} fetchTimeout - fetch timeout in seconds. Default is 60 seconds.
+   * @param {string} minimumFetchInterval - minimum fetch inteval in seconds. Default is 12 hours.
+   * @param {Function} success - callback function to be call on successfully setting the remote config settings
+   * @param {Function} error - callback function which will be passed a {string} error message as an argument
    * @returns {Promise<any>}
    */
   @Cordova()
-  setConfigSettings(settings: any): Promise<any> {
+  setConfigSettings(
+    fetchTimeout: number,
+    minimumFetchInterval: number,
+    success: (res: string) => void,
+    error: (err: string) => void
+  ): Promise<any> {
     return;
   }
 
