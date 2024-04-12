@@ -836,7 +836,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
    * @param {number} minimumFetchInterval - minimum fetch inteval in seconds. Default is 12 hours.
    * @param {Function} success - callback function to be call on successfully setting the remote config settings
    * @param {Function} error - callback function which will be passed a {string} error message as an argument
-   * @returns {Promise<any>}
    */
   @Cordova()
   setConfigSettings(
@@ -844,7 +843,7 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
     minimumFetchInterval: number,
     success: () => void,
     error: (err: string) => void
-  ): Promise<any> {
+  ): void {
     return;
   }
 
