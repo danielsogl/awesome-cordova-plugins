@@ -226,26 +226,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * Asynchronously fetches and then activates the fetched configs.
-   *
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  fetchAndActivate(): Promise<any> {
-    return;
-  }
-
-  /**
-   * Returns a Map of Firebase Remote Config key value pairs.
-   *
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  getAll(): Promise<any> {
-    return;
-  }
-
-  /**
    * Retrieve a Remote Config value
    *
    * @param {string} key
