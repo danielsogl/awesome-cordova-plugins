@@ -804,7 +804,7 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
    * @param {Function} error - callback function which will be passed a {string} error message as an argument
    */
   @Cordova()
-  fetchAndActivate(success: () => void, error: (err: string) => void): void {
+  fetchAndActivate(success: (activated: boolean) => void, error: (err: string) => void): void {
     return;
   }
 
@@ -815,7 +815,7 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
    * @param {Function} error - callback function which will be passed a {string} error message as an argument
    */
   @Cordova()
-  getAll(success: () => void, error: (err: string) => void): void {
+  getAll(success: (values: any) => void, error: (err: string) => void): void {
     return;
   }
 
