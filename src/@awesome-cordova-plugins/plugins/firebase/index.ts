@@ -216,7 +216,7 @@ export class Firebase extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * Activate the Remote Config fetched config.
+   * Activate the Remote Config fetched config
    *
    * @returns {Promise<any>}
    */
