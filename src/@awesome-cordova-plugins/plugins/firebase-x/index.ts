@@ -800,20 +800,24 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   /**
    * Asynchronously fetches and then activates the fetched configs.
    *
+   * @param {Function} success - callback function which will be passed a {boolean} argument indicating whether result the current call activated the fetched config.
+   * @param {Function} error - callback function which will be passed a {string} error message as an argument
    * @returns {Promise<any>}
    */
   @Cordova()
-  fetchAndActivate(): Promise<any> {
+  fetchAndActivate(success: () => void, error: (err: string) => void): Promise<any> {
     return;
   }
 
   /**
    * Returns a Map of Firebase Remote Config key value pairs.
    *
+   * @param {Function} success - callback function which will be passed a {boolean} argument indicating whether result the current call activated the fetched config.
+   * @param {Function} error - callback function which will be passed a {string} error message as an argument
    * @returns {Promise<any>}
    */
   @Cordova()
-  getAll(): Promise<any> {
+  getAll(success: () => void, error: (err: string) => void): Promise<any> {
     return;
   }
 
