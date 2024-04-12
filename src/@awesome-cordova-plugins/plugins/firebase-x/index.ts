@@ -842,7 +842,7 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   setConfigSettings(
     fetchTimeout: number,
     minimumFetchInterval: number,
-    success: (res: string) => void,
+    success: () => void,
     error: (err: string) => void
   ): Promise<any> {
     return;
