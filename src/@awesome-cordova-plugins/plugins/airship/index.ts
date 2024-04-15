@@ -5,7 +5,6 @@ import {
   AwesomeCordovaNativePlugin,
   CordovaInstance,
   InstanceProperty,
-  CordovaCheck,
 } from '@awesome-cordova-plugins/core';
 import { Observable, Observer } from 'rxjs';
 
@@ -54,7 +53,9 @@ export class Airship extends AwesomeCordovaNativePlugin {
   public privacyManager: AirshipPrivacyManager;
   public push: AirshipPush;
 
-  @CordovaCheck()
+  /**
+   * Call after platform ready
+   */
   initialize() {
     this.channel = new AirshipChannel();
     this.contact = new AirshipContact();
