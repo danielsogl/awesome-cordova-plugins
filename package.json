@@ -36,7 +36,7 @@
     "@types/jest": "27.5.2",
     "@types/lodash": "4.14.202",
     "@types/node": "20.10.6",
-    "@types/rimraf": "3.0.2",
+    "@types/rimraf": "4.0.5",
     "@types/webpack": "5.28.5",
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
