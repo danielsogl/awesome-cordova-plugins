@@ -5,7 +5,10 @@ export class AdjustEvent {
   private eventToken: string;
   private revenue: number;
   private currency: string;
+  private receipt: string;
+  private productId: string;
   private transactionId: string;
+  private purchaseToken: string;
   private callbackId: string;
   private callbackParameters: string[] = [];
   private partnerParameters: string[] = [];
@@ -36,6 +39,18 @@ export class AdjustEvent {
   setCallbackId(callbackId: string) {
     this.callbackId = callbackId;
   }
+
+  setReceipt(receipt: string) {
+    this.receipt = receipt;
+  }
+
+  setProductId(productId: string) {
+    this.productId = productId;
+  }
+
+  setPurchaseToken(purchaseToken: string) {
+    this.purchaseToken = purchaseToken;
+  }
 }
 
 export class AdjustConfig {
@@ -65,9 +80,11 @@ export class AdjustConfig {
   private allowiAdInfoReading: boolean = null; // iOS only
   private allowIdfaReading: boolean = null; // iOS only
   private allowAdServicesInfoReading: boolean = null; // iOS only
-  private coppaCompliantEnabled: boolean = null; 
+  private coppaCompliantEnabled: boolean = null;
   private playStoreKidsAppEnabled: boolean = null; // Android only
   private linkMeEnabled: boolean = null; // iOS only
+  private finalAndroidAttributionEnabled: boolean = null; // Android only
+  private attConsentWaitingInterval: number = null; // iOS only
 
   private attributionCallback: (attribution: AdjustAttribution) => void = null;
   private eventTrackingSucceededCallback: (event: AdjustEventSuccess) => void = null;
@@ -76,6 +93,7 @@ export class AdjustConfig {
   private sessionTrackingFailedCallback: (session: AdjustSessionFailure) => void = null;
   private deferredDeeplinkCallback: (uri: string) => void = null;
   private conversionValueUpdatedCallback: (conversionValue: number) => void = null;
+  private skad4ConversionValueUpdatedCallback: (skad4Data: AdjustSkad4Data) => void = null;
 
   constructor(appToken: string, environment: AdjustEnvironment) {
     this.appToken = appToken;
@@ -174,6 +192,14 @@ export class AdjustConfig {
     this.linkMeEnabled = linkMeEnabled;
   }
 
+  setFinalAndroidAttributionEnabled(finalAndroidAttributionEnabled: boolean) {
+    this.finalAndroidAttributionEnabled = finalAndroidAttributionEnabled;
+  }
+
+  setAttConsentWaitingInterval(attConsentWaitingInterval: number) {
+    this.attConsentWaitingInterval = attConsentWaitingInterval;
+  }
+
   setAttributionCallbackListener(attributionCallback: (attribution: AdjustAttribution) => void) {
     this.attributionCallback = attributionCallback;
   }
@@ -204,6 +230,12 @@ export class AdjustConfig {
     this.conversionValueUpdatedCallback = conversionValueUpdatedCallback;
   }
 
+  setSkad4ConversionValueUpdatedCallbackListener(
+    skad4ConversionValueUpdatedCallback: (skad4Data: AdjustSkad4Data) => void
+  ) {
+    this.skad4ConversionValueUpdatedCallback = skad4ConversionValueUpdatedCallback;
+  }
+
   private getAttributionCallback() {
     return this.attributionCallback;
   }
@@ -232,6 +264,10 @@ export class AdjustConfig {
     return this.conversionValueUpdatedCallback;
   }
 
+  private getSkad4ConversionValueUpdatedCallback() {
+    return this.skad4ConversionValueUpdatedCallback;
+  }
+
   private hasAttributionListener() {
     return this.attributionCallback !== null;
   }
@@ -258,6 +294,10 @@ export class AdjustConfig {
 
   private hasConversionValueUpdatedCallbackListener() {
     return this.conversionValueUpdatedCallback !== null;
+  }
+
+  private hasSkad4ConversionValueUpdatedCallbackListener() {
+    return this.skad4ConversionValueUpdatedCallback !== null;
   }
 }
 
@@ -401,6 +441,28 @@ export class AdjustAdRevenue {
   }
 }
 
+export class AdjustAppStorePurchase {
+  private receipt: string;
+  private productId: string;
+  private transactionId: string;
+
+  constructor(receipt: string, productId: string, transactionId: string) {
+    this.receipt = receipt;
+    this.productId = productId;
+    this.transactionId = transactionId;
+  }
+}
+
+export class AdjustPlayStorePurchase {
+  private productId: string;
+  private purchaseToken: string;
+
+  constructor(productId: string, purchaseToken: string) {
+    this.productId = productId;
+    this.purchaseToken = purchaseToken;
+  }
+}
+
 export interface AdjustAttribution {
   trackerToken: string;
   trackerName: string;
@@ -450,6 +512,18 @@ export interface AdjustEventFailure {
   jsonResponse: string;
 }
 
+export interface AdjustSkad4Data {
+  fineValue: number;
+  coarseValue: string;
+  lockWindow: boolean;
+}
+
+export interface AdjustPurchaseVerificationInfo {
+  verificationStatus: string;
+  code: number;
+  message: string;
+}
+
 export enum AdjustEnvironment {
   Sandbox = 'sandbox',
   Production = 'production',
@@ -468,6 +542,7 @@ export enum AdjustLogLevel {
 export enum AdjustUrlStrategy {
   India = 'india',
   China = 'china',
+  Cn = 'cn',
   DataResidencyEU = 'data-residency-eu',
   DataResidencyTR = 'data-residency-tr',
   DataResidencyUS = 'data-residency-us',
@@ -478,10 +553,10 @@ export enum AdjustAdRevenueSource {
   AdRevenueSourceMopub = 'mopub',
   AdRevenueSourceAdMob = 'admob_sdk',
   AdRevenueSourceIronSource = 'ironsource_sdk',
-  AdRevenueSourceAdMost = "admost_sdk",
-  AdRevenueSourceUnity = "unity_sdk",
-  AdRevenueSourceHeliumChartboost = "helium_chartboost_sdk",
-  AdRevenueSourcePublisher = "publisher_sdk",
+  AdRevenueSourceAdMost = 'admost_sdk',
+  AdRevenueSourceUnity = 'unity_sdk',
+  AdRevenueSourceHeliumChartboost = 'helium_chartboost_sdk',
+  AdRevenueSourcePublisher = 'publisher_sdk',
 }
 
 /**
@@ -511,13 +586,17 @@ export enum AdjustAdRevenueSource {
  * AdjustSessionFailure
  * AdjustEventSuccess
  * AdjustEventFailure
+ * AdjustSkad4Data
+ * AdjustPurchaseVerificationInfo
  * @classes
  * AdjustEvent
  * AdjustConfig
  * AdjustAppStoreSubscription
  * AdjustPlayStoreSubscription
  * AdjustThirdPartySharing
- * AdjustAdReenue
+ * AdjustAdRevenue
+ * AdjustAppStorePurchase
+ * AdjustPlayStorePurchase
  * @enums
  * AdjustEnvironment
  * AdjustLogLevel
@@ -533,7 +612,6 @@ export enum AdjustAdRevenueSource {
 })
 @Injectable()
 export class Adjust extends AwesomeCordovaNativePlugin {
-
   /**
    * This method initializes Adjust SDK
    *
@@ -652,7 +730,7 @@ export class Adjust extends AwesomeCordovaNativePlugin {
   gdprForgetMe(): void {}
 
   /**
-   * You can now notify Adjust when a user has exercised their right to stop sharing their data with partners for marketing purposes, but has allowed it to be shared for statistics purposes. 
+   * You can now notify Adjust when a user has exercised their right to stop sharing their data with partners for marketing purposes, but has allowed it to be shared for statistics purposes.
    * Calling the following method will instruct the Adjust SDK to communicate the user's choice to disable data sharing to the Adjust backend
    */
   @Cordova({ sync: true })
@@ -815,4 +893,20 @@ export class Adjust extends AwesomeCordovaNativePlugin {
   getLastDeeplink(): Promise<string> {
     return;
   }
+
+  /**
+   * This method is used to verify the App Store purchase
+   *
+   * @param {AdjustAppStorePurchase} purchase Adjust App Store purchase object to be verified
+   */
+  @Cordova()
+  verifyAppStorePurchase(purchase: AdjustAppStorePurchase): Promise<AdjustPurchaseVerificationInfo> {}
+
+  /**
+   * This method is used to verify the Play Store purchase
+   *
+   * @param {AdjustPlayStorePurchase} purchase Adjust Play Store purchase object to be verified
+   */
+  @Cordova()
+  verifyPlayStorePurchase(purchase: AdjustPlayStorePurchase): Promise<AdjustPurchaseVerificationInfo> {}
 }

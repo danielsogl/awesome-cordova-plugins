@@ -1,7 +1,5 @@
-# Adjust
-
-```
-$ ionic cordova plugin add com.adjust.sdk
+# AdjustThirdPartySharing
+ova plugin add com.adjust.sdk
 $ npm install @awesome-cordova-plugins/adjust
 ```
 
