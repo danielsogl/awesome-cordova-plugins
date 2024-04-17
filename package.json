@@ -34,7 +34,7 @@
     "@types/cordova": "11.0.3",
     "@types/fs-extra": "11.0.4",
     "@types/jest": "27.5.2",
-    "@types/lodash": "4.14.202",
+    "@types/lodash": "4.17.0",
     "@types/node": "20.10.6",
     "@types/rimraf": "4.0.5",
     "@types/webpack": "5.28.5",
