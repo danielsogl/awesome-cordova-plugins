@@ -1107,6 +1107,13 @@ class AirshipPush {
   }
 
   /**
+   * Background push received listener.
+   */
+  onBackgroundPushReceived(): Observable<PushReceivedEvent> {
+    return this.listenerToObservable('onBackgroundPushReceived');
+  }
+
+  /**
    * Notification response listener.
    */
   onNotificationResponse(): Observable<NotificationResponseEvent> {
