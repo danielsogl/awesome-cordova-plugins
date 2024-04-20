@@ -116,6 +116,7 @@ export interface PushTokenReceivedEvent {
  */
 export interface PushReceivedEvent {
   pushPayload: PushPayload;
+  isForeground: boolean;
 }
 
 /**
@@ -1104,13 +1105,6 @@ class AirshipPush {
    */
   onPushReceived(): Observable<PushReceivedEvent> {
     return this.listenerToObservable('onPushReceived');
-  }
-
-  /**
-   * Background push received listener.
-   */
-  onBackgroundPushReceived(): Observable<PushReceivedEvent> {
-    return this.listenerToObservable('onBackgroundPushReceived');
   }
 
   /**
