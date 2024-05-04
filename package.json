@@ -41,7 +41,7 @@
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
     "async-promise-queue": "1.0.5",
-    "conventional-changelog-cli": "4.1.0",
+    "conventional-changelog-cli": "5.0.0",
     "cz-conventional-changelog": "3.3.0",
     "dgeni": "0.4.14",
     "dgeni-packages": "0.16.10",
