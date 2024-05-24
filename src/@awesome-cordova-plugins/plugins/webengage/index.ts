@@ -117,6 +117,17 @@ export class WebengageUser extends AwesomeCordovaNativePlugin {
   setAttribute(key: string, value: any): Promise<any> {
     return;
   }
+
+  /**
+   * Sets Device optIn
+   *
+   * @param {boolean} optIn
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  setDevicePushOptIn(optIn: boolean): Promise<any> {
+    return;
+  }
 }
 
 /**
