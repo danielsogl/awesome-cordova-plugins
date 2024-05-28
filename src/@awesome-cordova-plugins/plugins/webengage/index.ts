@@ -28,7 +28,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class Webengage extends AwesomeCordovaNativePlugin {
   /**
    * Initializes WebEngage SDK
-   *
    * @param {any} [config]
    * @returns {Promise<any>}
    */
@@ -36,10 +35,19 @@ export class Webengage extends AwesomeCordovaNativePlugin {
   engage(config?: any): Promise<any> {
     return;
   }
+  // webengage.engage({"android":{"autoGAIDTracking":false}})
+
+  /**
+   * Starts Tracking Google Advertising ID
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  startGAIDTracking(): Promise<any> {
+    return;
+  }
 
   /**
    * Sets WebEngage SDK configuration
-   *
    * @param {string} key
    * @param {any} value
    * @returns {Promise<any>}
@@ -51,7 +59,6 @@ export class Webengage extends AwesomeCordovaNativePlugin {
 
   /**
    * Tracks event
-   *
    * @param {string} eventName
    * @param {any} [attributes]
    * @returns {Promise<any>}
@@ -63,7 +70,6 @@ export class Webengage extends AwesomeCordovaNativePlugin {
 
   /**
    * Tracks screen
-   *
    * @param {string} eventName
    * @param screenName
    * @param {any} [screenData]
@@ -87,7 +93,6 @@ export class Webengage extends AwesomeCordovaNativePlugin {
 export class WebengageUser extends AwesomeCordovaNativePlugin {
   /**
    * Logs user in
-   *
    * @param {string} userId
    * @returns {Promise<any>}
    */
@@ -98,7 +103,6 @@ export class WebengageUser extends AwesomeCordovaNativePlugin {
 
   /**
    * Logs user out
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -108,7 +112,6 @@ export class WebengageUser extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets user attribute
-   *
    * @param {string} key
    * @param {any} value
    * @returns {Promise<any>}
@@ -120,12 +123,22 @@ export class WebengageUser extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets Device optIn
-   *
    * @param {boolean} optIn
    * @returns {Promise<any>}
    */
   @Cordova()
   setDevicePushOptIn(optIn: boolean): Promise<any> {
+    return;
+  }
+
+  /**
+   * Sets user attribute
+   * @param {string} channel
+   * @param {any} optIn
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  setUserOptIn(channel: string, optIn: any): Promise<any> {
     return;
   }
 }
@@ -142,7 +155,6 @@ export class WebengageUser extends AwesomeCordovaNativePlugin {
 export class WebengagePush extends AwesomeCordovaNativePlugin {
   /**
    * Callback function is invoked when a push notification is clicked
-   *
    * @param {any} callback
    * @returns {Promise<any>}
    */
@@ -153,7 +165,6 @@ export class WebengagePush extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets push notification configuration
-   *
    * @param {string} key
    * @param {any} value
    * @returns {Promise<any>}
@@ -176,7 +187,6 @@ export class WebengagePush extends AwesomeCordovaNativePlugin {
 export class WebengageNotification extends AwesomeCordovaNativePlugin {
   /**
    * Callback function is invoked when a in-app notification is shown
-   *
    * @param {any} callback
    * @returns {Promise<any>}
    */
@@ -186,8 +196,17 @@ export class WebengageNotification extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Callback function is invoked before a in-app notification is shown
+   * @param {any} callback
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  onPrepared(callback: any): Promise<any> {
+    return;
+  }
+
+  /**
    * Callback function is invoked when a in-app notification is clicked
-   *
    * @param {any} callback
    * @returns {Promise<any>}
    */
@@ -198,7 +217,6 @@ export class WebengageNotification extends AwesomeCordovaNativePlugin {
 
   /**
    * Callback function is invoked when a in-app notification is dismissed
-   *
    * @param {any} callback
    * @returns {Promise<any>}
    */
@@ -209,7 +227,6 @@ export class WebengageNotification extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets in-app notification configuration
-   *
    * @param {string} key
    * @param {any} value
    * @returns {Promise<any>}
