@@ -118,6 +118,7 @@ export interface MessagePayloadAps {
     body: string;
   };
 }
+
 export interface MessagePayload {
   title?: string;
   body?: string;
@@ -1030,6 +1031,15 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
     success: (docs: any) => void,
     error: (err: string) => void
   ): Promise<any> {
+    return;
+  }
+  /**
+   * Set new V2 consent mode
+   *
+   * @param {array} consent array of consent
+   */
+  @Cordova()
+  setAnalyticsConsentMode(consent: []): Promise<any> {
     return;
   }
 }
