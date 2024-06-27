@@ -35,7 +35,6 @@ export class Webengage extends AwesomeCordovaNativePlugin {
   engage(config?: any): Promise<any> {
     return;
   }
-  // webengage.engage({"android":{"autoGAIDTracking":false}})
 
   /**
    * Starts Tracking Google Advertising ID
