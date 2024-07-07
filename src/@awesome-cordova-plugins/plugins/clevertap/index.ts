@@ -99,7 +99,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    * Call this method to set a custom locale for the clevertap instance.
    * @param locale {string}
    * @returns {Promise<any>}
-   */  
+   */
   @Cordova()
   setLocale(locale: string): Promise<any> {
     return;
@@ -611,7 +611,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  profileIncrementValueBy(key: string,value: number): Promise<any> {
+  profileIncrementValueBy(key: string, value: number): Promise<any> {
     return;
   }
 
@@ -623,7 +623,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  profileDecrementValueBy(key: string,value: number): Promise<any> {
+  profileDecrementValueBy(key: string, value: number): Promise<any> {
     return;
   }
 
@@ -660,6 +660,27 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   resumeInAppNotifications(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Deletes all images and gifs which are preloaded for inapps in cs mode.
+   *
+   * @param expiredOnly {boolean} - to clear only assets which will not be needed further for inapps
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  clearInAppResources(expiredOnly: boolean): Promise<any> {
+    return;
+  }
+
+  /**
+   * Fetches In Apps from server.
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  fetchInApps(): Promise<any> {
     return;
   }
 
@@ -836,7 +857,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   markReadInboxMessageForId(messageId: string): Promise<any> {
     return;
   }
-  
+
   /**
    * Call this to Mark Read Inbox Messages For Ids in bulk
    *
@@ -857,7 +878,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   dismissInbox(): Promise<any> {
     return;
   }
-  
+
   /**
    * Call this to Mark Push Inbox Notification Viewed Event for Id
    *
@@ -1079,7 +1100,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   /****************************
    * Product Experiences methods
    ****************************/
-  
+
   /**
    *
    * Uploads variables to the server. Requires Development/Debug build/configuration.
@@ -1113,7 +1134,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * Create variables. 
+   * Create variables.
    * @returns {Promise<any>}
    * @param {object} variables The JSON Object specifying the varibles to be created.
    */
@@ -1131,7 +1152,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   getVariable(name: string): Promise<any> {
     return;
   }
-  
+
   /**
    * Get all variables via a JSON object.
    * @returns {Promise<any>}
@@ -1194,7 +1215,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
     return;
   }
 
-  
   /*******************
    * Developer Options
    ******************/

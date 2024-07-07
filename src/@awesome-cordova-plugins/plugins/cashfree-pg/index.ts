@@ -219,6 +219,27 @@ export class CFWebCheckoutPayment implements CheckoutPayment {
   }
 }
 
+export class CFUPIIntentCheckoutPayment implements CheckoutPayment {
+  private readonly session: CFSession;
+  private readonly theme: CFTheme = new CFThemeBuilder().build();
+  version: string;
+
+  constructor(session: CFSession, theme: CFTheme | null) {
+    this.session = session;
+    if (theme !== null) {
+      this.theme = theme;
+    }
+  }
+
+  getSession() {
+    return this.session;
+  }
+
+  getTheme() {
+    return this.theme;
+  }
+}
+
 interface CFResult {
   orderID: string;
 }
@@ -262,6 +283,15 @@ export class CFPaymentGateway extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   doWebCheckoutPayment(webCheckoutPayment: CFWebCheckoutPayment) {
+    return;
+  }
+
+  /**
+   * Initiate UPI Checkout Payment.
+   * @param {CFUPIIntentCheckoutPayment} [upiCheckoutPayment] webCheckoutPaymentObject information
+   */
+  @Cordova()
+  doUPIPayment(upiCheckoutPayment: CFUPIIntentCheckoutPayment) {
     return;
   }
 
