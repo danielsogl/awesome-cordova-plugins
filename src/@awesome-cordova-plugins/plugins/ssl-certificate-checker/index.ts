@@ -42,7 +42,7 @@ export class SSLCertificateChecker extends AwesomeCordovaNativePlugin {
    * @return {Promise<void>} Returns a promise that resolves if the certificate is valid, otherwise rejects with an error.
    */
   @Cordova()
-  check(serverURL: string, allowedFingerprint: string): Promise<void> {
+  check(serverURL: string, allowedFingerprint: string | string[]): Promise<void> {
     return;
   }
 
@@ -56,7 +56,7 @@ export class SSLCertificateChecker extends AwesomeCordovaNativePlugin {
    * @deprecated This function is considered insecure.
    */
   @Cordova()
-  checkInCertChain(serverURL: string, allowedFingerprint: string): Promise<void> {
+  checkInCertChain(serverURL: string, allowedFingerprint: string | string[]): Promise<void> {
     return;
   }
 }
