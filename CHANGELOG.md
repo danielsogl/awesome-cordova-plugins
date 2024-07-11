@@ -1,3 +1,22 @@
+# [6.8.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.7.0...v6.8.0) (2024-07-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency tslib to v2.6.3 ([#4786](https://github.com/danielsogl/awesome-cordova-plugins/issues/4786)) [skip ci] ([50ab537](https://github.com/danielsogl/awesome-cordova-plugins/commit/50ab537fdd9f875f51ce1e4c7ffcf1a27c6d50e8))
+* **ssl-certificate-checker:** adjust method interfaces to follow plugin api ([#4799](https://github.com/danielsogl/awesome-cordova-plugins/issues/4799)) ([0c39ec9](https://github.com/danielsogl/awesome-cordova-plugins/commit/0c39ec959ab04e02065a98685f5293346f5939ac))
+
+
+### Features
+
+* **airship:** add isForeground to push received events ([#4763](https://github.com/danielsogl/awesome-cordova-plugins/issues/4763)) ([4e933e8](https://github.com/danielsogl/awesome-cordova-plugins/commit/4e933e8e932c8db403b00d6b63713b63aa758071))
+* **barkoder:** add plugin ([#4782](https://github.com/danielsogl/awesome-cordova-plugins/issues/4782)) ([12b8046](https://github.com/danielsogl/awesome-cordova-plugins/commit/12b8046541dcf791027695a2aa8115124671ffe0))
+* **firebase-x:** add consent mode ([#4779](https://github.com/danielsogl/awesome-cordova-plugins/issues/4779)) ([09bc540](https://github.com/danielsogl/awesome-cordova-plugins/commit/09bc540b80c299aae70430b83f04d0a7dc6c7fec))
+* **genius-scan:** add plugin ([#4775](https://github.com/danielsogl/awesome-cordova-plugins/issues/4775)) [skip ci] ([90efdc9](https://github.com/danielsogl/awesome-cordova-plugins/commit/90efdc9481fa8b45d10f47de1b3081c177630e99))
+* **webengage:** add new methods ([#4784](https://github.com/danielsogl/awesome-cordova-plugins/issues/4784)) ([9b950eb](https://github.com/danielsogl/awesome-cordova-plugins/commit/9b950ebc46be9d07277450cdba55446e652fd30d))
+
+
+
 # [6.7.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.6.0...v6.7.0) (2024-04-17)
 
 
