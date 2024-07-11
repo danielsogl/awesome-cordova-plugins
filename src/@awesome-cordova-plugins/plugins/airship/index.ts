@@ -116,6 +116,7 @@ export interface PushTokenReceivedEvent {
  */
 export interface PushReceivedEvent {
   pushPayload: PushPayload;
+  isForeground: boolean;
 }
 
 /**
