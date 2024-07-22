@@ -631,7 +631,7 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
   @Cordova()
   fetchInboxMessages(token: string, externalUserId: string, filterOptions: MMInboxFilterOptions): Promise<MMInbox> {
     return;
-  };
+  }
 
   /**
    * Fetch mobile inbox without token from the server.
@@ -645,7 +645,7 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
   @Cordova()
   fetchInboxMessagesWithoutToken(externalUserId: string, filterOptions: MMInboxFilterOptions): Promise<MMInbox> {
     return;
-  };
+  }
 
   /**
    * Asynchronously marks inbox messages as seen
@@ -658,6 +658,5 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
   @Cordova()
   setInboxMessagesSeen(externalUserId: string, messageIds: string[]): Promise<string[]> {
     return;
-  };
-
+  }
 }
