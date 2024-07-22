@@ -17,7 +17,8 @@ export type Event =
   | 'depersonalized'
   | 'inAppChat.availabilityUpdated'
   | 'inAppChat.unreadMessageCounterUpdated'
-  | 'deeplink';
+  | 'deeplink'
+  | 'inAppChat.viewStateChanged';
 
 export interface CustomEvent {
   definitionId: string;
@@ -31,6 +32,7 @@ export interface Configuration {
   applicationCode: string;
   geofencingEnabled?: boolean;
   inAppChatEnabled?: boolean;
+  fullFeaturedInAppsEnabled?: boolean | undefined;
   /**
    * Message storage save callback
    */
@@ -167,6 +169,20 @@ export interface Message {
   webViewUrl?: string;
   inAppOpenTitle?: string | undefined;
   inAppDismissTitle?: string;
+  topic?: string | undefined;
+}
+
+export interface MMInbox {
+  countTotal: number;
+  countUnread: number;
+  messages?: Message[] | undefined;
+}
+
+export interface MMInboxFilterOptions {
+  fromDateTime?: string | undefined;
+  toDateTime?: string | undefined;
+  topic?: string | undefined;
+  limit?: number | undefined;
 }
 
 export interface MobileMessagingError {
@@ -592,4 +608,56 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
   resetMessageCounter() {
     return;
   }
+
+  /**
+   * Registers for Android POST_NOTIFICATIONS permission
+   * @name registerForAndroidRemoteNotifications
+   */
+  @Cordova()
+  registerForAndroidRemoteNotifications() {
+    return;
+  }
+
+  /**
+   * Fetch mobile inbox data from the server.
+   *
+   * @name fetchInboxMessages
+   * @param token access token (JWT in a strictly predefined format) required for current user to have access to the Inbox messages
+   * @param externalUserId External User ID is meant to be an ID of a user in an external (non-Infobip) service
+   * @param filterOptions filtering options applied to messages list in response. Nullable, will return default number of messages
+   * @param callback will be called on success
+   * @param {Function} errorCallback will be called on error
+   */
+  @Cordova()
+  fetchInboxMessages(token: string, externalUserId: string, filterOptions: MMInboxFilterOptions): Promise<MMInbox> {
+    return;
+  };
+
+  /**
+   * Fetch mobile inbox without token from the server.
+   *
+   * @name fetchInboxMessagesWithoutToken
+   * @param externalUserId External User ID is meant to be an ID of a user in an external (non-Infobip) service
+   * @param filterOptions filtering options applied to messages list in response. Nullable, will return default number of messages
+   * @param callback will be called on success
+   * @param {Function} errorCallback will be called on error
+   */
+  @Cordova()
+  fetchInboxMessagesWithoutToken(externalUserId: string, filterOptions: MMInboxFilterOptions): Promise<MMInbox> {
+    return;
+  };
+
+  /**
+   * Asynchronously marks inbox messages as seen
+   *
+   * @param externalUserId External User ID is meant to be an ID of a user in an external (non-Infobip) service
+   * @param messageIds array of inbox messages identifiers that need to be marked as seen
+   * @param callback will be called on success
+   * @param {Function} errorCallback will be called on error
+   */
+  @Cordova()
+  setInboxMessagesSeen(externalUserId: string, messageIds: string[]): Promise<string[]> {
+    return;
+  };
+
 }
