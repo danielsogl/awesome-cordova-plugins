@@ -1,3 +1,45 @@
+# [6.8.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.7.0...v6.8.0) (2024-07-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency tslib to v2.6.3 ([#4786](https://github.com/danielsogl/awesome-cordova-plugins/issues/4786)) [skip ci] ([50ab537](https://github.com/danielsogl/awesome-cordova-plugins/commit/50ab537fdd9f875f51ce1e4c7ffcf1a27c6d50e8))
+* **ssl-certificate-checker:** adjust method interfaces to follow plugin api ([#4799](https://github.com/danielsogl/awesome-cordova-plugins/issues/4799)) ([0c39ec9](https://github.com/danielsogl/awesome-cordova-plugins/commit/0c39ec959ab04e02065a98685f5293346f5939ac))
+
+
+### Features
+
+* **airship:** add isForeground to push received events ([#4763](https://github.com/danielsogl/awesome-cordova-plugins/issues/4763)) ([4e933e8](https://github.com/danielsogl/awesome-cordova-plugins/commit/4e933e8e932c8db403b00d6b63713b63aa758071))
+* **barkoder:** add plugin ([#4782](https://github.com/danielsogl/awesome-cordova-plugins/issues/4782)) ([12b8046](https://github.com/danielsogl/awesome-cordova-plugins/commit/12b8046541dcf791027695a2aa8115124671ffe0))
+* **firebase-x:** add consent mode ([#4779](https://github.com/danielsogl/awesome-cordova-plugins/issues/4779)) ([09bc540](https://github.com/danielsogl/awesome-cordova-plugins/commit/09bc540b80c299aae70430b83f04d0a7dc6c7fec))
+* **genius-scan:** add plugin ([#4775](https://github.com/danielsogl/awesome-cordova-plugins/issues/4775)) [skip ci] ([90efdc9](https://github.com/danielsogl/awesome-cordova-plugins/commit/90efdc9481fa8b45d10f47de1b3081c177630e99))
+* **webengage:** add new methods ([#4784](https://github.com/danielsogl/awesome-cordova-plugins/issues/4784)) ([9b950eb](https://github.com/danielsogl/awesome-cordova-plugins/commit/9b950ebc46be9d07277450cdba55446e652fd30d))
+
+
+
+# [6.7.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.6.0...v6.7.0) (2024-04-17)
+
+
+### Bug Fixes
+
+* 🐛 wrong top package main field ([#4736](https://github.com/danielsogl/awesome-cordova-plugins/issues/4736)) ([74b93d7](https://github.com/danielsogl/awesome-cordova-plugins/commit/74b93d749968c06d2ce4a653cbc5edeb9cfdd368))
+* **firebase-x:** filters for fetchFirestoreCollection ([#4733](https://github.com/danielsogl/awesome-cordova-plugins/issues/4733)) ([23e6147](https://github.com/danielsogl/awesome-cordova-plugins/commit/23e6147b25dc188604f83906d3078629c39bb7a2))
+* **firebase-x:** setConfigSettings function input parameters aligned with firebase-x plugin ([#4757](https://github.com/danielsogl/awesome-cordova-plugins/issues/4757)) ([adb330a](https://github.com/danielsogl/awesome-cordova-plugins/commit/adb330aa63d89d91243c5a9ebf8bc34aa5206d6e))
+
+
+### Features
+
+* **adjust:** Add Remote Config missing functions ([#4756](https://github.com/danielsogl/awesome-cordova-plugins/issues/4756)) ([d65e7ee](https://github.com/danielsogl/awesome-cordova-plugins/commit/d65e7ee64707985966b27b7bfc206a1f29630f58))
+* **adjust:** update wrapper for Adjust Cordova SDK v4.37.1 ([#4724](https://github.com/danielsogl/awesome-cordova-plugins/issues/4724)) ([551170b](https://github.com/danielsogl/awesome-cordova-plugins/commit/551170b8d7d47819b8742344d9f214318ae97562))
+* **airship:** add plugin ([#4755](https://github.com/danielsogl/awesome-cordova-plugins/issues/4755)) ([6d3008d](https://github.com/danielsogl/awesome-cordova-plugins/commit/6d3008d6fc124c24a13ddf9f60be4c1779f41ee0))
+* **cashfree-pg:** support cordova-plugin-cashfree-pg 1.0.6 ([#4737](https://github.com/danielsogl/awesome-cordova-plugins/issues/4737)) ([6e7d006](https://github.com/danielsogl/awesome-cordova-plugins/commit/6e7d0069c138da760530926ba63bd7522a529565))
+* **clevertap:** support clevertap-cordova 3.0.0 ([#4760](https://github.com/danielsogl/awesome-cordova-plugins/issues/4760)) ([974466a](https://github.com/danielsogl/awesome-cordova-plugins/commit/974466ae39146de7826b752c0932eca0cc6a4c7e)), closes [#3491](https://github.com/danielsogl/awesome-cordova-plugins/issues/3491)
+* **contacts:** add plugin ([#4750](https://github.com/danielsogl/awesome-cordova-plugins/issues/4750)) ([80a0119](https://github.com/danielsogl/awesome-cordova-plugins/commit/80a01197b51d97821c7fa0037c98a9cbc19b9e43))
+* **screenshot:** add plugin ([#4751](https://github.com/danielsogl/awesome-cordova-plugins/issues/4751)) ([a3ba001](https://github.com/danielsogl/awesome-cordova-plugins/commit/a3ba0015eda437fe60e8f05852447c92cff8f31c))
+* **ssl-certificate-checker:** add SSL Certificate Checker support ([#4734](https://github.com/danielsogl/awesome-cordova-plugins/issues/4734)) ([51d82f5](https://github.com/danielsogl/awesome-cordova-plugins/commit/51d82f581d059a62d2179dc9da89afd64e1e41d2))
+
+
+
 # [6.6.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.5.0...v6.6.0) (2023-12-19)
 
 

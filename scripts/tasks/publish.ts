@@ -15,7 +15,7 @@ const FLAGS = '--access public';
 
 const PACKAGE_JSON_BASE = {
   description: 'Awesome Cordova Plugins - Native plugins for ionic apps',
-  main: 'bundle.js',
+  main: 'index.js',
   module: 'index.js',
   typings: 'index.d.ts',
   author: 'ionic',

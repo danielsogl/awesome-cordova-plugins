@@ -116,8 +116,9 @@ export interface MessagePayloadAps {
   alert?: {
     title: string;
     body: string;
-  }
+  };
 }
+
 export interface MessagePayload {
   title?: string;
   body?: string;
@@ -798,6 +799,28 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Asynchronously fetches and then activates the fetched configs.
+   *
+   * @param {Function} success - callback function which will be passed a {boolean} argument indicating whether result the current call activated the fetched config.
+   * @param {Function} error - callback function which will be passed a {string} error message as an argument
+   */
+  @Cordova()
+  fetchAndActivate(success: (activated: boolean) => void, error: (err: string) => void): void {
+    return;
+  }
+
+  /**
+   * Returns a Map of Firebase Remote Config key value pairs.
+   *
+   * @param {Function} success - callback function which will be passed an {object} argument where key is the remote config key and value is the value as a string. If the expected key value is a different primitive type then cast it to the appropriate type.
+   * @param {Function} error - callback function which will be passed a {string} error message as an argument
+   */
+  @Cordova()
+  getAll(success: (values: any) => void, error: (err: string) => void): void {
+    return;
+  }
+
+  /**
    * Retrieve a Remote Config value.
    *
    * @param {string} key
@@ -830,13 +853,20 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * Android only. Change the settings for the FirebaseRemoteConfig object's operations.
+   * Change the settings for the FirebaseRemoteConfig object's operations.
    *
-   * @param {Object} settings
-   * @returns {Promise<any>}
+   * @param {number} fetchTimeout - fetch timeout in seconds. Default is 60 seconds.
+   * @param {number} minimumFetchInterval - minimum fetch inteval in seconds. Default is 12 hours.
+   * @param {Function} success - callback function to be call on successfully setting the remote config settings
+   * @param {Function} error - callback function which will be passed a {string} error message as an argument
    */
   @Cordova()
-  setConfigSettings(settings: any): Promise<any> {
+  setConfigSettings(
+    fetchTimeout: number,
+    minimumFetchInterval: number,
+    success: () => void,
+    error: (err: string) => void
+  ): void {
     return;
   }
 
@@ -989,6 +1019,7 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
    * Fetches all the documents in the specific collection.
    *
    * @param {string} collection - name of top-level collection to fetch.
+   * @param {Array} filters - filters to apply to collection.
    * @param {Function} success - callback function to call on successfully deleting the document. Will be passed an {object} containing all the documents in the collection,
    * indexed by document ID. If a Firebase collection with that name does not exist or it contains no documents, the object will be empty.
    * @param {Function} error - callback function which will be passed a {string} error message as an argument.
@@ -996,9 +1027,19 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   @Cordova()
   fetchFirestoreCollection(
     collection: string,
+    filters: any[],
     success: (docs: any) => void,
     error: (err: string) => void
   ): Promise<any> {
+    return;
+  }
+  /**
+   * Set new V2 consent mode
+   *
+   * @param {array} consent array of consent
+   */
+  @Cordova()
+  setAnalyticsConsentMode(consent: []): Promise<any> {
     return;
   }
 }
