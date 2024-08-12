@@ -131,18 +131,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * Sets the device's Xiaomi push token.
-   * clevertap-cordova 2.6.0 onwards method requires region as a mandatory parameter.
-   * @param token {string}
-   * @param region {string}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  setPushXiaomiToken(token: string, region: string): Promise<any> {
-    return;
-  }
-
-  /**
    * Sets the device's Baidu push token
    *
    * @param token {string}
