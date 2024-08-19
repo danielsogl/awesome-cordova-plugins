@@ -99,7 +99,7 @@ export class WebengageUser extends AwesomeCordovaNativePlugin {
   login(userId: string, jwtToken?: string): Promise<any> {
     return;
   }
-  
+
   /**
    * Logs user in
    * @param {string} userId
@@ -150,6 +150,17 @@ export class WebengageUser extends AwesomeCordovaNativePlugin {
   setUserOptIn(channel: string, optIn: any): Promise<any> {
     return;
   }
+
+  /**
+   * Sets user location
+   * @param {number} latitude
+   * @param {number} longitude
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  setLocation(latitude: number, longitude: number): Promise<any> {
+    return;
+  }
 }
 
 /**
@@ -160,7 +171,6 @@ export class WebengageUser extends AwesomeCordovaNativePlugin {
   plugin: 'cordova-plugin-webengage',
   pluginRef: 'webengage.jwtManager',
 })
-
 @Injectable()
 export class WebengageJwtManager extends AwesomeCordovaNativePlugin {
   /**
