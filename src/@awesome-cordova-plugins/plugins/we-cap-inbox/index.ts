@@ -20,17 +20,15 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
  * ```
  */
 
-
 @Plugin({
   pluginName: 'WECapInbox',
   plugin: 'we-notificationinbox-cordova', // npm package name, example: cordova-plugin-camera
   pluginRef: 'WENotificationInboxPlugin', // the variable reference to call the plugin,
   repo: 'https://github.com/WebEngage/we-ionic-notification-inbox',
-  platforms: ['Android', 'iOS'] // Array of platforms supported, example: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable()
 export class WECapInbox extends AwesomeCordovaNativePlugin {
-
   /**
    * Resets the notification count.
    * @returns {Promise<void>}
@@ -64,12 +62,11 @@ export class WECapInbox extends AwesomeCordovaNativePlugin {
   @Cordova()
   getNotificationList(
     offset: JsonObject | null,
-    successCallback: (notifications: JsonArray[]) => void,
+    successCallback: (notifications: NotificationResponse) => void,
     errorCallback: (error: string) => void
   ): Promise<any> {
     return;
   }
-  
 
   /**
    * Marks a specific notification as read.
@@ -150,10 +147,14 @@ export class WECapInbox extends AwesomeCordovaNativePlugin {
   deleteAll(notificationList: JsonArray): Promise<void> {
     return;
   }
-
 }
 
 export type JsonValue = string | number | boolean | null | JsonObject | JsonArray;
+
+export type NotificationResponse = {
+  hasNext: boolean;
+  messageList: JsonArray;
+};
 
 export type JsonObject = {
   [key: string]: JsonValue;
