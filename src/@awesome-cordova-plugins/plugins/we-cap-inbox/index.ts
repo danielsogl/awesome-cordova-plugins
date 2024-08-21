@@ -45,10 +45,7 @@ export class WECapInbox extends AwesomeCordovaNativePlugin {
    * @returns {Promise<number>} - The count of notifications.
    */
   @Cordova()
-  getNotificationCount(
-    successCallback: (count: number) => void, // TODO verify if it is string number
-    errorCallback: (error: string) => void
-  ): Promise<any> {
+  getNotificationCount(successCallback: (count: String) => void, errorCallback: (error: string) => void): Promise<any> {
     return;
   }
 
