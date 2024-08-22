@@ -669,6 +669,11 @@ export class HTTP extends AwesomeCordovaNativePlugin {
     return;
   }
 
+  @Cordova({ sync: false })
+  approovSetDevKey(devKey: string): Promise<void> {
+    return;
+  }
+
   @Cordova({ sync: true })
   approovSetTokenHeader(header: string, prefix: string): void {
     return;
