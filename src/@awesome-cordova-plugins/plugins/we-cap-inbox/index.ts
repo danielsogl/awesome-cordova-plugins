@@ -14,7 +14,7 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
  *
  * ...
  *
- * this.wECapInbox.getNotificationCount()
+ * this.WECapInbox.getNotificationCount()
  *   .then((count: number) => console.log(count))
  *   .catch((error: string) => console.error(error));
  * ```
@@ -50,7 +50,7 @@ export class WECapInbox extends AwesomeCordovaNativePlugin {
   }
 
   /**-
-   * Sets WebEngage SDK configuration
+   * Retrieves Notification List
    * @param {JsonObject | null} offset - Optional offset for notifications
    * @param {function} successCallback
    * @param {function} errorCallback
