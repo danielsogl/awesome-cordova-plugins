@@ -24,7 +24,7 @@
     "prettier": "prettier --write --ignore-unknown \"**/*\""
   },
   "dependencies": {
-    "tslib": "2.6.3"
+    "tslib": "2.7.0"
   },
   "devDependencies": {
     "@angular/common": "12.2.17",
