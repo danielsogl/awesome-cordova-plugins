@@ -69,7 +69,7 @@
     "unminified-webpack-plugin": "3.0.0",
     "webpack": "5.74.0",
     "winston": "3.14.2",
-    "zone.js": "0.11.8"
+    "zone.js": "0.15.0"
   },
   "jest": {
     "testEnvironment": "jsdom",
