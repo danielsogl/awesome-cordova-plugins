@@ -1,3 +1,20 @@
+# [6.9.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.8.0...v6.9.0) (2024-09-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependency tslib to v2.7.0 ([#4823](https://github.com/danielsogl/awesome-cordova-plugins/issues/4823)) [skip ci] ([1c21dd1](https://github.com/danielsogl/awesome-cordova-plugins/commit/1c21dd1a7734e5cf82d9d64806d5b159d66f9d37))
+
+
+### Features
+
+* **approov-advanced-http:** support approov3 methods ([#4817](https://github.com/danielsogl/awesome-cordova-plugins/issues/4817)) ([5f15119](https://github.com/danielsogl/awesome-cordova-plugins/commit/5f1511997101c750e80adb85e2c6b0dfacaf5a31))
+* **clevertap:** support clevertap-cordova 3.2.0 ([#4814](https://github.com/danielsogl/awesome-cordova-plugins/issues/4814)) ([4471806](https://github.com/danielsogl/awesome-cordova-plugins/commit/4471806f73ab286bbcab22d28ea2120cb4cc6a2b)), closes [#3491](https://github.com/danielsogl/awesome-cordova-plugins/issues/3491)
+* **mobile-messaging:** Added fullFeaturedInApps method to config, fetching of the Inbox methods and registerForRemoteAndroidNotifications method ([#4810](https://github.com/danielsogl/awesome-cordova-plugins/issues/4810)) ([63f2fcb](https://github.com/danielsogl/awesome-cordova-plugins/commit/63f2fcbe99b6be14a76a4a6c72ef19594d82905b))
+* **webengage:** New Plugin for Notification Inbox ([#4819](https://github.com/danielsogl/awesome-cordova-plugins/issues/4819)) ([3168688](https://github.com/danielsogl/awesome-cordova-plugins/commit/3168688ce44b1353ed6f12e41e06c90647046f71))
+
+
+
 # [6.8.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.7.0...v6.8.0) (2024-07-11)
 
 
