@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
  * @name Intercom
  * @description
  * This is a plugin that allows your Ionic app to use Intercom for iOS and/or Intercom for Android.
- * Follow the offical documentation to setup this plugin correctly: https://developers.intercom.com/docs/cordova-phonegap-configuration
+ * Follow the offical documentation to setup this plugin correctly: https://developers.intercom.com/installing-intercom/cordova-phonegap/installation
  * @usage
  * ```typescript
  * import { Intercom } from '@awesome-cordova-plugins/intercom/ngx';
@@ -31,229 +31,374 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class Intercom extends AwesomeCordovaNativePlugin {
   /**
-   * Register a identified user
-   *
-   * @param options {any} Options
-   * @returns {Promise<any>} Returns a promise
+   * Login a user with identifiable information.
+   * Valid identifiers are `userId` and `email` which must be set in an object.
+   * @param options The object that contains the user's `email` or `userId`.
    */
   @Cordova()
-  registerIdentifiedUser(options: any): Promise<any> {
+  loginUserWithUserAttributes(options: IntercomLoginUserAttributes): Promise<boolean> {
     return;
   }
 
   /**
-   * Register a unidentified user
-   *
-   * @param options {any} Options
-   * @returns {Promise<any>} Returns a promise
+   * Login a unidentified user.
+   * This is a user that doesn't have any identifiable information such as a `userId` or `email`.
    */
   @Cordova()
-  registerUnidentifiedUser(options: any): Promise<any> {
+  loginUnidentifiedUser(options: { [key: string]: number | string }): Promise<boolean> {
     return;
   }
 
   /**
-   * This resets the Intercom integration's cache of your user's identity and wipes the slate clean.
-   *
-   * @returns {Promise<any>} Returns a promise
+   * Log a user out of their Intercom session.
+   * This will dismiss any Intercom UI and clear Intercom's local cache.
    */
   @Cordova()
-  reset(): Promise<any> {
+  logout(): Promise<boolean> {
     return;
   }
 
   /**
+   * Set `hash` string if you are using Identity Verification for your Intercom workspace.
+   * @note This should be called before any user login takes place.
    *
-   * @returns {Promise<any>} Returns a promise
+   * Identity Verification helps to make sure that conversations between you and your users are kept private, and that one
+   * user can't impersonate another. If Identity Verification is enabled for your app, Intercom will sign all requests
+   * going to the Intercom servers with tokens. It requires your mobile application to have its own server which authenticates the app's users,
+   * and which can store a secret.
+   *
+   * @see More information on Identity Verification can be found {@link https://developers.intercom.com/installing-intercom/cordova-phonegap/identity-verification/ here}
+   * @param secureHash A HMAC digest of the user ID or email.
    */
   @Cordova()
-  logout(): Promise<any> {
+  setUserHash(secureHash: string): Promise<boolean> {
     return;
   }
 
   /**
+   * Update a user in Intercom with data specified in an object.
    *
-   * @param secureHash {string}
-   * @param secureData {any}
-   * @returns {Promise<any>} Returns a promise
-   * @deprecated Use setUserHash instead as of Intercom Cordova 4.0.0 and higher https://github.com/intercom/intercom-cordova/blob/master/CHANGELOG.md#400-2017-08-29
+   * @param attributes The object with the user data.
    */
   @Cordova()
-  setSecureMode(secureHash: string, secureData: any): Promise<any> {
+  updateUser(attributes: IntercomUserAttributes): Promise<boolean> {
     return;
   }
 
   /**
+   * Log an event with a given name and metaData.
+   * You can log events in Intercom based on user actions in your app.
    *
-   * @param secureHash {string}
-   * @returns {Promise<any>} Returns a promise
+   * @param eventName The name of the event.
+   * @param metaData Metadata Objects support a few simple types that Intercom can present on your behalf,
+   * see the @{https://developers.intercom.com/docs/references/rest-api/api.intercom.io/Data-Events/data_event/ Intercom API docs}
    */
   @Cordova()
-  setUserHash(secureHash: string): Promise<any> {
+  logEvent(eventName: string, metaData: IntercomEventMetaData): Promise<boolean> {
     return;
   }
 
   /**
-   *
-   * @param attributes {any}
-   * @returns {Promise<any>} Returns a promise
+   * Present Intercom as a modal overlay in your app.
+   * The `Home` space is displayed by default.
    */
   @Cordova()
-  updateUser(attributes: any): Promise<any> {
+  present(): Promise<boolean> {
     return;
   }
 
   /**
+   * Present an Intercom `space` as a modal overlay in your app
+   * @see {@link Space} for a list of valid spaces.
    *
-   * @param eventName {string}
-   * @param metaData {any}
-   * @returns {Promise<any>} Returns a promise
+   * @param space The Intercom space to be presented.
    */
   @Cordova()
-  logEvent(eventName: string, metaData: any): Promise<any> {
+  presentSpace(space: IntercomSpace): Promise<boolean> {
     return;
   }
 
   /**
+   * Present Intercom content.
    *
-   * @returns {Promise<any>} Returns a promise
+   * An IntercomContent object.
    */
   @Cordova()
-  displayMessenger(): Promise<any> {
+  presentContent(content: IntercomPresentContent): Promise<boolean> {
     return;
   }
 
   /**
+   * Present the message composer.
    *
-   * @returns {Promise<any>} Returns a promise
+   * @param initialMessage An optional message that is used to pre-populate the composer with some text.
    */
   @Cordova()
-  displayMessageComposer(): Promise<any> {
+  presentMessageComposer(initialMessage: string): Promise<boolean> {
     return;
   }
 
   /**
+   * Fetch all Help Center collections.
    *
-   * @param initialMessage {string}
-   * @returns {Promise<any>} Returns a promise
+   * @return An array of HelpCenterCollection objects.
    */
   @Cordova()
-  displayMessageComposerWithInitialMessage(initialMessage: string): Promise<any> {
+  fetchHelpCenterCollections(): Promise<IntercomHelpCenterCollectionContent[]> {
     return;
   }
 
   /**
+   * Fetch the contents of a Help Center collection.
    *
-   * @returns {Promise<any>} Returns a promise
+   * @param collectionId The ID of the Help Center collection.
+   *
+   * @return A HelpCenterCollectionContent object.
    */
   @Cordova()
-  displayConversationsList(): Promise<any> {
+  fetchHelpCenterCollection(collectionId: string): Promise<IntercomHelpCenterCollectionContent> {
     return;
   }
 
   /**
+   * Search the Help Center.
    *
-   * @returns {Promise<any>} Returns a promise
+   * @param searchTerm The search term.
+   *
+   * @return An array of HelpCenterArticleSearchResult objects.
    */
   @Cordova()
-  displayHelpCenter(): Promise<any> {
+  searchHelpCenter(searchTerm: string): Promise<boolean> {
     return;
   }
 
   /**
-   *
-   * @returns {Promise<any>} Returns a promise
+   * Fetch the current number of unread conversations for the logged in User.
+   * @return The number of unread conversations.
    */
   @Cordova()
-  unreadConversationCount(): Promise<any> {
+  unreadConversationCount(): Promise<boolean> {
     return;
   }
 
   /**
+   * Show or hide the Intercom Launcher in your app.
+   * @note The Launcher is hidden by default.
    *
-   * @param visibility {string}
-   * @returns {Promise<any>} Returns a promise
+   * @param visibility A boolean indicating if the Intercom Launcher should be visible.
    */
   @Cordova()
-  setLauncherVisibility(visibility: string): Promise<any> {
+  setLauncherVisibility(visibility: IntercomVisibility): Promise<boolean> {
     return;
   }
 
   /**
+   * Show or hide the Intercom InApp Messages in your app.
+   * @note All InApp Messages are visible by default.
    *
-   * @param visibility {string}
-   * @returns {Promise<any>} Returns a promise
+   * @param visibility A boolean indicating if the InApps should be visible.
    */
   @Cordova()
-  setInAppMessageVisibility(visibility: string): Promise<any> {
+  setInAppMessageVisibility(visibility: IntercomVisibility): Promise<boolean> {
     return;
   }
 
   /**
-   *
-   * @returns {Promise<any>} Returns a promise
+   * Hide all Intercom windows that are currently displayed.
+   * This will hide the Messenger, Help Center, Articles, and in-product messages (eg. Mobile Carousels, chats, and posts).
    */
   @Cordova()
-  hideMessenger(): Promise<any> {
+  hideIntercom(): Promise<boolean> {
     return;
   }
 
   /**
-   *
-   * @returns {Promise<any>} Returns a promise
+   * Set a fixed bottom padding for in app messages and the Intercom Launcher.
+   * @param bottomPadding The size of the bottom padding in points.
    */
   @Cordova()
-  registerForPush(): Promise<any> {
+  setBottomPadding(bottomPadding: number): Promise<boolean> {
     return;
   }
 
   /**
-   *
-   * @param token {string}
-   * @returns {Promise<any>} Returns a promise
+   * Register for push notifications
+   * @note This function is only available for iOS.
    */
   @Cordova()
-  sendPushTokenToIntercom(token: string): Promise<any> {
+  registerForPush(): Promise<boolean> {
     return;
   }
 
   /**
+   * Send a device token to Intercom to enable push notifications to be sent to the User.
+   * @param token The device token to send to the server.
    *
-   * @param carouselId {string}
-   * @returns {Promise<any>} Returns a promise
+   * @note This function is only available for Android.
    */
   @Cordova()
-  displayCarousel(carouselId: string): Promise<any> {
+  sendPushTokenToIntercom(token: string): Promise<boolean> {
     return;
   }
 
   /**
-   *
-   * @param articleId {string}
-   * @returns {Promise<any>} Returns a promise
+   * @deprecated
    */
   @Cordova()
-  displayArticle(articleId: string): Promise<any> {
+  registerIdentifiedUser(options: any): Promise<boolean> {
     return;
   }
 
   /**
-   *
-   * @param bottomPadding {string | number}
-   * @returns {Promise<any>} Returns a promise
+   * @deprecated
    */
   @Cordova()
-  setBottomPadding(bottomPadding: string | number): Promise<any> {
+  registerUnidentifiedUser(options: any): Promise<boolean> {
     return;
   }
 
   /**
-   * Programmatically display a Survey
-   * @param surveyId {string}
-   * @returns {Promise<any>} Returns a promise
+   * @deprecated
    */
   @Cordova()
-  displaySurvey(surveyId: string): Promise<any> {
+  reset(): Promise<boolean> {
     return;
   }
+
+  /**
+   * @deprecated
+   */
+  @Cordova()
+  displayMessenger(): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * @deprecated
+   */
+  @Cordova()
+  displayHelpCenter(): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * @deprecated
+   */
+  @Cordova()
+  displayMessageComposerWithInitialMessage(initialMessage: string): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * @deprecated
+   */
+  @Cordova()
+  displayMessageComposer(): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * @deprecated
+   */
+  @Cordova()
+  displayHelpCenterCollections(collectionIds: string[]): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * @deprecated
+   */
+  @Cordova()
+  displayCarousel(carouselId: string): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * @deprecated
+   */
+  @Cordova()
+  displayArticle(articleId: string): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * @deprecated
+   */
+  @Cordova()
+  displaySurvey(surveyId: string): Promise<boolean> {
+    return;
+  }
+}
+
+enum ContentType {
+  Article = 'ARTICLE',
+  Carousel = 'CAROUSEL',
+  Survey = 'SURVEY',
+  HelpCenterCollections = 'HELP_CENTER_COLLECTIONS',
+  Conversation = 'CONVERSATION',
+}
+
+export enum IntercomVisibility {
+  VISIBLE = 'VISIBLE',
+  GONE = 'GONE',
+}
+
+export enum IntercomSpace {
+  Home = 'HOME',
+  HelpCenter = 'HELP_CENTER',
+  Messages = 'MESSAGES',
+  Tickets = 'TICKETS',
+}
+
+export interface IntercomHelpCenterCollectionContent {
+  collectionId: string;
+  title: string;
+  summary: string;
+  articles: any[];
+  sections: any[];
+}
+
+interface BasePresentContent {
+  type: ContentType;
+}
+
+export interface IntercomPresentContent extends BasePresentContent {
+  id: string;
+}
+
+export interface IntercomPresentContent extends BasePresentContent {
+  ids: string[];
+}
+
+export interface IntercomUserAttributes {
+  email?: string;
+  user_id?: string;
+  name?: string;
+  phone?: string;
+  language_override?: string;
+  signed_up_at?: string;
+  unsubscribed_from_emails?: string;
+  custom_attributes?: string;
+  companies?: string[];
+}
+
+export interface IntercomEventMetaData {
+  created_at: string;
+  type?: string;
+  metadata?: any;
+
+  [key: string]: number | string | { [key: string]: number | string };
+}
+
+export interface IntercomLoginUserAttributes {
+  email: string;
+}
+
+export interface IntercomLoginUserAttributes {
+  userId: string;
+}
+
+export interface IntercomLoginUserAttributes {
+  email: string;
+  userId: string;
 }
