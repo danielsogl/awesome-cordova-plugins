@@ -36,7 +36,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * @param options The object that contains the user's `email` or `userId`.
    */
   @Cordova()
-  loginUserWithUserAttributes(options: IntercomLoginUserAttributes): Promise<boolean> {
+  loginUserWithUserAttributes(options: IntercomLoginUserAttributes): Promise<void> {
     return;
   }
 
@@ -45,7 +45,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * This is a user that doesn't have any identifiable information such as a `userId` or `email`.
    */
   @Cordova()
-  loginUnidentifiedUser(options: { [key: string]: number | string }): Promise<boolean> {
+  loginUnidentifiedUser(options: { [key: string]: number | string }): Promise<void> {
     return;
   }
 
@@ -54,7 +54,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * This will dismiss any Intercom UI and clear Intercom's local cache.
    */
   @Cordova()
-  logout(): Promise<boolean> {
+  logout(): Promise<void> {
     return;
   }
 
@@ -71,7 +71,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * @param secureHash A HMAC digest of the user ID or email.
    */
   @Cordova()
-  setUserHash(secureHash: string): Promise<boolean> {
+  setUserHash(secureHash: string): Promise<void> {
     return;
   }
 
@@ -81,7 +81,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * @param attributes The object with the user data.
    */
   @Cordova()
-  updateUser(attributes: IntercomUserAttributes): Promise<boolean> {
+  updateUser(attributes: IntercomUserAttributes): Promise<void> {
     return;
   }
 
@@ -94,7 +94,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * see the @{https://developers.intercom.com/docs/references/rest-api/api.intercom.io/Data-Events/data_event/ Intercom API docs}
    */
   @Cordova()
-  logEvent(eventName: string, metaData: IntercomEventMetaData): Promise<boolean> {
+  logEvent(eventName: string, metaData: IntercomEventMetaData): Promise<void> {
     return;
   }
 
@@ -103,7 +103,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * The `Home` space is displayed by default.
    */
   @Cordova()
-  present(): Promise<boolean> {
+  present(): Promise<void> {
     return;
   }
 
@@ -114,7 +114,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * @param space The Intercom space to be presented.
    */
   @Cordova()
-  presentSpace(space: IntercomSpace): Promise<boolean> {
+  presentSpace(space: IntercomSpace): Promise<void> {
     return;
   }
 
@@ -124,7 +124,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * An IntercomContent object.
    */
   @Cordova()
-  presentContent(content: IntercomPresentContent): Promise<boolean> {
+  presentContent(content: IntercomPresentContent): Promise<void> {
     return;
   }
 
@@ -134,7 +134,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * @param initialMessage An optional message that is used to pre-populate the composer with some text.
    */
   @Cordova()
-  presentMessageComposer(initialMessage: string): Promise<boolean> {
+  presentMessageComposer(initialMessage: string): Promise<void> {
     return;
   }
 
@@ -168,7 +168,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * @return An array of HelpCenterArticleSearchResult objects.
    */
   @Cordova()
-  searchHelpCenter(searchTerm: string): Promise<boolean> {
+  searchHelpCenter(searchTerm: string): Promise<IntercomHelpCenterArticleSearchResult> {
     return;
   }
 
@@ -177,7 +177,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * @return The number of unread conversations.
    */
   @Cordova()
-  unreadConversationCount(): Promise<boolean> {
+  unreadConversationCount(): Promise<number> {
     return;
   }
 
@@ -188,7 +188,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * @param visibility A boolean indicating if the Intercom Launcher should be visible.
    */
   @Cordova()
-  setLauncherVisibility(visibility: IntercomVisibility): Promise<boolean> {
+  setLauncherVisibility(visibility: IntercomVisibility): Promise<void> {
     return;
   }
 
@@ -199,7 +199,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * @param visibility A boolean indicating if the InApps should be visible.
    */
   @Cordova()
-  setInAppMessageVisibility(visibility: IntercomVisibility): Promise<boolean> {
+  setInAppMessageVisibility(visibility: IntercomVisibility): Promise<void> {
     return;
   }
 
@@ -208,7 +208,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * This will hide the Messenger, Help Center, Articles, and in-product messages (eg. Mobile Carousels, chats, and posts).
    */
   @Cordova()
-  hideIntercom(): Promise<boolean> {
+  hideIntercom(): Promise<void> {
     return;
   }
 
@@ -217,7 +217,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * @param bottomPadding The size of the bottom padding in points.
    */
   @Cordova()
-  setBottomPadding(bottomPadding: number): Promise<boolean> {
+  setBottomPadding(bottomPadding: number): Promise<void> {
     return;
   }
 
@@ -226,7 +226,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * @note This function is only available for iOS.
    */
   @Cordova()
-  registerForPush(): Promise<boolean> {
+  registerForPush(): Promise<void> {
     return;
   }
 
@@ -237,7 +237,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * @note This function is only available for Android.
    */
   @Cordova()
-  sendPushTokenToIntercom(token: string): Promise<boolean> {
+  sendPushTokenToIntercom(token: string): Promise<void> {
     return;
   }
 
@@ -245,7 +245,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * @deprecated
    */
   @Cordova()
-  registerIdentifiedUser(options: any): Promise<boolean> {
+  registerIdentifiedUser(options: any): Promise<void> {
     return;
   }
 
@@ -253,7 +253,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * @deprecated
    */
   @Cordova()
-  registerUnidentifiedUser(options: any): Promise<boolean> {
+  registerUnidentifiedUser(options: any): Promise<void> {
     return;
   }
 
@@ -261,7 +261,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * @deprecated
    */
   @Cordova()
-  reset(): Promise<boolean> {
+  reset(): Promise<void> {
     return;
   }
 
@@ -269,7 +269,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * @deprecated
    */
   @Cordova()
-  displayMessenger(): Promise<boolean> {
+  displayMessenger(): Promise<void> {
     return;
   }
 
@@ -277,7 +277,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * @deprecated
    */
   @Cordova()
-  displayHelpCenter(): Promise<boolean> {
+  displayHelpCenter(): Promise<void> {
     return;
   }
 
@@ -285,7 +285,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * @deprecated
    */
   @Cordova()
-  displayMessageComposerWithInitialMessage(initialMessage: string): Promise<boolean> {
+  displayMessageComposerWithInitialMessage(initialMessage: string): Promise<void> {
     return;
   }
 
@@ -293,7 +293,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * @deprecated
    */
   @Cordova()
-  displayMessageComposer(): Promise<boolean> {
+  displayMessageComposer(): Promise<void> {
     return;
   }
 
@@ -301,7 +301,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * @deprecated
    */
   @Cordova()
-  displayHelpCenterCollections(collectionIds: string[]): Promise<boolean> {
+  displayHelpCenterCollections(collectionIds: string[]): Promise<any> {
     return;
   }
 
@@ -309,7 +309,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * @deprecated
    */
   @Cordova()
-  displayCarousel(carouselId: string): Promise<boolean> {
+  displayCarousel(carouselId: string): Promise<any> {
     return;
   }
 
@@ -317,7 +317,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * @deprecated
    */
   @Cordova()
-  displayArticle(articleId: string): Promise<boolean> {
+  displayArticle(articleId: string): Promise<any> {
     return;
   }
 
@@ -325,7 +325,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    * @deprecated
    */
   @Cordova()
-  displaySurvey(surveyId: string): Promise<boolean> {
+  displaySurvey(surveyId: string): Promise<any> {
     return;
   }
 }
@@ -401,4 +401,11 @@ export interface IntercomLoginUserAttributes {
 export interface IntercomLoginUserAttributes {
   email: string;
   userId: string;
+}
+
+export interface IntercomHelpCenterArticleSearchResult {
+  articleId: string;
+  title: string;
+  summary: string;
+  matchingSnippet: string;
 }
