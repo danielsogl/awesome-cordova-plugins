@@ -378,22 +378,20 @@ export interface IntercomEventMetaData {
   created_at: string;
   type?: string;
   metadata?: any;
-
   [key: string]: number | string | { [key: string]: number | string };
 }
 
-export interface IntercomLoginUserAttributes {
-  email: string;
-}
-
-export interface IntercomLoginUserAttributes {
-  userId: string;
-}
-
-export interface IntercomLoginUserAttributes {
-  email: string;
-  userId: string;
-}
+export type IntercomLoginUserAttributes =
+  | {
+      email: string;
+    }
+  | {
+      userId: string;
+    }
+  | {
+      email: string;
+      userId: string;
+    };
 
 export interface IntercomHelpCenterArticleSearchResult {
   articleId: string;
