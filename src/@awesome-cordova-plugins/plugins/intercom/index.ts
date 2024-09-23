@@ -330,14 +330,6 @@ export class Intercom extends AwesomeCordovaNativePlugin {
   }
 }
 
-enum ContentType {
-  Article = 'ARTICLE',
-  Carousel = 'CAROUSEL',
-  Survey = 'SURVEY',
-  HelpCenterCollections = 'HELP_CENTER_COLLECTIONS',
-  Conversation = 'CONVERSATION',
-}
-
 export enum IntercomVisibility {
   VISIBLE = 'VISIBLE',
   GONE = 'GONE',
@@ -358,17 +350,17 @@ export interface IntercomHelpCenterCollectionContent {
   sections: any[];
 }
 
-interface BasePresentContent {
-  type: ContentType;
+export enum IntercomPresentContentType {
+  Article = 'ARTICLE',
+  Carousel = 'CAROUSEL',
+  Survey = 'SURVEY',
+  HelpCenterCollections = 'HELP_CENTER_COLLECTIONS',
+  Conversation = 'CONVERSATION',
 }
 
-export interface IntercomPresentContent extends BasePresentContent {
-  id: string;
-}
-
-export interface IntercomPresentContent extends BasePresentContent {
-  ids: string[];
-}
+export type IntercomPresentContent =
+  | { id: string; type: IntercomPresentContentType }
+  | { ids: string[]; type: IntercomPresentContentType };
 
 export interface IntercomUserAttributes {
   email?: string;
