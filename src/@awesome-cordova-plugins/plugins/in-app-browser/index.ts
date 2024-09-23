@@ -125,7 +125,8 @@ export type InAppBrowserEventType =
   | 'exit'
   | 'beforeload'
   | 'message'
-  | 'customscheme';
+  | 'customscheme'
+  | string
 
 export interface InAppBrowserEvent extends Event {
   /** the event name */
@@ -245,19 +246,6 @@ export class InAppBrowserObject {
     });
   }
 
-  /**
-   * A method that allows you to listen to events happening in the browser.
-   *
-   * @param event {string} Name of the event
-   * @returns {Observable<InAppBrowserEvent>} Returns back an observable that will listen to the event on subscribe, and will stop listening to the event on unsubscribe.
-   */
-  @InstanceCheck()
-  on(event: string): Observable<InAppBrowserEvent> {
-    return new Observable<InAppBrowserEvent>((observer: Observer<InAppBrowserEvent>) => {
-      this._objectInstance.addEventListener(event, observer.next.bind(observer));
-      return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
-    });
-  }
 }
 
 /**
