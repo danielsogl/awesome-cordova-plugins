@@ -91,7 +91,7 @@ export class Intercom extends AwesomeCordovaNativePlugin {
    *
    * @param eventName The name of the event.
    * @param metaData Metadata Objects support a few simple types that Intercom can present on your behalf,
-   * see the @{https://developers.intercom.com/docs/references/rest-api/api.intercom.io/Data-Events/data_event/ Intercom API docs}
+   * @see https://developers.intercom.com/docs/references/rest-api/api.intercom.io/Data-Events/data_event/ Intercom API docs
    */
   @Cordova()
   logEvent(eventName: string, metaData: IntercomEventMetaData): Promise<void> {
