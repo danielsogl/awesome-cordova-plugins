@@ -120,10 +120,10 @@ export interface ThreeDeeTouchForceTouch {
  */
 @Plugin({
   pluginName: 'ThreeDeeTouch',
-  plugin: '@herdwatch-apps/cordova-plugin-3dtouch',
+  plugin: '@herdwatch/cordova-plugin-3dtouch',
   pluginRef: 'ThreeDeeTouch',
   repo: 'https://github.com/herdwatch-apps/cordova-plugin-3dtouch',
-  install: 'npm i @herdwatch-apps/cordova-plugin-3dtouch',
+  install: 'npm i @herdwatch/cordova-plugin-3dtouch',
   platforms: ['iOS'],
 })
 @Injectable()
