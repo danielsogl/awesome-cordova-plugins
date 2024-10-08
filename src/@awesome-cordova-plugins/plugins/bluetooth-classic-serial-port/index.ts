@@ -72,6 +72,7 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
   initialize(): Promise<any> {
     return;
   }
+
   /**
    * Connect to a Bluetooth device
    *
