@@ -64,6 +64,15 @@ export interface BluetoothClassicSerialPortDevice {
 @Injectable()
 export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
   /**
+   * Initialize
+   */
+  @Cordova({
+    platforms: ['Android', 'iOS'],
+  })
+  initialize(): Promise<any> {
+    return;
+  }
+  /**
    * Connect to a Bluetooth device
    *
    * @param {string} deviceId Identifier of the remote device.
