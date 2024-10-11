@@ -8,7 +8,7 @@ export interface IAPAdapter {
 
   ready: boolean;
 
-  products: IAPProducts[];
+  products: IAPProduct[];
 
   receipts: IAPReceipt[];
 
@@ -16,21 +16,24 @@ export interface IAPAdapter {
 
   initialize(): Promise<IAPError | undefined>;
 
-  loadProducts(products: IAPProductOptions[]): Promise<IAPProducts | IAPError>;
+  loadProducts(products: IAPProductOptions[]): Promise<(IAPProduct | IAPError)[]>;
 
   loadReceipts(): Promise<IAPReceipt[]>;
 
   supportsParallelLoading: boolean;
 
-  order(offer: IAPOffer, additionalData: any): Promise<IAPError | undefined>;
+  order(offer: IAPOffer, additionalData: IAPAdditionalData): Promise<IAPError | undefined>;
 
   finish(transaction: IAPTransaction): Promise<IAPError | undefined>;
 
-  receiptValidationBody(receipt: IAPReceipt): Promise<any | undefined>;
+  receiptValidationBody(receipt: IAPReceipt): Promise<object | undefined>;
 
-  handleReceiptValidationResponse(receipt: IAPReceipt, response: any): Promise<void>;
+  handleReceiptValidationResponse(receipt: IAPReceipt, response: object): Promise<void>;
 
-  requestPayment(payment: PaymentRequest, additionalData?: any): Promise<IAPError | IAPTransaction | undefined>;
+  requestPayment(
+    payment: PaymentRequest,
+    additionalData?: IAPAdditionalData
+  ): Promise<IAPError | IAPTransaction | undefined>;
 
   manageSubscriptions(): Promise<IAPError | undefined>;
 
@@ -50,20 +53,25 @@ export interface IAPProductOptions {
   group?: string;
 }
 
-export type IAPProducts = IAPProduct[] & {
-  /**
-   * Get product by ID
-   */
-  byId: { [id: string]: IAPProduct };
-  /**
-   * Get product by alias
-   */
-  byAlias: { [alias: string]: IAPProduct };
-  /**
-   * Remove all products (for testing only).
-   */
-  reset: () => {};
-};
+/**
+ * Data to attach to a transaction.
+ * @see {@link IAPOffer.order}
+ * @see {@link InAppPurchase3.requestPayment}
+ */
+export interface IAPAdditionalData {
+  /** The application's user identifier, will be obfuscated with md5 to fill `accountId` if necessary */
+  applicationUsername?: string;
+
+  /** GooglePlay specific additional data. See cordova-plugin-purchase documentation.*/
+  googlePlay?: object;
+
+  /** Braintree specific additional data. See cordova-plugin-purchase documentation.*/
+  braintree?: object;
+
+  /** Apple AppStore specific additional data. See cordova-plugin-purchase documentation.*/
+  appStore?: object;
+}
+
 export type Callback<T> = (t: T) => void;
 
 export interface IAPProduct {
@@ -108,11 +116,10 @@ export interface IAPOffer {
 
   /**
    * Initiate a purchase of this offer.
-   *
    * @example
    * store.get("my-product").getOffer().order();
    */
-  order(additionnalData?: any): Promise<IAPError | undefined>;
+  order(additionnalData?: IAPAdditionalData): Promise<IAPError | undefined>;
 }
 export interface IAPPricingPhase {
   price: string;
@@ -153,20 +160,20 @@ export interface IAPVerifiedReceipt {
 
   latestReceipt: boolean;
 
-  nativeTransactions: { type: string; data?: any };
+  nativeTransactions: { type: string; data?: object }[];
 
   warning?: string;
 
-  raw: any;
+  raw: object;
 
-  set(receipt: IAPReceipt, response: any): void;
+  set(receipt: IAPReceipt, response: object): void;
 
   finish(): Promise<void>;
 }
 export interface IAPUnverifiedReceipt {
   receipt: IAPReceipt;
 
-  payload: any;
+  payload: object;
 }
 export interface IAPTransaction {
   platform: Platform;
@@ -201,11 +208,9 @@ export interface IAPTransaction {
 
   /**
    * Finish a transaction.
-   *
    * When the application has delivered the product, it should finalize the order.
    * Only after that, money will be transferred to your account.
    * This method ensures that no customers is charged for a product that couldn't be delivered.
-   *
    * @example
    * store.when()
    *   .approved(transaction => transaction.verify())
@@ -215,10 +220,8 @@ export interface IAPTransaction {
 
   /**
    * Verify a transaction.
-   *
    * This will trigger a call to the receipt validation service for the attached receipt.
    * Once the receipt has been verified, you can finish the transaction.
-   *
    * @example
    * store.when()
    *   .approved(transaction => transaction.verify())
@@ -263,7 +266,6 @@ export interface IAPVerifiedPurchase {
 export interface IAPProductEvents {
   /**
    * Register a function called when a product or receipt is updated.
-   *
    * @deprecated - Use `productUpdated` or `receiptUpdated`.
    */
   updated(cb: Callback<IAPProduct | IAPReceipt>, callbackName?: string): IAPProductEvents;
@@ -856,7 +858,6 @@ export class IAPError {
  * ## Technical Support or Questions
  *
  * If you have questions or need help integrating In-App Purchase, [Open an Issue on GitHub](https://github.com/j3k0/cordova-plugin-purchase/issues) or email us at _support@fovea.cc_.
- *
  * @interfaces
  * IAPAdapter
  * IAPProductOptions
@@ -897,15 +898,12 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * Verbosity level used by the plugin logger
-   *
    * Set to:
-   *
    *  - LogLevel.QUIET or 0 to disable all logging (default)
    *  - LogLevel.ERROR or 1 to show only error messages
    *  - LogLevel.WARNING or 2 to show warnings and errors
    *  - LogLevel.INFO or 3 to also show information messages
    *  - LogLevel.DEBUG or 4 to enable internal debugging messages.
-   *
    * @see {@link LogLevel}
    */
   @CordovaProperty()
@@ -925,13 +923,11 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * URL or implementation of the receipt validation service
-   *
    * @example
    * Define the validator as a string
    * ```ts
    * InAppPurchase3.validator = "https://validator.iaptic.com/v1/validate?appName=test"
    * ```
-   *
    * @example
    * Define the validator as a function
    * ```ts
@@ -948,20 +944,17 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
   @CordovaProperty()
   validator:
     | string
-    | ((product: any, callback: Callback<any>) => void)
+    | ((receipt: object, callback: Callback<object>) => void)
     | { url: string; headers?: { [token: string]: string }; timeout?: number }
     | undefined;
 
   /**
    * When adding information to receipt validation requests, those can serve different functions:
-   *
    *  - handling support requests
    *  - fraud detection
    *  - analytics
    *  - tracking
-   *
    * Make sure the value your select is in line with your application's privacy policy and your users' tracking preference.
-   *
    * @example
    * CdvPurchase.store.validator_privacy_policy = [
    *   'fraud', 'support', 'analytics', 'tracking'
@@ -977,20 +970,32 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
     | undefined;
 
   /**
-   * Add or register a product
-   *
-   * @param product {IAPProductOptions}
+   * Register a product.
+   * @example
+   * store.register([{
+   *       id: 'subscription1',
+   *       type: ProductType.PAID_SUBSCRIPTION,
+   *       platform: Platform.APPLE_APPSTORE,
+   *   }, {
+   *       id: 'subscription1',
+   *       type: ProductType.PAID_SUBSCRIPTION,
+   *       platform: Platform.GOOGLE_PLAY,
+   *   }, {
+   *       id: 'consumable1',
+   *       type: ProductType.CONSUMABLE,
+   *       platform: Platform.BRAINTREE,
+   *   }]);
+   * @param {IAPProductOptions | IAPProductOptions[]} product - one product or a list of products to register.
    */
   @Cordova({ sync: true })
   register(product: IAPProductOptions | IAPProductOptions[]): void {}
 
   /**
    * Call to initialize the in-app purchase plugin.
-   *
-   * @param platforms - List of payment platforms to initialize, default to Store.defaultPlatform().
+   * @param {(Platform | { platform: Platform; options?: object })[]} platforms - List of payment platforms to initialize, default to Store.defaultPlatform().
    */
   @Cordova({ sync: true })
-  initialize(platforms: (Platform | { platform: Platform; options?: any })[]): void {}
+  initialize(platforms: (Platform | { platform: Platform; options?: object })[]): void {}
 
   /**
    * Avoid invoking store.update() if the most recent call occurred within this specific number of milliseconds.
@@ -1002,8 +1007,13 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
   @Cordova({ sync: true })
   update(): void {}
 
+  /**
+   * Register a callback to be called when the plugin is ready.
+   * This happens when all the platforms are initialized and their products loaded.
+   * @param {Callback<void>} callback called when ready
+   */
   @Cordova()
-  ready(callback: Function): void {
+  ready(callback: Callback<void>): void {
     return;
   }
 
@@ -1012,7 +1022,6 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * Setup events listener.
-   *
    * @example
    * store.when()
    *      .productUpdated(product => updateUI(product))
@@ -1026,10 +1035,25 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * Remove a callback from any listener it might have been added to.
+   * @param {Callback} callback
    */
   @Cordova({ sync: true })
   off<T>(callback: Callback<T>): void {}
 
+  /**
+   * Setup a function to be notified of changes to a transaction state.
+   * @param {IAPTransaction} transaction The transaction to monitor.
+   * @param {Callback<TransactionState>} onChange Function to be called when the transaction status changes.
+   * @param {string} callbackName
+   * Returns A monitor which can be stopped with `monitor.stop()`
+   * @example
+   * const monitor = store.monitor(transaction, state => {
+   *   console.log('new state: ' + state);
+   *   if (state === TransactionState.FINISHED)
+   *     monitor.stop();
+   * });
+   */
+  @Cordova({ sync: true })
   monitor(
     transaction: IAPTransaction,
     onChange: Callback<TransactionState>,
@@ -1041,14 +1065,17 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
     return;
   }
 
+  /**
+   * List of all active products.
+   * Products are active if their details have been successfully loaded from the store.
+   */
   @CordovaProperty()
-  products: IAPProducts;
+  products: IAPProduct[];
 
   /**
    * Find a product from its id and platform
-   *
-   * @param productId Product identifier on the platform.
-   * @param platform The product the product exists in. Can be omitted if you're only using a single payment platform.
+   * @param {string} productId Product identifier on the platform.
+   * @param {Platform} platform The product the product exists in. Can be omitted if you're only using a single payment platform.
    */
   @Cordova({ sync: true })
   get(productId: string, platform: Platform): IAPProduct {
@@ -1076,6 +1103,7 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * Find the last verified purchase for a given product, from those verified by the receipt validator.
+   * @param {IAPProduct} product
    */
   @Cordova({ sync: true })
   findInVerifiedReceipts(product: IAPProduct): IAPVerifiedPurchase | undefined {
@@ -1084,6 +1112,7 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * Find the latest transaction for a given product, from those reported by the device.
+   * @param {IAPProduct} product
    */
   @Cordova({ sync: true })
   findInLocalReceipts(product: IAPProduct): IAPTransaction | undefined {
@@ -1091,9 +1120,8 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * Return true if a product is owned
-   *
-   * @param product - The product object or identifier of the product.
+   * @param {{id: string, platform?: Platform} | string} product - The product object or identifier of the product.
+   * @returns {boolean} true if a product is owned
    */
   @Cordova({ sync: true })
   owned(
@@ -1109,32 +1137,33 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * Place an order for a given offer.
+   * @param {IAPOffer} offer
+   * @param {IAPAdditionalData?} additionalData
    */
   @Cordova({ sync: false })
-  order(offer: IAPOffer, additionalData?: any): Promise<IAPError | undefined> {
+  order(offer: IAPOffer, additionalData?: IAPAdditionalData): Promise<IAPError | undefined> {
     return;
   }
 
   /**
    * Request a payment.
-   *
    * A payment is a custom amount to charge the user. Make sure the selected payment platform
    * supports Payment Requests.
-   *
-   * @param paymentRequest Parameters of the payment request
-   * @param additionalData Additional parameters
+   * @param {IAPPaymentRequest} paymentRequest Parameters of the payment request
+   * @param {IAPAdditionalData?} additionalData Additional parameters
    */
   @Cordova({ sync: false })
-  requestPayment(paymentRequest: IAPPaymentRequest, additionalData?: any): any {
+  requestPayment(paymentRequest: IAPPaymentRequest, additionalData?: IAPAdditionalData): object {
     return;
   }
 
   /**
-   * Returns true if a platform supports the requested functionality.
-   *
+   * @returns true if a platform supports the requested functionality.
    * @example
    * store.checkSupport(Platform.APPLE_APPSTORE, 'requestPayment');
    * // => false
+   * @param {Platform} platform
+   * @param {functionality} functionality
    */
   @Cordova({ sync: false })
   checkSupport(platform: Platform, functionality: string): boolean {
@@ -1143,8 +1172,7 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * Replay the users transactions.
-   *
-   * This method exists to cover an Apple AppStore requirement.
+   * This method exists to cover an Apple App Store requirement.
    */
   @Cordova({ sync: false })
   restorePurchases(): Promise<IAPError | undefined> {
@@ -1153,12 +1181,11 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * Open the subscription management interface for the selected platform.
-   *
    * If platform is not specified, the first available platform will be used.
-   *
    * @example
    * const activeSubscription: Purchase = // ...
    * store.manageSubscriptions(activeSubscription.platform);
+   * @param {Platform?} platform
    */
   @Cordova({ sync: false })
   manageSubscriptions(platform?: Platform): Promise<IAPError | undefined> {
@@ -1166,12 +1193,9 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * Opens the billing methods page on AppStore, Play, Microsoft, ...
-   *
+   * Opens the billing methods page on App Store, Play, Microsoft, ...
    * From this page, the user can update their payment methods.
-   *
    * If platform is not specified, the first available platform will be used.
-   *
    * @example
    * if (purchase.isBillingRetryPeriod)
    *     store.manageBilling(purchase.platform);
@@ -1183,7 +1207,6 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * The default payment platform to use depending on the OS.
-   *
    * - on iOS: `APPLE_APPSTORE`
    * - on Android: `GOOGLE_PLAY`
    */
@@ -1194,9 +1217,7 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * Register an error handler.
-   *
-   * @param error An error callback that takes the error as an argument
-   *
+   * @param {Callback<IAPError>} error An error callback that takes the error as an argument
    * @example
    * store.error(function(error) {
    *   console.error('CdvPurchase ERROR: ' + error.message);
