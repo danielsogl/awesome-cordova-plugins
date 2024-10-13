@@ -67,7 +67,7 @@
     "ts-node": "10.9.2",
     "typescript": "4.2.4",
     "unminified-webpack-plugin": "3.0.0",
-    "webpack": "5.74.0",
+    "webpack": "5.94.0",
     "winston": "3.14.2",
     "zone.js": "0.11.8"
   },
