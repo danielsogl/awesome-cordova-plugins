@@ -1,3 +1,24 @@
+# [6.10.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.9.0...v6.10.0) (2024-10-13)
+
+
+### Bug Fixes
+
+* **in-app-browser:** remove duplicated method ([#4838](https://github.com/danielsogl/awesome-cordova-plugins/issues/4838)) ([3a64cd4](https://github.com/danielsogl/awesome-cordova-plugins/commit/3a64cd4bcdf18b9a776ab90b45faf59c9a3ca10c))
+* **screenshot:** Update plugin NPM package name ([#4844](https://github.com/danielsogl/awesome-cordova-plugins/issues/4844)) ([4e817a9](https://github.com/danielsogl/awesome-cordova-plugins/commit/4e817a96a876d9adb6ffdbe6163f7e19ec1670d2))
+
+
+### Features
+
+* **adjust:** update adjust sdk index.ts api to v5.0.0 ([#4826](https://github.com/danielsogl/awesome-cordova-plugins/issues/4826)) ([50287d1](https://github.com/danielsogl/awesome-cordova-plugins/commit/50287d1f5a94b8e311f541040f3034568646b3b3))
+* **bluetooth-classic-serial-port:** add method initialize ([#4847](https://github.com/danielsogl/awesome-cordova-plugins/issues/4847)) ([e830259](https://github.com/danielsogl/awesome-cordova-plugins/commit/e830259bebdb20a5dfef9d8bde4dde7cb84cfae2))
+* **intercom:** add support cordova-intercom v14+ ([#4839](https://github.com/danielsogl/awesome-cordova-plugins/issues/4839)) ([61d0854](https://github.com/danielsogl/awesome-cordova-plugins/commit/61d0854f73ec0c59cd528951b168cc7f3e88c8d0))
+* **network-permission:** add plugin ([#4830](https://github.com/danielsogl/awesome-cordova-plugins/issues/4830)) ([bff5cce](https://github.com/danielsogl/awesome-cordova-plugins/commit/bff5cce12555292d678539ed4690ec6ac79b8481))
+* **shortcuts-android:** add plugin ([#4831](https://github.com/danielsogl/awesome-cordova-plugins/issues/4831)) ([f87a73f](https://github.com/danielsogl/awesome-cordova-plugins/commit/f87a73f29d28dd0a0b3236540945bc97e4db5ddd))
+* **sockets-tcp:** add plugin ([#4833](https://github.com/danielsogl/awesome-cordova-plugins/issues/4833)) ([bb5b344](https://github.com/danielsogl/awesome-cordova-plugins/commit/bb5b3441005f9b564390de75cec8313eea9db50a))
+* **sockets-udp:** add plugin ([#4832](https://github.com/danielsogl/awesome-cordova-plugins/issues/4832)) ([c40a734](https://github.com/danielsogl/awesome-cordova-plugins/commit/c40a73407d7dde06e1e450c5c658220e275b643b))
+
+
+
 # [6.9.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.8.0...v6.9.0) (2024-09-13)
 
 
