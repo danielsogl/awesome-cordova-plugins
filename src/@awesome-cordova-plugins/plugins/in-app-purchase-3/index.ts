@@ -992,7 +992,7 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * Call to initialize the in-app purchase plugin.
-   * @param {(Platform | { platform: Platform; options?: object })[]} platforms - List of payment platforms to initialize, default to Store.defaultPlatform().
+   * @param platforms - List of payment platforms to initialize, default to Store.defaultPlatform().
    */
   @Cordova({ sync: true })
   initialize(platforms: (Platform | { platform: Platform; options?: object })[]): void {}
@@ -1120,8 +1120,8 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * @param {{id: string, platform?: Platform} | string} product - The product object or identifier of the product.
-   * @returns {boolean} true if a product is owned
+   * @param product - The product object or identifier of the product.
+   * @returns true if a product is owned
    */
   @Cordova({ sync: true })
   owned(
