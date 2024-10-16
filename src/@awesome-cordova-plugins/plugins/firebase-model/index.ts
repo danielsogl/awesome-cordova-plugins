@@ -1,12 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  Plugin,
-  Cordova,
-  CordovaProperty,
-  CordovaInstance,
-  InstanceProperty,
-  IonicNativePlugin,
-} from '@ionic-native/core';
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export enum FirebaseModelStatus {
@@ -93,7 +86,7 @@ export class FirebaseModelInput {
   platforms: ['iOS'], // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable()
-export class FirebaseModel extends IonicNativePlugin {
+export class FirebaseModel extends AwesomeCordovaNativePlugin {
   /**
    * This function configure the Firebase TFLite model and downloads.
    * @param {string} arg1 Name of the TFLite model which is uploaded in the Firebase console
