@@ -116,6 +116,7 @@ export interface IAPOffer {
 
   /**
    * Initiate a purchase of this offer.
+   *
    * @example
    * store.get("my-product").getOffer().order();
    */
@@ -208,9 +209,11 @@ export interface IAPTransaction {
 
   /**
    * Finish a transaction.
+   *
    * When the application has delivered the product, it should finalize the order.
    * Only after that, money will be transferred to your account.
    * This method ensures that no customers is charged for a product that couldn't be delivered.
+   *
    * @example
    * store.when()
    *   .approved(transaction => transaction.verify())
@@ -220,8 +223,10 @@ export interface IAPTransaction {
 
   /**
    * Verify a transaction.
+   *
    * This will trigger a call to the receipt validation service for the attached receipt.
    * Once the receipt has been verified, you can finish the transaction.
+   *
    * @example
    * store.when()
    *   .approved(transaction => transaction.verify())
@@ -266,6 +271,7 @@ export interface IAPVerifiedPurchase {
 export interface IAPProductEvents {
   /**
    * Register a function called when a product or receipt is updated.
+   *
    * @deprecated - Use `productUpdated` or `receiptUpdated`.
    */
   updated(cb: Callback<IAPProduct | IAPReceipt>, callbackName?: string): IAPProductEvents;
@@ -518,7 +524,7 @@ export class IAPError {
 }
 
 /**
- * @name In App Purchase 3
+ * @name "In App Purchase 3"
  * @description
  * In-App Purchase on iOS, Android, Windows, macOS and XBox.
  *
@@ -534,7 +540,6 @@ export class IAPError {
  * | subscriptions | ✅ | ✅ | ✅ | ✅ | ✅ |
  * | restore purchases | ✅ | ✅ | ✅ | ✅ | ✅ |
  * | receipt validations | ✅ | ✅ |  | ✅ | ✅ |
- * | downloadable content | ✅ |   |   |   | ✅ |
  * | introductory prices | ✅ | ✅ |   | ✅ | ✅ |
  *
  * Supports:
@@ -562,14 +567,15 @@ export class IAPError {
  *    this.store.when()
  *      .approved(p => p.verify())
  *      .verified(p => p.finish());
- *    this.store.refresh();
+ *    this.store.initialize();
+ *    this.store.update();
  *   });
  * }
  *
  * ...
  *
- * this.store.order("my_product_id");
- *
+ * const product = this.store.get("my_product_id", Platform.TEST);
+ * store.order(product.getOffer()); // or product.getOffer().order();
  * ```
  *
  * ## Full example
@@ -610,14 +616,16 @@ export class IAPError {
  *    console.log(JSON.stringify(this.store.get("my_product_id")));
  *  });
  *
- *  // Refresh the status of in-app products
- *  this.store.refresh();
+ *  // initialize the plugin
+ *  this.store.initialize();
+ *
+ *  // refresh product prices and status of purchases
+ *  this.store.update();
  *
  *  ...
  *
- *  // To make a purchase
- *  this.store.order("my_product_id");
- *
+ * const product = this.store.get("my_product_id", Platform.TEST);
+ * store.order(product.getOffer()); // or product.getOffer().order();
  * ```
  *
  * ## Philosophy
@@ -632,7 +640,6 @@ export class IAPError {
  *  this.store.when().updated(refreshScreen); // match any product
  *  this.store.when().owned(unlockApp); // match a specific product
  *  this.store.when().approved(serverCheck); // match all subscriptions
- *  this.store.when().downloaded(showContent);
  * ```
  *
  * The `updated` event is fired whenever one of the fields of a product is
@@ -646,7 +653,7 @@ export class IAPError {
  * The store needs to know the type and identifiers of your products before you
  * can use them in your code.
  *
- * Use `store.register()` to define them before your first call to `store.refresh()`.
+ * Use `store.register()` to define them before your first call to `store.initialize()`.
  *
  * Once registered, you can use `store.get()` to retrieve an `IAPProduct` object.
  *
@@ -688,7 +695,7 @@ export class IAPError {
  *
  * #### initiate a purchase
  *
- * Purchases are initiated using the `store.order("some_product_id")` method.
+ * Purchases are initiated using the `store.order(offer)` method.
  *
  * The store will manage the internal purchase flow. It'll end:
  *
@@ -718,7 +725,8 @@ export class IAPError {
  *
  * When the purchase button is clicked:
  * ```typescript
- * this.store.order("extra_chapter");
+ * const extraChapterProduct = this.store.get("extra_chapter");
+ * this.store.order(extraChapterProduct.getOffer());
  * ```
  *
  * #### un-finished purchases
@@ -726,7 +734,7 @@ export class IAPError {
  * If your app wasn't able to deliver the content, `product.finish()` won't be called.
  *
  * Don't worry: the `approved` event will be re-triggered the next time you
- * call `store.refresh()`, which can very well be the next time
+ * call `store.update()`, which can very well be the next time
  * the application starts. Pending transactions are persistant.
  *
  * #### simple case
@@ -740,8 +748,6 @@ export class IAPError {
  * ```js
  * this.store.when().approved((p: IAPProduct) => p.finish());
  * ```
- *
- * NOTE: the "product" query will match any purchases (see "queries" to learn more details about queries).
  *
  * ## Receipt validation
  *
@@ -843,10 +849,6 @@ export class IAPError {
  *    - Called when receipt verification failed
  *  - `expired(IAPProduct)`
  *    - Called when validation find a subscription to be expired
- *  - `downloading(IAPProduct, progress, time_remaining)`
- *    - Called when content download is started
- *  - `downloaded(IAPProduct)`
- *    - Called when content download has successfully completed
  *
  * ## Learn More
  *
@@ -858,6 +860,7 @@ export class IAPError {
  * ## Technical Support or Questions
  *
  * If you have questions or need help integrating In-App Purchase, [Open an Issue on GitHub](https://github.com/j3k0/cordova-plugin-purchase/issues) or email us at _support@fovea.cc_.
+ *
  * @interfaces
  * IAPAdapter
  * IAPProductOptions
@@ -898,12 +901,14 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * Verbosity level used by the plugin logger
+   *
    * Set to:
    *  - LogLevel.QUIET or 0 to disable all logging (default)
    *  - LogLevel.ERROR or 1 to show only error messages
    *  - LogLevel.WARNING or 2 to show warnings and errors
    *  - LogLevel.INFO or 3 to also show information messages
    *  - LogLevel.DEBUG or 4 to enable internal debugging messages.
+   *
    * @see {@link LogLevel}
    */
   @CordovaProperty()
@@ -923,11 +928,13 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * URL or implementation of the receipt validation service
+   *
    * @example
    * Define the validator as a string
    * ```ts
    * InAppPurchase3.validator = "https://validator.iaptic.com/v1/validate?appName=test"
    * ```
+   *
    * @example
    * Define the validator as a function
    * ```ts
@@ -954,7 +961,9 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
    *  - fraud detection
    *  - analytics
    *  - tracking
+   *
    * Make sure the value your select is in line with your application's privacy policy and your users' tracking preference.
+   *
    * @example
    * CdvPurchase.store.validator_privacy_policy = [
    *   'fraud', 'support', 'analytics', 'tracking'
@@ -992,10 +1001,14 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * Call to initialize the in-app purchase plugin.
-   * @param {(Platform | { platform: Platform; options?: object })[]} platforms - List of payment platforms to initialize, default to Store.defaultPlatform().
+   *
+   * @param platforms - List of payment platforms to initialize, default to Store.defaultPlatform().
+   * @returns {Promise<IAPError | undefined>}
    */
   @Cordova({ sync: true })
-  initialize(platforms: (Platform | { platform: Platform; options?: object })[]): void {}
+  initialize(platforms: (Platform | { platform: Platform; options?: object })[]): Promise<IAPError | undefined> {
+    return;
+  }
 
   /**
    * Avoid invoking store.update() if the most recent call occurred within this specific number of milliseconds.
@@ -1022,6 +1035,7 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * Setup events listener.
+   *
    * @example
    * store.when()
    *      .productUpdated(product => updateUI(product))
@@ -1045,7 +1059,8 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
    * @param {IAPTransaction} transaction The transaction to monitor.
    * @param {Callback<TransactionState>} onChange Function to be called when the transaction status changes.
    * @param {string} callbackName
-   * Returns A monitor which can be stopped with `monitor.stop()`
+   * @returns A monitor which can be stopped with `monitor.stop()`
+   *
    * @example
    * const monitor = store.monitor(transaction, state => {
    *   console.log('new state: ' + state);
@@ -1120,7 +1135,7 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * @param {{id: string, platform?: Platform} | string} product - The product object or identifier of the product.
+   * @param product - The product object or identifier of the product.
    * @returns {boolean} true if a product is owned
    */
   @Cordova({ sync: true })
@@ -1147,8 +1162,10 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * Request a payment.
+   *
    * A payment is a custom amount to charge the user. Make sure the selected payment platform
    * supports Payment Requests.
+   *
    * @param {IAPPaymentRequest} paymentRequest Parameters of the payment request
    * @param {IAPAdditionalData?} additionalData Additional parameters
    */
@@ -1159,6 +1176,7 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * @returns true if a platform supports the requested functionality.
+   *
    * @example
    * store.checkSupport(Platform.APPLE_APPSTORE, 'requestPayment');
    * // => false
@@ -1172,6 +1190,7 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * Replay the users transactions.
+   *
    * This method exists to cover an Apple App Store requirement.
    */
   @Cordova({ sync: false })
@@ -1181,7 +1200,9 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * Open the subscription management interface for the selected platform.
+   *
    * If platform is not specified, the first available platform will be used.
+   *
    * @example
    * const activeSubscription: Purchase = // ...
    * store.manageSubscriptions(activeSubscription.platform);
@@ -1194,8 +1215,10 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * Opens the billing methods page on App Store, Play, Microsoft, ...
+   *
    * From this page, the user can update their payment methods.
    * If platform is not specified, the first available platform will be used.
+   *
    * @example
    * if (purchase.isBillingRetryPeriod)
    *     store.manageBilling(purchase.platform);
@@ -1207,6 +1230,7 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * The default payment platform to use depending on the OS.
+   *
    * - on iOS: `APPLE_APPSTORE`
    * - on Android: `GOOGLE_PLAY`
    */
@@ -1217,6 +1241,7 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * Register an error handler.
+   *
    * @param {Callback<IAPError>} error An error callback that takes the error as an argument
    * @example
    * store.error(function(error) {
