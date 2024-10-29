@@ -1002,11 +1002,11 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
   /**
    * Call to initialize the in-app purchase plugin.
    *
-   *  @param platforms - List of payment platforms to initialize, default to Store.defaultPlatform().
-   *  @return {Promise<IAPError[]>}
+   * @param platforms - List of payment platforms to initialize, default to Store.defaultPlatform().
+   * @returns {Promise<IAPError | undefined>}
    */
   @Cordova({ sync: true })
-  initialize(platforms: (Platform | { platform: Platform; options?: object })[]): Promise<IAPError[]> {
+  initialize(platforms: (Platform | { platform: Platform; options?: object })[]): Promise<IAPError | undefined> {
     return;
   }
 
