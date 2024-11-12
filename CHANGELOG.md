@@ -1,3 +1,23 @@
+# [6.11.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.10.0...v6.11.0) (2024-11-11)
+
+
+### Bug Fixes
+
+* **cordova-plugin-firebase-model:** updated to @awesome-cordova-plugins/core ([#4858](https://github.com/danielsogl/awesome-cordova-plugins/issues/4858))  ([ac767ab](https://github.com/danielsogl/awesome-cordova-plugins/commit/ac767ab2198ab55d3cfcc20fafab838301e6f051))
+* **deps:** update dependency tslib to v2.8.1 ([#4856](https://github.com/danielsogl/awesome-cordova-plugins/issues/4856))  [skip ci] ([4b526e4](https://github.com/danielsogl/awesome-cordova-plugins/commit/4b526e4d4d96651baf126724909b034c7b25eac2))
+
+
+### Features
+
+* **cordova-plugin-iroot:** add plugin ([#4857](https://github.com/danielsogl/awesome-cordova-plugins/issues/4857)) ([658a55b](https://github.com/danielsogl/awesome-cordova-plugins/commit/658a55bc97dd4247ed8e8672ae08c23df2fdb185))
+
+
+### Reverts
+
+* Revert "feat(in-app-purchase-3) new InAppPurchase3 plugin (#4849)" (#4871) ([6524312](https://github.com/danielsogl/awesome-cordova-plugins/commit/652431206c51f5f66e88786d4bffa4ccca6331b3)), closes [#4849](https://github.com/danielsogl/awesome-cordova-plugins/issues/4849) [#4871](https://github.com/danielsogl/awesome-cordova-plugins/issues/4871)
+
+
+
 # [6.10.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.9.0...v6.10.0) (2024-10-13)
 
 

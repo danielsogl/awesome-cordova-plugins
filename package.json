@@ -1,6 +1,6 @@
 {
   "name": "awesome-cordova-plugins",
-  "version": "6.10.0",
+  "version": "6.11.0",
   "description": "Native plugin wrappers for Cordova and Ionic with TypeScript, ES6+, Promise and Observable support",
   "homepage": "https://awesome-cordova-plugins.com",
   "author": "Daniel Sogl <me@danielsogl.com> (https://danielsogl.com)",
@@ -24,7 +24,7 @@
     "prettier": "prettier --write --ignore-unknown \"**/*\""
   },
   "dependencies": {
-    "tslib": "2.7.0"
+    "tslib": "2.8.1"
   },
   "devDependencies": {
     "@angular/common": "12.2.17",
@@ -47,7 +47,7 @@
     "dgeni-packages": "0.16.10",
     "eslint": "8.57.1",
     "eslint-config-prettier": "8.10.0",
-    "eslint-plugin-jsdoc": "50.3.2",
+    "eslint-plugin-jsdoc": "50.4.3",
     "fs-extra": "11.2.0",
     "gulp": "5.0.0",
     "gulp-rename": "2.0.0",
@@ -60,7 +60,7 @@
     "minimist": "1.2.8",
     "prettier": "2.8.8",
     "rimraf": "5.0.5",
-    "rollup": "4.24.0",
+    "rollup": "4.25.0",
     "rxjs": "6.6.7",
     "terser-webpack-plugin": "5.3.10",
     "ts-jest": "27.1.5",
@@ -68,7 +68,7 @@
     "typescript": "4.2.4",
     "unminified-webpack-plugin": "3.0.0",
     "webpack": "5.74.0",
-    "winston": "3.14.2",
+    "winston": "3.17.0",
     "zone.js": "0.11.8"
   },
   "jest": {
