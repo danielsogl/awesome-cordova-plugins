@@ -1,6 +1,6 @@
 {
   "name": "awesome-cordova-plugins",
-  "version": "6.11.0",
+  "version": "6.12.0",
   "description": "Native plugin wrappers for Cordova and Ionic with TypeScript, ES6+, Promise and Observable support",
   "homepage": "https://awesome-cordova-plugins.com",
   "author": "Daniel Sogl <me@danielsogl.com> (https://danielsogl.com)",

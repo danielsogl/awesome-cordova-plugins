@@ -1,3 +1,7 @@
+# [6.12.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.11.0...v6.12.0) (2024-11-21)
+
+
+
 # [6.11.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.10.0...v6.11.0) (2024-11-11)
 
 
