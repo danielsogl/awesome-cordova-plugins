@@ -1,3 +1,65 @@
+# [6.12.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.11.0...v6.12.0) (2024-11-21)
+
+
+
+# [6.11.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.10.0...v6.11.0) (2024-11-11)
+
+
+### Bug Fixes
+
+* **cordova-plugin-firebase-model:** updated to @awesome-cordova-plugins/core ([#4858](https://github.com/danielsogl/awesome-cordova-plugins/issues/4858))  ([ac767ab](https://github.com/danielsogl/awesome-cordova-plugins/commit/ac767ab2198ab55d3cfcc20fafab838301e6f051))
+* **deps:** update dependency tslib to v2.8.1 ([#4856](https://github.com/danielsogl/awesome-cordova-plugins/issues/4856))  [skip ci] ([4b526e4](https://github.com/danielsogl/awesome-cordova-plugins/commit/4b526e4d4d96651baf126724909b034c7b25eac2))
+
+
+### Features
+
+* **cordova-plugin-iroot:** add plugin ([#4857](https://github.com/danielsogl/awesome-cordova-plugins/issues/4857)) ([658a55b](https://github.com/danielsogl/awesome-cordova-plugins/commit/658a55bc97dd4247ed8e8672ae08c23df2fdb185))
+
+
+### Reverts
+
+* Revert "feat(in-app-purchase-3) new InAppPurchase3 plugin (#4849)" (#4871) ([6524312](https://github.com/danielsogl/awesome-cordova-plugins/commit/652431206c51f5f66e88786d4bffa4ccca6331b3)), closes [#4849](https://github.com/danielsogl/awesome-cordova-plugins/issues/4849) [#4871](https://github.com/danielsogl/awesome-cordova-plugins/issues/4871)
+
+
+
+# [6.10.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.9.0...v6.10.0) (2024-10-13)
+
+
+### Bug Fixes
+
+* **in-app-browser:** remove duplicated method ([#4838](https://github.com/danielsogl/awesome-cordova-plugins/issues/4838)) ([3a64cd4](https://github.com/danielsogl/awesome-cordova-plugins/commit/3a64cd4bcdf18b9a776ab90b45faf59c9a3ca10c))
+* **screenshot:** Update plugin NPM package name ([#4844](https://github.com/danielsogl/awesome-cordova-plugins/issues/4844)) ([4e817a9](https://github.com/danielsogl/awesome-cordova-plugins/commit/4e817a96a876d9adb6ffdbe6163f7e19ec1670d2))
+
+
+### Features
+
+* **adjust:** update adjust sdk index.ts api to v5.0.0 ([#4826](https://github.com/danielsogl/awesome-cordova-plugins/issues/4826)) ([50287d1](https://github.com/danielsogl/awesome-cordova-plugins/commit/50287d1f5a94b8e311f541040f3034568646b3b3))
+* **bluetooth-classic-serial-port:** add method initialize ([#4847](https://github.com/danielsogl/awesome-cordova-plugins/issues/4847)) ([e830259](https://github.com/danielsogl/awesome-cordova-plugins/commit/e830259bebdb20a5dfef9d8bde4dde7cb84cfae2))
+* **intercom:** add support cordova-intercom v14+ ([#4839](https://github.com/danielsogl/awesome-cordova-plugins/issues/4839)) ([61d0854](https://github.com/danielsogl/awesome-cordova-plugins/commit/61d0854f73ec0c59cd528951b168cc7f3e88c8d0))
+* **network-permission:** add plugin ([#4830](https://github.com/danielsogl/awesome-cordova-plugins/issues/4830)) ([bff5cce](https://github.com/danielsogl/awesome-cordova-plugins/commit/bff5cce12555292d678539ed4690ec6ac79b8481))
+* **shortcuts-android:** add plugin ([#4831](https://github.com/danielsogl/awesome-cordova-plugins/issues/4831)) ([f87a73f](https://github.com/danielsogl/awesome-cordova-plugins/commit/f87a73f29d28dd0a0b3236540945bc97e4db5ddd))
+* **sockets-tcp:** add plugin ([#4833](https://github.com/danielsogl/awesome-cordova-plugins/issues/4833)) ([bb5b344](https://github.com/danielsogl/awesome-cordova-plugins/commit/bb5b3441005f9b564390de75cec8313eea9db50a))
+* **sockets-udp:** add plugin ([#4832](https://github.com/danielsogl/awesome-cordova-plugins/issues/4832)) ([c40a734](https://github.com/danielsogl/awesome-cordova-plugins/commit/c40a73407d7dde06e1e450c5c658220e275b643b))
+
+
+
+# [6.9.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.8.0...v6.9.0) (2024-09-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependency tslib to v2.7.0 ([#4823](https://github.com/danielsogl/awesome-cordova-plugins/issues/4823)) [skip ci] ([1c21dd1](https://github.com/danielsogl/awesome-cordova-plugins/commit/1c21dd1a7734e5cf82d9d64806d5b159d66f9d37))
+
+
+### Features
+
+* **approov-advanced-http:** support approov3 methods ([#4817](https://github.com/danielsogl/awesome-cordova-plugins/issues/4817)) ([5f15119](https://github.com/danielsogl/awesome-cordova-plugins/commit/5f1511997101c750e80adb85e2c6b0dfacaf5a31))
+* **clevertap:** support clevertap-cordova 3.2.0 ([#4814](https://github.com/danielsogl/awesome-cordova-plugins/issues/4814)) ([4471806](https://github.com/danielsogl/awesome-cordova-plugins/commit/4471806f73ab286bbcab22d28ea2120cb4cc6a2b)), closes [#3491](https://github.com/danielsogl/awesome-cordova-plugins/issues/3491)
+* **mobile-messaging:** Added fullFeaturedInApps method to config, fetching of the Inbox methods and registerForRemoteAndroidNotifications method ([#4810](https://github.com/danielsogl/awesome-cordova-plugins/issues/4810)) ([63f2fcb](https://github.com/danielsogl/awesome-cordova-plugins/commit/63f2fcbe99b6be14a76a4a6c72ef19594d82905b))
+* **webengage:** New Plugin for Notification Inbox ([#4819](https://github.com/danielsogl/awesome-cordova-plugins/issues/4819)) ([3168688](https://github.com/danielsogl/awesome-cordova-plugins/commit/3168688ce44b1353ed6f12e41e06c90647046f71))
+
+
+
 # [6.8.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.7.0...v6.8.0) (2024-07-11)
 
 

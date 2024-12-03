@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Cordova, CordovaFunctionOverride, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 import { Observable } from 'rxjs';
 
 export interface ThreeDeeTouchQuickAction {
   /**
-   * Type that can be used in the onHomeIconPressed callback
+   * Type that can be used in the registerQuickActionListener callback
    */
   type?: string;
 
@@ -105,7 +105,7 @@ export interface ThreeDeeTouchForceTouch {
  *
  * this.threeDeeTouch.configureQuickActions(actions);
  *
- * this.threeDeeTouch.onHomeIconPressed().subscribe(
+ * this.threeDeeTouch.registerQuickActionListener().subscribe(
  *  (payload) => {
  *    // returns an object that is the button you presed
  *    console.log('Pressed the ${payload.title} button')
@@ -120,9 +120,9 @@ export interface ThreeDeeTouchForceTouch {
  */
 @Plugin({
   pluginName: 'ThreeDeeTouch',
-  plugin: 'cordova-plugin-3dtouch',
+  plugin: '@herdwatch/cordova-plugin-3dtouch',
   pluginRef: 'ThreeDeeTouch',
-  repo: 'https://github.com/EddyVerbruggen/cordova-plugin-3dtouch',
+  repo: 'https://github.com/herdwatch-apps/cordova-plugin-3dtouch',
   platforms: ['iOS'],
 })
 @Injectable()
@@ -169,8 +169,10 @@ export class ThreeDeeTouch extends AwesomeCordovaNativePlugin {
    *
    * @returns {Observable<any>} returns an observable that notifies you when he user presses on the home screen icon
    */
-  @CordovaFunctionOverride()
-  onHomeIconPressed(): Observable<any> {
+  @Cordova({
+    observable: true,
+  })
+  registerQuickActionListener(): Observable<ThreeDeeTouchQuickAction> {
     return;
   }
 
