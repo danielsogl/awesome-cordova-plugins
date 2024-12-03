@@ -23,7 +23,7 @@ declare const navigator: any;
  */
 @Plugin({
   pluginName: 'Screenshot',
-  plugin: '@herdwatch-apps/cordova-plugin-screenshot',
+  plugin: '@herdwatch/cordova-plugin-screenshot',
   pluginRef: 'navigator.screenshot',
   repo: 'https://github.com/herdwatch-apps/cordova-plugin-screenshot',
   platforms: ['Android', 'iOS'],

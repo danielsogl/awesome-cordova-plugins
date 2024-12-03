@@ -7,7 +7,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * Awesome Cordova Plugins wrapper that wraps Webengage Cordova plugin for Android and iOS
  * @usage
  * ```typescript
- * import { Webengage, WebengageUser, WebengagePush, WebengageNotification } from '@awesome-cordova-plugins/webengage/ngx';
+ * import { Webengage, WebengageUser, WebengagePush, WebengageNotification, WebengageJwtManager  } from '@awesome-cordova-plugins/webengage/ngx';
  *
  *
  * constructor(private webengage: Webengage, private webengageUser: WebengageUser, private webengagePush: WebengagePush, private webengageNotification: WebengageNotification ) { }
@@ -96,7 +96,17 @@ export class WebengageUser extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  login(userId: string): Promise<any> {
+  login(userId: string, jwtToken?: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Logs user in
+   * @param {string} userId
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  setSecureToken(userId: string, jwtToken: string): Promise<any> {
     return;
   }
 
@@ -138,6 +148,38 @@ export class WebengageUser extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   setUserOptIn(channel: string, optIn: any): Promise<any> {
+    return;
+  }
+
+  /**
+   * Sets user location
+   * @param {number} latitude
+   * @param {number} longitude
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  setLocation(latitude: number, longitude: number): Promise<any> {
+    return;
+  }
+}
+
+/**
+ * @hidden
+ */
+@Plugin({
+  pluginName: 'Webengage',
+  plugin: 'cordova-plugin-webengage',
+  pluginRef: 'webengage.jwtManager',
+})
+@Injectable()
+export class WebengageJwtManager extends AwesomeCordovaNativePlugin {
+  /**
+   * Callback function is invoked when a Jwt token is clicked
+   * @param {any} callback
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  tokenInvalidatedCallback(callback: any): Promise<any> {
     return;
   }
 }

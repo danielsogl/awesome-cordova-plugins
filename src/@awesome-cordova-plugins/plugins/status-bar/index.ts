@@ -67,22 +67,6 @@ export class StatusBar extends AwesomeCordovaNativePlugin {
   styleLightContent() {}
 
   /**
-   * Use the blackTranslucent statusbar (light text, for dark backgrounds).
-   */
-  @Cordova({
-    sync: true,
-  })
-  styleBlackTranslucent() {}
-
-  /**
-   * Use the blackOpaque statusbar (light text, for dark backgrounds).
-   */
-  @Cordova({
-    sync: true,
-  })
-  styleBlackOpaque() {}
-
-  /**
    * Set the status bar to a specific named color. Valid options:
    * black, darkGray, lightGray, white, gray, red, green, blue, cyan, yellow, magenta, orange, purple, brown.
    *

@@ -1,13 +1,224 @@
 import { Injectable } from '@angular/core';
 import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
+export class AdjustConfig {
+  private appToken: string;
+  private environment: AdjustEnvironment;
+  private sdkPrefix: string;
+  private logLevel: AdjustLogLevel = null;
+  private defaultTracker: string = null;
+  private externalDeviceId: string = null;
+  private isSendingInBackgroundEnabled: boolean = null;
+  private isDeferredDeeplinkOpeningEnabled: boolean = null;
+  private isCostDataInAttributionEnabled: boolean = null;
+  private isCoppaComplianceEnabled: boolean = null;
+  private isDeviceIdsReadingOnceEnabled: boolean = null;
+  private eventDeduplicationIdsMaxSize: number = null;
+  private urlStrategyDomains: string[] = [];
+  private useSubdomains: boolean = null;
+  private isDataResidency: boolean = null;
+
+  // android only
+  private processName: string = null;
+  private isPreinstallTrackingEnabled: boolean = null;
+  private preinstallFilePath: string = null;
+  private isPlayStoreKidsComplianceEnabled: boolean = null;
+  private fbAppId: string = null;
+
+  // ios only
+  private isAdServicesEnabled: boolean = null;
+  private isIdfaReadingEnabled: boolean = null;
+  private isIdfvReadingEnabled: boolean = null;
+  private isSkanAttributionEnabled: boolean = null;
+  private isLinkMeEnabled: boolean = null;
+  private attConsentWaitingInterval: number = null;
+
+  // callbacks
+  private attributionCallback: (attribution: AdjustAttribution) => void = null;
+  private eventTrackingSucceededCallback: (event: AdjustEventSuccess) => void = null;
+  private eventTrackingFailedCallback: (event: AdjustEventFailure) => void = null;
+  private sessionTrackingSucceededCallback: (session: AdjustSessionSuccess) => void = null;
+  private sessionTrackingFailedCallback: (session: AdjustSessionFailure) => void = null;
+  private deferredDeeplinkCallback: (deeplink: string) => void = null;
+  private skanUpdatedCallback: (skanData: AdjustSkanData) => void = null;
+
+  constructor(appToken: string, environment: AdjustEnvironment) {
+    this.appToken = appToken;
+    this.environment = environment;
+  }
+
+  setLogLevel(logLevel: AdjustLogLevel): void {
+    this.logLevel = logLevel;
+  }
+
+  setDefaultTracker(defaultTracker: string): void {
+    this.defaultTracker = defaultTracker;
+  }
+
+  setExternalDeviceId(externalDeviceId: string): void {
+    this.externalDeviceId = externalDeviceId;
+  }
+
+  setUrlStrategy(urlStrategyDomains: string[], useSubdomains: boolean, isDataResidency: boolean): void {
+    this.urlStrategy = urlStrategy;
+  }
+
+  enableSendingInBackground(): void {
+    this.isSendingInBackgroundEnabled = true;
+  }
+
+  disableDeferredDeeplinkOpening(): void {
+    this.isDeferredDeeplinkOpeningEnabled = false;
+  }
+
+  enableCoppaCompliance(): void {
+    this.isCoppaComplianceEnabled = true;
+  }
+
+  enableDeviceIdsReadingOnce(): void {
+    this.isDeviceIdsReadingOnceEnabled = true;
+  }
+
+  enablePlayStoreKidsCompliance(): void {
+    this.isPlayStoreKidsComplianceEnabled = true;
+  }
+
+  enableCostDataInAttribution(): void {
+    this.isCostDataInAttributionEnabled = true;
+  }
+
+  setProcessName(processName: string) {
+    this.processName = processName;
+  }
+
+  enablePreinstallTracking(): void {
+    this.isPreinstallTrackingEnabled = true;
+  }
+
+  setPreinstallFilePath(preinstallFilePath: string): void {
+    this.preinstallFilePath = preinstallFilePath;
+  }
+
+  setFbAppId(fbAppId: string): void {
+    this.fbAppId = fbAppId;
+  }
+
+  disableIdfaReading(): void {
+    this.isIdfaReadingEnabled = false;
+  }
+
+  disableIdfvReading(): void {
+    this.isIdfvReadingEnabled = false;
+  }
+
+  disableAdServices(): void {
+    this.isAdServicesEnabled = false;
+  }
+
+  enableLinkMe(): void {
+    this.isLinkMeEnabled = true;
+  }
+
+  disableSkanAttribution(): void {
+    this.isSkanAttributionEnabled = false;
+  }
+
+  setAttConsentWaitingInterval(attConsentWaitingInterval: number): void {
+    this.attConsentWaitingInterval = attConsentWaitingInterval;
+  }
+
+  setAttributionCallback(attributionCallback: (attribution: AdjustAttribution) => void): void {
+    this.attributionCallback = attributionCallback;
+  }
+
+  setEventTrackingSucceededCallback(eventTrackingSucceededCallback: (event: AdjustEventSuccess) => void): void {
+    this.eventTrackingSucceededCallback = eventTrackingSucceededCallback;
+  }
+
+  setEventTrackingFailedCallback(eventTrackingFailedCallback: (event: AdjustEventFailure) => void): void {
+    this.eventTrackingFailedCallback = eventTrackingFailedCallback;
+  }
+
+  setSessionTrackingSucceededCallback(sessionTrackingSucceededCallback: (session: AdjustSessionSuccess) => void): void {
+    this.sessionTrackingSucceededCallback = sessionTrackingSucceededCallback;
+  }
+
+  setSessionTrackingFailedCallback(sessionTrackingFailedCallback: (session: AdjustSessionFailure) => void): void {
+    this.sessionTrackingFailedCallback = sessionTrackingFailedCallback;
+  }
+
+  setDeferredDeeplinkCallback(deferredDeeplinkCallback: (deeplink: string) => void): void {
+    this.deferredDeeplinkCallback = deferredDeeplinkCallback;
+  }
+
+  setSkanUpdatedCallback(skanUpdatedCallback: (skanData: AdjustSkanData) => void): void {
+    this.skanUpdatedCallback = skanUpdatedCallback;
+  }
+
+  private getAttributionCallback(): void {
+    return this.attributionCallback;
+  }
+
+  private getEventTrackingSucceededCallback(): void {
+    return this.eventTrackingSucceededCallback;
+  }
+
+  private getEventTrackingFailedCallback(): void {
+    return this.eventTrackingFailedCallback;
+  }
+
+  private getSessionTrackingSucceededCallback(): void {
+    return this.sessionTrackingSucceededCallback;
+  }
+
+  private getSessionTrackingFailedCallback(): void {
+    return this.sessionTrackingFailedCallback;
+  }
+
+  private getDeferredDeeplinkCallback(): void {
+    return this.deferredDeeplinkCallback;
+  }
+
+  private getSkanUpdatedCallback(): void {
+    return this.skanUpdatedCallback;
+  }
+
+  private hasAttributionCallback(): void {
+    return this.attributionCallback !== null;
+  }
+
+  private hasEventTrackingSucceededCallback(): void {
+    return this.eventTrackingSucceededCallback !== null;
+  }
+
+  private hasEventTrackingFailedCallback(): void {
+    return this.eventTrackingFailedCallback !== null;
+  }
+
+  private hasSessionTrackingSucceededCallback(): void {
+    return this.sessionTrackingSucceededCallback !== null;
+  }
+
+  private hasSessionTrackingFailedCallback(): void {
+    return this.sessionTrackingFailedCallback !== null;
+  }
+
+  private hasDeferredDeeplinkCallback(): void {
+    return this.deferredDeeplinkCallback !== null;
+  }
+
+  private hasSkanUpdatedCallback(): void {
+    return this.skanUpdatedCallback !== null;
+  }
+}
+
 export class AdjustEvent {
   private eventToken: string;
   private revenue: number;
   private currency: string;
-  private receipt: string;
   private productId: string;
   private transactionId: string;
+  private deduplicationId: string;
   private purchaseToken: string;
   private callbackId: string;
   private callbackParameters: string[] = [];
@@ -32,280 +243,24 @@ export class AdjustEvent {
     this.partnerParameters.push(value);
   }
 
-  setTransactionId(transactionId: string) {
+  setTransactionId(transactionId: string): void {
     this.transactionId = transactionId;
   }
 
-  setCallbackId(callbackId: string) {
+  setDeduplicationId(deduplicationId: string): void {
+    this.deduplicationId = deduplicationId;
+  }
+
+  setCallbackId(callbackId: string): void {
     this.callbackId = callbackId;
   }
 
-  setReceipt(receipt: string) {
-    this.receipt = receipt;
-  }
-
-  setProductId(productId: string) {
+  setProductId(productId: string): void {
     this.productId = productId;
   }
 
-  setPurchaseToken(purchaseToken: string) {
+  setPurchaseToken(purchaseToken: string): void {
     this.purchaseToken = purchaseToken;
-  }
-}
-
-export class AdjustConfig {
-  private appToken: string;
-  private environment: AdjustEnvironment;
-  private sdkPrefix: string;
-  private delayStart = 0.0;
-  private logLevel: AdjustLogLevel = null;
-  private defaultTracker: string = null;
-  private urlStrategy: AdjustUrlStrategy = null;
-  private externalDeviceId: string = null;
-  private sendInBackground: boolean = null;
-  private shouldLaunchDeeplink: boolean = null;
-  private eventBufferingEnabled: boolean = null;
-  private userAgent: string = null;
-  private isDeviceKnown: boolean = null;
-  private needsCost: boolean = null;
-  private secretId: number = null;
-  private info1: number = null;
-  private info2: number = null;
-  private info3: number = null;
-  private info4: number = null;
-  private processName: string = null; // Android only
-  private preinstallTrackingEnabled: boolean = null; // Android only
-  private preinstallFilePath: string = null; // Android only
-  private fbAppId: string = null; // Android only
-  private oaidReadingEnabled: boolean = null; // Android only
-  private allowiAdInfoReading: boolean = null; // iOS only
-  private allowIdfaReading: boolean = null; // iOS only
-  private allowAdServicesInfoReading: boolean = null; // iOS only
-  private coppaCompliantEnabled: boolean = null;
-  private readDeviceInfoOnceEnabled: boolean = null;
-  private playStoreKidsAppEnabled: boolean = null; // Android only
-  private linkMeEnabled: boolean = null; // iOS only
-  private finalAndroidAttributionEnabled: boolean = null; // Android only
-  private attConsentWaitingInterval: number = null; // iOS only
-
-  private attributionCallback: (attribution: AdjustAttribution) => void = null;
-  private eventTrackingSucceededCallback: (event: AdjustEventSuccess) => void = null;
-  private eventTrackingFailedCallback: (event: AdjustEventFailure) => void = null;
-  private sessionTrackingSucceededCallback: (session: AdjustSessionSuccess) => void = null;
-  private sessionTrackingFailedCallback: (session: AdjustSessionFailure) => void = null;
-  private deferredDeeplinkCallback: (uri: string) => void = null;
-  private conversionValueUpdatedCallback: (conversionValue: number) => void = null;
-  private skad4ConversionValueUpdatedCallback: (skad4Data: AdjustSkad4Data) => void = null;
-
-  constructor(appToken: string, environment: AdjustEnvironment) {
-    this.appToken = appToken;
-    this.environment = environment;
-  }
-
-  setAppSecret(secretId: number, info1: number, info2: number, info3: number, info4: number): void {
-    this.secretId = secretId;
-    this.info1 = info1;
-    this.info2 = info2;
-    this.info3 = info3;
-    this.info4 = info4;
-  }
-
-  setDelayStart(delayStart: number) {
-    this.delayStart = delayStart;
-  }
-
-  setLogLevel(logLevel: AdjustLogLevel) {
-    this.logLevel = logLevel;
-  }
-
-  setDefaultTracker(defaultTracker: string) {
-    this.defaultTracker = defaultTracker;
-  }
-
-  setExternalDeviceId(externalDeviceId: string) {
-    this.externalDeviceId = externalDeviceId;
-  }
-
-  setUrlStrategy(urlStrategy: AdjustUrlStrategy) {
-    this.urlStrategy = urlStrategy;
-  }
-
-  setSendInBackground(sendInBackground: boolean) {
-    this.sendInBackground = sendInBackground;
-  }
-
-  setShouldLaunchDeeplink(shouldLaunchDeeplink: boolean) {
-    this.shouldLaunchDeeplink = shouldLaunchDeeplink;
-  }
-
-  setEventBufferingEnabled(eventBufferingEnabled: boolean) {
-    this.eventBufferingEnabled = eventBufferingEnabled;
-  }
-
-  setCoppaCompliantEnabled(coppaCompliantEnabled: boolean) {
-    this.coppaCompliantEnabled = coppaCompliantEnabled;
-  }
-
-  setReadDeviceInfoOnceEnabled(readDeviceInfoOnceEnabled: boolean) {
-    this.readDeviceInfoOnceEnabled = readDeviceInfoOnceEnabled;
-  }
-
-  setPlayStoreKidsAppEnabled(playStoreKidsAppEnabled: boolean) {
-    this.playStoreKidsAppEnabled = playStoreKidsAppEnabled;
-  }
-
-  setUserAgent(userAgent: string) {
-    this.userAgent = userAgent;
-  }
-
-  setDeviceKnown(isDeviceKnown: boolean) {
-    this.isDeviceKnown = isDeviceKnown;
-  }
-
-  setNeedsCost(needsCost: boolean) {
-    this.needsCost = needsCost;
-  }
-
-  setProcessName(processName: string) {
-    this.processName = processName;
-  }
-
-  setPreinstallTrackingEnabled(preinstallTrackingEnabled: boolean) {
-    this.preinstallTrackingEnabled = preinstallTrackingEnabled;
-  }
-
-  setPreinstallFilePath(preinstallFilePath: string) {
-    this.preinstallFilePath = preinstallFilePath;
-  }
-
-  setFbAppId(fbAppId: string) {
-    this.fbAppId = fbAppId;
-  }
-
-  setOaidReadingEnabled(enableOaidReading: boolean) {
-    this.oaidReadingEnabled = enableOaidReading;
-  }
-
-  setAllowiAdInfoReading(allowiAdInfoReading: boolean) {
-    this.allowiAdInfoReading = allowiAdInfoReading;
-  }
-
-  setAllowIdfaReading(allowIdfaReading: boolean) {
-    this.allowIdfaReading = allowIdfaReading;
-  }
-
-  setAllowAdServicesInfoReading(allowAdServicesInfoReading: boolean) {
-    this.allowAdServicesInfoReading = allowAdServicesInfoReading;
-  }
-
-  setLinkMeEnabled(linkMeEnabled: boolean) {
-    this.linkMeEnabled = linkMeEnabled;
-  }
-
-  setFinalAndroidAttributionEnabled(finalAndroidAttributionEnabled: boolean) {
-    this.finalAndroidAttributionEnabled = finalAndroidAttributionEnabled;
-  }
-
-  setAttConsentWaitingInterval(attConsentWaitingInterval: number) {
-    this.attConsentWaitingInterval = attConsentWaitingInterval;
-  }
-
-  setAttributionCallbackListener(attributionCallback: (attribution: AdjustAttribution) => void) {
-    this.attributionCallback = attributionCallback;
-  }
-
-  setEventTrackingSucceededCallbackListener(eventTrackingSucceededCallback: (event: AdjustEventSuccess) => void) {
-    this.eventTrackingSucceededCallback = eventTrackingSucceededCallback;
-  }
-
-  setEventTrackingFailedCallbackListener(eventTrackingFailedCallback: (event: AdjustEventFailure) => void) {
-    this.eventTrackingFailedCallback = eventTrackingFailedCallback;
-  }
-
-  setSessionTrackingSucceededCallbackListener(
-    sessionTrackingSucceededCallback: (session: AdjustSessionSuccess) => void
-  ) {
-    this.sessionTrackingSucceededCallback = sessionTrackingSucceededCallback;
-  }
-
-  setSessionTrackingFailedCallbackListener(sessionTrackingFailedCallback: (session: AdjustSessionFailure) => void) {
-    this.sessionTrackingFailedCallback = sessionTrackingFailedCallback;
-  }
-
-  setDeferredDeeplinkCallbackListener(deferredDeeplinkCallback: (uri: string) => void) {
-    this.deferredDeeplinkCallback = deferredDeeplinkCallback;
-  }
-
-  setConversionValueUpdatedCallbackListener(conversionValueUpdatedCallback: (conversionValue: number) => void) {
-    this.conversionValueUpdatedCallback = conversionValueUpdatedCallback;
-  }
-
-  setSkad4ConversionValueUpdatedCallbackListener(skad4ConversionValueUpdatedCallback: (skad4Data: AdjustSkad4Data) => void) {
-    this.skad4ConversionValueUpdatedCallback = skad4ConversionValueUpdatedCallback;
-  }
-
-  private getAttributionCallback() {
-    return this.attributionCallback;
-  }
-
-  private getEventTrackingSucceededCallback() {
-    return this.eventTrackingSucceededCallback;
-  }
-
-  private getEventTrackingFailedCallback() {
-    return this.eventTrackingFailedCallback;
-  }
-
-  private getSessionTrackingSucceededCallback() {
-    return this.sessionTrackingSucceededCallback;
-  }
-
-  private getSessionTrackingFailedCallback() {
-    return this.sessionTrackingFailedCallback;
-  }
-
-  private getDeferredDeeplinkCallback() {
-    return this.deferredDeeplinkCallback;
-  }
-
-  private getConversionValueUpdatedCallback() {
-    return this.conversionValueUpdatedCallback;
-  }
-
-  private getSkad4ConversionValueUpdatedCallback() {
-    return this.skad4ConversionValueUpdatedCallback;
-  }
-
-  private hasAttributionListener() {
-    return this.attributionCallback !== null;
-  }
-
-  private hasEventTrackingSucceededListener() {
-    return this.eventTrackingSucceededCallback !== null;
-  }
-
-  private hasEventTrackingFailedListener() {
-    return this.eventTrackingFailedCallback !== null;
-  }
-
-  private hasSessionTrackingSucceededListener() {
-    return this.sessionTrackingSucceededCallback !== null;
-  }
-
-  private hasSessionTrackingFailedListener() {
-    return this.sessionTrackingFailedCallback !== null;
-  }
-
-  private hasDeferredDeeplinkCallbackListener() {
-    return this.deferredDeeplinkCallback !== null;
-  }
-
-  private hasConversionValueUpdatedCallbackListener() {
-    return this.conversionValueUpdatedCallback !== null;
-  }
-
-  private hasSkad4ConversionValueUpdatedCallbackListener() {
-    return this.skad4ConversionValueUpdatedCallback !== null;
   }
 }
 
@@ -313,17 +268,15 @@ export class AdjustAppStoreSubscription {
   private price: string;
   private currency: string;
   private transactionId: string;
-  private receipt: string;
   private transactionDate: string;
   private salesRegion: string;
   private callbackParameters: string[] = [];
   private partnerParameters: string[] = [];
 
-  constructor(price: string, currency: string, transactionId: string, receipt: string) {
+  constructor(price: string, currency: string, transactionId: string) {
     this.price = price;
     this.currency = currency;
     this.transactionId = transactionId;
-    this.receipt = receipt;
   }
 
   setTransactionDate(transactionDate: string): void {
@@ -381,11 +334,11 @@ export class AdjustPlayStoreSubscription {
 }
 
 export class AdjustThirdPartySharing {
-  private isEnabled: boolean;
+  private isEnabled: boolean | null;
   private granularOptions: string[] = [];
   private partnerSharingSettings: any[] = [];
 
-  constructor(isEnabled: boolean) {
+  constructor(isEnabled: boolean | null) {
     this.isEnabled = isEnabled;
   }
 
@@ -432,30 +385,28 @@ export class AdjustAdRevenue {
     this.partnerParameters.push(value);
   }
 
-  setAdImpressionsCount(adImpressionsCount: number) {
+  setAdImpressionsCount(adImpressionsCount: number): void {
     this.adImpressionsCount = adImpressionsCount;
   }
 
-  setAdRevenueNetwork(adRevenueNetwork: string) {
+  setAdRevenueNetwork(adRevenueNetwork: string): void {
     this.adRevenueNetwork = adRevenueNetwork;
   }
 
-  setAdRevenueUnit(adRevenueUnit: string) {
+  setAdRevenueUnit(adRevenueUnit: string): void {
     this.adRevenueUnit = adRevenueUnit;
   }
 
-  setAdRevenuePlacement(adRevenuePlacement: string) {
+  setAdRevenuePlacement(adRevenuePlacement: string): void {
     this.adRevenuePlacement = adRevenuePlacement;
   }
 }
 
 export class AdjustAppStorePurchase {
-  private receipt: string;
   private productId: string;
   private transactionId: string;
 
-  constructor(receipt: string, productId: string, transactionId: string) {
-    this.receipt = receipt;
+  constructor(productId: string, transactionId: string) {
     this.productId = productId;
     this.transactionId = transactionId;
   }
@@ -471,6 +422,14 @@ export class AdjustPlayStorePurchase {
   }
 }
 
+export class AdjustDeeplink {
+  private deeplink: string;
+
+  constructor(deeplink: string) {
+    this.deeplink = deeplink;
+  }
+}
+
 export interface AdjustAttribution {
   trackerToken: string;
   trackerName: string;
@@ -483,7 +442,7 @@ export interface AdjustAttribution {
   costType: string;
   costAmount: string;
   costCurrency: string;
-  fbInstallReferrer: string; // Android only
+  fbInstallReferrer: string; // android only
 }
 
 export interface AdjustSessionSuccess {
@@ -520,13 +479,14 @@ export interface AdjustEventFailure {
   jsonResponse: string;
 }
 
-export interface AdjustSkad4Data {
-  fineValue: number;
+export interface AdjustSkanData {
+  conversionValue: number;
   coarseValue: string;
   lockWindow: boolean;
+  error: string;
 }
 
-export interface AdjustPurchaseVerificationInfo {
+export interface AdjustPurchaseVerificationResult {
   verificationStatus: string;
   code: number;
   message: string;
@@ -547,29 +507,6 @@ export enum AdjustLogLevel {
   Suppress = 'SUPPRESS',
 }
 
-export enum AdjustUrlStrategy {
-  India = 'india',
-  China = 'china',
-  Cn = 'cn',
-  CnOnly = 'cn-only',
-  DataResidencyEU = 'data-residency-eu',
-  DataResidencyTR = 'data-residency-tr',
-  DataResidencyUS = 'data-residency-us',
-}
-
-export enum AdjustAdRevenueSource {
-  AdRevenueSourceAppLovinMAX = 'applovin_max_sdk',
-  AdRevenueSourceMopub = 'mopub',
-  AdRevenueSourceAdMob = 'admob_sdk',
-  AdRevenueSourceIronSource = 'ironsource_sdk',
-  AdRevenueSourceAdMost = "admost_sdk",
-  AdRevenueSourceUnity = "unity_sdk",
-  AdRevenueSourceHeliumChartboost = "helium_chartboost_sdk",
-  AdRevenueSourcePublisher = "publisher_sdk",
-  AdRevenueSourceTopOn = "topon_sdk",
-  AdRevenueSourceAdx = "adx_sdk",
-}
-
 /**
  * @name Adjust
  * @description
@@ -585,10 +522,10 @@ export enum AdjustAdRevenueSource {
  *
  *  ...
  *
- *  const config = new AdjustConfig('APP-TOKEN-HERE', AdjustEnvironment.Sandbox);
- *  config.logLevel = AdjustLogLevel.Verbose;
- *  // Set other config properties.
- *  adjust.create(config);
+ *  const adjustConfig = new AdjustConfig('YourAppToken', AdjustEnvironment.Sandbox);
+ *  adjustConfig.logLevel = AdjustLogLevel.Verbose;
+ *  // set other config properties ...
+ *  adjust.initSdk(adjustConfig);
  *
  * ```
  * @interfaces
@@ -597,22 +534,21 @@ export enum AdjustAdRevenueSource {
  * AdjustSessionFailure
  * AdjustEventSuccess
  * AdjustEventFailure
- * AdjustSkad4Data
- * AdjustPurchaseVerificationInfo
+ * AdjustSkanData
+ * AdjustPurchaseVerificationResult
  * @classes
- * AdjustEvent
  * AdjustConfig
+ * AdjustEvent
  * AdjustAppStoreSubscription
  * AdjustPlayStoreSubscription
  * AdjustThirdPartySharing
  * AdjustAdRevenue
  * AdjustAppStorePurchase
  * AdjustPlayStorePurchase
+ * AdjustDeeplink
  * @enums
  * AdjustEnvironment
  * AdjustLogLevel
- * AdjustUrlStrategy
- * AdjustAdRevenueSource
  */
 @Plugin({
   pluginName: 'Adjust',
@@ -623,65 +559,53 @@ export enum AdjustAdRevenueSource {
 })
 @Injectable()
 export class Adjust extends AwesomeCordovaNativePlugin {
-
   /**
    * This method initializes Adjust SDK
    *
-   * @param {AdjustConig} config Adjust config object used as starting options
+   * @param {AdjustConig} adjustConfig Adjust config object used as starting options
    */
   @Cordova({ sync: true })
-  create(config: AdjustConfig): void {}
+  initSdk(adjustConfig: AdjustConfig): void {}
 
   /**
    * This method tracks an event
    *
-   * @param {AdjustEvent} event Adjust event object to be tracked
+   * @param {AdjustEvent} adjustEvent Adjust event object to be tracked
    */
   @Cordova({ sync: true })
-  trackEvent(event: AdjustEvent): void {}
+  trackEvent(adjustEvent: AdjustEvent): void {}
 
   /**
    * This method tracks App Store subscription
    *
-   * @param {AdjustAppStoreSubscription} subscription Adjust App Store subscription object to be tracked
+   * @param {AdjustAppStoreSubscription} adjustAppStoreSubscription Adjust App Store subscription object to be tracked
    */
   @Cordova({ sync: true })
-  trackAppStoreSubscription(subscription: AdjustAppStoreSubscription): void {}
+  trackAppStoreSubscription(adjustAppStoreSubscription: AdjustAppStoreSubscription): void {}
 
   /**
    * This method tracks Play Store subscription
    *
-   * @param {AdjustPlayStoreSubscription} subscription Adjust Play Store subscription object to be tracked
+   * @param {AdjustPlayStoreSubscription} adjustPlayStoreSubscription Adjust Play Store subscription object to be tracked
    */
   @Cordova({ sync: true })
-  trackPlayStoreSubscription(subscription: AdjustPlayStoreSubscription): void {}
+  trackPlayStoreSubscription(adjustPlayStoreSubscription: AdjustPlayStoreSubscription): void {}
 
   /**
    * This method tracks third party sharing choice
    *
-   * @param {AdjustThirdPartySharing} thirdPartySharing Adjust third party sharing object to be tracked
+   * @param {AdjustThirdPartySharing} adjustThirdPartySharing Adjust third party sharing object to be tracked
    */
   @Cordova({ sync: true })
-  trackThirdPartySharing(thirdPartySharing: AdjustThirdPartySharing): void {}
+  trackThirdPartySharing(adjustThirdPartySharing: AdjustThirdPartySharing): void {}
 
   /**
    * This method tracks ad revenue data
    *
-   * @param {AdjustAdRevenueSource} source Ad revenue source
-   * @param {string} payload Ad revenue JSON string payload
+   * @param {AdjustAdRevenue} adjustAdRevenue Adjust ad revenue object
    */
-  trackAdRevenue(source: AdjustAdRevenueSource, payload: string): void;
-
-  /**
-   * This method tracks ad revenue data
-   *
-   * @param {AdjustAdRevenue} adRevenue Adjust ad revenue object
-   */
-  trackAdRevenue(adRevenue: AdjustAdRevenue): void;
-
-  // And typescript hides this, so the client will be able call only methods above
   @Cordova({ sync: true })
-  trackAdRevenue(sourceOrAdRevenue: any, payload?: any): void {}
+  trackAdRevenue(adjustAdRevenue: AdjustAdRevenue): void {}
 
   /**
    * This method tracks measurement consent choice
@@ -692,34 +616,53 @@ export class Adjust extends AwesomeCordovaNativePlugin {
   trackMeasurementConsent(measurementConsent: boolean): void {}
 
   /**
-   * This method sets offline mode on or off
-   *
-   * @param {boolean} enabled set to true for offline mode on
+   * This method sets offline mode ON
    */
   @Cordova({ sync: true })
-  setOfflineMode(enabled: boolean): void {}
+  switchToOfflineMode(): void {}
+
+  /**
+   * This method sets offline mode OFF
+   */
+  @Cordova({ sync: true })
+  switchBackToOnlineMode(): void {}
 
   /**
    * By making this call, the Adjust SDK will try to find if there is any new attribution info inside of the deep link and if any, it will be sent to the Adjust backend.
    *
-   * @param {string} url URL of the deeplink
+   * @param {AdjustDeeplink} adjustDeeplink AdjustDeeplink instance
    */
   @Cordova({ sync: true })
-  appWillOpenUrl(url: string): void {}
+  processDeeplink(adjustDeeplink: AdjustDeeplink): void {}
 
   /**
-   * You can disable/enable the Adjust SDK from tracking by invoking this method
+   * This method is used to send and potentially resolve shortened deep links
    *
-   * @param {boolean} enabled set to false to disable SDK
+   * @param {AdjustDeeplink} adjustDeeplink AdjustDeeplink instance containing shortened deep link that has opened your app
+   * @returns {Promise<string>} Returns a promise with either resolved (if it was resolved) or echoed deep link
+   */
+  @Cordova()
+  processAndResolveDeeplink(adjustDeeplink: AdjustDeeplink): Promise<string> {
+    return;
+  }
+
+  /**
+   * This method enables Adjust SDK
    */
   @Cordova({ sync: true })
-  setEnabled(enabled: boolean): void {}
+  enable(): void {}
+
+  /**
+   * This method disables Adjust SDK
+   */
+  @Cordova({ sync: true })
+  disable(): void {}
 
   /**
    * To send us the push notification token, add the following call to Adjust whenever you get your token in the app or when it gets updated.
    * Push tokens are used for Audience Builder and client callbacks, and they are required for the upcoming uninstall tracking feature.
    *
-   * @param {string} pushToken push token value
+   * @param {string} pushToken Push token value
    */
   @Cordova({ sync: true })
   setPushToken(pushToken: string): void {}
@@ -742,16 +685,9 @@ export class Adjust extends AwesomeCordovaNativePlugin {
   gdprForgetMe(): void {}
 
   /**
-   * You can now notify Adjust when a user has exercised their right to stop sharing their data with partners for marketing purposes, but has allowed it to be shared for statistics purposes. 
-   * Calling the following method will instruct the Adjust SDK to communicate the user's choice to disable data sharing to the Adjust backend
-   */
-  @Cordova({ sync: true })
-  disableThirdPartySharing(): void {}
-
-  /**
    * Function used to get Google AdId
    *
-   * @returns {Promise<string>} Returns a promise with google AdId value
+   * @returns {Promise<string>} Returns a promise with Google advertising ID value
    */
   @Cordova()
   getGoogleAdId(): Promise<string> {
@@ -759,9 +695,9 @@ export class Adjust extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * If you need to obtain the Amazon Advertising ID, you can make a call to this function.
+   * If you need to obtain the Amazon Fire Advertising ID, you can make a call to this function.
    *
-   * @returns {Promise<string>} Returns a promise with anazib adv. ID
+   * @returns {Promise<string>} Returns a promise with Amazon Fire advertising ID
    */
   @Cordova()
   getAmazonAdId(): Promise<string> {
@@ -779,6 +715,16 @@ export class Adjust extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * To obtain the IDFV, call this function
+   *
+   * @returns {Promise<string>} Returns a promise with IDFV string value
+   */
+  @Cordova()
+  getIdfv(): Promise<string> {
+    return;
+  }
+
+  /**
    * For every device with your app installed on it, the Adjust backend generates a unique Adjust device identifier (adid).
    * In order to obtain this identifier, call this function
    *
@@ -788,12 +734,6 @@ export class Adjust extends AwesomeCordovaNativePlugin {
   getAdid(): Promise<string> {
     return;
   }
-
-  /**
-   * Instruct to Adjust SDK to check current state of att_status
-   */
-  @Cordova({ sync: true })
-  checkForNewAttStatus(): void {}
 
   /**
    * If you want to access information about a user's current attribution whenever you need it, you can make a call to this function
@@ -808,7 +748,7 @@ export class Adjust extends AwesomeCordovaNativePlugin {
   /**
    * Get the information about version of the SDK used
    *
-   * @returns {Promise<string>} Returns a promise with sdk version information
+   * @returns {Promise<string>} Returns a promise with SDK version information
    */
   @Cordova()
   getSdkVersion(): Promise<string> {
@@ -816,56 +756,50 @@ export class Adjust extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * Method used to add session callback parameters
+   * Method used to add global callback parameters
    *
    * @param key key
    * @param value value
    */
   @Cordova({ sync: true })
-  addSessionCallbackParameter(key: string, value: string): void {}
+  addGlobalCallbackParameter(key: string, value: string): void {}
 
   /**
-   * Remove a specific session callback parameter by passing the desiring key to this method
+   * Remove a specific global callback parameter by passing the desiring key to this method
    *
    * @param key key
    */
   @Cordova({ sync: true })
-  removeSessionCallbackParameter(key: string): void {}
+  removeGlobalCallbackParameter(key: string): void {}
 
   /**
-   * If all keys and values from the session callback parameters have to be removed, call this method
+   * If all keys and values from the global callback parameters have to be removed, call this method
    */
   @Cordova({ sync: true })
-  resetSessionCallbackParameters(): void {}
+  removeGlobalCallbackParameters(): void {}
 
   /**
-   * Method used to add session partner parameters
+   * Method used to add global partner parameters
    *
    * @param key key
    * @param value value
    */
   @Cordova({ sync: true })
-  addSessionPartnerParameter(key: string, value: string): void {}
+  addGlobalPartnerParameter(key: string, value: string): void {}
 
   /**
-   * Remove a specific session partner parameter by passing the desiring key to this method
+   * Remove a specific global partner parameter by passing the desiring key to this method
    *
    * @param key key
    */
   @Cordova({ sync: true })
-  removeSessionPartnerParameter(key: string): void {}
+  removeGlobalPartnerParameter(key: string): void {}
 
   /**
-   * If all keys and values from the session partner parameters have to be removed, call this method
+   * If all keys and values from the global partner parameters have to be removed, call this method
    */
   @Cordova({ sync: true })
-  resetSessionPartnerParameters(): void {}
-
-  /**
-   * This method call will make the Adjust SDK send the initial install session and any events created, if they were not sent after delay start was set and it's delay expired.
-   */
-  @Cordova({ sync: true })
-  sendFirstPackages(): void {}
+  removeGlobalPartnerParameters(): void {}
 
   /**
    * Request Adjust SDK to show pop up dialog for asking user's consent to be tracked.
@@ -874,17 +808,19 @@ export class Adjust extends AwesomeCordovaNativePlugin {
    * @returns {Promise<number>} Returns a promise with user's consent value
    */
   @Cordova()
-  requestTrackingAuthorizationWithCompletionHandler(): Promise<number> {
+  requestAppTrackingAuthorization(): Promise<number> {
     return;
   }
 
   /**
    * You can update SKAdNetwork conversion value with calling this method
    *
-   * @param {number} conversionValue conversion value for the user
+   * @param {Promise<string>} Returns a promisse with error information in case error happened
    */
-  @Cordova({ sync: true })
-  updateConversionValue(conversionValue: number): void {}
+  @Cordova()
+  updateSkanConversionValue(conversionValue: number, coarseValue: string, lockWindow: boolean): Promise<string> {
+    return;
+  }
 
   /**
    * To obtain the app tracking authorization status in iOS, call this function
@@ -897,9 +833,9 @@ export class Adjust extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * To obtain the last deep link which has opened your iOS app, call this function
+   * To obtain the last deep link which has opened your app, call this function
    *
-   * @returns {Promise<string>} Returns a promise with iOS deep link string value
+   * @returns {Promise<string>} Returns a promise with last opened deep link string value
    */
   @Cordova()
   getLastDeeplink(): Promise<string> {
@@ -909,33 +845,22 @@ export class Adjust extends AwesomeCordovaNativePlugin {
   /**
    * This method is used to verify the App Store purchase
    *
-   * @param {AdjustAppStorePurchase} purchase Adjust App Store purchase object to be verified
-   * @returns {Promise<AdjustPurchaseVerificationInfo>} Returns a promise with purchase verification outcome
+   * @param {AdjustAppStorePurchase} adjustAppStorePurchase Adjust App Store purchase object to be verified
+   * @returns {Promise<AdjustPurchaseVerificationResult>} Returns a promise with purchase verification outcome
    */
   @Cordova()
-  verifyAppStorePurchase(purchase: AdjustAppStorePurchase): Promise<AdjustPurchaseVerificationInfo> {
+  verifyAppStorePurchase(adjustAppStorePurchase: AdjustAppStorePurchase): Promise<AdjustPurchaseVerificationResult> {
     return;
   }
 
   /**
    * This method is used to verify the Play Store purchase
    *
-   * @param {AdjustPlayStorePurchase} purchase Adjust Play Store purchase object to be verified
-   * @returns {Promise<AdjustPurchaseVerificationInfo>} Returns a promise with purchase verification outcome
+   * @param {AdjustPlayStorePurchase} adjustPlayStorePurchase Adjust Play Store purchase object to be verified
+   * @returns {Promise<AdjustPurchaseVerificationResult>} Returns a promise with purchase verification outcome
    */
   @Cordova()
-  verifyPlayStorePurchase(purchase: AdjustPlayStorePurchase): Promise<AdjustPurchaseVerificationInfo> {
-    return;
-  }
-
-  /**
-   * This method is used to send and potentially resolve shortened deep links
-   *
-   * @param {string} deeplink Potentially shortened deep link that has opened your app
-   * @returns {Promise<string>} Returns a promise with either resolved (if it was resolved) or echoed deep link
-   */
-  @Cordova()
-  processDeeplink(deeplink: string): Promise<string> {
+  verifyPlayStorePurchase(adjustPlayStorePurchase: AdjustPlayStorePurchase): Promise<AdjustPurchaseVerificationResult> {
     return;
   }
 }

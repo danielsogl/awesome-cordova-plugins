@@ -28,98 +28,6 @@ interface AbortedResponse {
   aborted: boolean;
 }
 
-export interface ApproovLoggableToken {
-  /**
-   * Expiry
-   * The only mandatory claim for Approov tokens. It specifies the expiry time for the token as a Unix timestamp.
-   */
-  exp: number;
-
-  /**
-   * Device ID
-   * This claim identifies the device for which the token was issued. This is a base64 encoded string representing a 128-bit device identifier.
-   * Note that this is not, strictly speaking, a device identifier as it is also influenced by the app identifier
-   * and may change if the same app is uninstalled and then reinstalled on the same device.
-   */
-  did?: string;
-
-  /**
-   * Attestation Response Code
-   * This is an optional claim that encodes information about a subset of the device property flags and also whether the attestation was a pass or fail.
-   * The claim is encoded in base32 and is typically 10 characters long (although it may be longer in some circumstances).
-   * This claim is not included by tokens from the failover.
-   */
-  arc?: string;
-
-  /**
-   * IP Address
-   * This holds the IP address of the device as seen by the Approov cloud service. It is provided in a human readable IP address format (in either IPv4 or IPv6 format).
-   * In practice this value can often change between the time a token is issued and the time it is sent to your backend, so you should never block if it differs, but you may include it as a signal that tokens have somehow been stolen and are being replayed.
-   * This claim is not included by tokens from the failover or if the IP Tracking Policy for the account has been set to none.
-   */
-  ip?: string;
-
-  /**
-   * Issuer
-   * An optional claim that is added if the issuer inclusion option is enabled. This provides the Approov account ID that was used to issue the token (suffixed with approov.io).
-   * It can be used as an additional layer of backend verification if signing keys are shared between multiple accounts.
-   * It indicates that tokens were issued from the expected Approov account. This claim may also be set to an explicit value for long lived Approov tokens.
-   * This flexibility is designed for use with server-to-server communication (which may only be signed with the account specific secret keys).
-   */
-  iss?: string;
-
-  /**
-   * Annotation
-   * This is an embedded JSON array of strings showing the list of flags that are set and are in the annotation set for the security policy that is selected.
-   * This allows additional information to be collected about the state of a particular device without necessarily causing an attestation failure.
-   * Note that if there are no possible annotations then this claim is not present at all. This claim is not included by tokens from the failover.
-   */
-  anno?: string[];
-
-  /**
-   * Payload Hash
-   * An optional claim that is added if the protected app passes a token binding argument to the setDataHashInToken method.
-   * The claim value is set to the base64 encoded SHA256 hash of the provided payload string.
-   * This is typically used to bind an Approov token to some other data used by your app to enhance security (like a user auth token).
-   */
-  pay?: string;
-
-  /**
-   * Audience
-   * An optional claim that is added if the audience inclusion option is enabled. This provides the domain for which the token was issued.
-   * It can be used as an additional layer of backend verification to ensure that tokens intended for one domain cannot be used on to access a different one.
-   */
-  aud?: string;
-
-  /**
-   * Message Siging Key ID
-   * This is an optional claim that encodes the ID of a key being used for Message Signing.
-   * This is only present in Approov tokens for which message signing is active. This claim is not included by tokens from the failover.
-   */
-  mskid?: string;
-
-  /**
-   * Measurement Proof Key
-   * An optional claim to provide the measurement proof key if a measurement has been requested by the SDK on the domain for which the token is issued.
-   * This is a base64 encoded 128-bit proof key value. Note that if measurement is being used, then JWE tokens will be used to keep this claim secret.
-   */
-  mpk?: string;
-
-  /**
-   * Integrity Measurement Hash
-   * An optional claim to provide the integrity measurement hash if a measurement has been requested by the SDK on the domain for which the token is issued.
-   * This is a base64 encoded 256-bit SHA256 measurement value. Note that if measurement is being used, then JWE tokens will be used to keep this claim secret.
-   */
-  imh?: string;
-
-  /**
-   * Device Measurement Hash
-   * An optional claim to provide the device measurement hash if a measurement has been requested by the SDK on the domain for which the token is issued.
-   * This is a base64 encoded 256-bit SHA256 measurement value. Note that if measurement is being used, then JWE tokens will be used to keep this claim secret
-   */
-  dmh?: string;
-}
-
 /**
  * @name HTTP
  * @description
@@ -134,9 +42,9 @@ export interface ApproovLoggableToken {
  * we have only added approov functionality on top of it. All credit goes to the actual plugin developer.
  * @usage
  * ```typescript
- * import { ApproovHttp } from '@awesome-cordova-plugins/http/ngx';
+ * import { HTTP } from '@awesome-cordova-plugins/http/ngx';
  *
- * constructor(private http: ApproovHttp) {}
+ * constructor(private http: HTTP) {}
  *
  * ...
  *
@@ -161,14 +69,14 @@ export interface ApproovLoggableToken {
  * HTTPResponse
  */
 @Plugin({
-  pluginName: 'ApproovHttp',
-  plugin: 'cordova-approov-advanced-http',
-  pluginRef: 'cordova.plugin.ApproovHttp',
-  repo: 'https://github.com/approov/quickstart-ionic-advancedhttp',
+  pluginName: 'HTTP',
+  plugin: '@approov/cordova-plugin-advanced-http',
+  pluginRef: 'cordova.plugin.http',
+  repo: 'https://github.com/approov/quickstart-cordova-advancedhttp',
   platforms: ['Android', 'iOS'],
 })
 @Injectable()
-export class ApproovHttp extends AwesomeCordovaNativePlugin {
+export class HTTP extends AwesomeCordovaNativePlugin {
   /**
    * This enum represents the internal error codes which can be returned in a HTTPResponse object.
    *
@@ -751,13 +659,23 @@ export class ApproovHttp extends AwesomeCordovaNativePlugin {
     return;
   }
 
-  @Cordova({ sync: true })
-  initializeApproov(): void {
+  @Cordova({ sync: false })
+  approovInitialize(config: string): Promise<void> {
     return;
   }
 
   @Cordova({ sync: true })
-  approovSetDataHashInToken(dataHash: string): void {
+  approovSetProceedOnNetworkFail(): void {
+    return;
+  }
+
+  @Cordova({ sync: false })
+  approovSetDevKey(devKey: string): Promise<void> {
+    return;
+  }
+
+  @Cordova({ sync: true })
+  approovSetTokenHeader(header: string, prefix: string): void {
     return;
   }
 
@@ -766,8 +684,73 @@ export class ApproovHttp extends AwesomeCordovaNativePlugin {
     return;
   }
 
-  @Cordova()
-  getApproovLoggableToken(host: string): Promise<ApproovLoggableToken> {
+  @Cordova({ sync: true })
+  approovAddSubstitutionHeader(header: string, requiredPrefix: string): void {
+    return;
+  }
+
+  @Cordova({ sync: true })
+  approovRemoveSubstitutionHeader(header: string): void {
+    return;
+  }
+
+  @Cordova({ sync: true })
+  approovAddSubstitutionQueryParam(key: string): void {
+    return;
+  }
+
+  @Cordova({ sync: true })
+  approovRemoveSubstitutionQueryParam(key: string): void {
+    return;
+  }
+
+  @Cordova({ sync: true })
+  approovAddExclusionURLRegex(urlRegex: string): void {
+    return;
+  }
+
+  @Cordova({ sync: true })
+  approovRemoveExclusionURLRegex(urlRegex: string): void {
+    return;
+  }
+
+  @Cordova({ sync: false })
+  approovPrefetch(): Promise<void> {
+    return;
+  }
+
+  @Cordova({ sync: false })
+  approovPrecheck(): Promise<void> {
+    return;
+  }
+
+  @Cordova({ sync: false })
+  approovGetDeviceID(): Promise<String> {
+    return;
+  }
+
+  @Cordova({ sync: false })
+  approovSetDataHashInToken(data: string): Promise<void> {
+    return;
+  }
+
+  @Cordova({ sync: false })
+  approovFetchToken(url: string): Promise<String> {
+    return;
+  }
+
+  @Cordova({ sync: false })
+  approovGetMessageSignature(message: string): Promise<String> {
+    return;
+  }
+
+  @Cordova({ sync: false })
+  approovFetchSecureString(key: string, newDef: string): Promise<String> {
+    return;
+  }
+
+  @Cordova({ sync: false })
+  approovFetchCustomJWT(payload: string): Promise<String> {
     return;
   }
 }
