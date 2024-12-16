@@ -663,6 +663,17 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Deletes all types of files which are preloaded for SDK features like custom in-app templates, app functions and variables etc.
+   *
+   * @param expiredOnly {boolean} - to clear only assets which will not be needed further for inapps
+   * @returns {Promise<any>}
+   */
+    @Cordova()
+    clearFileResources(expiredOnly: boolean): Promise<any> {
+      return;
+    }
+
+  /**
    * Fetches In Apps from server.
    *
    * @returns {Promise<any>}
@@ -1133,6 +1144,16 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Create File Variable
+   * @returns {Promise<any>}
+   * @param {string} variable The String specifying the name of file varible to be created.
+   */
+    @Cordova()
+    defineFileVariable(variable: string): Promise<any> {
+      return;
+    }
+
+  /**
    * Get a variable or a group for the specified name.
    * @param {string} name - name.
    * @returns {Promise<any>}
@@ -1167,6 +1188,177 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   onValueChanged(name: string): Promise<any> {
+    return;
+  }
+
+
+  /**
+   * Called when the value of the file variable is downloaded and ready
+   * @param {name} string the name of the variable
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  onFileValueChanged(name: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Adds a callback to be invoked when variables are initialised with server values. Will be called only once on app start, or when added if server values are already received
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  onOneTimeVariablesChanged(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Adds a callback to be invoked when no files need to be downloaded or all downloads have been completed. It is called each time new values are fetched and downloads are completed.
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  onVariablesChangedAndNoDownloadsPending(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Adds a callback to be invoked only once for when new values are fetched and downloaded
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  onceVariablesChangedAndNoDownloadsPending(): Promise<any> {
+    return;
+  }
+
+
+  /****************************
+   * Custom Templates methods
+   ****************************/
+
+  /**
+   *
+   * Uploads Custom in-app templates and app functions to the server. Requires Development/Debug build/configuration.
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  syncCustomTemplates(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Uploads Custom in-app templates and app functions to the server.
+   * @param {boolean} isProduction Provide `true` if templates must be sync in Productuon build/configuration.
+   * @returns {Promise<any>}
+   *
+   *
+   * Note: This is NO-OP in Android
+   */
+  @Cordova()
+  syncCustomTemplatesInProd(isProduction: boolean): Promise<any> {
+    return;
+  }
+
+  /**
+  * Notify the SDK that an active custom template is dismissed. The active custom template is considered to be
+  * visible to the user until this method is called. Since the SDK can show only one InApp message at a time, all
+  * other messages will be queued until the current one is dismissed.
+  * @param {string} templateName The name of the active template
+  * @returns {Promise<any>}
+  */
+  @Cordova()
+  customTemplateSetDismissed(templateName: string): Promise<any> {
+    return;
+  }
+
+
+  /**
+  * Notify the SDK that an active custom template is presented to the user.
+  * @param {string} templateName The name of the active template
+  * @returns {Promise<any>}
+  */
+  @Cordova()
+  customTemplateSetPresented(templateName: string): Promise<any> {
+    return;
+  }
+
+  /**
+  * Trigger a custom template action argument by name.
+  *
+  * @param {string} templateName The name of an active template for which the action is defined
+  * @param {string} argName The action argument na
+  * @returns {Promise<any>}
+  */
+  @Cordova()
+  customTemplateRunAction(templateName: string, argName: string): Promise<any> {
+    return;
+  }
+
+  /**
+  * Retrieve a string argument by name.
+  *
+  * @param {string} templateName The name of an active template for which the argument is defined
+  * @param {string} argName The action argument name
+  * @returns {Promise<any>}
+  */
+  @Cordova()
+  customTemplateGetStringArg(templateName: string, argName: string): Promise<any> {
+    return;
+  }
+
+  /**
+  * Retrieve a number argument by name.
+  *
+  * @param {string} templateName The name of an active template for which the argument is defined
+  * @param {string} argName The action argument name
+  * @returns {Promise<any>}
+  */
+  @Cordova()
+  customTemplateGetNumberArg(templateName: string, argName: string): Promise<any> {
+    return;
+  }
+
+  /**
+  * Retrieve a boolean argument by name.
+  *
+  * @param {string} templateName The name of an active template for which the argument is defined
+  * @param {string} argName The action argument name
+  * @returns {Promise<any>}
+  */
+  @Cordova()
+  customTemplateGetBooleanArg(templateName: string, argName: string): Promise<any> {
+    return;
+  }
+
+  /**
+  * Retrieve a file argument by name.
+  *
+  * @param {string} templateName The name of an active template for which the argument is defined
+  * @param {string} argName The action argument name
+  * @returns {Promise<any>}
+  */
+  @Cordova()
+  customTemplateGetFileArg(templateName: string, argName: string): Promise<any> {
+    return;
+  }
+
+  /**
+  * Retrieve an object argument by name.
+  *
+  * @param {string} templateName The name of an active template for which the argument is defined
+  * @param {string} argName The action argument name
+  * @returns {Promise<any>}
+  */
+  @Cordova()
+  customTemplateGetObjectArg(templateName: string, argName: string): Promise<any> {
+    return;
+  }
+
+  /**
+  * Get a string representation of an active's template context with information about all arguments.
+  * @param {string} templateName The name of an active template
+  * @returns {Promise<any>}
+  */
+  @Cordova()
+  customTemplateContextToString(templateName: string): Promise<any> {
     return;
   }
 
