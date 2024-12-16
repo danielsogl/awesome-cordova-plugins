@@ -1,3 +1,12 @@
+# [6.13.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.12.0...v6.13.0) (2024-12-16)
+
+
+### Features
+
+* **clevertap:** support clevertap-cordova 3.3.0 ([#4883](https://github.com/danielsogl/awesome-cordova-plugins/issues/4883)) ([21e3e37](https://github.com/danielsogl/awesome-cordova-plugins/commit/21e3e37a0df0b099e857ff5eb0330a1ee5b6fe12)), closes [#3491](https://github.com/danielsogl/awesome-cordova-plugins/issues/3491)
+
+
+
 # [6.12.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.11.0...v6.12.0) (2024-11-21)
 
 
