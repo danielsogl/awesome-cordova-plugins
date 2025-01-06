@@ -1,3 +1,13 @@
+# [6.14.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.13.0...v6.14.0) (2025-01-06)
+
+
+### Features
+
+* **audio-management:** add plugin ([#4894](https://github.com/danielsogl/awesome-cordova-plugins/issues/4894)) ([2a3b1b3](https://github.com/danielsogl/awesome-cordova-plugins/commit/2a3b1b31ad75609cbf79bd33cec7f351cbd1ae2a))
+* **downloader:** add plugin ([#4893](https://github.com/danielsogl/awesome-cordova-plugins/issues/4893)) ([54d5eea](https://github.com/danielsogl/awesome-cordova-plugins/commit/54d5eea864be9afcb09daa75e07e5a782498a70f))
+
+
+
 # [6.13.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.12.0...v6.13.0) (2024-12-16)
 
 
