@@ -225,6 +225,7 @@ export interface FingerprintAvailableOptions {
  * @interfaces
  * FingerprintOptions
  * FingerprintSecretOptions
+ * FingerprintAvailableOptions
  */
 @Plugin({
   pluginName: 'FingerprintAIO',
