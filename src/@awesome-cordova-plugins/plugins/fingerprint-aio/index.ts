@@ -244,7 +244,9 @@ export class FingerprintAIO extends AwesomeCordovaNativePlugin {
    * @returns {Promise<BIOMETRIC_TYPE>} Returns a promise with result which depends on device and os.
    * iPhone X will return 'face' other Android or iOS devices will return 'finger' Android P+ will return 'biometric'
    */
-  @Cordova()
+  @Cordova({
+    callbackOrder: 'reverse'
+  })
   isAvailable(options: FingerprintAvailableOptions): Promise<BIOMETRIC_TYPE> {
     return;
   }
