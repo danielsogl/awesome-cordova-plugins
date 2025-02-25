@@ -341,6 +341,60 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Get the details of a specific event
+   *
+   * @param eventName {string} - The name of the event
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getUserEventLog(eventName: string): Promise<any> {
+      return;
+  }
+
+  /**
+   * Get the count of times an event occurred
+   *
+   * @param eventName {string} - The name of the event
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getUserEventLogCount(eventName: string): Promise<any> {
+      return;
+  }
+
+  /**
+   * Get timestamp of user's last app visit
+   *
+   * @returns {Promise<any>} - Returns epoch seconds or -1
+   */
+  @Cordova()
+  getUserLastVisitTs(): Promise<any> {
+      return;
+  }
+
+  /**
+   * Get the total number of times the user has launched the app
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getUserAppLaunchCount(): Promise<any> {
+      return;
+  }
+
+  /**
+   * Get full event history for the current user
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getUserEventLogHistory(): Promise<any> {
+      return;
+  }
+
+
+  /**
+   * @deprecated - Use getUserEventLog() instead
    * Get Event First Time
    *
    * @param eventName {string}
@@ -353,6 +407,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * @deprecated - Use getUserEventLog() instead
    * Get Event Last Time
    *
    * @param eventName {string}
@@ -365,6 +420,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * @deprecated - Use getUserEventLogCount() instead
    * Get Event Number of Occurrences
    *
    * @param eventName {string}
@@ -377,6 +433,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * * @deprecated - Use getUserEventLog() instead
    * Get Event Details
    *
    * @param eventName {string}
@@ -389,6 +446,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * @deprecated - Use getUserEventLogHistory() instead
    * Get Event History
    * calls back with object {"eventName1":<event1 details object>, "eventName2":<event2 details object>}
    *
@@ -700,6 +758,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * @deprecated - Use getUserAppLaunchCount() instead
    * Get Session Total Visits
    * calls back with with int or -1
    *
@@ -722,6 +781,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * @deprecated -  Use getUserLastVisitTs() instead
    * Get Session Previous Visit Time
    * calls back with with epoch seconds or -1
    *
