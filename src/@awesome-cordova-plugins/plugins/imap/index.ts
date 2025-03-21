@@ -191,9 +191,13 @@ export interface Content {
    */
   type: string;
   /**
-   * Optional. The name of the file.
+   * The name of the file, if the message content is a file attachment.
    */
-  fileName?: string;
+  fileName: string;
+  /**
+   * Android ONLY. Optional. "contentID" is a unique identifier for the attachment, used to fetch the file. It is preferred over "fileName" when available.
+   */
+  contentID?: string;
   /**
    * Message's content.
    */
@@ -454,6 +458,17 @@ export enum FlagEnum {
  *     console.error(error)
  *   });
  *
+ *   * Download Email Attachment
+ *   * The 'contentID' (the last parameter) can be set to an empty string ('') or null if it's not provided.
+ *   this.imap.downloadEmailAttachment('INBOX', 1545, '/storage/emulated/0/Download', false, 'image001.png', '<f_lqqj1d851>')
+ *    .then((res: boolean) => {
+ *      // Returns "true" if the attachment is successfully saved, else returns "false".
+ *      console.log(res)
+ *    })
+ *    .catch((error: any) => {
+ *      console.error(error)
+ *    });
+ *
  * ```
  */
 @Plugin({
@@ -615,6 +630,29 @@ export class Imap extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   setFlag(folderName: string, messageNums: number[], flag: FlagEnum, status: boolean): Promise<ModificationResult> {
+    return;
+  }
+
+  /**
+   * "downloadEmailAttachment(folderName: string, messageNo: number, path: string, replaceIfDuplicate: boolean, fileName: string, contentID: string)"
+   * Download email attachment using "fileName" or "contentID" – Android only. "contentID" is preferred when available, and it works only on Android.
+   * @param folderName {string} The name of the desired folder.
+   * @param messageNo {number} Message's consecutive number.
+   * @param path {string} The file path where the attachment should be saved.
+   * @param replaceIfDuplicate {boolean} When set to true, duplicate attachments are overwritten, when set to false, the file name is modified by appending a suffix (e.g., file_name (1).type) to avoid overwriting.
+   * @param fileName {string} The name of the attachment to be downloaded.
+   * @param contentID {string} Optional parameter. Android ONLY. The "contentID" of the attachment to be downloaded. This parameter is preferred if available.
+   * @return {Promise<boolean>} Returns boolean status of the process.
+   */
+  @Cordova()
+  downloadEmailAttachment(
+    folderName: string,
+    messageNo: number,
+    path: string,
+    replaceIfDuplicate: boolean,
+    fileName: string,
+    contentID: string
+  ): Promise<boolean> {
     return;
   }
 }
