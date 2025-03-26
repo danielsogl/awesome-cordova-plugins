@@ -1,3 +1,12 @@
+# [6.16.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.15.0...v6.16.0) (2025-03-26)
+
+
+### Features
+
+* **imap:** implement email attachments support in IMAP plugin wrapper ([#4927](https://github.com/danielsogl/awesome-cordova-plugins/issues/4927)) ([4739a9a](https://github.com/danielsogl/awesome-cordova-plugins/commit/4739a9a01a5c731005ef152f1e1b672e9cd46b22))
+
+
+
 # [6.15.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.14.0...v6.15.0) (2025-03-10)
 
 
