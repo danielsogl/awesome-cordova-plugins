@@ -329,8 +329,8 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
    * @name init
    * @param config. Configuration for Mobile Messaging
    * @param config
-   * @param onInitError
    * @param {Function} callback. Called after successful start of Mobile Messaging SDK initialization. Register for registrationUpdated event to know when it's ready to be used.
+   * @param onInitError
    * @param {Function} onInitError. Error callback
    */
   @Cordova({ sync: true })
