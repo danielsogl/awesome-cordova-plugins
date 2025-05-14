@@ -143,28 +143,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * Sets the device's Baidu push token
-   *
-   * @param token {string}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  setPushBaiduToken(token: string): Promise<any> {
-    return;
-  }
-
-  /**
-   * Sets the device's Huawei push token
-   *
-   * @param token {string}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  setPushHuaweiToken(token: string): Promise<any> {
-    return;
-  }
-
-  /**
    * Create Notification Channel for Android O+
    *
    * @param extras {any}
