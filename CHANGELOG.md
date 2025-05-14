@@ -1,3 +1,28 @@
+# [6.16.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.15.0...v6.16.0) (2025-03-26)
+
+
+### Features
+
+* **imap:** implement email attachments support in IMAP plugin wrapper ([#4927](https://github.com/danielsogl/awesome-cordova-plugins/issues/4927)) ([4739a9a](https://github.com/danielsogl/awesome-cordova-plugins/commit/4739a9a01a5c731005ef152f1e1b672e9cd46b22))
+
+
+
+# [6.15.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.14.0...v6.15.0) (2025-03-10)
+
+
+### Bug Fixes
+
+* **audio-management:** fix plugin name - closes [#4898](https://github.com/danielsogl/awesome-cordova-plugins/issues/4898) ([#4899](https://github.com/danielsogl/awesome-cordova-plugins/issues/4899)) ([7a4306a](https://github.com/danielsogl/awesome-cordova-plugins/commit/7a4306acfc8b161898d2ce6516404793609463dd))
+* **facebook/fbsdk:** add nonce parameter to loginWithLimitedTracking ([#4906](https://github.com/danielsogl/awesome-cordova-plugins/issues/4906)) ([562489a](https://github.com/danielsogl/awesome-cordova-plugins/commit/562489a97ed1f9453978f305845c3f511b342789))
+
+
+### Features
+
+* **clevertap:** support clevertap-cordova 3.4.0  ([#4917](https://github.com/danielsogl/awesome-cordova-plugins/issues/4917)) ([56a649b](https://github.com/danielsogl/awesome-cordova-plugins/commit/56a649be5092081d6ab5019141b40a3a5d0a3ca1)), closes [#3491](https://github.com/danielsogl/awesome-cordova-plugins/issues/3491)
+* **intercom:** Add new methods ([#4914](https://github.com/danielsogl/awesome-cordova-plugins/issues/4914)) ([76ff28b](https://github.com/danielsogl/awesome-cordova-plugins/commit/76ff28b08f385728e4874a8c9e458b77e694678c))
+
+
+
 # [6.14.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/v6.13.0...v6.14.0) (2025-01-06)
 
 
