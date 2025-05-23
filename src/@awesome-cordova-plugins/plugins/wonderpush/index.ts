@@ -228,6 +228,31 @@ export class UserPreferencesMethods extends NestedObject {
 })
 @Injectable()
 export class WonderPush extends AwesomeCordovaNativePlugin {
+
+  /**
+   * Initializes the WonderPush SDK
+   * @param clientId
+   * @param clientSecret
+   * @param onSuccess
+   * @param onFailure
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  initialize(clientId: string, clientSecret: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Whether the SDK has been initialized.
+   *
+   * The SDK is ready when it is initialized with its Client ID and Client Secret.
+   * @returns {Promise<boolean>}
+   */
+  @Cordova()
+  isInitialized(): Promise<boolean> {
+    return;
+  }
+
   /**
    * Sets the user id, used to identify a single identity across multiple devices,
    * and to correctly identify multiple users on a single device.
