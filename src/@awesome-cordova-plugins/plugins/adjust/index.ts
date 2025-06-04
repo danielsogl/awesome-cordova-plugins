@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-plugins/core';
 
 export class AdjustConfig {
+  // common
   private appToken: string;
   private environment: AdjustEnvironment;
   private sdkPrefix: string;
@@ -17,6 +18,15 @@ export class AdjustConfig {
   private urlStrategyDomains: string[] = [];
   private useSubdomains: boolean = null;
   private isDataResidency: boolean = null;
+  private isFirstSessionDelayEnabled: boolean = null;
+  private storeInfo: AdjustStoreInfo = null;
+
+  private attributionCallback: (attribution: AdjustAttribution) => void = null;
+  private eventTrackingSucceededCallback: (event: AdjustEventSuccess) => void = null;
+  private eventTrackingFailedCallback: (event: AdjustEventFailure) => void = null;
+  private sessionTrackingSucceededCallback: (session: AdjustSessionSuccess) => void = null;
+  private sessionTrackingFailedCallback: (session: AdjustSessionFailure) => void = null;
+  private deferredDeeplinkCallback: (deeplink: string) => void = null;
 
   // android only
   private processName: string = null;
@@ -32,16 +42,10 @@ export class AdjustConfig {
   private isSkanAttributionEnabled: boolean = null;
   private isLinkMeEnabled: boolean = null;
   private attConsentWaitingInterval: number = null;
-
-  // callbacks
-  private attributionCallback: (attribution: AdjustAttribution) => void = null;
-  private eventTrackingSucceededCallback: (event: AdjustEventSuccess) => void = null;
-  private eventTrackingFailedCallback: (event: AdjustEventFailure) => void = null;
-  private sessionTrackingSucceededCallback: (session: AdjustSessionSuccess) => void = null;
-  private sessionTrackingFailedCallback: (session: AdjustSessionFailure) => void = null;
-  private deferredDeeplinkCallback: (deeplink: string) => void = null;
+  private isAppTrackingTransparencyUsageEnabled: boolean = null;
   private skanUpdatedCallback: (skanData: AdjustSkanData) => void = null;
 
+  // common
   constructor(appToken: string, environment: AdjustEnvironment) {
     this.appToken = appToken;
     this.environment = environment;
@@ -87,44 +91,12 @@ export class AdjustConfig {
     this.isCostDataInAttributionEnabled = true;
   }
 
-  setProcessName(processName: string) {
-    this.processName = processName;
+  enableFirstSessionDelay(): void {
+    this.isFirstSessionDelayEnabled = true;
   }
 
-  enablePreinstallTracking(): void {
-    this.isPreinstallTrackingEnabled = true;
-  }
-
-  setPreinstallFilePath(preinstallFilePath: string): void {
-    this.preinstallFilePath = preinstallFilePath;
-  }
-
-  setFbAppId(fbAppId: string): void {
-    this.fbAppId = fbAppId;
-  }
-
-  disableIdfaReading(): void {
-    this.isIdfaReadingEnabled = false;
-  }
-
-  disableIdfvReading(): void {
-    this.isIdfvReadingEnabled = false;
-  }
-
-  disableAdServices(): void {
-    this.isAdServicesEnabled = false;
-  }
-
-  enableLinkMe(): void {
-    this.isLinkMeEnabled = true;
-  }
-
-  disableSkanAttribution(): void {
-    this.isSkanAttributionEnabled = false;
-  }
-
-  setAttConsentWaitingInterval(attConsentWaitingInterval: number): void {
-    this.attConsentWaitingInterval = attConsentWaitingInterval;
+  setStoreInfo(storeInfo: AdjustStoreInfo): void {
+    this.storeInfo = storeInfo;
   }
 
   setAttributionCallback(attributionCallback: (attribution: AdjustAttribution) => void): void {
@@ -151,10 +123,6 @@ export class AdjustConfig {
     this.deferredDeeplinkCallback = deferredDeeplinkCallback;
   }
 
-  setSkanUpdatedCallback(skanUpdatedCallback: (skanData: AdjustSkanData) => void): void {
-    this.skanUpdatedCallback = skanUpdatedCallback;
-  }
-
   private getAttributionCallback(): void {
     return this.attributionCallback;
   }
@@ -179,10 +147,6 @@ export class AdjustConfig {
     return this.deferredDeeplinkCallback;
   }
 
-  private getSkanUpdatedCallback(): void {
-    return this.skanUpdatedCallback;
-  }
-
   private hasAttributionCallback(): void {
     return this.attributionCallback !== null;
   }
@@ -205,6 +169,60 @@ export class AdjustConfig {
 
   private hasDeferredDeeplinkCallback(): void {
     return this.deferredDeeplinkCallback !== null;
+  }
+
+  // android only
+  setProcessName(processName: string) {
+    this.processName = processName;
+  }
+
+  enablePreinstallTracking(): void {
+    this.isPreinstallTrackingEnabled = true;
+  }
+
+  setPreinstallFilePath(preinstallFilePath: string): void {
+    this.preinstallFilePath = preinstallFilePath;
+  }
+
+  setFbAppId(fbAppId: string): void {
+    this.fbAppId = fbAppId;
+  }
+
+  // ios only
+  disableIdfaReading(): void {
+    this.isIdfaReadingEnabled = false;
+  }
+
+  disableIdfvReading(): void {
+    this.isIdfvReadingEnabled = false;
+  }
+
+  disableAdServices(): void {
+    this.isAdServicesEnabled = false;
+  }
+
+  enableLinkMe(): void {
+    this.isLinkMeEnabled = true;
+  }
+
+  disableSkanAttribution(): void {
+    this.isSkanAttributionEnabled = false;
+  }
+
+  setAttConsentWaitingInterval(attConsentWaitingInterval: number): void {
+    this.attConsentWaitingInterval = attConsentWaitingInterval;
+  }
+
+  disableAppTrackingTransparencyUsage(): void {
+    this.isAppTrackingTransparencyUsageEnabled = false;
+  }
+
+  setSkanUpdatedCallback(skanUpdatedCallback: (skanData: AdjustSkanData) => void): void {
+    this.skanUpdatedCallback = skanUpdatedCallback;
+  }
+
+  private getSkanUpdatedCallback(): void {
+    return this.skanUpdatedCallback;
   }
 
   private hasSkanUpdatedCallback(): void {
@@ -424,9 +442,27 @@ export class AdjustPlayStorePurchase {
 
 export class AdjustDeeplink {
   private deeplink: string;
+  private referrer: string;
 
   constructor(deeplink: string) {
     this.deeplink = deeplink;
+  }
+
+  setReferrer(referrer: string): void {
+    this.referrer = referrer;
+  }
+}
+
+export class AdjustStoreInfo {
+  private storeName: string;
+  private storeAppId: string;
+
+  constructor(storeName: string) {
+    this.storeName = storeName;
+  }
+
+  setStoreAppId(storeAppId: string): void {
+    this.storeAppId = storeAppId;
   }
 }
 
@@ -443,6 +479,7 @@ export interface AdjustAttribution {
   costAmount: string;
   costCurrency: string;
   fbInstallReferrer: string; // android only
+  jsonResponse: string;
 }
 
 export interface AdjustSessionSuccess {
@@ -546,6 +583,7 @@ export enum AdjustLogLevel {
  * AdjustAppStorePurchase
  * AdjustPlayStorePurchase
  * AdjustDeeplink
+ * AdjustStoreInfo
  * @enums
  * AdjustEnvironment
  * AdjustLogLevel
@@ -863,4 +901,42 @@ export class Adjust extends AwesomeCordovaNativePlugin {
   verifyPlayStorePurchase(adjustPlayStorePurchase: AdjustPlayStorePurchase): Promise<AdjustPurchaseVerificationResult> {
     return;
   }
+
+  /**
+   * This method ends first session delay
+   */
+  @Cordova({ sync: true })
+  endFirstSessionDelay(): void {}
+
+  /**
+   * This method enables COPPA compliance while in first session delay
+   */
+  @Cordova({ sync: true })
+  enableCoppaComplianceInDelay(): void {}
+
+  /**
+   * This method disables COPPA compliance while in first session delay
+   */
+  @Cordova({ sync: true })
+  disableCoppaComplianceInDelay(): void {}
+
+  /**
+   * This method enables Play Store Kids compliance while in first session delay
+   */
+  @Cordova({ sync: true })
+  enablePlayStoreKidsComplianceInDelay(): void {}
+
+  /**
+   * This method disables Play Store Kids compliance while in first session delay
+   */
+  @Cordova({ sync: true })
+  disablePlayStoreKidsComplianceInDelay(): void {}
+
+  /**
+   * This method allows you to set external device ID while in first session delay
+   *
+   * @param {string} externalDeviceId External device ID value
+   */
+  @Cordova({ sync: true })
+  setExternalDeviceIdInDelay(externalDeviceId: string): void {}
 }
