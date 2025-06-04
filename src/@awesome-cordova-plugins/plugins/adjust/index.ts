@@ -64,7 +64,9 @@ export class AdjustConfig {
   }
 
   setUrlStrategy(urlStrategyDomains: string[], useSubdomains: boolean, isDataResidency: boolean): void {
-    this.urlStrategy = urlStrategy;
+    this.urlStrategyDomains = urlStrategyDomains;
+    this.useSubdomains = useSubdomains;
+    this.isDataResidency = isDataResidency;
   }
 
   enableSendingInBackground(): void {
@@ -123,56 +125,56 @@ export class AdjustConfig {
     this.deferredDeeplinkCallback = deferredDeeplinkCallback;
   }
 
-  private getAttributionCallback(): void {
+  private getAttributionCallback(): ((attribution: AdjustAttribution) => void) | null {
     return this.attributionCallback;
   }
 
-  private getEventTrackingSucceededCallback(): void {
+  private getEventTrackingSucceededCallback(): ((event: AdjustEventSuccess) => void) | null {
     return this.eventTrackingSucceededCallback;
   }
 
-  private getEventTrackingFailedCallback(): void {
+  private getEventTrackingFailedCallback(): ((event: AdjustEventFailure) => void) | null {
     return this.eventTrackingFailedCallback;
   }
 
-  private getSessionTrackingSucceededCallback(): void {
+  private getSessionTrackingSucceededCallback(): ((session: AdjustSessionSuccess) => void) | null {
     return this.sessionTrackingSucceededCallback;
   }
 
-  private getSessionTrackingFailedCallback(): void {
+  private getSessionTrackingFailedCallback(): ((session: AdjustSessionFailure) => void) | null {
     return this.sessionTrackingFailedCallback;
   }
 
-  private getDeferredDeeplinkCallback(): void {
+  private getDeferredDeeplinkCallback(): ((deeplink: string) => void) | null {
     return this.deferredDeeplinkCallback;
   }
 
-  private hasAttributionCallback(): void {
+  private hasAttributionCallback(): boolean {
     return this.attributionCallback !== null;
   }
 
-  private hasEventTrackingSucceededCallback(): void {
+  private hasEventTrackingSucceededCallback(): boolean {
     return this.eventTrackingSucceededCallback !== null;
   }
 
-  private hasEventTrackingFailedCallback(): void {
+  private hasEventTrackingFailedCallback(): boolean {
     return this.eventTrackingFailedCallback !== null;
   }
 
-  private hasSessionTrackingSucceededCallback(): void {
+  private hasSessionTrackingSucceededCallback(): boolean {
     return this.sessionTrackingSucceededCallback !== null;
   }
 
-  private hasSessionTrackingFailedCallback(): void {
+  private hasSessionTrackingFailedCallback(): boolean {
     return this.sessionTrackingFailedCallback !== null;
   }
 
-  private hasDeferredDeeplinkCallback(): void {
+  private hasDeferredDeeplinkCallback(): boolean {
     return this.deferredDeeplinkCallback !== null;
   }
 
   // android only
-  setProcessName(processName: string) {
+  setProcessName(processName: string): void {
     this.processName = processName;
   }
 
@@ -221,11 +223,11 @@ export class AdjustConfig {
     this.skanUpdatedCallback = skanUpdatedCallback;
   }
 
-  private getSkanUpdatedCallback(): void {
+  private getSkanUpdatedCallback(): ((skanData: AdjustSkanData) => void) | null {
     return this.skanUpdatedCallback;
   }
 
-  private hasSkanUpdatedCallback(): void {
+  private hasSkanUpdatedCallback(): boolean {
     return this.skanUpdatedCallback !== null;
   }
 }
@@ -600,7 +602,7 @@ export class Adjust extends AwesomeCordovaNativePlugin {
   /**
    * This method initializes Adjust SDK
    *
-   * @param {AdjustConig} adjustConfig Adjust config object used as starting options
+   * @param {AdjustConfig} adjustConfig Adjust config object used as starting options
    */
   @Cordova({ sync: true })
   initSdk(adjustConfig: AdjustConfig): void {}
