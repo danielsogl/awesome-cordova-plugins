@@ -78,7 +78,7 @@
   "src/@awesome-cordova-plugins/plugins/dialogs": "6.16.0",
   "src/@awesome-cordova-plugins/plugins/dns": "6.16.0",
   "src/@awesome-cordova-plugins/plugins/document-picker": "6.16.0",
-  "src/@awesome-cordova-plugins/plugins/document-scanner": "6.16.0",
+  "src/@awesome-cordova-plugins/plugins/document-scanner": "6.16.1",
   "src/@awesome-cordova-plugins/plugins/document-viewer": "6.16.0",
   "src/@awesome-cordova-plugins/plugins/downloader": "6.16.0",
   "src/@awesome-cordova-plugins/plugins/dynamsoft-barcode-scanner": "6.16.0",
