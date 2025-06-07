@@ -18,7 +18,7 @@ const PACKAGE_JSON_BASE = {
   main: 'index.js',
   module: 'index.js',
   typings: 'index.d.ts',
-  author: 'ionic',
+  author: MAIN_PACKAGE_JSON.author,
   license: 'MIT',
   repository: {
     type: 'git',
@@ -30,7 +30,7 @@ const DIST = resolve(ROOT, 'dist/@awesome-cordova-plugins');
 
 const PACKAGES = [];
 
-const MIN_CORE_VERSION = '^6.0.1';
+const MIN_CORE_VERSION = '^7.0.0';
 const RXJS_VERSION = '^5.5.0 || ^6.5.0 || ^7.3.0';
 
 const PLUGIN_PEER_DEPENDENCIES = {

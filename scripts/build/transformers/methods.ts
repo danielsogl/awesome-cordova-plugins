@@ -20,7 +20,6 @@ export function transformMethod(method: MethodDeclaration) {
     return factory.createMethodDeclaration(
       undefined,
       undefined,
-      undefined,
       method.name,
       undefined,
       method.typeParameters,

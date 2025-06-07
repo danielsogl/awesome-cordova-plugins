@@ -17,7 +17,7 @@ export function transformMembers(cls: ClassDeclaration) {
         propertyIndices.push(index);
         return member;
       case SyntaxKind.Constructor:
-        return factory.createConstructorDeclaration(undefined, undefined, member.parameters, member.body);
+        return factory.createConstructorDeclaration(undefined, member.parameters, member.body);
       default:
         return member; // in case anything gets here by accident...
     }

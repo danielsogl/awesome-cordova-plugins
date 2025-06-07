@@ -22,16 +22,16 @@ export const PLUGINS_ROOT = join(ROOT, 'src/@awesome-cordova-plugins/plugins/');
 export const PLUGIN_PATHS = readdirSync(PLUGINS_ROOT).map((d) => join(PLUGINS_ROOT, d, 'index.ts'));
 
 export function getDecorator(node: Node, index = 0): Decorator {
-  if (node.decorators && node.decorators[index]) {
-    return node.decorators[index];
+  const decorators = (node as any).decorators;
+  if (decorators && decorators[index]) {
+    return decorators[index];
   }
 }
 
 export function hasDecorator(decoratorName: string, node: Node): boolean {
+  const decorators = (node as any).decorators;
   return (
-    node.decorators &&
-    node.decorators.length &&
-    node.decorators.findIndex((d) => getDecoratorName(d) === decoratorName) > -1
+    decorators && decorators.length && decorators.findIndex((d: any) => getDecoratorName(d) === decoratorName) > -1
   );
 }
 

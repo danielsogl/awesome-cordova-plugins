@@ -16,12 +16,11 @@ export function getProgram(rootNames: string[] = createSourceFiles()) {
   options.basePath = ROOT;
   options.moduleResolution = ModuleResolutionKind.NodeJs;
   options.module = ModuleKind.ES2015;
-  options.target = ScriptTarget.ES5;
-  options.lib = ['dom', 'es2017'];
+  options.target = ScriptTarget.ES2020;
+  options.lib = ['dom', 'es2020'];
   options.inlineSourceMap = true;
   options.importHelpers = true;
   options.inlineSources = true;
-  options.enableIvy = true;
   options.compilationMode = 'partial';
 
   delete options.baseUrl;
