@@ -209,7 +209,7 @@
   "src/@awesome-cordova-plugins/plugins/smtp-client": "6.16.0",
   "src/@awesome-cordova-plugins/plugins/social-sharing": "6.16.0",
   "src/@awesome-cordova-plugins/plugins/sockets-tcp": "6.16.0",
-  "src/@awesome-cordova-plugins/plugins/sockets-udp": "6.16.0",
+  "src/@awesome-cordova-plugins/plugins/sockets-udp": "6.17.0",
   "src/@awesome-cordova-plugins/plugins/speech-recognition": "6.16.0",
   "src/@awesome-cordova-plugins/plugins/spinner-dialog": "6.16.0",
   "src/@awesome-cordova-plugins/plugins/splash-screen": "6.16.0",
