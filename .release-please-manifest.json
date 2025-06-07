@@ -89,7 +89,7 @@
   "src/@awesome-cordova-plugins/plugins/fcm": "6.16.0",
   "src/@awesome-cordova-plugins/plugins/ffmpeg": "6.16.0",
   "src/@awesome-cordova-plugins/plugins/file": "6.16.0",
-  "src/@awesome-cordova-plugins/plugins/file-chooser": "6.16.0",
+  "src/@awesome-cordova-plugins/plugins/file-chooser": "6.17.0",
   "src/@awesome-cordova-plugins/plugins/file-md5": "6.16.0",
   "src/@awesome-cordova-plugins/plugins/file-opener": "6.16.0",
   "src/@awesome-cordova-plugins/plugins/file-path": "6.16.0",
