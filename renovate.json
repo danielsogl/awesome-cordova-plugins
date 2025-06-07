@@ -52,19 +52,25 @@
     },
     {
       "groupName": "Angular",
-      "allowedVersions": "<=12",
+      "allowedVersions": "<=19",
       "automerge": false,
       "matchPackageNames": ["/^@angular//", "/^@angular-devkit//", "/@schematics/angular/"]
     },
     {
       "matchPackageNames": ["zone.js"],
-      "allowedVersions": "<=11",
+      "allowedVersions": "<=0.15",
       "automerge": false
     },
     {
-      "matchPackageNames": ["typescript", "ts-node"],
-      "allowedVersions": "<=4",
+      "matchPackageNames": ["typescript"],
+      "allowedVersions": "<=5",
       "groupName": "TypeScript core",
+      "automerge": false
+    },
+    {
+      "matchPackageNames": ["ts-node"],
+      "allowedVersions": "<=10",
+      "groupName": "TypeScript tooling",
       "automerge": false
     },
     {
