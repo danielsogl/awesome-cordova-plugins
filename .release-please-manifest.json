@@ -171,7 +171,7 @@
   "src/@awesome-cordova-plugins/plugins/network": "6.16.0",
   "src/@awesome-cordova-plugins/plugins/network-interface": "6.16.0",
   "src/@awesome-cordova-plugins/plugins/network-permission": "6.16.0",
-  "src/@awesome-cordova-plugins/plugins/newrelic": "6.16.0",
+  "src/@awesome-cordova-plugins/plugins/newrelic": "6.17.0",
   "src/@awesome-cordova-plugins/plugins/nfc": "6.16.0",
   "src/@awesome-cordova-plugins/plugins/ocr": "6.16.0",
   "src/@awesome-cordova-plugins/plugins/onesignal": "6.16.0",
