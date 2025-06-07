@@ -60,7 +60,6 @@ class AppUpdateInfo {
 export class InAppUpdate extends AwesomeCordovaNativePlugin {
   /**
    * If you want the user to be prompted about new version information before initiating the update, you can use `check` to retrive the new app version information.
-   *
    * @returns {Promise<AppUpdateInfo>} Returns a promise that resolves with new app version update details
    */
   @Cordova()
@@ -70,7 +69,6 @@ export class InAppUpdate extends AwesomeCordovaNativePlugin {
 
   /**
    * Initiate Update Flow with "FLEXIBLE" | "IMMEDIATE" updateType
-   *
    * @param config
    * @param config.updateType
    * @returns {Observable<AppUpdateInfo>} Returns a Observable can be subscribed to get update install state
@@ -82,7 +80,6 @@ export class InAppUpdate extends AwesomeCordovaNativePlugin {
 
   /**
    * Flexible updates provide background download. Once flexible update completes the download in background, completion of upgrade can be initiated by calling `completeFlexibleUpdate`.
-   *
    * @returns Returns empty response, fire and forget
    */
   @Cordova()

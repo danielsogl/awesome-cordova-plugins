@@ -87,7 +87,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class Zoom extends AwesomeCordovaNativePlugin {
   /**
    * Initialize Zoom SDK.
-   *
    * @param appKey    Zoom SDK app key.
    * @param appSecret Zoom SDK app secret.
    * @returns {Promise<any>}
@@ -99,7 +98,6 @@ export class Zoom extends AwesomeCordovaNativePlugin {
 
   /**
    * Log user in with Zoom username and password.
-   *
    * @param username user's Zoom username.
    * @param password user's Zoom password.
    * @returns {Promise<any>}
@@ -111,7 +109,6 @@ export class Zoom extends AwesomeCordovaNativePlugin {
 
   /**
    * Log user out.
-   *
    * @returns {Promise<any>} true if logout success / false if failed.
    */
   @Cordova()
@@ -121,7 +118,6 @@ export class Zoom extends AwesomeCordovaNativePlugin {
 
   /**
    * Check whether the user is logged in.
-   *
    * @returns {Promise<boolean>} true if is logged in / false if not.
    */
   @Cordova()
@@ -131,7 +127,6 @@ export class Zoom extends AwesomeCordovaNativePlugin {
 
   /**
    * Join a meeting for logged in user.
-   *
    * @param meetingNo       meeting number.
    * @param meetingPassword meeting password.
    * @param displayName
@@ -145,7 +140,6 @@ export class Zoom extends AwesomeCordovaNativePlugin {
 
   /**
    * Start a meeting for non-login user.
-   *
    * @param meetingNo        meeting number.
    * @param displayName      display name shown in meeting.
    * @param zoomToken        zoom token retrieved from Zoom Rest API.
@@ -168,7 +162,6 @@ export class Zoom extends AwesomeCordovaNativePlugin {
 
   /**
    * Start a meeting for logged in user.
-   *
    * @param meetingNo   meeting number.
    * @param options     meeting option.
    * @returns {Promise<any>}
@@ -180,7 +173,6 @@ export class Zoom extends AwesomeCordovaNativePlugin {
 
   /**
    * Start an instant meeting for logged in user.
-   *
    * @param options meeting option.
    * @returns {Promise<any>}
    */
@@ -191,7 +183,6 @@ export class Zoom extends AwesomeCordovaNativePlugin {
 
   /**
    * Set language.
-   *
    * @param languageTag language name.
    * @returns {Promise<any>}
    */

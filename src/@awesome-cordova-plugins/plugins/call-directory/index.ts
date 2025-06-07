@@ -51,7 +51,6 @@ export interface CallDirectoryLog {
 export class CallDirectory extends AwesomeCordovaNativePlugin {
   /**
    * Check if the call directory extension is available and enabled
-   *
    * @returns {Promise<boolean>} Returns a promise with result
    */
   @Cordova()
@@ -61,7 +60,6 @@ export class CallDirectory extends AwesomeCordovaNativePlugin {
 
   /**
    * Add identification numbers
-   *
    * @param {CallDirectoryItem[]} items Set of numbers with labels
    * @returns {Promise<any>} Returns a promise that resolves when numbers are added
    */
@@ -72,7 +70,6 @@ export class CallDirectory extends AwesomeCordovaNativePlugin {
 
   /**
    * Remove identification numbers
-   *
    * @param {CallDirectoryItem[]} items Set of numbers with arbitrary label
    * @returns {Promise<any>} Returns a promise that resolves when numbers are removed
    */
@@ -83,7 +80,6 @@ export class CallDirectory extends AwesomeCordovaNativePlugin {
 
   /**
    * Remove all items from call directory. Refreshes immediately.
-   *
    * @returns {Promise<any>} Returns a promise after refresh with message
    */
   @Cordova()
@@ -93,7 +89,6 @@ export class CallDirectory extends AwesomeCordovaNativePlugin {
 
   /**
    * Get all numbers and labels in call directory
-   *
    * @returns {CallDirectoryItem[]} Returns a promise that resolves with an array of all items
    */
   @Cordova()
@@ -103,7 +98,6 @@ export class CallDirectory extends AwesomeCordovaNativePlugin {
 
   /**
    * Reload extension to process queued changes
-   *
    * @returns {Promise<string>} Returns a promise after refresh with message
    */
   @Cordova()
@@ -113,7 +107,6 @@ export class CallDirectory extends AwesomeCordovaNativePlugin {
 
   /**
    * Get log from plugin and call directory extension
-   *
    * @returns {Promise<CallDirectoryLog>} Returns a promise with an object of log messages
    */
   @Cordova()

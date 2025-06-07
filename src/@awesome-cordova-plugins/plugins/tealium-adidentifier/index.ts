@@ -35,7 +35,6 @@ import { Injectable } from '@angular/core';
 export class TealiumAdIdentifier extends AwesomeCordovaNativePlugin {
   /**
    * This function stores the ad identifier information as persistent data
-   *
    * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
    * @returns {Promise<any>} Returns a promise that resolves when something happens
    */
@@ -46,7 +45,6 @@ export class TealiumAdIdentifier extends AwesomeCordovaNativePlugin {
 
   /**
    * This function stores the ad identifier information as volatile data
-   *
    * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
    * @returns {Promise<any>} Returns a promise that resolves when something happens
    */

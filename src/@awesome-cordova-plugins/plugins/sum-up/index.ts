@@ -132,7 +132,6 @@ export class SumUp extends AwesomeCordovaNativePlugin {
    * Login a user with an optional access token.
    * If the access token is provided and valid, the user is logged in autmatically.
    * Otherwise the user has to type in the credentials
-   *
    * @param sumUpKeys {SumUpKeys}
    * @returns {Promise<SumUpResponse>} Return a SumUpResponse object
    */
@@ -143,7 +142,6 @@ export class SumUp extends AwesomeCordovaNativePlugin {
 
   /**
    * Authenticates the account with the given access token. Parameter accessToken is required.
-   *
    * @param accessToken {string}
    * @returns {Promise<SumUpResponse>} Return a SumUpResponse object
    */
@@ -154,7 +152,6 @@ export class SumUp extends AwesomeCordovaNativePlugin {
 
   /**
    * Opens a new window with the all account settings of an logged in user.
-   *
    * @returns {Promise<SumUpResponse>} Return a SumUpResponse object
    */
   @Cordova()
@@ -164,7 +161,6 @@ export class SumUp extends AwesomeCordovaNativePlugin {
 
   /**
    * Logout a user from the account.
-   *
    * @returns {Promise<SumUpResponse>} Return a SumUpResponse object
    */
   @Cordova()
@@ -174,7 +170,6 @@ export class SumUp extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks whether the user is logged in or not and returns an object with the field isLoggedIn which is a boolean value.
-   *
    * @returns {Promise<SumUpResponse>} Return a SumUpResponse object
    */
   @Cordova()
@@ -185,7 +180,6 @@ export class SumUp extends AwesomeCordovaNativePlugin {
   /**
    * Prepares the terminal for a payment. Checks whether the CardReader is ready to transmit and
    * if an instance of the CardReaderManager is available.
-   *
    * @returns {Promise<SumUpResponse>} Return a SumUpResponse object
    */
   @Cordova()
@@ -195,7 +189,6 @@ export class SumUp extends AwesomeCordovaNativePlugin {
 
   /**
    * Tries to close the connection to the card terminal.
-   *
    * @returns {Promise<SumUpResponse>} Return a SumUpResponse object
    */
   @Cordova()
@@ -206,17 +199,15 @@ export class SumUp extends AwesomeCordovaNativePlugin {
   /**
    * Will setup the SumUP SDK.
    * This action is required before using other functions.
-   *
    * @returns {Promise<SumUpResponse>} Return a SumUpResponse object
    */
-   @Cordova()
-   setup(): Promise<SumUpResponse> {
-     return;
-   }
+  @Cordova()
+  setup(): Promise<SumUpResponse> {
+    return;
+  }
 
   /**
    * Test the SumUp integration using SDK tests.
-   *
    * @returns {Promise<SumUpResponse>} Return a SumUpResponse object
    */
   @Cordova()
@@ -227,7 +218,6 @@ export class SumUp extends AwesomeCordovaNativePlugin {
   /**
    * Opens a native SumUp window to proceed a payment. Parameter amount and currencycode are required.
    * If the Payment was successful it returns an SumUpPayment object with information about the payment.
-   *
    * @param amount {number}
    * @param title {string}
    * @param currencyCode {string}

@@ -50,7 +50,6 @@ export class MLKitTranslate extends AwesomeCordovaNativePlugin {
   /**
    * Translates text from one language to another. Requires the source and target languages need to be downloaded.
    * If not the languages are downloaded in the background automatically.
-   *
    * @param text {string} text to be translated
    * @param targetLanguage {string} BCP-47 language code of the language to translate to
    * @param sourceLanguage {string=} (optional) BCP-47 language code of the language to translate to. If not provided, source language is inferred from text
@@ -63,7 +62,6 @@ export class MLKitTranslate extends AwesomeCordovaNativePlugin {
 
   /**
    * Determines the language of a string of text.
-   *
    * @param text {string} text to be translated
    * @returns {Promise<LanguageModel>} Returns a promise that resolves with the identified language
    */
@@ -74,7 +72,6 @@ export class MLKitTranslate extends AwesomeCordovaNativePlugin {
 
   /**
    * List of language models that have been downloaded to the device.
-   *
    * @returns {Promise<LanguageModel[]>} Returns a promise that resolves with an array of languages that have been downloaded.
    */
   @Cordova()
@@ -84,7 +81,6 @@ export class MLKitTranslate extends AwesomeCordovaNativePlugin {
 
   /**
    * List of language models that can be downloaded.
-   *
    * @returns {Promise<LanguageModel[]>} Returns a promise that resolves with an array of possible languages that can be downloaded.
    */
   @Cordova()
@@ -94,7 +90,6 @@ export class MLKitTranslate extends AwesomeCordovaNativePlugin {
 
   /**
    * Downloads a specified language model.
-   *
    * @param code {string} BCP-47 language code of the language to download
    * @returns {Promise<LanguageModel>} Returns a promise that resolves with the downloaded language.
    */
@@ -105,7 +100,6 @@ export class MLKitTranslate extends AwesomeCordovaNativePlugin {
 
   /**
    * Deletes a specified language model.
-   *
    * @param code {string} BCP-47 language code of the language to delete
    * @returns {Promise<LanguageModel>} Returns a promise that resolves with the deleted language.
    */

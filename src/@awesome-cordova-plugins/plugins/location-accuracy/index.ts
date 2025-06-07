@@ -38,86 +38,72 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class LocationAccuracy extends AwesomeCordovaNativePlugin {
   /**
    * Convenience constant
-   *
    * @type {number}
    */
   REQUEST_PRIORITY_NO_POWER = 0;
   /**
    * Convenience constant
-   *
    * @type {number}
    */
   REQUEST_PRIORITY_LOW_POWER = 1;
   /**
    * Convenience constant
-   *
    * @type {number}
    */
   REQUEST_PRIORITY_BALANCED_POWER_ACCURACY = 2;
   /**
    * Convenience constant
-   *
    * @type {number}
    */
   REQUEST_PRIORITY_HIGH_ACCURACY = 3;
   /**
    * Convenience constant
-   *
    * @type {number}
    */
   SUCCESS_SETTINGS_SATISFIED = 0;
   /**
    * Convenience constant
-   *
    * @type {number}
    */
   SUCCESS_USER_AGREED = 1;
   /**
    * Convenience constant
-   *
    * @type {number}
    */
   ERROR_ALREADY_REQUESTING = -1;
   /**
    * Convenience constant
-   *
    * @type {number}
    */
   ERROR_INVALID_ACTION = 0;
   /**
    * Convenience constant
-   *
    * @type {number}
    */
   ERROR_INVALID_ACCURACY = 1;
   /**
    * Convenience constant
-   *
    * @type {number}
    */
   ERROR_EXCEPTION = 1;
   /**
    * Convenience constant
-   *
    * @type {number}
    */
   ERROR_CANNOT_CHANGE_ACCURACY = 3;
   /**
    * Convenience constant
-   *
    * @type {number}
    */
   ERROR_USER_DISAGREED = 4;
   /**
    * Convenience constant
-   *
    * @type {number}
    */
   ERROR_GOOGLE_API_CONNECTION_FAILED = 4;
 
   /**
    * Indicates if you can request accurate location
-   *
    * @returns {Promise<boolean>} Returns a promise that resovles with a boolean that indicates if you can request accurate location
    */
   @Cordova()
@@ -127,7 +113,6 @@ export class LocationAccuracy extends AwesomeCordovaNativePlugin {
 
   /**
    * Indicates if a request is currently in progress
-   *
    * @returns {Promise<boolean>} Returns a promise that resolves with a boolean that indicates if a request is currently in progress
    */
   @Cordova()
@@ -137,7 +122,6 @@ export class LocationAccuracy extends AwesomeCordovaNativePlugin {
 
   /**
    * Requests accurate location
-   *
    * @param accuracy {number} Accuracy, from 0 to 4. You can use the static properties of this class that start with REQUEST_PRIORITY_
    * @returns {Promise<any>} Returns a promise that resolves on success and rejects if an error occurred
    */

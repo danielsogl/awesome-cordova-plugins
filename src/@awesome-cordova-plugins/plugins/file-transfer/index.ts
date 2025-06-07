@@ -179,12 +179,11 @@ export class FileTransfer extends AwesomeCordovaNativePlugin {
   /**
    * Error code rejected from upload with FileTransferError
    * Defined in FileTransferError.
-   *      FILE_NOT_FOUND_ERR: 1   Return when file was not found
-   *      INVALID_URL_ERR: 2,     Return when url was invalid
-   *      CONNECTION_ERR: 3,      Return on connection error
-   *      ABORT_ERR: 4,           Return on aborting
-   *      NOT_MODIFIED_ERR: 5     Return on '304 Not Modified' HTTP response
-   *
+   * FILE_NOT_FOUND_ERR: 1   Return when file was not found
+   * INVALID_URL_ERR: 2,     Return when url was invalid
+   * CONNECTION_ERR: 3,      Return on connection error
+   * ABORT_ERR: 4,           Return on aborting
+   * NOT_MODIFIED_ERR: 5     Return on '304 Not Modified' HTTP response
    * @enum {number}
    */
   FileTransferErrorCode = {
@@ -197,7 +196,6 @@ export class FileTransfer extends AwesomeCordovaNativePlugin {
 
   /**
    * Creates a new FileTransfer object
-   *
    * @returns {FileTransferObject}
    */
   create(): FileTransferObject {
@@ -223,7 +221,6 @@ export class FileTransferObject {
 
   /**
    * Sends a file to a server.
-   *
    * @param {string} fileUrl  Filesystem URL representing the file on the device or a data URI. For backwards compatibility, this can also be the full path of the file on the device.
    * @param {string} url  URL of the server to receive the file, as encoded by encodeURI().
    * @param {FileUploadOptions} [options]  Optional parameters.
@@ -245,7 +242,6 @@ export class FileTransferObject {
 
   /**
    * Downloads a file from server.
-   *
    * @param {string} source  URL of the server to download the file, as encoded by encodeURI().
    * @param {string} target  Filesystem url representing the file on the device. For backwards compatibility, this can also be the full path of the file on the device.
    * @param {boolean} [trustAllHosts]  Optional parameter, defaults to false. If set to true, it accepts all security certificates. This is useful because Android rejects self-signed security certificates. Not recommended for production use. Supported on Android and iOS.
@@ -262,7 +258,6 @@ export class FileTransferObject {
 
   /**
    * Registers a listener that gets called whenever a new chunk of data is transferred.
-   *
    * @param {Function} listener Listener that takes a progress event.
    */
   @InstanceCheck({ sync: true })

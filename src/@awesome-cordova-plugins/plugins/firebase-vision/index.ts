@@ -260,7 +260,6 @@ export interface ImageLabel {
 export class FirebaseVision extends AwesomeCordovaNativePlugin {
   /**
    * Recognize text in image
-   *
    * @param file_uri {string} Image URI
    * @returns {Promise<string>} Returns a promise that fulfills with the text in the image
    */
@@ -270,7 +269,6 @@ export class FirebaseVision extends AwesomeCordovaNativePlugin {
   }
   /**
    * Read data from Barcode
-   *
    * @param file_uri {string} Image URI
    * @returns {Promise<Barcode[]>} Returns a promise that fulfills with the data in barcode
    */
@@ -280,7 +278,6 @@ export class FirebaseVision extends AwesomeCordovaNativePlugin {
   }
   /**
    * Recognize object in image
-   *
    * @param file_uri {string} Image URI
    * @returns {Promise<ImageLabel[]>} Returns a promise that fulfills with the information about entities in an image
    */

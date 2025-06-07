@@ -34,7 +34,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class LottieSplashScreen extends AwesomeCordovaNativePlugin {
   /**
    * This function shows a Lottie splash screen. If no arguments are given, it defaults to the config.xml values, however you can pass (new) options here to change the behavior on runtime. (For easier reading the TypeScript notation is used)
-   *
    * @param location {string} Location of the Lottie JSON file that should be loaded.
    * @param remote {number} Toggles Lottie's remote mode which allows files to be downloaded/displayed from URLs. Example:
    * @param width {number} Width of the container that's rendering the Lottie animation

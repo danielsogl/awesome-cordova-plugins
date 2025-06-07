@@ -30,24 +30,23 @@ export class SmtpClient extends AwesomeCordovaNativePlugin {
    * The sendMail function.
    *
    * var mailSettings = {
-   *   emailFrom: "emailFrom@domain.com",
-   *   emailTo: "emailTo@domain.com",
-   *   smtp: "smtp-mail.domain.com",
-   *   smtpUserName: "authuser@domain.com",
-   *   smtpPassword: "password",
-   *   attachments: ["attachment1", "attachment2"],
-   *   subject: "email subject",
-   *   textBody: "write something within the body of the email"
+   * emailFrom: "emailFrom@domain.com",
+   * emailTo: "emailTo@domain.com",
+   * smtp: "smtp-mail.domain.com",
+   * smtpUserName: "authuser@domain.com",
+   * smtpPassword: "password",
+   * attachments: ["attachment1", "attachment2"],
+   * subject: "email subject",
+   * textBody: "write something within the body of the email"
    * };
    *
    * var successCallback = function(message) {
-   *  alert(message);
+   * alert(message);
    * }
    *
    * var errorCallback = function(message) {
-   *   alert("Error sending the email");
+   * alert("Error sending the email");
    * }
-   *
    * @param mailSettings
    * @param successCallback
    * @param errorCallback
@@ -60,7 +59,6 @@ export class SmtpClient extends AwesomeCordovaNativePlugin {
 
   /**
    * You can call isLoaded to check if client is loaded.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()

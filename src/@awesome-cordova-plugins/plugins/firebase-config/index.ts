@@ -33,7 +33,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class FirebaseConfig extends AwesomeCordovaNativePlugin {
   /**
    * Starts fetching configs, adhering to the specified minimum fetch interval.
-   *
    * @param {number} expirationDuration
    * @returns {Promise<null>}
    */
@@ -44,7 +43,6 @@ export class FirebaseConfig extends AwesomeCordovaNativePlugin {
 
   /**
    * Asynchronously activates the most recently fetched configs, so that the fetched key value pairs take effect.
-   *
    * @returns {Promise<null>}
    */
   @Cordova({ sync: true })
@@ -54,7 +52,6 @@ export class FirebaseConfig extends AwesomeCordovaNativePlugin {
 
   /**
    * Asynchronously fetches and then activates the fetched configs.
-   *
    * @returns {Promise<null>}
    */
   @Cordova({ sync: true })
@@ -64,7 +61,6 @@ export class FirebaseConfig extends AwesomeCordovaNativePlugin {
 
   /**
    * Fetches a boolean configuration value from RemoteConfig
-   *
    * @param {string} key
    * @returns {Promise<boolean>}
    */
@@ -75,7 +71,6 @@ export class FirebaseConfig extends AwesomeCordovaNativePlugin {
 
   /**
    * Fetches a string configuration value from RemoteConfig
-   *
    * @param {string} key
    * @returns {Promise<boolean>}
    */
@@ -86,7 +81,6 @@ export class FirebaseConfig extends AwesomeCordovaNativePlugin {
 
   /**
    * Fetches a numeric configuration value from RemoteConfig
-   *
    * @param {string} key
    * @returns {Promise<boolean>}
    */
@@ -97,7 +91,6 @@ export class FirebaseConfig extends AwesomeCordovaNativePlugin {
 
   /**
    * Fetches an array of bytes configuration value from RemoteConfig
-   *
    * @param {string} key
    * @returns {Promise<boolean>}
    */

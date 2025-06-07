@@ -52,7 +52,6 @@ export interface ChooserResult {
 export class Chooser extends AwesomeCordovaNativePlugin {
   /**
    * Displays native prompt for user to select a file.
-   *
    * @param {string} [accept] Optional MIME type filter (e.g. 'image/gif,video/*').
    * @returns {Promise<any>} Promise containing selected file's
    * data: MIME type, display name, and original URI.

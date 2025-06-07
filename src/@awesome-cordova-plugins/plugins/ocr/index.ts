@@ -154,7 +154,6 @@ export interface OCRResult {
 export class OCR extends AwesomeCordovaNativePlugin {
   /**
    * Extract text from image
-   *
    * @param sourceType {OCRSourceType} type of image source
    * @param source {string} image source (either file URL or base64 string)
    * @returns {Promise<OCRResult>} extracted text and geometry

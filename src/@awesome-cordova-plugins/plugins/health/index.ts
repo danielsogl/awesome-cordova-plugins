@@ -207,7 +207,6 @@ export interface HealthData {
 export class Health extends AwesomeCordovaNativePlugin {
   /**
    * Tells if either Google Fit or HealthKit are available.
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova({
@@ -225,7 +224,6 @@ export class Health extends AwesomeCordovaNativePlugin {
    * If both Play Services and Google Fit are available, this function just returns without any visible effect.
    *
    * This function is only available on Android.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -250,7 +248,6 @@ export class Health extends AwesomeCordovaNativePlugin {
    * the app is connected again.
    * In Android 6 and over, this function will also ask for some dynamic permissions if needed
    * (e.g. in the case of "distance", it will need access to ACCESS_FINE_LOCATION).
-   *
    * @param {string[] | HealthDataType[]} datatypes a list of data types you want to be granted access to.
    * @returns {Promise<any>}
    */
@@ -266,7 +263,6 @@ export class Health extends AwesomeCordovaNativePlugin {
    *
    * In iOS, this function will only check authorization status for writable data.
    * Read-only data will always be considered as not authorized. This is an intended behaviour of HealthKit.
-   *
    * @param {string[] | HealthDataType[]} datatypes a list of data types you want to check access of, same as in requestAuthorization
    * @returns {Promise<boolean>} Returns a promise that resolves with a boolean that indicates the authorization status
    */
@@ -302,7 +298,6 @@ export class Health extends AwesomeCordovaNativePlugin {
    * (regardless of they are stored as correlation or not), it's better to query single nutrients.
    * nutrition.vitamin_a is given in micrograms in HealthKit and International Unit in Google Fit.
    * Automatic conversion is not trivial and depends on the actual substance.
-   *
    * @param {HealthQueryOptions} queryOptions
    * @returns {Promise<HealthData[]>}
    */
@@ -328,7 +323,6 @@ export class Health extends AwesomeCordovaNativePlugin {
    * When querying for nutrition, HealthKit returns only those that are stored as correlation.
    * To be sure to get all the stored quantities, it's better to query single nutrients.
    * nutrition.vitamin_a is given in micrograms in HealthKit and International Unit in Google Fit.
-   *
    * @param {HealthQueryOptionsAggregated} queryOptionsAggregated
    * @returns {Promise<HealthData[]>}
    */
@@ -348,7 +342,6 @@ export class Health extends AwesomeCordovaNativePlugin {
    * In iOS distance is assumed to be of type WalkingRunning, if you want to explicitly set it to Cycling you need to add the field cycling: true.
    * In iOS storing the sleep activities is not supported at the moment.
    * Storing of nutrients is not supported at the moment.
-   *
    * @param storeOptions
    * @returns {Promise<any>}
    */

@@ -41,7 +41,10 @@ export interface TealiumDispatch {
 
 export class TealiumView implements TealiumDispatch {
   public type = 'view';
-  constructor(public viewName: string, public dataLayer: Map<string, any>) {}
+  constructor(
+    public viewName: string,
+    public dataLayer: Map<string, any>
+  ) {}
   toJson() {
     const dictionary: any = {};
     dictionary['type'] = this.type;
@@ -57,7 +60,10 @@ export class TealiumView implements TealiumDispatch {
 
 export class TealiumEvent implements TealiumDispatch {
   public type = 'event';
-  constructor(public eventName: string, public dataLayer: Map<string, any>) {}
+  constructor(
+    public eventName: string,
+    public dataLayer: Map<string, any>
+  ) {}
   toJson() {
     const dictionary: any = {};
     dictionary['type'] = this.type;
@@ -72,7 +78,10 @@ export class TealiumEvent implements TealiumDispatch {
 }
 
 export class ConsentExpiry {
-  constructor(public time: number, public unit: TimeUnit) {}
+  constructor(
+    public time: number,
+    public unit: TimeUnit
+  ) {}
 }
 
 export enum TimeUnit {
@@ -151,7 +160,6 @@ export interface TealiumConfig {
  * This plugin does provides a wrapper around the Tealium Cordova Plugin for Ionic Native.
  *
  * For full documentation, see [https://docs.tealium.com/platforms/cordova/](https://docs.tealium.com/platforms/cordova/)
- *
  * @usage
  * ```typescript
  * import { Tealium } from '@awesome-cordova-plugins/tealium/ngx';

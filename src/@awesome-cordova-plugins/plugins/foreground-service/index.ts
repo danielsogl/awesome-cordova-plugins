@@ -50,7 +50,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class ForegroundService extends AwesomeCordovaNativePlugin {
   /**
    * Enables the foreground service
-   *
    * @param {string} title (content title) A brief headline for the notification
    * @param {string} text (content text) Supporting information
    * @param {string} icon The drawable icon can be any drawable image that exists in the resource folder. This means you must copy the icon you want to use into the platforms/android/app/src/main/res/drawable folder set. If no icon can be found using the icon name parameter, a default star icon will be used.

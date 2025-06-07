@@ -116,7 +116,6 @@ interface AdvancedImagePickerError {
  * @name AdvancedImagePicker
  * @description
  * This Cordova Plugin is for a better (multiple) ImagePicker with more options.
- *
  * @usage
  * ```typescript
  * import { AdvancedImagePicker } from '@awesome-cordova-plugins/advanced-image-picker/npx';

@@ -70,7 +70,6 @@ export interface ToastOptions {
 export class Toast extends AwesomeCordovaNativePlugin {
   /**
    * Show a native toast for the given duration at the specified position.
-   *
    * @param {string} message  The message to display.
    * @param {string} duration  Duration to show the toast, either 'short', 'long' or any number of milliseconds: '1500'.
    * @param {string} position  Where to position the toast, either 'top', 'center', or 'bottom'.
@@ -86,7 +85,6 @@ export class Toast extends AwesomeCordovaNativePlugin {
 
   /**
    * Manually hide any currently visible toast.
-   *
    * @returns {Promise<any>} Returns a Promise that resolves on success.
    */
   @Cordova()
@@ -96,7 +94,6 @@ export class Toast extends AwesomeCordovaNativePlugin {
 
   /**
    * Show a native toast with the given options.
-   *
    * @param {Object} options  Options for showing a toast. Available options:
    *   message  The message to display.
    *   duration  Duration to show the toast, either 'short', 'long' or any number of milliseconds: '1500'.
@@ -114,7 +111,6 @@ export class Toast extends AwesomeCordovaNativePlugin {
 
   /**
    * Shorthand for `show(message, 'short', 'top')`.
-   *
    * @param message {string}
    * @returns {Observable<any>}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
    */
@@ -128,7 +124,6 @@ export class Toast extends AwesomeCordovaNativePlugin {
 
   /**
    * Shorthand for `show(message, 'short', 'center')`.
-   *
    * @param message {string}
    * @returns {Observable<any>}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
    */
@@ -142,7 +137,6 @@ export class Toast extends AwesomeCordovaNativePlugin {
 
   /**
    * Shorthand for `show(message, 'short', 'bottom')`.
-   *
    * @param message {string}
    * @returns {Observable<any>}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
    */
@@ -156,7 +150,6 @@ export class Toast extends AwesomeCordovaNativePlugin {
 
   /**
    * Shorthand for `show(message, 'long', 'top')`.
-   *
    * @param message {string}
    * @returns {Observable<any>}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
    */
@@ -170,7 +163,6 @@ export class Toast extends AwesomeCordovaNativePlugin {
 
   /**
    * Shorthand for `show(message, 'long', 'center')`.
-   *
    * @param message {string}
    * @returns {Observable<any>}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
    */
@@ -184,7 +176,6 @@ export class Toast extends AwesomeCordovaNativePlugin {
 
   /**
    * Shorthand for `show(message, 'long', 'bottom')`.
-   *
    * @param message {string}
    * @returns {Observable<any>}  Returns an Observable that notifies first on success and then when tapped, rejects on error.
    */

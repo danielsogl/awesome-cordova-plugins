@@ -4,7 +4,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * @name Market
  * @description
  * Opens an app's page in the market place (Google Play, App Store)
- *
  * @usage
  * ```typescript
  * import { Market } from '@awesome-cordova-plugins/market/ngx';

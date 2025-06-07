@@ -2758,7 +2758,6 @@ export type BlinkIdRecognizerResultCtor = RecognizerResultCtor<BlinkIdRecognizer
 export class BlinkId extends AwesomeCordovaNativePlugin {
   /**
    * Opens the camera dialog and attempts to scan a barcode/document
-   *
    * @param overlaySettings {OverlaySettings} for camera overlay customization
    * @param recognizerCollection {RecognizerCollection} collection of recognizers to scan with
    * @param licenses

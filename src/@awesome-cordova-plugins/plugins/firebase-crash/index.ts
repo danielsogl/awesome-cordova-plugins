@@ -31,7 +31,6 @@ export class FirebaseCrash extends AwesomeCordovaNativePlugin {
   /**
    * Add logging that will be sent with your crash data in case of app crash.
    * https://firebase.google.com/docs/crashlytics/customize-crash-reports?authuser=0#add_custom_logs
-   *
    * @param {string} message
    * @returns {Promise<any>}
    */
@@ -43,7 +42,6 @@ export class FirebaseCrash extends AwesomeCordovaNativePlugin {
   /**
    * Log non-fatal exceptions in addition to automatically reported app crashes.
    * https://firebase.google.com/docs/crashlytics/customize-crash-reports?authuser=0#log_non-fatal_exceptions
-   *
    * @param {string} message
    * @returns {Promise<any>}
    */
@@ -55,7 +53,6 @@ export class FirebaseCrash extends AwesomeCordovaNativePlugin {
   /**
    * Sets the user identifier property for crashlytics reporting.
    * https://firebase.google.com/docs/crashlytics/customize-crash-reports?authuser=0#set_user_ids
-   *
    * @param {string} userId value to set the userId
    * @returns {Promise<any>}
    */

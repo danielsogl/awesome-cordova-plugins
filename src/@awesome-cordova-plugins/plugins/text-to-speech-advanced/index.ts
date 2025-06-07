@@ -57,7 +57,6 @@ export interface TTSVoice {
 export class TextToSpeechAdvanced extends AwesomeCordovaNativePlugin {
   /**
    * This function speaks
-   *
    * @param textOrOptions {string | TTSOptions} Text to speak or TTSOptions
    * @returns {Promise<any>} Returns a promise that resolves when the speaking finishes
    */
@@ -71,7 +70,6 @@ export class TextToSpeechAdvanced extends AwesomeCordovaNativePlugin {
 
   /**
    * Stop any current TTS playback
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -81,7 +79,6 @@ export class TextToSpeechAdvanced extends AwesomeCordovaNativePlugin {
 
   /**
    * Get all voices
-   *
    * @returns {Promise<TTSVoice[]>}
    */
   @Cordova()

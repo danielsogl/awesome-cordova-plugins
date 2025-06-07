@@ -50,7 +50,6 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
 export class AndroidNotch extends AwesomeCordovaNativePlugin {
   /**
    * Returns true if the android device has cutout
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova()
@@ -60,7 +59,6 @@ export class AndroidNotch extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns the heigth of the top inset
-   *
    * @returns {Promise<number>}
    */
   @Cordova()
@@ -70,7 +68,6 @@ export class AndroidNotch extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns the heigth of the right inset
-   *
    * @returns {Promise<number>}
    */
   @Cordova()
@@ -80,7 +77,6 @@ export class AndroidNotch extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns the heigth of the bottom inset
-   *
    * @returns {Promise<number>}
    */
   @Cordova()
@@ -90,7 +86,6 @@ export class AndroidNotch extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns the heigth of the left inset
-   *
    * @returns {Promise<number>}
    */
   @Cordova()

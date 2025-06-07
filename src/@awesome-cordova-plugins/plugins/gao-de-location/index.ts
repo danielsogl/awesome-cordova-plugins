@@ -67,7 +67,6 @@ import { Observable } from 'rxjs';
 export class GaoDeLocation extends AwesomeCordovaNativePlugin {
   /**
    * Single location
-   *
    * @param positionOptions
    * @returns Promise<PositionRes>
    */
@@ -80,7 +79,6 @@ export class GaoDeLocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Start serial location
-   *
    * @param positionOptions
    * @returns Promise<PositionRes>
    */
@@ -94,7 +92,6 @@ export class GaoDeLocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Stop Serial Location
-   *
    * @returns Promise<any>
    */
   @Cordova({

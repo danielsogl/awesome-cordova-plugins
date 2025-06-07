@@ -30,7 +30,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class SaveDialog extends AwesomeCordovaNativePlugin {
   /**
    * Creates a PDF using a URL, it download the document into an in memory Webkit object, and renders it into a PDF.
-   *
    * @param url {string} URL to create a PDF from
    * @param options {PDFGeneratorOptions} options for PDF generation
    * @returns {Promise<string>}

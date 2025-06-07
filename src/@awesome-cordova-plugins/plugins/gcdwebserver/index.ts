@@ -17,7 +17,6 @@ export interface ServerOptions {
  * @name gcdwebserver
  * @description
  * This plugin can start an HTTP server using GCDWebServer
- *
  * @usage
  * ```typescript
  * import { GCDWebServer } from '@awesome-cordova-plugins/gcdwebserver';
@@ -29,7 +28,7 @@ export interface ServerOptions {
  *
  *
  * await this.gcdwebserver.startServer({});
- * 
+ *
  *
  * ```
  */
@@ -51,7 +50,7 @@ export class GCDWebServer extends AwesomeCordovaNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   startServer(options: ServerOptions): Promise<any> {
     return;
@@ -65,5 +64,4 @@ export class GCDWebServer extends AwesomeCordovaNativePlugin {
   stopServer(): Promise<any> {
     return;
   }
-
 }

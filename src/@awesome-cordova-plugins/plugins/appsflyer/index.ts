@@ -84,7 +84,6 @@ export interface AppsflyerInviteOptions {
 export class Appsflyer extends AwesomeCordovaNativePlugin {
   /**
    * initialize the SDK
-   *
    * @param {AppsflyerOptions} options
    * @returns {Promise<any>}
    */
@@ -95,7 +94,6 @@ export class Appsflyer extends AwesomeCordovaNativePlugin {
 
   /**
    * These in-app events help you track how loyal users discover your app, and attribute them to specific campaigns/media-sources. Please take the time define the event/s you want to measure to allow you to track ROI (Return on Investment) and LTV (Lifetime Value).
-   *
    * @param {string} eventName custom event name, is presented in your dashboard
    * @param {AppsflyerEvent} eventValues event details
    */
@@ -104,7 +102,6 @@ export class Appsflyer extends AwesomeCordovaNativePlugin {
 
   /**
    * Setting your own Custom ID enables you to cross-reference your own unique ID with AppsFlyer’s user ID and the other devices’ IDs. This ID is available in AppsFlyer CSV reports along with postbacks APIs for cross-referencing with you internal IDs.
-   *
    * @param {string} customerUserId user id
    */
   @Cordova({ sync: true })
@@ -112,7 +109,6 @@ export class Appsflyer extends AwesomeCordovaNativePlugin {
 
   /**
    * Setting your own Custom ID enables you to cross-reference your own unique ID with AppsFlyer’s user ID and the other devices’ IDs. This ID is available in AppsFlyer CSV reports along with postbacks APIs for cross-referencing with you internal IDs.
-   *
    * @param {boolean} customerUserId In some extreme cases you might want to shut down all SDK tracking due to legal and privacy compliance. This can be achieved with the isStopTracking API. Once this API is invoked, our SDK will no longer communicate with our servers and stop functioning.
    * @param isStopTracking
    */
@@ -121,7 +117,6 @@ export class Appsflyer extends AwesomeCordovaNativePlugin {
 
   /**
    * Get the data from Attribution
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -142,7 +137,6 @@ export class Appsflyer extends AwesomeCordovaNativePlugin {
 
   /**
    * Allows to pass GCM/FCM Tokens that where collected by third party plugins to the AppsFlyer server. Can be used for Uninstall Tracking.
-   *
    * @param {string} token GCM/FCM ProjectNumber
    */
   @Cordova({ sync: true })
@@ -150,7 +144,6 @@ export class Appsflyer extends AwesomeCordovaNativePlugin {
 
   /**
    * (iOS) Allows to pass APN Tokens that where collected by third party plugins to the AppsFlyer server. Can be used for Uninstall Tracking.
-   *
    * @param {string} token APN Token
    */
   @Cordova({ sync: true })
@@ -166,7 +159,6 @@ export class Appsflyer extends AwesomeCordovaNativePlugin {
 
   /**
    * End User Opt-Out (Optional) AppsFlyer provides you a method to opt‐out specific users from AppsFlyer analytics. This method complies with the latest privacy requirements and complies with Facebook data and privacy policies. Default is FALSE, meaning tracking is enabled by default.
-   *
    * @param {boolean} disable Set to true to opt-out user from tracking
    */
   @Cordova({ sync: true })
@@ -174,7 +166,6 @@ export class Appsflyer extends AwesomeCordovaNativePlugin {
 
   /**
    * Set AppsFlyer’s OneLink ID. Setting a valid OneLink ID will result in shortened User Invite links, when one is generated. The OneLink ID can be obtained on the AppsFlyer Dashboard.
-   *
    * @param {string} oneLinkId OneLink ID
    */
   @Cordova({ sync: true })
@@ -182,7 +173,6 @@ export class Appsflyer extends AwesomeCordovaNativePlugin {
 
   /**
    * Allowing your existing users to invite their friends and contacts as new users to your app can be a key growth factor for your app. AppsFlyer allows you to track and attribute new installs originating from user invites within your app.
-   *
    * @param {AppsflyerInviteOptions} options Parameters for Invite link
    * @returns {Promise<any>}
    */
@@ -193,7 +183,6 @@ export class Appsflyer extends AwesomeCordovaNativePlugin {
 
   /**
    * Use this call to track an impression use the following API call. Make sure to use the promoted App ID as it appears within the AppsFlyer dashboard.
-   *
    * @param {string} appId Promoted Application ID
    * @param {string} campaign Promoted Campaign
    */
@@ -202,7 +191,6 @@ export class Appsflyer extends AwesomeCordovaNativePlugin {
 
   /**
    * Use this call to track the click and launch the app store's app page (via Browser)
-   *
    * @param {string} appId Promoted Application ID
    * @param {string} campaign Promoted Campaign
    * @param {Object} options Additional Parameters to track

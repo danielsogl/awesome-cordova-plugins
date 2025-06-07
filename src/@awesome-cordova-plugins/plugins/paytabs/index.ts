@@ -452,7 +452,6 @@ export enum AlternativePaymentMethod {
 export class PayTabs extends AwesomeCordovaNativePlugin {
   /**
    * Start Card Payment
-   *
    * @param params {PaymentSDKConfiguration} payment request configuration
    * @param configuration
    * @returns {Promise<any>} returns a promise that resolves with transaction details, or rejects with an error
@@ -463,7 +462,6 @@ export class PayTabs extends AwesomeCordovaNativePlugin {
   }
   /**
    * Start ApplePay Payment
-   *
    * @param params {PaymentSDKConfiguration} payment request configuration
    * @param configuration
    * @returns {Promise<any>} returns a promise that resolves with transaction details, or rejects with an error
@@ -474,7 +472,6 @@ export class PayTabs extends AwesomeCordovaNativePlugin {
   }
   /**
    * Start Alternative Payment Method
-   *
    * @param params {PaymentSDKConfiguration} payment request configuration
    * @param configuration
    * @returns {Promise<any>} returns a promise that resolves with transaction details, or rejects with an error

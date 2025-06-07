@@ -91,7 +91,6 @@ export class FirebaseModel extends AwesomeCordovaNativePlugin {
    * This function configure the Firebase TFLite model and downloads.
    * @param {string} arg1 Name of the TFLite model which is uploaded in the Firebase console
    * @returns {Observable<FirebaseModelConfigResult>} Returns a observable that gives the callback for downloading progress and status.
-   *
    */
   @Cordova({
     successIndex: 1,
@@ -106,7 +105,6 @@ export class FirebaseModel extends AwesomeCordovaNativePlugin {
    * This function identify the image using the Firebase TFLite model which is configured.
    * @param {FirebaseModelInput} arg1  Base64 string of the input image or .
    * @returns {Promise<FirebaseModelClassifyResult>} Returns a promise that resolves the classification result.
-   *
    */
   @Cordova()
   classify(arg1: FirebaseModelInput): Promise<FirebaseModelClassifyResult> {

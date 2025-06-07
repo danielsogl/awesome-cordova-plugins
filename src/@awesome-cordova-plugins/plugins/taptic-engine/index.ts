@@ -34,7 +34,6 @@ import { Injectable } from '@angular/core';
 export class TapticEngine extends AwesomeCordovaNativePlugin {
   /**
    * Use selection feedback generators to indicate a change in selection.
-   *
    * @returns {Promise<any>} Returns a promise that resolves on success and rejects on error
    */
   @Cordova()
@@ -44,7 +43,6 @@ export class TapticEngine extends AwesomeCordovaNativePlugin {
 
   /**
    * Use this to indicate success/failure/warning to the user.
-   *
    * @param options {Object} should be of the type { type: 'success' } (or 'warning'/'error')
    * @param {'success' | 'warning' | 'error'} options.type
    * @returns {Promise<any>} Returns a promise that resolves on success and rejects on error
@@ -56,7 +54,6 @@ export class TapticEngine extends AwesomeCordovaNativePlugin {
 
   /**
    * Use this to indicate success/failure/warning to the user.
-   *
    * @param options {Object} should be of the type { style: 'light' } (or 'medium'/'heavy')
    * @param {'light' | 'medium' | 'heavy'} options.type
    * @param options.style
@@ -69,7 +66,6 @@ export class TapticEngine extends AwesomeCordovaNativePlugin {
 
   /**
    * Tell the taptic engine that a gesture for a selection change is starting.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -79,7 +75,6 @@ export class TapticEngine extends AwesomeCordovaNativePlugin {
 
   /**
    * Tell the taptic engine that a selection changed during a gesture.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -89,7 +84,6 @@ export class TapticEngine extends AwesomeCordovaNativePlugin {
 
   /**
    * Tell the taptic engine we are done with a gesture. This needs to be called lest resources are not properly recycled.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()

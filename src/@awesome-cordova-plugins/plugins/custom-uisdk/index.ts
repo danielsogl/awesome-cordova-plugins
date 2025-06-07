@@ -37,7 +37,6 @@ import {
 export class CustomUISDK extends AwesomeCordovaNativePlugin {
   /**
    * This function show dialog to ask user permision to fetch authcode
-   *
    * @param clientId {string} unique id give to each merchant
    * @param mid {string} merchant id
    * @returns {Promise<string>} Returns authcode
@@ -49,7 +48,6 @@ export class CustomUISDK extends AwesomeCordovaNativePlugin {
 
   /**
    * This function check that paytm app is installed or not
-   *
    * @returns {Promise<boolean>} Returns installed - true or not -false
    */
   @Cordova()

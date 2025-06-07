@@ -15,7 +15,6 @@ export class SecureStorageObject {
 
   /**
    * Gets a stored item
-   *
    * @param key {string}
    * @returns {Promise<string>}
    */
@@ -28,7 +27,6 @@ export class SecureStorageObject {
 
   /**
    * Stores a value
-   *
    * @param key {string}
    * @param value {string}
    * @returns {Promise<any>}
@@ -42,7 +40,6 @@ export class SecureStorageObject {
 
   /**
    * Removes a single stored item
-   *
    * @param key {string}
    * @returns {Promise<string>} returns a promise that resolves with the key that was removed
    */
@@ -55,7 +52,6 @@ export class SecureStorageObject {
 
   /**
    * Get all references from the storage.
-   *
    * @returns {Promise<string[]>} returns a promise that resolves with array of keys storage
    */
   @CordovaInstance({
@@ -67,7 +63,6 @@ export class SecureStorageObject {
 
   /**
    * Clear all references from the storage.
-   *
    * @returns {Promise<any>}
    */
   @CordovaInstance({
@@ -79,7 +74,6 @@ export class SecureStorageObject {
 
   /**
    * Brings up the screen-lock settings
-   *
    * @returns {Promise<any>}
    */
   @CordovaInstance()
@@ -144,7 +138,6 @@ export class SecureStorageObject {
 export class SecureStorage extends AwesomeCordovaNativePlugin {
   /**
    * Creates a namespaced storage.
-   *
    * @param store {string}
    * @returns {Promise<SecureStorageObject>}
    */

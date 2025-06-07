@@ -20,7 +20,6 @@ export interface VideoInformation {
  * @name FFMpeg
  * @description
  * Simple plugin that binds mobile ffmpeg to execute ffmpeg commands
- *
  * @usage
  * ```typescript
  * import { FFMpeg } from '@awesome-cordova-plugins/ffmpeg/ngx';

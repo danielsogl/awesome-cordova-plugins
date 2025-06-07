@@ -119,7 +119,6 @@ export class NFC extends AwesomeCordovaNativePlugin {
   /**
    * Read NFC tags sending the tag data to the success callback.
    * See https://github.com/chariotsolutions/phonegap-nfc#nfcreadermode
-   *
    * @param flags
    * @returns {Observable<any>}
    */
@@ -135,7 +134,6 @@ export class NFC extends AwesomeCordovaNativePlugin {
   /**
    * Function scanNdef starts the NFCNDEFReaderSession allowing iOS to scan NFC tags.
    * https://github.com/chariotsolutions/phonegap-nfc#nfcscanndef
-   *
    * @param options
    */
   @Cordova({ sync: true })
@@ -148,7 +146,6 @@ export class NFC extends AwesomeCordovaNativePlugin {
    *
    * You probably want *scanNdef* for reading NFC tags on iOS. Only use scanTag if you need the tag UID.
    * https://github.com/chariotsolutions/phonegap-nfc#nfcscantag
-   *
    * @param options
    */
   @Cordova({ sync: true })
@@ -168,7 +165,6 @@ export class NFC extends AwesomeCordovaNativePlugin {
   /**
    * Connect to the tag and enable I/O operations to the tag from this TagTechnology object.
    * https://github.com/chariotsolutions/phonegap-nfc#nfcconnect
-   *
    * @param tech The tag technology class name e.g. android.nfc.tech.IsoDep
    * @param timeout The transceive(byte[]) timeout in milliseconds [optional]
    */
@@ -191,7 +187,6 @@ export class NFC extends AwesomeCordovaNativePlugin {
    * https://github.com/chariotsolutions/phonegap-nfc#nfctransceive
    *
    * Example code https://github.com/chariotsolutions/phonegap-nfc#tag-technology-functions-1
-   *
    * @param data an ArrayBuffer or string of hex data e.g. '00 A4 04 00 07 D2 76 00 00 85 01 00'
    */
   @Cordova({ sync: true })
@@ -201,7 +196,6 @@ export class NFC extends AwesomeCordovaNativePlugin {
 
   /**
    * Starts the NFCNDEFReaderSession allowing iOS to scan NFC tags.
-   *
    * @deprecated use scanNdef or scanTag
    * @param onSuccess
    * @param onFailure
@@ -220,7 +214,6 @@ export class NFC extends AwesomeCordovaNativePlugin {
 
   /**
    * Registers an event listener for any NDEF tag.
-   *
    * @param onSuccess
    * @param onFailure
    * @returns {Observable<any>}
@@ -238,7 +231,6 @@ export class NFC extends AwesomeCordovaNativePlugin {
 
   /**
    * Registers an event listener for tags matching any tag type.
-   *
    * @param onSuccess
    * @param onFailure
    * @returns {Observable<any>}
@@ -256,7 +248,6 @@ export class NFC extends AwesomeCordovaNativePlugin {
 
   /**
    * Registers an event listener for NDEF tags matching a specified MIME type.
-   *
    * @param mimeType
    * @param onSuccess
    * @param onFailure
@@ -275,7 +266,6 @@ export class NFC extends AwesomeCordovaNativePlugin {
 
   /**
    * Registers an event listener for formatable NDEF tags.
-   *
    * @param onSuccess
    * @param onFailure
    * @returns {Observable<any>}
@@ -291,7 +281,6 @@ export class NFC extends AwesomeCordovaNativePlugin {
 
   /**
    * Writes an NdefMessage(array of ndef records) to a NFC tag.
-   *
    * @param message {any[]}
    * @returns {Promise<any>}
    */
@@ -301,7 +290,6 @@ export class NFC extends AwesomeCordovaNativePlugin {
   }
   /**
    * Makes a NFC tag read only. **Warning** this is permanent.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -311,7 +299,6 @@ export class NFC extends AwesomeCordovaNativePlugin {
 
   /**
    * Shares an NDEF Message(array of ndef records) via peer-to-peer.
-   *
    * @param message An array of NDEF Records.
    * @returns {Promise<any>}
    */
@@ -322,7 +309,6 @@ export class NFC extends AwesomeCordovaNativePlugin {
 
   /**
    * Stop sharing NDEF data via peer-to-peer.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -340,7 +326,6 @@ export class NFC extends AwesomeCordovaNativePlugin {
 
   /**
    * Send a file to another device via NFC handover.
-   *
    * @param uris A URI as a String, or an array of URIs.
    * @returns {Promise<any>}
    */
@@ -351,7 +336,6 @@ export class NFC extends AwesomeCordovaNativePlugin {
 
   /**
    * Stop sharing NDEF data via NFC handover.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -361,7 +345,6 @@ export class NFC extends AwesomeCordovaNativePlugin {
 
   /**
    * Opens the device's NFC settings.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -371,7 +354,6 @@ export class NFC extends AwesomeCordovaNativePlugin {
 
   /**
    * Check if NFC is available and enabled on this device.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -384,7 +366,6 @@ export class NFC extends AwesomeCordovaNativePlugin {
    */
   /**
    * Convert byte array to string
-   *
    * @param bytes {number[]}
    * @returns {string}
    */
@@ -394,7 +375,6 @@ export class NFC extends AwesomeCordovaNativePlugin {
   }
   /**
    * Convert string to byte array.
-   *
    * @param str {string}
    * @returns {number[]}
    */
@@ -404,7 +384,6 @@ export class NFC extends AwesomeCordovaNativePlugin {
   }
   /**
    * Convert byte array to hex string
-   *
    * @param bytes {number[]}
    * @returns {string}
    */

@@ -184,7 +184,6 @@ export interface BLEScanOptions {
 export class BLE extends AwesomeCordovaNativePlugin {
   /**
    * Scan and discover BLE peripherals for the specified amount of time.
-   *
    * @usage
    * ```
    * BLE.scan([], 5).subscribe(device => {
@@ -204,7 +203,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
 
   /**
    * Scan and discover BLE peripherals until `stopScan` is called.
-   *
    * @usage
    * ```
    * BLE.startScan([]).subscribe(device => {
@@ -229,7 +227,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
 
   /**
    * Scans for BLE devices. This function operates similarly to the `startScan` function, but allows you to specify extra options (like allowing duplicate device reports).
-   *
    * @param {string[]} services  List of service UUIDs to discover, or `[]` to find all devices
    * @param {BLEScanOptions} options Options
    * @returns {Observable<any>} Returns an Observable that notifies of each peripheral discovered.
@@ -245,7 +242,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
 
   /**
    * Stop a scan started by `startScan`.
-   *
    * @usage
    * ```
    * BLE.startScan([]).subscribe(device => {
@@ -264,7 +260,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
 
   /**
    * Set device pin.
-   *
    * @usage
    * ```
    *   BLE.setPin(pin).subscribe(success => {
@@ -286,7 +281,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
 
   /**
    * Connect to a peripheral.
-   *
    * @usage
    * ```
    *   BLE.connect('12:34:56:78:9A:BC').subscribe(peripheralData => {
@@ -315,7 +309,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
    *
    * On Android you can pass a MAC address directly to autoConnect. With iOS, you need to get a device id by scanning,
    * calling ble.peripheralsWithIdentifiers, or calling ble.connectedPeripheralsWithServices.
-   *
    * @usage
    * ```
    *  someFunction() {
@@ -343,7 +336,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
   /**
    * Request MTU size.
    * May be used to fix the Error 14 "Unlikely" on write requests with more than 20 bytes.
-   *
    * @usage
    * ```
    *   BLE.requestMtu('12:34:56:78:9A:BC', 512).then(() => {
@@ -383,13 +375,12 @@ export class BLE extends AwesomeCordovaNativePlugin {
   requestConnectionPriority(deviceId: string, priority: string): Promise<any> {
     return;
   }
-  
+
   /**
    * Refresh Device Cache
    * This method may fix a issue of old cached services and characteristics.
    * NOTE Since this uses an undocumented API it's not guaranteed to work.
    * If you choose a too low delay time (timeoutMillis) the method could fail.
-   *
    * @usage
    * ```
    *   BLE.refreshDeviceCache('12:34:56:78:9A:BC', 10000).then(discoveredServices => {
@@ -409,7 +400,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
 
   /**
    * Disconnect from a peripheral.
-   *
    * @usage
    * ```
    *   BLE.disconnect('12:34:56:78:9A:BC').then(() => {
@@ -426,7 +416,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
 
   /**
    * Read the value of a characteristic.
-   *
    * @param {string} deviceId  UUID or MAC address of the peripheral
    * @param {string} serviceUUID  UUID of the BLE service
    * @param {string} characteristicUUID  UUID of the BLE characteristic
@@ -439,7 +428,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
 
   /**
    * Write the value of a characteristic.
-   *
    * @usage
    * ```
    * // send 1 byte to switch a light on
@@ -473,7 +461,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
 
   /**
    * Write the value of a characteristic without waiting for confirmation from the peripheral.
-   *
    * @param {string} deviceId  UUID or MAC address of the peripheral
    * @param {string} serviceUUID  UUID of the BLE service
    * @param {string} characteristicUUID  UUID of the BLE characteristic
@@ -492,7 +479,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
 
   /**
    * Register to be notified when the value of a characteristic changes.
-   *
    * @usage
    * ```
    * BLE.startNotification(device_id, 'FF10', 'FF11').subscribe(buffer => {
@@ -518,7 +504,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
 
   /**
    * Stop being notified when the value of a characteristic changes.
-   *
    * @param {string} deviceId  UUID or MAC address of the peripheral
    * @param {string} serviceUUID  UUID of the BLE service
    * @param {string} characteristicUUID  UUID of the BLE characteristic
@@ -531,7 +516,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
 
   /**
    * Report the connection status.
-   *
    * @usage
    * ```
    * BLE.isConnected('FFCA0B09-CB1D-4DC0-A1EF-31AFD3EDFB53').then(
@@ -549,7 +533,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
 
   /**
    * Report if bluetooth is enabled.
-   *
    * @returns {Promise<void>} Returns a Promise that resolves if Bluetooth is enabled, and rejects if disabled.
    */
   @Cordova()
@@ -559,7 +542,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
 
   /**
    * Register to be notified when Bluetooth state changes on the device.
-   *
    * @usage
    * ```
    * BLE.startStateNotifications().subscribe(state => {
@@ -579,7 +561,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
 
   /**
    * Stop state notifications.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -589,7 +570,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
 
   /**
    * Registers to be notified when Location service state changes on the device.
-   *
    * @usage
    * ```
    * ble.startLocationStateNotifications(success, failure);
@@ -610,7 +590,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
 
   /**
    * Stop location state notifications.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -620,7 +599,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
 
   /**
    * Open System Bluetooth settings (Android only).
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -630,7 +608,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
 
   /**
    * Enable Bluetooth on the device (Android only).
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -640,7 +617,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
 
   /**
    * Read the RSSI value on the device connection.
-   *
    * @param {string} deviceId  UUID or MAC address of the peripheral
    * @returns {Promise<any>}
    */
@@ -653,7 +629,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
    * Retrieves a list of the peripherals (containing any of the specified services)
    * currently connected to the system. The peripheral list is sent to the success callback.
    * iOS only
-   *
    * @param {string[]} services List of services to discover
    * @returns {Promise<any>} Returns a promise with a list of peripheral objects
    */
@@ -665,7 +640,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
   /**
    * Find the connected peripherals offering the listed service UUIDs.
    * iOS only
-   *
    * @param {string[]} uuids List of peripheral UUIDs
    * @returns {Promise<any>} Returns a promise with a list of peripheral objects
    */
@@ -677,7 +651,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
   /**
    * Find the bonded devices
    * Android only
-   *
    * @returns {Promise<any>} Returns a promise with a list of peripheral objects
    */
   @Cordova()
@@ -688,7 +661,6 @@ export class BLE extends AwesomeCordovaNativePlugin {
   /**
    * Reports if location services are enabled.
    * Android only
-   *
    * @returns {Promise<void>}
    */
   @Cordova()

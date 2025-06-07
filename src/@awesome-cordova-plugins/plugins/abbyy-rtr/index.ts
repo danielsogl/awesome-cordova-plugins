@@ -304,7 +304,6 @@ export interface DataCaptureResult {
 export class AbbyyRTR extends AwesomeCordovaNativePlugin {
   /**
    * Opens a modal dialog with controls for the Text Capture scenario.
-   *
    * @param {TextCaptureOptions} options
    * @returns {Promise<TextCaptureResult>}
    */
@@ -323,7 +322,6 @@ export class AbbyyRTR extends AwesomeCordovaNativePlugin {
 
   /**
    * Opens a modal dialog with controls for the Data Capture scenario.
-   *
    * @param {DataCaptureOptions} options
    * @returns {Promise<DataCaptureResult>}
    */

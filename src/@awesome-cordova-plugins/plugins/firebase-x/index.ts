@@ -172,7 +172,6 @@ export interface MessagePayload {
 export class FirebaseX extends AwesomeCordovaNativePlugin {
   /**
    * Get the current FCM token.
-   *
    * @returns {Promise<null | string>} Note that token will be null if it has not been established yet
    */
   @Cordova()
@@ -182,7 +181,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Get the app instance ID (an constant ID which persists as long as the app is not uninstalled/reinstalled)
-   *
    * @returns {Promise<null | string>} Note that ID will be null if it has not been established yet
    */
   @Cordova()
@@ -192,7 +190,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Get the current FCM user.
-   *
    * @returns {Promise<FirebaseUser | string>}
    */
   @Cordova()
@@ -202,7 +199,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Reload the current FCM user.
-   *
    * @returns {Promise<FirebaseUser | string>}
    */
   @Cordova()
@@ -212,7 +208,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Get notified when a token is refreshed.
-   *
    * @returns {Observable<any>}
    */
   @Cordova({
@@ -225,7 +220,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   /**
    * iOS only.
    * Get the APNS token allocated for this app install.
-   *
    * @returns {Promise<null | string>} Note that token will be null if it has not been established yet
    */
   @Cordova()
@@ -237,7 +231,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
    * iOS only.
    * Registers a handler to call when the APNS token is allocated.
    * This will be called once when remote notifications permission has been granted by the user at runtime.
-   *
    * @returns {Observable<any>}
    */
   @Cordova({
@@ -251,7 +244,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
    * Registers a callback function to invoke when:
    * - a notification or data message is received by the app
    * - a system notification is tapped by the user
-   *
    * @returns {Observable<any>}
    */
   @Cordova({
@@ -263,7 +255,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Grant permission to receive push notifications (will trigger prompt) and return hasPermission: true. iOS only (Android will always return true).
-   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -275,7 +266,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Check permission to receive push notifications and return hasPermission: true. iOS only (Android will always return true).
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova()
@@ -293,7 +283,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Set a number on the icon badge. Set 0 to clear the badge
-   *
    * @param {number} badgeNumber
    * @returns {Promise<any>}
    */
@@ -304,7 +293,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Get icon badge number.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -314,7 +302,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Clear all pending notifications from the drawer.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -326,7 +313,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Subscribe to a topic. Topic messaging allows you to send a message to multiple devices that have opted in to a particular topic.
-   *
    * @param {string} topic
    * @returns {Promise<any>}
    */
@@ -337,7 +323,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Unsubscribe from a topic. This will stop you receiving messages for that topic.
-   *
    * @param {string} topic
    * @returns {Promise<any>}
    */
@@ -357,7 +342,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   /**
    * Sets whether to autoinit new FCM tokens. By default, a new token will be generated as soon as the old one is removed.
    * To prevent a new token being generated, by sure to disable autoinit using setAutoInitEnabled() before calling unregister().
-   *
    * @param enabled
    */
   @Cordova()
@@ -371,7 +355,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
    * - for foreground/data notifications: data.notification_android_channel_id
    *
    * Calling on Android 7 or below or another platform will have no effect.
-   *
    * @param {IChannelOptions} channelOptions
    * @returns {Promise<any>}
    */
@@ -385,7 +368,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
    * The default channel is used if no other channel exists or is specified in the notification.
    * Any options not specified will not be overridden. Should be called as soon as possible (on app start) so default notifications will work as expected.
    * Calling on Android 7 or below or another platform will have no effect.
-   *
    * @param {IChannelOptions} channelOptions
    * @returns {Promise<any>}
    */
@@ -397,7 +379,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   /**
    * Android 8+ only. Removes a previously defined channel.
    * Calling on Android 7 or below or another platform will have no effect.
-   *
    * @param {string} channelID
    * @returns {Promise<any>}
    */
@@ -409,7 +390,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   /**
    * Android 8+ only. Gets a list of all channels.
    * Calling on Android 7 or below or another platform will have no effect.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -419,7 +399,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Enable/disable analytics collection (useful for GDPR/privacy settings).
-   *
    * @param {boolean} enabled
    * @returns {Promise<any>}
    */
@@ -430,7 +409,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Enable/disable Crashlytics collection.
-   *
    * @param {boolean} enabled
    * @returns {Promise<any>}
    */
@@ -441,7 +419,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Enable/disable performance collection.
-   *
    * @param {boolean} enabled
    * @returns {Promise<any>}
    */
@@ -452,7 +429,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Log an event using Analytics
-   *
    * @param {string} type
    * @param {Object} data
    * @returns {Promise<any>}
@@ -464,7 +440,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Set the name of the current screen in Analytics
-   *
    * @param {string} name Screen name
    * @returns {Promise<any>}
    */
@@ -475,7 +450,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Set a user id for use in Analytics
-   *
    * @param {string} userId
    * @returns {Promise<any>}
    */
@@ -486,7 +460,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Set a user property for use in Analytics
-   *
    * @param {string} name
    * @param {string} value
    * @returns {Promise<any>}
@@ -503,7 +476,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
    * To add user IDs to your reports, assign each user a unique identifier in the form of an ID number, token, or hashed value.
    *
    * More info https://firebase.google.com/docs/crashlytics/customize-crash-reports?authuser=0#set_user_ids
-   *
    * @param {string} userId
    * @returns {Promise<any>}
    */
@@ -516,7 +488,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
    * Simulates (causes) a fatal native crash which causes a crash event to be sent to Crashlytics (useful for testing).
    * See the Firebase documentation regarding crash testing.
    * Crashes will appear under Event type = "Crashes" in the Crashlytics console.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -527,7 +498,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   /**
    * Sends a crash-related log message that will appear in the Logs section of the next native crash event.
    * Note: if you don't then crash, the message won't be sent! Also logs the message to the native device console.
-   *
    * @param {string} message
    * @returns {Promise<any>}
    */
@@ -541,7 +511,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
    * The event will appear under Event type = "Non-fatals" in the Crashlytics console.
    * The error message will appear in the Logs section of the non-fatal error event.
    * Also logs the error message to the native device console.
-   *
    * @param {string} error
    * @param {object} (optional) a stack trace generated by stacktrace.js
    * @param stackTrace
@@ -566,7 +535,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
    * Some Android devices support "instant verfication", in which case an SMS will not be send and you will be returned
    * the verification code along with the verification ID. In this case, the user doesn't need to do anything in order for you
    * to sign them in.
-   *
    * @param {string} phoneNumber - phone number to verify
    * @param {integer} timeOutDuration - time to wait in seconds before timing out
    * @param {string} fakeVerificationCode - (optional) to test instant verification on Android ,specify a fake verification code to return for whitelisted phone numbers.
@@ -585,7 +553,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Switch current authentification system language, for example, the phone sms code.
-   *
    * @param lang - language to change, ex: 'fr' for french
    */
   @Cordova()
@@ -596,7 +563,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   /**
    * Signs the user into Firebase with credentials obtained using verifyPhoneNumber().
    * See the Android- and iOS-specific Firebase documentation for more info.
-   *
    * @param {object} credential - a credential object returned by the success callback of an authentication method
    */
   @Cordova()
@@ -606,7 +572,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Creates a new email/password-based user account. If account creation is successful, user will be automatically signed in.
-   *
    * @param email
    * @param password
    */
@@ -617,7 +582,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Signs in to an email/password-based user account.
-   *
    * @param email
    * @param password
    */
@@ -628,7 +592,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Signs in user with custom token.
-   *
    * @param customToken
    */
   @Cordova()
@@ -646,7 +609,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Authenticates the user with a Google account to obtain a credential that can be used to sign the user in/link to an existing user account/reauthenticate the user.
-   *
    * @param clientId
    */
   @Cordova()
@@ -656,7 +618,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Authenticates the user with an Apple account using Sign In with Apple to obtain a credential that can be used to sign the user in/link to an existing user account/reauthenticate the user.
-   *
    * @param locale
    */
   @Cordova({
@@ -669,7 +630,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   /**
    * Links the user account to an existing Firebase user account with credentials obtained using verifyPhoneNumber().
    * See the Android- and iOS-specific Firebase documentation for more info.
-   *
    * @param {object} credential - a credential object returned by the success callback of an authentication method
    * @param {Function} success - callback function to call on successful sign-in using credentials
    * @param {Function} error - callback function which will be passed a {string} error message as an argument
@@ -681,7 +641,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Reauthenticates the currently signed in user with credentials obtained via an authentication method such as verifyPhoneNumber() or authenticateUserWithGoogle().
-   *
    * @param {Object} credential - a credential object returned by the success callback of an authentication method
    * @param {Function} success - callback function to call on successful sign-in using credentials
    * @param {Function} error - callback function which will be passed a {string} error message as an argument
@@ -709,7 +668,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Updates the display name and/or photo URL of the current Firebase user signed into the app.
-   *
    * @param profile
    * @param profile.name
    * @param profile.photoUri
@@ -721,7 +679,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Updates/sets the email address of the current Firebase user signed into the app.
-   *
    * @param email
    */
   @Cordova()
@@ -740,7 +697,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Updates/sets the account password for the current Firebase user signed into the app.
-   *
    * @param password
    */
   @Cordova()
@@ -751,7 +707,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   /**
    * Sends a password reset email to the specified user email address.
    * Note: doesn't require the Firebase user to be signed in to the app.
-   *
    * @param email
    */
   @Cordova()
@@ -769,7 +724,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Registers a Javascript function to invoke when Firebase Authentication state changes between user signed in/signed out.
-   *
    * @param {Function} fn - callback function to invoke when authentication state changes
    */
   @Cordova()
@@ -779,7 +733,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Fetch Remote Config parameter values for your app.
-   *
    * @param {number} cacheExpirationSeconds specify the cacheExpirationSeconds
    * @returns {Promise<any>}
    */
@@ -790,7 +743,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Activate the Remote Config fetched config.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -800,7 +752,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Asynchronously fetches and then activates the fetched configs.
-   *
    * @param {Function} success - callback function which will be passed a {boolean} argument indicating whether result the current call activated the fetched config.
    * @param {Function} error - callback function which will be passed a {string} error message as an argument
    */
@@ -811,7 +762,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns a Map of Firebase Remote Config key value pairs.
-   *
    * @param {Function} success - callback function which will be passed an {object} argument where key is the remote config key and value is the value as a string. If the expected key value is a different primitive type then cast it to the appropriate type.
    * @param {Function} error - callback function which will be passed a {string} error message as an argument
    */
@@ -822,7 +772,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Retrieve a Remote Config value.
-   *
    * @param {string} key
    * @returns {Promise<any>}
    */
@@ -833,7 +782,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Android only. Retrieve a Remote Config byte array.
-   *
    * @param {string} key
    * @returns {Promise<any>}
    */
@@ -844,7 +792,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Android only. Get the current state of the FirebaseRemoteConfig singleton object.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -854,7 +801,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Change the settings for the FirebaseRemoteConfig object's operations.
-   *
    * @param {number} fetchTimeout - fetch timeout in seconds. Default is 60 seconds.
    * @param {number} minimumFetchInterval - minimum fetch inteval in seconds. Default is 12 hours.
    * @param {Function} success - callback function to be call on successfully setting the remote config settings
@@ -872,7 +818,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Android only. Set defaults in the Remote Config.
-   *
    * @param {Object} settings
    * @returns {Promise<any>}
    */
@@ -883,7 +828,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Start a trace.
-   *
    * @param {string} name
    * @returns {Promise<any>}
    */
@@ -896,7 +840,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
    * To count the performance-related events that occur in your app (such as cache hits or retries),
    * add a line of code similar to the following whenever the event occurs,
    * using a string other than retry to name that event if you are counting a different type of event.
-   *
    * @param {string} name
    * @param {string} counterName
    * @returns {Promise<any>}
@@ -908,7 +851,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Stop the trace.
-   *
    * @param {string} name
    * @returns {Promise<any>}
    */
@@ -919,7 +861,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Adds a new document to a Firestore collection, which will be allocated an auto-generated document ID.
-   *
    * @param {object} document - document object to add to collection
    * @param {string} collection - name of top-level collection to add document to.
    * @param {Function} success - callback function to call on successfully adding the document. Will be passed a {string} argument containing the auto-generated document ID that the document was stored against.
@@ -937,7 +878,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets (adds/replaces) a document with the given ID in a Firestore collection.
-   *
    * @param {string} documentId - document ID to use when setting document in the collection.
    * @param {object} document - document object to set in collection.
    * @param {string} collection - name of top-level collection to set document in.
@@ -959,7 +899,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
    * Updates an existing document with the given ID in a Firestore collection. This is a non-destructive update that will only
    * overwrite existing keys in the existing document or add new ones if they don't already exist. If the no document with the
    * specified ID exists in the collection, an error will be raised.
-   *
    * @param {string} documentId - document ID of the document to update.
    * @param {object} document - entire document or document fragment to update existing document with.
    * @param {string} collection - name of top-level collection to update document in.
@@ -980,7 +919,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   /**
    * Deletes an existing document with the given ID in a Firestore collection.
    * - Note: If the no document with the specified ID exists in the collection, the Firebase SDK will still return a successful outcome.
-   *
    * @param {string} documentId - document ID of the document to delete.
    * @param {string} collection - name of top-level collection to delete document in.
    * @param {Function} success - callback function to call on successfully deleting the document.
@@ -999,7 +937,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   /**
    * Fetches an existing document with the given ID from a Firestore collection.
    * -Note: If the no document with the specified ID exists in the collection, the error callback will be invoked.
-   *
    * @param {string} documentId - document ID of the document to fetch.
    * @param {string} collection - name of top-level collection to fetch document from.
    * @param {Function} success - callback function to call on successfully fetching the document. Will be passed an {object} contain the document contents.
@@ -1017,7 +954,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
 
   /**
    * Fetches all the documents in the specific collection.
-   *
    * @param {string} collection - name of top-level collection to fetch.
    * @param {Array} filters - filters to apply to collection.
    * @param {Function} success - callback function to call on successfully deleting the document. Will be passed an {object} containing all the documents in the collection,
@@ -1035,7 +971,6 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   }
   /**
    * Set new V2 consent mode
-   *
    * @param {array} consent array of consent
    */
   @Cordova()

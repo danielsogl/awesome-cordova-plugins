@@ -35,7 +35,6 @@ import { Injectable } from '@angular/core';
 export class TealiumInstallReferrer extends AwesomeCordovaNativePlugin {
   /**
    * This function stores the install referrer information as persistent data
-   *
    * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
    * @returns {Promise<any>} Returns a promise that resolves when something happens
    */
@@ -46,7 +45,6 @@ export class TealiumInstallReferrer extends AwesomeCordovaNativePlugin {
 
   /**
    * This function stores the install referrer information as volatile data
-   *
    * @param instanceName {string} Your arbitrary Tealium instance name provided at init time
    * @returns {Promise<any>} Returns a promise that resolves when something happens
    */

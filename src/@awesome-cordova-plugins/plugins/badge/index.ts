@@ -34,7 +34,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class Badge extends AwesomeCordovaNativePlugin {
   /**
    * Clear the badge of the app icon.
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova()
@@ -44,7 +43,6 @@ export class Badge extends AwesomeCordovaNativePlugin {
 
   /**
    * Set the badge of the app icon.
-   *
    * @param {number} badgeNumber  The new badge number.
    * @returns {Promise<any>}
    */
@@ -55,7 +53,6 @@ export class Badge extends AwesomeCordovaNativePlugin {
 
   /**
    * Get the badge of the app icon.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -65,7 +62,6 @@ export class Badge extends AwesomeCordovaNativePlugin {
 
   /**
    * Increase the badge number.
-   *
    * @param {number} increaseBy  Count to add to the current badge number
    * @returns {Promise<any>}
    */
@@ -76,7 +72,6 @@ export class Badge extends AwesomeCordovaNativePlugin {
 
   /**
    * Decrease the badge number.
-   *
    * @param {number} decreaseBy  Count to subtract from the current badge number
    * @returns {Promise<any>}
    */
@@ -87,7 +82,6 @@ export class Badge extends AwesomeCordovaNativePlugin {
 
   /**
    * Check support to show badges.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -97,7 +91,6 @@ export class Badge extends AwesomeCordovaNativePlugin {
 
   /**
    * Determine if the app has permission to show badges.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -107,7 +100,6 @@ export class Badge extends AwesomeCordovaNativePlugin {
 
   /**
    * Register permission to set badge notifications
-   *
    * @returns {Promise<any>}
    */
   @Cordova()

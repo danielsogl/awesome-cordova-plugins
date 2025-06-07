@@ -49,14 +49,13 @@ export class Kommunicate extends AwesomeCordovaNativePlugin {
    * Creates a new user with the details provided there is no existing user
    *
    * var kmUser = {
-   *    'userId' : 'userId',   //Replace it with the userId of the logged in user
-   *    'password' : 'password',  //replace with password
-   *    'authenticationTypeId' : 1,
-   *    'imageLink' : <image-link-for-user>
-   *    'applicationId' : '<APP_ID>',  //replace this with your APP_ID from Applozic Dashboard
-   *    'deviceApnsType' : 0    //Set 0 for Development and 1 for Distribution (Release)
+   * 'userId' : 'userId',   //Replace it with the userId of the logged in user
+   * 'password' : 'password',  //replace with password
+   * 'authenticationTypeId' : 1,
+   * 'imageLink' : <image-link-for-user>
+   * 'applicationId' : '<APP_ID>',  //replace this with your APP_ID from Applozic Dashboard
+   * 'deviceApnsType' : 0    //Set 0 for Development and 1 for Distribution (Release)
    * };
-   *
    * @param kmUser {any} the user details
    * @returns {Promise<any>} Returns a promise
    */
@@ -67,7 +66,6 @@ export class Kommunicate extends AwesomeCordovaNativePlugin {
 
   /**
    * Register for push notification
-   *
    * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
@@ -77,7 +75,6 @@ export class Kommunicate extends AwesomeCordovaNativePlugin {
 
   /**
    * Check if any user is logged in or not
-   *
    * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
@@ -87,7 +84,6 @@ export class Kommunicate extends AwesomeCordovaNativePlugin {
 
   /**
    * Update the token for push notifications
-   *
    * @param token {string} the user details
    * @returns {Promise<any>} Returns a promise
    */
@@ -98,7 +94,6 @@ export class Kommunicate extends AwesomeCordovaNativePlugin {
 
   /**
    * Launch the conversation screen (it contains all the existing conversations)
-   *
    * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
@@ -110,10 +105,9 @@ export class Kommunicate extends AwesomeCordovaNativePlugin {
    * Launch the conversation identified by the given channel(conversation) key
    *
    * let convObj = {
-   *   'clientChannelKey' : clientChannelKey, //pass the clientChannelKey here
-   *   'takeOrder' : true //skip chat list on back press, pass false if you want to show chat list on back press
+   * 'clientChannelKey' : clientChannelKey, //pass the clientChannelKey here
+   * 'takeOrder' : true //skip chat list on back press, pass false if you want to show chat list on back press
    * };
-   *
    * @param conversationObject {any} the channel key and other information
    * @returns {Promise<any>} Returns a promise
    */
@@ -124,7 +118,6 @@ export class Kommunicate extends AwesomeCordovaNativePlugin {
 
   /**
    * Start a new conversation, details about the conversation to be passed as parameters
-   *
    * @deprecated
    * @param conversationParams
    * @param converationParams {any} the user details
@@ -137,7 +130,6 @@ export class Kommunicate extends AwesomeCordovaNativePlugin {
 
   /**
    * Process push notifications
-   *
    * @param data {any} the user details
    * @returns {boolean} Returns true/false
    */
@@ -148,7 +140,6 @@ export class Kommunicate extends AwesomeCordovaNativePlugin {
 
   /**
    * Logout the current user
-   *
    * @returns {Promise<any>} Returns a promise
    */
   @Cordova()
@@ -158,7 +149,6 @@ export class Kommunicate extends AwesomeCordovaNativePlugin {
 
   /**
    * Start a single chat (conversation)
-   *
    * @deprecated
    * @param data {any} the user details
    * @returns {Promise<any>} Returns a promise
@@ -172,11 +162,10 @@ export class Kommunicate extends AwesomeCordovaNativePlugin {
    * Launches a conversation with the properties passed in the conversation param
    *
    * var conversationObject = {
-   *   'isUnique' : false,
-   *   'agentIds':['<AGENT_ID>'],  //List of agentIds. AGENT_ID is the emailID used to signup on Kommunicate
-   *   'botIds': ['<BOT_ID>']  //List of botIds. Go to Manage Bots(https://dashboard.kommunicate.io/bots/manage-bots) -> Copy botID
+   * 'isUnique' : false,
+   * 'agentIds':['<AGENT_ID>'],  //List of agentIds. AGENT_ID is the emailID used to signup on Kommunicate
+   * 'botIds': ['<BOT_ID>']  //List of botIds. Go to Manage Bots(https://dashboard.kommunicate.io/bots/manage-bots) -> Copy botID
    * };
-   *
    * @param conversationObject {any} the user details
    * @param converationObject
    * @returns {Promise<any>} Returns a promise

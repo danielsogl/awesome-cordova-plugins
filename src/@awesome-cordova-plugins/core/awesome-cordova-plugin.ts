@@ -11,7 +11,6 @@ export class AwesomeCordovaNativePlugin {
 
   /**
    * Returns a boolean that indicates whether the plugin is installed
-   *
    * @returns {boolean}
    */
   static installed(): boolean {

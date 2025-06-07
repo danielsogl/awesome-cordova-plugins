@@ -117,7 +117,6 @@ export class SQLiteObject {
   /**
    * Execute SQL on the opened database. Note, you must call `create` first, and
    * ensure it resolved and successfully opened the database.
-   *
    * @param statement
    * @param params
    */
@@ -189,7 +188,6 @@ export class SQLite extends AwesomeCordovaNativePlugin {
    * Open or create a SQLite database file.
    *
    * See the plugin docs for an explanation of all options: https://github.com/litehelpers/Cordova-sqlite-storage#opening-a-database
-   *
    * @param config {SQLiteDatabaseConfig} database configuration
    * @returns Promise<SQLiteObject>
    */
@@ -202,7 +200,6 @@ export class SQLite extends AwesomeCordovaNativePlugin {
 
   /**
    * Verify that both the Javascript and native part of this plugin are installed in your application
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -212,7 +209,6 @@ export class SQLite extends AwesomeCordovaNativePlugin {
 
   /**
    * Automatically verify basic database access operations including opening a database
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -222,7 +218,6 @@ export class SQLite extends AwesomeCordovaNativePlugin {
 
   /**
    * Deletes a database
-   *
    * @param config {SQLiteDatabaseConfig} database configuration
    * @returns {Promise<any>}
    */

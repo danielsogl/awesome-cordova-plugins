@@ -131,7 +131,6 @@ export interface EmailComposerOptions {
 export class EmailComposer extends AwesomeCordovaNativePlugin {
   /**
    * Checks if the app has a permission to access email accounts information
-   *
    * @returns {Promise<boolean>} returns a promise that resolves with a boolean that indicates if the permission was granted
    */
   @Cordova({
@@ -144,7 +143,6 @@ export class EmailComposer extends AwesomeCordovaNativePlugin {
 
   /**
    * Request permission to access email accounts information
-   *
    * @returns {Promise<boolean>} returns a promise that resolves with a boolean that indicates if the permission was granted
    */
   @Cordova({
@@ -157,7 +155,6 @@ export class EmailComposer extends AwesomeCordovaNativePlugin {
 
   /**
    * Verifies if an email account is configured on the device.
-   *
    * @returns {Promise<any>} Resolves if available, rejects if not available
    */
   @CordovaCheck()
@@ -175,7 +172,6 @@ export class EmailComposer extends AwesomeCordovaNativePlugin {
 
   /**
    * Verifies if a specific email client is installed on the device.
-   *
    * @param {string} [app] App id or uri scheme.
    * @returns {Promise<any>} Resolves if available, rejects if not available
    */
@@ -201,7 +197,6 @@ export class EmailComposer extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns an array of email clients installed on the device.
-   *
    * @returns {Promise<string[]>} Resolves if available, rejects if not available
    */
   @CordovaCheck()
@@ -219,7 +214,6 @@ export class EmailComposer extends AwesomeCordovaNativePlugin {
 
   /**
    * Verifies if sending emails is supported on the device.
-   *
    * @param {string} [app] App id or uri scheme.
    * @returns {Promise<any>} Resolves if available, rejects if not available
    */
@@ -234,7 +228,6 @@ export class EmailComposer extends AwesomeCordovaNativePlugin {
 
   /**
    * Displays the email composer pre-filled with data.
-   *
    * @param {EmailComposerOptions} options Email
    * @param {any} [scope] Scope for the promise
    * @returns {Promise<any>} Resolves promise when the EmailComposer has been opened
@@ -249,7 +242,6 @@ export class EmailComposer extends AwesomeCordovaNativePlugin {
 
   /**
    * Adds a new mail app alias.
-   *
    * @param {string} alias The alias name
    * @param {string} packageName The package name
    */

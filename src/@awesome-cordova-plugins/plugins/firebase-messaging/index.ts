@@ -71,7 +71,6 @@ export type FirebaseMessagingTokenType = 'apns-buffer' | 'apns-string';
 export class FirebaseMessaging extends AwesomeCordovaNativePlugin {
   /**
    * Called when a push message received while app is in foreground.
-   *
    * @returns {Observable<any>}
    */
   @Cordova({ observable: true, callbackOrder: 'reverse' })
@@ -81,7 +80,6 @@ export class FirebaseMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Called when a push message received while app is in background.
-   *
    * @returns {Observable<any>}
    */
   @Cordova({ observable: true, callbackOrder: 'reverse' })
@@ -91,7 +89,6 @@ export class FirebaseMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Grant permission to receive push notifications (will trigger prompt on iOS).
-   *
    * @param {IRequestPermissionOptions} [options]
    * @param options.forceShow
    * @returns {Promise<string>}
@@ -114,7 +111,6 @@ export class FirebaseMessaging extends AwesomeCordovaNativePlugin {
    *
    * This method also accepts optional argument type.
    * Currently iOS implementation supports values "apns-buffer" and "apns-string" that defines presentation of resolved APNS token.
-   *
    * @param {FirebaseMessagingTokenType} [type] iOS only. Defines presentation of resolved APNS token
    * @returns {Promise<string>}
    */
@@ -126,7 +122,6 @@ export class FirebaseMessaging extends AwesomeCordovaNativePlugin {
   /**
    * Triggers every time when FCM token updated.
    * You should usually call getToken to get an updated token and send it to server.
-   *
    * @returns {Observable<void>}
    */
   @Cordova({ observable: true, callbackOrder: 'reverse' })
@@ -136,7 +131,6 @@ export class FirebaseMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Subscribe to topic in background.
-   *
    * @param {string} topic
    * @returns {Promise<null>}
    */
@@ -147,7 +141,6 @@ export class FirebaseMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Unsubscribe from topic in background.
-   *
    * @param {string} topic
    * @returns {Promise<null>}
    */
@@ -158,7 +151,6 @@ export class FirebaseMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Reads current badge number (if supported).
-   *
    * @returns {Promise<number>}
    */
   @Cordova({ sync: true })
@@ -168,7 +160,6 @@ export class FirebaseMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets current badge number (if supported).
-   *
    * @param {number} value
    * @returns {Promise<null>}
    */
@@ -179,7 +170,6 @@ export class FirebaseMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Revoke the current FCM token.
-   *
    * @returns {Promise<null>}
    */
   @Cordova({ sync: true })

@@ -54,7 +54,6 @@ export enum EnumResolution {
  * @name dynamsoft-barcode-scanner
  * @description
  * This plugin scans barcodes using Dynamsoft Barcode Reader
- *
  * @usage
  * ```typescript
  * import { dynamsoft-barcode-scanner } from '@awesome-cordova-plugins/dynamsoft-barcode-scanner';

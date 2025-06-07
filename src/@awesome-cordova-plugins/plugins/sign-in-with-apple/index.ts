@@ -77,7 +77,6 @@ export interface AppleSignInResponse {
 
   /**
    * The user's name
-   *
    * @see https://developer.apple.com/documentation/foundation/nspersonnamecomponents?language=objc
    */
   fullName?: NSPersonNameComponents;
@@ -163,7 +162,6 @@ export interface AppleSignInErrorResponse extends NSError {
 export class SignInWithApple extends AwesomeCordovaNativePlugin {
   /**
    * Starts the authorization flows named during controller initialization
-   *
    * @see https://developer.apple.com/documentation/authenticationservices/asauthorizationcontroller/3153047-performrequests
    * @returns {Promise<AppleSignInResponse>} Returns a promise when authorization succeeds
    * @param {ASAuthorizationAppleIDRequest} options

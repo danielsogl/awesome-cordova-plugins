@@ -83,7 +83,6 @@ export interface DeviceMotionAccelerometerOptions {
 export class DeviceMotion extends AwesomeCordovaNativePlugin {
   /**
    * Get the current acceleration along the x, y, and z axes.
-   *
    * @returns {Promise<DeviceMotionAccelerationData>} Returns object with x, y, z, and timestamp properties
    */
   @Cordova()
@@ -93,7 +92,6 @@ export class DeviceMotion extends AwesomeCordovaNativePlugin {
 
   /**
    * Watch the device acceleration. Clear the watch by unsubscribing from the observable.
-   *
    * @param {AccelerometerOptions} options list of options for the accelerometer.
    * @returns {Observable<DeviceMotionAccelerationData>} Observable returns an observable that you can subscribe to
    */

@@ -224,10 +224,7 @@ export class CFUPIIntentCheckoutPayment implements CheckoutPayment {
   private readonly theme: CFTheme = new CFThemeBuilder().build();
   version: string;
 
-  constructor(
-    session: CFSession,
-    theme: CFTheme | null
-  ) {
+  constructor(session: CFSession, theme: CFTheme | null) {
     this.session = session;
     if (theme !== null) {
       this.theme = theme;

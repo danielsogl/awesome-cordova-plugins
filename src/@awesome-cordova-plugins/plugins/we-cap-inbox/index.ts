@@ -5,7 +5,6 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
  * @name WE Cap Inbox
  * @description
  * This plugin provides functionalities to manage notifications in your app.
- *
  * @usage
  * ```typescript
  * import { WECapInbox } from '@awesome-cordova-plugins/we-cap-inbox';

@@ -58,7 +58,6 @@ export interface PhotoViewerOptions {
 export class PhotoViewer extends AwesomeCordovaNativePlugin {
   /**
    * Shows an image in full screen
-   *
    * @param url {string} URL or path to image
    * @param title {string}
    * @param options {PhotoViewerOptions}

@@ -53,7 +53,6 @@ export class FirebaseAnalytics extends AwesomeCordovaNativePlugin {
   /**
    * Logs an app event.
    * Be aware of automatically collected events.
-   *
    * @param {string} name The name of the event
    * @param {any} params Some param to configure something
    * @returns {Promise<any>} Returns a promise
@@ -66,7 +65,6 @@ export class FirebaseAnalytics extends AwesomeCordovaNativePlugin {
   /**
    * Sets the user ID property.
    * This feature must be used in accordance with Google's Privacy Policy.
-   *
    * @param {string} id The user ID
    * @returns {Promise<any>} Returns a promise
    */
@@ -78,7 +76,6 @@ export class FirebaseAnalytics extends AwesomeCordovaNativePlugin {
   /**
    * This feature must be used in accordance with Google's Privacy Policy.
    * Be aware of automatically collected user properties.
-   *
    * @param {string} name The property name
    * @param {string} value The property value
    * @returns {Promise<any>} Returns a promise
@@ -90,7 +87,6 @@ export class FirebaseAnalytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets whether analytics collection is enabled for this app on this device.
-   *
    * @param {boolean} enabled
    * @returns {Promise<any>} Returns a promise
    */
@@ -102,7 +98,6 @@ export class FirebaseAnalytics extends AwesomeCordovaNativePlugin {
   /**
    * Sets the current screen name, which specifies the current visual context in your app.
    * This helps identify the areas in your app where users spend their time and how they interact with your app.
-   *
    * @param {string} name The name of the screen
    * @returns {Promise<any>} Returns a promise
    */
@@ -113,7 +108,6 @@ export class FirebaseAnalytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Clears all analytics data for this instance from the device and resets the app instance ID
-   *
    * @returns {Promise<void>} Returns a promise
    */
   @Cordova({ sync: true })

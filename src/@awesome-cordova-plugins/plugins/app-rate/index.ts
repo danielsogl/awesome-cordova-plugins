@@ -258,7 +258,6 @@ export class AppRate extends AwesomeCordovaNativePlugin {
 
   /**
    * Set preferences
-   *
    * @param pref
    * @returns void
    */
@@ -269,7 +268,6 @@ export class AppRate extends AwesomeCordovaNativePlugin {
 
   /**
    * Get preferences
-   *
    * @returns AppRatePreferences
    */
   @Cordova()
@@ -279,7 +277,6 @@ export class AppRate extends AwesomeCordovaNativePlugin {
 
   /**
    * Prompts the user for rating
-   *
    * @param {boolean} immediately  Show the rating prompt immediately.
    */
   @Cordova()

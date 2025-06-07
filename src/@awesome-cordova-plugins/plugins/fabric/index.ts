@@ -44,7 +44,6 @@ export class Crashlytics extends AwesomeCordovaNativePlugin {
   /**
    * Add logging that will be sent with your crash data. This logging will not show up
    * in the system.log and will only be visible in your Crashlytics dashboard.
-   *
    * @param message {string}
    */
   @Cordova({ sync: true })
@@ -62,7 +61,6 @@ export class Crashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Used to log a non-fatal error message (Android only).
-   *
    * @param message
    * @param stacktrace
    */
@@ -73,7 +71,6 @@ export class Crashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Used to record a non-fatal error message (iOS only).
-   *
    * @param message
    * @param code
    */
@@ -84,7 +81,6 @@ export class Crashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets the user's identifier for logging to Crashlytics backend.
-   *
    * @param userId
    */
   @Cordova({ sync: true })
@@ -94,7 +90,6 @@ export class Crashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets the user's name for logging to Crashlytics backend.
-   *
    * @param userName
    */
   @Cordova({ sync: true })
@@ -104,7 +99,6 @@ export class Crashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets the user's email address for logging to Crashlytics backend.
-   *
    * @param email
    */
   @Cordova({ sync: true })
@@ -114,7 +108,6 @@ export class Crashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets a custom key/value pair for logging to Crashlytics backend.
-   *
    * @param value
    * @param key
    */
@@ -125,7 +118,6 @@ export class Crashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets a custom key/value pair for logging to Crashlytics backend.
-   *
    * @param value
    * @param key
    */
@@ -136,7 +128,6 @@ export class Crashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets a custom key/value pair for logging to Crashlytics backend.
-   *
    * @param value
    * @param key
    */
@@ -147,7 +138,6 @@ export class Crashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets a custom key/value pair for logging to Crashlytics backend.
-   *
    * @param value
    * @param key
    */
@@ -194,7 +184,6 @@ export class Answers extends AwesomeCordovaNativePlugin {
    * All parameters are optional.
    *
    * https://docs.fabric.io/android/answers/answers-events.html#purchase
-   *
    * @param itemPrice The item's amount in the currency specified.
    * @param currency The ISO4217 currency code.
    * @param success Was the purchase completed succesfully?
@@ -222,7 +211,6 @@ export class Answers extends AwesomeCordovaNativePlugin {
    * All parameters are optional.
    *
    * https://docs.fabric.io/android/answers/answers-events.html#add-to-cart
-   *
    * @param itemPrice The item's amount in the currency specified.
    * @param currency The ISO4217 currency code.
    * @param itemName The human-readable name for the item.
@@ -248,7 +236,6 @@ export class Answers extends AwesomeCordovaNativePlugin {
    * All parameters are optional.
    *
    * https://docs.fabric.io/android/answers/answers-events.html#start-checkout
-   *
    * @param totalPrice The total price of all items in cart in the currency specified.
    * @param currency The ISO4217 currency code.
    * @param itemCount The count of items in cart.
@@ -263,7 +250,6 @@ export class Answers extends AwesomeCordovaNativePlugin {
    * Sends the Search tracking event.
    *
    * https://docs.fabric.io/android/answers/answers-events.html#search
-   *
    * @param query What the user is searching for.
    * @param attributes Any additional user-defined attributes to be logged.
    */
@@ -278,7 +264,6 @@ export class Answers extends AwesomeCordovaNativePlugin {
    * All parameters are optional.
    *
    * https://docs.fabric.io/android/answers/answers-events.html#share
-   *
    * @param method The method used to share content.
    * @param contentName The description of the content.
    * @param contentType The type or genre of content.
@@ -302,7 +287,6 @@ export class Answers extends AwesomeCordovaNativePlugin {
    * All parameters are optional.
    *
    * https://docs.fabric.io/android/answers/answers-events.html#rated-content
-   *
    * @param rating An integer rating of the content.
    * @param contentName The human-readable name of content.
    * @param contentType The category your item falls under.
@@ -326,7 +310,6 @@ export class Answers extends AwesomeCordovaNativePlugin {
    * All parameters are optional.
    *
    * https://docs.fabric.io/android/answers/answers-events.html#sign-up
-   *
    * @param method An optional description of the sign up method (Twitter, Facebook, etc.); defaults to "Direct".
    * @param success An optional flag that indicates sign up success; defaults to true.
    * @param attributes Any additional user-defined attributes to be logged.
@@ -342,7 +325,6 @@ export class Answers extends AwesomeCordovaNativePlugin {
    * All parameters are optional.
    *
    * https://docs.fabric.io/android/answers/answers-events.html#log-in
-   *
    * @param method An optional description of the sign in method (Twitter, Facebook, etc.); defaults to "Direct".
    * @param success An optional flag that indicates sign in success; defaults to true.
    * @param attributes Any additional user-defined attributes to be logged.
@@ -358,7 +340,6 @@ export class Answers extends AwesomeCordovaNativePlugin {
    * All parameters are optional.
    *
    * https://docs.fabric.io/android/answers/answers-events.html#invite
-   *
    * @param method An optional description of the sign in method (Twitter, Facebook, etc.); defaults to "Direct".
    * @param attributes Any additional user-defined attributes to be logged.
    */
@@ -373,7 +354,6 @@ export class Answers extends AwesomeCordovaNativePlugin {
    * All parameters are optional.
    *
    * https://docs.fabric.io/android/answers/answers-events.html#level-start
-   *
    * @param levelName String key describing the level.
    * @param attributes Any additional user-defined attributes to be logged.
    */
@@ -388,7 +368,6 @@ export class Answers extends AwesomeCordovaNativePlugin {
    * All parameters are optional.
    *
    * https://docs.fabric.io/android/answers/answers-events.html#level-end
-   *
    * @param levelName String key describing the level.
    * @param score The score for this level.
    * @param success Completed the level or failed trying.
@@ -403,7 +382,6 @@ export class Answers extends AwesomeCordovaNativePlugin {
    * Send the Content View tracking event.
    *
    * https://docs.fabric.io/android/answers/answers-events.html#content-view
-   *
    * @param name
    * @param type
    * @param id
@@ -416,7 +394,6 @@ export class Answers extends AwesomeCordovaNativePlugin {
 
   /**
    * Shortcut for sendContentView(...) using type of "Screen".
-   *
    * @param name
    * @param id
    * @param attributes
@@ -430,7 +407,6 @@ export class Answers extends AwesomeCordovaNativePlugin {
    * Send a custom tracking event with the given name.
    *
    * https://docs.fabric.io/android/answers/answers-events.html#custom-event
-   *
    * @param name
    * @param attributes
    */

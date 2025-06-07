@@ -439,7 +439,6 @@ export interface OSInAppMessageAction {
 export class OneSignal extends AwesomeCordovaNativePlugin {
   /**
    * constants to use in inFocusDisplaying()
-   *
    * @hidden
    */
   OSInFocusDisplayOption = {
@@ -450,7 +449,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
 
   /**
    * Start the initialization process. Once you are done configuring OneSignal, call the `endInit` function.
-   *
    * @param {string} appId Your OneSignal app id
    * @param {string} googleProjectNumber **ANDROID** - your Google project number; only required for Android GCM/FCM pushes.
    * @returns {any}
@@ -462,7 +460,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
 
   /**
    * Callback to run when a notification is received, whether it was displayed or not.
-   *
    * @returns {Observable<OneSignalReceivedNotification>}
    */
   @Cordova({
@@ -476,7 +473,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
    * Callback to run when a notification is tapped on from the notification shade (**ANDROID**) or notification
    * center (**iOS**), or when closing an Alert notification shown in the app (if InAppAlert is enabled in
    * inFocusDisplaying).
-   *
    * @returns {Observable<OneSignalOpenedNotification>}
    */
   @Cordova({
@@ -488,7 +484,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
 
   /**
    * Use to process an In-App Message the user just tapped on.
-   *
    * @returns {Observable<OSInAppMessageAction>}
    */
   @Cordova({
@@ -500,7 +495,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
 
   /**
    * iOS** - Settings for iOS apps
-   *
    * @param settings
    *  kOSSettingsKeyAutoPrompt: boolean = true
    *  Auto prompt user for notification permissions.
@@ -521,7 +515,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
 
   /**
    * Must be called after `startInit` to complete initialization of OneSignal.
-   *
    * @returns {any}
    */
   @Cordova({ sync: true })
@@ -531,7 +524,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
 
   /**
    * Prompt the user for notification permissions. Callback fires as soon as the user accepts or declines notifications.
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova({
@@ -545,7 +537,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
    * Retrieve a list of tags that have been set on the user from the OneSignal server.
    *
    * Quirk**: You must wait for `getTags` to resolve before calling it again, as the plugin will only process the last method call and discard any previous ones.
-   *
    * @returns {Promise<any>} Returns a Promise that resolves when tags are recieved.
    */
   @Cordova()
@@ -556,7 +547,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
   /**
    * Lets you retrieve the OneSignal user id and device token.
    * Your handler is called after the device is successfully registered with OneSignal.
-   *
    * @returns {Promise<Object>} Returns a Promise that resolves if the device was successfully registered.
    *
    *  userId {string} OneSignal userId is a UUID formatted string. (unique per device per app)
@@ -571,7 +561,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
   /**
    * Tag a user based on an app event of your choosing so later you can create segments on [onesignal.com](https://onesignal.com/) to target these users.
    * Recommend using sendTags over sendTag if you need to set more than one tag on a user at a time.
-   *
    * @param {string} Key of your choosing to create or update.
    * @param {string} Value to set on the key. NOTE: Passing in a blank String deletes the key, you can also call deleteTag.
    * @param key
@@ -583,7 +572,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
   /**
    * Tag a user based on an app event of your choosing so later you can create segments on [onesignal.com](https://onesignal.com/) to target these users.
    * Recommend using sendTags over sendTag if you need to set more than one tag on a user at a time.
-   *
    * @param {string} Pass a json object with key/value pairs like: {key: "value", key2: "value2"}
    * @param json
    */
@@ -592,7 +580,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
 
   /**
    * Deletes a tag that was previously set on a user with `sendTag` or `sendTags`. Use `deleteTags` if you need to delete more than one.
-   *
    * @param {string} Key to remove.
    * @param key
    */
@@ -601,7 +588,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
 
   /**
    * Deletes tags that were previously set on a user with `sendTag` or `sendTags`.
-   *
    * @param {string[]} Keys to remove.
    * @param keys
    */
@@ -621,7 +607,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
    *
    * By default OneSignal always vibrates the device when a notification is displayed unless the device is in a total silent mode.
    * Passing false means that the device will only vibrate lightly when the device is in it's vibrate only mode.
-   *
    * @param {boolean} false to disable vibrate, true to re-enable it.
    * @param enable
    */
@@ -634,7 +619,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
    *
    * By default OneSignal plays the system's default notification sound when the device's notification system volume is turned on.
    * Passing false means that the device will only vibrate unless the device is set to a total silent mode.
-   *
    * @param {boolean} false to disable sound, true to re-enable it.
    * @param enable
    */
@@ -643,8 +627,7 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
 
   /**
    *
-   * Setting to control how OneSignal notifications will be shown when one is received while your app is in focus. By default this is set to inAppAlert, which can be helpful during development.
-   *
+   *Setting to control how OneSignal notifications will be shown when one is received while your app is in focus. By default this is set to inAppAlert, which can be helpful during development.
    * @param {DisplayType} displayOption
    * @returns {any}
    */
@@ -656,7 +639,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
   /**
    * You can call this method with false to opt users out of receiving all notifications through OneSignal.
    * You can pass true later to opt users back into notifications.
-   *
    * @param {boolean} enable
    */
   @Cordova({ sync: true })
@@ -664,7 +646,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
 
   /**
    * Get the current notification and permission state. Returns a OSPermissionSubscriptionState type described below.
-   *
    * @returns {Promise<OSPermissionSubscriptionState>}
    */
   @Cordova()
@@ -685,7 +666,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
 
   /**
    * Cancels a single OneSignal notification based on its Android notification integer id. Use instead of NotificationManager.cancel(id); otherwise the notification will be restored when your app is restarted.
-   *
    * @param notificationId {string}
    */
   @Cordova({ sync: true })
@@ -709,7 +689,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
    * The logging levels are as follows: 0 = None, 1= Fatal, 2 = Errors, 3 = Warnings, 4 = Info, 5 = Debug, 6 = Verbose
    *
    * The higher the value the more information is shown.
-   *
    * @param {loglevel} contains two properties: logLevel (for console logging) and visualLevel (for dialog messages)
    * @param logLevel
    * @param logLevel.logLevel
@@ -720,7 +699,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
 
   /**
    * Disable or enable location collection (Defaults to enabled) if your app has location permission.
-   *
    * @param shared {boolean}
    */
   @Cordova({ sync: true })
@@ -732,7 +710,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
    * - Notification permission prompt shown
    * - The user accepting or declining the permission prompt
    * - Enabling/disabling notifications for your app in the device Settings after returning to your app.
-   *
    * @returns {Observable<any>}
    */
   @Cordova({
@@ -749,7 +726,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
    * - Getting a player / user id from OneSignal
    * - OneSignal.setSubscription is called
    * - User disables or enables notifications
-   *
    * @returns {Observable<any>}
    */
   @Cordova({
@@ -761,7 +737,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
 
   /**
    * Clears all OneSignal notifications
-   *
    * @param email
    * @param emailAuthToken
    */
@@ -785,7 +760,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
    * - Getting a player / user id from OneSignal
    * - OneSignal.setSubscription is called
    * - User disables or enables notifications
-   *
    * @returns {Observable<any>}
    */
   @Cordova({
@@ -804,7 +778,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
   /**
    * Allows you to delay the initialization of the SDK until the user provides privacy consent.
    * The SDK will not be fully initialized until the provideUserConsent(true) method is called.
-   *
    * @param {boolean} required
    */
   @Cordova()
@@ -813,7 +786,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
   /**
    * If your application is set to require the user's privacy consent, you can provide this consent using this method.
    * Until you call provideUserConsent(true), the SDK will not fully initialize and will not send any data to OneSignal.
-   *
    * @param {boolean} granted
    */
   @Cordova()
@@ -821,7 +793,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
 
   /**
    * Accepts a callback, which returns a boolean variable indicating if the user has given privacy consent yet.
-   *
    * @param {Function} callback
    */
   @Cordova()
@@ -830,7 +801,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
   /**
    * Allows you to use your own system's user ID's to send push notifications to your users.
    * To tie a user to a given user ID, you can use this method.
-   *
    * @param {string} externalId
    */
   @Cordova()
@@ -844,7 +814,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
 
   /**
    * Add a trigger. May show an In-App Message if its trigger conditions were met.
-   *
    * @param {string} key Key for the trigger.
    * @param {string | number | Object} value Value for the trigger. String or number recommended. Object passed in will be converted to a string.
    */
@@ -855,7 +824,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
 
   /**
    * Add a map of triggers. May show an In-App Message if its trigger conditions were met.
-   *
    * @param {Object.<string, string | number | Object>} triggers Allows you to set multiple trigger key/value pairs simultaneously. Pass a json object with key/value pairs like: `{"key": "value", "key2": "value2"}`.
    */
   @Cordova({
@@ -865,7 +833,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
 
   /**
    * Removes a single trigger for the given key. May show an In-App Message if its trigger conditions were met.
-   *
    * @param {string} key Key for trigger to remove.
    */
   @Cordova({
@@ -875,7 +842,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
 
   /**
    * Removes a list of triggers based on a collection (array) of keys. May show an In-App Message if its trigger conditions were met.
-   *
    * @param {string[]} keys Removes a collection of triggers from their keys. Pass an array of trigger keys like: `["key1", "key2", "key3"]`.
    */
   @Cordova({
@@ -885,7 +851,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
 
   /**
    * Gets a trigger value for a provided trigger key.
-   *
    * @param {string} key Key for trigger to get value.
    * @returns {Promise<string | number | Object>} Return value set with `addTrigger`, or `null`/`nil` (iOS) if never set or removed.
    */
@@ -897,7 +862,6 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
   /**
    * Allows you to temporarily pause all In-App Messages. You may want to do this while the user is engaged in an activity that you don't want a message to interrupt (such as watching a video).
    * An In-App Message that would display if not paused will display right after resume if its conditions to display remains satisfied.
-   *
    * @param {boolean} pause To pause, set `true`. To resume, set `false`.
    */
   @Cordova({

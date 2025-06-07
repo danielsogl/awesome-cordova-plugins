@@ -39,7 +39,6 @@ export interface Shortcut {
  * For more information on Android Intents: https://developer.android.com/guide/components/intents-filters.html
  *
  * The work that went into creating this plug-in was inspired by the existing plugins: cordova-plugin-shortcut and cordova-plugin-webintent2.
- *
  * @usage
  * Please do refer to the original plugin's repo for detailed usage. The usage example here might not be sufficient.
  *

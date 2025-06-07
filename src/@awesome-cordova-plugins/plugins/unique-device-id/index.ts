@@ -5,7 +5,6 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
  * @name Unique Device ID
  * @description
  * This plugin produces a unique, cross-install, app-specific device id.
- *
  * @usage
  * ```typescript
  * import { UniqueDeviceID } from '@awesome-cordova-plugins/unique-device-id/ngx';

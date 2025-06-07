@@ -334,7 +334,6 @@ export type PushEvent = string;
 export class Push extends AwesomeCordovaNativePlugin {
   /**
    * Init push notifications
-   *
    * @param options {PushOptions}
    * @returns {PushObject}
    */
@@ -344,7 +343,6 @@ export class Push extends AwesomeCordovaNativePlugin {
 
   /**
    * Check whether the push notification permission has been granted.
-   *
    * @returns {Promise<{isEnabled: boolean}>} Returns a Promise that resolves with an object with one property: isEnabled, a boolean that indicates if permission has been granted.
    */
   @Cordova()
@@ -354,7 +352,6 @@ export class Push extends AwesomeCordovaNativePlugin {
 
   /**
    * Create a new notification channel for Android O and above.
-   *
    * @param channel {Channel}
    */
   @Cordova({
@@ -366,7 +363,6 @@ export class Push extends AwesomeCordovaNativePlugin {
 
   /**
    * Delete a notification channel for Android O and above.
-   *
    * @param id {string}
    */
   @Cordova({
@@ -378,7 +374,6 @@ export class Push extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns a list of currently configured channels.
-   *
    * @returns {Promise<Channel[]>}
    */
   @Cordova()
@@ -408,7 +403,6 @@ export class PushObject {
 
   /**
    * Adds an event listener
-   *
    * @param event {string}
    * @returns {Observable<EventResponse>}
    */
@@ -437,7 +431,6 @@ export class PushObject {
    * The count is an integer indicating what number should show up in the badge.
    * Passing 0 will clear the badge.
    * Each notification event contains a data.count value which can be used to set the badge to correct number.
-   *
    * @param count
    */
   @CordovaInstance({
@@ -459,7 +452,6 @@ export class PushObject {
    * iOS only
    * Tells the OS that you are done processing a background push notification.
    * successHandler gets called when background push processing is successfully completed.
-   *
    * @param [id]
    */
   @CordovaInstance({
@@ -479,7 +471,6 @@ export class PushObject {
 
   /**
    * The subscribe method is used when the application wants to subscribe a new topic to receive push notifications.
-   *
    * @param topic {string} Topic to subscribe to.
    * @returns {Promise<any>}
    */
@@ -490,7 +481,6 @@ export class PushObject {
 
   /**
    * The unsubscribe method is used when the application no longer wants to receive push notifications from a specific topic but continue to receive other push messages.
-   *
    * @param topic {string} Topic to unsubscribe from.
    * @returns {Promise<any>}
    */

@@ -32,7 +32,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class BioCatch extends AwesomeCordovaNativePlugin {
   /**
    * Start a session
-   *
    * @param customerSessionID {String} Customer session id
    * @param wupUrl {String} WUP server URL
    * @param publicKey {String} Public Key
@@ -45,7 +44,6 @@ export class BioCatch extends AwesomeCordovaNativePlugin {
 
   /**
    * Pause the session
-   *
    * @returns {Promise<void>} Returns a promise
    */
   @Cordova()
@@ -55,7 +53,6 @@ export class BioCatch extends AwesomeCordovaNativePlugin {
 
   /**
    * Resume the session
-   *
    * @returns {Promise<void>} Returns a promise
    */
   @Cordova()
@@ -65,7 +62,6 @@ export class BioCatch extends AwesomeCordovaNativePlugin {
 
   /**
    * Stop the session
-   *
    * @returns {Promise<void>} Returns a promise
    */
   @Cordova()
@@ -75,7 +71,6 @@ export class BioCatch extends AwesomeCordovaNativePlugin {
 
   /**
    * Reset the session
-   *
    * @returns {Promise<void>} Returns a promise
    */
   @Cordova()
@@ -85,7 +80,6 @@ export class BioCatch extends AwesomeCordovaNativePlugin {
 
   /**
    * Change the session context
-   *
    * @param contextName {String} Context name
    * @returns {Promise<void>} Returns a promise
    */
@@ -96,7 +90,6 @@ export class BioCatch extends AwesomeCordovaNativePlugin {
 
   /**
    * Update the customer session ID
-   *
    * @param customerSessionID {String}
    * @returns {Promise<void>} Returns a promise
    */

@@ -182,7 +182,6 @@ export interface AndroidExoPlayerControllerConfig {
 export class AndroidExoplayer extends AwesomeCordovaNativePlugin {
   /**
    * Show the player.
-   *
    * @param {AndroidExoPlayerParams} parameters Parameters
    * @returns {Observable<AndroidExoplayerState>}
    */
@@ -199,7 +198,6 @@ export class AndroidExoplayer extends AwesomeCordovaNativePlugin {
 
   /**
    * Switch stream without disposing of the player.
-   *
    * @param {string} url The url of the new stream.
    * @param {AndroidExoPlayerControllerConfig} controller Configuration of the controller.
    * @returns {Promise<void>}
@@ -211,7 +209,6 @@ export class AndroidExoplayer extends AwesomeCordovaNativePlugin {
 
   /**
    * Will pause if playing and play if paused
-   *
    * @returns {Promise<void>}
    */
   @Cordova()
@@ -221,7 +218,6 @@ export class AndroidExoplayer extends AwesomeCordovaNativePlugin {
 
   /**
    * Stop playing.
-   *
    * @returns {Promise<void>}
    */
   @Cordova()
@@ -231,7 +227,6 @@ export class AndroidExoplayer extends AwesomeCordovaNativePlugin {
 
   /**
    * Jump to a particular position.
-   *
    * @param {number} milliseconds Position in stream in milliseconds
    * @returns {Promise<void>}
    */
@@ -242,7 +237,6 @@ export class AndroidExoplayer extends AwesomeCordovaNativePlugin {
 
   /**
    * Jump to a particular time relative to the current position.
-   *
    * @param {number} milliseconds Time in milliseconds
    * @returns {Promise<void>}
    */
@@ -253,7 +247,6 @@ export class AndroidExoplayer extends AwesomeCordovaNativePlugin {
 
   /**
    * Get the current player state.
-   *
    * @returns {Promise<AndroidExoplayerState>}
    */
   @Cordova()
@@ -263,7 +256,6 @@ export class AndroidExoplayer extends AwesomeCordovaNativePlugin {
 
   /**
    * Show the controller.
-   *
    * @returns {Promise<void>}
    */
   @Cordova()
@@ -273,7 +265,6 @@ export class AndroidExoplayer extends AwesomeCordovaNativePlugin {
 
   /**
    * Hide the controller.
-   *
    * @returns {Promise<void>}
    */
   @Cordova()
@@ -283,7 +274,6 @@ export class AndroidExoplayer extends AwesomeCordovaNativePlugin {
 
   /**
    * Update the controller configuration.
-   *
    * @param {AndroidExoPlayerControllerConfig} controller Configuration of the controller.
    * @returns {Promise<void>}
    */
@@ -294,7 +284,6 @@ export class AndroidExoplayer extends AwesomeCordovaNativePlugin {
 
   /**
    * Close and dispose of player, call before destroy.
-   *
    * @returns {Promise<void>}
    */
   @Cordova()

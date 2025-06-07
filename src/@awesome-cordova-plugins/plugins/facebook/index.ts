@@ -160,7 +160,6 @@ export class Facebook extends AwesomeCordovaNativePlugin {
 
   /**
    * Get the current application ID
-   *
    * @returns {Promise<string>} Returns a Promise that resolves with the current application ID
    */
   @Cordova()
@@ -170,7 +169,6 @@ export class Facebook extends AwesomeCordovaNativePlugin {
 
   /**
    * Set the application ID
-   *
    * @param {string}  id application ID
    */
   @Cordova()
@@ -180,7 +178,6 @@ export class Facebook extends AwesomeCordovaNativePlugin {
 
   /**
    * Get the current application name
-   *
    * @returns {Promise<string>} Returns a Promise that resolves with the current application name
    */
   @Cordova()
@@ -190,7 +187,6 @@ export class Facebook extends AwesomeCordovaNativePlugin {
 
   /**
    * Set the application name
-   *
    * @param {string}  name application name
    */
   @Cordova()
@@ -203,17 +199,16 @@ export class Facebook extends AwesomeCordovaNativePlugin {
    *
    * ```typescript
    * {
-   *   status: 'connected',
-   *   authResponse: {
-   *     accessToken: 'kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn',
-   *     data_access_expiration_time: '1623680244',
-   *     expiresIn: 5183979,
-   *     userID: '634565435'
-   *   }
+   * status: 'connected',
+   * authResponse: {
+   * accessToken: 'kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn',
+   * data_access_expiration_time: '1623680244',
+   * expiresIn: 5183979,
+   * userID: '634565435'
+   * }
    * }
    *
    * ```
-   *
    * @param {string[]}  permissions List of [permissions](https://developers.facebook.com/docs/facebook-login/permissions) this app has upon logging in.
    * @returns {Promise<FacebookLoginResponse>} Returns a Promise that resolves with a status object if login succeeds, and rejects if login fails.
    */
@@ -227,16 +222,15 @@ export class Facebook extends AwesomeCordovaNativePlugin {
    *
    * ```typescript
    * {
-   *   status: 'connected',
-   *   authResponse: {
-   *     authenticationToken: 'kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn',
-   *     nonce: 'foo',
-   *     userID: '634565435'
-   *   }
+   * status: 'connected',
+   * authResponse: {
+   * authenticationToken: 'kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn',
+   * nonce: 'foo',
+   * userID: '634565435'
+   * }
    * }
    *
    * ```
-   *
    * @param {string[]}  permissions List of [permissions](https://developers.facebook.com/docs/facebook-login/limited-login/permissions) this app has upon logging in.
    * @param {string}    nonce       Nonce to create the configuration with.
    * @returns {Promise<FacebookLimitedLoginResponse>} Returns a Promise that resolves with a status object if login succeeds, and rejects if login fails.
@@ -248,7 +242,6 @@ export class Facebook extends AwesomeCordovaNativePlugin {
 
   /**
    * Check if the user has approved all necessary permissions
-   *
    * @param {string[]}  permissions List of [permissions](https://developers.facebook.com/docs/facebook-login/permissions) to check for
    * @returns {Promise<string>} Returns a Promise that resolves with a success string if all passed permissions are granted, or an error string if any permissions are not granted
    */
@@ -259,7 +252,6 @@ export class Facebook extends AwesomeCordovaNativePlugin {
 
   /**
    * Check if data access has expired for the user
-   *
    * @returns {Promise<string>} Returns a Promise that resolves with a success string if data access is expired, or rejects with an error
    */
   @Cordova()
@@ -269,7 +261,6 @@ export class Facebook extends AwesomeCordovaNativePlugin {
 
   /**
    * Reauthorize data access after it has expired
-   *
    * @returns {Promise<FacebookLoginResponse>} Returns a Promise that resolves with a status object if login succeeds, and rejects if login fails.
    */
   @Cordova()
@@ -281,7 +272,6 @@ export class Facebook extends AwesomeCordovaNativePlugin {
    * Logout of Facebook.
    *
    * For more info see the [Facebook docs](https://developers.facebook.com/docs/reference/javascript/FB.logout)
-   *
    * @returns {Promise<any>} Returns a Promise that resolves on a successful logout, and rejects if logout fails.
    */
   @Cordova()
@@ -300,18 +290,17 @@ export class Facebook extends AwesomeCordovaNativePlugin {
    *
    * ```
    * {
-   *   authResponse: {
-   *     userID: '12345678912345',
-   *     accessToken: 'kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn',
-   *     data_access_expiration_time: '1623680244',
-   *     expiresIn: '5183738'
-   *   },
-   *   status: 'connected'
+   * authResponse: {
+   * userID: '12345678912345',
+   * accessToken: 'kgkh3g42kh4g23kh4g2kh34g2kg4k2h4gkh3g4k2h4gk23h4gk2h34gk234gk2h34AndSoOn',
+   * data_access_expiration_time: '1623680244',
+   * expiresIn: '5183738'
+   * },
+   * status: 'connected'
    * }
    * ```
    *
    * For more information see the [Facebook docs](https://developers.facebook.com/docs/reference/javascript/FB.getLoginStatus)
-   *
    * @returns {Promise<any>} Returns a Promise that resolves with a status, or rejects with an error
    */
   @Cordova()
@@ -321,7 +310,6 @@ export class Facebook extends AwesomeCordovaNativePlugin {
 
   /**
    * Get a Facebook access token for using Facebook services.
-   *
    * @returns {Promise<string>} Returns a Promise that resolves with an access token, or rejects with an error
    */
   @Cordova()
@@ -331,7 +319,6 @@ export class Facebook extends AwesomeCordovaNativePlugin {
 
   /**
    * Get profile information for the currently logged in user
-   *
    * @returns {Promise<any>} Returns a Promise that resolves with success data, or rejects with an error
    */
   @Cordova()
@@ -344,13 +331,12 @@ export class Facebook extends AwesomeCordovaNativePlugin {
    *
    * ```
    * {
-   *   method: 'share',
-   *   href: 'http://example.com'
+   * method: 'share',
+   * href: 'http://example.com'
    * }
    * ```
    *
    * For more options see the [Cordova plugin docs](https://github.com/cordova-plugin-facebook-connect/cordova-plugin-facebook-connect#show-a-dialog) and the [Facebook docs](https://developers.facebook.com/docs/javascript/reference/FB.ui)
-   *
    * @param {Object} options The dialog options
    * @returns {Promise<any>} Returns a Promise that resolves with success data, or rejects with an error
    */
@@ -364,10 +350,9 @@ export class Facebook extends AwesomeCordovaNativePlugin {
    *
    * For more information see:
    *
-   *  Calling the Graph API - https://developers.facebook.com/docs/javascript/reference/FB.api
-   *  Graph Explorer - https://developers.facebook.com/tools/explorer
-   *  Graph API - https://developers.facebook.com/docs/graph-api
-   *
+   * Calling the Graph API - https://developers.facebook.com/docs/javascript/reference/FB.api
+   * Graph Explorer - https://developers.facebook.com/tools/explorer
+   * Graph API - https://developers.facebook.com/docs/graph-api
    * @param {string}  requestPath Graph API endpoint you want to call
    * @param {string[]}  permissions List of [permissions](https://developers.facebook.com/docs/facebook-login/permissions) for this request.
    * @param {string}  httpMethod HTTP method for the request, one of "GET", "POST", or "DELETE" (default is "GET")
@@ -380,7 +365,6 @@ export class Facebook extends AwesomeCordovaNativePlugin {
 
   /**
    * Set Data Processing Options for App events. For more information see [Facebook docs](https://developers.facebook.com/docs/app-events/guides/ccpa)
-   *
    * @param {string[]}  options List of options, i.e. ["LDU"]
    * @param {number}  country The numeric identifier for the country
    * @param {number}  state The numeric identifier for the state
@@ -392,7 +376,6 @@ export class Facebook extends AwesomeCordovaNativePlugin {
 
   /**
    * Set user data for Advanced Matching. For more information see [Facebook docs](https://developers.facebook.com/docs/app-events/advanced-matching/)
-   *
    * @param {Object}  userData An object containing data about the user
    */
   @Cordova()
@@ -410,7 +393,6 @@ export class Facebook extends AwesomeCordovaNativePlugin {
 
   /**
    * Log an event.  For more information see the Events section above.
-   *
    * @param {string}  name Name of the event
    * @param {Object}  [params] An object containing extra data to log with the event
    * @param {number}  [valueToSum] any value to be added to added to a sum on each event
@@ -426,7 +408,6 @@ export class Facebook extends AwesomeCordovaNativePlugin {
 
   /**
    * Enable or disable the auto log app event feature - https://developers.facebook.com/docs/app-events/gdpr-compliance/
-   *
    * @param {boolean}  enabled value to be set
    */
   @Cordova({
@@ -439,7 +420,6 @@ export class Facebook extends AwesomeCordovaNativePlugin {
 
   /**
    * Enable or disable collection of advertiser-id
-   *
    * @param {boolean}  enabled value to be set
    */
   @Cordova()
@@ -449,7 +429,6 @@ export class Facebook extends AwesomeCordovaNativePlugin {
 
   /**
    * Enable or disable advertiser tracking (iOS Only)
-   *
    * @param {boolean}  enabled value to be set
    */
   @Cordova()
@@ -459,7 +438,6 @@ export class Facebook extends AwesomeCordovaNativePlugin {
 
   /**
    * Log a purchase. For more information see the Events section above.
-   *
    * @param {number}  value Value of the purchase.
    * @param {string}  currency The currency, as an [ISO 4217 currency code](http://en.wikipedia.org/wiki/ISO_4217)
    * @param {Object}  params An object containing extra data to log with the event
@@ -472,7 +450,6 @@ export class Facebook extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns the deferred app link
-   *
    * @returns {Promise<string>} Returns a Promise that resolves with the deep link
    */
   @Cordova()
@@ -482,7 +459,6 @@ export class Facebook extends AwesomeCordovaNativePlugin {
 
   /**
    * Manually log activation events
-   *
    * @returns {Promise<any>}
    */
   @Cordova()

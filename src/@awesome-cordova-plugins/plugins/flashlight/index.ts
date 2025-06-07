@@ -29,7 +29,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class Flashlight extends AwesomeCordovaNativePlugin {
   /**
    * Checks if the flashlight is available
-   *
    * @returns {Promise<boolean>} Returns a promise that resolves with a boolean stating if the flashlight is available.
    */
   @Cordova()
@@ -39,7 +38,6 @@ export class Flashlight extends AwesomeCordovaNativePlugin {
 
   /**
    * Switches the flashlight on
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova()
@@ -49,7 +47,6 @@ export class Flashlight extends AwesomeCordovaNativePlugin {
 
   /**
    * Switches the flashlight off
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova()
@@ -59,7 +56,6 @@ export class Flashlight extends AwesomeCordovaNativePlugin {
 
   /**
    * Toggles the flashlight
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -69,7 +65,6 @@ export class Flashlight extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks if the flashlight is turned on.
-   *
    * @returns {boolean}
    */
   @Cordova({

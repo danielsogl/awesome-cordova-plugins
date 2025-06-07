@@ -42,7 +42,6 @@ export class StatusBar extends AwesomeCordovaNativePlugin {
   /**
    * Set whether the status bar overlays the main app view. The default
    * is true.
-   *
    * @param {boolean} doesOverlay  Whether the status bar overlays the main app view.
    */
   @Cordova({
@@ -71,7 +70,6 @@ export class StatusBar extends AwesomeCordovaNativePlugin {
    * black, darkGray, lightGray, white, gray, red, green, blue, cyan, yellow, magenta, orange, purple, brown.
    *
    * iOS note: you must call StatusBar.overlaysWebView(false) to enable color changing.
-   *
    * @param {string} colorName  The name of the color (from above)
    */
   @Cordova({
@@ -83,7 +81,6 @@ export class StatusBar extends AwesomeCordovaNativePlugin {
    * Set the status bar to a specific hex color (CSS shorthand supported!).
    *
    * iOS note: you must call StatusBar.overlaysWebView(false) to enable color changing.
-   *
    * @param {string} hexString  The hex value of the color.
    */
   @Cordova({

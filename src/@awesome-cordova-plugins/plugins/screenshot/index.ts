@@ -32,7 +32,6 @@ declare const navigator: any;
 export class Screenshot extends AwesomeCordovaNativePlugin {
   /**
    *  Takes screenshot and saves the image
-   *
    * @param format {string} Format can take the value of either 'jpg' or 'png'
    * On ios, only 'jpg' format is supported
    * @param quality {number}  Determines the quality of the screenshot.
@@ -59,7 +58,6 @@ export class Screenshot extends AwesomeCordovaNativePlugin {
 
   /**
    *  Takes screenshot and returns the image as an URI
-   *
    * @param quality {number} Determines the quality of the screenshot.
    *        Default quality is set to 100.
    * @returns {Promise<any>}

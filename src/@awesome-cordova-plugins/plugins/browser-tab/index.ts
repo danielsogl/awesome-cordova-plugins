@@ -5,7 +5,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * @name Browser Tab
  * @description
  * This plugin provides an interface to in-app browser tabs that exist on some mobile platforms, specifically [Custom Tabs](http://developer.android.com/tools/support-library/features.html#custom-tabs) on Android (including the [Chrome Custom Tabs](https://developer.chrome.com/multidevice/android/customtabs) implementation), and [SFSafariViewController](https://developer.apple.com/library/ios/documentation/SafariServices/Reference/SFSafariViewController_Ref/) on iOS.
- *
  * @usage
  * ```typescript
  * import { BrowserTab } from '@awesome-cordova-plugins/browser-tab/ngx';
@@ -25,39 +24,39 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  * ```
  */
 @Plugin({
-    pluginName: 'BrowserTab',
-    plugin: 'cordova-plugin-browsertab',
-    pluginRef: 'cordova.plugins.browsertab',
-    repo: 'https://github.com/google/cordova-plugin-browsertab',
-    platforms: ['Android', 'iOS'],
+  pluginName: 'BrowserTab',
+  plugin: 'cordova-plugin-browsertab',
+  pluginRef: 'cordova.plugins.browsertab',
+  repo: 'https://github.com/google/cordova-plugin-browsertab',
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class BrowserTab extends AwesomeCordovaNativePlugin {
-    /**
-     * Check if BrowserTab option is available
-     * @return {Promise<any>} Returns a promise that resolves when check is successful and returns true or false
-     */
-    @Cordova()
-    isAvailable(): Promise<any> {
-        return;
-    }
+  /**
+   * Check if BrowserTab option is available
+   * @return {Promise<any>} Returns a promise that resolves when check is successful and returns true or false
+   */
+  @Cordova()
+  isAvailable(): Promise<any> {
+    return;
+  }
 
-    /**
-     * Opens the provided URL using a browser tab
-     * @param {string} url  The URL you want to open
-     * @return {Promise<any>} Returns a promise that resolves when check open was successful
-     */
-    @Cordova()
-    openUrl(url: string): Promise<any> {
-        return;
-    }
+  /**
+   * Opens the provided URL using a browser tab
+   * @param {string} url  The URL you want to open
+   * @return {Promise<any>} Returns a promise that resolves when check open was successful
+   */
+  @Cordova()
+  openUrl(url: string): Promise<any> {
+    return;
+  }
 
-    /**
-     * Closes browser tab
-     * @return {Promise<any>} Returns a promise that resolves when close was finished
-     */
-    @Cordova()
-    close(): Promise<any> {
-        return;
-    }
+  /**
+   * Closes browser tab
+   * @return {Promise<any>} Returns a promise that resolves when close was finished
+   */
+  @Cordova()
+  close(): Promise<any> {
+    return;
+  }
 }

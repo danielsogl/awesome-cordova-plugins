@@ -132,7 +132,7 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
     SENSORS: ['BODY_SENSORS'],
     SMS: ['SEND_SMS', 'RECEIVE_SMS', 'READ_SMS', 'RECEIVE_WAP_PUSH', 'RECEIVE_MMS'],
     STORAGE: ['READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE'],
-    NEARBY_DEVICES: ["BLUETOOTH_ADVERTISE", "BLUETOOTH_SCAN", "BLUETOOTH_CONNECT"],
+    NEARBY_DEVICES: ['BLUETOOTH_ADVERTISE', 'BLUETOOTH_SCAN', 'BLUETOOTH_CONNECT'],
   };
 
   locationMode = {
@@ -164,21 +164,21 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   @CordovaProperty()
   cpuArchitecture: {
-      MIPS: string;
-      MIPS_64: string;
-      UNKNOWN: string;
-      ARMv6: string;
-      ARMv7: string;
-      ARMv8: string;
-      X86: string;
-      X86_64: string;
+    MIPS: string;
+    MIPS_64: string;
+    UNKNOWN: string;
+    ARMv6: string;
+    ARMv7: string;
+    ARMv8: string;
+    X86: string;
+    X86_64: string;
   };
 
   @CordovaProperty()
   remoteNotificationType: {
-      ALERT: string;
-      SOUND: string;
-      BADGE: string;
+    ALERT: string;
+    SOUND: string;
+    BADGE: string;
   };
 
   @CordovaProperty()
@@ -206,7 +206,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks if app is able to access device location.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -217,7 +216,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   /**
    * Checks if Wifi is connected/enabled. On iOS this returns true if the device is connected to a network by WiFi. On Android and Windows 10 Mobile this returns true if the WiFi setting is set to enabled.
    * On Android this requires permission. `<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />`
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -228,7 +226,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   /**
    * Checks if the device has a camera. On Android this returns true if the device has a camera. On iOS this returns true if both the device has a camera AND the application is authorized to use it. On Windows 10 Mobile this returns true if both the device has a rear-facing camera AND the
    * application is authorized to use it.
-   *
    * @param {boolean} [externalStorage] Android only: If true, checks permission for READ_EXTERNAL_STORAGE in addition to CAMERA run-time permission.
    *  cordova-plugin-camera@2.2+ requires both of these permissions. Defaults to true.
    * @returns {Promise<any>}
@@ -241,7 +238,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   /**
    * Checks if the device has Bluetooth capabilities and if so that Bluetooth is switched on (same on Android, iOS and Windows 10 Mobile)
    * On Android this requires permission <uses-permission android:name="android.permission.BLUETOOTH" />
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -275,7 +271,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns true if the WiFi setting is set to enabled, and is the same as `isWifiAvailable()`
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android', 'Windows 10'] })
@@ -286,7 +281,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   /**
    * Enables/disables WiFi on the device.
    * Requires `ACCESS_WIFI_STATE` and `CHANGE_WIFI_STATE` permissions on Android
-   *
    * @param {boolean} state
    * @returns {Promise<any>}
    */
@@ -298,7 +292,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   /**
    * Enables/disables Bluetooth on the device.
    * Requires `BLUETOOTH` and `BLUETOOTH_ADMIN` permissions on Android
-   *
    * @param {boolean} state
    * @returns {Promise<any>}
    */
@@ -306,7 +299,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   setBluetoothState(state: boolean): Promise<any> {
     return;
   }
-
 
   // ANDROID AND IOS ONLY
 
@@ -321,7 +313,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns true if the device setting for location is on. On Android this returns true if Location Mode is switched on. On iOS this returns true if Location Services is switched on.
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
@@ -332,7 +323,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   /**
    * Checks if the application is authorized to use location.
    * Note for Android: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return GRANTED status as permissions are already granted at installation time.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -342,7 +332,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns the location authorization status for the application.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
@@ -352,7 +341,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns the individual location authorization status for each type of location access (FINE, COARSE and BACKGROUND).
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
@@ -360,11 +348,9 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
     return;
   }
 
-
   /**
    * Returns the location authorization status for the application.
    * Note for Android: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return GRANTED status as permissions are already granted at installation time.
-   *
    * @param {string} [mode] location authorization mode: "always" or "when_in_use". If not specified, defaults to "when_in_use". (this.locationAuthorizationMode)
    * @param {string} [accuracy] requested location accuracy: "full" or "reduced". If not specified, defaults to "full". (this.locationAccuracyAuthorization)
    * @returns {Promise<any>}
@@ -376,7 +362,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks if camera hardware is present on device.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
@@ -387,7 +372,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   /**
    * Checks if the application is authorized to use the camera.
    * Note for Android: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return TRUE as permissions are already granted at installation time.
-   *
    * @param {boolean} [externalStorage] Android only: If true, checks permission for READ_EXTERNAL_STORAGE in addition to CAMERA run-time permission.
    *  cordova-plugin-camera@2.2+ requires both of these permissions. Defaults to true.
    * @returns {Promise<any>}
@@ -399,7 +383,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns the camera authorization status for the application.
-   *
    * @param {boolean} [externalStorage] Android only: If true, checks permission for READ_EXTERNAL_STORAGE in addition to CAMERA run-time permission.
    *  cordova-plugin-camera@2.2+ requires both of these permissions. Defaults to true.
    * @returns {Promise<any>}
@@ -411,7 +394,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Requests camera authorization for the application.
-   *
    * @param {boolean} [externalStorage] Android only: If true, requests permission for READ_EXTERNAL_STORAGE in addition to CAMERA run-time permission.
    *  cordova-plugin-camera@2.2+ requires both of these permissions. Defaults to true.
    * @returns {Promise<any>}
@@ -423,7 +405,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks if the application is authorized to use the microphone.
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
@@ -433,7 +414,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns the microphone authorization status for the application.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
@@ -443,7 +423,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Requests microphone authorization for the application.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
@@ -453,7 +432,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks if the application is authorized to use contacts (address book).
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
@@ -463,7 +441,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns the contacts authorization status for the application.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
@@ -473,7 +450,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Requests contacts authorization for the application.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
@@ -485,11 +461,10 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    * Checks if the application is authorized to use the calendar.
    *
    * Notes for Android:
-   *   - This is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return TRUE as permissions are already granted at installation time.
+   * - This is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return TRUE as permissions are already granted at installation time.
    *
    * Notes for iOS:
-   *   - This relates to Calendar Events (not Calendar Reminders)
-   *
+   * - This relates to Calendar Events (not Calendar Reminders)
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
@@ -501,11 +476,10 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    * Returns the calendar authorization status for the application.
    *
    * Notes for Android:
-   *   - This is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return `GRANTED` status as permissions are already granted at installation time.
+   * - This is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return `GRANTED` status as permissions are already granted at installation time.
    *
    * Notes for iOS:
-   *   - This relates to Calendar Events (not Calendar Reminders)
-   *
+   * - This relates to Calendar Events (not Calendar Reminders)
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
@@ -517,14 +491,13 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    * Requests calendar authorization for the application.
    *
    * Notes for iOS:
-   *   - Should only be called if authorization status is NOT_DETERMINED. Calling it when in any other state will have no effect and just return the current authorization status.
-   *   - This relates to Calendar Events (not Calendar Reminders)
+   * - Should only be called if authorization status is NOT_DETERMINED. Calling it when in any other state will have no effect and just return the current authorization status.
+   * - This relates to Calendar Events (not Calendar Reminders)
    *
    * Notes for Android:
-   *   - This is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will have no effect as the permissions are already granted at installation time.
-   *   - This requests permission for `READ_CALENDAR` run-time permission
-   *   - Required permissions must be added to `AndroidManifest.xml` as appropriate - see Android permissions: `READ_CALENDAR`, `WRITE_CALENDAR`
-   *
+   * - This is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will have no effect as the permissions are already granted at installation time.
+   * - This requests permission for `READ_CALENDAR` run-time permission
+   * - Required permissions must be added to `AndroidManifest.xml` as appropriate - see Android permissions: `READ_CALENDAR`, `WRITE_CALENDAR`
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
@@ -536,7 +509,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    * Opens settings page for this app.
    * On Android, this opens the "App Info" page in the Settings app.
    * On iOS, this opens the app settings page in the Settings app. This works only on iOS 8+ - iOS 7 and below will invoke the errorCallback.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
@@ -546,7 +518,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns the state of Bluetooth on the device.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
@@ -556,7 +527,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Registers a function to be called when a change in Bluetooth state occurs.
-   *
    * @param {Function} handler
    */
   @Cordova({ platforms: ['Android', 'iOS'], sync: true })
@@ -564,7 +534,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Registers a function to be called when a change in Location state occurs.
-   *
    * @param {Function} handler
    */
   @Cordova({ platforms: ['Android', 'iOS'], sync: true })
@@ -572,23 +541,21 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns CPU architecture of the current device.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
   getArchitecture(): Promise<any> {
     return;
-  }  
+  }
 
   /**
    * Returns the current battery level of the device as a percentage.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
   getCurrentBatteryLevel(): Promise<any> {
     return;
-  }  
+  }
 
   // ANDROID ONLY
 
@@ -597,7 +564,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    * By default, a "warm" restart will be performed in which the main Cordova activity is immediately restarted, causing the Webview instance to be recreated.
    * However, if the `cold` parameter is set to true, then the application will be "cold" restarted, meaning a system exit will be performed, causing the entire application to be restarted.
    * This is useful if you want to fully reset the native application state but will cause the application to briefly disappear and re-appear..
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'], callbackOrder: 'reverse' })
@@ -605,11 +571,9 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
     return;
   }
 
-
   /**
    * Checks if high-accuracy locations are available to the app from GPS hardware.
    * Returns true if Location mode is enabled and is set to "Device only" or "High accuracy" AND if the app is authorized to use location.
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
@@ -619,10 +583,9 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks if location mode is set to return high-accuracy locations from GPS hardware.
-   *   Returns true if Location mode is enabled and is set to either:
-   *   - Device only = GPS hardware only (high accuracy)
-   *   - High accuracy = GPS hardware, network triangulation and Wifi network IDs (high and low accuracy)
-   *
+   * Returns true if Location mode is enabled and is set to either:
+   * - Device only = GPS hardware only (high accuracy)
+   * - High accuracy = GPS hardware, network triangulation and Wifi network IDs (high and low accuracy)
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
@@ -633,7 +596,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   /**
    * Checks if low-accuracy locations are available to the app from network triangulation/WiFi access points.
    * Returns true if Location mode is enabled and is set to "Battery saving" or "High accuracy" AND if the app is authorized to use location.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
@@ -644,9 +606,8 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   /**
    * Checks if location mode is set to return low-accuracy locations from network triangulation/WiFi access points.
    * Returns true if Location mode is enabled and is set to either:
-   *   - Battery saving = network triangulation and Wifi network IDs (low accuracy)
-   *   - High accuracy = GPS hardware, network triangulation and Wifi network IDs (high and low accuracy)
-   *
+   * - Battery saving = network triangulation and Wifi network IDs (low accuracy)
+   * - High accuracy = GPS hardware, network triangulation and Wifi network IDs (high and low accuracy)
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
@@ -656,7 +617,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks if airplane mode is enabled on device.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
@@ -664,9 +624,8 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
     return;
   }
 
-  /** 
+  /**
    * Checks if mobile data is enabled on device.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
@@ -676,7 +635,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns the current location mode setting for the device.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
@@ -686,7 +644,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns details of the OS of the device on which the app is currently running
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
@@ -696,7 +653,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns details of the SDK levels used to build the app.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
@@ -707,7 +663,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   /**
    * Returns the current authorization status for a given permission.
    * Note: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return GRANTED status as permissions are already granted at installation time.
-   *
    * @param permission
    * @returns {Promise<any>}
    */
@@ -719,7 +674,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   /**
    * Returns the current authorization status for multiple permissions.
    * Note: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return GRANTED status as permissions are already granted at installation time.
-   *
    * @param {any[]} permissions
    * @returns {Promise<any>}
    */
@@ -731,7 +685,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   /**
    * Requests app to be granted authorization for a runtime permission.
    * Note: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will have no effect as the permissions are already granted at installation time.
-   *
    * @param permission
    * @returns {Promise<any>}
    */
@@ -743,7 +696,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   /**
    * Requests app to be granted authorization for multiple runtime permissions.
    * Note: this is intended for Android 6 / API 23 and above. Calling on Android 5 / API 22 and below will always return GRANTED status as permissions are already granted at installation time.
-   *
    * @param {any[]} permissions
    * @returns {Promise<any>}
    */
@@ -757,7 +709,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    * Note that only one request can be made concurrently because the native API cannot handle concurrent requests,
    * so the plugin will invoke the error callback if attempting to make more than one simultaneous request.
    * Multiple permission requests should be grouped into a single call since the native API is setup to handle batch requests of multiple permission groups.
-   *
    * @returns {boolean}
    */
   @Cordova({ sync: true })
@@ -768,7 +719,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   /**
    * Registers a function to be called when a runtime permission request has completed.
    * Pass in a falsy value to de-register the currently registered function.
-   *
    * @param {Function} handler
    */
   @Cordova({ sync: true })
@@ -779,7 +729,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   /**
    * Checks if the device setting for Bluetooth is switched on.
    * This requires `BLUETOOTH` permission on Android
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
@@ -789,7 +738,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks if the device has Bluetooth capabilities.
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
@@ -799,7 +747,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks if the device has Bluetooth Low Energy (LE) capabilities.
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
@@ -809,7 +756,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks if the device supports Bluetooth Low Energy (LE) Peripheral mode.
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
@@ -819,18 +765,16 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns the Bluetooth authorization status of the application on the device.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android', 'iOS'] })
   getBluetoothAuthorizationStatus(): Promise<any> {
     return;
   }
-  
+
   /**
    * Returns the individual authorization status for each Bluetooth run-time permission on Android 12+ / API 31+
    * On Android 11 / API 30 and below, all will be returned as GRANTED if the manifest has BLUETOOTH since they are implicitly granted at build-time.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
@@ -840,7 +784,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks if the application is authorized to use external storage.
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
@@ -850,7 +793,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * CReturns the external storage authorization status for the application.
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
@@ -860,7 +802,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Requests external storage authorization for the application.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
@@ -875,7 +816,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    * This differs from the "external directories" returned by cordova-plugin-file which return mount points relating to non-removable (internal) storage.
    *
    * Learn more about this method [here](https://github.com/dpa99c/cordova-diagnostic-plugin#getexternalsdcarddetails)
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
@@ -903,7 +843,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks if NFC hardware is present on device.
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
@@ -914,7 +853,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   /**
    * Checks if the device setting for NFC is switched on.
    * Note: this operation does not require NFC permission in the manifest.
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
@@ -925,7 +863,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   /**
    * Checks if NFC is available to the app. Returns true if the device has NFC capabilities AND if NFC setting is switched on.
    * Note: this operation does not require NFC permission in the manifest.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
@@ -935,7 +872,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Registers a function to be called when a change in NFC state occurs. Pass in a falsy value to de-register the currently registered function.
-   *
    * @param {Function} hander callback function to be called when NFC state changes
    * @param handler
    * @returns {Promise<any>}
@@ -948,7 +884,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks if the device data roaming setting is enabled.
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
@@ -958,7 +893,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks if the device setting for ADB(debug) is switched on.
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
@@ -968,7 +902,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks if the device is rooted.
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['Android'] })
@@ -980,14 +913,12 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks if the application is authorized to use the Camera Roll in Photos app.
-   *
    * @param accessLevel - (optional) On iOS 14+, specifies the level of access to the photo library to query as a constant in cordova.plugins.diagnostic.photoLibraryAccessLevel`
    * Possible values are:
    * ADD_ONLY - can add to but not read from Photo Library
    * READ_WRITE - can both add to and read from Photo Library
    * Defaults to ADD_ONLY if not specified
    * Has no effect on iOS 13 or below
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['iOS'], callbackOrder: 'reverse' })
@@ -997,14 +928,12 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns the authorization status for the application to use the Camera Roll in Photos app.
-   *
    * @param accessLevel - (optional) On iOS 14+, specifies the level of access to the photo library to query as a constant in cordova.plugins.diagnostic.photoLibraryAccessLevel`
    * Possible values are:
    * ADD_ONLY - can add to but not read from Photo Library
    * READ_WRITE - can both add to and read from Photo Library
    * Defaults to ADD_ONLY if not specified
    * Has no effect on iOS 13 or below
-   *
    * @returns {Promise<string>}
    */
   @Cordova({ platforms: ['iOS'], callbackOrder: 'reverse' })
@@ -1016,14 +945,12 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    * Requests camera roll authorization for the application.
    * Should only be called if authorization status is NOT_REQUESTED.
    * Calling it when in any other state will have no effect.
-   *
    * @param accessLevel - (optional) On iOS 14+, specifies the level of access to the photo library to query as a constant in cordova.plugins.diagnostic.photoLibraryAccessLevel`
    * Possible values are:
    * ADD_ONLY - can add to but not read from Photo Library
    * READ_WRITE - can both add to and read from Photo Library
    * Defaults to ADD_ONLY if not specified
    * Has no effect on iOS 13 or below
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['iOS'], callbackOrder: 'reverse' })
@@ -1031,9 +958,8 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
     return;
   }
 
- /**
+  /**
    * Presents limited library picker UI on iOS 14+
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['iOS'] })
@@ -1043,7 +969,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks if remote (push) notifications are enabled.
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['iOS', 'Android'] })
@@ -1053,7 +978,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Indicates if the app is registered for remote (push) notifications on the device.
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['iOS'] })
@@ -1064,7 +988,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   /**
    * Returns the authorization status for the application to use Remote Notifications.
    * Note: Works on iOS 10+ only (iOS 9 and below will invoke the error callback).
-   *
    * @returns {Promise<string>}
    */
   @Cordova({ platforms: ['iOS'] })
@@ -1074,7 +997,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Requests reminders authorization for the application.
-   *
    * @param types
    * @param omitRegistration
    * @returns {Promise<any>}
@@ -1087,7 +1009,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   /**
    * Indicates the current setting of notification types for the app in the Settings app.
    * Note: on iOS 8+, if "Allow Notifications" switch is OFF, all types will be returned as disabled.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['iOS'] })
@@ -1097,7 +1018,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks if the application is authorized to use reminders.
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['iOS'] })
@@ -1107,7 +1027,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns the reminders authorization status for the application.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['iOS'] })
@@ -1117,7 +1036,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Requests reminders authorization for the application.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['iOS'] })
@@ -1127,7 +1045,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks if the application is authorized for background refresh.
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['iOS'] })
@@ -1137,7 +1054,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns the background refresh authorization status for the application.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['iOS'] })
@@ -1149,7 +1065,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    * Requests Bluetooth authorization for the application.
    *
    * Learn more about this method [here](https://github.com/dpa99c/cordova-diagnostic-plugin#requestbluetoothauthorization)
-   *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['iOS'] })
@@ -1159,7 +1074,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks if motion tracking is available on the current device.
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['iOS'] })
@@ -1171,7 +1085,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    * Checks if it's possible to determine the outcome of a motion authorization request on the current device.
    * There's no direct way to determine if authorization was granted or denied, so the Pedometer API must be used to indirectly determine this:
    * therefore, if the device supports motion tracking but not Pedometer Event Tracking, the outcome of requesting motion detection cannot be determined.
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova({ platforms: ['iOS'] })
@@ -1183,7 +1096,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    * Requests motion tracking authorization for the application.
    *
    * Learn more about this method [here](https://github.com/dpa99c/cordova-diagnostic-plugin#requestmotionauthorization)
-   *
    * @returns {Promise<string>}
    */
   @Cordova({ platforms: ['iOS'] })
@@ -1195,7 +1107,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    * Checks motion authorization status for the application.
    *
    * Learn more about this method [here](https://github.com/dpa99c/cordova-diagnostic-plugin#getmotionauthorizationstatus)
-   *
    * @returns {Promise<string>}
    */
   @Cordova({ platforms: ['iOS'] })
@@ -1207,7 +1118,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    * Returns the location accuracy authorization for the application on iOS 14+ and Android 12+. Note: calling on iOS <14 or Android <12 will always return cordova.plugins.diagnostic.locationAccuracyAuthorization.FULL
    *
    * Learn more about this method [here](https://github.com/dpa99c/cordova-diagnostic-plugin#getlocationaccuracyauthorization)
-   *
    * @returns {Promise<string>}
    */
   @Cordova({ platforms: ['iOS', 'Android'] })
@@ -1219,7 +1129,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    * Requests temporary access to full location accuracy for the application on iOS 14+.
    *
    * Learn more about this method [here](https://github.com/dpa99c/cordova-diagnostic-plugin#requesttemporaryfullaccuracyauthorization)
-   *
    * @param purpose
    * @returns {Promise<string>}
    */
@@ -1232,7 +1141,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    * Registers a function to be called when a change in location accuracy authorization occurs on iOS 14+.
    *
    * Learn more about this method [here](https://github.com/dpa99c/cordova-diagnostic-plugin#registerLocationAccuracyAuthorizationChangeHandler)
-   *
    * @param handler
    */
   @Cordova({ platforms: ['iOS'], sync: true })

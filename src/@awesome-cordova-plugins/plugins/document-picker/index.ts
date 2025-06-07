@@ -32,7 +32,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class DocumentPicker extends AwesomeCordovaNativePlugin {
   /**
    * Open a file
-   *
    * @param {string} [option] files between 'image', 'pdf' or 'all'
    * @returns {Promise<string>}
    */

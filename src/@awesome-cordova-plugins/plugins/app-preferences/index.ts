@@ -29,7 +29,6 @@ import { Injectable } from '@angular/core';
 export class AppPreferences extends AwesomeCordovaNativePlugin {
   /**
    * Get a preference value
-   *
    * @param {string} dict Dictionary for key (OPTIONAL)
    * @param {string} key Key
    * @returns {Promise<any>} Returns a promise
@@ -43,7 +42,6 @@ export class AppPreferences extends AwesomeCordovaNativePlugin {
 
   /**
    * Set a preference value
-   *
    * @param {string} dict Dictionary for key (OPTIONAL)
    * @param {string} key Key
    * @param {any} value Value
@@ -58,7 +56,6 @@ export class AppPreferences extends AwesomeCordovaNativePlugin {
 
   /**
    * Remove value from preferences
-   *
    * @param {string} dict Dictionary for key (OPTIONAL)
    * @param {string} key Key
    * @returns {Promise<any>} Returns a promise
@@ -72,7 +69,6 @@ export class AppPreferences extends AwesomeCordovaNativePlugin {
 
   /**
    * Clear preferences
-   *
    * @returns {Promise<any>} Returns a promise
    */
   @Cordova({
@@ -84,7 +80,6 @@ export class AppPreferences extends AwesomeCordovaNativePlugin {
 
   /**
    * Show native preferences interface
-   *
    * @returns {Promise<any>} Returns a promise
    */
   @Cordova({
@@ -96,7 +91,6 @@ export class AppPreferences extends AwesomeCordovaNativePlugin {
 
   /**
    * Show native preferences interface
-   *
    * @param {boolean} subscribe true value to subscribe, false - unsubscribe
    * @returns {Observable<any>} Returns an observable
    */
@@ -111,7 +105,6 @@ export class AppPreferences extends AwesomeCordovaNativePlugin {
    * Return named configuration context
    * In iOS you'll get a suite configuration, on Android — named file
    * Supports: Android, iOS
-   *
    * @param {string} suiteName suite name
    * @returns {Object} Custom object, bound to that suite
    */
@@ -134,7 +127,6 @@ export class AppPreferences extends AwesomeCordovaNativePlugin {
   /**
    * Return cloud synchronized configuration context
    * Currently supports Windows and iOS/macOS
-   *
    * @returns {Object} Custom object, bound to that suite
    */
   @Cordova({
@@ -147,7 +139,6 @@ export class AppPreferences extends AwesomeCordovaNativePlugin {
   /**
    * Return default configuration context
    * Currently supports Windows and iOS/macOS
-   *
    * @returns {Object} Custom Object, bound to that suite
    */
   @Cordova({

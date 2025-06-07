@@ -705,7 +705,6 @@ export interface InboxMessage {
 
 /**
  * A preference center definition.
- *
  * @typedef {object} PreferenceCenter
  * @property {string} id the ID of the preference center
  * @property {Array<PreferenceCenter.CommonSection>} sections a list of sections
@@ -866,7 +865,6 @@ export interface FeatureFlag {
 export interface TagGroupEditor {
   /**
    * Adds tags to a tag group.
-   *
    * @param tagGroup The tag group.
    * @param tags Tags to add.
    * @return The tag group editor instance.
@@ -875,7 +873,6 @@ export interface TagGroupEditor {
 
   /**
    * Removes tags from the tag group.
-   *
    * @param tagGroup The tag group.
    * @param tags Tags to remove.
    * @return The tag group editor instance.
@@ -884,7 +881,6 @@ export interface TagGroupEditor {
 
   /**
    * Overwrite the current set of tags on the Tag Group.
-   *
    * @param tagGroup The tag group.
    * @param tags Tags to set.
    * @return The tag group editor instance.
@@ -905,7 +901,6 @@ export interface TagGroupEditor {
 export interface TagEditor {
   /**
    * Adds tags to a channel.
-   *
    * @param tags Tags to add.
    * @return The tag editor instance.
    */
@@ -913,7 +908,6 @@ export interface TagEditor {
 
   /**
    * Removes tags from the channel.
-   *
    * @param tags Tags to remove.
    * @return The tag editor instance.
    */
@@ -933,7 +927,6 @@ export interface TagEditor {
 export interface SubscriptionListEditor {
   /**
    * Subscribes to a list.
-   *
    * @param listId The subscription list identifier.
    * @return The editor.
    */
@@ -941,7 +934,6 @@ export interface SubscriptionListEditor {
 
   /**
    * Unsubscribe from a list.
-   *
    * @param listId The subscription list identifier.
    * @return The editor.
    */
@@ -961,7 +953,6 @@ export interface SubscriptionListEditor {
 export interface ScopedSubscriptionListEditor {
   /**
    * Subscribes to a list in the given scope.
-   *
    * @param listId The subscription list identifier.
    * @param scope The subscription scope to subscribe.
    */
@@ -969,7 +960,6 @@ export interface ScopedSubscriptionListEditor {
 
   /**
    * Unsubscribe from a list.
-   *
    * @param listId The subscription list identifier.
    * @param scope The subscription scope to unsubscribe.
    */
@@ -989,7 +979,6 @@ export interface ScopedSubscriptionListEditor {
 export interface AttributeEditor {
   /**
    * Adds an attribute.
-   *
    * @param value The attribute value.
    * @param name The attribute name.
    * @return The attribute editor instance.
@@ -1208,7 +1197,6 @@ export interface AirshipPushIOS {
 
   /**
    * Enables/disables quiet time.
-   *
    * @param enabled true to enable, false to disable
    * @param success Success callback.
    * @param error Error callback.
@@ -1224,7 +1212,6 @@ export interface AirshipPushIOS {
 
   /**
    * Sets quiet time.
-   *
    * @param quietTime The quiet time.
    * @param success Success callback.
    * @param error Error callback.
@@ -1240,7 +1227,6 @@ export interface AirshipPushIOS {
 
   /**
    * An event when the authorized push settings changed.
-   *
    * @param callback The callback.
    * @return A cancellable that can be used to cancel the listener.
    */
@@ -1368,7 +1354,6 @@ export interface AirshipPreferenceCenter {
 
   /**
    * Event when the message center a preference center is requested to display.
-   *
    * @param callback The callback.
    * @return A cancellable that can be used to cancel the listener.
    */
@@ -1430,7 +1415,6 @@ export interface AirshipMessageCenter {
   /**
    * Overlays the message view. Should be used to display the actual
    * message body in a custom Message Center.
-   *
    * @param messageId The message Id.
    * @param success Success callback.
    * @param error Error callback.
@@ -1453,7 +1437,6 @@ export interface AirshipMessageCenter {
 
   /**
    * Event when the message center is requested to be displayed.
-   *
    * @param callback The callback.
    * @return A cancellable that can be used to cancel the listener.
    */
@@ -1461,7 +1444,6 @@ export interface AirshipMessageCenter {
 
   /**
    * Event when the message list is updated.
-   *
    * @param callback The callback.
    * @return A cancellable that can be used to cancel the listener.
    */
@@ -1711,7 +1693,6 @@ class AirshipChannel {
 export interface AirshipAnalytics {
   /**
    * Associates an identifier.
-   *
    * @param key The key.
    * @param identifier The identifier. `null` to remove.
    * @param success Success callback.
@@ -1742,7 +1723,6 @@ export interface AirshipAnalytics {
 export interface AirshipActions {
   /**
    * Runs an Airship action.
-   *
    * @param name The name of the action.
    * @param value The action's value.
    * @param success Success callback with the action result.

@@ -5,7 +5,6 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
  * @name SSLCertificateChecker
  * @description
  * Cordova plugin to check SSL certificates on Android and iOS.
- *
  * @usage
  * ```typescript
  * import { SSLCertificateChecker } from '@awesome-cordova-plugins/ssl-certificate-checker';

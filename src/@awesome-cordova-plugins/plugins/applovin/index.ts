@@ -72,7 +72,6 @@ export enum ConsentDialogState {
 export class Applovin extends AwesomeCordovaNativePlugin {
   /**
    * Initialize the AppLovin SDK.
-   *
    * @param {string} sdkKey The SDK key generated for your AppLovin account.
    */
   @Cordova()

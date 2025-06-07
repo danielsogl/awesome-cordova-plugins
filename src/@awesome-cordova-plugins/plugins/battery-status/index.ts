@@ -50,7 +50,6 @@ export interface BatteryStatusResponse {
 export class BatteryStatus extends AwesomeCordovaNativePlugin {
   /**
    * Watch the change in battery level
-   *
    * @returns {Observable<BatteryStatusResponse>} Returns an observable that pushes a status object
    */
   @Cordova({
@@ -63,7 +62,6 @@ export class BatteryStatus extends AwesomeCordovaNativePlugin {
 
   /**
    * Watch when the battery level goes low
-   *
    * @returns {Observable<BatteryStatusResponse>} Returns an observable that pushes a status object
    */
   @Cordova({
@@ -76,7 +74,6 @@ export class BatteryStatus extends AwesomeCordovaNativePlugin {
 
   /**
    * Watch when the battery level goes to critical
-   *
    * @returns {Observable<BatteryStatusResponse>} Returns an observable that pushes a status object
    */
   @Cordova({

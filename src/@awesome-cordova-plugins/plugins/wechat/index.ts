@@ -61,7 +61,6 @@ export class Wechat extends AwesomeCordovaNativePlugin {
 
   /**
    * Share a message to wechat app
-   *
    * @param params
    * @example
    * <code>
@@ -92,7 +91,6 @@ export class Wechat extends AwesomeCordovaNativePlugin {
 
   /**
    * Sending an auth request to Wechat
-   *
    * @param scope
    * @param state
    * @example
@@ -107,7 +105,6 @@ export class Wechat extends AwesomeCordovaNativePlugin {
 
   /**
    * Send a payment request
-   *
    * @param params
    * @link https://pay.weixin.qq.com/wiki/doc/api/app.php?chapter=9_1
    * @example
@@ -133,7 +130,6 @@ export class Wechat extends AwesomeCordovaNativePlugin {
 
   /**
    * jumpToBizProfile （跳转到某个微信公众号）2016-11-11 测试是失效的，囧
-   *
    * @param url
    * @link https://segmentfault.com/a/1190000007204624
    * @link https://segmentfault.com/q/1010000003907796
@@ -162,7 +158,6 @@ export class Wechat extends AwesomeCordovaNativePlugin {
 
   /**
    * chooseInvoiceFromWX exq:choose invoices from Wechat card list
-   *
    * @param params
    * @example
    * <code>
@@ -181,7 +176,6 @@ export class Wechat extends AwesomeCordovaNativePlugin {
 
   /**
    * openMiniProgram exq:app opens wechat mini program
-   *
    * @param params
    * @example
    * <code>

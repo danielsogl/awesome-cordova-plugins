@@ -54,7 +54,6 @@ export enum SmsRetrieverStatus {
 export class SmsRetrieverApi extends AwesomeCordovaNativePlugin {
   /**
    * This function start watching message arrive event and retrieve message text.
-   *
    * @returns {Observable<string>} Returns an observable that resolves when retries SMS text or TIMEOUT after 5 min.
    */
   @Cordova({
@@ -66,7 +65,6 @@ export class SmsRetrieverApi extends AwesomeCordovaNativePlugin {
 
   /**
    * This function stop watching message.
-   *
    * @returns {Promise<string>} Returns a promise that resolves when successfully remove sms listener.
    */
   @Cordova()
@@ -76,7 +74,6 @@ export class SmsRetrieverApi extends AwesomeCordovaNativePlugin {
 
   /**
    * This function is to get hash string of APP.
-   *
    * @returns {Promise<string>} Returns a promise that resolves when successfully generate hash of APP.
    */
   @Cordova()
@@ -86,7 +83,6 @@ export class SmsRetrieverApi extends AwesomeCordovaNativePlugin {
 
   /**
    * Opens a dialog to select your mobile numbers saved in phone and returns selected phone number.
-   *
    * @returns {Promise<string>} Returns a promise that resolves when successfully get phone number
    */
   @Cordova()
@@ -96,7 +92,6 @@ export class SmsRetrieverApi extends AwesomeCordovaNativePlugin {
 
   /**
    * Watch incoming SMS event listener
-   *
    * @returns {Observable<IncomingSMS>}
    */
   onSMSArrive(): Observable<IncomingSMS> {

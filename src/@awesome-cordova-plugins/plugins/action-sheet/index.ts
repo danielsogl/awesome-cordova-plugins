@@ -115,7 +115,6 @@ export class ActionSheet extends AwesomeCordovaNativePlugin {
 
   /**
    * Show a native ActionSheet component. See below for options.
-   *
    * @param {ActionSheetOptions} [options] Options See table below
    * @returns {Promise<any>} Returns a Promise that resolves with the index of the
    *   button pressed (1 based, so 1, 2, 3, etc.)
@@ -127,7 +126,6 @@ export class ActionSheet extends AwesomeCordovaNativePlugin {
 
   /**
    * Programmatically hide the native ActionSheet
-   *
    * @param  {ActionSheetOptions} [options] Options See table below
    * @returns {Promise<any>} Returns a Promise that resolves when the actionsheet is closed
    */

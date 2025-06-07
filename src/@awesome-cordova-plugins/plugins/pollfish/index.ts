@@ -89,7 +89,6 @@ export class Pollfish extends AwesomeCordovaNativePlugin {
 
   /**
    * Function to init Pollfish
-   *
    * @param releaseMode {boolean}
    * @param rewardMode {boolean}
    * @param apiKey {string}
@@ -113,7 +112,6 @@ export class Pollfish extends AwesomeCordovaNativePlugin {
 
   /**
    * Function to init Pollfish with user attributes
-   *
    * @param releaseMode {boolean}
    * @param rewardMode {boolean}
    * @param apiKey {string}
@@ -158,7 +156,6 @@ export class Pollfish extends AwesomeCordovaNativePlugin {
 
   /**
    * Function to set event callbacks
-   *
    * @param eventName
    * @param callback
    */

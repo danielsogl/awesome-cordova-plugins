@@ -99,7 +99,6 @@ export interface GeolocationOptions {
    * power consumption (with a GPS chip on a mobile device for example). On the
    * other hand, if false, the device can take the liberty to save resources by
    * responding more quickly and/or using less power. Default: false.
-   *
    * @type {boolean}
    */
   enableHighAccuracy?: boolean;
@@ -164,7 +163,6 @@ export interface GeolocationOptions {
 export class Geolocation extends AwesomeCordovaNativePlugin {
   /**
    * Get the device's current position.
-   *
    * @param {GeolocationOptions} options  The [geolocation options](https://developer.mozilla.org/en-US/docs/Web/API/PositionOptions).
    * @returns {Promise<Geoposition>} Returns a Promise that resolves with the [position](https://developer.mozilla.org/en-US/docs/Web/API/Position) of the device, or rejects with an error.
    */
@@ -181,15 +179,14 @@ export class Geolocation extends AwesomeCordovaNativePlugin {
    *
    * ```typescript
    * const subscription = this.geolocation.watchPosition()
-   *                               .filter((p) => p.coords !== undefined) //Filter Out Errors
-   *                               .subscribe(position => {
-   *   console.log(position.coords.longitude + ' ' + position.coords.latitude);
+   * .filter((p) => p.coords !== undefined) //Filter Out Errors
+   * .subscribe(position => {
+   * console.log(position.coords.longitude + ' ' + position.coords.latitude);
    * });
    *
    * // To stop notifications
    * subscription.unsubscribe();
    * ```
-   *
    * @param {GeolocationOptions} options  The [geolocation options](https://developer.mozilla.org/en-US/docs/Web/API/PositionOptions).
    * @returns {Observable<Geoposition | PositionError>} Returns an Observable that notifies with the [position](https://developer.mozilla.org/en-US/docs/Web/API/Position) of the device, or errors.
    */

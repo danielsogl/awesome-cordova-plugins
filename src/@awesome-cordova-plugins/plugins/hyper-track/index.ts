@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AwesomeCordovaNativePlugin, Cordova, Plugin } from '@awesome-cordova-plugins/core';
 
-const hypertrackIonicPluginVersion = "0.2.0"
+const hypertrackIonicPluginVersion = '0.2.0';
 // Minimal cordova-plugin-hypertrack-v3 version: 0.5.0
 @Plugin({
   pluginName: 'cordova-plugin-hypertrack-v3',
@@ -42,7 +42,7 @@ interface SuccessHandler {
   (): any;
 }
 interface LocationReceiver {
-  (location: CordovaLatestLocationResult): any;  
+  (location: CordovaLatestLocationResult): any;
 }
 
 // SDK instance that exposed from Cordova utilizes usage of callbacks, so we
@@ -77,7 +77,10 @@ export class CoordinatesValidationError extends Error {}
 
 /** Wrapper class for passing spatial geoposition as a geotag's expected location */
 export class Coordinates {
-  constructor(public latitude: number, public longitude: number) {
+  constructor(
+    public latitude: number,
+    public longitude: number
+  ) {
     if (latitude < -90.0 || latitude > 90.0 || longitude < -180.0 || longitude > 180.0) {
       throw new CoordinatesValidationError('latitude and longitude should be of correct values');
     }
@@ -85,7 +88,7 @@ export class Coordinates {
 
   public toString = (): string => {
     return JSON.stringify(this);
-  }
+  };
 }
 
 /** A blocker is an obstacle that needs to be resolved to achieve reliable tracking. */
@@ -100,28 +103,32 @@ export interface Blocker {
   resolve: () => void;
 }
 
-export type CordovaLatestLocationResult = {
-  type: "location",
-  location: Coordinates,
-} | {
-  type: "outage",
-  outage: {
-    code: number,
-    name: keyof typeof Outage
-  }
-}
+export type CordovaLatestLocationResult =
+  | {
+      type: 'location';
+      location: Coordinates;
+    }
+  | {
+      type: 'outage';
+      outage: {
+        code: number;
+        name: keyof typeof Outage;
+      };
+    };
 
-export type LocationResult = {
-  type: LocationResultType.LOCATION, 
-  value: Coordinates
-} | 
-{
-  type: LocationResultType.OUTAGE, 
-  value: Outage
-}
+export type LocationResult =
+  | {
+      type: LocationResultType.LOCATION;
+      value: Coordinates;
+    }
+  | {
+      type: LocationResultType.OUTAGE;
+      value: Outage;
+    };
 
 export enum LocationResultType {
-  LOCATION, OUTAGE
+  LOCATION,
+  OUTAGE,
 }
 
 export enum Outage {
@@ -131,7 +138,7 @@ export enum Outage {
   NOT_TRACKING,
   START_HAS_NOT_FINISHED,
   NO_GPS_SIGNAL,
-  RESTART_REQUIRED
+  RESTART_REQUIRED,
 }
 
 /**
@@ -170,12 +177,11 @@ export class HyperTrack {
    *
    * Initializes SDK. Also resolves SDK instance that could be used to query deviceId or set
    * various data.
-   *
    * @param publishableKey account-specific secret from the HyperTrack dashborad.
    * @see {@link https://dashboard.hypertrack.com/setup}.
    */
   static initialize(publishableKey: string): Promise<HyperTrack> {
-    console.log(`Hypertrack Ionic plugin version ${hypertrackIonicPluginVersion}`)
+    console.log(`Hypertrack Ionic plugin version ${hypertrackIonicPluginVersion}`);
     return new Promise((resolve, reject) => {
       new HyperTrackPlugin()
         .initialize(publishableKey)
@@ -188,7 +194,6 @@ export class HyperTrack {
 
   /**
    * Get the list of blockers that needs to be resolved for reliable tracking.
-   *
    * @see {Blocker}
    */
   static getBlockers(): Promise<Set<Blocker>> {
@@ -217,7 +222,6 @@ export class HyperTrack {
 
   /**
    * Sets device name that could be used to identify the device in HyperTrack dashboard
-   *
    * @param name
    */
   setDeviceName(name: string): Promise<void> {
@@ -232,7 +236,6 @@ export class HyperTrack {
 
   /**
    * Use this to set additional properties, like segments, teams etc.
-   *
    * @param metadata key-value pais of properties.
    */
   setDeviceMetadata(metadata: Object): Promise<void> {
@@ -247,7 +250,6 @@ export class HyperTrack {
 
   /**
    * Updates title and text in persistent notification, that appears when tracking is active.
-   *
    * @param title
    * @param message
    */
@@ -264,7 +266,6 @@ export class HyperTrack {
 
   /**
    * Adds special marker-like object to device timeline.
-   *
    * @param geotagData
    * @param expectedLocation
    */
@@ -332,46 +333,46 @@ export class HyperTrack {
     });
   }
 
-  /** 
-   * Resolves latest device location that was sent by the SDK. 
+  /**
+   * Resolves latest device location that was sent by the SDK.
    * Only available for Android platform.
-   * */
+   */
   getLatestLocation(): Promise<LocationResult> {
     return new Promise((resolve, reject) => {
       this.cordovaInstanceHandle.getLatestLocation(
-        locationResult => resolve(this.handleLocationResult(locationResult)),
-        err => reject(err)
+        (locationResult) => resolve(this.handleLocationResult(locationResult)),
+        (err) => reject(err)
       );
     });
   }
 
-  /** 
-   * Resolves latest device location from system location provider. 
+  /**
+   * Resolves latest device location from system location provider.
    * Only available for Android platform.
-   * */
+   */
   getCurrentLocation(): Promise<LocationResult> {
     return new Promise((resolve, reject) => {
       this.cordovaInstanceHandle.getCurrentLocation(
-        locationResult => resolve(this.handleLocationResult(locationResult)),
-        err => reject(err)
+        (locationResult) => resolve(this.handleLocationResult(locationResult)),
+        (err) => reject(err)
       );
     });
   }
 
   private handleLocationResult(locationResult: CordovaLatestLocationResult): LocationResult {
     switch (locationResult.type) {
-      case "location": {
+      case 'location': {
         return {
           type: LocationResultType.LOCATION,
-          value: locationResult.location
-        }
+          value: locationResult.location,
+        };
       }
-      case "outage": {
-        const outage = Outage[locationResult.outage.name]
+      case 'outage': {
+        const outage = Outage[locationResult.outage.name];
         return {
           type: LocationResultType.OUTAGE,
-          value: outage
-        }
+          value: outage,
+        };
       }
     }
   }

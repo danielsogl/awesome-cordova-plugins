@@ -144,7 +144,6 @@ export interface StripeCardTokenRes {
 export class Stripe extends AwesomeCordovaNativePlugin {
   /**
    * Set publishable key
-   *
    * @param publishableKey {string} Publishable key
    * @returns {Promise<void>}
    */
@@ -155,7 +154,6 @@ export class Stripe extends AwesomeCordovaNativePlugin {
 
   /**
    * Create Credit Card Token
-   *
    * @param params {StripeCardTokenParams} Credit card information
    * @returns {Promise<StripeCardTokenRes>} returns a promise that resolves with the token object, or rejects with an error
    */
@@ -166,7 +164,6 @@ export class Stripe extends AwesomeCordovaNativePlugin {
 
   /**
    * Create a bank account token
-   *
    * @param params {StripeBankAccountParams} Bank account information
    * @returns {Promise<string>} returns a promise that resolves with the token, or rejects with an error
    */
@@ -177,7 +174,6 @@ export class Stripe extends AwesomeCordovaNativePlugin {
 
   /**
    * Validates a credit card number
-   *
    * @param cardNumber {string} Credit card number
    * @returns {Promise<any>} returns a promise that resolves if the number is valid, and rejects if it's invalid
    */
@@ -188,7 +184,6 @@ export class Stripe extends AwesomeCordovaNativePlugin {
 
   /**
    * Validates a CVC number
-   *
    * @param cvc {string} CVC number
    * @returns {Promise<any>} returns a promise that resolves if the number is valid, and rejects if it's invalid
    */
@@ -199,7 +194,6 @@ export class Stripe extends AwesomeCordovaNativePlugin {
 
   /**
    * Validates an expiry date
-   *
    * @param expMonth {string} expiry month (0 - 11)
    * @param expYear {string} expiry year
    * @returns {Promise<any>} returns a promise that resolves if the date is valid, and rejects if it's invalid
@@ -211,7 +205,6 @@ export class Stripe extends AwesomeCordovaNativePlugin {
 
   /**
    * Get a card type from card number
-   *
    * @param cardNumber {string} Card number
    * @returns {Promise<string>} returns a promise that resolves with the credit card type
    */

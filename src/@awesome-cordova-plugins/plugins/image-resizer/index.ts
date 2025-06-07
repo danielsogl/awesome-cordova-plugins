@@ -1,6 +1,3 @@
-/* eslint-disable jsdoc/require-param-type */
-/* eslint-disable jsdoc/check-tag-names */
-
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 
@@ -77,7 +74,6 @@ export interface ImageResizerOptions {
 export class ImageResizer extends AwesomeCordovaNativePlugin {
   /**
    * This function resizes the image based on the options provided
-   *
    * @param options {ImageResizerOptions} image resize options
    * @return {Promise<string>} Returns a Promise that resolves the resized image file URI
    * otherwise rejects with an error.

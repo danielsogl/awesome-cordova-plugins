@@ -41,7 +41,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class CloudSettings extends AwesomeCordovaNativePlugin {
   /**
    * Indicates if any stored cloud settings currently exist for the current user.
-   *
    * @returns {Promise<boolean>} Will be passed a boolean flag which indicates whether an store settings exist for the user.
    */
   @Cordova()
@@ -51,7 +50,6 @@ export class CloudSettings extends AwesomeCordovaNativePlugin {
 
   /**
    * Saves the settings to cloud backup.
-   *
    * @param {object} settings - a JSON structure representing the user settings to save to cloud backup.
    * @param {boolean} [overwrite] - (optional) if true, existing settings will be replaced rather than updated. Defaults to false.
    * If false, existing settings will be merged with the new settings passed to this function.
@@ -67,7 +65,6 @@ export class CloudSettings extends AwesomeCordovaNativePlugin {
 
   /**
    * Loads the current settings.
-   *
    * @returns {Promise<any>} Will be passed a single object argument which contains the saved settings as a JSON object.
    */
   @Cordova()
@@ -77,7 +74,6 @@ export class CloudSettings extends AwesomeCordovaNativePlugin {
 
   /**
    * Registers a function which will be called if/when settings on the device have been updated from the cloud.
-   *
    * @param {Function} handler - callback function to invoke when device settings have been updated from the cloud.
    */
   @Cordova({ sync: true })
@@ -85,7 +81,6 @@ export class CloudSettings extends AwesomeCordovaNativePlugin {
 
   /**
    * Outputs verbose log messages from the native plugin components to the JS console.
-   *
    * @returns {Promise<void>}
    */
   @Cordova()

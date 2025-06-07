@@ -41,7 +41,6 @@ import { Observable } from 'rxjs';
 export class BluetoothSerial extends AwesomeCordovaNativePlugin {
   /**
    * Connect to a Bluetooth device
-   *
    * @param {string} macAddress_or_uuid Identifier of the remote device
    * @returns {Observable<any>} Subscribe to connect, unsubscribe to disconnect.
    */
@@ -56,7 +55,6 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
 
   /**
    * Connect insecurely to a Bluetooth device
-   *
    * @param {string} macAddress Identifier of the remote device
    * @returns {Observable<any>} Subscribe to connect, unsubscribe to disconnect.
    */
@@ -71,7 +69,6 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
 
   /**
    * Disconnect from the connected device
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -81,7 +78,6 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
 
   /**
    * Writes data to the serial port
-   *
    * @param {any} data ArrayBuffer of data
    * @returns {Promise<any>} returns a promise when data has been written
    */
@@ -94,7 +90,6 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
 
   /**
    * Gets the number of bytes of data available
-   *
    * @returns {Promise<any>} returns a promise that contains the available bytes
    */
   @Cordova({
@@ -106,7 +101,6 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
 
   /**
    * Reads data from the buffer
-   *
    * @returns {Promise<any>} returns a promise with data from the buffer
    */
   @Cordova({
@@ -118,7 +112,6 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
 
   /**
    * Reads data from the buffer until it reaches a delimiter
-   *
    * @param {string} delimiter string that you want to search until
    * @returns {Promise<any>} returns a promise
    */
@@ -131,7 +124,6 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
 
   /**
    * Subscribe to be notified when data is received
-   *
    * @param {string} delimiter the string you want to watch for
    * @returns {Observable<any>} returns an observable.
    */
@@ -146,7 +138,6 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
 
   /**
    * Subscribe to be notified when data is received
-   *
    * @returns {Observable<any>} returns an observable
    */
   @Cordova({
@@ -160,7 +151,6 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
 
   /**
    * Clears data in buffer
-   *
    * @returns {Promise<any>} returns a promise when completed
    */
   @Cordova({
@@ -172,7 +162,6 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
 
   /**
    * Lists bonded devices
-   *
    * @returns {Promise<any>} returns a promise
    */
   @Cordova({
@@ -184,7 +173,6 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
 
   /**
    * Reports if bluetooth is enabled
-   *
    * @returns {Promise<any>} returns a promise
    */
   @Cordova({
@@ -196,7 +184,6 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
 
   /**
    * Reports the connection status
-   *
    * @returns {Promise<any>} returns a promise
    */
   @Cordova({
@@ -208,7 +195,6 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
 
   /**
    * Reads the RSSI from the connected peripheral
-   *
    * @returns {Promise<any>} returns a promise
    */
   @Cordova({
@@ -220,7 +206,6 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
 
   /**
    * Show the Bluetooth settings on the device
-   *
    * @returns {Promise<any>} returns a promise
    */
   @Cordova({
@@ -232,7 +217,6 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
 
   /**
    * Enable Bluetooth on the device
-   *
    * @returns {Promise<any>} returns a promise
    */
   @Cordova({
@@ -244,7 +228,6 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
 
   /**
    * Discover unpaired devices
-   *
    * @returns {Promise<any>} returns a promise
    */
   @Cordova({
@@ -256,7 +239,6 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
 
   /**
    * Subscribe to be notified on Bluetooth device discovery. Discovery process must be initiated with the `discoverUnpaired` function.
-   *
    * @returns {Observable<any>} Returns an observable
    */
   @Cordova({
@@ -270,7 +252,6 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets the human readable device name that is broadcasted to other devices
-   *
    * @param {string} newName Desired name of device
    */
   @Cordova({
@@ -281,7 +262,6 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
 
   /**
    * Makes the device discoverable by other devices
-   *
    * @param {number} discoverableDuration Desired number of seconds device should be discoverable for
    */
   @Cordova({

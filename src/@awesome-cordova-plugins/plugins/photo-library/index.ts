@@ -103,7 +103,6 @@ export function CordovaFiniteObservable(opts: CordovaFiniteObservableOptions = {
 export class PhotoLibrary extends AwesomeCordovaNativePlugin {
   /**
    * Retrieves library items. Library item contains photo metadata like width and height, as well as photoURL and thumbnailURL.
-   *
    * @param success
    * @param error
    * @param options {GetLibraryOptions} Optional, like thumbnail size and chunks settings.
@@ -122,7 +121,6 @@ export class PhotoLibrary extends AwesomeCordovaNativePlugin {
 
   /**
    * Asks user permission to access photo library.
-   *
    * @param options {RequestAuthorizationOptions} Optional, like whether only read access needed or read/write.
    * @returns { Promise<void>} Returns a promise that resolves when permissions are granted, and fails when not.
    */
@@ -135,7 +133,6 @@ export class PhotoLibrary extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns list of photo albums on device.
-   *
    * @returns {Promise<AlbumItem[]>} Resolves to list of albums.
    */
   @Cordova({
@@ -147,7 +144,6 @@ export class PhotoLibrary extends AwesomeCordovaNativePlugin {
 
   /**
    * Provides means to request URL of thumbnail, with specified size or quality.
-   *
    * @param photo {string | LibraryItem} Id of photo, or LibraryItem.
    * @param options {GetThumbnailOptions} Options, like thumbnail size or quality.
    * @returns {Promise<string>} Resolves to URL of cdvphotolibrary schema.
@@ -162,7 +158,6 @@ export class PhotoLibrary extends AwesomeCordovaNativePlugin {
 
   /**
    * Provides means to request photo URL by id.
-   *
    * @param photo {string | LibraryItem} Id or LibraryItem.
    * @param options {GetPhotoOptions} Optional options.
    * @returns {Promise<string>} Resolves to URL of cdvphotolibrary schema.
@@ -177,7 +172,6 @@ export class PhotoLibrary extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns thumbnail as Blob.
-   *
    * @param photo {string | LibraryItem} Id or LibraryItem.
    * @param options {GetThumbnailOptions} Options, like thumbnail size or quality.
    * @returns {Promise<Blob>} Resolves requested thumbnail as blob.
@@ -192,7 +186,6 @@ export class PhotoLibrary extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns photo as Blob.
-   *
    * @param photo {string | LibraryItem} Id or LibraryItem.
    * @param options {GetPhotoOptions} Optional options.
    * @returns {Promise<Blob>} Resolves requested photo as blob.
@@ -208,7 +201,6 @@ export class PhotoLibrary extends AwesomeCordovaNativePlugin {
   /**
    * Saves image to specified album. Album will be created if not exists.
    * LibraryItem that represents saved image is returned.
-   *
    * @param url {string} URL of a file, or DataURL.
    * @param album {AlbumItem | string} Name of an album or AlbumItem object.
    * @param options {GetThumbnailOptions} Options, like thumbnail size for resulting LibraryItem.
@@ -224,7 +216,6 @@ export class PhotoLibrary extends AwesomeCordovaNativePlugin {
 
   /**
    * Saves video to specified album. Album will be created if not exists.
-   *
    * @param url {string} URL of a file, or DataURL.
    * @param album {AlbumItem | string} Name of an album or AlbumItem object.
    * @returns {Promise<void>} Resolves when save operation completes.

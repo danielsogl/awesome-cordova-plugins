@@ -126,7 +126,7 @@ export type InAppBrowserEventType =
   | 'beforeload'
   | 'message'
   | 'customscheme'
-  | string
+  | string;
 
 export interface InAppBrowserEvent extends Event {
   /** the event name */
@@ -149,9 +149,8 @@ export class InAppBrowserObject {
 
   /**
    * Opens a URL in a new InAppBrowser instance, the current browser instance, or the system browser.
-   *
    * @param {string} url     The URL to load.
-   * @param {string} [target="self"]  The target in which to load the URL, an optional parameter that defaults to _self.
+   * @param {string} [target]  The target in which to load the URL, an optional parameter that defaults to _self.
    *                 _self: Opens in the WebView if the URL is in the white list, otherwise it opens in the InAppBrowser.
    *                 _blank: Opens in the InAppBrowser.
    *                 _system: Opens in the system's web browser.
@@ -180,7 +179,6 @@ export class InAppBrowserObject {
 
   /**
    * Method to be called after the "beforeload" event to continue the script
-   *
    * @param strUrl {String} The URL the InAppBrowser should navigate to.
    */
   @CordovaInstance({ sync: true })
@@ -208,7 +206,6 @@ export class InAppBrowserObject {
 
   /**
    * Injects JavaScript code into the InAppBrowser window.
-   *
    * @param script {Object} Details of the script to run, specifying either a file or code key.
    * @param script.file
    * @param script.code
@@ -221,7 +218,6 @@ export class InAppBrowserObject {
 
   /**
    * Injects CSS into the InAppBrowser window.
-   *
    * @param css {Object} Details of the script to run, specifying either a file or code key.
    * @param css.file
    * @param css.code
@@ -234,7 +230,6 @@ export class InAppBrowserObject {
 
   /**
    * A method that allows you to listen to events happening in the browser.
-   *
    * @param event {InAppBrowserEventType} Name of the event
    * @returns {Observable<InAppBrowserEvent>} Returns back an observable that will listen to the event on subscribe, and will stop listening to the event on unsubscribe.
    */
@@ -245,7 +240,6 @@ export class InAppBrowserObject {
       return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
     });
   }
-
 }
 
 /**
@@ -291,7 +285,6 @@ export class InAppBrowserObject {
 export class InAppBrowser extends AwesomeCordovaNativePlugin {
   /**
    * Opens a URL in a new InAppBrowser instance, the current browser instance, or the system browser.
-   *
    * @param  url {string}     The URL to load.
    * @param  target {string}  The target in which to load the URL, an optional parameter that defaults to _self.
    * @param  options {string} Options for the InAppBrowser. Optional, defaulting to: location=yes.

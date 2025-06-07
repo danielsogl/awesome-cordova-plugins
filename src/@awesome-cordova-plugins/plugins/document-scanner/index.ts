@@ -79,7 +79,6 @@ export interface DocumentScannerOptions {
 export class DocumentScanner extends AwesomeCordovaNativePlugin {
   /**
    * Scan a document
-   *
    * @param opts {DocumentScannerOptions} optional parameter for controlling scanning
    * @returns {Promise<string>} file URL of scanned document image
    */

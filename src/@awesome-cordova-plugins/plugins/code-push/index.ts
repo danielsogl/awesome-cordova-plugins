@@ -54,7 +54,6 @@ export interface IRemotePackage extends IPackage {
 
   /**
    * Downloads the package update from the CodePush service.
-   *
    * @param {SuccessCallback} downloadSuccess Called with one parameter, the downloaded package information, once the download completed successfully.
    * @param {ErrorCallback} [downloadError] Optional callback invoked in case of an error.
    * @param {SuccessCallback<DownloadProgress>} [downloadProgress] Optional callback invoked during the download process. It is called several times with one DownloadProgress parameter.
@@ -67,7 +66,6 @@ export interface IRemotePackage extends IPackage {
 
   /**
    * Aborts the current download session, previously started with download().
-   *
    * @param {SuccessCallback<void>} [abortSuccess] Optional callback invoked if the abort operation succeeded.
    * @param {ErrorCallback} [abortError] Optional callback invoked in case of an error.
    */
@@ -94,7 +92,6 @@ export interface ILocalPackage extends IPackage {
    * Applies this package to the application. The application will be reloaded with this package and on every application launch this package will be loaded.
    * On the first run after the update, the application will wait for a codePush.notifyApplicationReady() call. Once this call is made, the install operation is considered a success.
    * Otherwise, the install operation will be marked as failed, and the application is reverted to its previous version on the next run.
-   *
    * @param {SuccessCallback<InstallMode>} installSuccess Callback invoked if the install operation succeeded.
    * @param {ErrorCallback} [installError] Optional callback invoked in case of an error.
    * @param {InstallOptions} [installOptions] Optional parameter used for customizing the installation behavior.
@@ -184,7 +181,6 @@ declare class AcquisitionManager {
 interface CodePushCordovaPlugin {
   /**
    * Get the current package information.
-   *
    * @param packageSuccess Callback invoked with the currently deployed package information.
    * @param packageError Optional callback invoked in case of an error.
    */
@@ -198,7 +194,6 @@ interface CodePushCordovaPlugin {
 
   /**
    * Checks with the CodePush server if an update package is available for download.
-   *
    * @param {SuccessCallback<IRemotePackage>} querySuccess Callback invoked in case of a successful response from the server.
    *                     The callback takes one RemotePackage parameter. A non-null package is a valid update.
    *                     A null package means the application is up to date for the current native application version.
@@ -215,7 +210,6 @@ interface CodePushCordovaPlugin {
    * Notifies the plugin that the update operation succeeded and that the application is ready.
    * Calling this function is required on the first run after an update. On every subsequent application run, calling this function is a noop.
    * If using sync API, calling this function is not required since sync calls it internally.
-   *
    * @param {SuccessCallback<void>} [notifySucceeded] Optional callback invoked if the plugin was successfully notified.
    * @param {ErrorCallback} [notifyFailed] Optional callback invoked in case of an error during notifying the plugin.
    */
@@ -224,7 +218,6 @@ interface CodePushCordovaPlugin {
   /**
    * Reloads the application. If there is a pending update package installed using ON_NEXT_RESTART or ON_NEXT_RESUME modes, the update
    * will be immediately visible to the user. Otherwise, calling this function will simply reload the current version of the application.
-   *
    * @param {SuccessCallback<void>} installSuccess
    * @param {ErrorCallback} [errorCallback]
    */
@@ -237,14 +230,13 @@ interface CodePushCordovaPlugin {
    * The algorithm of this method is the following:
    * - Checks for an update on the CodePush server.
    * - If an update is available
-   *         - If the update is mandatory and the alertMessage is set in options, the user will be informed that the application will be updated to the latest version.
-   *           The update package will then be downloaded and applied.
-   *         - If the update is not mandatory and the confirmMessage is set in options, the user will be asked if they want to update to the latest version.
-   *           If they decline, the syncCallback will be invoked with SyncStatus.UPDATE_IGNORED.
-   *         - Otherwise, the update package will be downloaded and applied with no user interaction.
+   * - If the update is mandatory and the alertMessage is set in options, the user will be informed that the application will be updated to the latest version.
+   * The update package will then be downloaded and applied.
+   * - If the update is not mandatory and the confirmMessage is set in options, the user will be asked if they want to update to the latest version.
+   * If they decline, the syncCallback will be invoked with SyncStatus.UPDATE_IGNORED.
+   * - Otherwise, the update package will be downloaded and applied with no user interaction.
    * - If no update is available on the server, or if a previously rolled back update is available and the ignoreFailedUpdates is set to true, the syncCallback will be invoked with the SyncStatus.UP_TO_DATE.
    * - If an error occurs during checking for update, downloading or installing it, the syncCallback will be invoked with the SyncStatus.ERROR.
-   *
    * @param {SuccessCallback<SyncStatus>} [syncCallback] Optional callback to be called with the status of the sync operation.
    *                     The callback will be called only once, and the possible statuses are defined by the SyncStatus enum.
    * @param {SyncOptions} [syncOptions] Optional SyncOptions parameter configuring the behavior of the sync operation.
@@ -468,7 +460,6 @@ export interface DownloadProgress {
 export class CodePush extends AwesomeCordovaNativePlugin {
   /**
    * Get the current package information.
-   *
    * @returns {Promise<ILocalPackage>}
    */
   @Cordova()
@@ -479,7 +470,6 @@ export class CodePush extends AwesomeCordovaNativePlugin {
   /**
    * Gets the pending package information, if any. A pending package is one that has been installed but the application still runs the old code.
    * This happens only after a package has been installed using ON_NEXT_RESTART or ON_NEXT_RESUME mode, but the application was not restarted/resumed yet.
-   *
    * @returns {Promise<ILocalPackage>}
    */
   @Cordova()
@@ -489,7 +479,6 @@ export class CodePush extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks with the CodePush server if an update package is available for download.
-   *
    * @param {string} [deploymentKey] Optional deployment key that overrides the config.xml setting.
    * @returns {Promise<IRemotePackage>}
    */
@@ -504,7 +493,6 @@ export class CodePush extends AwesomeCordovaNativePlugin {
    * Notifies the plugin that the update operation succeeded and that the application is ready.
    * Calling this function is required on the first run after an update. On every subsequent application run, calling this function is a noop.
    * If using sync API, calling this function is not required since sync calls it internally.
-   *
    * @returns {Promise<void>}
    */
   @Cordova()
@@ -515,7 +503,6 @@ export class CodePush extends AwesomeCordovaNativePlugin {
   /**
    * Reloads the application. If there is a pending update package installed using ON_NEXT_RESTART or ON_NEXT_RESUME modes, the update
    * will be immediately visible to the user. Otherwise, calling this function will simply reload the current version of the application.
-   *
    * @returns {Promise<void>}
    */
   @Cordova()
@@ -530,14 +517,13 @@ export class CodePush extends AwesomeCordovaNativePlugin {
    * The algorithm of this method is the following:
    * - Checks for an update on the CodePush server.
    * - If an update is available
-   *         - If the update is mandatory and the alertMessage is set in options, the user will be informed that the application will be updated to the latest version.
-   *           The update package will then be downloaded and applied.
-   *         - If the update is not mandatory and the confirmMessage is set in options, the user will be asked if they want to update to the latest version.
-   *           If they decline, the syncCallback will be invoked with SyncStatus.UPDATE_IGNORED.
-   *         - Otherwise, the update package will be downloaded and applied with no user interaction.
+   * - If the update is mandatory and the alertMessage is set in options, the user will be informed that the application will be updated to the latest version.
+   * The update package will then be downloaded and applied.
+   * - If the update is not mandatory and the confirmMessage is set in options, the user will be asked if they want to update to the latest version.
+   * If they decline, the syncCallback will be invoked with SyncStatus.UPDATE_IGNORED.
+   * - Otherwise, the update package will be downloaded and applied with no user interaction.
    * - If no update is available on the server, or if a previously rolled back update is available and the ignoreFailedUpdates is set to true, the syncCallback will be invoked with the SyncStatus.UP_TO_DATE.
    * - If an error occurs during checking for update, downloading or installing it, the syncCallback will be invoked with the SyncStatus.ERROR.
-   *
    * @param {SyncOptions} [syncOptions] Optional SyncOptions parameter configuring the behavior of the sync operation.
    * @param {SuccessCallback<DownloadProgress>} [downloadProgress] Optional callback invoked during the download process. It is called several times with one DownloadProgress parameter.
    * @returns {Observable<SyncStatus>}

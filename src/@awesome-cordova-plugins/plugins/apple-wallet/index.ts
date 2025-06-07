@@ -155,7 +155,6 @@ export interface WatchExistData {
 export class AppleWallet extends AwesomeCordovaNativePlugin {
   /**
    * Simple call to determine if the current device supports Apple Pay and has a supported card installed.
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova()
@@ -165,7 +164,6 @@ export class AppleWallet extends AwesomeCordovaNativePlugin {
 
   /**
    * Simple call to check Card Eligibility
-   *
    * @param {string} primaryAccountIdentifier
    * @returns {Promise<boolean>}
    */
@@ -176,7 +174,6 @@ export class AppleWallet extends AwesomeCordovaNativePlugin {
 
   /**
    * Simple call to checkCardEligibilityBySuffix
-   *
    * @param {string} cardSuffix
    * @returns {Promise<PairedDevicesFlags>}
    */
@@ -187,7 +184,6 @@ export class AppleWallet extends AwesomeCordovaNativePlugin {
 
   /**
    * Simple call to check out if there is any paired Watches so that you can toggle visibility of 'Add to Watch' button
-   *
    * @returns {Promise<WatchExistData>}
    */
   @Cordova()
@@ -197,7 +193,6 @@ export class AppleWallet extends AwesomeCordovaNativePlugin {
 
   /**
    * Simple call to check paired devices with a card by its suffix
-   *
    * @param {string} cardSuffix
    * @returns {Promise<PairedDevicesFlags>}
    */
@@ -208,7 +203,6 @@ export class AppleWallet extends AwesomeCordovaNativePlugin {
 
   /**
    * Simple call with the configuration data needed to instantiate a new PKAddPaymentPassViewController object.
-   *
    * @param {cardData} data
    * @returns {Promise<SignatureCertificatesData>}
    */
@@ -219,7 +213,6 @@ export class AppleWallet extends AwesomeCordovaNativePlugin {
 
   /**
    * Simple completion handler that takes encrypted card data returned from your server side, in order to get the final response from Apple to know if the card is added succesfully or not.
-   *
    * @param {encryptedCardData} data
    * @returns {Promise<string>}
    */

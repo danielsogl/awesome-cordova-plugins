@@ -143,7 +143,6 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
    * Sets a new SDK referrer.
    * @param options.referrer - Application referrer name
    * @param options.source - Referrer source name
-   *
    * @kind **Android only**
    */
   @Cordova({ sync: true })
@@ -288,7 +287,6 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
   /**
    * @description Sets a proxy host name for data transfer.
    * @param options.relayProxyHost - Proxy host name
-   *
    * @kind **Android only**
    */
   @Cordova({ sync: true })
@@ -316,7 +314,6 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * @description Sets whether or not Android's `Jobs` are used for uploading.
-   *
    * @kind **Android only**
    */
   @Cordova({ sync: true })
@@ -387,7 +384,6 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * @description Enables the tracking of all user's interaction events.
-   *
    * @kind **Android only**
    * @param options.isEnabled - A boolean that determines whether or not the tracking of all user's interaction events is enabled.
    */
@@ -415,7 +411,7 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * @description Sets whether or not a WebView class should be considered sensitive.
-   * @default True by default in the SDK.
+   * @default
    * @param options.isSensitive - A boolean that determines whether or not the WebView class should be considered sensitive.
    */
   @Cordova({ sync: true })
@@ -461,7 +457,6 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * @description Registers a listener that gets triggered when the User URL changes.
-   *
    * @param options.userUrlChangedCallback - Callback to be invoked when the User URL changes
    */
   @Cordova({ sync: true })
@@ -471,7 +466,6 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * @description Registers a listener that gets triggered when the Session URL changes.
-   *
    * @param options.sessionUrlChangedCallback - Callback to be invoked when the Session URL changes
    */
   @Cordova({ sync: true })
@@ -481,7 +475,6 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * @description Registers a listener that gets triggered when the native SDK's Rendering mode changes.
-   *
    * @param options.renderingModeChangedCallback - Callback to be invoked when the native SDK's Rendering mode changes
    * @kind **iOS only**
    */
@@ -494,7 +487,6 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * @description Registers a listener that gets triggered when the native SDK's Recording status changes.
-   *
    * @param options.recordingStatusChangedCallback - Callback to be invoked when the native SDK's Recording status changes
    * @kind **iOS only**
    */
@@ -539,7 +531,6 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * @description Creates a new @see RecordingMask .
-   *
    * @param options.recordingMaskList - an array of recording mask elements containing their bounding rectangles and mask types.
    * @see RecordingMaskRect , @see RecordingMaskType
    */
@@ -550,7 +541,6 @@ export class Smartlook extends AwesomeCordovaNativePlugin {
 
   /**
    * @description Enables advanced SDK logging capabilities.
-   *
    * @kind **Android only**
    */
   @Cordova({ sync: true })

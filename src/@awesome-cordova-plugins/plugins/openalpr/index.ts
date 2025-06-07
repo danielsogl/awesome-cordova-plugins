@@ -62,7 +62,6 @@ export class OpenALPR extends AwesomeCordovaNativePlugin {
 
   /**
    * This function does something
-   *
    * @param imageData {any} Base64 encoding of the image data or the image file URI
    * @param options {OpenALPROptions} Options to pass to the OpenALPR scanner
    * @returns {Promise<any>} Returns a promise that resolves when something happens

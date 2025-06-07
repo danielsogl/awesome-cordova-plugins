@@ -35,7 +35,6 @@ import { Observable } from 'rxjs';
 export class GoogleNearby extends AwesomeCordovaNativePlugin {
   /**
    * Publish a message
-   *
    * @param message {string} Message to publish
    * @returns {Promise<any>} Returns a promise that resolves when the message got published
    */
@@ -46,7 +45,6 @@ export class GoogleNearby extends AwesomeCordovaNativePlugin {
 
   /**
    * Subscribe to receive messages
-   *
    * @returns {Observable<any>} Returns an observable that emits received messages
    */
   @Cordova({

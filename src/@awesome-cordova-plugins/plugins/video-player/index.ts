@@ -53,7 +53,6 @@ export interface VideoOptions {
 export class VideoPlayer extends AwesomeCordovaNativePlugin {
   /**
    * Plays the video from the passed url.
-   *
    * @param fileUrl {string} File url to the video.
    * @param options {VideoOptions?} Optional video playback settings. See options above.
    * @returns {Promise<any>} Resolves promise when the video was played successfully.

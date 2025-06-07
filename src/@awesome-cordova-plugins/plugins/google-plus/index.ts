@@ -31,7 +31,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class GooglePlus extends AwesomeCordovaNativePlugin {
   /**
    * The login function walks the user through the Google Auth process.
-   *
    * @param options
    * @returns {Promise<any>}
    */
@@ -45,7 +44,6 @@ export class GooglePlus extends AwesomeCordovaNativePlugin {
 
   /**
    * You can call trySilentLogin to check if they're already signed in to the app and sign them in silently if they are.
-   *
    * @param options
    * @returns {Promise<any>}
    */
@@ -56,7 +54,6 @@ export class GooglePlus extends AwesomeCordovaNativePlugin {
 
   /**
    * This will clear the OAuth2 token.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -66,7 +63,6 @@ export class GooglePlus extends AwesomeCordovaNativePlugin {
 
   /**
    * This will clear the OAuth2 token, forget which account was used to login, and disconnect that account from the app. This will require the user to allow the app access again next time they sign in. Be aware that this effect is not always instantaneous. It can take time to completely disconnect.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -76,7 +72,6 @@ export class GooglePlus extends AwesomeCordovaNativePlugin {
 
   /**
    * This will retrieve the Android signing certificate fingerprint which is required in the Google Developer Console.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()

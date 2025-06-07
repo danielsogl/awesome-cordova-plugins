@@ -208,7 +208,11 @@ export interface IContactField {
  * @hidden
  */
 export class ContactField implements IContactField {
-  constructor(public type?: string, public value?: string, public pref?: boolean) {}
+  constructor(
+    public type?: string,
+    public value?: string,
+    public pref?: boolean
+  ) {}
 }
 
 export interface IContactAddress {
@@ -303,7 +307,6 @@ export class ContactFindOptions implements IContactFindOptions {
  * @premier contacts
  * @description
  * Access and manage Contacts on the device.
- *
  * @usage
  *
  * ```typescript

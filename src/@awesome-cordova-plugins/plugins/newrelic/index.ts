@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
  * @name newrelic mobile
  * @description
  * This NewRelic plugin collect crashes, network traffic, and other information for hybrid apps using native components.
- *
  * @usage
  * ```typescript
  * import { NewRelic } from "@awesome-cordova-plugins/newrelic/ngx";

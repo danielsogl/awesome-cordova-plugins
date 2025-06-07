@@ -32,7 +32,6 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
 export class ServiceDiscovery extends AwesomeCordovaNativePlugin {
   /**
    * Finds and returns metadata about devices discovered on the network via SSDP / UPnP / DLNA
-   *
    * @param service {string} The service name to discover
    * @returns {Promise<any>} Returns a promise that resolves when something happens
    */

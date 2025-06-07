@@ -53,7 +53,6 @@ export interface SmsOptionsAndroid {
 export class SMS extends AwesomeCordovaNativePlugin {
   /**
    * Sends sms to a number
-   *
    * @param phoneNumber {string|string[]} Phone number
    * @param message {string} Message
    * @param options {SmsOptions} Options
@@ -69,7 +68,6 @@ export class SMS extends AwesomeCordovaNativePlugin {
 
   /**
    * This function lets you know if the app has permission to send SMS
-   *
    * @returns {Promise<boolean>} returns a promise that resolves with a boolean that indicates if we have permission
    */
   @Cordova({

@@ -51,7 +51,6 @@ export class AllInOneSDK extends AwesomeCordovaNativePlugin {
    * This function checks if Paytm Application is available on the device.
    * If Paytm exists then it invokes Paytm Application with the parameters sent and creates an order.
    * If the Paytm Application is not available the transaction is continued on a webView within All-in-One SDK.
-   *
    * @param options {PaymentIntentModel} These parameters are required and will be used to create an order.
    * @returns {Promise<PaytmResponse>} Returns a promise that resolves when a transaction completes(both failed and successful).
    */

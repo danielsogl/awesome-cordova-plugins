@@ -89,21 +89,18 @@ export class Network extends AwesomeCordovaNativePlugin {
 
   /**
    * Connection type
-   *
    * @returns {string}
    */
   @CordovaProperty() type: string;
 
   /**
    * Downlink Max Speed
-   *
    * @returns {string}
    */
   @CordovaProperty() downlinkMax: string;
 
   /**
    * Returns an observable to watch connection changes
-   *
    * @returns {Observable<'connected' | 'disconnected'>}
    */
   @CordovaCheck()
@@ -116,7 +113,6 @@ export class Network extends AwesomeCordovaNativePlugin {
 
   /**
    * Get notified when the device goes offline
-   *
    * @returns {Observable<any>} Returns an observable.
    */
   @Cordova({
@@ -130,7 +126,6 @@ export class Network extends AwesomeCordovaNativePlugin {
 
   /**
    * Get notified when the device goes online
-   *
    * @returns {Observable<any>} Returns an observable.
    */
   @Cordova({

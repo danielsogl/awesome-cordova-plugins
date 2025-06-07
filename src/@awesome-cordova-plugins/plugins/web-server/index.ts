@@ -64,7 +64,6 @@ export interface Request {
 export class WebServer extends AwesomeCordovaNativePlugin {
   /**
    * This method will start your webserver.
-   *
    * @param port {number} Port number (default to 8080)
    */
   @Cordova({
@@ -84,7 +83,6 @@ export class WebServer extends AwesomeCordovaNativePlugin {
 
   /**
    * This method returns an observable that streams HTTP requests to an observer.
-   *
    * @returns {Observable<Request>} Returns an observable to resolve as a Request object
    */
   @Cordova({
@@ -98,7 +96,6 @@ export class WebServer extends AwesomeCordovaNativePlugin {
 
   /**
    * This method sends a response to a request.
-   *
    * @param requestId {string} Request ID to respond to
    * @param responseObject {Response} Response object
    * @returns {Promise<any>} Returns a promise that resolves when something happens

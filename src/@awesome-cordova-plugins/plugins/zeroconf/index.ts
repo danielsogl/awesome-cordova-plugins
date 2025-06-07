@@ -62,7 +62,6 @@ export interface ZeroconfResult {
 export class Zeroconf extends AwesomeCordovaNativePlugin {
   /**
    * Returns this device's hostname.
-   *
    * @returns {Promise<string>}
    */
   @Cordova()
@@ -72,7 +71,6 @@ export class Zeroconf extends AwesomeCordovaNativePlugin {
 
   /**
    * Publishes a new service.
-   *
    * @param type {string} Service type name, e.g. "_http._tcp".
    * @param domain {string} Domain scope of the service, typically "local.".
    * @param name {string} Unqualified service instance name.
@@ -87,7 +85,6 @@ export class Zeroconf extends AwesomeCordovaNativePlugin {
 
   /**
    * Unregisters a service.
-   *
    * @param type {string} Service type name, e.g. "_http._tcp".
    * @param domain {string} Domain scope of the service, typically "local.".
    * @param name {string} Unqualified service instance name.
@@ -100,7 +97,6 @@ export class Zeroconf extends AwesomeCordovaNativePlugin {
 
   /**
    * Unregisters all published services.
-   *
    * @returns {Promise<void>}
    */
   @Cordova()
@@ -110,7 +106,6 @@ export class Zeroconf extends AwesomeCordovaNativePlugin {
 
   /**
    * Starts watching for services of the specified type.
-   *
    * @param type {string} Service type name, e.g. "_http._tcp".
    * @param domain {string} Domain scope of the service, typically "local.".
    * @returns {Observable<ZeroconfResult>} Returns an Observable that notifies of each service added or removed.
@@ -126,7 +121,6 @@ export class Zeroconf extends AwesomeCordovaNativePlugin {
 
   /**
    * Stops watching for services of the specified type.
-   *
    * @param type {string} Service type name, e.g. "_http._tcp".
    * @param domain {string} Domain scope of the service, typically "local.".
    * @returns {Promise<void>}
@@ -138,7 +132,6 @@ export class Zeroconf extends AwesomeCordovaNativePlugin {
 
   /**
    * Closes the service browser and stops watching.
-   *
    * @returns {Promise<void>}
    */
   @Cordova()
@@ -148,7 +141,6 @@ export class Zeroconf extends AwesomeCordovaNativePlugin {
 
   /**
    * Re-initializes the plugin to clean service & browser state.
-   *
    * @returns {Promise<void>}
    */
   @Cordova()

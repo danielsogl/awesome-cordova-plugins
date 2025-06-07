@@ -128,7 +128,6 @@ export class BarcodeScanner extends AwesomeCordovaNativePlugin {
 
   /**
    * Open the barcode scanner.
-   *
    * @param {BarcodeScannerOptions} [options] Optional options to pass to the scanner
    * @returns {Promise<any>} Returns a Promise that resolves with scanner data, or rejects with an error.
    */
@@ -142,7 +141,6 @@ export class BarcodeScanner extends AwesomeCordovaNativePlugin {
   /**
    * Encodes data into a barcode.
    * NOTE: not well supported on Android
-   *
    * @param {string} type Type of encoding
    * @param {any} data Data to encode
    * @returns {Promise<any>}

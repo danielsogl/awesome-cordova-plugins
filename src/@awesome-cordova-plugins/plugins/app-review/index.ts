@@ -5,7 +5,6 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
  * @name App Review
  * @description
  * Cordova plugin to review app
- *
  * @usage
  * ```typescript
  * import { AppReview } from '@awesome-cordova-plugins/app-review/ngx';
@@ -33,7 +32,6 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
 export class AppReview extends AwesomeCordovaNativePlugin {
   /**
    * Launches in-app review dialog.
-   *
    * @returns {Promise<void>} Callback when operation is completed
    */
   @Cordova({ sync: true })
@@ -44,7 +42,6 @@ export class AppReview extends AwesomeCordovaNativePlugin {
   /**
    * Launches App/Play store page with a review form. By default current app screen
    * is displayed but you can pass a package name string to show another app details.
-   *
    * @param {string} [packageName] Package name to show instead of the current app.
    * @returns {Promise<void>} Callback when operation is completed
    */

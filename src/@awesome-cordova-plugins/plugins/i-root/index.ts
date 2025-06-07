@@ -5,7 +5,6 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
  * @name IRoot
  * @description
  * Use this plugin to add an extra layer of security for your app by detecting if the device was rooted (on android) or jailbreaked (on iOS).
- *
  * @usage
  * ```typescript
  * import { IRoot } from '@awesome-cordova-plugins/i-root';

@@ -34,7 +34,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class NetworkPermission extends AwesomeCordovaNativePlugin {
   /**
    * Request local network permission
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova()

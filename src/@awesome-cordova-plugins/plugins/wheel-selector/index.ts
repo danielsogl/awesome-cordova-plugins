@@ -181,7 +181,6 @@ export interface WheelSelectorData {
 export class WheelSelector extends AwesomeCordovaNativePlugin {
   /**
    * Shows the wheel selector
-   *
    * @param {WheelSelectorOptions} options Options for the wheel selector
    * @returns {Promise<WheelSelectorData>} Returns a promise that resolves with the selected items, or an error.
    */
@@ -192,7 +191,6 @@ export class WheelSelector extends AwesomeCordovaNativePlugin {
 
   /**
    * Hide the selector
-   *
    * @returns {Promise<void>}
    */
   @Cordova({

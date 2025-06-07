@@ -35,7 +35,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class YoutubeVideoPlayer extends AwesomeCordovaNativePlugin {
   /**
    * Plays a YouTube video
-   *
    * @param videoId {string} Video ID
    */
   @Cordova({ sync: true })

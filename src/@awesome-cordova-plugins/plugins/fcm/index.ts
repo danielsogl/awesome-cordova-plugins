@@ -128,7 +128,6 @@ export interface IChannelConfiguration {
 export class FCM extends AwesomeCordovaNativePlugin {
   /**
    * Gets ios device's current APNS token
-   *
    * @returns {Promise<string>} Returns a Promise that resolves with the APNS token
    */
   @Cordova()
@@ -138,7 +137,6 @@ export class FCM extends AwesomeCordovaNativePlugin {
 
   /**
    * Gets device's current registration id
-   *
    * @returns {Promise<string>} Returns a Promise that resolves with the registration id token
    */
   @Cordova()
@@ -148,7 +146,6 @@ export class FCM extends AwesomeCordovaNativePlugin {
 
   /**
    * Event firing on the token refresh
-   *
    * @returns {Observable<string>} Returns an Observable that notifies with the change of device's registration id
    */
   @Cordova({
@@ -160,7 +157,6 @@ export class FCM extends AwesomeCordovaNativePlugin {
 
   /**
    * Subscribes you to a [topic](https://firebase.google.com/docs/notifications/android/console-topics)
-   *
    * @param {string} topic Topic to be subscribed to
    * @returns {Promise<any>} Returns a promise resolving in result of subscribing to a topic
    */
@@ -171,7 +167,6 @@ export class FCM extends AwesomeCordovaNativePlugin {
 
   /**
    * Unsubscribes you from a [topic](https://firebase.google.com/docs/notifications/android/console-topics)
-   *
    * @param {string} topic Topic to be unsubscribed from
    * @returns {Promise<any>} Returns a promise resolving in result of unsubscribing from a topic
    */
@@ -182,7 +177,6 @@ export class FCM extends AwesomeCordovaNativePlugin {
 
   /**
    * Checking for permissions on iOS. On android, it always returns `true`.
-   *
    * @returns {Promise<boolean | null>} Returns a Promise:
    * - true: push was allowed (or platform is android)
    * - false: push will not be available
@@ -195,7 +189,6 @@ export class FCM extends AwesomeCordovaNativePlugin {
 
   /**
    * Watch for incoming notifications
-   *
    * @returns {Observable<any>} returns an object with data from the notification
    */
   @Cordova({
@@ -209,7 +202,6 @@ export class FCM extends AwesomeCordovaNativePlugin {
 
   /**
    * Removes existing push notifications from the notifications center
-   *
    * @returns {Promise<void>}
    */
   @Cordova()
@@ -219,7 +211,6 @@ export class FCM extends AwesomeCordovaNativePlugin {
 
   /**
    * Request push notification permission, alerting the user if it not have yet decided
-   *
    * @param {IRequestPushPermissionIOSOptions} options Options for push request
    * @returns {Promise<boolean>} Returns a Promise that resolves with the permission status
    */
@@ -234,7 +225,6 @@ export class FCM extends AwesomeCordovaNativePlugin {
    * Channel can define the default behavior for notifications on Android 8.0+.
    *
    * Once a channel is created, it stays unchangeable until the user uninstalls the app.
-   *
    * @param channelConfig
    * @returns {Promise<void>}
    */

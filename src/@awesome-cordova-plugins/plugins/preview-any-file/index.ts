@@ -70,7 +70,6 @@ export class PreviewAnyFile extends AwesomeCordovaNativePlugin {
 
   /**
    * previewPath function will return SUCCESS,NO_APP or CLOSING in Observable Callback , if the content is base64 you have to use previewBase64 method
-   *
    * @param path {String} full absolute URL -> file://, content://, http://, https, ... etc, if extension not exist, you must define it in the opt param
    * @param opt {PreviewOptions} define the name of the file with extension or it's mimeType, if the correct extension not exist in the path
    * @returns {Observable<PreviewResponse>} Returns an Observable that resolves if the file opened, closed or not opened , it will reject if any error;
@@ -86,7 +85,6 @@ export class PreviewAnyFile extends AwesomeCordovaNativePlugin {
 
   /**
    * previewBase64 function will return SUCCESS,NO_APP or CLOSING in Observable Callback , if the content is url or path you have to use previewPath method
-   *
    * @param path {String} full absolute URL -> file://, content://, http://, https, ... etc, if extension not exist, you must define it in the opt param
    * @param base64
    * @param opt {PreviewOptions} define the name of the file with extension or it's mimeType, if the mimetype not exist in the base64 string
@@ -103,7 +101,6 @@ export class PreviewAnyFile extends AwesomeCordovaNativePlugin {
 
   /**
    * Use previewAsset function to open a file from assets folder, it will return SUCCESS,NO_APP or CLOSING in Observable Callback ,
-   *
    * @param path {String} relative path of the file from assets folder "/assets/file.pdf" , if extension not exist, you must define it in the opt param
    * @param opt {PreviewOptions} define the name of the file with extension or it's mimeType, if the correct extension not exist in the path
    * @returns {Observable<PreviewResponse>} Returns an Observable that resolves if the file opened, closed or not opened , it will reject if any error;

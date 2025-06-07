@@ -112,7 +112,6 @@ export class SpotifyAuth extends AwesomeCordovaNativePlugin {
    * the scopes changed) and return that.
    *
    * Bottom line - always call this if you need a valid access token in your code.
-   *
    * @param cfg {Config} configuration
    * @returns {Promise<AuthorizationData>}
    */
@@ -128,7 +127,6 @@ export class SpotifyAuth extends AwesomeCordovaNativePlugin {
    * oauth dance again.
    *
    * This is akin to a "logout".
-   *
    * @returns {void}
    */
   @Cordova({

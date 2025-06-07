@@ -32,7 +32,6 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
 export class FileMD5 extends AwesomeCordovaNativePlugin {
   /**
    * Get MD5 checksum from a file
-   *
    * @param fileEntry {FileEntry} File entry is a org.apache.cordova.file.FileEntry
    * @returns {Promise<any>} Promise with md5sum
    */

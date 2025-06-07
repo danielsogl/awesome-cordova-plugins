@@ -109,7 +109,6 @@ export interface SpeechRecognitionListeningOptionsAndroid {
 export class SpeechRecognition extends AwesomeCordovaNativePlugin {
   /**
    * Check feature available
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova()
@@ -119,7 +118,6 @@ export class SpeechRecognition extends AwesomeCordovaNativePlugin {
 
   /**
    * Start the recognition process
-   *
    * @param options
    * @returns {Promise< string[] >} list of recognized terms
    */
@@ -141,7 +139,6 @@ export class SpeechRecognition extends AwesomeCordovaNativePlugin {
 
   /**
    * Get the list of supported languages
-   *
    * @returns {Promise< string[] >} list of languages
    */
   @Cordova()
@@ -151,7 +148,6 @@ export class SpeechRecognition extends AwesomeCordovaNativePlugin {
 
   /**
    * Check permission
-   *
    * @returns {Promise<boolean>} has permission
    */
   @Cordova()
@@ -161,7 +157,6 @@ export class SpeechRecognition extends AwesomeCordovaNativePlugin {
 
   /**
    * Request permissions
-   *
    * @returns {Promise<void>}
    */
   @Cordova()

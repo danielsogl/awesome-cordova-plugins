@@ -202,7 +202,6 @@ export interface NativeKeyboardUpdateMessengerOptions {
 export class NativeKeyboard extends AwesomeCordovaNativePlugin {
   /**
    * Show messenger
-   *
    * @param options {NativeKeyboardOptions}
    */
   @Cordova({ sync: true })
@@ -210,7 +209,6 @@ export class NativeKeyboard extends AwesomeCordovaNativePlugin {
 
   /**
    * Hide messenger
-   *
    * @param options {NativeKeyboardOptions}
    */
   @Cordova({ sync: true })
@@ -218,7 +216,6 @@ export class NativeKeyboard extends AwesomeCordovaNativePlugin {
 
   /**
    * Programmatically pop up the keyboard again if the user dismissed it.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -236,7 +233,6 @@ export class NativeKeyboard extends AwesomeCordovaNativePlugin {
 
   /**
    * Manipulate the messenger while it's open. For instance if you want to update the text programmatically based on what the user typed.
-   *
    * @param options
    */
   @Cordova()

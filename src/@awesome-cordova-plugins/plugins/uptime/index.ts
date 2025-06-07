@@ -30,7 +30,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class Uptime extends AwesomeCordovaNativePlugin {
   /**
    * This function return system uptime
-   *
    * @param {boolean} includeDeepSleep Set to true to include system deep sleep
    * @returns {Promise<string>} Returns a promise that return the uptime in milliseconds
    */

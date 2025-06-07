@@ -110,7 +110,6 @@ export interface HttpFields {
 export class WebSocketServer extends AwesomeCordovaNativePlugin {
   /**
    * Return this device's interfaces
-   *
    * @returns {Promise<WebSocketInterfaces>}
    */
   @Cordova()
@@ -120,7 +119,6 @@ export class WebSocketServer extends AwesomeCordovaNativePlugin {
 
   /**
    * Start websocket server
-   *
    * @param port {number} Local port on which the service runs. (0 means any free port)
    * @param options {WebSocketOptions} Additional options for websocket
    * @returns {Observable<WebSocketServerDetails>} Returns Observable where all generic error can be catched (mostly JSONExceptions)
@@ -143,7 +141,6 @@ export class WebSocketServer extends AwesomeCordovaNativePlugin {
 
   /**
    * Watches for new messages
-   *
    * @returns {Observable<WebSocketMessage>}
    */
   watchMessage(): Observable<WebSocketMessage> {
@@ -152,7 +149,6 @@ export class WebSocketServer extends AwesomeCordovaNativePlugin {
 
   /**
    * Watches for new opened connections
-   *
    * @returns {Observable<WebSocketConnection>}
    */
   watchOpen(): Observable<WebSocketConnection> {
@@ -161,7 +157,6 @@ export class WebSocketServer extends AwesomeCordovaNativePlugin {
 
   /**
    * Watches for closed connections
-   *
    * @returns {Observable<WebSocketClose>}
    */
   watchClose(): Observable<WebSocketClose> {
@@ -170,7 +165,6 @@ export class WebSocketServer extends AwesomeCordovaNativePlugin {
 
   /**
    * Watches for any websocket failures
-   *
    * @returns {Observable<WebSocketFailure>}
    */
   watchFailure(): Observable<WebSocketFailure> {
@@ -179,7 +173,6 @@ export class WebSocketServer extends AwesomeCordovaNativePlugin {
 
   /**
    * Stop websocket server and closes all connections
-   *
    * @returns {Promise<WebSocketServerDetails>}
    */
   @Cordova()
@@ -189,7 +182,6 @@ export class WebSocketServer extends AwesomeCordovaNativePlugin {
 
   /**
    * Send Message to a connected device
-   *
    * @param conn {WebSocketIdentifier} Connection to send message to
    * @param msg {string} Message to send
    * @returns {Promise<void>}
@@ -201,7 +193,6 @@ export class WebSocketServer extends AwesomeCordovaNativePlugin {
 
   /**
    * Close specific connection using uuid
-   *
    * @param conn {WebSocketIdentifier} Connection to close
    * @param code {number} Close code, determines if it was clean
    * @param reason {string} Reason for closing

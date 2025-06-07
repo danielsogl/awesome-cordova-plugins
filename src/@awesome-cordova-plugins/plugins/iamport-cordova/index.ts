@@ -91,7 +91,6 @@ export interface CertificationData {
 export class IamportCordova extends AwesomeCordovaNativePlugin {
   /**
    * This function is to load a webview of a payment gateway to pay for something
-   *
    * @param paymentObject {PaymentObject} Payment data to set the payment webview
    * @returns {Promise<any>} A callback function of the payment data is triggered when the webview is closed
    */
@@ -102,7 +101,6 @@ export class IamportCordova extends AwesomeCordovaNativePlugin {
 
   /**
    * This function is to load a webview for identification with carrier type(like Verizon), name and phone number
-   *
    * @param certificationObject {CertificationObject} Certification data to set the certification webview
    * @returns {Promise<any>} A callback function of the certification data is triggered when the webview is closed
    */

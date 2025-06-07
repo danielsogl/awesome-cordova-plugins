@@ -33,7 +33,6 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
 export class IosASWebauthenticationSession extends AwesomeCordovaNativePlugin {
   /**
    * This function start an authentication flow in ASWebauthenticationSession
-   *
    * @param callbackUrl {string} Callback URL of your App
    * @param authorizeURL {number} Authorization URL
    * @returns {Promise<string>} Returns a promise that resolves a string containing the redirect URL after finishing ASWebauthenticationSession

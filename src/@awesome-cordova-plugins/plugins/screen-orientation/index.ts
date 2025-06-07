@@ -71,7 +71,6 @@ export class ScreenOrientation extends AwesomeCordovaNativePlugin {
   };
   /**
    * Listen to orientation change event
-   *
    * @returns {Observable<void>}
    */
   @Cordova({
@@ -86,7 +85,6 @@ export class ScreenOrientation extends AwesomeCordovaNativePlugin {
   /**
    * Lock the orientation to the passed value.
    * See below for accepted values
-   *
    * @param orientation {string} The orientation which should be locked. Accepted values see table above.
    * @returns {Promise<any>}
    */

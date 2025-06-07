@@ -37,7 +37,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class NetworkInterface extends AwesomeCordovaNativePlugin {
   /**
    * Gets the WiFi IP address
-   *
    * @returns {Promise<any>} Returns a Promise that resolves with the IP address information.
    */
   @Cordova()
@@ -47,7 +46,6 @@ export class NetworkInterface extends AwesomeCordovaNativePlugin {
 
   /**
    * Gets the wireless carrier IP address
-   *
    * @returns {Promise<any>} Returns a Promise that resolves with the IP address information.
    */
   @Cordova()
@@ -57,7 +55,6 @@ export class NetworkInterface extends AwesomeCordovaNativePlugin {
 
   /**
    * Gets the relevant proxies for the passed URL in order of application
-   *
    * @param {url} message  The message to display.
    * @param url
    * @returns {Promise<any>} Returns a Promise that resolves with the proxy information.

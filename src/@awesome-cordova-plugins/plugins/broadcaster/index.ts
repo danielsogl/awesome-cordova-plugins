@@ -47,7 +47,6 @@ export type EventData = object | AndroidData | null;
 export class Broadcaster extends AwesomeCordovaNativePlugin {
   /**
    * This function listen to an event sent from the native code
-   *
    * @param {string} eventName
    * @param {boolean} isGlobal Valid only for Android. It allows to listen for global messages(i.e. intents)
    * @returns {Observable<any>} Returns an observable to watch when an event is received
@@ -63,7 +62,6 @@ export class Broadcaster extends AwesomeCordovaNativePlugin {
 
   /**
    * This function sends data to the native code
-   *
    * @param {string} eventName
    * @param {boolean} isGlobalOrEventData means that message is global (valid only on Android)
    * @param {AndroidData} isGlobalOrEventData allows to specify 'flags` and 'category' (valid only on Android)

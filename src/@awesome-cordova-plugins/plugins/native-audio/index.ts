@@ -40,7 +40,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class NativeAudio extends AwesomeCordovaNativePlugin {
   /**
    * Loads an audio file into memory. Optimized for short clips / single shots (up to five seconds). Cannot be stopped / looped.
-   *
    * @param id {string} unique ID for the audio file
    * @param assetPath {string}  the relative path or absolute URL (inluding http://) to the audio asset.
    * @returns {Promise<any>}
@@ -52,7 +51,6 @@ export class NativeAudio extends AwesomeCordovaNativePlugin {
 
   /**
    * Loads an audio file into memory. Optimized for background music / ambient sound. Uses highlevel native APIs with a larger footprint. (iOS: AVAudioPlayer). Can be stopped / looped and used with multiple voices. Can be faded in and out using the delay parameter.
-   *
    * @param id {string} unique ID for the audio file
    * @param assetPath {string}  the relative path or absolute URL (inluding http://) to the audio asset.
    * @param volume {number} the volume of the preloaded sound (0.1 to 1.0)
@@ -67,7 +65,6 @@ export class NativeAudio extends AwesomeCordovaNativePlugin {
 
   /**
    * Plays an audio asset
-   *
    * @param id {string} unique ID for the audio file
    * @param completeCallback {Function} optional. Callback to be invoked when audio is done playing
    * @returns {Promise<any>}
@@ -82,7 +79,6 @@ export class NativeAudio extends AwesomeCordovaNativePlugin {
 
   /**
    * Stops playing an audio
-   *
    * @param id {string} unique ID for the audio file
    * @returns {Promise<any>}
    */
@@ -93,7 +89,6 @@ export class NativeAudio extends AwesomeCordovaNativePlugin {
 
   /**
    * Loops an audio asset infinitely, this only works for complex assets
-   *
    * @param id {string} unique ID for the audio file
    * @returns {Promise<any>}
    */
@@ -104,7 +99,6 @@ export class NativeAudio extends AwesomeCordovaNativePlugin {
 
   /**
    * Unloads an audio file from memory
-   *
    * @param id {string} unique ID for the audio file
    * @returns {Promise<any>}
    */
@@ -115,7 +109,6 @@ export class NativeAudio extends AwesomeCordovaNativePlugin {
 
   /**
    * Changes the volume for preloaded complex assets.
-   *
    * @param id {string} unique ID for the audio file
    * @param volume {number} the volume of the audio asset (0.1 to 1.0)
    * @returns {Promise<any>}

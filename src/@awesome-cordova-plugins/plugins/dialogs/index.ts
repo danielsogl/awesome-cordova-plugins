@@ -48,7 +48,6 @@ export interface DialogsPromptCallback {
 export class Dialogs extends AwesomeCordovaNativePlugin {
   /**
    * Shows a custom alert or dialog box.
-   *
    * @param {string} message Dialog message.
    * @param {string} [title] Dialog title. (Optional, defaults to Alert)
    * @param {string} [buttonName] Button name. (Optional, defaults to OK)
@@ -64,7 +63,6 @@ export class Dialogs extends AwesomeCordovaNativePlugin {
 
   /**
    * Displays a customizable confirmation dialog box.
-   *
    * @param {string} message Dialog message.
    * @param {string} [title] Dialog title. (Optional, defaults to Confirm)
    * @param {string[]} [buttonLabels] Array of strings specifying button labels. (Optional, defaults to [OK,Cancel])
@@ -80,7 +78,6 @@ export class Dialogs extends AwesomeCordovaNativePlugin {
 
   /**
    * Displays a native dialog box that is more customizable than the browser's prompt function.
-   *
    * @param {string} [message] Dialog message.
    * @param {string} [title] Dialog title. (Optional, defaults to Prompt)
    * @param {string[]} [buttonLabels]  Array of strings specifying button labels. (Optional, defaults to ["OK","Cancel"])
@@ -102,7 +99,6 @@ export class Dialogs extends AwesomeCordovaNativePlugin {
 
   /**
    * The device plays a beep sound.
-   *
    * @param {numbers} times The number of times to repeat the beep.
    */
   @Cordova({

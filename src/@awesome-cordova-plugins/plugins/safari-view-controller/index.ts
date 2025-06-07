@@ -69,7 +69,6 @@ export interface SafariViewControllerOptions {
 export class SafariViewController extends AwesomeCordovaNativePlugin {
   /**
    * Checks if SafariViewController is available
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova()
@@ -79,7 +78,6 @@ export class SafariViewController extends AwesomeCordovaNativePlugin {
 
   /**
    * Shows Safari View Controller
-   *
    * @param options {SafariViewControllerOptions} optional
    * @returns {Observable<any>}
    */
@@ -102,7 +100,6 @@ export class SafariViewController extends AwesomeCordovaNativePlugin {
 
   /**
    * Tries to connect to the  Chrome's custom tabs service. you must call this method before calling any of the other methods listed below.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -112,7 +109,6 @@ export class SafariViewController extends AwesomeCordovaNativePlugin {
 
   /**
    * Call this method whenever there's a chance the user will open an external url.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -122,7 +118,6 @@ export class SafariViewController extends AwesomeCordovaNativePlugin {
 
   /**
    * For even better performance optimization, call this methods if there's more than a 50% chance the user will open a certain URL.
-   *
    * @param url{string}
    * @param url
    * @returns {Promise<any>}

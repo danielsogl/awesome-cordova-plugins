@@ -38,7 +38,6 @@ import { Observable } from 'rxjs';
 export class Firebase extends AwesomeCordovaNativePlugin {
   /**
    * Get the device token
-   *
    * @returns {Promise<null | string>} Note that token will be null if it has not been established yet
    */
   @Cordova()
@@ -48,7 +47,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Get notified when a token is refreshed
-   *
    * @returns {Observable<any>}
    */
   @Cordova({
@@ -60,7 +58,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Get notified when the user opens a notification
-   *
    * @returns {Observable<any>}
    */
   @Cordova({
@@ -72,7 +69,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Grant permission to receive push notifications
-   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -84,7 +80,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Check permission to receive push notifications
-   *
    * @returns {Promise<{isEnabled: boolean}>}
    */
   @Cordova()
@@ -94,7 +89,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Set icon badge number. Set to 0 to clear the badge.
-   *
    * @param {number} badgeNumber
    * @returns {Promise<any>}
    */
@@ -105,7 +99,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Get icon badge number
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -115,7 +108,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Subscribe to a topic
-   *
    * @param {string} topic
    * @returns {Promise<any>}
    */
@@ -126,7 +118,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Unsubscribe from a topic
-   *
    * @param {string} topic
    * @returns {Promise<any>}
    */
@@ -146,7 +137,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Log an event using Analytics
-   *
    * @param {string} type
    * @param {Object} data
    * @returns {Promise<any>}
@@ -158,7 +148,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Log an Error using FirebaseCrash
-   *
    * @param {string} message
    * @returns {Promise<any>}
    */
@@ -169,7 +158,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Set the name of the current screen in Analytics
-   *
    * @param {string} name Screen name
    * @returns {Promise<any>}
    */
@@ -180,7 +168,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Set a user id for use in Analytics
-   *
    * @param {string} userId
    * @returns {Promise<any>}
    */
@@ -191,7 +178,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Set a user property for use in Analytics
-   *
    * @param {string} name
    * @param {string} value
    * @returns {Promise<any>}
@@ -203,7 +189,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Fetch Remote Config parameter values for your app
-   *
    * @param {number} [cacheExpirationSeconds]
    * @returns {Promise<any>}
    */
@@ -217,7 +202,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Activate the Remote Config fetched config
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -227,7 +211,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Retrieve a Remote Config value
-   *
    * @param {string} key
    * @param {string} [namespace]
    * @returns {Promise<any>}
@@ -242,7 +225,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Retrieve a Remote Config byte array
-   *
    * @param {string} key
    * @param {string} [namespace]
    * @returns {Promise<any>}
@@ -256,7 +238,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Get the current state of the FirebaseRemoteConfig singleton object
-   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -268,7 +249,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Change the settings for the FirebaseRemoteConfig object's operations
-   *
    * @param {Object} settings
    * @returns {Promise<any>}
    */
@@ -281,7 +261,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Set defaults in the Remote Config
-   *
    * @param {Object} defaults
    * @param {string} [namespace]
    * @returns {Promise<any>}
@@ -295,7 +274,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Start a trace.
-   *
    * @param {string} trace Trace name
    */
   @Cordova()
@@ -307,7 +285,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
    * To count the performance-related events that occur in your app (such as cache hits or retries), add a line of code
    * similar to the following whenever the event occurs, using a string other than retry to name that event if you are
    * counting a different type of event:
-   *
    * @param {string} trace Trace name
    * @param {string} counter Counter
    */
@@ -318,7 +295,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Stop the trace
-   *
    * @param {string} trace Trace name
    */
   @Cordova()
@@ -326,7 +302,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Allows the user to enable/disable analytics collection
-   *
    * @param {boolean} enabled value to set collection
    * @returns {Promise<any>}
    */
@@ -338,7 +313,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
   /**
    * Allows the user to set User Identifier for crashlytics reporting
    * https://firebase.google.com/docs/crashlytics/customize-crash-reports?authuser=0#set_user_ids
-   *
    * @param {string} userId value to set the userId
    * @returns {Promise<any>}
    */
@@ -349,7 +323,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Sends an SMS to the user with the SMS verification code and returns the Verification ID required to sign in using phone authentication
-   *
    * @param {string} phoneNumber The phone number, including '+' and country code
    * @param {number} timeoutDuration (Android only) The timeout in sec - no more SMS will be sent to this number until this timeout expires
    * @returns {Promise<any>}
@@ -365,7 +338,6 @@ export class Firebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Clear all pending notifications from the drawer
-   *
    * @returns {Promise<any>}
    */
   @Cordova({

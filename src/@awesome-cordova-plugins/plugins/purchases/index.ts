@@ -272,7 +272,7 @@ export enum PERIOD_UNIT {
 /**
  * @name Purchases
  * @description
- * *Purchases* is a client for the [RevenueCat](https://www.revenuecat.com/) subscription and purchase tracking system.
+ * Purchases* is a client for the [RevenueCat](https://www.revenuecat.com/) subscription and purchase tracking system.
  * It is an open source framework that provides a wrapper around `BillingClient`, `StoreKit` and the RevenueCat backend
  * to make implementing in-app subscriptions easy - receipt validation and status tracking included!
  *
@@ -307,7 +307,6 @@ export enum PERIOD_UNIT {
  * If your app supports product changes using [DEFERRED replacement mode](https://www.revenuecat.com/docs/managing-subscriptions#google-play),
  * then you can either stick with the previous major version until support for DEFERRED is re-introduced in this major version,
  * or you can remove DEFERRED replacement options from your app.
- *
  * @usage
  *
  * ### Requirements
@@ -339,7 +338,6 @@ export enum PERIOD_UNIT {
 export class Purchases extends AwesomeCordovaNativePlugin {
   /**
    * Enum for attribution networks
-   *
    * @readonly
    * @enum {number}
    */
@@ -347,7 +345,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Supported SKU types.
-   *
    * @readonly
    * @enum {string}
    */
@@ -376,7 +373,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Replace SKU's ProrationMode.
-   *
    * @readonly
    * @enum {number}
    */
@@ -384,7 +380,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Enumeration of all possible Package types.
-   *
    * @readonly
    * @enum {string}
    */
@@ -392,7 +387,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Enum of different possible states for intro price eligibility status.
-   *
    * @readonly
    * @enum {number}
    */
@@ -400,7 +394,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Enum of different possible log levels.
-   *
    * @readonly
    * @enum {string}
    */
@@ -408,7 +401,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Enum of different possible in-app message types.
-   *
    * @readonly
    * @enum {string}
    */
@@ -418,7 +410,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
    * @deprecated Use {@link configureWith} instead. It accepts a {@link PurchasesConfiguration} object which offers more flexibility.
    *
    * Sets up Purchases with your API key and an app user id.
-   *
    * @param {string} apiKey RevenueCat API Key. Needs to be a string
    * @param {string?} appUserID A unique id for identifying the user
    * @param {boolean} observerMode An optional boolean. Set this to TRUE if you have your own IAP implementation and
@@ -440,7 +431,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Gets the Offerings configured in the dashboard
-   *
    * @returns Will return a [PurchasesError] if the offerings are not properly configured in RevenueCat or if there is another error retrieving them.
    */
   @Cordova()
@@ -450,7 +440,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Fetch the product info
-   *
    * @param {string[]} productIdentifiers Array of product identifiers
    * @param {PURCHASE_TYPE} type Optional type of products to fetch, can be inapp or subs. Subs by default
    * @returns {Promise<PurchasesStoreProduct[]>} Will return a [PurchasesError] if the products are not properly configured in RevenueCat or if there is another error retrieving them.
@@ -468,7 +457,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Make a purchase
-   *
    * @param {string} productIdentifier The product identifier of the product you want to purchase.
    * @param {UpgradeInfo} upgradeInfo Android only. Optional UpgradeInfo you wish to upgrade from containing the oldSKU
    * and the optional prorationMode.
@@ -488,14 +476,12 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Make a purchase
-   *
    * @param {PurchasesStoreProduct} product The product you want to purchase
    * @param {GoogleProductChangeInfo} googleProductChangeInfo Android only. Optional GoogleProductChangeInfo you
    * wish to upgrade from containing the oldProductIdentifier and the optional prorationMode.
    * @param {boolean} googleIsPersonalizedPrice Android and Google only. Optional boolean indicates personalized pricing on products available for purchase in the EU.
    * For compliance with EU regulations. User will see "This price has been customized for you" in the purchase dialog when true.
    * See https://developer.android.com/google/play/billing/integrate#personalized-price for more info.
-   *
    */
   @Cordova({
     successIndex: 1,
@@ -511,7 +497,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Make a purchase
-   *
    * @param {PurchasesPackage} aPackage The Package you wish to purchase. You can get the Packages by calling getOfferings
    * @param {UpgradeInfo} upgradeInfo Android only. Optional UpgradeInfo you wish to upgrade from containing the oldSKU
    * and the optional prorationMode.
@@ -521,7 +506,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
    * on products available for purchase in the EU. For compliance with EU regulations.
    * User will see "This price has been customized for you" in the purchase dialog when true.
    * See https://developer.android.com/google/play/billing/integrate#personalized-price for more info.
-   *
    */
   @Cordova({
     successIndex: 1,
@@ -538,7 +522,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Google only. Make a purchase of a subscriptionOption
-   *
    * @param {SubscriptionOption} subscriptionOption The SubscriptionOption you wish to purchase. You can get the
    * SubscriptionOption from StoreProducts by calling getOfferings
    * @param {GoogleProductChangeInfo} googleProductChangeInfo Android only. Optional GoogleProductChangeInfo you
@@ -547,7 +530,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
    * on products available for purchase in the EU. For compliance with EU regulations.
    * User will see "This price has been customized for you" in the purchase dialog when true.
    * See https://developer.android.com/google/play/billing/integrate#personalized-price for more info.
-   *
    */
   @Cordova({
     successIndex: 1,
@@ -581,7 +563,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
   /**
    * This function will logIn the current user with an appUserID. Typically this would be used after a log in
    * to identify a user without calling configure.
-   *
    * @param {string} appUserID The appUserID that should be linked to the currently user
    */
   @Cordova()
@@ -623,7 +604,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
    * @deprecated Use {@link setLogLevel} instead.
    *
    * Enables/Disables debugs logs
-   *
    * @param {boolean} enabled true to enable debug logs, false to disable
    */
   @Cordova({ sync: true })
@@ -640,7 +620,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
    * Set a custom log handler for redirecting logs to your own logging system.
    * By default, this sends info, warning, and error messages.
    * If you wish to receive Debug level messages, see [setLogLevel].
-   *
    * @param {LogHandler} logHandler It will get called for each log event.
    * Use this function to redirect the log to your own logging system
    */
@@ -649,7 +628,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * iOS only.
-   *
    * @param {boolean} enabled Set this property to true *only* when testing the ask-to-buy / SCA purchases flow.
    * More information: http://errors.rev.cat/ask-to-buy
    */
@@ -659,7 +637,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
   /**
    * This method will send all the purchases to the RevenueCat backend. Call this when using your own implementation
    * for subscriptions anytime a sync is needed, like after a successful purchase.
-   *
    * @warning This function should only be called if you're not calling purchaseProduct.
    */
   @Cordova({ sync: true })
@@ -670,7 +647,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
    * in Amazon observer mode or performing a client side migration of your current users to RevenueCat.
    *
    * The receipt IDs are cached if successfully posted so they are not posted more than once.
-   *
    * @param {string} productID Product ID associated to the purchase.
    * @param {string} receiptID ReceiptId that represents the Amazon purchase.
    * @param {string} amazonUserID Amazon's userID. This parameter will be ignored when syncing a Google purchase.
@@ -688,7 +664,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Enable automatic collection of Apple Search Ads attribution. Disabled by default.
-   *
    * @param {boolean} enabled Enable or not automatic collection
    */
   @Cordova({ sync: true })
@@ -711,7 +686,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
    *  iOS only. Computes whether or not a user is eligible for the introductory pricing period of a given product.
    *  You should use this method to determine whether or not you show the user the normal product price or the
    *  introductory price. This also applies to trials (trials are considered a type of introductory pricing).
-   *
    *  @note Subscription groups are automatically collected for determining eligibility. If RevenueCat can't
    *  definitively compute the eligibility, most likely because of missing group information, it will return
    *  `INTRO_ELIGIBILITY_STATUS_UNKNOWN`. The best course of action on unknown status is to display the non-intro
@@ -728,7 +702,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets a function to be called on purchases initiated on the Apple App Store. This is only used in iOS.
-   *
    * @param {ShouldPurchasePromoProductListener} shouldPurchasePromoProductListener Called when a user initiates a
    * promotional in-app purchase from the App Store. If your app is able to handle a purchase at the current time, run
    * the deferredPurchase function. If the app is not in a state to make a purchase: cache the deferredPurchase, then
@@ -741,7 +714,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Removes a given ShouldPurchasePromoProductListener
-   *
    * @param {ShouldPurchasePromoProductListener} listenerToRemove ShouldPurchasePromoProductListener reference of the listener to remove
    */
   @Cordova({ sync: true })
@@ -777,7 +749,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
    *
    * Key names starting with "$" are reserved names used by RevenueCat. For a full list of key
    * restrictions refer to our guide: https://docs.revenuecat.com/docs/subscriber-attributes
-   *
    * @param attributes Map of attributes by key. Set the value as an empty string to delete an attribute.
    */
   @Cordova({ sync: true })
@@ -785,7 +756,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Subscriber attribute associated with the email address for the user
-   *
    * @param email Empty String or null will delete the subscriber attribute.
    */
   @Cordova({ sync: true })
@@ -793,7 +763,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Subscriber attribute associated with the phone number for the user
-   *
    * @param phoneNumber Empty String or null will delete the subscriber attribute.
    */
   @Cordova({ sync: true })
@@ -801,7 +770,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Subscriber attribute associated with the display name for the user
-   *
    * @param displayName Empty String or null will delete the subscriber attribute.
    */
   @Cordova({ sync: true })
@@ -809,7 +777,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Subscriber attribute associated with the push token for the user
-   *
    * @param pushToken Empty String or null will delete the subscriber attribute.
    */
   @Cordova({ sync: true })
@@ -818,7 +785,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
   /**
    * Subscriber attribute associated with the Adjust Id for the user
    * Required for the RevenueCat Adjust integration
-   *
    * @param adjustID Empty String or null will delete the subscriber attribute.
    */
   @Cordova({ sync: true })
@@ -827,7 +793,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
   /**
    * Subscriber attribute associated with the AppsFlyer Id for the user
    * Required for the RevenueCat AppsFlyer integration
-   *
    * @param appsflyerID Empty String or null will delete the subscriber attribute.
    */
   @Cordova({ sync: true })
@@ -836,7 +801,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
   /**
    * Subscriber attribute associated with the Facebook SDK Anonymous Id for the user
    * Recommended for the RevenueCat Facebook integration
-   *
    * @param fbAnonymousID Empty String or null will delete the subscriber attribute.
    */
   @Cordova({ sync: true })
@@ -845,7 +809,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
   /**
    * Subscriber attribute associated with the mParticle Id for the user
    * Recommended for the RevenueCat mParticle integration
-   *
    * @param mparticleID Empty String or null will delete the subscriber attribute.
    */
   @Cordova({ sync: true })
@@ -854,7 +817,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
   /**
    * Subscriber attribute associated with the OneSignal Player Id for the user
    * Required for the RevenueCat OneSignal integration
-   *
    * @param onesignalID Empty String or null will delete the subscriber attribute.
    */
   @Cordova({ sync: true })
@@ -863,7 +825,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
   /**
    * Subscriber attribute associated with the Airship Channel Id for the user
    * Required for the RevenueCat Airship integration
-   *
    * @param airshipChannelID Empty String or null will delete the subscriber attribute.
    */
   @Cordova({ sync: true })
@@ -872,7 +833,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
   /**
    * Subscriber attribute associated with the Firebase App Instance ID for the user
    * Required for the RevenueCat Firebase integration
-   *
    * @param firebaseAppInstanceID Empty String or null will delete the subscriber attribute.
    */
   @Cordova({ sync: true })
@@ -881,7 +841,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
   /**
    * Subscriber attribute associated with the Mixpanel Distinct ID for the user
    * Required for the RevenueCat Mixpanel integration
-   *
    * @param mixpanelDistinctID Empty String or null will delete the subscriber attribute.
    */
   @Cordova({ sync: true })
@@ -890,7 +849,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
   /**
    * Subscriber attribute associated with the CleverTap ID for the user
    * Required for the RevenueCat CleverTap integration
-   *
    * @param cleverTapID Empty String or null will delete the subscriber attribute.
    */
   @Cordova({ sync: true })
@@ -898,7 +856,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Subscriber attribute associated with the install media source for the user
-   *
    * @param mediaSource Empty String or null will delete the subscriber attribute.
    */
   @Cordova({ sync: true })
@@ -906,7 +863,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Subscriber attribute associated with the install campaign for the user
-   *
    * @param campaign Empty String or null will delete the subscriber attribute.
    */
   @Cordova({ sync: true })
@@ -914,7 +870,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Subscriber attribute associated with the install ad group for the user
-   *
    * @param adGroup Empty String or null will delete the subscriber attribute.
    */
   @Cordova({ sync: true })
@@ -922,7 +877,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Subscriber attribute associated with the install ad for the user
-   *
    * @param ad Empty String or null will delete the subscriber attribute.
    */
   @Cordova({ sync: true })
@@ -930,7 +884,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Subscriber attribute associated with the install keyword for the user
-   *
    * @param keyword Empty String or null will delete the subscriber attribute.
    */
   @Cordova({ sync: true })
@@ -938,7 +891,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Subscriber attribute associated with the install ad creative for the user
-   *
    * @param creative Empty String or null will delete the subscriber attribute.
    */
   @Cordova({ sync: true })
@@ -958,10 +910,8 @@ export class Purchases extends AwesomeCordovaNativePlugin {
    *
    * Note: Billing features are only relevant to Google Play Android users.
    * For other stores and platforms, billing features won't be checked.
-   *
    * @param features An array of feature types to check for support. Feature types must be one of
    *       [BILLING_FEATURE]. By default, is an empty list and no specific feature support will be checked.
-   *
    */
   @Cordova()
   canMakePayments(features: BILLING_FEATURE[] = []): Promise<boolean> {
@@ -970,7 +920,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
 
   /**
    * Set this property to your proxy URL before configuring Purchases *only* if you've received a proxy key value from your RevenueCat contact.
-   *
    * @param url Proxy URL as a string.
    */
   @Cordova({ sync: true })
@@ -1000,9 +949,7 @@ export class Purchases extends AwesomeCordovaNativePlugin {
    *
    * If the request was unsuccessful, the promise will return an error.
    * If called in an unsupported platform (iOS < 15), an `unsupportedError` will be sent to the callback.
-   *
    * @param entitlementInfo The entitlement to begin a refund request for.
-   *
    */
   @Cordova()
   beginRefundRequestForEntitlement(entitlementInfo: PurchasesEntitlementInfo): Promise<REFUND_REQUEST_STATUS> {
@@ -1015,9 +962,7 @@ export class Purchases extends AwesomeCordovaNativePlugin {
    *
    * If the request was unsuccessful, the promise will return an error.
    * If called in an unsupported platform (iOS < 15), an `unsupportedError` will be sent to the callback.
-   *
    * @param storeProduct The StoreProduct to begin a refund request for.
-   *
    */
   @Cordova()
   beginRefundRequestForProduct(storeProduct: PurchasesStoreProduct): Promise<REFUND_REQUEST_STATUS> {
@@ -1030,7 +975,6 @@ export class Purchases extends AwesomeCordovaNativePlugin {
    *
    * Note: In iOS, this requires version 16+. In older versions the promise will be resolved successfully
    * immediately.
-   *
    * @param messageTypes An array of message types that the stores can display inside your app. Must be one of
    *       [IN_APP_MESSAGE_TYPE]. By default, is undefined and all message types will be shown.
    */
@@ -1085,13 +1029,11 @@ export interface PurchasesEntitlementInfo {
   readonly isSandbox: boolean;
   /**
    * The date an unsubscribe was detected. Can be `null`.
-   *
    * @note: Entitlement may still be active even if user has unsubscribed. Check the `isActive` property.
    */
   readonly unsubscribeDetectedAt: string | null;
   /**
    * The date a billing issue was detected. Can be `null` if there is no billing issue or an issue has been resolved
-   *
    * @note: Entitlement may still be active even if there is a billing issue. Check the `isActive` property.
    */
   readonly billingIssueDetectedAt: string | null;
@@ -1508,7 +1450,6 @@ export interface PurchasesConfiguration {
    * iOS-only, will be ignored for Android.
    * Set this to TRUE to enable StoreKit2.
    * Default is FALSE.
-   *
    * @deprecated RevenueCat currently uses StoreKit 1 for purchases, as its stability in production scenarios has
    * proven to be more performant than StoreKit 2.
    * We're collecting more data on the best approach, but StoreKit 1 vs StoreKit 2 is an implementation detail

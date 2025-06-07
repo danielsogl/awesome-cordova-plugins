@@ -68,22 +68,21 @@ export class NativeView extends AwesomeCordovaNativePlugin {
    * //Android
    * cordova.plugins.NativeView.show('com.mycompany', 'MyActivity')
    * .then(() => {
-   *    // Do something
+   * // Do something
    * });
    *
    * //IOS
    * cordova.plugins.NativeView.show('MyStoryboard', 'MyUIViewController')
    * .then(() => {
-   *    // Do something
+   * // Do something
    * });
    *
    * //OR Back to previous View (IOS only)
    * cordova.plugins.NativeView.show().then(() => {
-   *    // Do something
+   * // Do something
    * });
    *
    * ```
-   *
    * @param {NativeParams|string} packageOrClass Package or class name of view to open
    * @param {string} className Class name of view to open
    * @param {any} [extraParams] [Optional] Params to send to a Native view that will be opened
@@ -103,7 +102,6 @@ export class NativeView extends AwesomeCordovaNativePlugin {
 
   /**
    * Check if a specific app is installed
-   *
    * @param {NativeParams} config
    * @param {Function} [success] Callback when success. Use `.then()` Promise method, instead
    * @param {Function} [error] Callback callbed when an error happens. Use `.catch()` Promise method, instead
@@ -116,7 +114,6 @@ export class NativeView extends AwesomeCordovaNativePlugin {
 
   /**
    * Shows a store/market fo install a specific app
-   *
    * @param {NativeMarketParams} config Native package and/or marketId to show in Google Play/Apple Store
    * @param {Function} [success] Callback when success. Use `.then()` Promise method, instead
    * @param {Function} [error] Callback callbed when an error happens. Use `.catch()` Promise method, instead
@@ -132,7 +129,6 @@ export class NativeView extends AwesomeCordovaNativePlugin {
    *
    * Get the **Android** current build variant FLAVOR
    * This is great if you change the FLAVOR in compile time
-   *
    * @param {boolean} [config.catchError] `config.catchError` True, if you wish catch a JSON with error information
    * @param config
    * @param {Function} [success] Callback when success. Use `.then()` Promise method, instead

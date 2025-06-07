@@ -52,7 +52,6 @@ export interface UpdateOptions {
 export class DfuUpdate extends AwesomeCordovaNativePlugin {
   /**
    * Start the Firmware-Update-Process
-   *
    * @param options - Options for the process
    * @returns {Observable<any>} Returns a Observable that emits when something happens
    */

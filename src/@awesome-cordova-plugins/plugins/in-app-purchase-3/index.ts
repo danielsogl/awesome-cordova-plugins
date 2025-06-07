@@ -116,7 +116,6 @@ export interface IAPOffer {
 
   /**
    * Initiate a purchase of this offer.
-   *
    * @example
    * store.get("my-product").getOffer().order();
    */
@@ -213,7 +212,6 @@ export interface IAPTransaction {
    * When the application has delivered the product, it should finalize the order.
    * Only after that, money will be transferred to your account.
    * This method ensures that no customers is charged for a product that couldn't be delivered.
-   *
    * @example
    * store.when()
    *   .approved(transaction => transaction.verify())
@@ -226,7 +224,6 @@ export interface IAPTransaction {
    *
    * This will trigger a call to the receipt validation service for the attached receipt.
    * Once the receipt has been verified, you can finish the transaction.
-   *
    * @example
    * store.when()
    *   .approved(transaction => transaction.verify())
@@ -271,7 +268,6 @@ export interface IAPVerifiedPurchase {
 export interface IAPProductEvents {
   /**
    * Register a function called when a product or receipt is updated.
-   *
    * @deprecated - Use `productUpdated` or `receiptUpdated`.
    */
   updated(cb: Callback<IAPProduct | IAPReceipt>, callbackName?: string): IAPProductEvents;
@@ -860,7 +856,6 @@ export class IAPError {
  * ## Technical Support or Questions
  *
  * If you have questions or need help integrating In-App Purchase, [Open an Issue on GitHub](https://github.com/j3k0/cordova-plugin-purchase/issues) or email us at _support@fovea.cc_.
- *
  * @interfaces
  * IAPAdapter
  * IAPProductOptions
@@ -903,12 +898,11 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
    * Verbosity level used by the plugin logger
    *
    * Set to:
-   *  - LogLevel.QUIET or 0 to disable all logging (default)
-   *  - LogLevel.ERROR or 1 to show only error messages
-   *  - LogLevel.WARNING or 2 to show warnings and errors
-   *  - LogLevel.INFO or 3 to also show information messages
-   *  - LogLevel.DEBUG or 4 to enable internal debugging messages.
-   *
+   * - LogLevel.QUIET or 0 to disable all logging (default)
+   * - LogLevel.ERROR or 1 to show only error messages
+   * - LogLevel.WARNING or 2 to show warnings and errors
+   * - LogLevel.INFO or 3 to also show information messages
+   * - LogLevel.DEBUG or 4 to enable internal debugging messages.
    * @see {@link LogLevel}
    */
   @CordovaProperty()
@@ -928,13 +922,11 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * URL or implementation of the receipt validation service
-   *
    * @example
    * Define the validator as a string
    * ```ts
    * InAppPurchase3.validator = "https://validator.iaptic.com/v1/validate?appName=test"
    * ```
-   *
    * @example
    * Define the validator as a function
    * ```ts
@@ -957,13 +949,12 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * When adding information to receipt validation requests, those can serve different functions:
-   *  - handling support requests
-   *  - fraud detection
-   *  - analytics
-   *  - tracking
+   * - handling support requests
+   * - fraud detection
+   * - analytics
+   * - tracking
    *
    * Make sure the value your select is in line with your application's privacy policy and your users' tracking preference.
-   *
    * @example
    * CdvPurchase.store.validator_privacy_policy = [
    *   'fraud', 'support', 'analytics', 'tracking'
@@ -1001,7 +992,6 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * Call to initialize the in-app purchase plugin.
-   *
    * @param platforms - List of payment platforms to initialize, default to Store.defaultPlatform().
    * @returns {Promise<IAPError | undefined>}
    */
@@ -1035,7 +1025,6 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * Setup events listener.
-   *
    * @example
    * store.when()
    *      .productUpdated(product => updateUI(product))
@@ -1060,7 +1049,6 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
    * @param {Callback<TransactionState>} onChange Function to be called when the transaction status changes.
    * @param {string} callbackName
    * @returns A monitor which can be stopped with `monitor.stop()`
-   *
    * @example
    * const monitor = store.monitor(transaction, state => {
    *   console.log('new state: ' + state);
@@ -1165,7 +1153,6 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
    *
    * A payment is a custom amount to charge the user. Make sure the selected payment platform
    * supports Payment Requests.
-   *
    * @param {IAPPaymentRequest} paymentRequest Parameters of the payment request
    * @param {IAPAdditionalData?} additionalData Additional parameters
    */
@@ -1176,7 +1163,6 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * @returns true if a platform supports the requested functionality.
-   *
    * @example
    * store.checkSupport(Platform.APPLE_APPSTORE, 'requestPayment');
    * // => false
@@ -1202,7 +1188,6 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
    * Open the subscription management interface for the selected platform.
    *
    * If platform is not specified, the first available platform will be used.
-   *
    * @example
    * const activeSubscription: Purchase = // ...
    * store.manageSubscriptions(activeSubscription.platform);
@@ -1218,7 +1203,6 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
    *
    * From this page, the user can update their payment methods.
    * If platform is not specified, the first available platform will be used.
-   *
    * @example
    * if (purchase.isBillingRetryPeriod)
    *     store.manageBilling(purchase.platform);
@@ -1241,7 +1225,6 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
 
   /**
    * Register an error handler.
-   *
    * @param {Callback<IAPError>} error An error callback that takes the error as an argument
    * @example
    * store.error(function(error) {

@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
  * @name Lets Cooee
  * @description
  * AI driven Personalised Notifications for Better Customer Engagement
- *
  * @usage
  * ```typescript
  * import { Cooee } from '@awesome-cordova-plugins/lets-cooee/nx';

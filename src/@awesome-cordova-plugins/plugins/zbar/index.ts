@@ -77,7 +77,6 @@ export interface ZBarOptions {
 export class ZBar extends AwesomeCordovaNativePlugin {
   /**
    * Open the scanner
-   *
    * @param options { ZBarOptions } Scan options
    * @returns {Promise<any>} Returns a Promise that resolves with the scanned string, or rejects with an error.
    */

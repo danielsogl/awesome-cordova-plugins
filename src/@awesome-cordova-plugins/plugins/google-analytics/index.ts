@@ -41,7 +41,6 @@ export class GoogleAnalytics extends AwesomeCordovaNativePlugin {
   /**
    * In your 'deviceready' handler, set up your Analytics tracker.
    * https://developers.google.com/analytics/devguides/collection/analyticsjs/
-   *
    * @param {string}  id  Your Google Analytics Mobile App property
    * @param {number} interval Optional dispatch period in seconds. Defaults to 30.
    * @returns {Promise<any>}
@@ -56,7 +55,6 @@ export class GoogleAnalytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Enabling Advertising Features in Google Analytics allows you to take advantage of Remarketing, Demographics & Interests reports, and more
-   *
    * @param allow {boolean}
    * @returns {Promise<any>}
    */
@@ -68,7 +66,6 @@ export class GoogleAnalytics extends AwesomeCordovaNativePlugin {
   /**
    * Set a UserId
    * https://developers.google.com/analytics/devguides/collection/analyticsjs/user-id
-   *
    * @param {string} id User ID
    * @returns {Promise<any>}
    */
@@ -79,7 +76,6 @@ export class GoogleAnalytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Set a anonymize Ip address
-   *
    * @param anonymize {boolean} Set to true to anonymize the IP Address
    * @returns {Promise<any>}
    */
@@ -90,7 +86,6 @@ export class GoogleAnalytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Set the app version
-   *
    * @param appVersion {string} App version
    * @returns {Promise<any>}
    */
@@ -101,7 +96,6 @@ export class GoogleAnalytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Get a variable
-   *
    * @param key {string} Variable
    * @returns {Promise<any>}
    */
@@ -112,7 +106,6 @@ export class GoogleAnalytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Set a variable
-   *
    * @param key {string} Variable
    * @param value {string} Parameter
    * @returns {Promise<any>}
@@ -124,7 +117,6 @@ export class GoogleAnalytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Set OptOut
-   *
    * @param optout {boolean}
    * @returns {Promise<any>}
    */
@@ -135,7 +127,6 @@ export class GoogleAnalytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Enable verbose logging
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -145,7 +136,6 @@ export class GoogleAnalytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Track custom metric
-   *
    * @param key {number}
    * @param value {any}
    * @returns {Promise<any>}
@@ -161,7 +151,6 @@ export class GoogleAnalytics extends AwesomeCordovaNativePlugin {
   /**
    * Track a screen
    * https://developers.google.com/analytics/devguides/collection/analyticsjs/screens
-   *
    * @param title {string} Screen title
    * @param campaignUrl {string} Campaign url for measuring referrals
    * @param newSession {boolean} Set to true to create a new session
@@ -178,7 +167,6 @@ export class GoogleAnalytics extends AwesomeCordovaNativePlugin {
   /**
    * Add a Custom Dimension
    * https://developers.google.com/analytics/devguides/platform/customdimsmets
-   *
    * @param key {number}
    * @param value {string}
    * @returns {Promise<any>}
@@ -191,7 +179,6 @@ export class GoogleAnalytics extends AwesomeCordovaNativePlugin {
   /**
    * Track an event
    * https://developers.google.com/analytics/devguides/collection/analyticsjs/events
-   *
    * @param category {string}
    * @param action {string}
    * @param label {string}
@@ -209,7 +196,6 @@ export class GoogleAnalytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Track an exception
-   *
    * @param description {string}
    * @param fatal {boolean}
    * @returns {Promise<any>}
@@ -221,7 +207,6 @@ export class GoogleAnalytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Track User Timing (App Speed)
-   *
    * @param category {string}
    * @param intervalInMilliseconds {number}
    * @param variable {string}
@@ -236,7 +221,6 @@ export class GoogleAnalytics extends AwesomeCordovaNativePlugin {
   /**
    * Add a Transaction (Ecommerce)
    * https://developers.google.com/analytics/devguides/collection/analyticsjs/ecommerce#addTrans
-   *
    * @param id {string}
    * @param affiliation {string}
    * @param revenue {number}
@@ -260,7 +244,6 @@ export class GoogleAnalytics extends AwesomeCordovaNativePlugin {
   /**
    * Add a Transaction Item (Ecommerce)
    * https://developers.google.com/analytics/devguides/collection/analyticsjs/ecommerce#addItem
-   *
    * @param {string}  id
    * @param {string}  name
    * @param {string}  sku
@@ -285,7 +268,6 @@ export class GoogleAnalytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Enable/disable automatic reporting of uncaught exceptions
-   *
    * @param shouldEnable {boolean}
    * @returns {Promise<any>}
    */
@@ -296,7 +278,6 @@ export class GoogleAnalytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Manually dispatch any data
-   *
    * @returns {Promise<any>}
    * @platform
    */

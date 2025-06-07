@@ -558,7 +558,6 @@ export class IAPError {
  * ## Technical Support or Questions
  *
  * If you have questions or need help integrating In-App Purchase, [Open an Issue on GitHub](https://github.com/j3k0/cordova-plugin-purchase/issues) or email us at _support@fovea.cc_.
- *
  * @interfaces
  * IAPProduct
  * IAPProductOptions
@@ -774,7 +773,6 @@ export class InAppPurchase2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Get product by id or alias
-   *
    * @param idOrAlias
    */
   @Cordova({ sync: true })
@@ -784,7 +782,6 @@ export class InAppPurchase2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Register error handler
-   *
    * @param onError {Function} function to call on error
    */
   @Cordova({ sync: true })
@@ -792,7 +789,6 @@ export class InAppPurchase2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Add or register a product
-   *
    * @param product {IAPProductOptions}
    */
   @Cordova({ sync: true })
@@ -812,7 +808,6 @@ export class InAppPurchase2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Identical to `when`, but the callback will be called only once. After being called, the callback will be unregistered.
-   *
    * @param query {string | IAPProduct}
    * @param [event] {event}
    * @param [callback] {IAPQueryCallback}
@@ -825,7 +820,6 @@ export class InAppPurchase2 extends AwesomeCordovaNativePlugin {
 
   /**
    * Unregister a callback. Works for callbacks registered with ready, when, once and error.
-   *
    * @param callback {Function}
    */
   @Cordova({ sync: true })
@@ -836,14 +830,14 @@ export class InAppPurchase2 extends AwesomeCordovaNativePlugin {
    *
    * The `product` argument can be either:
    *
-   *  - the `IAPProduct` object
-   *  - the product `id`
-   *  - the product `alias`
+   * - the `IAPProduct` object
+   * - the product `id`
+   * - the product `alias`
    *
    * The `additionalData` argument is an optional object with attributes:
-   *  - `oldPurchasedSkus`: a string array with the old subscription to upgrade/downgrade on Android. See: [android developer](https://developer.android.com/google/play/billing/billing_reference.html#upgrade-getBuyIntentToReplaceSkus) for more info
-   *  - `developerPayload`: string representing the developer payload as described in [billing best practices](https://developer.android.com/google/play/billing/billing_best_practices.html)
-   *  - `applicationUsername`: the identifier of the user in your application.
+   * - `oldPurchasedSkus`: a string array with the old subscription to upgrade/downgrade on Android. See: [android developer](https://developer.android.com/google/play/billing/billing_reference.html#upgrade-getBuyIntentToReplaceSkus) for more info
+   * - `developerPayload`: string representing the developer payload as described in [billing best practices](https://developer.android.com/google/play/billing/billing_best_practices.html)
+   * - `applicationUsername`: the identifier of the user in your application.
    *
    * See the "Purchasing section" to learn more about the purchase process.
    *
@@ -851,9 +845,8 @@ export class InAppPurchase2 extends AwesomeCordovaNativePlugin {
    *
    * `store.order()` returns a Promise with the following methods:
    *
-   *  - `then` - called when the order was successfully initiated.
-   *  - `error` - called if the order couldn't be initiated.
-   *
+   * - `then` - called when the order was successfully initiated.
+   * - `error` - called if the order couldn't be initiated.
    * @param product
    * @param additionalData
    */

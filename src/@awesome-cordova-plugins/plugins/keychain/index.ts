@@ -36,7 +36,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class Keychain extends AwesomeCordovaNativePlugin {
   /**
    * Retrieves a value for a key
-   *
    * @param {string} key the key to retrieve
    * @param {string} [touchIDMessage] the message to show underneath the TouchID prompt (if any)
    */
@@ -49,7 +48,6 @@ export class Keychain extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets a value for a key
-   *
    * @param {string} key the key to set
    * @param {string|number|boolean} value the value to set
    * @param {boolean} [useTouchID] whether to store the value with security such that TouchID will be needed to grab it
@@ -63,7 +61,6 @@ export class Keychain extends AwesomeCordovaNativePlugin {
 
   /**
    * Gets a JSON value for a key
-   *
    * @param {string} key the key to retrieve
    * @param {string} touchIDMessage the message to show underneath the TouchID prompt (if any)
    */
@@ -76,7 +73,6 @@ export class Keychain extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets a JSON value for a key
-   *
    * @param {string} key the key to set
    * @param {any} obj value the value to set
    * @param {boolean} [useTouchId] Wether to store the value with security such that TouchID will be needed to grab it
@@ -90,7 +86,6 @@ export class Keychain extends AwesomeCordovaNativePlugin {
 
   /**
    * Removes a value for a key
-   *
    * @param {string} key the key to remove
    */
   @Cordova({

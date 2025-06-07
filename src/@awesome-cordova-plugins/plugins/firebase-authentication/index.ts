@@ -35,7 +35,6 @@ import { Observable } from 'rxjs';
 export class FirebaseAuthentication extends AwesomeCordovaNativePlugin {
   /**
    * Returns the current user logged in Firebase service
-   *
    * @returns {Promise<any>} Returns the user info
    */
   @Cordova({ sync: true })
@@ -45,7 +44,6 @@ export class FirebaseAuthentication extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns a JWT token used to identify the user to a Firebase service.
-   *
    * @param forceRefresh {boolean} Force Refresh
    * @returns {Promise<any>} Returns the id token
    */
@@ -56,7 +54,6 @@ export class FirebaseAuthentication extends AwesomeCordovaNativePlugin {
 
   /**
    * Tries to create a new user account with the given email address and password.
-   *
    * @param email Email
    * @param password Password
    */
@@ -76,7 +73,6 @@ export class FirebaseAuthentication extends AwesomeCordovaNativePlugin {
   /**
    * Triggers the Firebase Authentication backend to send a password-reset email to the given email address,
    * which must correspond to an existing user of your app.
-   *
    * @param email Email
    */
   @Cordova({ sync: true })
@@ -86,7 +82,6 @@ export class FirebaseAuthentication extends AwesomeCordovaNativePlugin {
 
   /**
    * Asynchronously signs in using an email and password.
-   *
    * @param email Email
    * @param password Password
    */
@@ -103,7 +98,6 @@ export class FirebaseAuthentication extends AwesomeCordovaNativePlugin {
    * timeout [milliseconds] is the maximum amount of time you are willing to wait for SMS auto-retrieval
    * to be completed by the library. Maximum allowed value is 2 minutes. Use 0 to disable SMS-auto-retrieval.
    * If you specify a positive value less than 30 seconds, library will default to 30 seconds.
-   *
    * @param phoneNumber Phone number
    * @param timeout {number} Timeout
    */
@@ -114,7 +108,6 @@ export class FirebaseAuthentication extends AwesomeCordovaNativePlugin {
 
   /**
    * Asynchronously signs in using verificationId and 6-digit SMS code.
-   *
    * @param verificationId Verification ID
    * @param smsCode SMS code
    */
@@ -133,7 +126,6 @@ export class FirebaseAuthentication extends AwesomeCordovaNativePlugin {
 
   /**
    * Uses Google's idToken and accessToken to sign-in into firebase account. In order to retrieve those tokens follow instructions for Android and iOS
-   *
    * @param idToken ID Token
    * @param accessToken Access Token
    */
@@ -144,7 +136,6 @@ export class FirebaseAuthentication extends AwesomeCordovaNativePlugin {
 
   /**
    * Uses Apples's idToken and rawNonce (optional) to sign-in into firebase account. In order to retrieve those tokens follow instructions for Android and iOS
-   *
    * @param idToken ID Token
    * @param identityToken
    * @param rawNonce Access Token
@@ -156,7 +147,6 @@ export class FirebaseAuthentication extends AwesomeCordovaNativePlugin {
 
   /**
    * Uses Facebook's accessToken to sign-in into firebase account. In order to retrieve those tokens follow instructions for Android and iOS.
-   *
    * @param accessToken Access Token
    */
   @Cordova({ sync: true })
@@ -166,7 +156,6 @@ export class FirebaseAuthentication extends AwesomeCordovaNativePlugin {
 
   /**
    * Uses Twitter's token and secret to sign-in into firebase account. In order to retrieve those tokens follow instructions for Android and iOS.
-   *
    * @param token Token
    * @param secret Secret
    */
@@ -188,7 +177,6 @@ export class FirebaseAuthentication extends AwesomeCordovaNativePlugin {
 
   /**
    * Set's the current user language code. The string used to set this property must be a language code that follows BCP 47.
-   *
    * @param languageCode Language Code
    */
   @Cordova({ sync: true })

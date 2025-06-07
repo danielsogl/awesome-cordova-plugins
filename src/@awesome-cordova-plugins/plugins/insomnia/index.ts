@@ -37,7 +37,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class Insomnia extends AwesomeCordovaNativePlugin {
   /**
    * Keeps awake the application
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -47,7 +46,6 @@ export class Insomnia extends AwesomeCordovaNativePlugin {
 
   /**
    * Allows the application to sleep again
-   *
    * @returns {Promise<any>}
    */
   @Cordova()

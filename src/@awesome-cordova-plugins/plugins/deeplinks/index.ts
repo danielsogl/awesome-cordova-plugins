@@ -94,7 +94,6 @@ export interface DeeplinkOptions {
 export class Deeplinks extends AwesomeCordovaNativePlugin {
   /**
    * Define a set of paths to match against incoming deeplinks.
-   *
    * @param {paths} paths Define a set of paths to match against incoming deeplinks.
    * paths takes an object of the form { 'path': data }. If a deeplink
    * matches the path, the resulting path-data pair will be returned in the
@@ -111,14 +110,13 @@ export class Deeplinks extends AwesomeCordovaNativePlugin {
 
   /**
    *
-   * This is a convenience version of `route` that takes a reference to a NavController
-   * from Ionic, or a custom class that conforms to this protocol:
+   *This is a convenience version of `route` that takes a reference to a NavController
+   *from Ionic, or a custom class that conforms to this protocol:
    *
-   * NavController.push = function(View, Params){}
+   *NavController.push = function(View, Params){}
    *
-   * This handler will automatically navigate when a route matches. If you need finer-grained
-   * control over the behavior of a matching deeplink, use the plain `route` method.
-   *
+   *This handler will automatically navigate when a route matches. If you need finer-grained
+   *control over the behavior of a matching deeplink, use the plain `route` method.
    * @param {Nav} navController Define a set of paths to match against incoming deeplinks.
    * paths takes an object of the form { 'path': data }. If a deeplink
    * matches the path, the resulting path-data pair will be returned in the

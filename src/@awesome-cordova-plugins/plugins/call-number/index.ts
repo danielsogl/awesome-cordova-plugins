@@ -32,7 +32,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class CallNumber extends AwesomeCordovaNativePlugin {
   /**
    * Calls a phone number
-   *
    * @param {string} numberToCall The phone number to call as a string
    * @param {boolean} bypassAppChooser Set to true to bypass the app chooser and go directly to dialer
    * @returns {Promise<any>}
@@ -46,7 +45,6 @@ export class CallNumber extends AwesomeCordovaNativePlugin {
 
   /**
    * Check if call feature is available
-   *
    * @returns {Promise<any>}
    */
   @Cordova()

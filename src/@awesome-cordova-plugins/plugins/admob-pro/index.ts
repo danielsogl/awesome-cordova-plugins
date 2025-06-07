@@ -170,7 +170,6 @@ export class AdMobPro extends AwesomeCordovaNativePlugin {
 
   /**
    * Create a banner
-   *
    * @param {string | AdMobOptions} adIdOrOptions Ad ID or Options
    * @returns {Promise<any>} Returns a Promise that resolves when the banner is created
    */
@@ -189,7 +188,6 @@ export class AdMobPro extends AwesomeCordovaNativePlugin {
 
   /**
    * Show banner at position
-   *
    * @param {number} position Position. Use `AdMobPro.AD_POSITION` to set values.
    */
   @Cordova({
@@ -199,7 +197,6 @@ export class AdMobPro extends AwesomeCordovaNativePlugin {
 
   /**
    * Show banner at custom position
-   *
    * @param {number} x Offset from screen left.
    * @param {number} y Offset from screen top.
    */
@@ -218,7 +215,6 @@ export class AdMobPro extends AwesomeCordovaNativePlugin {
 
   /**
    * Prepare interstitial banner
-   *
    * @param {string | AdMobOptions} adIdOrOptions Ad ID or Options
    * @returns {Promise<any>} Returns a Promise that resolves when interstitial is prepared
    */
@@ -237,7 +233,6 @@ export class AdMobPro extends AwesomeCordovaNativePlugin {
 
   /**
    * Prepare a reward video ad
-   *
    * @param {string | AdMobOptions} adIdOrOptions Ad ID or Options
    * @returns {Promise<any>} Returns a Promise that resolves when the ad is prepared
    */
@@ -256,7 +251,6 @@ export class AdMobPro extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets the values for configuration and targeting
-   *
    * @param {AdMobOptions} options Options
    * @returns {Promise<any>} Returns a Promise that resolves when the options have been set
    */
@@ -267,7 +261,6 @@ export class AdMobPro extends AwesomeCordovaNativePlugin {
 
   /**
    * Get user ad settings
-   *
    * @returns {Promise<any>} Returns a promise that resolves with the ad settings
    */
   @Cordova()
@@ -277,7 +270,6 @@ export class AdMobPro extends AwesomeCordovaNativePlugin {
 
   /**
    * Triggered when failed to receive Ad
-   *
    * @returns {Observable<any>}
    */
   @Cordova({
@@ -291,7 +283,6 @@ export class AdMobPro extends AwesomeCordovaNativePlugin {
 
   /**
    * Triggered when Ad received
-   *
    * @returns {Observable<any>}
    */
   @Cordova({
@@ -305,7 +296,6 @@ export class AdMobPro extends AwesomeCordovaNativePlugin {
 
   /**
    * Triggered when Ad will be showed on screen
-   *
    * @returns {Observable<any>}
    */
   @Cordova({
@@ -319,7 +309,6 @@ export class AdMobPro extends AwesomeCordovaNativePlugin {
 
   /**
    * Triggered when user click the Ad, and will jump out of your App
-   *
    * @returns {Observable<any>}
    */
   @Cordova({
@@ -333,7 +322,6 @@ export class AdMobPro extends AwesomeCordovaNativePlugin {
 
   /**
    * Triggered when dismiss the Ad and back to your App
-   *
    * @returns {Observable<any>}
    */
   @Cordova({

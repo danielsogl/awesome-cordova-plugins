@@ -34,7 +34,6 @@ declare let mixpanel: any;
 export class Mixpanel extends AwesomeCordovaNativePlugin {
   /**
    * If originalId is omitted, aliasId will be used as originalId.
-   *
    * @param aliasId {string}
    * @param originalId {string}
    * @returns {Promise<any>}
@@ -63,7 +62,6 @@ export class Mixpanel extends AwesomeCordovaNativePlugin {
 
   /**
    * The usePeople parameter is used for the iOS Mixpanel SDK.
-   *
    * @param distinctId {string}
    * @param usePeople {boolean}
    * @returns {Promise<any>}

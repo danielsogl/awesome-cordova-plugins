@@ -30,7 +30,7 @@ export interface CameraPreviewOptions {
 
   /** Preview box drag across the screen, default 'false' */
   previewDrag?: boolean;
-  
+
   /** Capture images to a file and return back the file path instead of returning base64 encoded data. */
   storeToFile: boolean;
 
@@ -193,7 +193,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Starts the camera preview instance.
-   *
    * @param {CameraPreviewOptions} options
    * @returns {Promise<any>}
    */
@@ -207,7 +206,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Starts the camera video instance.
-   *
    * @param {any} options
    * @returns {Promise<any>}
    */
@@ -221,7 +219,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Stops the camera preview instance. (iOS & Android)
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -231,7 +228,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Stops the camera video instance. (iOS & Android)
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -241,7 +237,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Switch from the rear camera and front camera, if available.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -251,7 +246,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Hide the camera preview box.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -261,7 +255,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Show the camera preview box.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -271,7 +264,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Take the picture (base64)
-   *
    * @param {CameraPreviewPictureOptions} [options] size and quality of the picture to take
    * @returns {Promise<any>}
    */
@@ -285,7 +277,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Take a snapshot of preview window (size specified in startCamera options)
-   *
    * @param {CameraPreviewPictureOptions} [options] quality of the picture to take
    * @returns {Promise<any>}
    */
@@ -299,8 +290,7 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    *
-   * Set camera color effect.
-   *
+   *Set camera color effect.
    * @static
    * @param {string} effect name : 'none' (iOS & Android), 'aqua' (Android), 'blackboard' (Android), 'mono' (iOS & Android), 'negative' (iOS & Android), 'posterize' (iOS & Android), 'sepia' (iOS & Android), 'solarize' (Android) or 'whiteboard' (Android)
    * @returns {Promise<any>}
@@ -315,7 +305,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Set the zoom (Android)
-   *
    * @param [zoom] {number} Zoom value
    * @returns {Promise<any>}
    */
@@ -329,7 +318,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Get the maximum zoom (Android)
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -339,7 +327,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Get current zoom (Android)
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -349,7 +336,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Set the preview Size
-   *
    * @param {CameraPreviewDimensions} [dimensions]
    * @returns {Promise<any>}
    */
@@ -363,7 +349,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Get focus mode
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -373,7 +358,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Set the focus mode
-   *
    * @param {string} [focusMode] 'fixed', 'auto', 'continuous-picture', 'continuous-video' (iOS & Android), 'edof', 'infinity', 'macro' (Android Only)
    * @returns {Promise<any>}
    */
@@ -387,7 +371,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Get supported focus modes
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -397,7 +380,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Get the current flash mode
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -407,7 +389,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Set the flash mode
-   *
    * @param {string} [flashMode] 'off' (iOS & Android), 'on' (iOS & Android), 'auto' (iOS & Android), 'torch' (Android)
    * @returns {Promise<any>}
    */
@@ -421,7 +402,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Get supported flash modes
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -431,7 +411,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Get supported picture sizes
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -441,7 +420,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Get exposure mode
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -451,7 +429,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Get exposure modes
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -461,7 +438,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Set exposure mode
-   *
    * @param {string} [lock]
    * @returns {Promise<any>}
    */
@@ -475,7 +451,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Get exposure compensation (Android)
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -485,7 +460,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Set exposure compensation (Android)
-   *
    * @param {number} [exposureCompensation]
    * @returns {Promise<any>}
    */
@@ -499,7 +473,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Get exposure compensation range (Android)
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -509,7 +482,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Set specific focus point. Note, this assumes the camera is full-screen.
-   *
    * @param {number} xPoint
    * @param {number} yPoint
    * @returns {Promise<any>}
@@ -521,7 +493,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Add a listener for the back event for the preview
-   *
    * @returns {Promise<any>} if back button pressed
    */
   @Cordova()
@@ -531,7 +502,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Return in use device camera fov
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -541,7 +511,6 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
 
   /**
    * Get the characteristics of all available cameras
-   *
    * @returns {Promise<any>}
    */
   @Cordova()

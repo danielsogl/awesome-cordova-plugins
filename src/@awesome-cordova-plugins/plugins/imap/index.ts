@@ -321,8 +321,6 @@ export enum FlagEnum {
  * This plugin will enable a Cordova application to use the IMAP (Internet Message Access Protocol) features
  * The plugin offers support for Android and iOS.
  * To enable the IMAP features on Android, this plugin uses the framework [Java Mail API](https://javaee.github.io/javamail/) and for iOS, it uses the [MailCore 2](http://libmailcore.com/) library.
- *
- *
  * @usage
  * ```typescript
  * import { Imap } from '@awesome-cordova-plugins/imap/ngx';
@@ -444,8 +442,8 @@ export enum FlagEnum {
  *   });
  *
  *
- *   * Sets a flag on a message
- *   * "setFlag()" can be used for deleting messages setting the Delete flag to "FlagEnum.DELETED"
+ *   Sets a flag on a message
+ *   "setFlag()" can be used for deleting messages setting the Delete flag to "FlagEnum.DELETED"
  *   this.imap.setFlag('INBOX', [1206, 1205, 1204], FlagEnum.SEEN, true)
  *   .then((res: ModificationResult) => {
  *
@@ -458,8 +456,8 @@ export enum FlagEnum {
  *     console.error(error)
  *   });
  *
- *   * Download Email Attachment
- *   * The 'contentID' (the last parameter) can be set to an empty string ('') or null if it's not provided.
+ *   Download Email Attachment
+ *   The 'contentID' (the last parameter) can be set to an empty string ('') or null if it's not provided.
  *   this.imap.downloadEmailAttachment('INBOX', 1545, '/storage/emulated/0/Download', false, 'image001.png', '<f_lqqj1d851>')
  *    .then((res: boolean) => {
  *      // Returns "true" if the attachment is successfully saved, else returns "false".

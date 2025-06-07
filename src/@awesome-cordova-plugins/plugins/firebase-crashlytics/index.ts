@@ -34,7 +34,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class FirebaseCrashlytics extends AwesomeCordovaNativePlugin {
   /**
    * Simply add the plugin to get the default Crashlytics functionality. Note that crashes and logged exceptions will only be reported when the application restarts. In order to log caught exceptions the following can be used:
-   *
    * @returns {void}
    */
   @Cordova({
@@ -46,7 +45,6 @@ export class FirebaseCrashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Generate a forced crash. Visible in console after restart of application.
-   *
    * @returns {void}
    */
   @Cordova({
@@ -58,7 +56,6 @@ export class FirebaseCrashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Log a priority message. Will only be logged in the event of a crash.
-   *
    * @param {number} priority
    * @param {string} tag
    * @param {string} message
@@ -73,7 +70,6 @@ export class FirebaseCrashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Log a message. Will only be logged in the event of a crash.
-   *
    * @param {string} message
    * @returns {void}
    */
@@ -86,7 +82,6 @@ export class FirebaseCrashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Log when a handled exception has happened. Visible in console after restart of application.
-   *
    * @param {string} message
    * @returns {void}
    */
@@ -99,7 +94,6 @@ export class FirebaseCrashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Set extra key/value string value. Will only be logged in the event of a crash.
-   *
    * @param {string} key
    * @param {string} value
    * @returns {void}
@@ -113,7 +107,6 @@ export class FirebaseCrashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Set extra key/value bool value. Will only be logged in the event of a crash.
-   *
    * @param {string} key
    * @param {boolean} value
    * @returns {void}
@@ -127,7 +120,6 @@ export class FirebaseCrashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Set extra key/value double value. Will only be logged in the event of a crash.
-   *
    * @param {string} key
    * @param {number} value
    * @returns {void}
@@ -141,7 +133,6 @@ export class FirebaseCrashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Set extra key/value float value. Will only be logged in the event of a crash.
-   *
    * @param {string} key
    * @param {number} value
    * @returns {void}
@@ -155,7 +146,6 @@ export class FirebaseCrashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Set extra key/value integer value. Will only be logged in the event of a crash.
-   *
    * @param {string} key
    * @param {number} value
    * @returns {void}
@@ -169,7 +159,6 @@ export class FirebaseCrashlytics extends AwesomeCordovaNativePlugin {
 
   /**
    * Set the identifier for the user. Take care when using this method and ensure you privacy policy is updated accordingly.
-   *
    * @param {string} identifier
    * @returns {void}
    */

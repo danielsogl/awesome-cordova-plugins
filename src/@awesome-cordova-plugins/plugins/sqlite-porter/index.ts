@@ -48,7 +48,6 @@ import { Injectable } from '@angular/core';
 export class SQLitePorter extends AwesomeCordovaNativePlugin {
   /**
    * Executes a set of SQL statements against the defined database. Can be used to import data defined in the SQL statements into the database, and may additionally include commands to create the table structure.
-   *
    * @param db {Object} Database object
    * @param sql {string} SQL statements to execute against the database
    * @returns {Promise<any>}
@@ -64,7 +63,6 @@ export class SQLitePorter extends AwesomeCordovaNativePlugin {
 
   /**
    * Exports a SQLite DB as a set of SQL statements.
-   *
    * @param db {Object} Database object
    * @returns {Promise<any>}
    */
@@ -79,7 +77,6 @@ export class SQLitePorter extends AwesomeCordovaNativePlugin {
 
   /**
    * Converts table structure and/or row data contained within a JSON structure into SQL statements that can be executed against a SQLite database. Can be used to import data into the database and/or create the table structure.
-   *
    * @param db {Object} Database object
    * @param json {Object|string} JSON structure containing row data and/or table structure as either a JSON object or string
    * @returns {Promise<any>}
@@ -95,7 +92,6 @@ export class SQLitePorter extends AwesomeCordovaNativePlugin {
 
   /**
    * Exports a SQLite DB as a JSON structure
-   *
    * @param db {Object} Database object
    * @returns {Promise<any>}
    */
@@ -110,7 +106,6 @@ export class SQLitePorter extends AwesomeCordovaNativePlugin {
 
   /**
    * Wipes all data from a database by dropping all existing tables
-   *
    * @param db {Object} Database object
    * @returns {Promise<any>}
    */

@@ -157,7 +157,6 @@ function wrapObservable(pluginObj: any, methodName: string, args: any[], opts: a
 
 /**
  * Wrap the event with an observable
- *
  * @private
  * @param event event name
  * @param element The element to attach the event listener to
@@ -173,7 +172,6 @@ function wrapEventObservable(event: string, element: any): Observable<any> {
 
 /**
  * Checks if plugin/cordova is available
- *
  * @returns {boolean | { error: string } }
  * @private
  */
@@ -220,7 +218,6 @@ export function checkAvailability(plugin: any, methodName?: string, pluginName?:
 
 /**
  * Checks if _objectInstance exists and has the method/property
- *
  * @param pluginObj
  * @param methodName
  * @private
@@ -319,7 +316,7 @@ export function callCordovaPlugin(
 
   if (availabilityCheck === true) {
     const pluginInstance = getPlugin(pluginObj.constructor.getPluginRef());
-    // eslint-disable-next-line prefer-spread
+
     return pluginInstance[methodName].apply(pluginInstance, args);
   } else {
     return availabilityCheck;
@@ -345,7 +342,6 @@ export function callInstance(
   args = setIndex(args, opts, resolve, reject);
 
   if (instanceAvailability(pluginObj, methodName)) {
-    // eslint-disable-next-line prefer-spread
     return pluginObj._objectInstance[methodName].apply(pluginObj._objectInstance, args);
   }
 }

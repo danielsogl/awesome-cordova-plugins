@@ -156,7 +156,6 @@ export interface MusicControlsOptions {
 export class MusicControls extends AwesomeCordovaNativePlugin {
   /**
    * Create the media controls
-   *
    * @param options {MusicControlsOptions}
    * @returns {Promise<any>}
    */
@@ -167,7 +166,6 @@ export class MusicControls extends AwesomeCordovaNativePlugin {
 
   /**
    * Destroy the media controller
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -177,7 +175,6 @@ export class MusicControls extends AwesomeCordovaNativePlugin {
 
   /**
    * Subscribe to the events of the media controller
-   *
    * @returns {Observable<any>}
    */
   @Cordova({
@@ -195,7 +192,6 @@ export class MusicControls extends AwesomeCordovaNativePlugin {
 
   /**
    * Toggle play/pause:
-   *
    * @param isPlaying {boolean}
    */
   @Cordova()
@@ -203,7 +199,6 @@ export class MusicControls extends AwesomeCordovaNativePlugin {
 
   /**
    * Update elapsed time, optionally toggle play/pause:
-   *
    * @param args {Object}
    * @param args.elapsed
    * @param args.isPlaying
@@ -215,7 +210,6 @@ export class MusicControls extends AwesomeCordovaNativePlugin {
 
   /**
    * Toggle dismissable:
-   *
    * @param dismissable {boolean}
    */
   @Cordova()

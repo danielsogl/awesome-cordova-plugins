@@ -36,7 +36,6 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
 export class MultipleDocumentsPicker extends AwesomeCordovaNativePlugin {
   /**
    * This function allow user to show native file picker
-   *
    * @param type {number} To pick type of files: for images send 1, for all files send 2
    * @returns {Promise<any>} Returns a promise that resolves when something happens
    */

@@ -201,7 +201,6 @@ export class AndroidPermissions extends AwesomeCordovaNativePlugin {
 
   /**
    * Check permission
-   *
    * @param {string} permission The name of the permission
    * @returns {Promise<AndroidPermissionResponse>} Returns a promise
    */
@@ -212,7 +211,6 @@ export class AndroidPermissions extends AwesomeCordovaNativePlugin {
 
   /**
    * Request permission
-   *
    * @param {string} permission The name of the permission to request
    * @returns {Promise<AndroidPermissionResponse>}
    */
@@ -223,7 +221,6 @@ export class AndroidPermissions extends AwesomeCordovaNativePlugin {
 
   /**
    * Request permissions
-   *
    * @param {string[]} permissions An array with permissions
    * @returns {Promise<any>} Returns a promise
    */
@@ -234,7 +231,6 @@ export class AndroidPermissions extends AwesomeCordovaNativePlugin {
 
   /**
    * This function still works now, will not support in the future.
-   *
    * @param {string} permission The name of the permission
    * @returns {Promise<AndroidPermissionResponse>} Returns a promise
    */

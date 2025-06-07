@@ -74,7 +74,6 @@ export interface IntentOptions {
 export class WebIntent extends AwesomeCordovaNativePlugin {
   /**
    * Convenience constant for actions
-   *
    * @type {string}
    */
   @CordovaProperty()
@@ -82,7 +81,6 @@ export class WebIntent extends AwesomeCordovaNativePlugin {
 
   /**
    * Convenience constant for actions
-   *
    * @type {string}
    */
   @CordovaProperty()
@@ -90,7 +88,6 @@ export class WebIntent extends AwesomeCordovaNativePlugin {
 
   /**
    * Convenience constant for extras
-   *
    * @type {string}
    */
   @CordovaProperty()
@@ -98,7 +95,6 @@ export class WebIntent extends AwesomeCordovaNativePlugin {
 
   /**
    * Convenience constant for extras
-   *
    * @type {string}
    */
   @CordovaProperty()
@@ -106,7 +102,6 @@ export class WebIntent extends AwesomeCordovaNativePlugin {
 
   /**
    * Convenience constant for extras
-   *
    * @type {string}
    */
   @CordovaProperty()
@@ -114,7 +109,6 @@ export class WebIntent extends AwesomeCordovaNativePlugin {
 
   /**
    * Convenience constant for extras
-   *
    * @type {string}
    */
   @CordovaProperty()
@@ -122,7 +116,6 @@ export class WebIntent extends AwesomeCordovaNativePlugin {
 
   /**
    * Convenience constant for actions
-   *
    * @type {string}
    */
   @CordovaProperty()
@@ -130,7 +123,6 @@ export class WebIntent extends AwesomeCordovaNativePlugin {
 
   /**
    * Convenience constant for actions
-   *
    * @type {string}
    */
   @CordovaProperty()
@@ -138,7 +130,6 @@ export class WebIntent extends AwesomeCordovaNativePlugin {
 
   /**
    * Convenience constant for actions
-   *
    * @type {string}
    */
   @CordovaProperty()
@@ -146,7 +137,6 @@ export class WebIntent extends AwesomeCordovaNativePlugin {
 
   /**
    * Convenience constant for actions
-   *
    * @type {string}
    */
   @CordovaProperty()
@@ -154,7 +144,6 @@ export class WebIntent extends AwesomeCordovaNativePlugin {
 
   /**
    * Convenience constant for actions
-   *
    * @type {string}
    */
   @CordovaProperty()
@@ -162,7 +151,6 @@ export class WebIntent extends AwesomeCordovaNativePlugin {
 
   /**
    * Convenience constant for actions
-   *
    * @type {string}
    */
   @CordovaProperty()
@@ -170,7 +158,6 @@ export class WebIntent extends AwesomeCordovaNativePlugin {
 
   /**
    * Launches an Android intent
-   *
    * @param options {IntentOptions}
    * @returns {Promise<any>}
    */
@@ -181,7 +168,6 @@ export class WebIntent extends AwesomeCordovaNativePlugin {
 
   /**
    * Starts a new activity and return the result to the application
-   *
    * @param options {IntentOptions}
    * @returns {Promise<any>}
    */
@@ -192,7 +178,6 @@ export class WebIntent extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks if this app was invoked with specified extra
-   *
    * @param extra {string}
    * @returns {Promise<any>}
    */
@@ -203,7 +188,6 @@ export class WebIntent extends AwesomeCordovaNativePlugin {
 
   /**
    * Gets the extra that this app was invoked with
-   *
    * @param extra {string}
    * @returns {Promise<any>}
    */
@@ -214,7 +198,6 @@ export class WebIntent extends AwesomeCordovaNativePlugin {
 
   /**
    * Gets the Uri the app was invoked with
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -224,7 +207,6 @@ export class WebIntent extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns the content of the intent used whenever the application activity is launched
-   *
    * @returns {Observable<Intent>}
    */
   @Cordova({
@@ -236,7 +218,6 @@ export class WebIntent extends AwesomeCordovaNativePlugin {
 
   /**
    * Sends a custom intent passing optional extras
-   *
    * @param options {IntentOptions}
    * @returns {Promise<any>}
    */
@@ -247,7 +228,6 @@ export class WebIntent extends AwesomeCordovaNativePlugin {
 
   /**
    * Request that a given application service be started
-   *
    * @param options {IntentOptions}
    * @returns {Promise<any>}
    */
@@ -258,7 +238,6 @@ export class WebIntent extends AwesomeCordovaNativePlugin {
 
   /**
    * Registers a broadcast receiver for the specified filters
-   *
    * @param filters {RegisterBroadcastReceiverOptions}
    * @returns {Observable<any>}
    */
@@ -292,7 +271,6 @@ export class WebIntent extends AwesomeCordovaNativePlugin {
   /**
    * Send a result back to the Intent that started this Activity.
    * The data can be passed using 'extras'.
-   *
    * @param root0
    * @param root0.extras
    * @returns {Promise<any>}

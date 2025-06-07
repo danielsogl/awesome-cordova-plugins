@@ -42,7 +42,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class AppAvailability extends AwesomeCordovaNativePlugin {
   /**
    * Checks if an app is available on device
-   *
    * @param {string} app Package name on android, or URI scheme on iOS
    * @returns {Promise<boolean>}
    */

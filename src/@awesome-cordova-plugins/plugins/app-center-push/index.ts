@@ -35,7 +35,6 @@ import { Observable } from 'rxjs';
 export class AppCenterPush extends AwesomeCordovaNativePlugin {
   /**
    * Subscribe to an event
-   *
    * @param  {string} eventName Event name
    * @returns {Observable<any>}
    */
@@ -48,7 +47,6 @@ export class AppCenterPush extends AwesomeCordovaNativePlugin {
   }
   /**
    * Check if App Center Push is enabled
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova()
@@ -58,7 +56,6 @@ export class AppCenterPush extends AwesomeCordovaNativePlugin {
 
   /**
    * Enable or disable App Center Push at runtime
-   *
    * @param  {boolean} shouldEnable Set value
    * @returns {Promise<void>}
    */

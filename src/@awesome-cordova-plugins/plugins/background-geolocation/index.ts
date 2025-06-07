@@ -77,8 +77,7 @@ export interface ServiceStatus {
    * Authorization status.
    *
    * Posible values:
-   *  NOT_AUTHORIZED, AUTHORIZED, AUTHORIZED_FOREGROUND
-   *
+   * NOT_AUTHORIZED, AUTHORIZED, AUTHORIZED_FOREGROUND
    * @example
    * if (authorization == BackgroundGeolocation.NOT_AUTHORIZED) {...}
    */
@@ -160,10 +159,9 @@ export interface BackgroundGeolocationConfig {
    *
    * Platform: all
    * Available providers:
-   *  DISTANCE_FILTER_PROVIDER,
-   *  ACTIVITY_PROVIDER
-   *  RAW_PROVIDER
-   *
+   * DISTANCE_FILTER_PROVIDER,
+   * ACTIVITY_PROVIDER
+   * RAW_PROVIDER
    * @default DISTANCE_FILTER_PROVIDER
    * @example
    * { locationProvider: LocationProvider.RAW_PROVIDER }
@@ -176,12 +174,11 @@ export interface BackgroundGeolocationConfig {
    * Platform: all
    * Provider: all
    * Possible values:
-   *  HIGH_ACCURACY,
-   *  MEDIUM_ACCURACY,
-   *  LOW_ACCURACY,
-   *  PASSIVE_ACCURACY
+   * HIGH_ACCURACY,
+   * MEDIUM_ACCURACY,
+   * LOW_ACCURACY,
+   * PASSIVE_ACCURACY
    * Note: Accuracy has direct effect on power drain. Lower accuracy = lower power drain.
-   *
    * @default MEDIUM_ACCURACY
    * @example
    * { desiredAccuracy: BackgroundGeolocationAccuracy.LOW }
@@ -194,7 +191,6 @@ export interface BackgroundGeolocationConfig {
    * When stopped, the minimum distance the device must move beyond the stationary location for aggressive background-tracking to engage.
    * Platform: all
    * Provider: DISTANCE_FILTER
-   *
    * @default 50
    */
   stationaryRadius?: number;
@@ -204,7 +200,6 @@ export interface BackgroundGeolocationConfig {
    *
    * Platform: all
    * Provider: all
-   *
    * @default false
    */
   debug?: boolean;
@@ -214,7 +209,6 @@ export interface BackgroundGeolocationConfig {
    *
    * Platform: all
    * Provider: DISTANCE_FILTER, RAW
-   *
    * @default 500
    * @see {@link https://apple.co/2oHo2CV|Apple docs}
    */
@@ -226,7 +220,6 @@ export interface BackgroundGeolocationConfig {
    *
    * Platform: all
    * Provider: all
-   *
    * @default true
    */
   stopOnTerminate?: boolean;
@@ -236,7 +229,6 @@ export interface BackgroundGeolocationConfig {
    *
    * Platform: Android
    * Provider: all
-   *
    * @default false
    */
   startOnBoot?: boolean;
@@ -246,7 +238,6 @@ export interface BackgroundGeolocationConfig {
    *
    * Platform: Android
    * Provider: all
-   *
    * @default 60000
    * @see {@link https://bit.ly/1x00RUu|Android docs}
    */
@@ -257,7 +248,6 @@ export interface BackgroundGeolocationConfig {
    *
    * Platform: Android
    * Provider: ACTIVITY
-   *
    * @default 120000
    * @see {@link https://bit.ly/1x00RUu|Android docs}
    */
@@ -269,7 +259,6 @@ export interface BackgroundGeolocationConfig {
    *
    * Platform: Android
    * Provider: ACTIVITY
-   *
    * @default 10000
    */
   activitiesInterval?: number;
@@ -284,7 +273,6 @@ export interface BackgroundGeolocationConfig {
    *
    * Platform: Android
    * Provider: all
-   *
    * @default true
    */
   notificationsEnabled?: boolean;
@@ -295,7 +283,6 @@ export interface BackgroundGeolocationConfig {
    *
    * Platform: Android
    * Provider: all
-   *
    * @default false
    */
   startForeground?: boolean;
@@ -305,7 +292,6 @@ export interface BackgroundGeolocationConfig {
    *
    * Platform: Android
    * Provider: all
-   *
    * @default "Background tracking"
    */
   notificationTitle?: string;
@@ -315,7 +301,6 @@ export interface BackgroundGeolocationConfig {
    *
    * Platform: Android
    * Provider: all
-   *
    * @default "ENABLED"
    */
   notificationText?: string;
@@ -354,7 +339,6 @@ export interface BackgroundGeolocationConfig {
    *
    * Platform: iOS
    * Provider: all
-   *
    * @default "OtherNavigation"
    * @see {@link https://apple.co/2oHofpH|Apple docs}
    */
@@ -365,7 +349,6 @@ export interface BackgroundGeolocationConfig {
    *
    * Platform: iOS
    * Provider: all
-   *
    * @default false
    * @see {@link https://apple.co/2CbjEW2|Apple docs}
    */
@@ -376,7 +359,6 @@ export interface BackgroundGeolocationConfig {
    *
    * Platform: iOS
    * Provider: all
-   *
    * @default false
    */
   saveBatteryOnBackground?: boolean;
@@ -402,7 +384,6 @@ export interface BackgroundGeolocationConfig {
    *
    * Platform: all
    * Provider: all
-   *
    * @default 100
    */
   syncThreshold?: number;
@@ -420,7 +401,6 @@ export interface BackgroundGeolocationConfig {
    *
    * Platform: all
    * Provider: all
-   *
    * @default 10000
    */
   maxLocations?: number;
@@ -438,9 +418,8 @@ export interface BackgroundGeolocationConfig {
  * Set location service provider @see https://github.com/mauron85/cordova-plugin-background-geolocation/wiki/Android-providers
  *
  * Possible values:
- *  ANDROID_DISTANCE_FILTER_PROVIDER: 0,
- *  ANDROID_ACTIVITY_PROVIDER: 1
- *
+ * ANDROID_DISTANCE_FILTER_PROVIDER: 0,
+ * ANDROID_ACTIVITY_PROVIDER: 1
  * @enum {number}
  */
 export declare enum BackgroundGeolocationProvider {
@@ -472,9 +451,8 @@ export declare enum BackgroundGeolocationAccuracy {
  * Used in the switchMode function
  *
  * Possible values:
- *  BACKGROUND: 0
- *  FOREGROUND: 1
- *
+ * BACKGROUND: 0
+ * FOREGROUND: 1
  * @enum {number}
  */
 export declare enum BackgroundGeolocationMode {
@@ -549,7 +527,6 @@ export declare enum BackgroundGeolocationIOSActivity {
 export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
   /**
    * Configure the plugin.
-   *
    * @param options {BackgroundGeolocationConfig} options An object of type Config
    * @returns {Promise<any>}
    */
@@ -561,7 +538,6 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
   /**
    * Turn ON the background-geolocation system.
    * The user will be tracked whenever they suspend the app.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -571,7 +547,6 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Turn OFF background-tracking
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -581,7 +556,6 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Inform the native plugin that you're finished, the background-task may be completed
-   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -593,7 +567,6 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Force the plugin to enter "moving" or "stationary" state
-   *
    * @param isMoving {boolean}
    * @returns {Promise<any>}
    */
@@ -606,7 +579,6 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Setup configuration
-   *
    * @param options {BackgroundGeolocationConfig}
    * @returns {Promise<any>}
    */
@@ -619,7 +591,6 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns current stationaryLocation if available. null if not
-   *
    * @returns {Promise<Location>}
    */
   @Cordova({
@@ -632,7 +603,6 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
   /**
    * Add a stationary-region listener. Whenever the devices enters "stationary-mode",
    * your #success callback will be executed with #location param containing #radius of region
-   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -644,7 +614,6 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Check if location is enabled on the device
-   *
    * @returns {Promise<number>} Returns a promise with int argument that takes values 0, 1 (true).
    */
   @Cordova({
@@ -670,7 +639,6 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
    * Method can be used to detect user changes in location services settings.
    * If user enable or disable location services then success callback will be executed.
    * In case or  (SettingNotFoundException) fail callback will be executed.
-   *
    * @returns {Observable<number>}
    */
   @Cordova({
@@ -683,7 +651,6 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Stop watching for location mode changes.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -696,11 +663,10 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
   /**
    * Method will return all stored locations.
    * Locations are stored when:
-   *  - config.stopOnTerminate is false and main activity was killed
-   *    by the system
-   *  or
-   *  - option.debug is true
-   *
+   * - config.stopOnTerminate is false and main activity was killed
+   * by the system
+   * or
+   * - option.debug is true
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -712,7 +678,6 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Method will return locations, which has not been yet posted to server. NOTE: Locations does contain locationId.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -722,7 +687,6 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Delete stored location by given locationId.
-   *
    * @param locationId {number}
    * @returns {Promise<any>}
    */
@@ -735,7 +699,6 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Delete all stored locations.
-   *
    * @returns {Promise<any>}
    */
   @Cordova({
@@ -754,7 +717,6 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
    *
    * BackgroundGeolocation.Mode.FOREGROUND
    * BackgroundGeolocation.Mode.BACKGROUND
-   *
    * @param modeId {number}
    * @returns {Promise<any>}
    */
@@ -767,7 +729,6 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Return all logged events. Useful for plugin debugging. Parameter limit limits number of returned entries.
-   *
    * @see https://github.com/mauron85/cordova-plugin-background-geolocation/tree/v2.2.1#debugging for more information.
    * @param fromId
    * @param minLevel
@@ -785,7 +746,6 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
 
   /**
    * Return all logged events. Useful for plugin debugging. Parameter limit limits number of returned entries.
-   *
    * @see https://github.com/mauron85/cordova-plugin-background-geolocation/tree/v2.2.1#debugging for more information.
    * @returns {Promise<any>}
    */
@@ -799,7 +759,6 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
    * {timeout: Maximum time in milliseconds device will wait for location,
    * maximumAge: Maximum age in milliseconds of a possible cached location that is acceptable to return;
    * enableHighAccuracy: if true and if the device is able to provide a more accurate position, it will do so}
-   *
    * @param {BackgroundGeolocationCurrentPositionConfig} options
    * @returns {Promise<any>}
    */
@@ -824,7 +783,6 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
    * To perform any long running operation on iOS
    * you need to create background task
    * IMPORTANT: task has to be ended by endTask
-   *
    * @returns {Promise<number>} taskKey
    */
   @Cordova({
@@ -836,7 +794,6 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
 
   /**
    *  End background task indentified by taskKey (iOS only)
-   *
    * @param taskKey
    */
   @Cordova({
@@ -853,7 +810,6 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
    *
    * In this scenario the Activity was killed by the system and all registered
    * event listeners will not be triggered until the app is relaunched.
-   *
    * @example
    *  BackgroundGeolocation.headlessTask(function(event) {
    *
@@ -888,7 +844,6 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
    * Register event listener.
    *
    * Triggered when server responded with "<code>285 Updates Not Required</code>" to post/sync request.
-   *
    * @param event
    * @param callbackFn
    */
@@ -903,7 +858,6 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
    * Unregister all event listeners for given event.
    *
    * If parameter <code>event</code> is not provided then all event listeners will be removed.
-   *
    * @param event
    */
   @Cordova()

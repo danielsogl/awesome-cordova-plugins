@@ -36,7 +36,6 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
 export class BiometricWrapper extends AwesomeCordovaNativePlugin {
   /**
    * This function activate iris activity
-   *
    * @param args
    * @returns {Promise<any>} Returns a promise that resolves when iris data captured
    */
@@ -47,7 +46,6 @@ export class BiometricWrapper extends AwesomeCordovaNativePlugin {
 
   /**
    * This function activate fingerprint activity
-   *
    * @param args
    * @returns {Promise<any>} Returns a promise that resolves when FP data captured
    */

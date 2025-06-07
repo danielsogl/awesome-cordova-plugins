@@ -77,9 +77,9 @@ export interface Configuration {
           icon?: string;
           textInputActionButtonTitle?: string;
           textInputPlaceholder?: string;
-        }
+        },
       ];
-    }
+    },
   ];
 }
 
@@ -222,7 +222,6 @@ export class DefaultMessageStorage {
 export class CustomMessageStorage {
   /**
    * Will be called by the plugin when messages are received and it's time to save them to the storage
-   *
    * @param array of message objects to save to storage
    */
   @Cordova({ sync: true })
@@ -232,7 +231,6 @@ export class CustomMessageStorage {
 
   /**
    * Will be called by the plugin to find a message by message id
-   *
    * @param callback has to be called on completion with one parameter - found message object
    */
   @Cordova({ sync: true })
@@ -242,7 +240,6 @@ export class CustomMessageStorage {
 
   /**
    * Will be called by the plugin to find all messages in the storage
-   *
    * @param callback has to be called on completion with one parameter - an array of available messages
    */
   @Cordova({ sync: true })
@@ -325,7 +322,6 @@ export interface ChatSettingsIOS {
 export class MobileMessaging extends AwesomeCordovaNativePlugin {
   /**
    * Starts a new Mobile Messaging session.
-   *
    * @name init
    * @param config. Configuration for Mobile Messaging
    * @param config
@@ -339,7 +335,6 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Register to event coming from MobileMessaging library.
-   *
    * @name register
    * @param event
    */
@@ -362,7 +357,6 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Un register from MobileMessaging library event.
-   *
    * @name unregister
    * @param {string} eventName
    * @param event
@@ -387,7 +381,6 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Sends an event to the server eventually, handles possible errors and do retries for you.
-   *
    * @name submitEvent
    * @param {Object} eventData. An object containing event data
    * {
@@ -411,7 +404,6 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
   /**
    * Sends an event to the server immediately.
    * You have to handle possible connection or server errors, do retries yourself.
-   *
    * @name submitEventImmediately
    * @param {Object} eventData. An object containing event data
    * {
@@ -435,7 +427,6 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Saves user data to the server.
-   *
    * @name saveUser
    * @param userData
    * @param {Object} userData. An object containing user data
@@ -447,7 +438,6 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Fetch user data from the server.
-   *
    * @name fetchUser
    */
   @Cordova()
@@ -457,7 +447,6 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Gets user data from the locally stored cache.
-   *
    * @name getUser
    */
   @Cordova()
@@ -467,7 +456,6 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Saves installation to the server.
-   *
    * @name saveInstallation
    * @param installation
    * @param {Object} installation. An object containing installation data
@@ -479,7 +467,6 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Fetches installation from the server.
-   *
    * @name fetchInstallation
    */
   @Cordova()
@@ -489,7 +476,6 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Gets locally cached installation.
-   *
    * @name getInstallation
    */
   @Cordova()
@@ -499,7 +485,6 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets any installation as primary for this user.
-   *
    * @name setInstallationAsPrimary
    * @param {string} pushRegistrationId of an installation
    * @param {boolean} primary or not
@@ -511,7 +496,6 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Performs personalization of the current installation on the platform.
-   *
    * @name personalize
    * @param context
    * @param {Object} context. An object containing user identity information as well as additional user attributes.
@@ -523,7 +507,6 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Performs depersonalization of the current installation on the platform.
-   *
    * @name depersonalize
    */
   @Cordova()
@@ -533,7 +516,6 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Performs depersonalization of the installation referenced by pushRegistrationId.
-   *
    * @param {string} pushRegistrationId of the remote installation to depersonalize
    */
   @Cordova()
@@ -543,7 +525,6 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Mark messages as seen
-   *
    * @name markMessagesSeen
    * @param {Array} messageIds of identifiers of message to mark as seen
    */
@@ -554,7 +535,6 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Displays built-in error dialog so that user can resolve errors during sdk initialization.
-   *
    * @name showDialogForError
    * @param {number} errorCode to display dialog for
    */
@@ -570,7 +550,6 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Displays chat view.
-   *
    * @name showChat
    * @param config
    * @param {ChatConfig} chat config
@@ -582,7 +561,6 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Setup chat settings for iOS only
-   *
    * @param settings
    */
   @Cordova()
@@ -620,7 +598,6 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Fetch mobile inbox data from the server.
-   *
    * @name fetchInboxMessages
    * @param token access token (JWT in a strictly predefined format) required for current user to have access to the Inbox messages
    * @param externalUserId External User ID is meant to be an ID of a user in an external (non-Infobip) service
@@ -635,7 +612,6 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Fetch mobile inbox without token from the server.
-   *
    * @name fetchInboxMessagesWithoutToken
    * @param externalUserId External User ID is meant to be an ID of a user in an external (non-Infobip) service
    * @param filterOptions filtering options applied to messages list in response. Nullable, will return default number of messages
@@ -649,7 +625,6 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Asynchronously marks inbox messages as seen
-   *
    * @param externalUserId External User ID is meant to be an ID of a user in an external (non-Infobip) service
    * @param messageIds array of inbox messages identifiers that need to be marked as seen
    * @param callback will be called on success

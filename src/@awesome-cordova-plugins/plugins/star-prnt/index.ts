@@ -850,7 +850,6 @@ export class StarPRNT extends AwesomeCordovaNativePlugin {
 
   /**
    * Find available printers
-   *
    * @param {string} type  Interface Type: All, LAN, Bluetooth, USB
    * @returns {Promise<Printers>} Returns a promise that resolves with an array of printers
    */
@@ -861,7 +860,6 @@ export class StarPRNT extends AwesomeCordovaNativePlugin {
 
   /**
    * Checks the status of the printer
-   *
    * @param {string} port  Printer name i.e BT:StarMicronics
    * @param {string} emulation  StarPrinter Emulation type: "StarPRNT", "StarPRNTL", "StarLine", "StarGraphic", "EscPos", "EscPosMobile", "StarDotImpact"
    * @returns {Promise<PrinterStatus>} Returns a promise that resolves with the PrinterStatus object
@@ -873,71 +871,65 @@ export class StarPRNT extends AwesomeCordovaNativePlugin {
 
   /**
    * Prints plain text
-   *
    * @param {string} port  Printer name i.e BT:StarMicronics. Send null to use a printer connected via StarIOExtManager using the connect() function
    * @param {string} emulation  StarPrinter Emulation type: "StarPRNT", "StarPRNTL", "StarLine", "StarGraphic", "EscPos", "EscPosMobile", "StarDotImpact"
    * @param {PrintObj} printObj  text:string, cutReceipt?:boolean, openCashDrawer?:boolean
    * @returns {Promise<any>} Success! if printed correctly or error message string returned by the SDK.
    */
   @Cordova()
-  printRawText(port: string|null, emulation: string, printObj: PrintObj): Promise<any> {
+  printRawText(port: string | null, emulation: string, printObj: PrintObj): Promise<any> {
     return;
   }
 
   /**
    * Converts the text into a bitmap image and sends it to the printer
-   *
    * @param {string} port  Printer name i.e BT:StarMicronics.  Send null to use a printer connected via StarIOExtManager using the connect() function
    * @param {string} emulation  StarPrinter Emulation type: "StarPRNT", "StarPRNTL", "StarLine", "StarGraphic", "EscPos", "EscPosMobile", "StarDotImpact"
    * @param {RasterObj} rasterObj  text:string, cutReceipt?:boolean, openCashDrawer?:boolean, fontSize:number, paperWidth:number
    * @returns {Promise<any>} Success! if printed correctly or error message string returned by the SDK.
    */
   @Cordova()
-  printRasterReceipt(port: string|null, emulation: string, rasterObj: RasterObj): Promise<any> {
+  printRasterReceipt(port: string | null, emulation: string, rasterObj: RasterObj): Promise<any> {
     return;
   }
 
   /**
    * Gets an image from a string URI and converts it to bitmap to send it to the printer
-   *
    * @param {string} port Printer name i.e BT:StarMicronics.  Send null to use a printer connected via StarIOExtManager using the connect() function
    * @param {string} emulation  StarPrinter Emulation type: "StarPRNT", "StarPRNTL", "StarLine", "StarGraphic", "EscPos", "EscPosMobile", "StarDotImpact"
    * @param {ImageObj} imageObj  uri:string, paperWidth?:number, cutReceipt?:boolean, openCashDrawer?:boolean
    * @returns {Promise<any>} Success! if printed correctly or error message string returned by the SDK.
    */
   @Cordova()
-  printImage(port: string|null, emulation: string, imageObj: ImageObj): Promise<any> {
+  printImage(port: string | null, emulation: string, imageObj: ImageObj): Promise<any> {
     return;
   }
 
   /**
    * sends an appendPeripheral command to the printer for channels No1 and No2
-   *
    * @param {string} port  Printer name i.e BT:StarMicronics.  Send null to use a printer connected via StarIOExtManager using the connect() function
    * @param {string} emulation  StarPrinter Emulation type: "StarPRNT", "StarPRNTL", "StarLine", "StarGraphic", "EscPos", "EscPosMobile", "StarDotImpact"
    * @returns {Promise<any>} Success! if opened or error message string returned by the SDK.
    */
   @Cordova()
-  openCashDrawer(port: string|null, emulation: string): Promise<any> {
+  openCashDrawer(port: string | null, emulation: string): Promise<any> {
     return;
   }
 
   /**
    * Sends an Array of commands to the command buffer using the Android ICommandBuilderInterface or iOS ISCBBuilderInterface
-   *
    * @param {string} port  Printer name i.e BT:StarMicronics.  Send null to use a printer connected via StarIOExtManager using the connect() function
    * @param {string} emulation  StarPrinter Emulation type: "StarPRNT", "StarPRNTL", "StarLine", "StarGraphic", "EscPos", "EscPosMobile", "StarDotImpact"
    * @param {CommandsArray} commandsArray  each command in the array should be an instance of the PrintCommand object. Example [{append:"text"}, {"openCashDrawer: 1"}]
    * @returns {Promise<any>} Success! if printed correctly or error message string returned by the SDK.
    */
   @Cordova()
-  print(port: string|null, emulation: string, commandsArray: CommandsArray): Promise<any> {
+  print(port: string | null, emulation: string, commandsArray: CommandsArray): Promise<any> {
     return;
   }
 
   /**
    * Allows you to connect to the printer, keep the connection alive and receive status updates through an observable
-   *
    * @param {string} port  printer name i.e BT:StarMicronics.
    * @param {string} emulation  StarPrinter Emulation type: "StarPRNT", "StarPRNTL", "StarLine", "StarGraphic", "EscPos", "EscPosMobile", "StarDotImpact"
    * @param hasBarcodeReader
@@ -953,7 +945,6 @@ export class StarPRNT extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns an observable with the device status events. Only fires when a printer is connnected through the connect() function
-   *
    * @returns {Observable<any>} dataType: printerOnline, printerOffline, printerImpossible, printerPaperEmpty, printerPaperNearEmpty, printerPaperReady, printerCoverOpen, printerCoverClose, cashDrawerOpen, cashDrawerClose
    */
   @Cordova({
@@ -967,7 +958,6 @@ export class StarPRNT extends AwesomeCordovaNativePlugin {
   /**
    * Allows to disconnect (close the connection to the peripherals), this is useful to avoid keeping alive a connection when not in the app to save device battery
    * (energy consumption). You should call this function when the app is paused or closed.
-   *
    * @returns {Promise<any>} Success! if connected or error message string returned by the SDK.
    */
   @Cordova()

@@ -28,7 +28,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    * notify device ready
    * NOTE: in iOS use to be notified of launch Push Notification or Deep Link
    * in Android use only in android phonegap build projects
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -43,7 +42,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   /**
    * Personalization
    * Enables the Personalization API
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -54,7 +52,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   /**
    * Personalization
    * Disables the Personalization API
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -64,7 +61,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Enables tracking opt out for the currently active user.
-   *
    * @param optOut {boolean}
    * @returns {Promise<any>}
    */
@@ -75,7 +71,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets CleverTap SDK to offline mode.
-   *
    * @param offline {boolean}
    * @returns {Promise<any>}
    */
@@ -86,7 +81,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Enables the reporting of device network related information, including IP address.  This reporting is disabled by default.
-   *
    * @param enable {boolean}
    * @returns {Promise<any>}
    */
@@ -111,7 +105,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Registers for push notifications
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -121,7 +114,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets the device's push token
-   *
    * @param token {string}
    * @returns {Promise<any>}
    */
@@ -132,7 +124,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets the device's Baidu push token
-   *
    * @param token {string}
    * @returns {Promise<any>}
    */
@@ -143,7 +134,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets the device's Huawei push token
-   *
    * @param token {string}
    * @returns {Promise<any>}
    */
@@ -154,7 +144,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Create Notification Channel for Android O+
-   *
    * @param extras {any}
    * @returns {Promise<any>}
    */
@@ -165,7 +154,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Create Notification Channel for Android O+
-   *
    * @param channelID {string}
    * @param channelName {string}
    * @param channelDescription {string}
@@ -186,7 +174,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Create Notification Channel for Android O+
-   *
    * @param channelID {string}
    * @param channelName {string}
    * @param channelDescription {string}
@@ -209,7 +196,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Create Notification Channel with Group ID for Android O+
-   *
    * @param channelID {string}
    * @param channelName {string}
    * @param channelDescription {string}
@@ -233,7 +219,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Create Notification Channel with Group ID for Android O+
-   *
    * @param channelID {string}
    * @param channelName {string}
    * @param channelDescription {string}
@@ -258,7 +243,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Create Notification Channel Group for Android O+
-   *
    * @param groupID {string}
    * @param groupName {string}
    * @returns {Promise<any>}
@@ -270,7 +254,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Delete Notification Channel for Android O+
-   *
    * @param channelID {string}
    * @returns {Promise<any>}
    */
@@ -281,7 +264,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Delete Notification Group for Android O+
-   *
    * @param groupID {string}
    * @returns {Promise<any>}
    */
@@ -296,7 +278,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Record Screen View
-   *
    * @param screenName {string}
    * @returns {Promise<any>}
    */
@@ -307,7 +288,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Record Event with Name
-   *
    * @param eventName {string}
    * @returns {Promise<any>}
    */
@@ -318,7 +298,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    *  Record Event with Name and Event properties
-   *
    * @param eventName {string}
    * @param eventProps {any}
    * @returns {Promise<any>}
@@ -330,7 +309,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    *  Record Charged Event with Details and Items
-   *
    * @param details {any}  object with transaction details
    * @param items {any}  array of items purchased
    * @returns {Promise<any>}
@@ -342,61 +320,54 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Get the details of a specific event
-   *
    * @param eventName {string} - The name of the event
    * @returns {Promise<any>}
    */
   @Cordova()
   getUserEventLog(eventName: string): Promise<any> {
-      return;
+    return;
   }
 
   /**
    * Get the count of times an event occurred
-   *
    * @param eventName {string} - The name of the event
    * @returns {Promise<any>}
    */
   @Cordova()
   getUserEventLogCount(eventName: string): Promise<any> {
-      return;
+    return;
   }
 
   /**
    * Get timestamp of user's last app visit
-   *
    * @returns {Promise<any>} - Returns epoch seconds or -1
    */
   @Cordova()
   getUserLastVisitTs(): Promise<any> {
-      return;
+    return;
   }
 
   /**
    * Get the total number of times the user has launched the app
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
   getUserAppLaunchCount(): Promise<any> {
-      return;
+    return;
   }
 
   /**
    * Get full event history for the current user
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
   getUserEventLogHistory(): Promise<any> {
-      return;
+    return;
   }
-
 
   /**
    * @deprecated - Use getUserEventLog() instead
    * Get Event First Time
-   *
    * @param eventName {string}
    * callback returns epoch seconds or -1
    * @returns {Promise<any>}
@@ -409,7 +380,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   /**
    * @deprecated - Use getUserEventLog() instead
    * Get Event Last Time
-   *
    * @param eventName {string}
    * callback returns epoch seconds or -1
    * @returns {Promise<any>}
@@ -422,7 +392,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   /**
    * @deprecated - Use getUserEventLogCount() instead
    * Get Event Number of Occurrences
-   *
    * @param eventName {string}
    * calls back with int or -1
    * @returns {Promise<any>}
@@ -433,9 +402,8 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * * @deprecated - Use getUserEventLog() instead
+   * @deprecated - Use getUserEventLog() instead
    * Get Event Details
-   *
    * @param eventName {string}
    * calls back with object {"eventName": <string>, "firstTime":<epoch seconds>, "lastTime": <epoch seconds>, "count": <int>} or empty object
    * @returns {Promise<any>}
@@ -449,7 +417,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    * @deprecated - Use getUserEventLogHistory() instead
    * Get Event History
    * calls back with object {"eventName1":<event1 details object>, "eventName2":<event2 details object>}
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -474,7 +441,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    * for, among other things, more fine-grained geo-targeting and segmentation purposes.
    * Note: on iOS the call to CleverTapSDK must be made on the main thread due to LocationManager restrictions, but the CleverTapSDK method itself is non-blocking.
    * calls back with {lat:lat, lon:lon} lat and lon are floats
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -484,7 +450,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Set location
-   *
    * @param lat {number}
    * @param lon {number}
    * @returns {Promise<any>}
@@ -511,7 +476,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    * and data relating to the old user removed, and a new session is started
    * for the new user and data for that user refreshed via a network call to CleverTap.
    * In addition, any global frequency caps are reset as part of the switch.
-   *
    * @param profile {any} object
    * @returns {Promise<any>}
    */
@@ -522,7 +486,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Set profile attributes
-   *
    * @param profile {any} object
    * @returns {Promise<any>}
    */
@@ -533,7 +496,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Get User Profile Property
-   *
    * @param propertyName {string}
    * calls back with value of propertyName or false
    * @returns {Promise<any>}
@@ -547,7 +509,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    * @deprecated This method is deprecated. Use getCleverTapID() instead.
    * Get a unique CleverTap identifier suitable for use with install attribution providers.
    * calls back with unique CleverTap attribution identifier
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -559,7 +520,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    * @deprecated This method is deprecated. Use getCleverTapID() instead.
    * Get User Profile CleverTapID
    * calls back with CleverTapID or false
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -570,7 +530,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   /**
    * Get User Profile CleverTapID
    * calls back with CleverTapID
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -580,7 +539,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Remove the property specified by key from the user profile
-   *
    * @param key {string}
    * @returns {Promise<any>}
    */
@@ -591,7 +549,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Method for setting a multi-value user profile property
-   *
    * @param key {string}
    * @param values {any} array of strings
    * @returns {Promise<any>}
@@ -603,7 +560,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Method for adding a value to a multi-value user profile property
-   *
    * @param key {string}
    * @param value {string}
    * @returns {Promise<any>}
@@ -615,7 +571,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Method for adding values to a multi-value user profile property
-   *
    * @param key {string}
    * @param values {any} array of strings
    * @returns {Promise<any>}
@@ -627,7 +582,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Method for removing a value from a multi-value user profile property
-   *
    * @param key {string}
    * @param value {string}
    * @returns {Promise<any>}
@@ -639,7 +593,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Method for removing a value from a multi-value user profile property
-   *
    * @param key {string}
    * @param values {any} array of strings
    * @returns {Promise<any>}
@@ -651,25 +604,23 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Method for incrementing a value for a single-value profile property (if it exists).
-   *
    * @param key {string}
    * @param value {number}
    * @returns {Promise<any>}
    */
   @Cordova()
-  profileIncrementValueBy(key: string,value: number): Promise<any> {
+  profileIncrementValueBy(key: string, value: number): Promise<any> {
     return;
   }
 
   /**
    * Method for decrementing a value for a single-value profile property (if it exists).
-   *
    * @param key {string}
    * @param value {number}
    * @returns {Promise<any>}
    */
   @Cordova()
-  profileDecrementValueBy(key: string,value: number): Promise<any> {
+  profileDecrementValueBy(key: string, value: number): Promise<any> {
     return;
   }
 
@@ -681,7 +632,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    * Suspends and saves inApp notifications until 'resumeInAppNotifications' is called for current session.
    * Automatically resumes InApp notifications display on CleverTap shared instance creation.
    * Pending inApp notifications are displayed only for current session.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -701,7 +651,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Resumes displaying inApps notifications and shows pending inApp notifications if any.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -711,7 +660,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Deletes all images and gifs which are preloaded for inapps in cs mode.
-   *
    * @param expiredOnly {boolean} - to clear only assets which will not be needed further for inapps
    * @returns {Promise<any>}
    */
@@ -722,25 +670,22 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Deletes all types of files which are preloaded for SDK features like custom in-app templates, app functions and variables etc.
-   *
    * @param expiredOnly {boolean} - to clear only assets which will not be needed further for inapps
    * @returns {Promise<any>}
    */
-    @Cordova()
-    clearFileResources(expiredOnly: boolean): Promise<any> {
-      return;
-    }
+  @Cordova()
+  clearFileResources(expiredOnly: boolean): Promise<any> {
+    return;
+  }
 
   /**
    * Fetches In Apps from server.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
   fetchInApps(): Promise<any> {
     return;
   }
-
 
   /*******************
    * Session
@@ -749,7 +694,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   /**
    * Get Session Elapsed Time
    * calls back with seconds
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -761,7 +705,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    * @deprecated - Use getUserAppLaunchCount() instead
    * Get Session Total Visits
    * calls back with with int or -1
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -772,7 +715,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   /**
    * Get Session Screen Count
    * calls back with with int
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -784,7 +726,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    * @deprecated -  Use getUserLastVisitTs() instead
    * Get Session Previous Visit Time
    * calls back with with epoch seconds or -1
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -795,7 +736,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   /**
    * Get Sesssion Referrer UTM details
    * object {"source": <string>, "medium": <string>, "campaign": <string>} or empty object
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -805,7 +745,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Call this to manually track the utm details for an incoming install referrer
-   *
    * @param source {string}
    * @param medium {string}
    * @param campaign {string}
@@ -846,7 +785,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Call this method to open the App Inbox
-   *
    * @param styleConfig : any or empty object
    */
   @Cordova()
@@ -856,7 +794,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Call this to Fetch all Inbox Messages
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -866,7 +803,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Call this to Fetch all Unread Inbox Messages
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -876,7 +812,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Call this to Fetch Inbox Message For Id
-   *
    * @param messageId {string}
    * @returns {Promise<any>}
    */
@@ -887,7 +822,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Call this to Delete Inbox Message For Id
-   *
    * @param messageId {string}
    * @returns {Promise<any>}
    */
@@ -898,7 +832,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Call this method to delete bulk Inbox Messages for Given Message Ids
-   *
    * @param messageIds {any} array of strings
    * @returns {Promise<any>}
    */
@@ -909,7 +842,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Call this to Mark Read Inbox Message For Id
-   *
    * @param messageId {string}
    * @returns {Promise<any>}
    */
@@ -920,7 +852,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Call this to Mark Read Inbox Messages For Ids in bulk
-   *
    * @param messageIds {any} array of strings
    * @returns {Promise<any>}
    */
@@ -931,7 +862,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Call this to dismiss Inbox
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -941,7 +871,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Call this to Mark Push Inbox Notification Viewed Event for Id
-   *
    * @param messageId {string}
    * @returns {Promise<any>}
    */
@@ -952,7 +881,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Call this to Mark Push Inbox Notification Clicked Event for Id
-   *
    * @param messageId {string}
    * @returns {Promise<any>}
    */
@@ -963,7 +891,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Call this to Get All Display Units
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -973,7 +900,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Call this to Get Display Unit For Id
-   *
    * @param id {string}
    * @returns {Promise<any>}
    */
@@ -984,7 +910,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Call this to Push DisplayUnit Viewed Event for ID
-   *
    * @param id {string}
    * @returns {Promise<any>}
    */
@@ -995,7 +920,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Call this to Push DisplayUnit Clicked Event for ID
-   *
    * @param id {string}
    * @returns {Promise<any>}
    */
@@ -1007,7 +931,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   /**
    * @deprecated - Since version 2.7.0 and will be removed in the future versions of this SDK.
    * Call this to Get Feature Flag for key
-   *
    * @param key {string}
    * @param defaultValue {string}
    * @returns {Promise<any>}
@@ -1020,7 +943,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   /**
    * @deprecated - Since version 2.7.0 and will be removed in the future versions of this SDK.
    * Call this to Set Defaults for Product Config
-   *
    * @param defaults {any}
    * @returns {Promise<any>}
    */
@@ -1032,7 +954,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   /**
    * @deprecated - Since version 2.7.0 and will be removed in the future versions of this SDK.
    * Call this for Product Config Fetch
-   *
    * @param defaults {any}
    * @returns {Promise<any>}
    */
@@ -1044,7 +965,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   /**
    * @deprecated - Since version 2.7.0 and will be removed in the future versions of this SDK.
    * Call this for Product Config Fetch with Min Interval
-   *
    * @param timeInterval {number}
    * @returns {Promise<any>}
    */
@@ -1056,7 +976,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   /**
    * @deprecated - Since version 2.7.0 and will be removed in the future versions of this SDK.
    * Call this for Product Config Activate
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -1067,7 +986,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   /**
    * @deprecated - Since version 2.7.0 and will be removed in the future versions of this SDK.
    * Call this for Product Config Fetch and Activate
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -1078,7 +996,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   /**
    * @deprecated - Since version 2.7.0 and will be removed in the future versions of this SDK.
    * Call this to set Product Config Fetch with Min Interval
-   *
    * @param timeInterval {number}
    * @returns {Promise<any>}
    */
@@ -1090,7 +1007,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   /**
    * @deprecated - Since version 2.7.0 and will be removed in the future versions of this SDK.
    * Call this to Get Last Fetch Time Interval
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -1101,7 +1017,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   /**
    * @deprecated - Since version 2.7.0 and will be removed in the future versions of this SDK.
    * Call this to Get String
-   *
    * @param key {string}
    * @returns {Promise<any>}
    */
@@ -1113,7 +1028,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   /**
    * @deprecated - Since version 2.7.0 and will be removed in the future versions of this SDK.
    * Call this to Get Boolean
-   *
    * @param key {string}
    * @returns {Promise<any>}
    */
@@ -1125,7 +1039,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   /**
    * @deprecated - Since version 2.7.0 and will be removed in the future versions of this SDK.
    * Call this to Get Long
-   *
    * @param key {string}
    * @returns {Promise<any>}
    */
@@ -1137,7 +1050,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   /**
    * @deprecated - Since version 2.7.0 and will be removed in the future versions of this SDK.
    * Call this to Get Double
-   *
    * @param key {string}
    * @returns {Promise<any>}
    */
@@ -1149,7 +1061,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   /**
    * @deprecated - Since version 2.7.0 and will be removed in the future versions of this SDK.
    * Call this to Reset Product Config
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -1208,10 +1119,10 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>}
    * @param {string} variable The String specifying the name of file varible to be created.
    */
-    @Cordova()
-    defineFileVariable(variable: string): Promise<any> {
-      return;
-    }
+  @Cordova()
+  defineFileVariable(variable: string): Promise<any> {
+    return;
+  }
 
   /**
    * Get a variable or a group for the specified name.
@@ -1251,7 +1162,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
     return;
   }
 
-
   /**
    * Called when the value of the file variable is downloaded and ready
    * @param {name} string the name of the variable
@@ -1289,7 +1199,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
     return;
   }
 
-
   /****************************
    * Custom Templates methods
    ****************************/
@@ -1318,105 +1227,98 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /**
-  * Notify the SDK that an active custom template is dismissed. The active custom template is considered to be
-  * visible to the user until this method is called. Since the SDK can show only one InApp message at a time, all
-  * other messages will be queued until the current one is dismissed.
-  * @param {string} templateName The name of the active template
-  * @returns {Promise<any>}
-  */
+   * Notify the SDK that an active custom template is dismissed. The active custom template is considered to be
+   * visible to the user until this method is called. Since the SDK can show only one InApp message at a time, all
+   * other messages will be queued until the current one is dismissed.
+   * @param {string} templateName The name of the active template
+   * @returns {Promise<any>}
+   */
   @Cordova()
   customTemplateSetDismissed(templateName: string): Promise<any> {
     return;
   }
 
-
   /**
-  * Notify the SDK that an active custom template is presented to the user.
-  * @param {string} templateName The name of the active template
-  * @returns {Promise<any>}
-  */
+   * Notify the SDK that an active custom template is presented to the user.
+   * @param {string} templateName The name of the active template
+   * @returns {Promise<any>}
+   */
   @Cordova()
   customTemplateSetPresented(templateName: string): Promise<any> {
     return;
   }
 
   /**
-  * Trigger a custom template action argument by name.
-  *
-  * @param {string} templateName The name of an active template for which the action is defined
-  * @param {string} argName The action argument na
-  * @returns {Promise<any>}
-  */
+   * Trigger a custom template action argument by name.
+   * @param {string} templateName The name of an active template for which the action is defined
+   * @param {string} argName The action argument na
+   * @returns {Promise<any>}
+   */
   @Cordova()
   customTemplateRunAction(templateName: string, argName: string): Promise<any> {
     return;
   }
 
   /**
-  * Retrieve a string argument by name.
-  *
-  * @param {string} templateName The name of an active template for which the argument is defined
-  * @param {string} argName The action argument name
-  * @returns {Promise<any>}
-  */
+   * Retrieve a string argument by name.
+   * @param {string} templateName The name of an active template for which the argument is defined
+   * @param {string} argName The action argument name
+   * @returns {Promise<any>}
+   */
   @Cordova()
   customTemplateGetStringArg(templateName: string, argName: string): Promise<any> {
     return;
   }
 
   /**
-  * Retrieve a number argument by name.
-  *
-  * @param {string} templateName The name of an active template for which the argument is defined
-  * @param {string} argName The action argument name
-  * @returns {Promise<any>}
-  */
+   * Retrieve a number argument by name.
+   * @param {string} templateName The name of an active template for which the argument is defined
+   * @param {string} argName The action argument name
+   * @returns {Promise<any>}
+   */
   @Cordova()
   customTemplateGetNumberArg(templateName: string, argName: string): Promise<any> {
     return;
   }
 
   /**
-  * Retrieve a boolean argument by name.
-  *
-  * @param {string} templateName The name of an active template for which the argument is defined
-  * @param {string} argName The action argument name
-  * @returns {Promise<any>}
-  */
+   * Retrieve a boolean argument by name.
+   * @param {string} templateName The name of an active template for which the argument is defined
+   * @param {string} argName The action argument name
+   * @returns {Promise<any>}
+   */
   @Cordova()
   customTemplateGetBooleanArg(templateName: string, argName: string): Promise<any> {
     return;
   }
 
   /**
-  * Retrieve a file argument by name.
-  *
-  * @param {string} templateName The name of an active template for which the argument is defined
-  * @param {string} argName The action argument name
-  * @returns {Promise<any>}
-  */
+   * Retrieve a file argument by name.
+   * @param {string} templateName The name of an active template for which the argument is defined
+   * @param {string} argName The action argument name
+   * @returns {Promise<any>}
+   */
   @Cordova()
   customTemplateGetFileArg(templateName: string, argName: string): Promise<any> {
     return;
   }
 
   /**
-  * Retrieve an object argument by name.
-  *
-  * @param {string} templateName The name of an active template for which the argument is defined
-  * @param {string} argName The action argument name
-  * @returns {Promise<any>}
-  */
+   * Retrieve an object argument by name.
+   * @param {string} templateName The name of an active template for which the argument is defined
+   * @param {string} argName The action argument name
+   * @returns {Promise<any>}
+   */
   @Cordova()
   customTemplateGetObjectArg(templateName: string, argName: string): Promise<any> {
     return;
   }
 
   /**
-  * Get a string representation of an active's template context with information about all arguments.
-  * @param {string} templateName The name of an active template
-  * @returns {Promise<any>}
-  */
+   * Get a string representation of an active's template context with information about all arguments.
+   * @param {string} templateName The name of an active template
+   * @returns {Promise<any>}
+   */
   @Cordova()
   customTemplateContextToString(templateName: string): Promise<any> {
     return;
@@ -1448,7 +1350,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns true/false based on whether push permission is granted or denied.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -1456,13 +1357,11 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
     return;
   }
 
-
   /*******************
    * Developer Options
    ******************/
   /**
    * 0 is off, 1 is info, 2 is debug, default is 1
-   *
    * @param level {number}
    * @returns {Promise<any>}
    */

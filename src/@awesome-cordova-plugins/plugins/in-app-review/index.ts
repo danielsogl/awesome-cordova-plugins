@@ -35,7 +35,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class InAppReview extends AwesomeCordovaNativePlugin {
   /**
    * Open the inApp review popup
-   *
    * @returns {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()

@@ -71,7 +71,6 @@ export interface NativeTransitionOptions {
 export class NativePageTransitions extends AwesomeCordovaNativePlugin {
   /**
    * Perform a slide animation
-   *
    * @param options {NativeTransitionOptions} Options for the transition
    * @returns {Promise<any>}
    */
@@ -82,7 +81,6 @@ export class NativePageTransitions extends AwesomeCordovaNativePlugin {
 
   /**
    * Perform a flip animation
-   *
    * @param options {NativeTransitionOptions} Options for the transition
    * @returns {Promise<any>}
    */
@@ -93,7 +91,6 @@ export class NativePageTransitions extends AwesomeCordovaNativePlugin {
 
   /**
    * Perform a fade animation
-   *
    * @param options {NativeTransitionOptions} Options for the transition
    * @returns {Promise<any>}
    */
@@ -104,7 +101,6 @@ export class NativePageTransitions extends AwesomeCordovaNativePlugin {
 
   /**
    * Perform a slide animation
-   *
    * @param options {NativeTransitionOptions} Options for the transition
    * @returns {Promise<any>}
    */
@@ -115,7 +111,6 @@ export class NativePageTransitions extends AwesomeCordovaNativePlugin {
 
   /**
    * Perform a slide animation
-   *
    * @param options {NativeTransitionOptions} Options for the transition
    * @returns {Promise<any>}
    */
@@ -126,7 +121,6 @@ export class NativePageTransitions extends AwesomeCordovaNativePlugin {
 
   /**
    * Execute pending transition
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -136,7 +130,6 @@ export class NativePageTransitions extends AwesomeCordovaNativePlugin {
 
   /**
    * Cancel pending transition
-   *
    * @returns {Promise<any>}
    */
   @Cordova()

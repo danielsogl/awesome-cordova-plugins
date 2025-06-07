@@ -181,7 +181,6 @@ export enum MetrixAttributionStatus {
 export class Metrix extends AwesomeCordovaNativePlugin {
   /**
    * This method initializes Metrix SDK
-   *
    * @param {MetrixConfig} config MetrixConfig object used as starting options
    */
   @Cordova({ sync: true })
@@ -189,7 +188,6 @@ export class Metrix extends AwesomeCordovaNativePlugin {
 
   /**
    * Function used to get Session Number
-   *
    * @returns {Promise<number>} Returns a promise with session number value
    */
   @Cordova()
@@ -199,7 +197,6 @@ export class Metrix extends AwesomeCordovaNativePlugin {
 
   /**
    * This method tracks an event
-   *
    * @param {string} slug the slug of the event to be tracked
    * @param {Map<string, string> | object} attributes optional attributes of the event to be tracked
    */
@@ -208,7 +205,6 @@ export class Metrix extends AwesomeCordovaNativePlugin {
 
   /**
    * This method adds the provided attributes to all metrix events
-   *
    * @param {Map<string, string> | object} attributes the attributes to be added to all future events
    */
   @Cordova({ sync: true })
@@ -216,7 +212,6 @@ export class Metrix extends AwesomeCordovaNativePlugin {
 
   /**
    * This method tracks a revenue
-   *
    * @param {string} slug the slug of the event to be tracked
    * @param {number} amount the amount of money gained by the revenue
    * @param {number} currency (OPTIONAL) currency of the amount
@@ -227,7 +222,6 @@ export class Metrix extends AwesomeCordovaNativePlugin {
 
   /**
    * By making this call, the Metrix SDK will try to find if there is any new attribution info inside of the deep link and if any, it will be sent to the Metrix backend.
-   *
    * @param {string} url URL of the deeplink
    */
   @Cordova({ sync: true })

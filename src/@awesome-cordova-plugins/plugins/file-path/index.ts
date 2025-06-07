@@ -34,7 +34,6 @@ declare const window: any;
 export class FilePath extends AwesomeCordovaNativePlugin {
   /**
    * Resolve native path for given content URL/path.
-   *
    * @param {string} path  Content URL/path.
    * @returns {Promise<string>}
    */

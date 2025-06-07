@@ -82,7 +82,6 @@ export interface LineLoginAccessToken {
 export class LineLogin extends AwesomeCordovaNativePlugin {
   /**
    * Initialize
-   *
    * @param param LineLoginParams
    * @returns {Promise<any>}
    */
@@ -93,7 +92,6 @@ export class LineLogin extends AwesomeCordovaNativePlugin {
 
   /**
    * Login
-   *
    * @returns {Promise<LineLoginProfile>}
    */
   @Cordova()
@@ -104,7 +102,6 @@ export class LineLogin extends AwesomeCordovaNativePlugin {
   /**
    * Login with Web
    * (iOS only)
-   *
    * @returns {Promise<LineLoginProfile>}
    */
   @Cordova()
@@ -114,7 +111,6 @@ export class LineLogin extends AwesomeCordovaNativePlugin {
 
   /**
    * Logout
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -124,7 +120,6 @@ export class LineLogin extends AwesomeCordovaNativePlugin {
 
   /**
    * Get Access Token
-   *
    * @returns {Promise<LineLoginAccessToken>}
    */
   @Cordova()
@@ -134,7 +129,6 @@ export class LineLogin extends AwesomeCordovaNativePlugin {
 
   /**
    * Verify AccessToken
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -144,7 +138,6 @@ export class LineLogin extends AwesomeCordovaNativePlugin {
 
   /**
    * Refresh Access Token
-   *
    * @returns {Promise<any>}
    */
   @Cordova()

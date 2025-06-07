@@ -64,7 +64,6 @@ export class AnalyticsFirebase extends AwesomeCordovaNativePlugin {
   /**
    * This enum represents AnalyticsFirebase default events.
    * Use one of these default events or a custom event
-   *
    * @readonly
    */
   @CordovaProperty()
@@ -105,7 +104,6 @@ export class AnalyticsFirebase extends AwesomeCordovaNativePlugin {
   /**
    * This enum represents AnalyticsFirebase default params.
    * Use one of these default params or a custom param
-   *
    * @readonly
    */
   @CordovaProperty()
@@ -166,7 +164,6 @@ export class AnalyticsFirebase extends AwesomeCordovaNativePlugin {
    * Events with the same name must have the same parameters.
    * Up to 500 event names are supported.
    * Using predefined [FirebaseAnalytics.Event](https://firebase.google.com/docs/reference/android/com/google/firebase/analytics/FirebaseAnalytics.Event.html) and/or [FirebaseAnalytics.Param](https://firebase.google.com/docs/reference/android/com/google/firebase/analytics/FirebaseAnalytics.Param.html) is recommended for optimal reporting.
-   *
    * @param eventName {string} The event name
    * @param eventParams {object} (Optional) The event params
    * @returns {Promise<any>} Returns a promise that resolves when the event is logged
@@ -178,7 +175,6 @@ export class AnalyticsFirebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Clears all analytics data for this app from the device and resets the app instance id
-   *
    * @returns {Promise<any>} Returns a promise that resolves when the analytics data is cleared
    */
   @Cordova()
@@ -188,7 +184,6 @@ export class AnalyticsFirebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets whether analytics collection is enabled for this app on this device. This setting is persisted across app sessions. By default it is enabled
-   *
    * @param screenName {boolean} The value of the collection
    * @param enabled
    * @returns {Promise<any>} Returns a promise that resolves when the collection is enabled/disabled
@@ -201,7 +196,6 @@ export class AnalyticsFirebase extends AwesomeCordovaNativePlugin {
   /**
    * Sets the current screen name, which specifies the current visual context in your app.
    * This helps identify the areas in your app where users spend their time and how they interact with your app
-   *
    * @param screenName {string} The screen name
    * @returns {Promise<any>} Returns a promise that resolves when the current screen is setted
    */
@@ -212,7 +206,6 @@ export class AnalyticsFirebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets the minimum engagement time required before starting a session. The default value is 10000 (10 seconds)
-   *
    * @param screenName {number} The duration in milliseconds
    * @param milliseconds
    * @returns {Promise<any>} Returns a promise that resolves when the minimum session duration is set
@@ -224,7 +217,6 @@ export class AnalyticsFirebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets the duration of inactivity that terminates the current session. The default value is 1800000 (30 minutes)
-   *
    * @param screenName {number} The duration in milliseconds
    * @param milliseconds
    * @returns {Promise<any>} Returns a promise that resolves when the session timeout duration is set
@@ -236,7 +228,6 @@ export class AnalyticsFirebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets the user ID property. This feature must be used in accordance with Google's Privacy Policy
-   *
    * @param userId {string} The user id
    * @returns {Promise<any>} Returns a promise that resolves when the user id is setted
    */
@@ -247,7 +238,6 @@ export class AnalyticsFirebase extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets a user property to a given value. Up to 25 user property names are supported. Once set, user property values persist throughout the app lifecycle and across sessions
-   *
    * @param userPropertyName {string} The user property name
    * @param userPropertyValue {string} The user property value
    * @returns {Promise<any>} Returns a promise that resolves when the user property setted

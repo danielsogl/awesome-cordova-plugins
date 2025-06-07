@@ -57,7 +57,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class AES256 extends AwesomeCordovaNativePlugin {
   /**
    * This function used to perform the aes256 encryption
-   *
    * @param {string} secureKey A 32 bytes string, which will used as input key for AES256 encryption.
    * @param {string} secureIV A 16 bytes string, which will used as initial vector for AES256 encryption.
    * @param {string} data A string which will be encrypted
@@ -70,7 +69,6 @@ export class AES256 extends AwesomeCordovaNativePlugin {
 
   /**
    * This function used to perform the aes256 decryption
-   *
    * @param {string} secureKey A 32 bytes string, which will used as input key for AES256 decryption.
    * @param {string} secureIV A 16 bytes string, which will used as initial vector for AES256 decryption.
    * @param {string} data An AES256 encrypted data which will be decrypted.
@@ -84,7 +82,6 @@ export class AES256 extends AwesomeCordovaNativePlugin {
   /**
    * This function used to generate a secure key based on an password. Perfect if you want to delegate the key generation for encryption to the plugin.
    * Make sure to save the return value of this function somewhere so your encrypted data can be decrypted in the future.
-   *
    * @param {string} password A random string, which will be used as input for a PBKDF2 function
    * @returns {Promise<string>} Returns a promise that resolves when key is generated.
    */
@@ -96,7 +93,6 @@ export class AES256 extends AwesomeCordovaNativePlugin {
   /**
    * This function used to generate a secure IV based on an password. Perfect if you want to delegate the IV generation for encryption to the plugin.
    * Make sure to save the return value of this function somewhere so your encrypted data can be decrypted in the future.
-   *
    * @param {string} password A random string, which will be used as input for a PBKDF2 function
    * @returns {Promise<string>} Returns a promise that resolves when IV is generated.
    */

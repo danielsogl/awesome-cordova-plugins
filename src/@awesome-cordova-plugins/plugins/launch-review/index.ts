@@ -37,7 +37,6 @@ import { Observable } from 'rxjs';
 export class LaunchReview extends AwesomeCordovaNativePlugin {
   /**
    * Launches App Store on current platform in order to leave a review for given app.
-   *
    * @param appId {string} - (optional) the platform-specific app ID to use to open the page in the store app.
    * If not specified, the plugin will use the app ID for the app in which the plugin is contained.
    * On Android this is the full package name of the app. For example, for Google Maps: `com.google.android.apps.maps`
@@ -56,7 +55,6 @@ export class LaunchReview extends AwesomeCordovaNativePlugin {
    * - First: after `LaunchReview.rating()` is called and the request to show the dialog is successful. Will be passed the value `requested`.
    * - Second: if and when the Rating dialog is actually displayed.  Will be passed the value `shown`.
    * - Third: if and when the Rating dialog is dismissed.  Will be passed the value `dismissed`.
-   *
    * @returns {Observable<string>}
    */
   @Cordova({ observable: true })
@@ -67,7 +65,6 @@ export class LaunchReview extends AwesomeCordovaNativePlugin {
   /**
    * Indicates if the current platform/version supports in-app ratings dialog, i.e. calling LaunchReview.rating().
    * Will return true if current platform is iOS 10.3 or above.
-   *
    * @returns {boolean}
    */
   @Cordova({ platforms: ['Android', 'iOS'], sync: true })

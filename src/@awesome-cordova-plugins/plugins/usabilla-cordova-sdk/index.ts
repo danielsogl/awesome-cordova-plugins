@@ -59,7 +59,6 @@ export interface UbResult {
 export class Usabilla extends AwesomeCordovaNativePlugin {
   /**
    * Initializes Usabilla sdk for capturing feedbacks.
-   *
    * @name initialize
    * @param {appId} APP_ID unique app id to initialize
    * @param appId
@@ -76,7 +75,6 @@ export class Usabilla extends AwesomeCordovaNativePlugin {
 
   /**
    * Displays Feedback form based on unique form id after sdk initialization.
-   *
    * @name loadFeedbackForm
    * @param formId
    * @param {formId} FORM_ID to display Feedback form for
@@ -91,7 +89,6 @@ export class Usabilla extends AwesomeCordovaNativePlugin {
 
   /**
    * Displays Feedback form with current screen's snapshot and based on unique form id, after sdk initialization.
-   *
    * @name loadFeedbackFormWithCurrentViewScreenshot
    * @param formId
    * @param {formId} FORM_ID to display Feedback form for
@@ -106,7 +103,6 @@ export class Usabilla extends AwesomeCordovaNativePlugin {
 
   /**
    * Displays Campaign banner targetted based on specific event and variables, after sdk initialization.
-   *
    * @name sendEvent
    * @param eventId
    * @param {eventId} EVENT_ID to display Campaign banner for
@@ -121,7 +117,6 @@ export class Usabilla extends AwesomeCordovaNativePlugin {
 
   /**
    * Reset Campaign for next trigger.
-   *
    * @name resetCampaignData
    */
   @Cordova({
@@ -134,7 +129,6 @@ export class Usabilla extends AwesomeCordovaNativePlugin {
 
   /**
    * Dismiss or removes the Form/Banner from the view.
-   *
    * @name dismiss
    */
   @Cordova({
@@ -147,7 +141,6 @@ export class Usabilla extends AwesomeCordovaNativePlugin {
 
   /**
    * Get default masking strategy to be applied for data masking.
-   *
    * @name getDefaultDataMasks
    */
   @Cordova({
@@ -160,7 +153,6 @@ export class Usabilla extends AwesomeCordovaNativePlugin {
 
   /**
    * Set masking strategy for data masking.
-   *
    * @name setDataMasking
    * @param {masks} Format regex to be applied for masking.
    * @param masks

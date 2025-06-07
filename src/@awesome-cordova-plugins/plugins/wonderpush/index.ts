@@ -52,7 +52,6 @@ class NestedObject {
 export class UserPreferencesMethods extends NestedObject {
   /**
    * Get the default channel id
-   *
    * @returns {Promise<string>}
    */
   getDefaultChannelId(): Promise<string> {
@@ -61,7 +60,6 @@ export class UserPreferencesMethods extends NestedObject {
 
   /**
    * Set the default channel id
-   *
    * @param {string} id
    * @returns {Promise<any>}
    */
@@ -71,7 +69,6 @@ export class UserPreferencesMethods extends NestedObject {
 
   /**
    * Get a channel group
-   *
    * @param {string} groupId
    * @returns {Promise<WonderPushChannelGroup | null>}
    */
@@ -81,7 +78,6 @@ export class UserPreferencesMethods extends NestedObject {
 
   /**
    * Get a channel
-   *
    * @param {string} channelId
    * @returns {Promise<WonderPushChannel | null>}
    */
@@ -91,7 +87,6 @@ export class UserPreferencesMethods extends NestedObject {
 
   /**
    * Create, update and remove channel existing groups to match the given channel groups
-   *
    * @param {WonderPushChannelGroup[]} channelGroups
    * @returns {Promise<any>}
    */
@@ -101,7 +96,6 @@ export class UserPreferencesMethods extends NestedObject {
 
   /**
    * Create, update and remove channels to match the given channels
-   *
    * @param {WonderPushChannel[]} channels
    * @returns {Promise<any>}
    */
@@ -111,7 +105,6 @@ export class UserPreferencesMethods extends NestedObject {
 
   /**
    * Create or update a channel group
-   *
    * @param {WonderPushChannelGroup} channelGroup
    * @returns {Promise<any>}
    */
@@ -121,7 +114,6 @@ export class UserPreferencesMethods extends NestedObject {
 
   /**
    * Create or update a channel
-   *
    * @param {WonderPushChannel} channel
    * @returns {Promise<any>}
    */
@@ -131,7 +123,6 @@ export class UserPreferencesMethods extends NestedObject {
 
   /**
    * Remove a channel group
-   *
    * @param {string} groupId
    * @returns {Promise<any>}
    */
@@ -141,7 +132,6 @@ export class UserPreferencesMethods extends NestedObject {
 
   /**
    * Remove a channel
-   *
    * @param {string} channelId
    * @returns {Promise<any>}
    */
@@ -234,7 +224,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
    *
    * Upon changing userId, the access token is wiped, so avoid unnecessary calls, like calling with `null`
    * just before calling with a user id.
-   *
    * @param {?string} userId - The user id, unique to your application.
    *   Use `null` for anonymous users.
    *
@@ -249,7 +238,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
 
   /**
    * Controls native SDK logging.
-   *
    * @param {boolean} enabled - Whether to enable logs.
    * @returns {Promise<any>}
    */
@@ -260,7 +248,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
 
   /**
    * Sets up a delegate for tighter integration, or removes it.
-   *
    * @param {?WonderPushDelegate} delegate - The delegate to set, or `null` to remove it.
    * @returns {Promise<any>}
    */
@@ -271,7 +258,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
 
   /**
    * Gets the current delegate.
-   *
    * @returns {Promise<WonderPushDelegate | null>} A promise with the delegate of null
    */
   @Cordova()
@@ -281,7 +267,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns the userId currently in use, `null` by default.
-   *
    * @returns {Promise<string | null>} A promise with the user ID or null
    */
   @Cordova()
@@ -293,7 +278,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
    * Returns the installationId identifying your application on a device, bond to a specific userId.
    * If you want to store this information on your servers, keep the corresponding userId with it.
    * Will return `null` until the SDK is properly initialized.
-   *
    * @returns {Promise<string | null>} A promise with the installation ID or null
    */
   @Cordova()
@@ -303,7 +287,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns the unique device identifier
-   *
    * @returns {Promise<string | null>} A promise with the device ID or null
    */
   @Cordova()
@@ -313,7 +296,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns the push token.
-   *
    * @returns {Promise<string | null>} A promise with the push token or `null`
    */
   @Cordova()
@@ -325,7 +307,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
    * Returns the currently used access token.
    * Returns `null` until the SDK is properly initialized.
    * This together with your client secret gives entire control to the current installation and associated user, you should not disclose it unnecessarily.
-   *
    * @returns {Promise<string | null>}
    */
   @Cordova()
@@ -335,7 +316,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
 
   /**
    * Send an event to be tracked to WonderPush.
-   *
    * @param {string} type - The event type, or name. Event types starting with an `@` character are reserved.
    * @param {?object} [attributes] - An object containing custom properties to be attached to the event.
    *   The keys should be prefixed according to the type of their values.
@@ -349,7 +329,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
 
   /**
    * Adds one or more tags to the installation.
-   *
    * @param {string|string[]} tag - The tags to add to the installation. You can use either a single string argument or an array of strings.
    * @returns {Promise<any>}
    */
@@ -360,7 +339,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
 
   /**
    * Removes one or more tags from the installation.
-   *
    * @param {string|string[]} tag - The tags to remove from the installation. You can use either a single string argument or an array of strings.
    * @returns {Promise<any>}
    */
@@ -371,7 +349,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
 
   /**
    * Removes all tags from the installation.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -381,7 +358,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns all the tags of the installation.
-   *
    * @returns {Promise<string[]>}
    */
   @Cordova()
@@ -391,7 +367,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
 
   /**
    * Tests whether the installation has the given tag attached to it.
-   *
    * @param {string} tag - The tag to test.
    * @returns {Promise<boolean>}
    */
@@ -405,7 +380,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
    *
    * The previous value is replaced entirely.
    * Setting `undefined` or `null` has the same effect as {@link cordova.plugins.WonderPush#unsetProperty}.
-   *
    * @param {string} field - The name of the property to set
    * @param value
    * @returns {Promise<any>}
@@ -419,7 +393,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
    * Removes the value of a given installation property.
    *
    * The previous value is replaced with `null`.
-   *
    * @param {string} field - The name of the property
    * @returns {Promise<any>}
    */
@@ -434,7 +407,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
    * The stored value is made an array if not already one.
    * If the given value is an array, all its values are added.
    * If a value is already present in the stored value, it won't be added.
-   *
    * @param {string} field - The name of the property
    * @param value
    * @returns {Promise<void>}
@@ -450,7 +422,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
    * The stored value is made an array if not already one.
    * If the given value is an array, all its values are removed.
    * If a value is present multiple times in the stored value, they will all be removed.
-   *
    * @param {string} field - The name of the property
    * @param value
    * @returns {Promise<any>}
@@ -466,7 +437,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
    * If the property stores an array, only the first value is returned.
    * This way you don't have to deal with potential arrays if that property is not supposed to hold one.
    * Returns `null` if the property is absent or has an empty array value.
-   *
    * @param {string} field - The name of the property to read values from
    * @returns {Promise<any>}
    */
@@ -482,7 +452,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
    * This way you don't have to deal with potential scalar values if that property is supposed to hold an array.
    * Returns an empty array instead of `null` if the property is absent.
    * Returns an array wrapping any scalar value held by the property.
-   *
    * @param {string} field - The name of the property to read values from
    * @returns {Promise<any[]>}
    */
@@ -493,7 +462,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns the latest known custom properties attached to the current installation object stored by WonderPush.
-   *
    * @returns {Promise<{[p: string]: any}>}
    */
   @Cordova()
@@ -505,7 +473,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
    * Updates the properties attached to the current installation object stored by WonderPush.
    *
    * In order to remove a value, use `null`.
-   *
    * @param {{[p: string]: any}} properties. The keys should be prefixed according to the type of their values. You can find the details in the [Segmentation > Properties](https://docs.wonderpush.com/docs/properties#section-custom-properties) section of the documentation.
    * @returns {Promise<any>}
    */
@@ -525,7 +492,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
    *
    * Because in iOS you only have *one* chance for prompting the user, you should find a good timing for that.
    * For a start, you can systematically call it when the application starts, so that the user will be prompted directly at the first launch.
-   *
    * @returns {Promise<any>} Returns a promise that resolves upon successful subscription
    */
   @Cordova()
@@ -535,7 +501,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
 
   /**
    * Returns whether the notifications are enabled.
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova()
@@ -546,7 +511,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
   /**
    * Unsubscribes from push notification.
    * This method marks the user as soft opt-out.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -557,7 +521,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
   /**
    * Reads user consent state.
    * Returns undefined if no explicit consent was set.
-   *
    * @returns {Promise<boolean>}
    */
   @Cordova()
@@ -569,7 +532,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
    * Provides or withdraws user consent.
    * If the `requiresUserConsent` initialization option is true,
    * the whole SDK is paused and no data is sent to WonderPush, until consent is provided.
-   *
    * @param {boolean} consent -
    * @returns {Promise<any>}
    */
@@ -580,7 +542,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
 
   /**
    * Remove any local storage and ask the WonderPush servers to delete any data associated with the all local installations and related users.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -590,7 +551,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
 
   /**
    * Ask the WonderPush servers to delete any event associated with the all local installations.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -600,7 +560,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
 
   /**
    * Ask the WonderPush servers to delete any custom data associated with the all local installations and related users.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()
@@ -610,7 +569,6 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
 
   /**
    * Initiates the download of all user remote and local data.
-   *
    * @returns {Promise<any>}
    */
   @Cordova()

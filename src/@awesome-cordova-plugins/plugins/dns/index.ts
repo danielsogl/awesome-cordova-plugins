@@ -31,7 +31,6 @@ import { Injectable } from '@angular/core';
 export class DNS extends AwesomeCordovaNativePlugin {
   /**
    * Resolve hostnames into an underlying network address.
-   *
    * @param hostname
    * @returns {Promise<string>} Returns a promise that resolves with the resolution.
    */

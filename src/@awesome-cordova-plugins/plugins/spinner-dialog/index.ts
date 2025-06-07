@@ -55,7 +55,6 @@ export interface SpinnerDialogIOSOptions {
 export class SpinnerDialog extends AwesomeCordovaNativePlugin {
   /**
    * Shows the spinner dialog
-   *
    * @param title {string} Spinner title (shows on Android only)
    * @param message {string} Spinner message
    * @param cancelCallback {boolean|function} Set to true to set spinner not cancelable. Or provide a function to call when the user cancels the spinner.

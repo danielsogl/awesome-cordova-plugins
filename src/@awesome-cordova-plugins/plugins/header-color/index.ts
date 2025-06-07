@@ -27,7 +27,6 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 export class HeaderColor extends AwesomeCordovaNativePlugin {
   /**
    * Set a color to the task header
-   *
    * @param color {string} The hex value of the color
    * @returns {Promise<any>}
    */

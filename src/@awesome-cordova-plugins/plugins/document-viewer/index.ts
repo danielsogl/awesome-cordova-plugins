@@ -62,7 +62,6 @@ export interface DocumentViewerOptions {
 export class DocumentViewer extends AwesomeCordovaNativePlugin {
   /**
    * Displays the email composer pre-filled with data.
-   *
    * @returns {Promise<any>} Resolves promise when the EmailComposer has been opened
    */
   @Cordova()
@@ -72,7 +71,6 @@ export class DocumentViewer extends AwesomeCordovaNativePlugin {
 
   /**
    * Check if the document can be shown
-   *
    * @param url {string} Url to the file
    * @param contentType {string} Content type of the file
    * @param options {DocumentViewerOptions} options
@@ -94,7 +92,6 @@ export class DocumentViewer extends AwesomeCordovaNativePlugin {
 
   /**
    * Opens the file
-   *
    * @param url {string} Url to the file
    * @param contentType {string} Content type of the file
    * @param options {DocumentViewerOptions} options

@@ -51,7 +51,6 @@ export class Anyline extends AwesomeCordovaNativePlugin {
 
   /**
    * Scan
-   *
    * @param config {AnylineConfig} Scanning options
    * @returns {Promise<any>} Returns a promise that resolves when Code is captured
    */

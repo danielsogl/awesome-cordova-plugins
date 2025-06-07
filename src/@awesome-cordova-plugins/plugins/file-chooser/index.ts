@@ -1,5 +1,4 @@
 /* eslint-disable jsdoc/require-returns-check */
-/* eslint-disable jsdoc/check-tag-names */
 
 import { Injectable } from '@angular/core';
 import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
@@ -36,7 +35,6 @@ export class FileChooser extends AwesomeCordovaNativePlugin {
   /**
    * Launches a chooser dialog. The filter param allows filtering a the mime type
    * { "mime": "application/pdf" }
-   *
    * @param {string} [filter] Filter allowing filter by a mime type (text/plain, image/png, image/jpeg, audio/wav etc.)
    * @returns {Promise<string>} URI of the selected file
    */
