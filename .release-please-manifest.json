@@ -205,7 +205,7 @@
   "src/@awesome-cordova-plugins/plugins/smartlook": "6.16.0",
   "src/@awesome-cordova-plugins/plugins/sms": "6.16.0",
   "src/@awesome-cordova-plugins/plugins/sms-retriever": "6.16.0",
-  "src/@awesome-cordova-plugins/plugins/sms-retriever-api": "6.16.0",
+  "src/@awesome-cordova-plugins/plugins/sms-retriever-api": "6.17.0",
   "src/@awesome-cordova-plugins/plugins/smtp-client": "6.16.0",
   "src/@awesome-cordova-plugins/plugins/social-sharing": "6.16.0",
   "src/@awesome-cordova-plugins/plugins/sockets-tcp": "6.16.0",
