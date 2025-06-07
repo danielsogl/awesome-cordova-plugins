@@ -3,7 +3,7 @@ name: Release Please
 on:
   push:
     branches:
-      - main
+      - master
   # Manual trigger as backup
   workflow_dispatch:
 
