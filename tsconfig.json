@@ -8,6 +8,8 @@
     "noImplicitAny": true,
     "module": "es2015",
     "moduleResolution": "node",
+    "isolatedModules": true,
+    "esModuleInterop": true,
     "paths": {
       "@awesome-cordova-plugins/core": ["./dist/@awesome-cordova-plugins/core"]
     },

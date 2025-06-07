@@ -48,22 +48,13 @@
       "groupName": "linting and formatting",
       "automerge": true,
       "platformAutomerge": true,
-      "matchPackageNames": [
-        "/^eslint/",
-        "/^prettier/",
-        "/^husky/",
-        "/^lint-staged/"
-      ]
+      "matchPackageNames": ["/^eslint/", "/^prettier/", "/^husky/", "/^lint-staged/"]
     },
     {
       "groupName": "Angular",
       "allowedVersions": "<=12",
       "automerge": false,
-      "matchPackageNames": [
-        "/^@angular//",
-        "/^@angular-devkit//",
-        "/@schematics/angular/"
-      ]
+      "matchPackageNames": ["/^@angular//", "/^@angular-devkit//", "/@schematics/angular/"]
     },
     {
       "matchPackageNames": ["zone.js"],
@@ -80,13 +71,7 @@
       "groupName": "Build and bundling tools",
       "automerge": true,
       "platformAutomerge": true,
-      "matchPackageNames": [
-        "rollup",
-        "webpack",
-        "terser-webpack-plugin",
-        "unminified-webpack-plugin",
-        "rimraf"
-      ]
+      "matchPackageNames": ["rollup", "rimraf"]
     },
     {
       "groupName": "Testing framework",
@@ -98,26 +83,13 @@
       "groupName": "Documentation tools",
       "automerge": true,
       "platformAutomerge": true,
-      "matchPackageNames": [
-        "dgeni",
-        "dgeni-packages",
-        "gulp",
-        "gulp-rename",
-        "gulp-replace"
-      ]
+      "matchPackageNames": ["dgeni", "dgeni-packages", "gulp", "gulp-rename", "gulp-replace"]
     },
     {
       "groupName": "Utility libraries",
       "automerge": true,
       "platformAutomerge": true,
-      "matchPackageNames": [
-        "lodash",
-        "@types/lodash",
-        "fs-extra",
-        "@types/fs-extra",
-        "minimist",
-        "winston"
-      ]
+      "matchPackageNames": ["lodash", "@types/lodash", "fs-extra", "@types/fs-extra", "minimist", "winston"]
     },
     {
       "matchManagers": ["npm"],
