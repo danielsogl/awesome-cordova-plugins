@@ -39,7 +39,8 @@ jobs:
           echo "Version: ${{ steps.release.outputs.version }}"
           echo "PR: ${{ steps.release.outputs.pr }}"
 
-  publish:
+  # Trigger the existing build and publish workflow when a release is created
+  build-and-publish:
     runs-on: ubuntu-latest
     needs: release-please
     if: ${{ needs.release-please.outputs.release_created }}
