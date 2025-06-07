@@ -5,6 +5,7 @@
   "bump-patch-for-minor-pre-major": false,
   "draft": false,
   "prerelease": false,
+  "separate-pull-requests": true,
   "changelog-sections": [
     {
       "type": "feat",
@@ -53,6 +54,9 @@
     }
   ],
   "packages": {
+    ".": {
+      "package-name": "awesome-cordova-plugins"
+    },
     "src/@awesome-cordova-plugins/core": {
       "package-name": "@awesome-cordova-plugins/core"
     },
