@@ -195,7 +195,7 @@
   "src/@awesome-cordova-plugins/plugins/safari-view-controller": "6.16.0",
   "src/@awesome-cordova-plugins/plugins/save-dialog": "6.16.0",
   "src/@awesome-cordova-plugins/plugins/screen-orientation": "6.16.0",
-  "src/@awesome-cordova-plugins/plugins/screenshot": "6.16.0",
+  "src/@awesome-cordova-plugins/plugins/screenshot": "6.17.0",
   "src/@awesome-cordova-plugins/plugins/secure-storage": "6.16.0",
   "src/@awesome-cordova-plugins/plugins/secure-storage-echo": "6.16.0",
   "src/@awesome-cordova-plugins/plugins/service-discovery": "6.16.0",
