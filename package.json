@@ -19,8 +19,9 @@
     "lint": "eslint src/**/*.ts",
     "readmes": "gulp readmes",
     "docs-json": "ts-node -P scripts/tsconfig.json scripts/docs-json",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
-    "shipit": "npm run build && npm run readmes && npm run npmpub",
+    "generate-release-config": "ts-node -P scripts/tsconfig.json scripts/tasks/generate-release-config",
+    "generate-release-manifest": "ts-node -P scripts/tsconfig.json scripts/tasks/generate-release-manifest", 
+    "prepare-release": "npm run generate-release-config && npm run generate-release-manifest",
     "prettier": "prettier --write --ignore-unknown \"**/*\""
   },
   "dependencies": {
@@ -41,7 +42,6 @@
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
     "async-promise-queue": "1.0.5",
-    "conventional-changelog-cli": "5.0.0",
     "cz-conventional-changelog": "3.3.0",
     "dgeni": "0.4.14",
     "dgeni-packages": "0.16.10",
