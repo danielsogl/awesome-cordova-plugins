@@ -1,7 +1,6 @@
-# NFC
+# UriHelper
 
-```
-$ ionic cordova plugin add phonegap-nfc
+ionic cordova plugin add phonegap-nfc
 $ npm install @awesome-cordova-plugins/nfc
 ```
 

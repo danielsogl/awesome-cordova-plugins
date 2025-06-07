@@ -1,5 +1,7 @@
-# ASAuthorizationAppleIDRequest
-c cordova plugin add cordova-plugin-sign-in-with-apple
+# Sign In With Apple
+
+```
+$ ionic cordova plugin add cordova-plugin-sign-in-with-apple
 $ npm install @awesome-cordova-plugins/sign-in-with-apple
 ```
 

@@ -1,7 +1,6 @@
 # FirebaseModelInput
-Result
-t
-cordova plugin add cordova-plugin-firebase-model
+
+$ ionic cordova plugin add cordova-plugin-firebase-model
 $ npm install @awesome-cordova-plugins/firebase-model
 ```
 

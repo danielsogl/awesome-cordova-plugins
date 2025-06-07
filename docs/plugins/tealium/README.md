@@ -1,5 +1,7 @@
-# ConsentExpiry
- ''
+# Tealium
+
+```
+$ ''
 $ npm install @awesome-cordova-plugins/tealium
 ```
 

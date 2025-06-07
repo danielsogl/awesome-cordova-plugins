@@ -1,6 +1,5 @@
-# Mobile Messaging
+# CustomMessageStorage
 
-```
 $ ionic cordova plugin add com-infobip-plugins-mobilemessaging
 $ npm install @awesome-cordova-plugins/mobile-messaging
 ```

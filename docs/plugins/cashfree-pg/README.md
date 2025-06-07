@@ -1,5 +1,5 @@
-# CFPaymentComponentBuilder
-nic cordova plugin add cordova-plugin-cashfree-pg
+# CFUPIIntentCheckoutPayment
+ic cordova plugin add cordova-plugin-cashfree-pg
 $ npm install @awesome-cordova-plugins/cashfree-pg
 ```
 

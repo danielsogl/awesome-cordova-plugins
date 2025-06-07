@@ -1,15 +1,18 @@
-# In App Purchase 2
+# "In App Purchase 3"
 
 ```
 $ ionic cordova plugin add cordova-plugin-purchase --variable BILLING_KEY="<ANDROID_BILLING_KEY>"
-$ npm install @awesome-cordova-plugins/in-app-purchase-2
+$ npm install @awesome-cordova-plugins/in-app-purchase-3
 ```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/in-app-purchase-2/)
+## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/in-app-purchase-3/)
 
 Plugin Repo: [https://github.com/j3k0/cordova-plugin-purchase](https://github.com/j3k0/cordova-plugin-purchase)
 
 In-App Purchase on iOS, Android, Windows, macOS and XBox.
+
+This plugin replace the previous InAppPurchase2, due to backward compatibility issue with the wrapped
+cordova-plugin-purchase version 13.0
 
 ## Features
 
@@ -20,7 +23,6 @@ In-App Purchase on iOS, Android, Windows, macOS and XBox.
 | subscriptions | ✅ | ✅ | ✅ | ✅ | ✅ |
 | restore purchases | ✅ | ✅ | ✅ | ✅ | ✅ |
 | receipt validations | ✅ | ✅ |  | ✅ | ✅ |
-| downloadable content | ✅ |   |   |   | ✅ |
 | introductory prices | ✅ | ✅ |   | ✅ | ✅ |
 
 Supports:
@@ -33,7 +35,7 @@ Supports:
  - **macOS** version 10
  - **Xbox One**
    - (and any platform supporting Microsoft's UWP)
- - **cordova-plugin-purchase** version 12 or lower.
+ - **cordova-plugin-purchase** version 13.0 or higher
 
 ## Supported platforms
 

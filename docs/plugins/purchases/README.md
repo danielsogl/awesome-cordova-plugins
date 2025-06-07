@@ -9,7 +9,7 @@ $ npm install @awesome-cordova-plugins/purchases
 
 Plugin Repo: [https://github.com/RevenueCat/cordova-plugin-purchases](https://github.com/RevenueCat/cordova-plugin-purchases)
 
-*Purchases* is a client for the [RevenueCat](https://www.revenuecat.com/) subscription and purchase tracking system.
+Purchases* is a client for the [RevenueCat](https://www.revenuecat.com/) subscription and purchase tracking system.
 It is an open source framework that provides a wrapper around `BillingClient`, `StoreKit` and the RevenueCat backend
 to make implementing in-app subscriptions easy - receipt validation and status tracking included!
 

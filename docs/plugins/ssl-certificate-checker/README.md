@@ -1,7 +1,7 @@
 # SSLCertificateChecker
 
 ```
-$ ionic cordova plugin add cordova-plugin-sslcertificatechecker
+$ ionic cordova plugin add SSLCertificateChecker-PhoneGap-Plugin
 $ npm install @awesome-cordova-plugins/ssl-certificate-checker
 ```
 
@@ -11,7 +11,10 @@ Plugin Repo: [https://github.com/EddyVerbruggen/SSLCertificateChecker-PhoneGap-P
 
 Cordova plugin to check SSL certificates on Android and iOS.
 
-## Supported Platforms
+## Supported platforms
 
-* Android
-* iOS
+- Android
+  - iOS
+  
+
+
