@@ -256,6 +256,17 @@
 
 
 
+## [7.0.1](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v7.0.0...awesome-cordova-plugins-v7.0.1) (2025-06-10)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#5030](https://github.com/danielsogl/awesome-cordova-plugins/issues/5030)) ([216e553](https://github.com/danielsogl/awesome-cordova-plugins/commit/216e553f6326871f59f6e7041888edb3fc2228f5))
+* **deps:** lock file maintenance ([#5035](https://github.com/danielsogl/awesome-cordova-plugins/issues/5035)) ([7eec2a6](https://github.com/danielsogl/awesome-cordova-plugins/commit/7eec2a6f81a659ea86ad076f2426550a692edb20))
+* **deps:** update dependency jest-environment-jsdom to v30 ([#5034](https://github.com/danielsogl/awesome-cordova-plugins/issues/5034)) ([921456d](https://github.com/danielsogl/awesome-cordova-plugins/commit/921456d9a7016477097703ba18333cbb71a08662))
+* **deps:** update non-major dependencies to ^8.34.0 ([#5033](https://github.com/danielsogl/awesome-cordova-plugins/issues/5033)) ([4c2b6fe](https://github.com/danielsogl/awesome-cordova-plugins/commit/4c2b6feaf05d96c3fa837f33ad03321601a0769c))
+* **deps:** update webpack ([fa3bed8](https://github.com/danielsogl/awesome-cordova-plugins/commit/fa3bed8c858f79a6632748cf34b859d2a12ac898))
+
 ## [7.0.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v6.16.0...awesome-cordova-plugins-v7.0.0) (2025-06-07)
 
 
