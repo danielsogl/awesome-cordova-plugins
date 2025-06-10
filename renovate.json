@@ -77,7 +77,7 @@
       "groupName": "Build and bundling tools",
       "automerge": true,
       "platformAutomerge": true,
-      "matchPackageNames": ["rollup", "rimraf"]
+      "matchPackageNames": ["rollup", "webpack", "terser-webpack-plugin", "unminified-webpack-plugin", "rimraf"]
     },
     {
       "groupName": "Testing framework",
