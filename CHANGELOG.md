@@ -256,6 +256,19 @@
 
 
 
+## [8.0.1](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v8.0.0...awesome-cordova-plugins-v8.0.1) (2025-06-14)
+
+
+### Miscellaneous Chores
+
+* **deps:** update @types/lodash ([6be3385](https://github.com/danielsogl/awesome-cordova-plugins/commit/6be3385b94c4e023d3beac0773262ec3d5cea254))
+* **deps:** update gulp ([4966b35](https://github.com/danielsogl/awesome-cordova-plugins/commit/4966b35eae2a82b1d836c820af1b7eb8b7a17dec))
+* **deps:** update lint-staged ([8c80381](https://github.com/danielsogl/awesome-cordova-plugins/commit/8c80381eef8d5c71e1459f2b549aa448b6ee79e0))
+* **deps:** update rimraf ([65bb752](https://github.com/danielsogl/awesome-cordova-plugins/commit/65bb7521b184d1263abc1e8613e0c07c7e8f9f18))
+* **deps:** update rollup ([cc65a53](https://github.com/danielsogl/awesome-cordova-plugins/commit/cc65a5302eb895f965e4c28f348010258e1c4519))
+* **deps:** update webpack ([8ab40c4](https://github.com/danielsogl/awesome-cordova-plugins/commit/8ab40c499096223ac75a703f0f631efa8f1218ab))
+* update minimum core version to 8.0.1 in publish script ([54eefb6](https://github.com/danielsogl/awesome-cordova-plugins/commit/54eefb606d42d0c49d65e673af34322cd3c83e78))
+
 ## [8.0.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v7.0.2...awesome-cordova-plugins-v8.0.0) (2025-06-10)
 
 
