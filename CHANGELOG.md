@@ -256,6 +256,13 @@
 
 
 
+## [8.0.2](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v8.0.1...awesome-cordova-plugins-v8.0.2) (2025-06-14)
+
+
+### Miscellaneous Chores
+
+* update minimum core version to 8.0.2 in publish script ([d1a52cd](https://github.com/danielsogl/awesome-cordova-plugins/commit/d1a52cdef3483ef5e4a4f34cfc308f16a2c97c00))
+
 ## [8.0.1](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v8.0.0...awesome-cordova-plugins-v8.0.1) (2025-06-14)
 
 
