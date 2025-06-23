@@ -30,6 +30,7 @@ export interface Configuration {
    * The application code of your Application from Push Portal website
    */
   applicationCode: string;
+  userDataJwt?: string;
   geofencingEnabled?: boolean;
   inAppChatEnabled?: boolean;
   fullFeaturedInAppsEnabled?: boolean | undefined;
@@ -295,6 +296,7 @@ export interface ChatSettingsIOS {
  *
  *  this.mobileMessaging.init({
  *    applicationCode: '<your_application_code>',
+ *    userDataJwt: '<user_data_jwt>',
  *    geofencingEnabled: '<true/false>',
  *    defaultMessageStorage: '<true/false>',
  *    ios: {
@@ -658,6 +660,18 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   setInboxMessagesSeen(externalUserId: string, messageIds: string[]): Promise<string[]> {
+    return;
+  }
+
+  /**
+   * Updates JWT used for user data fetching and personalization.
+   * 
+   * @name setUserDataJwt
+   * @param jwt - JWT in a predefined format
+   * @param {Function} errorCallback will be called on error
+   */
+  @Cordova()
+  setUserDataJwt(jwt: string, errorCallback?: (error: MobileMessagingError) => void) {
     return;
   }
 }
