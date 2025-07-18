@@ -430,6 +430,11 @@ export class LoginParameters {
    * Specify the application version.
    */
   appVersion: string;
+
+  /**
+   *
+   */
+  redirectURL: string;
 }
 export class LoginResult extends UnviredResult {
   type: LoginListenerType;
