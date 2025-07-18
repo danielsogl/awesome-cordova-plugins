@@ -420,6 +420,21 @@ export class LoginParameters {
    * The passed credentials will be used based on this flag.
    */
   requireClientCredentials: boolean;
+
+  /**
+   * Applicable for SAML SSO login. Set token which is retrieved from the SAML SSO login to this parameter.
+   */
+  jwtToken: string;
+
+  /**
+   * Specify the application version.
+   */
+  appVersion: string;
+
+  /**
+   *
+   */
+  redirectURL: string;
 }
 export class LoginResult extends UnviredResult {
   type: LoginListenerType;
@@ -437,6 +452,18 @@ export class UnviredCredential {
   user: string;
   password: string;
   port: string;
+}
+
+export class InitialDataDownloadRequest {
+  name: string;
+  input: any;
+}
+
+export class UMPRequestConfig {
+  url: string;
+  headers: {
+    Authorization: string;
+  };
 }
 
 /**
@@ -1347,6 +1374,42 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Make an Initial Data Download (IDL) request to UMP.
+   * This method triggers the initial data download process by making a request to UMP for the specified Process Agent (PA) functions.
+   *
+   * Example 1: Request IDL for all marked PA functions
+   * ```
+   * await this.unviredSDK.sendInitialDataDownloadRequest([])
+   * ```
+   *
+   * Example 2: Request IDL for specific PA functions with input
+   * ```
+   * const initialDataInput = new InitialDataInput();
+   * initialDataInput.name = "PA_GET_CUSTOMER_DETAILS";
+   * initialDataInput.input = {
+   *   "BE_NAME": [
+   *     {
+   *       "NAME_OF_HEADER": {
+   *         "FIELD1": "FIELD_1_VALUE",
+   *         "FIELD2": "FIELD_2_VALUE"
+   *       }
+   *     }
+   *   ]
+   * };
+   * await this.unviredSDK.sendInitialDataDownloadRequest([initialDataInput]);
+   * ```
+   *
+   * @param functions Array of objects, each containing:
+   *  - paName: string - Name of the Process Agent function.
+   *  - input: any - Input data to be sent for the PA function.
+   * Pass an empty array to request initial data for all marked PA functions.
+   */
+  @Cordova()
+  sendInitialDataDownloadRequest(functions: InitialDataDownloadRequest[]): Promise<void> {
+    return;
+  }
+
+  /**
    * Returns an observable containing the state of the synchronisation along with count (if applicable). Possible values are as follows:
    * 1. Sending (count) // Ex: sending(3), there are 3 items in outbox and device is online. i.e datasender thread running
    * 2. Receiving // There are items to be received from server & device is online
@@ -1670,6 +1733,29 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   refreshJWTToken(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Get UMP request configuration with authentication headers
+   * @param {string} endpoint - The API endpoint
+   * @param {Object} [options] - Optional configuration object
+   * @param {string} [options.customUrl] - Optional custom base URL to override server URL
+   * @returns UMPRequestConfig which contails url and auth header
+   * Example -
+   *
+   * // with auth api
+   * await this.unviredSDK.getUMPRequestConfig("/auth/getmodel/tenex/tenex_model.json");
+   *
+   * // with rest api end point
+   * // variation: 1
+   * await this.unviredSDK.getUMPRequestConfig("/api/v1/users");
+   *
+   * // variation: 2
+   * await this.unviredSDK.getUMPRequestConfig("/UMP/api/v1/users");
+   */
+  @Cordova()
+  getUMPRequestConfig(): Promise<UMPRequestConfig> {
     return;
   }
 }
