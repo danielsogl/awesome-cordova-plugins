@@ -131,24 +131,14 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * Sets the device's Baidu push token
+   * Sets the devices push token for providers other than FCM
    *
    * @param token {string}
+   * @param pushType {object} - with the following keys "type", "prefKey", "className", "messagingSDKClassName";
    * @returns {Promise<any>}
    */
   @Cordova()
-  setPushBaiduToken(token: string): Promise<any> {
-    return;
-  }
-
-  /**
-   * Sets the device's Huawei push token
-   *
-   * @param token {string}
-   * @returns {Promise<any>}
-   */
-  @Cordova()
-  setPushHuaweiToken(token: string): Promise<any> {
+  registerPushToken(token: string, pushType: any): Promise<any> {
     return;
   }
 
