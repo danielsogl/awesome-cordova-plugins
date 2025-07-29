@@ -30,7 +30,7 @@ const DIST = resolve(ROOT, 'dist/@awesome-cordova-plugins');
 
 const PACKAGES = [];
 
-const MIN_CORE_VERSION = '^6.0.1';
+const MIN_CORE_VERSION = '^8.0.2';
 const RXJS_VERSION = '^5.5.0 || ^6.5.0 || ^7.3.0';
 
 const PLUGIN_PEER_DEPENDENCIES = {
