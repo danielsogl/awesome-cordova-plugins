@@ -1,19 +1,146 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", ":dependencyDashboard"],
+  "extends": [
+    "config:recommended",
+    ":semanticCommits",
+    ":dependencyDashboard",
+    ":rebaseStalePrs",
+    ":separateMajorReleases",
+    ":combinePatchMinorReleases",
+    ":ignoreUnstable",
+    ":prImmediately",
+    ":updateNotScheduled",
+    ":automergeDisabled",
+    ":maintainLockFilesWeekly",
+    ":prConcurrentLimit10"
+  ],
+  "platformAutomerge": true,
+  "rangeStrategy": "bump",
+  "semanticCommits": "enabled",
+  "timezone": "Europe/Berlin",
+  "schedule": ["before 6am on monday"],
+  "labels": ["dependencies"],
+  "assignees": ["danielsogl"],
+  "reviewers": ["danielsogl"],
   "packageRules": [
     {
+      "matchManagers": ["npm"],
+      "matchUpdateTypes": ["patch", "minor"],
+      "automerge": true,
+      "platformAutomerge": true,
+      "groupName": "non-major dependencies",
+      "groupSlug": "all-minor-patch"
+    },
+    {
+      "matchManagers": ["npm"],
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "groupName": "major dependencies",
+      "groupSlug": "all-major"
+    },
+    {
+      "groupName": "TypeScript type definitions",
+      "automerge": true,
+      "platformAutomerge": true,
+      "matchPackageNames": ["/^@types//"]
+    },
+    {
+      "groupName": "linting and formatting",
+      "automerge": true,
+      "platformAutomerge": true,
+      "matchPackageNames": [
+        "/^eslint/",
+        "/^prettier/",
+        "/^husky/",
+        "/^lint-staged/"
+      ]
+    },
+    {
       "groupName": "Angular",
-      "packagePatterns": ["^@angular/", "^@angular-devkit/", "@schematics/angular"],
-      "allowedVersions": "<=12"
+      "allowedVersions": "<=12",
+      "automerge": false,
+      "matchPackageNames": [
+        "/^@angular//",
+        "/^@angular-devkit//",
+        "/@schematics/angular/"
+      ]
     },
     {
       "matchPackageNames": ["zone.js"],
-      "allowedVersions": "<=11"
+      "allowedVersions": "<=11",
+      "automerge": false
     },
     {
-      "matchPackageNames": ["typescript"],
-      "allowedVersions": "<=4"
+      "matchPackageNames": ["typescript", "ts-node"],
+      "allowedVersions": "<=4",
+      "groupName": "TypeScript core",
+      "automerge": false
+    },
+    {
+      "groupName": "Build and bundling tools",
+      "automerge": true,
+      "platformAutomerge": true,
+      "matchPackageNames": [
+        "rollup",
+        "webpack",
+        "terser-webpack-plugin",
+        "unminified-webpack-plugin",
+        "rimraf"
+      ]
+    },
+    {
+      "groupName": "Testing framework",
+      "automerge": true,
+      "platformAutomerge": true,
+      "matchPackageNames": ["jest", "ts-jest", "@types/jest"]
+    },
+    {
+      "groupName": "Documentation tools",
+      "automerge": true,
+      "platformAutomerge": true,
+      "matchPackageNames": [
+        "dgeni",
+        "dgeni-packages",
+        "gulp",
+        "gulp-rename",
+        "gulp-replace"
+      ]
+    },
+    {
+      "groupName": "Utility libraries",
+      "automerge": true,
+      "platformAutomerge": true,
+      "matchPackageNames": [
+        "lodash",
+        "@types/lodash",
+        "fs-extra",
+        "@types/fs-extra",
+        "minimist",
+        "winston"
+      ]
+    },
+    {
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["engines"],
+      "enabled": false,
+      "description": "Disable Node.js engine updates"
     }
-  ]
+  ],
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "automerge": true,
+    "schedule": ["at any time"]
+  },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true,
+    "schedule": ["before 6am on monday"]
+  },
+  "prCreation": "immediate",
+  "prHourlyLimit": 2,
+  "prConcurrentLimit": 5,
+  "updatePinnedDependencies": false,
+  "enabledManagers": ["npm"],
+  "ignoreDeps": [],
+  "ignorePaths": ["**/node_modules/**", "**/dist/**", "**/coverage/**"]
 }
