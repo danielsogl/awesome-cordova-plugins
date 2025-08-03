@@ -236,7 +236,7 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
    * Unsubscribe from a subscription
    *
    * @param deviceId Identifier of the remote device. For Android this is the MAC address
-   * @param {string | string[]} interfaceId The interface to unsubscribe from
+   * @param interfaceId The interface to unsubscribe from
    * @returns {Promise<any>} returns a promise.
    */
   @Cordova({
