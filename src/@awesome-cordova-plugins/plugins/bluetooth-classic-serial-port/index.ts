@@ -264,7 +264,7 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
    * Reports the connection status
    *
    * @param deviceId Identifier of the remote device. For Android this is the MAC address
-   * @param {string} interfaceId The interface to check
+   * @param interfaceId The interface to check
    * @returns {Promise<boolean>} returns a promise
    */
   @Cordova({
