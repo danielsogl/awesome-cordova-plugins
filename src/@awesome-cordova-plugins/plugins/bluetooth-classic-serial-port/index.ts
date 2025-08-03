@@ -176,8 +176,8 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
    * Reads data from the buffer until it reaches a delimiter
    *
    * @param deviceId Identifier of the remote device. For Android this is the MAC address
-   * @param {string} interfaceId The interface to read
-   * @param {string} delimiter string that you want to search until
+   * @param interfaceId The interface to read
+   * @param delimiter string that you want to search until
    * @returns {Observable<any>} returns a promise
    */
   @Cordova({
