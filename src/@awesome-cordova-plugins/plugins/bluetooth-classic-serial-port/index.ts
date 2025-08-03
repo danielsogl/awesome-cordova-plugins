@@ -250,7 +250,7 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
    * Clears data in buffer
    *
    * @param deviceId Identifier of the remote device. For Android this is the MAC address
-   * @param {string} interfaceId The interface to clear data
+   * @param interfaceId The interface to clear data
    * @returns {Promise<any>} returns a promise when completed
    */
   @Cordova({
