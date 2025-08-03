@@ -154,7 +154,7 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
   @Cordova({
     platforms: ['Android', 'Browser'],
   })
-  available(deviceId: string, interfaceId: string): Promise<any> {
+  available(deviceId: string | number, interfaceId: string): Promise<any> {
     return;
   }
 
