@@ -22,10 +22,10 @@ export interface BluetoothClassicSerialPortDevice {
  *
  *
  * // Write a string
- * this.bluetoothClassicSerialPort.write("00001101-0000-1000-8000-00805F9B34FB", "hello, world", success, failure);
+ * this.bluetoothClassicSerialPort.write(deviceId, "00001101-0000-1000-8000-00805F9B34FB", "hello, world", success, failure);
  *
  * // Array of int or bytes
- * this.bluetoothClassicSerialPort.write("00001101-0000-1000-8000-00805F9B34FB", [186, 220, 222], success, failure);
+ * this.bluetoothClassicSerialPort.write(deviceId, "00001101-0000-1000-8000-00805F9B34FB", [186, 220, 222], success, failure);
  *
  * // Typed Array
  * var data = new Uint8Array(4);
@@ -33,10 +33,10 @@ export interface BluetoothClassicSerialPortDevice {
  * data[1] = 0x42;
  * data[2] = 0x43;
  * data[3] = 0x44;
- * this.bluetoothClassicSerialPort.write(interfaceId, data, success, failure);
+ * this.bluetoothClassicSerialPort.write(deviceId, interfaceId, data, success, failure);
  *
  * // Array Buffer
- * this.bluetoothClassicSerialPort.write(interfaceId, data.buffer, success, failure);
+ * this.bluetoothClassicSerialPort.write(deviceId, interfaceId, data.buffer, success, failure);
  * ```
  *
  * // iOS select accessory
@@ -76,61 +76,42 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
   /**
    * Connect to a Bluetooth device
    *
-   * @param {string} deviceId Identifier of the remote device.
-   * @param {string} deviceId this is the MAC address.
-   * @param {string|string[]} interfaceId Identifier of the remote device
-   * @param {string|string[]} interfaceId This identifies the serial port to connect to.
+   * @param deviceId Identifier of the remote device.
+   * @param interfaceArray This identifies the serial port to connect to.
    * @returns {Observable<any>} Subscribe to connect.
    */
   @Cordova({
     platforms: ['Android', 'iOS'],
     observable: true,
   })
-  connect(deviceId: string | number, interfaceId: string | string[]): Observable<any> {
-    return;
-  }
-
-  /**
-   * Connect to a Bluetooth device
-   *
-   * @deprecated
-   * @param {string} deviceId Identifier of the remote device.
-   * @param {number} deviceId this is the connection ID
-   * @param {string|string[]} interfaceArray Identifier of the remote device
-   * @param {string|string[]} interfaceArray this is the Protocol String
-   * @returns {Promise<any>}
-   */
-  @Cordova({
-    platforms: ['iOS'],
-    methodName: 'connect',
-  })
-  connectIos(deviceId: string | number, interfaceArray: string | string[]): Promise<any> {
+  connect(deviceId: string | number, interfaceArray: string[]): Observable<any> {
     return;
   }
 
   /**
    * Connect insecurely to a Bluetooth device
    *
-   * @param {string} deviceId Identifier of the remote device. For Android this is the MAC address
-   * @param {string | string[]} interfaceArray This identifies the serial port to connect to. For Android this is the SPP_UUID.
+   * @param deviceId Identifier of the remote device. For Android this is the MAC address
+   * @param interfaceArray This identifies the serial port to connect to. For Android this is the SPP_UUID.
    * @returns {Promise<any>} Subscribe to connect.
    */
   @Cordova({
     platforms: ['Android'],
     observable: true,
   })
-  connectInsecure(deviceId: string, interfaceArray: string | string[]): Promise<any> {
+  connectInsecure(deviceId: string | number, interfaceArray: string[]): Observable<any> {
     return;
   }
 
   /**
    * Disconnect from the connected device
    *
-   * @param {string} interfaceId The interface to Disconnect
+   * @param deviceId Identifier of the remote device. For Android this is the MAC address
+   * @param interfaceId The interface to Disconnect
    * @returns {Promise<any>}
    */
   @Cordova()
-  disconnect(interfaceId: string | string[]): Promise<any> {
+  disconnect(deviceId: string | number, interfaceId: string): Promise<any> {
     return;
   }
 
@@ -139,9 +120,7 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
    *
    * @returns {Promise<any>}
    */
-  @Cordova({
-    methodName: 'connect',
-  })
+  @Cordova()
   disconnectAll(): Promise<any> {
     return;
   }
@@ -149,46 +128,54 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
   /**
    * Writes data to the serial port
    *
-   * @param {string} interfaceId The interface to send the data to
-   * @param {ArrayBuffer | string | number[] | Uint8Array} data ArrayBuffer of data
+   * @param deviceId Identifier of the remote device. For Android this is the MAC address
+   * @param interfaceId The interface to send the data to
+   * @param data ArrayBuffer of data
    * @returns {Promise<any>} returns a promise when data has been written
    */
   @Cordova({
     platforms: ['Android', 'iOS', 'Browser'],
   })
-  write(interfaceId: string, data: ArrayBuffer | string | number[] | Uint8Array): Promise<any> {
+  write(
+    deviceId: string | number,
+    interfaceId: string,
+    data: ArrayBuffer | string | number[] | Uint8Array
+  ): Promise<any> {
     return;
   }
 
   /**
    * Gets the number of bytes of data available
    *
-   * @param {string} interfaceId The interface to check
+   * @param deviceId Identifier of the remote device. For Android this is the MAC address
+   * @param interfaceId The interface to check
    * @returns {Promise<any>} returns a promise that contains the available bytes
    */
   @Cordova({
     platforms: ['Android', 'Browser'],
   })
-  available(interfaceId: string): Promise<any> {
+  available(deviceId: string, interfaceId: string): Promise<any> {
     return;
   }
 
   /**
    * Function read reads the data from the buffer. The data is passed to the success callback as a String. Calling read when no data is available will pass an empty String to the callback.
    *
-   * @param {string} interfaceId The interface to read
+   * @param deviceId Identifier of the remote device. For Android this is the MAC address
+   * @param interfaceId The interface to read
    * @returns {Promise<any>} returns a promise with data from the buffer
    */
   @Cordova({
     platforms: ['Android', 'iOS', 'Browser'],
   })
-  read(interfaceId: string): Promise<any> {
+  read(deviceId: string | number, interfaceId: string): Promise<any> {
     return;
   }
 
   /**
    * Reads data from the buffer until it reaches a delimiter
    *
+   * @param deviceId Identifier of the remote device. For Android this is the MAC address
    * @param {string} interfaceId The interface to read
    * @param {string} delimiter string that you want to search until
    * @returns {Observable<any>} returns a promise
@@ -196,75 +183,94 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
   @Cordova({
     platforms: ['Android', 'iOS', 'Browser'],
   })
-  readUntil(interfaceId: string, delimiter: string): Observable<any> {
+  readUntil(deviceId: string | number, interfaceId: string, delimiter: string): Observable<any> {
     return;
   }
 
   /**
    * Subscribe to be notified when data is received
    *
-   * @param {string | string[]} interfaceId The interface to subscribe to
-   * @param {string} delimiter the string you want to watch for
+   * @param deviceId Identifier of the remote device. For Android this is the MAC address
+   * @param interfaceId The interface to subscribe to
+   * @param delimiter the string you want to watch for
    * @returns {Observable<any>} returns an observable.
    */
   @Cordova({
     platforms: ['Android', 'iOS', 'Browser'],
     observable: true,
   })
-  subscribe(interfaceId: string | string[], delimiter: string): Observable<any> {
+  subscribe(deviceId: string | number, interfaceId: string, delimiter: string): Observable<any> {
     return;
   }
 
   /**
    * Unsubscribe from a subscription
    *
-   * @param {string | string[]} interfaceId The interface to unsubscribe from
-   * @returns {Promise<any>} returns an promise.
+   * @param deviceId Identifier of the remote device. For Android this is the MAC address
+   * @param interfaceId The interface to unsubscribe from
+   * @returns {Promise<any>} returns a promise.
    */
   @Cordova({
     platforms: ['Android', 'iOS', 'Browser'],
   })
-  unsubscribe(interfaceId: string | string[]): Promise<any> {
+  unsubscribe(deviceId: string | number, interfaceId: string): Promise<any> {
     return;
   }
 
   /**
    * Subscribe to be notified when data is received
    *
-   * @param {string | string[]} interfaceId The interface to subscribe to
+   * @param deviceId Identifier of the remote device. For Android this is the MAC address
+   * @param interfaceId The interface to subscribe to
    * @returns {Observable<any>} returns an observable
    */
   @Cordova({
     platforms: ['Android', 'iOS', 'Browser'],
     observable: true,
   })
-  subscribeRawData(interfaceId: string | string[]): Observable<any> {
+  subscribeRawData(deviceId: string | number, interfaceId: string): Observable<any> {
     return;
   }
 
   /**
    * Unsubscribe from a subscription
    *
+   * @param deviceId Identifier of the remote device. For Android this is the MAC address
    * @param {string | string[]} interfaceId The interface to unsubscribe from
-   * @returns {Promise<any>} returns an promise.
+   * @returns {Promise<any>} returns a promise.
    */
   @Cordova({
     platforms: ['Android', 'iOS', 'Browser'],
   })
-  unsubscribeRawData(interfaceId: string | string[]): Promise<any> {
+  unsubscribeRawData(deviceId: string | number, interfaceId: string): Promise<any> {
     return;
   }
 
   /**
    * Clears data in buffer
    *
+   * @param deviceId Identifier of the remote device. For Android this is the MAC address
    * @param {string} interfaceId The interface to clear data
    * @returns {Promise<any>} returns a promise when completed
    */
   @Cordova({
     platforms: ['Android', 'iOS', 'Browser'],
   })
-  clear(interfaceId: string): Promise<[]> {
+  clear(deviceId: string | number, interfaceId: string): Promise<[]> {
+    return;
+  }
+
+  /**
+   * Reports the connection status
+   *
+   * @param deviceId Identifier of the remote device. For Android this is the MAC address
+   * @param {string} interfaceId The interface to check
+   * @returns {Promise<boolean>} returns a promise
+   */
+  @Cordova({
+    platforms: ['Android', 'iOS', 'Browser'],
+  })
+  isConnected(deviceId: string | number, interfaceId: string): Promise<boolean> {
     return;
   }
 
@@ -277,19 +283,6 @@ export class BluetoothClassicSerialPort extends AwesomeCordovaNativePlugin {
     platforms: ['Android', 'iOS', 'Browser'],
   })
   list(): Promise<BluetoothClassicSerialPortDevice[]> {
-    return;
-  }
-
-  /**
-   * Reports the connection status
-   *
-   * @param {string} interfaceId The interface to check
-   * @returns {Promise<boolean>} returns a promise
-   */
-  @Cordova({
-    platforms: ['Android', 'iOS', 'Browser'],
-  })
-  isConnected(interfaceId: string): Promise<boolean> {
     return;
   }
 
