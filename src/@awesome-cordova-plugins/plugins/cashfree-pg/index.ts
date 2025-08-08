@@ -25,6 +25,26 @@ export class CFSession {
     this.environment = CFEnvironment[environment];
   }
 }
+export class CFSubscriptionSession {
+  subscription_session_id: string;
+  subscription_id: string;
+  environment: string;
+
+  constructor(subscription_session_id: string, subscription_id: string, environment: CFEnvironment) {
+    if (subscription_session_id === null || subscription_session_id.trim() === '') {
+      throw new Error('subscription_session_id cannot be empty');
+    }
+    if (subscription_id === null || subscription_id.trim() === '') {
+      throw new Error('subscription_id cannot be empty');
+    }
+    if (environment === null || environment.trim() === '') {
+      throw new Error('environment cannot be empty');
+    }
+    this.subscription_session_id = subscription_session_id;
+    this.subscription_id = subscription_id;
+    this.environment = CFEnvironment[environment];
+  }
+}
 
 export enum CFPaymentModes {
   CARD = 'CARD',
@@ -198,6 +218,19 @@ export class CFDropCheckoutPayment implements CheckoutPayment {
   }
 }
 
+export class CFSubscriptionPayment implements CheckoutPayment {
+  private readonly session: CFSubscriptionSession;
+  version: string;
+
+  constructor(session: CFSubscriptionSession) {
+    this.session = session;
+  }
+
+  getSession() {
+    return this.session;
+  }
+}
+
 export class CFWebCheckoutPayment implements CheckoutPayment {
   private readonly session: CFSession;
   private readonly theme: CFWebTheme = new CFWebThemeBuilder().build();
@@ -224,10 +257,7 @@ export class CFUPIIntentCheckoutPayment implements CheckoutPayment {
   private readonly theme: CFTheme = new CFThemeBuilder().build();
   version: string;
 
-  constructor(
-    session: CFSession,
-    theme: CFTheme | null
-  ) {
+  constructor(session: CFSession, theme: CFTheme | null) {
     this.session = session;
     if (theme !== null) {
       this.theme = theme;
@@ -277,6 +307,15 @@ export class CFPaymentGateway extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   doDropPayment(dropObject: CFDropCheckoutPayment) {
+    return;
+  }
+
+  /**
+   * Initiate Subscription Checkout Payment.
+   * @param {CFSubscriptionPayment} [subscriptionPayment] subscriptionPaymentObject information
+   */
+  @Cordova()
+  doSubscriptionPayment(subscriptionPayment: CFSubscriptionPayment) {
     return;
   }
 
