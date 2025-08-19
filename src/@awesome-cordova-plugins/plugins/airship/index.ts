@@ -1665,6 +1665,16 @@ class AirshipChannel {
   }
 
   /**
+   * Waits for the channel ID to be created
+   * Returns the channel ID. If the channel ID is not yet created the function it will wait for it before returning.
+   * After the channel ID is created, this method functions the same as getChannelId().
+   */
+  @CordovaInstance()
+  waitForChannelId(): Promise<string> {
+    return;
+  }
+
+  /**
    * Gets a list of the channel's subscriptions.
    */
   @CordovaInstance()
