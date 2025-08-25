@@ -58,7 +58,7 @@
     "lodash": "4.17.21",
     "minimist": "1.2.8",
     "prettier": "2.8.8",
-    "release-please": "^17.1.1",
+    "release-please": "^17.1.2",
     "rimraf": "^6.0.1",
     "rollup": "^4.46.3",
     "rxjs": "6.6.7",
