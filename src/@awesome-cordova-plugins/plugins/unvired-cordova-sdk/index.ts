@@ -215,6 +215,10 @@ export enum NotificationListenerType {
    * Notify that the JWT token is received
    */
   JWTTokenReceived = 12,
+  /**
+   * Notify that the JWT token is expired
+   */
+  jwtTokenExpired = 13
 }
 
 export enum AttachmentItemStatus {
@@ -1424,6 +1428,19 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
     return;
   }
 
+  /** For Mobile platform only
+   * getPushNotificationListener - Register for callback on Push Notification received from server
+   *
+   * Mobile Only api
+   */
+  @Cordova({
+    observable: true,
+  })
+  getPushNotificationListener(): Observable<string> {
+    return;
+  };
+
+
   /**
    * For Browser platform only.
    * Reinitialize web db. Use this api to initialize db from persisted local storage db
@@ -1733,6 +1750,31 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   refreshJWTToken(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Sets the authentication token (JWT) to be used for communicating with UMP server.
+   * This api is useful in scenarios where the app has its own authentication mechanism and receives a JWT token from UMP server.
+   * The app can set this token using this api and all subsequent communication with UMP server would be authenticated using this token.
+   *
+   * @param token JWT token received from UMP server.
+   * @returns A promise containing true if the operation was successful.
+   */
+  @Cordova()
+  setAuthToken(token: string): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * Get the validity of the authentication token in seconds.
+   * If the return value is less than or equal to 0, then the token is either not set or expired.
+   * If the return value is greater than 0, then it contains the number of seconds for which the token is valid from now.
+   *
+   * @returns A promise containing number of seconds for which the token is valid.
+   */
+  @Cordova()
+  getAuthTokenValidity(): Promise<number> {
     return;
   }
 
