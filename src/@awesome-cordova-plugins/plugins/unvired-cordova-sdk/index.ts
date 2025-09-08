@@ -1795,7 +1795,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
    * await this.unviredSDK.getUMPRequestConfig("/UMP/api/v1/users");
    */
   @Cordova()
-  getUMPRequestConfig(): Promise<UMPRequestConfig> {
+  getUMPRequestConfig(endpoint: string, options?: { customUrl?: string }): Promise<UMPRequestConfig> {
     return;
   }
 }
