@@ -1784,7 +1784,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
    * @param {Object} [options] - Optional configuration object
    * @param {string} [options.customUrl] - Optional custom base URL to override server URL
    * @returns UMPRequestConfig which contails url and auth header
-   * Example -
+   * Example: -
    *
    * // with auth api
    * await this.unviredSDK.getUMPRequestConfig("/auth/getmodel/tenex/tenex_model.json");
