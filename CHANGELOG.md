@@ -256,6 +256,22 @@
 
 
 
+## [8.1.1](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v8.1.0...awesome-cordova-plugins-v8.1.1) (2025-10-06)
+
+
+### Miscellaneous Chores
+
+* **deps:** update build and bundling tools ([#5063](https://github.com/danielsogl/awesome-cordova-plugins/issues/5063)) ([86be549](https://github.com/danielsogl/awesome-cordova-plugins/commit/86be54975b895baf12adfd988561af0f463ee79f))
+* **deps:** update build and bundling tools ([#5066](https://github.com/danielsogl/awesome-cordova-plugins/issues/5066)) ([f1be01f](https://github.com/danielsogl/awesome-cordova-plugins/commit/f1be01f79bbe94535582697e883c51da7745810e))
+* **deps:** update build and bundling tools ([#5076](https://github.com/danielsogl/awesome-cordova-plugins/issues/5076)) ([0ef0f74](https://github.com/danielsogl/awesome-cordova-plugins/commit/0ef0f74357e82127dbbea3fcfbf505c845fc9e81))
+* **deps:** update dependency lint-staged to ^16.1.5 ([#5061](https://github.com/danielsogl/awesome-cordova-plugins/issues/5061)) ([679aefa](https://github.com/danielsogl/awesome-cordova-plugins/commit/679aefa3b532b4f9695bd3ac96133357ba1b3654))
+* **deps:** update dependency lint-staged to ^16.1.6 ([#5069](https://github.com/danielsogl/awesome-cordova-plugins/issues/5069)) ([4afe2ad](https://github.com/danielsogl/awesome-cordova-plugins/commit/4afe2ad4c9b887bba08ce3ab747d2b979e8135c3))
+* **deps:** update dependency lint-staged to ^16.2.3 ([#5075](https://github.com/danielsogl/awesome-cordova-plugins/issues/5075)) ([0887f9f](https://github.com/danielsogl/awesome-cordova-plugins/commit/0887f9f9e4055579765c369734c6e810c6910818))
+* **deps:** update dependency release-please to ^17.1.2 ([#5065](https://github.com/danielsogl/awesome-cordova-plugins/issues/5065)) ([0c90165](https://github.com/danielsogl/awesome-cordova-plugins/commit/0c90165e969603a7d87ad405005423afcdc7a57c))
+* **deps:** update dependency rollup to ^4.50.1 ([#5070](https://github.com/danielsogl/awesome-cordova-plugins/issues/5070)) ([b94c26d](https://github.com/danielsogl/awesome-cordova-plugins/commit/b94c26dbb1e5062ff9b3009943e0d3098b3c9f91))
+* **deps:** update dependency rollup to ^4.52.0 ([#5073](https://github.com/danielsogl/awesome-cordova-plugins/issues/5073)) ([f8fdc2f](https://github.com/danielsogl/awesome-cordova-plugins/commit/f8fdc2fe79817a31e466189b830031b88b531e20))
+* **deps:** update dependency rollup to ^4.52.3 ([#5074](https://github.com/danielsogl/awesome-cordova-plugins/issues/5074)) ([55aabfa](https://github.com/danielsogl/awesome-cordova-plugins/commit/55aabfa4aceccf6bc3f32cbc1945b8e89237f35a))
+
 ## [8.1.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v8.0.2...awesome-cordova-plugins-v8.1.0) (2025-08-08)
 
 
