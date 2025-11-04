@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AwesomeCordovaNativePlugin, Plugin, getPromise } from '@awesome-cordova-plugins/core';
+import { AwesomeCordovaNativePlugin, Plugin, getPromise, CordovaCheck } from '@awesome-cordova-plugins/core';
 
 declare const navigator: any;
 
@@ -40,6 +40,7 @@ export class Screenshot extends AwesomeCordovaNativePlugin {
    * @param filename {string} Name of the file as stored on the storage
    * @returns {Promise<any>}
    */
+  @CordovaCheck()
   save(format?: string, quality?: number, filename?: string): Promise<any> {
     return getPromise<any>((resolve, reject) => {
       navigator.screenshot.save(
@@ -64,6 +65,7 @@ export class Screenshot extends AwesomeCordovaNativePlugin {
    *        Default quality is set to 100.
    * @returns {Promise<any>}
    */
+  @CordovaCheck()
   URI(quality?: number): Promise<any> {
     return getPromise<any>((resolve, reject) => {
       navigator.screenshot.URI((error: any, result: any) => {
