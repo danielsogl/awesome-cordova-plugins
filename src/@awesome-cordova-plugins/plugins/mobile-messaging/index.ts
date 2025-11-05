@@ -9,7 +9,6 @@ export type Event =
   | 'notificationTapped'
   | 'tokenReceived'
   | 'registrationUpdated'
-  | 'geofenceEntered'
   | 'actionTapped'
   | 'installationUpdated'
   | 'userUpdated'
@@ -22,7 +21,7 @@ export type Event =
 
 export interface CustomEvent {
   definitionId: string;
-  properties: Record<string, string | number | boolean>;
+  properties: Record<string, string | number | boolean | Date | Array<Record<string, string | number | boolean | Date>>>;
 }
 
 export interface Configuration {
@@ -30,8 +29,6 @@ export interface Configuration {
    * The application code of your Application from Push Portal website
    */
   applicationCode: string;
-  userDataJwt?: string;
-  geofencingEnabled?: boolean;
   inAppChatEnabled?: boolean;
   fullFeaturedInAppsEnabled?: boolean | undefined;
   /**
@@ -39,49 +36,50 @@ export interface Configuration {
    */
   messageStorage?: CustomMessageStorage;
   defaultMessageStorage?: boolean;
+  userDataJwt?: string;
+  trustedDomains?: string[];
+  loggingEnabled?: boolean;
   ios?: {
     notificationTypes?: string[]; // ['alert', 'badge', 'sound']
     forceCleanup?: boolean;
-    logging?: boolean;
+    registeringForRemoteNotificationsDisabled?: boolean;
+    overridingNotificationCenterDelegateDisabled?: boolean;
+    unregisteringForRemoteNotificationsDisabled?: boolean;
+    webViewSettings?: {
+      title?: string;
+      barTintColor?: string;
+      titleColor?: string;
+      tintColor?: string;
+    };
   };
   android?: {
     notificationIcon?: string; // a resource name for a status bar icon (without extension), located in '/platforms/android/app/src/main/res/mipmap'
+    notificationChannelId?: string;
+    notificationChannelName?: string;
+    notificationSound?: string;
     multipleNotifications?: boolean; // set to 'true' to enable multiple notifications
     notificationAccentColor?: string; // set to hex color value in format '#RRGGBB' or '#AARRGGBB'
-    firebaseOptions?: {
-      apiKey: string;
-      applicationId: string;
-      databaseUrl?: string;
-      gaTrackingId?: string;
-      gcmSenderId?: string;
-      storageBucket?: string;
-      projectId: string;
-    };
+    withBannerForegroundNotificationsEnabled?: boolean;
   };
   privacySettings?: {
-    applicationCodePersistingDisabled?: boolean;
     userDataPersistingDisabled?: boolean;
     carrierInfoSendingDisabled?: boolean;
     systemInfoSendingDisabled?: boolean;
   };
-  notificationCategories?: [
-    {
+  notificationCategories?: Array<{
+    identifier: string;
+    actions?: Array<{
       identifier: string;
-      actions?: [
-        {
-          identifier: string;
-          title?: string;
-          foreground?: boolean;
-          authenticationRequired?: boolean;
-          moRequired?: boolean;
-          destructive?: boolean;
-          icon?: string;
-          textInputActionButtonTitle?: string;
-          textInputPlaceholder?: string;
-        }
-      ];
-    }
-  ];
+      title?: string;
+      foreground?: boolean;
+      textInputPlaceholder?: string;
+      moRequired?: boolean;
+      authenticationRequired?: boolean;
+      textInputActionButtonTitle?: string;
+      destructive?: boolean;
+      icon?: string;
+    }>;
+  }>;
 }
 
 export interface UserData {
@@ -94,14 +92,13 @@ export interface UserData {
   phones?: string[];
   emails?: string[];
   tags?: string[];
-  customAttributes?: Record<string, string | number | boolean | any[]>;
+  customAttributes?: Record<string, string | number | boolean | Date | Array<Record<string, string | number | boolean | Date>>>;
 }
 
 export interface Installation {
   isPrimaryDevice?: boolean;
   isPushRegistrationEnabled?: boolean;
   notificationsEnabled?: boolean;
-  geoEnabled?: boolean;
   sdkVersion?: string;
   appVersion?: string;
   os?: OS;
@@ -110,10 +107,10 @@ export interface Installation {
   deviceModel?: string;
   deviceSecure?: boolean;
   language?: string;
-  deviceTimezoneId?: string;
+  deviceTimezoneOffset?: string;
   applicationUserId?: string;
   deviceName?: string;
-  customAttributes?: Record<string, string | number | boolean>;
+  customAttributes?: Record<string, string | number | boolean | Date | Array<Record<string, string | number | boolean | Date>>>;
 }
 
 /**
@@ -127,24 +124,9 @@ export interface UserIdentity {
 
 export interface PersonalizeContext {
   userIdentity: UserIdentity;
-  userAttributes?: Record<string, string | number | boolean | any[]>;
+  userAttributes?: Record<string, string | number | boolean | Date | Array<Record<string, string | number | boolean | Date>>>;
   forceDepersonalize?: boolean;
-}
-
-export interface GeoData {
-  area: GeoArea;
-}
-
-export interface GeoArea {
-  id: string;
-  center: GeoCenter;
-  radius: number;
-  title: string;
-}
-
-export interface GeoCenter {
-  lat: number;
-  lon: number;
+  keepAsLead?: boolean;
 }
 
 export interface Message {
@@ -159,7 +141,6 @@ export interface Message {
   seenDate?: number;
   contentUrl?: string;
   seen?: boolean;
-  geo?: boolean;
   originalPayload?: Record<string, string>; // iOS only
   vibrate?: boolean; // Android only
   icon?: string; // Android only
@@ -183,6 +164,7 @@ export interface MMInboxFilterOptions {
   fromDateTime?: string | undefined;
   toDateTime?: string | undefined;
   topic?: string | undefined;
+  topics?: string[] | undefined;
   limit?: number | undefined;
 }
 
@@ -276,6 +258,14 @@ export interface ChatSettingsIOS {
   navigationBarTitleColor: string;
 }
 
+export interface ChatException {
+  code: string;
+  name: string;
+  message: string;
+  origin?: string;
+  platform?: string;
+}
+
 /**
  * @name Mobile Messaging
  * @description
@@ -297,7 +287,6 @@ export interface ChatSettingsIOS {
  *  this.mobileMessaging.init({
  *    applicationCode: '<your_application_code>',
  *    userDataJwt: '<user_data_jwt>',
- *    geofencingEnabled: '<true/false>',
  *    defaultMessageStorage: '<true/false>',
  *    ios: {
  *      notificationTypes: ['alert', 'badge', 'sound']
@@ -665,13 +654,89 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Updates JWT used for user data fetching and personalization.
-   * 
+   *
    * @name setUserDataJwt
    * @param jwt - JWT in a predefined format
    * @param {Function} errorCallback will be called on error
    */
   @Cordova()
   setUserDataJwt(jwt: string, errorCallback?: (error: MobileMessagingError) => void) {
+    return;
+  }
+
+  /**
+   * Sets the JWT provider used to authenticate in-app chat sessions.
+   * The jwtProvider is a callback function that returns a JSON Web Token (JWT) used for chat authentication.
+   * It supports both synchronous and asynchronous approaches.
+   *
+   * @name setChatJwtProvider
+   * @param jwtProvider - A callback function that returns a JWT string or a Promise that resolves to one
+   * @param errorCallback - Optional error handler for catching exceptions thrown during JWT generation
+   */
+  @Cordova({ sync: true })
+  setChatJwtProvider(jwtProvider: () => string | Promise<string>, errorCallback?: (error: any) => void) {
+    return;
+  }
+
+  /**
+   * Sets the chat exception handler to intercept and display errors from the chat.
+   *
+   * @name setChatExceptionHandler
+   * @param exceptionHandler - A function that receives the exception. Pass null to remove the handler.
+   * @param errorCallback - Optional error handler for catching exceptions thrown when handling exceptions from native side
+   */
+  @Cordova({ sync: true })
+  setChatExceptionHandler(exceptionHandler: ((exception: ChatException) => void) | null, errorCallback?: (error: any) => void) {
+    return;
+  }
+
+  /**
+   * Sets chat language.
+   *
+   * @name setLanguage
+   * @param language - Language to be set
+   * @param errorCallback - Will be called on error
+   */
+  @Cordova({ sync: true })
+  setLanguage(language: string, errorCallback?: (error: any) => void) {
+    return;
+  }
+
+  /**
+   * Set contextual data of the widget
+   *
+   * @name sendContextualData
+   * @param data - Contextual data in the form of JSON string
+   * @param allMultiThreadStrategy - Multi-thread strategy flag, true -> ALL, false -> ACTIVE
+   * @param errorCallback - Will be called on error
+   */
+  @Cordova({ sync: true })
+  sendContextualData(data: string, allMultiThreadStrategy: boolean, errorCallback?: (error: any) => void) {
+    return;
+  }
+
+  /**
+   * Sets chat customization.
+   *
+   * @name setChatCustomization
+   * @param customization - Chat customization JSON object
+   * @param successCallback - Success callback
+   * @param errorCallback - Error callback
+   */
+  @Cordova()
+  setChatCustomization(customization: any, successCallback?: () => void, errorCallback?: (error: any) => void) {
+    return;
+  }
+
+  /**
+   * Sets widget theme.
+   *
+   * @name setWidgetTheme
+   * @param widgetTheme - Widget theme name
+   * @param errorCallback - Error callback
+   */
+  @Cordova({ sync: true })
+  setWidgetTheme(widgetTheme: string, errorCallback?: (error: any) => void) {
     return;
   }
 }
