@@ -53,10 +53,10 @@ export class AppUpdate extends AwesomeCordovaNativePlugin {
    * Check and update
    * @param {string} updateUrl update api url
    * @param {AppUpdateOptions} [options] options
-   * @return {Promise<any>} Returns a promise that resolves when something happens
+   * @return {Promise<void>} Returns a promise that resolves when the update is downloaded and ready to be installed. Rejects if an error occurs, the user cancels, or if no update is available.
    */
   @Cordova()
-  checkAppUpdate(updateUrl: string, options?: AppUpdateOptions): Promise<any> {
+  checkAppUpdate(updateUrl: string, options?: AppUpdateOptions): Promise<void> {
     return;
   }
 }
