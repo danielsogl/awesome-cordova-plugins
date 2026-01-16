@@ -48,12 +48,15 @@ export interface AppUpdateOptions {
   platforms: ['Android'],
 })
 @Injectable()
-export declare class AppUpdateOriginal extends AwesomeCordovaNativePlugin {
+export class AppUpdate extends AwesomeCordovaNativePlugin {
   /**
    * Check and update
    * @param {string} updateUrl update api url
    * @param {AppUpdateOptions} [options] options
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
-  checkAppUpdate(updateUrl: string, options?: AppUpdateOptions): Promise<any>;
+  @Cordova()
+  checkAppUpdate(updateUrl: string, options?: AppUpdateOptions): Promise<any> {
+    return;
+  }
 }
