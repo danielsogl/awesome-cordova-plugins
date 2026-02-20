@@ -19,6 +19,11 @@ declare let mixpanel: any;
  *   .then(onSuccess)
  *   .catch(onError);
  *
+ * // For EU data residency, pass a custom server URL:
+ * this.mixpanel.init(token, true, 'https://api-eu.mixpanel.com')
+ *   .then(onSuccess)
+ *   .catch(onError);
+ *
  * ```
  * @classes
  * MixpanelPeople
@@ -76,10 +81,15 @@ export class Mixpanel extends AwesomeCordovaNativePlugin {
   /**
    *
    * @param token {string}
+   * @param trackAutomaticEvents {boolean} optional, defaults to true (Android only)
+   * @param serverUrl {string} optional, custom server URL for EU data residency (e.g. 'https://api-eu.mixpanel.com')
    * @returns {Promise<any>}
    */
-  @Cordova()
-  init(token: string): Promise<any> {
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2,
+  })
+  init(token: string, trackAutomaticEvents?: boolean, serverUrl?: string): Promise<any> {
     return;
   }
 
