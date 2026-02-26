@@ -1027,6 +1027,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
    * # Select values from FORM_HEADER table where FORM_ID is 5caed815892215034dacad56
    * this.unviredSDK.dbDelete('FORM_HEADER', "FORM_ID = '5caed815892215034dacad56'")
    * ```
+   * @deprecated Use `dbDeleteWithArgs` instead.
    */
   @Cordova()
   dbDelete(tableName: string, whereClause: any): Promise<DbResult> {
@@ -1045,6 +1046,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
    * # Update NAME & NO from FORM_HEADER table where FORM_ID is 5caed815892215034dacad56
    * this.unviredSDK.dbUpdate('FORM_HEADER', {"NAME":"UPDATED_USER","UPDATED_NO":"0039"}, "FORM_ID = '5caed815892215034dacad56'")
    * ```
+   * @deprecated Use `dbUpdateWithArgs` instead.
    */
   @Cordova()
   dbUpdate(tableName: string, updatedObject: any, whereClause: any): Promise<DbResult> {
@@ -1059,9 +1061,62 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
    * ```
    * this.unviredSDK.dbExecuteStatement("SELECT * FROM CUSTOMER_HEADER WHERE CUSTOMER_ID = '39'")
    * ```
+   * @deprecated Use `dbExecuteStatementWithArgs` instead.
    */
   @Cordova()
   dbExecuteStatement(query: string): Promise<DbResult> {
+    return;
+  }
+
+  /**
+   * Delete records from the database.
+   *
+   * @param tableName Name of the table
+   * @param whereClause {Object} Browser: JSON object containing name-value pairs.
+   * Mobile: Or a Sqlite whereClause ( without the 'where' keyword )
+   * @param args Arguments to replace the '?' placeholders in the query if any
+   * Example:
+   * ```
+   * # Delete values from FORM_HEADER table where FORM_ID is 5caed815892215034dacad56
+   * this.unviredSDK.dbDeleteWithArgs('FORM_HEADER', "FORM_ID = ?", ['5caed815892215034dacad56'])
+   * ```
+   */
+  @Cordova()
+  dbDeleteWithArgs(tableName: string, whereClause: any, args: any[]): Promise<DbResult> {
+    return;
+  }
+
+  /**
+   * Update records in database.
+   *
+   * @param tableName Name of the table
+   * @param updatedObject JSON object containing updated name-value pairs.
+   * @param whereClause {Object} Browser: JSON object containing name-value pairs.
+   * Mobile: Or a Sqlite where Clause ( without the 'where' keyword )
+   * @param args Arguments to replace the '?' placeholders in the query if any
+   * Example:
+   * ```
+   * # Update NAME & NO from FORM_HEADER table where FORM_ID is 5caed815892215034dacad56
+   * this.unviredSDK.dbUpdateWithArgs('FORM_HEADER', {"NAME":"UPDATED_USER","UPDATED_NO":"0039"}, "FORM_ID = ?", ['5caed815892215034dacad56'])
+   * ```
+   */
+  @Cordova()
+  dbUpdateWithArgs(tableName: string, updatedObject: any, whereClause: any, args: any[]): Promise<DbResult> {
+    return;
+  }
+
+  /**
+   * Execute a SQL statement
+   *
+   * @param query {string} SQL Statement.
+   * @param args Arguments to replace the '?' placeholders in the query if any
+   * Example:
+   * ```
+   * this.unviredSDK.dbExecuteStatementWithArgs("SELECT * FROM CUSTOMER_HEADER WHERE CUSTOMER_ID = ?", ['39'])
+   * ```
+   */
+  @Cordova()
+  dbExecuteStatementWithArgs(query: string, args: any[]): Promise<DbResult> {
     return;
   }
 
