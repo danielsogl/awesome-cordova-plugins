@@ -256,6 +256,24 @@
 
 
 
+## [9.1.0](https://github.com/venkadesh-p/ionic-native/compare/awesome-cordova-plugins-v9.0.0...awesome-cordova-plugins-v9.1.0) (2026-02-26)
+
+
+### Features
+
+* **cordova-plugin-unvired-sdk:** Add `dbDeleteWithArgs`, `dbUpdateWithArgs`, and `dbExecuteStatementWithArgs` methods, and deprecate their non-argument counterparts. ([97d4fd7](https://github.com/venkadesh-p/ionic-native/commit/97d4fd7ac94bf34183784d93455e6dde8b9a83bf))
+* **cordova-plugin-unvired-sdk:** add dbUpdateStatements property to LoginParameters interface ([b9630fd](https://github.com/venkadesh-p/ionic-native/commit/b9630fd427d29304436e2268a00cd279bf692153))
+* **cordova-plugin-unvired-sdk:** added a new functions. ([d0ada59](https://github.com/venkadesh-p/ionic-native/commit/d0ada59f17ff2af53424f3b233c305cb9976c071))
+* **cordova-plugin-unvired-sdk:** updated getUMPRequestConfig method params. ([0be26d3](https://github.com/venkadesh-p/ionic-native/commit/0be26d3388dec4b27b8a0ea3e4c4c37690b9dbdd))
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency lint-staged to ^16.1.6 ([#5069](https://github.com/venkadesh-p/ionic-native/issues/5069)) ([4afe2ad](https://github.com/venkadesh-p/ionic-native/commit/4afe2ad4c9b887bba08ce3ab747d2b979e8135c3))
+* **deps:** update dependency rollup to ^4.50.1 ([#5070](https://github.com/venkadesh-p/ionic-native/issues/5070)) ([b94c26d](https://github.com/venkadesh-p/ionic-native/commit/b94c26dbb1e5062ff9b3009943e0d3098b3c9f91))
+* release master ([3e68c58](https://github.com/venkadesh-p/ionic-native/commit/3e68c5848225c2f02069bd5b11dc31e4a7f72bb1))
+* release master ([4bc5aed](https://github.com/venkadesh-p/ionic-native/commit/4bc5aed2d049841c25525201e780d9e7051bcd18))
+
 ## [9.0.0](https://github.com/venkadesh-p/ionic-native/compare/awesome-cordova-plugins-v8.1.0...awesome-cordova-plugins-v9.0.0) (2025-09-08)
 
 
