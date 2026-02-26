@@ -436,9 +436,16 @@ export class LoginParameters {
   appVersion: string;
 
   /**
-   *
+   * Specify the redirect URL.
    */
   redirectURL: string;
+
+  /**
+   * Specify the database update statements as a JSON string. This will update the database schema.
+   */
+  dbUpdateStatements: string;
+
+  
 }
 export class LoginResult extends UnviredResult {
   type: LoginListenerType;
