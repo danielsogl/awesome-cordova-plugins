@@ -1,4 +1,4 @@
-import { ClassDeclaration, factory, SyntaxKind } from 'typescript';
+import { canHaveDecorators, ClassDeclaration, factory, getDecorators as tsGetDecorators, SyntaxKind } from 'typescript';
 
 import { transformMethod } from './methods';
 import { transformProperty } from './properties';
@@ -8,7 +8,8 @@ export function transformMembers(cls: ClassDeclaration) {
 
   const members = cls.members.map((member: any, index: number) => {
     // only process decorated members
-    if (!member.decorators || !member.decorators.length) return member;
+    const memberDecorators = canHaveDecorators(member) ? tsGetDecorators(member) : undefined;
+    if (!memberDecorators || !memberDecorators.length) return member;
 
     switch (member.kind) {
       case SyntaxKind.MethodDeclaration:
@@ -17,7 +18,7 @@ export function transformMembers(cls: ClassDeclaration) {
         propertyIndices.push(index);
         return member;
       case SyntaxKind.Constructor:
-        return factory.createConstructorDeclaration(undefined, undefined, member.parameters, member.body);
+        return factory.createConstructorDeclaration(undefined, member.parameters, member.body);
       default:
         return member; // in case anything gets here by accident...
     }

@@ -1,5 +1,5 @@
-import { unlinkSync, writeJSONSync } from 'fs-extra';
-import { resolve } from 'path';
+import { unlinkSync, writeFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { ClassDeclaration, SyntaxKind, TransformationContext, visitEachChild } from 'typescript';
 
 import { hasDecorator, ROOT } from '../helpers';
@@ -51,7 +51,7 @@ export function extractInjectables() {
 }
 
 export function emitInjectableClasses() {
-  writeJSONSync(EMIT_PATH, injectableClasses);
+  writeFileSync(EMIT_PATH, JSON.stringify(injectableClasses, null, 2));
 }
 
 export function cleanEmittedData() {

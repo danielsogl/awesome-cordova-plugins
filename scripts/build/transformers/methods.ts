@@ -20,7 +20,6 @@ export function transformMethod(method: MethodDeclaration) {
     return factory.createMethodDeclaration(
       undefined,
       undefined,
-      undefined,
       method.name,
       undefined,
       method.typeParameters,
@@ -40,7 +39,6 @@ function getMethodBlock(method: MethodDeclaration, decoratorName: string, decora
   switch (decoratorName) {
     case 'CordovaCheck':
     case 'InstanceCheck':
-      // TODO remove function wrapper
       return factory.createImmediatelyInvokedArrowFunction([
         factory.createIfStatement(
           factory.createBinaryExpression(

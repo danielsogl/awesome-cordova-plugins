@@ -1,24 +1,38 @@
-import * as Queue from 'async-promise-queue';
-import { exec } from 'child_process';
-import { writeJSONSync } from 'fs-extra';
-import { merge } from 'lodash';
-import { cpus } from 'os';
-import { join, resolve } from 'path';
+import { exec as execCb } from 'node:child_process';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { availableParallelism } from 'node:os';
+import { join, resolve } from 'node:path';
+import { promisify } from 'node:util';
+
+const exec = promisify(execCb);
 
 import { PLUGIN_PATHS, ROOT } from '../build/helpers';
 import { Logger } from '../logger';
 
-// tslint:disable-next-line:no-var-requires
-const MAIN_PACKAGE_JSON = require('../../package.json');
+const MAIN_PACKAGE_JSON = JSON.parse(readFileSync(resolve(__dirname, '../../package.json'), 'utf-8'));
 const VERSION = MAIN_PACKAGE_JSON.version;
 const FLAGS = '--access public';
 
 const PACKAGE_JSON_BASE = {
   description: 'Awesome Cordova Plugins - Native plugins for ionic apps',
-  main: 'index.js',
-  module: 'index.js',
-  typings: 'index.d.ts',
-  author: 'ionic',
+  type: 'module',
+  main: './index.js',
+  module: './index.js',
+  types: './index.d.ts',
+  exports: {
+    '.': {
+      types: './index.d.ts',
+      import: './index.js',
+      default: './index.js',
+    },
+    './ngx': {
+      types: './ngx/index.d.ts',
+      import: './ngx/index.js',
+      default: './ngx/index.js',
+    },
+  },
+  sideEffects: false,
+  author: 'Daniel Sogl',
   license: 'MIT',
   repository: {
     type: 'git',
@@ -39,22 +53,30 @@ const PLUGIN_PEER_DEPENDENCIES = {
 };
 
 function getPackageJsonContent(name: string, peerDependencies = {}, dependencies = {}) {
-  return merge(PACKAGE_JSON_BASE, {
+  const pkg = {
+    ...structuredClone(PACKAGE_JSON_BASE),
     name: '@awesome-cordova-plugins/' + name,
     dependencies,
     peerDependencies,
     version: VERSION,
-  });
+  };
+
+  // Core package has no ngx subfolder
+  if (name === 'core') {
+    delete pkg.exports['./ngx'];
+  }
+
+  return pkg;
 }
 
 function writePackageJson(data: any, dir: string) {
   const filePath = resolve(dir, 'package.json');
-  writeJSONSync(filePath, data);
+  writeFileSync(filePath, JSON.stringify(data, null, 2));
   PACKAGES.push(dir);
 }
 function writeNGXPackageJson(data: any, dir: string) {
   const filePath = resolve(dir, 'package.json');
-  writeJSONSync(filePath, data);
+  writeFileSync(filePath, JSON.stringify(data, null, 2));
 }
 function prepare() {
   // write @awesome-cordova-plugins/core package.json
@@ -74,32 +96,29 @@ function prepare() {
   });
 }
 
+async function publishPackage(pkg: string, ignoreErrors: boolean): Promise<void> {
+  try {
+    const { stdout } = await exec(`npm publish ${pkg} ${FLAGS}`);
+    if (stdout) Logger.verbose(stdout.trim());
+  } catch (err: any) {
+    if (err.message?.includes('You cannot publish over the previously published version')) {
+      Logger.verbose('Ignoring duplicate version error.');
+      return;
+    }
+    if (!ignoreErrors) throw err;
+  }
+}
+
 async function publish(ignoreErrors = false) {
   Logger.profile('Publishing');
-  // upload 1 package per CPU thread at a time
-  const worker = Queue.async.asyncify(
-    (pkg: any) =>
-      new Promise<string | void>((resolve, reject) => {
-        exec(`npm publish ${pkg} ${FLAGS}`, (err, stdout) => {
-          if (stdout) {
-            Logger.verbose(stdout.trim());
-            resolve(stdout);
-          }
-          if (err) {
-            if (!ignoreErrors) {
-              if (err.message.includes('You cannot publish over the previously published version')) {
-                Logger.verbose('Ignoring duplicate version error.');
-                return resolve();
-              }
-              reject(err);
-            }
-          }
-        });
-      })
-  );
+  const concurrency = availableParallelism();
+  const queue = [...PACKAGES];
 
   try {
-    await Queue(worker, PACKAGES, cpus().length);
+    while (queue.length > 0) {
+      const batch = queue.splice(0, concurrency);
+      await Promise.all(batch.map((pkg) => publishPackage(pkg, ignoreErrors)));
+    }
     Logger.info('Done publishing!');
   } catch (e) {
     Logger.error('Error publishing!');

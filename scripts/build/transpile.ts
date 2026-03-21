@@ -1,4 +1,3 @@
-import { clone } from 'lodash';
 import {
   CompilerHost,
   CompilerOptions,
@@ -22,14 +21,14 @@ export function getCompilerHost() {
 }
 
 export function getProgram(declaration = false, pluginPaths: string[] = PLUGIN_PATHS) {
-  const compilerOptions: CompilerOptions = clone(COMPILER_OPTIONS);
+  const compilerOptions: CompilerOptions = structuredClone(COMPILER_OPTIONS);
   compilerOptions.declaration = declaration;
-  compilerOptions.moduleResolution = ModuleResolutionKind.NodeJs;
-  compilerOptions.target = ScriptTarget.ES5;
-  compilerOptions.module = ModuleKind.ES2015;
+  compilerOptions.moduleResolution = ModuleResolutionKind.Node16;
+  compilerOptions.target = ScriptTarget.ES2022;
+  compilerOptions.module = ModuleKind.ES2022;
   compilerOptions.inlineSourceMap = true;
   compilerOptions.inlineSources = true;
-  compilerOptions.lib = ['lib.dom.d.ts', 'lib.es5.d.ts', 'lib.es2015.d.ts', 'lib.es2016.d.ts', 'lib.es2017.d.ts'];
+  compilerOptions.lib = ['lib.dom.d.ts', 'lib.es2022.d.ts'];
 
   return createProgram(pluginPaths, compilerOptions, getCompilerHost());
 }
