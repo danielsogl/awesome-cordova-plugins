@@ -51,7 +51,7 @@ export class FirebaseModelInput {
  * @description This plugin downloads the TensorFlow model from firebase and classify the images.
  *
  * ```typescript
- * import { FirebaseModel } from '@ionic-native/ionic-native-firebase-model';
+ * import { FirebaseModel } from '@awesome-cordova-plugins/firebase-model';
  *
  *
  * constructor(private firebaseModel: FirebaseModel) { }

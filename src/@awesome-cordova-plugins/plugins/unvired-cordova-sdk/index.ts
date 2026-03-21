@@ -118,9 +118,7 @@ export enum LoginType {
    * SAML 2.0 Login Type
    */
   saml2 = 'SAML2',
-  /**
-   * TODO:
-   */
+  /** Custom authentication */
   custom = 'CUSTOM',
 }
 

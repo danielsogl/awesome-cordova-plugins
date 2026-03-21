@@ -8,7 +8,7 @@ declare const navigator: any;
  * @description Captures a screen shot
  * @usage
  * ```typescript
- * import { Screenshot } from '@ionic-native/screenshot/ngx';
+ * import { Screenshot } from '@awesome-cordova-plugins/screenshot/ngx';
  *
  * constructor(private screenshot: Screenshot) { }
  *
