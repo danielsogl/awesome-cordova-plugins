@@ -256,6 +256,20 @@
 
 
 
+## [9.1.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.0.1...awesome-cordova-plugins-v9.1.0) (2026-03-21)
+
+
+### Features
+
+* **airship:** Added new method waitForChannelId ([#5122](https://github.com/danielsogl/awesome-cordova-plugins/issues/5122)) ([38f6eb5](https://github.com/danielsogl/awesome-cordova-plugins/commit/38f6eb520575d55af8d4a2e202082b0b43b903ce))
+* **cordova-plugin-unvired-sdk:** Enhance LoginParameters and UMPRequestConfig ([#5123](https://github.com/danielsogl/awesome-cordova-plugins/issues/5123)) ([e86ed06](https://github.com/danielsogl/awesome-cordova-plugins/commit/e86ed0698cc790ccf402038572737b1a0806d9a4))
+* **mixpanel:** add serverUrl and trackAutomaticEvents to init() ([#5124](https://github.com/danielsogl/awesome-cordova-plugins/issues/5124)) ([3df16d6](https://github.com/danielsogl/awesome-cordova-plugins/commit/3df16d67a2d4cd9f27af91cbd91f71fe4e3dd6ba))
+
+
+### Bug Fixes
+
+* exit with non-zero code when npm publish fails ([b2f8570](https://github.com/danielsogl/awesome-cordova-plugins/commit/b2f8570444aad3c6151ac9409791b6458ec0ddbe))
+
 ## [9.0.1](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.0.0...awesome-cordova-plugins-v9.0.1) (2026-03-21)
 
 
