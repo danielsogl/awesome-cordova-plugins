@@ -16,10 +16,8 @@ Requires Cordova plugin: `cordova-plugin-dialogs`. For more info, please see the
 ## Supported platforms
 
 - Amazon Fire OS
-  - Android
-  - Browser
-  - iOS
-  - Windows
-  
-
+- Android
+- Browser
+- iOS
+- Windows
 

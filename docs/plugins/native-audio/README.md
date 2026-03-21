@@ -14,8 +14,6 @@ Native Audio Playback
 ## Supported platforms
 
 - Android
-  - Browser
-  - iOS
-  
-
+- Browser
+- iOS
 

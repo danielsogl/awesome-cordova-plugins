@@ -1,7 +1,7 @@
 # Cloud Settings
 
 ```
-$ ionic cordova plugin add cordova-plugin-cloud-settings --variable ANDROID_BACKUP_SERVICE_KEY=myapikey
+$ ionic cordova plugin add @marysuon/cordova-plugin-cloud-settings --variable ANDROID_BACKUP_SERVICE_KEY=myapikey
 $ npm install @awesome-cordova-plugins/cloud-settings
 ```
 
@@ -14,7 +14,5 @@ Stores app settings in cloud storage so if the user re-installs the app or insta
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

@@ -19,7 +19,5 @@ Advantages over Javascript requests:
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

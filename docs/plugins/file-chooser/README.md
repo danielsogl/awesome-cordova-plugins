@@ -14,6 +14,4 @@ Cordova FileChooser Plugin
 ## Supported platforms
 
 - Android
-  
-
 

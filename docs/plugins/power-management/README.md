@@ -15,7 +15,5 @@ It should be used for applications which keep running for a long time without an
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

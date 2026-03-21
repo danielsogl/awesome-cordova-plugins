@@ -16,8 +16,6 @@ Requires Cordova plugin: `cordova-plugin-flashlight`. For more info, please see 
 ## Supported platforms
 
 - Android
-  - iOS
-  - Windows Phone 8
-  
-
+- iOS
+- Windows Phone 8
 

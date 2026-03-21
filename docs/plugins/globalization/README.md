@@ -14,10 +14,8 @@ This plugin obtains information and performs operations specific to the user's l
 ## Supported platforms
 
 - Amazon Fire OS
-  - Android
-  - Browser
-  - iOS
-  - Windows
-  
-
+- Android
+- Browser
+- iOS
+- Windows
 

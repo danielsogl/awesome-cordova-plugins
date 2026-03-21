@@ -1,6 +1,7 @@
-# Coordinates
-alidationError
-ic cordova plugin add cordova-plugin-hypertrack-v3
+# HyperTrackPlugin
+
+```
+$ ionic cordova plugin add cordova-plugin-hypertrack-v3
 $ npm install @awesome-cordova-plugins/hyper-track
 ```
 
@@ -8,11 +9,7 @@ $ npm install @awesome-cordova-plugins/hyper-track
 
 Plugin Repo: [https://github.com/hypertrack/cordova-plugin-hypertrack.git](https://github.com/hypertrack/cordova-plugin-hypertrack.git)
 
-
-
 ## Supported platforms
 
 - Android, iOS
-  
-
 

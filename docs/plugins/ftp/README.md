@@ -14,7 +14,5 @@ This cordova plugin is created to use ftp (client) in web/js.
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

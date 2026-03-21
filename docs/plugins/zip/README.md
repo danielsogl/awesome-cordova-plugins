@@ -14,7 +14,5 @@ A Cordova plugin to unzip files in Android and iOS.
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

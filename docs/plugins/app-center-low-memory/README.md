@@ -15,7 +15,5 @@ For more info, please see: https://github.com/Microsoft/appcenter-sdk-cordova/tr
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

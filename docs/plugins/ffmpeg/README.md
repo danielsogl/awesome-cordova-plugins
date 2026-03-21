@@ -14,7 +14,5 @@ Simple plugin that binds mobile ffmpeg to execute ffmpeg commands
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

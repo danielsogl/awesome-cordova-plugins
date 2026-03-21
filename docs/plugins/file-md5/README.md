@@ -14,7 +14,5 @@ This plugin reads large files in chunks and build the md5sum incrementally.
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

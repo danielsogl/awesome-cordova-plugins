@@ -21,8 +21,6 @@ Supports:**
 ## Supported platforms
 
 - Android
-  - iOS
-  - Browser
-  
-
+- iOS
+- Browser
 

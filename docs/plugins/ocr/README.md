@@ -17,7 +17,5 @@ For more info, please see the following Github issue [Google Mobile Vision relyi
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

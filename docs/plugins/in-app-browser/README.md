@@ -14,11 +14,9 @@ Launches in app Browser
 ## Supported platforms
 
 - AmazonFire OS
-  - Android
-  - Browser
-  - iOS
-  - macOS
-  - Windows
-  
-
+- Android
+- Browser
+- iOS
+- macOS
+- Windows
 

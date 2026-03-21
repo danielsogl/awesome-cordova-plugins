@@ -16,6 +16,4 @@ https://github.com/google/ExoPlayer
 ## Supported platforms
 
 - Android
-  
-
 

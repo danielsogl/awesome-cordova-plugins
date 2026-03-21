@@ -17,8 +17,6 @@ For documentation: TODO: insert link
 ## Supported platforms
 
 - Android
-  - Browser
-  - iOS
-  
-
+- Browser
+- iOS
 

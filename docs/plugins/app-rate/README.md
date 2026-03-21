@@ -16,9 +16,7 @@ Requires Cordova plugin: cordova-plugin-apprate. For more info, please see the [
 ## Supported platforms
 
 - Android
-  - BlackBerry 10
-  - iOS
-  - Windows
-  
-
+- BlackBerry 10
+- iOS
+- Windows
 

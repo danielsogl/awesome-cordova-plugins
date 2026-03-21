@@ -14,7 +14,5 @@ A cross platform WhatsApp / Messenger / Slack -style keyboard even. For your Cor
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

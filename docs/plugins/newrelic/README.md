@@ -14,7 +14,5 @@ This NewRelic plugin collect crashes, network traffic, and other information for
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

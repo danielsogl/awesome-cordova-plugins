@@ -15,7 +15,5 @@ Gaode location can directly return address informationGaode location can directl
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

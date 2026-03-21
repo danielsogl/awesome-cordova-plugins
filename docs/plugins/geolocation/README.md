@@ -23,10 +23,8 @@ For iOS you have to add this configuration to your configuration.xml file
 ## Supported platforms
 
 - Amazon Fire OS
-  - Android
-  - Browser
-  - iOS
-  - Windows
-  
-
+- Android
+- Browser
+- iOS
+- Windows
 

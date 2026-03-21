@@ -14,7 +14,5 @@ This plugin can display your image in full screen with the ability to pan, zoom,
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

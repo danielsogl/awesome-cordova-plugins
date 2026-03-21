@@ -14,8 +14,6 @@ The Native Page Transitions plugin uses native hardware acceleration to animate 
 ## Supported platforms
 
 - Android
-  - iOS
-  - Windows Phone 8
-  
-
+- iOS
+- Windows Phone 8
 

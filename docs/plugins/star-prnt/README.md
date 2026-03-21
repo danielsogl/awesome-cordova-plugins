@@ -14,7 +14,5 @@ Ionic Native wrappers for the starprnt cordova plugin for Star Micronics Bluetoo
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

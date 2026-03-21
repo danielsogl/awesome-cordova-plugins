@@ -14,11 +14,9 @@ Prevent the screen of the mobile device from falling asleep.
 ## Supported platforms
 
 - Android
-  - Browser
-  - Firefox OS
-  - iOS
-  - Windows
-  - Windows Phone 8
-  
-
+- Browser
+- Firefox OS
+- iOS
+- Windows
+- Windows Phone 8
 

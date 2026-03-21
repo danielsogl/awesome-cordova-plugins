@@ -1,7 +1,7 @@
-# SyncResult
-ult
-ivateResult
-ionic cordova plugin add @awesome-cordova-plugins/unvired-cordova-sdk
+# Unvired Cordova SDK
+
+```
+$ ionic cordova plugin add @awesome-cordova-plugins/unvired-cordova-sdk
 $ npm install @awesome-cordova-plugins/unvired-cordova-sdk
 ```
 
@@ -31,9 +31,7 @@ After you install the plugin, for Ionic/Angular projects, please add a reference
 ## Supported platforms
 
 - iOS
-  - Android
-  - Windows
-  - Browser
-  
-
+- Android
+- Windows
+- Browser
 

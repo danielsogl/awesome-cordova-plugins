@@ -14,7 +14,5 @@ Pollfish Ionic Native plugin wrapper
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

@@ -14,14 +14,12 @@ Requires Cordova plugin: `cordova-plugin-device-motion`. For more info, please s
 ## Supported platforms
 
 - Android
-  - BlackBerry 10
-  - Browser
-  - Firefox OS
-  - iOS
-  - Tizen
-  - Ubuntu
-  - Windows
-  - Windows Phone 8
-  
-
+- BlackBerry 10
+- Browser
+- Firefox OS
+- iOS
+- Tizen
+- Ubuntu
+- Windows
+- Windows Phone 8
 

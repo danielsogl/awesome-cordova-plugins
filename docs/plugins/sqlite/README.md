@@ -14,9 +14,7 @@ Access SQLite databases on the device.
 ## Supported platforms
 
 - Android
-  - iOS
-  - macOS
-  - Windows
-  
-
+- iOS
+- macOS
+- Windows
 

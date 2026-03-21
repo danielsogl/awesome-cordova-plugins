@@ -14,8 +14,6 @@ Prints documents or HTML rendered content
 ## Supported platforms
 
 - Android
-  - iOS
-  - Windows
-  
-
+- iOS
+- Windows
 

@@ -14,7 +14,5 @@ This plugin processes images of documents, compensating for perspective.
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

@@ -14,8 +14,6 @@ A cordova plugin, a JS version of Webim SDK
 ## Supported platforms
 
 - Android
-  - iOS
-  - Browser
-  
-
+- iOS
+- Browser
 

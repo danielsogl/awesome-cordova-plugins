@@ -14,7 +14,5 @@ Cordova plugin for Firebase Authentication
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

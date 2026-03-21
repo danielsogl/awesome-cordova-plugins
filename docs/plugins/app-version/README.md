@@ -16,8 +16,6 @@ Requires Cordova plugin: `cordova-plugin-app-version`. For more info, please see
 ## Supported platforms
 
 - Android
-  - iOS
-  - Windows
-  
-
+- iOS
+- Windows
 

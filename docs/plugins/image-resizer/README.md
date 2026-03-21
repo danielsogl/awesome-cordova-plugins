@@ -14,7 +14,5 @@ Cordova Plugin For Image Resize
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

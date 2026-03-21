@@ -16,9 +16,7 @@ Requires Cordova plugin: `cordova-plugin-media-capture`. For more info, please s
 ## Supported platforms
 
 - Android
-  - Browser
-  - iOS
-  - Windows
-  
-
+- Browser
+- iOS
+- Windows
 

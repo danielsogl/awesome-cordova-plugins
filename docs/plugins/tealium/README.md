@@ -1,5 +1,7 @@
-# ConsentExpiry
- ''
+# Tealium
+
+```
+$ 
 $ npm install @awesome-cordova-plugins/tealium
 ```
 
@@ -14,7 +16,5 @@ For full documentation, see [https://docs.tealium.com/platforms/cordova/](https:
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

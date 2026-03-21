@@ -15,7 +15,5 @@ Cordova plugin for authenticating with Spotify
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

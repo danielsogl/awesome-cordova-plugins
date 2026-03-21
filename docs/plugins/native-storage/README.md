@@ -14,10 +14,8 @@ Native storage of variables in Android and iOS
 ## Supported platforms
 
 - Android
-  - Browser
-  - iOS
-  - macOS
-  - Windows
-  
-
+- Browser
+- iOS
+- macOS
+- Windows
 

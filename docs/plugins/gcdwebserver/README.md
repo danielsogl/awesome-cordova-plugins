@@ -1,7 +1,7 @@
 # gcdwebserver
 
 ```
-$ ''
+$ 
 $ npm install @awesome-cordova-plugins/gcdwebserver
 ```
 
@@ -14,6 +14,4 @@ This plugin can start an HTTP server using GCDWebServer
 ## Supported platforms
 
 - iOS
-  
-
 

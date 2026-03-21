@@ -1,5 +1,4 @@
-# UserPreferencesMethods
-nderPush
+# Push Notifications - WonderPush
 
 ```
 $ ionic cordova plugin add wonderpush-cordova-sdk --variable CLIENT_ID=YOUR_CLIENT_ID --variable CLIENT_SECRET=YOUR_CLIENT_SECRET 
@@ -24,7 +23,5 @@ to retain your users and grow your audience while remaining fully GDPR compliant
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

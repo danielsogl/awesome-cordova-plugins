@@ -16,8 +16,6 @@ Handle also headset event (plug, unplug, headset button).
 ## Supported platforms
 
 - Android
-  - iOS
-  - Windows
-  
-
+- iOS
+- Windows
 

@@ -14,8 +14,6 @@ This plugin allows you to stream audio and video in a fullscreen, native player 
 ## Supported platforms
 
 - Amazon Fire OS
-  - Android
-  - iOS
-  
-
+- Android
+- iOS
 

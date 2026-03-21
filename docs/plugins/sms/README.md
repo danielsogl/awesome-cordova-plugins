@@ -14,9 +14,7 @@ Requires Cordova plugin: cordova-sms-plugin. For more info, please see the [SMS 
 ## Supported platforms
 
 - Android
-  - iOS
-  - Windows
-  - Windows Phone 8
-  
-
+- iOS
+- Windows
+- Windows Phone 8
 

@@ -15,10 +15,8 @@ Requires Cordova plugin: cordova-plugin-background-mode. For more info about plu
 ## Supported platforms
 
 - AmazonFire OS
-  - Android
-  - Browser
-  - iOS
-  - Windows
-  
-
+- Android
+- Browser
+- iOS
+- Windows
 

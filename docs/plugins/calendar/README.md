@@ -16,7 +16,5 @@ Requires Cordova plugin: `cordova-plugin-calendar`. For more info, please see th
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

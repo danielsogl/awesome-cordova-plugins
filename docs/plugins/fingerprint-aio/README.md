@@ -15,7 +15,5 @@ Requires Cordova plugin: cordova-plugin-fingerprint-aio. For more info about plu
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

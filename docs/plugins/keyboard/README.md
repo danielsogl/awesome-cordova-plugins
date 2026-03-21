@@ -16,7 +16,5 @@ Requires Cordova plugin: `cordova-plugin-ionic-keyboard`. For more info, please 
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

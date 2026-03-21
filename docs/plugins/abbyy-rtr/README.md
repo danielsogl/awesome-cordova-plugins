@@ -15,7 +15,5 @@ ABBYY Real-Time Recognition SDK (RTR SDK) in apps.
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

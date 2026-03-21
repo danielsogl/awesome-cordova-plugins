@@ -14,7 +14,5 @@ Cordova plugin to review app
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

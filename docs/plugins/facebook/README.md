@@ -77,8 +77,6 @@ For tracking events, see `logEvent` and `logPurchase`.
 ## Supported platforms
 
 - Android
-  - iOS
-  - Browser
-  
-
+- iOS
+- Browser
 

@@ -18,7 +18,5 @@ For more info see [Cordova plugin docs](https://github.com/infobip/mobile-messag
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

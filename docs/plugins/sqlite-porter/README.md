@@ -14,13 +14,11 @@ This Cordova/Phonegap plugin can be used to import/export to/from a SQLite datab
 ## Supported platforms
 
 - Amazon Fire OS
-  - Android
-  - BlackBerry 10
-  - Browser
-  - iOS
-  - Tizen
-  - Windows
-  - Windows Phone
-  
-
+- Android
+- BlackBerry 10
+- Browser
+- iOS
+- Tizen
+- Windows
+- Windows Phone
 

@@ -15,7 +15,5 @@ NOTE**: The iOS Simulator (and maybe Android Simulators) do not provide access t
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

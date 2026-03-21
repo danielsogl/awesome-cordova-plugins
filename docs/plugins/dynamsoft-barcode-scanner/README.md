@@ -1,7 +1,7 @@
 # dynamsoft-barcode-scanner
 
 ```
-$ ''
+$ 
 $ npm install @awesome-cordova-plugins/dynamsoft-barcode-scanner
 ```
 
@@ -14,7 +14,5 @@ This plugin scans barcodes using Dynamsoft Barcode Reader
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

@@ -16,7 +16,5 @@ For more info, please see https://github.com/Dellos7/example-cordova-code-push-p
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

@@ -17,7 +17,5 @@ For more information about Paytm All-in-One SDK, please visit https://developer.
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

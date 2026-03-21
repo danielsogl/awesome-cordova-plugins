@@ -16,10 +16,8 @@ Requires Cordova plugin: `cordova-plugin-x-toast`. For more info, please see the
 ## Supported platforms
 
 - Android
-  - BlackBerry 10
-  - iOS
-  - Windows
-  - Windows Phone 8
-  
-
+- BlackBerry 10
+- iOS
+- Windows
+- Windows Phone 8
 

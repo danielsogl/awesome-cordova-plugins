@@ -14,9 +14,7 @@ Edit videos using native device APIs
 ## Supported platforms
 
 - Android
-  - iOS
-  - Windows
-  - Windows Phone 8
-  
-
+- iOS
+- Windows
+- Windows Phone 8
 

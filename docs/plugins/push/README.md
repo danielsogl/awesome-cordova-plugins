@@ -18,9 +18,7 @@ For TypeScript users, see the [Push plugin docs about using TypeScript for custo
 ## Supported platforms
 
 - Android
-  - Browser
-  - iOS
-  - Windows
-  
-
+- Browser
+- iOS
+- Windows
 

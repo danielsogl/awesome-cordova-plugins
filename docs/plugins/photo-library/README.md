@@ -16,8 +16,6 @@ cdvphotolibrary urls should be trusted by Angular. See plugin homepage to learn 
 ## Supported platforms
 
 - Android
-  - Browser
-  - iOS
-  
-
+- Browser
+- iOS
 

@@ -16,7 +16,5 @@ Requires the Cordova plugin: `cordova-plugin-ionic-webview` > 2.0. For more info
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

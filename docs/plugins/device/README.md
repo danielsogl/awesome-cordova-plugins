@@ -14,10 +14,8 @@ Access information about the underlying device and platform.
 ## Supported platforms
 
 - Android
-  - Browser
-  - iOS
-  - macOS
-  - Windows
-  
-
+- Browser
+- iOS
+- macOS
+- Windows
 

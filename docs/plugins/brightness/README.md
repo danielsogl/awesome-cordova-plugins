@@ -16,7 +16,5 @@ Requires Cordova plugin: `cordova-plugin-brightness`. For more info, please see 
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

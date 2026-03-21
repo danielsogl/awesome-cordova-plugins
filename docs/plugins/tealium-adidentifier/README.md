@@ -1,7 +1,7 @@
 # TealiumAdIdentifier
 
 ```
-$ ''
+$ 
 $ npm install @awesome-cordova-plugins/tealium-adidentifier
 ```
 
@@ -15,7 +15,5 @@ Makes the IDFA and Google Ad Identifier available in the Tealium data layer.
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

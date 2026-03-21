@@ -14,9 +14,7 @@ This plugin will open a file on your device file system with its default applica
 ## Supported platforms
 
 - Android
-  - iOS
-  - Windows
-  - Windows Phone 8
-  
-
+- iOS
+- Windows
+- Windows Phone 8
 

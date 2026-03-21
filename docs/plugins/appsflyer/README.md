@@ -14,7 +14,5 @@ Appsflyer Cordova SDK support for Attribution
 ## Supported platforms
 
 - iOS
-  - Android
-  
-
+- Android
 

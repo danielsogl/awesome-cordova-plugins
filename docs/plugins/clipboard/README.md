@@ -14,8 +14,6 @@ Clipboard management plugin for Cordova that supports iOS, Android, and Windows 
 ## Supported platforms
 
 - Android
-  - iOS
-  - Windows Phone 8
-  
-
+- iOS
+- Windows Phone 8
 
