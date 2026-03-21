@@ -144,6 +144,7 @@ async function publish(ignoreErrors = false) {
   } catch (e) {
     Logger.error('Error publishing!');
     Logger.error(e);
+    process.exit(1);
   }
   Logger.profile('Publishing');
 }
