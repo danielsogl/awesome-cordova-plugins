@@ -9,11 +9,28 @@ const exec = promisify(execCb);
 import { PLUGIN_PATHS, ROOT } from '../build/helpers';
 import { Logger } from '../logger';
 
+interface PackageJson {
+  description: string;
+  type: string;
+  main: string;
+  module: string;
+  types: string;
+  exports: Record<string, { types: string; import: string; default: string } | undefined>;
+  sideEffects: boolean;
+  author: string;
+  license: string;
+  repository: { type: string; url: string };
+  name?: string;
+  dependencies?: Record<string, string>;
+  peerDependencies?: Record<string, string>;
+  version?: string;
+}
+
 const MAIN_PACKAGE_JSON = JSON.parse(readFileSync(resolve(__dirname, '../../package.json'), 'utf-8'));
-const VERSION = MAIN_PACKAGE_JSON.version;
+const VERSION: string = MAIN_PACKAGE_JSON.version;
 const FLAGS = '--access public --provenance';
 
-const PACKAGE_JSON_BASE = {
+const PACKAGE_JSON_BASE: PackageJson = {
   description: 'Awesome Cordova Plugins - Native plugins for ionic apps',
   type: 'module',
   main: './index.js',
@@ -42,18 +59,22 @@ const PACKAGE_JSON_BASE = {
 
 const DIST = resolve(ROOT, 'dist/@awesome-cordova-plugins');
 
-const PACKAGES = [];
+const PACKAGES: string[] = [];
 
 const MIN_CORE_VERSION = '^' + VERSION;
 const RXJS_VERSION = '^5.5.0 || ^6.5.0 || ^7.3.0';
 
-const PLUGIN_PEER_DEPENDENCIES = {
+const PLUGIN_PEER_DEPENDENCIES: Record<string, string> = {
   '@awesome-cordova-plugins/core': MIN_CORE_VERSION,
   rxjs: RXJS_VERSION,
 };
 
-function getPackageJsonContent(name: string, peerDependencies = {}, dependencies = {}) {
-  const pkg = {
+function getPackageJsonContent(
+  name: string,
+  peerDependencies: Record<string, string> = {},
+  dependencies: Record<string, string> = {}
+): PackageJson {
+  const pkg: PackageJson = {
     ...structuredClone(PACKAGE_JSON_BASE),
     name: '@awesome-cordova-plugins/' + name,
     dependencies,
@@ -61,7 +82,6 @@ function getPackageJsonContent(name: string, peerDependencies = {}, dependencies
     version: VERSION,
   };
 
-  // Core package has no ngx subfolder
   if (name === 'core') {
     delete pkg.exports['./ngx'];
   }
@@ -69,23 +89,23 @@ function getPackageJsonContent(name: string, peerDependencies = {}, dependencies
   return pkg;
 }
 
-function writePackageJson(data: any, dir: string) {
+function writePackageJson(data: PackageJson, dir: string) {
   const filePath = resolve(dir, 'package.json');
   writeFileSync(filePath, JSON.stringify(data, null, 2));
   PACKAGES.push(dir);
 }
-function writeNGXPackageJson(data: any, dir: string) {
+
+function writeNGXPackageJson(data: PackageJson, dir: string) {
   const filePath = resolve(dir, 'package.json');
   writeFileSync(filePath, JSON.stringify(data, null, 2));
 }
+
 function prepare() {
-  // write @awesome-cordova-plugins/core package.json
   writePackageJson(
     getPackageJsonContent('core', { rxjs: RXJS_VERSION }, { '@types/cordova': 'latest' }),
     resolve(DIST, 'core')
   );
 
-  // write plugin package.json files
   PLUGIN_PATHS.forEach((pluginPath: string) => {
     const pluginName = pluginPath.split(/[\/\\]+/).slice(-2)[0];
     const packageJsonContents = getPackageJsonContent(pluginName, PLUGIN_PEER_DEPENDENCIES);
@@ -100,8 +120,9 @@ async function publishPackage(pkg: string, ignoreErrors: boolean): Promise<void>
   try {
     const { stdout } = await exec(`npm publish ${pkg} ${FLAGS}`);
     if (stdout) Logger.verbose(stdout.trim());
-  } catch (err: any) {
-    if (err.message?.includes('You cannot publish over the previously published version')) {
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : String(err);
+    if (message.includes('You cannot publish over the previously published version')) {
       Logger.verbose('Ignoring duplicate version error.');
       return;
     }

@@ -1,10 +1,12 @@
 import {
   canHaveDecorators,
   canHaveModifiers,
+  ClassDeclaration,
   Decorator,
   factory,
   getDecorators as tsGetDecorators,
   getModifiers as tsGetModifiers,
+  Identifier,
   SourceFile,
   SyntaxKind,
   TransformationContext,
@@ -16,16 +18,15 @@ import { Logger } from '../../logger';
 import { convertValueToLiteral, getDecorator, getDecoratorArgs, getDecoratorName } from '../helpers';
 import { transformMembers } from './members';
 
-function transformClass(cls: any, ngcBuild?: boolean) {
-  Logger.profile('transformClass: ' + cls.name.text);
+function transformClass(cls: ClassDeclaration, ngcBuild?: boolean) {
+  Logger.profile('transformClass: ' + cls.name!.text);
 
   const pluginStatics = [];
-  const dec: Decorator = getDecorator(cls);
+  const dec = getDecorator(cls);
 
   if (dec) {
     const pluginDecoratorArgs = getDecoratorArgs(dec);
 
-    // add plugin decorator args as static properties of the plugin's class
     for (const prop in pluginDecoratorArgs) {
       pluginStatics.push(
         factory.createPropertyDeclaration(
@@ -45,7 +46,7 @@ function transformClass(cls: any, ngcBuild?: boolean) {
       ? clsDecorators.filter((d: Decorator) => getDecoratorName(d) === 'Injectable')
       : [];
 
-  cls = factory.createClassDeclaration(
+  const result = factory.createClassDeclaration(
     [...keepDecorators, factory.createToken(SyntaxKind.ExportKeyword)],
     cls.name,
     cls.typeParameters,
@@ -53,8 +54,8 @@ function transformClass(cls: any, ngcBuild?: boolean) {
     [...transformMembers(cls), ...pluginStatics]
   );
 
-  Logger.profile('transformClass: ' + cls.name.text);
-  return cls;
+  Logger.profile('transformClass: ' + (result.name as Identifier).text);
+  return result;
 }
 
 function transformClasses(file: SourceFile, ctx: TransformationContext, ngcBuild?: boolean) {
@@ -68,7 +69,7 @@ function transformClasses(file: SourceFile, ctx: TransformationContext, ngcBuild
       ) {
         return node;
       }
-      return transformClass(node, ngcBuild);
+      return transformClass(node as ClassDeclaration, ngcBuild);
     },
     ctx
   );
@@ -76,7 +77,7 @@ function transformClasses(file: SourceFile, ctx: TransformationContext, ngcBuild
 
 export function pluginClassTransformer(ngcBuild?: boolean): TransformerFactory<SourceFile> {
   return (ctx: TransformationContext) => {
-    return (tsSourceFile) => {
+    return (tsSourceFile: SourceFile) => {
       if (tsSourceFile.fileName.indexOf('src/@awesome-cordova-plugins/plugins') > -1) {
         return transformClasses(tsSourceFile, ctx, ngcBuild);
       }

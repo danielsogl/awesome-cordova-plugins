@@ -2,16 +2,16 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { PLUGIN_PATHS, ROOT } from '../build/helpers';
-import { EMIT_PATH } from '../build/transformers/extract-injectables';
+import { InjectableClassEntry, EMIT_PATH } from '../build/transformers/extract-injectables';
 import { generateDeclarations, transpile } from '../build/transpile';
 
 generateDeclarations();
 transpile();
 
 const outDirs = PLUGIN_PATHS.map((p) => p.replace(join(ROOT, 'src'), join(ROOT, 'dist')).replace(/[\\/]index.ts/, ''));
-const injectableClasses = JSON.parse(readFileSync(EMIT_PATH, 'utf-8'));
+const injectableClasses: InjectableClassEntry[] = JSON.parse(readFileSync(EMIT_PATH, 'utf-8'));
 
-outDirs.forEach((dir) => {
+outDirs.forEach((dir: string) => {
   const classes = injectableClasses.filter((entry) => entry.dirName === dir.split(/[\\/]+/).pop());
 
   let jsFile: string = readFileSync(join(dir, 'index.js'), 'utf-8'),
