@@ -1,19 +1,33 @@
-# Contributing to Ionic Native
+# Contributing to Awesome Cordova Plugins
 
 ## Have an issue?
-#### There are no rules, but here are a few things to consider:
-###### Before you submit an issue:
-* Do a quick search to see if there are similar issues
-* Make sure that you are waiting for `deviceready` to fire before interacting with any plugin. If you are using Ionic, this can be done using [the `Platform.ready()` function](http://ionicframework.com/docs/api/platform/Platform/#ready).
-* **Check that you are using the latest version of** `ionic-native`, you can install the latest version by running `npm i --save @ionic-native/core@latest`
 
-###### Still having problems? submit an issue with the following details:
-* Short description of the issue
-* Steps to reproduce
-* Stack trace (if available)
+Before submitting an issue:
 
+- Search existing issues to avoid duplicates
+- Make sure you are using the latest version of `@awesome-cordova-plugins/core`
+- Ensure `deviceready` has fired before interacting with any plugin
 
-## Feature request?
-Have a plugin you'd like to see supported? Since Ionic Native is a thin wrapper around existing Cordova plugins, adding support for new plugins is as easy as creating a new wrapper for whatever plugin you'd like to add.
+Still having problems? [Open an issue](https://github.com/danielsogl/awesome-cordova-plugins/issues/new/choose) with:
 
-Take a look at our [Developer Guide](https://github.com/ionic-team/ionic-native/blob/master/DEVELOPER.md) for more info on adding new plugins.
+- Short description of the issue
+- Steps to reproduce
+- Stack trace (if available)
+
+**Please do not submit support requests as issues.** Use the [Discussions](https://github.com/danielsogl/awesome-cordova-plugins/discussions) section instead.
+
+## Want to add a plugin?
+
+Awesome Cordova Plugins is a set of wrappers for Cordova plugins. Adding support for a new plugin is straightforward:
+
+1. Run `npm run plugin:create -- -n PluginName` to scaffold a new plugin wrapper
+2. Implement the wrapper following the patterns in existing plugins
+3. Submit a pull request
+
+## Development setup
+
+```bash
+npm ci
+npm run build
+npm test
+```

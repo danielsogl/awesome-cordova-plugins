@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Support & Questions
+    url: https://github.com/danielsogl/awesome-cordova-plugins/discussions
+    about: Please use Discussions for support requests and questions.
