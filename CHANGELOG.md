@@ -256,6 +256,15 @@
 
 
 
+## [9.0.1](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.0.0...awesome-cordova-plugins-v9.0.1) (2026-03-21)
+
+
+### Bug Fixes
+
+* add npm provenance and fix core peer dependency version ([6453f2a](https://github.com/danielsogl/awesome-cordova-plugins/commit/6453f2ab789dff71fb77bb06556bbc07c4091692))
+* add strict types to build scripts and remove all any usage ([62956e4](https://github.com/danielsogl/awesome-cordova-plugins/commit/62956e429c7044dcf088dd2ffd0fe92b77045b8a))
+* resolve remaining type errors in build scripts ([4807ccd](https://github.com/danielsogl/awesome-cordova-plugins/commit/4807ccdb27aa201fc708ab1857b37d0fcd05d7e6))
+
 ## [9.0.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v8.1.0...awesome-cordova-plugins-v9.0.0) (2026-03-21)
 
 
