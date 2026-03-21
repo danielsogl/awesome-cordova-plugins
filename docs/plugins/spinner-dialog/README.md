@@ -16,9 +16,7 @@ Requires Cordova plugin: `cordova-plugin-native-spinner`. For more info, please 
 ## Supported platforms
 
 - Android
-  - iOS
-  - Windows Phone 8
-  - Windows
-  
-
+- iOS
+- Windows Phone 8
+- Windows
 

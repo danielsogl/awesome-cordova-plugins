@@ -14,12 +14,10 @@ This plugin allows you to upload and download files.
 ## Supported platforms
 
 - Amazon Fire OS
-  - Android
-  - Browser
-  - iOS
-  - Ubuntu
-  - Windows
-  - Windows Phone
-  
-
+- Android
+- Browser
+- iOS
+- Ubuntu
+- Windows
+- Windows Phone
 

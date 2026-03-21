@@ -18,9 +18,7 @@ Android Note: Badges have historically only been a feature implemented by third 
 ## Supported platforms
 
 - Android
-  - Browser
-  - iOS
-  - Windows
-  
-
+- Browser
+- iOS
+- Windows
 

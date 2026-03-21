@@ -35,10 +35,8 @@ this.file.checkDir(this.file.dataDirectory, 'mydir').then(_ => console.log('Dire
 ## Supported platforms
 
 - Android
-  - Browser
-  - iOS
-  - macOS
-  - Windows
-  
-
+- Browser
+- iOS
+- macOS
+- Windows
 

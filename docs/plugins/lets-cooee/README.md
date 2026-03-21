@@ -14,7 +14,5 @@ AI driven Personalised Notifications for Better Customer Engagement
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

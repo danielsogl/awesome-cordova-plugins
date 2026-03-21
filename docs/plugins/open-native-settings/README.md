@@ -14,7 +14,5 @@ Plugin to open native screens of iOS/android settings
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

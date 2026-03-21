@@ -14,8 +14,6 @@ This plugin is written using the iOS Accessory Framework (MFi) to support Classi
 ## Supported platforms
 
 - Android
-  - iOS
-  - Browser
-  
-
+- iOS
+- Browser
 

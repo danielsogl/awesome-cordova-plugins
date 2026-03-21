@@ -15,6 +15,4 @@ to process the changes in the call directory extension.
 ## Supported platforms
 
 - iOS
-  
-
 

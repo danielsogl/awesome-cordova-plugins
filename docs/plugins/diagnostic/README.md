@@ -14,8 +14,6 @@ Checks whether device hardware features are enabled or available to the app, e.g
 ## Supported platforms
 
 - Android
-  - iOS
-  - Windows
-  
-
+- iOS
+- Windows
 

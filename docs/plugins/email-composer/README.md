@@ -14,11 +14,9 @@ Requires Cordova plugin: cordova-plugin-email-composer. For more info, please se
 ## Supported platforms
 
 - Amazon Fire OS
-  - Android
-  - Browser
-  - iOS
-  - Windows
-  - macOS
-  
-
+- Android
+- Browser
+- iOS
+- Windows
+- macOS
 

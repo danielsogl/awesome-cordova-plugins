@@ -80,9 +80,7 @@ module.exports = function(context) {
 ## Supported platforms
 
 - Amazon Fire OS
-  - Android
-  - iOS
-  - Windows
-  
-
+- Android
+- iOS
+- Windows
 

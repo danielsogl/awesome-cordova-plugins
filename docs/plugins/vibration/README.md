@@ -14,8 +14,6 @@ Vibrates the device
 ## Supported platforms
 
 - Android
-  - iOS
-  - Windows
-  
-
+- iOS
+- Windows
 

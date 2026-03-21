@@ -14,7 +14,5 @@ This plugin allows you to run a single, lightweight, barebone WebSocket Server.
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

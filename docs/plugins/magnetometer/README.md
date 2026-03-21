@@ -14,7 +14,5 @@ Requires Cordova plugin: `cordova-plugin-magnetometer`. For more info, please se
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

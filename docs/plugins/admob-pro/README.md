@@ -16,8 +16,6 @@ IMPORTANT NOTICE: this plugin takes a percentage out of your earnings if you pro
 ## Supported platforms
 
 - Android
-  - iOS
-  - Windows Phone 8
-  
-
+- iOS
+- Windows Phone 8
 

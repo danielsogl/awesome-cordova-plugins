@@ -16,10 +16,8 @@ Requires Cordova plugin: `cordova-plugin-actionsheet`. For more info, please see
 ## Supported platforms
 
 - Android
-  - Browser
-  - iOS
-  - Windows
-  - Windows Phone 8
-  
-
+- Browser
+- iOS
+- Windows
+- Windows Phone 8
 

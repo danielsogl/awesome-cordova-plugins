@@ -1,7 +1,7 @@
 # Lottie Splash Screen
 
 ```
-$ ''
+$ 
 $ npm install @awesome-cordova-plugins/lottie-splash-screen
 ```
 
@@ -14,7 +14,5 @@ Cordova plugin to show bodymovin/Lottie animations as the splash screen with Air
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

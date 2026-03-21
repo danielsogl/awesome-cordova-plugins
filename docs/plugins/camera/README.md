@@ -24,9 +24,7 @@ inside of the `<platform name='ios>` section
 ## Supported platforms
 
 - Android
-  - Browser
-  - iOS
-  - Windows
-  
-
+- Browser
+- iOS
+- Windows
 

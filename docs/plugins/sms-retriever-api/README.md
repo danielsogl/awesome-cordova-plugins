@@ -14,6 +14,4 @@ This plugin retries the SMS which arrive without requiring READ permissions.
 ## Supported platforms
 
 - Android
-  
-
 

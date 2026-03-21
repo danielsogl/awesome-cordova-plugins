@@ -18,9 +18,7 @@ Prerequisites:
 ## Supported platforms
 
 - Android
-  - Browser
-  - iOS
-  - Windows Phone 8
-  
-
+- Browser
+- iOS
+- Windows Phone 8
 

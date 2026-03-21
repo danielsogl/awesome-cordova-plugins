@@ -14,8 +14,6 @@ This plugin enables serial communication over Bluetooth. It was written for comm
 ## Supported platforms
 
 - Android
-  - iOS
-  - Windows Phone 8
-  
-
+- iOS
+- Windows Phone 8
 

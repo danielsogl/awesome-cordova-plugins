@@ -18,6 +18,4 @@ See also [Secure Storage](https://ionic.io/docs/secure-storage) for more support
 ## Supported platforms
 
 - iOS
-  
-
 

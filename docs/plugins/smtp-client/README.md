@@ -9,9 +9,8 @@ $ npm install @awesome-cordova-plugins/smtp-client
 
 Plugin Repo: [https://github.com/CWBudde/cordova-plugin-smtp-client](https://github.com/CWBudde/cordova-plugin-smtp-client)
 
-
-
 ## Supported platforms
 
 - Android
 - iOS
+

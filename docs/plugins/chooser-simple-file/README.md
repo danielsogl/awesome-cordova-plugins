@@ -26,7 +26,5 @@ The following must be added to config.xml to prevent crashing when selecting lar
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

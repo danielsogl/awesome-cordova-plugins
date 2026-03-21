@@ -22,8 +22,6 @@ This plugin uses NDEF (NFC Data Exchange Format) for maximum compatibilty betwee
 ## Supported platforms
 
 - Android
-  - iOS
-  - Windows
-  
-
+- iOS
+- Windows
 

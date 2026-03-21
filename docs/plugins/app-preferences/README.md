@@ -14,12 +14,10 @@ This plugin allows you to read and write app preferences
 ## Supported platforms
 
 - Android
-  - BlackBerry 10
-  - Browser
-  - iOS
-  - macOS
-  - Windows 8
-  - Windows Phone
-  
-
+- BlackBerry 10
+- Browser
+- iOS
+- macOS
+- Windows 8
+- Windows Phone
 

@@ -16,7 +16,5 @@ Requires Cordova plugin: `cordova-plugin-safariviewcontroller`. For more info, p
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

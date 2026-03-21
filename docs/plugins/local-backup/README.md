@@ -14,7 +14,5 @@ This plugin to create local backup
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

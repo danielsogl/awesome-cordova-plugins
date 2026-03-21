@@ -14,9 +14,7 @@ This plugin displays and hides a splash screen during application launch. The me
 ## Supported platforms
 
 - Amazon Fire OS
-  - Android
-  - iOS
-  - Windows
-  
-
+- Android
+- iOS
+- Windows
 

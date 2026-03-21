@@ -14,7 +14,5 @@ Plugin to communicate with a SumUp payment terminal
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

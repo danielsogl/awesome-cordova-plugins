@@ -16,7 +16,5 @@ This plugin provides functions for working with iBeacons.
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

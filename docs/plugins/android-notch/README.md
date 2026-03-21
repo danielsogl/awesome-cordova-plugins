@@ -16,6 +16,4 @@ This plugin works on all android versions, but we can only detect notches starti
 ## Supported platforms
 
 - Android
-  
-
 

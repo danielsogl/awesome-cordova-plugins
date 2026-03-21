@@ -14,7 +14,5 @@ Cordova plugin for Firebase MLKit Vision
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

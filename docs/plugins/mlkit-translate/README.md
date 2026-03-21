@@ -14,7 +14,5 @@ Plugin that implements MLKit Translation and Language Identification features.
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

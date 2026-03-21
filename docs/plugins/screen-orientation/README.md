@@ -16,8 +16,6 @@ Requires Cordova plugin: `cordova-plugin-screen-orientation`. For more info, ple
 ## Supported platforms
 
 - Android
-  - iOS
-  - Windows
-  
-
+- iOS
+- Windows
 

@@ -14,7 +14,5 @@ This plugin allows you to easily configure, integrate and interact with Applovin
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

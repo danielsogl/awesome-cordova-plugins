@@ -17,7 +17,5 @@ For more info, please see the https://github.com/Telerik-Verified-Plugins/ImageP
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

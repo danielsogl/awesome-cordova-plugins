@@ -14,6 +14,4 @@ This plugin allows you to resolve the native filesystem path for Android content
 ## Supported platforms
 
 - Android
-  
-
 

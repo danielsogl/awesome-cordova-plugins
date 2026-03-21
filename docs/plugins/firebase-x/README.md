@@ -15,7 +15,5 @@ It is a maintained fork from unmaintained ionic-navite plugin called Firebase.
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

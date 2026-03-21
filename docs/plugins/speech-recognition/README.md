@@ -14,7 +14,5 @@ This plugin does speech recognition using cloud services
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

@@ -1,5 +1,7 @@
-# AdjustThirdPartySharing
-ova plugin add com.adjust.sdk
+# Adjust
+
+```
+$ ionic cordova plugin add com.adjust.sdk
 $ npm install @awesome-cordova-plugins/adjust
 ```
 
@@ -14,7 +16,5 @@ Requires Cordova plugin: `com.adjust.sdk`. For more info, please see the [Adjust
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

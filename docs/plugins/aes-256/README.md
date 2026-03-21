@@ -16,7 +16,5 @@ The encryption and decryption are performed on the device native layer so that t
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

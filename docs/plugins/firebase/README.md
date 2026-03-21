@@ -14,7 +14,5 @@ This plugin brings push notifications, analytics, event tracking, crash reportin
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

@@ -14,7 +14,5 @@ This Cordova Plugin is for a better (multiple) ImagePicker with more options.
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

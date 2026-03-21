@@ -14,7 +14,5 @@ Provides basic functionality for Firebase Cloud Messaging
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

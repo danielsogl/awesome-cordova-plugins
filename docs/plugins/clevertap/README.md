@@ -14,7 +14,5 @@ Cordova Plugin that wraps CleverTap SDK for Android and iOS
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

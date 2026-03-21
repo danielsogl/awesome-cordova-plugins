@@ -16,6 +16,4 @@ Requires Cordova plugin: `ir.metrix.sdk`. For more info, please see the [Metrix 
 ## Supported platforms
 
 - Android
-  
-
 

@@ -16,7 +16,5 @@ To enable the IMAP features on Android, this plugin uses the framework [Java Mai
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

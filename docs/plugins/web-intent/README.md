@@ -14,6 +14,4 @@ This Plugin provides a general purpose shim layer for the Android intent mechani
 ## Supported platforms
 
 - Android
-  
-
 

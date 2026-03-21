@@ -14,10 +14,8 @@ Requires Cordova plugin: cordova-plugin-network-information. For more info, plea
 ## Supported platforms
 
 - Amazon Fire OS
-  - Android
-  - Browser
-  - iOS
-  - Windows
-  
-
+- Android
+- Browser
+- iOS
+- Windows
 

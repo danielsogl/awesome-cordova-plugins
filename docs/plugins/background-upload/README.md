@@ -14,7 +14,5 @@ This plugin does something
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

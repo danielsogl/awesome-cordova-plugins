@@ -1,7 +1,7 @@
 # Mobile Accessibility
 
 ```
-$ ''
+$ 
 $ npm install @awesome-cordova-plugins/mobile-accessibility
 ```
 
@@ -15,8 +15,6 @@ It also allows an application to send a string to be spoken by the screen reader
 ## Supported platforms
 
 - Android
-  - iOS
-  - Amazon Fire OS
-  
-
+- iOS
+- Amazon Fire OS
 

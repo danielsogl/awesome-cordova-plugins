@@ -15,7 +15,5 @@ Full documentation can be found here: https://mobile.developer.smartlook.com/ref
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

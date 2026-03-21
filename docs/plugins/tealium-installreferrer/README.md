@@ -1,7 +1,7 @@
 # TealiumInstallReferrer
 
 ```
-$ ''
+$ 
 $ npm install @awesome-cordova-plugins/tealium-installreferrer
 ```
 
@@ -15,6 +15,4 @@ Implements a Broadcast Receiver for the INSTALL_REFERRER intent.
 ## Supported platforms
 
 - Android
-  
-
 

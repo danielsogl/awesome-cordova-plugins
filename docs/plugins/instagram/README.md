@@ -14,7 +14,5 @@ Share a photo with the instagram app
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

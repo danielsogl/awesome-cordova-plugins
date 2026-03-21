@@ -18,9 +18,7 @@ The browser platform is supported as a mock only. Key/values are stored unencryp
 ## Supported platforms
 
 - Android
-  - Browser
-  - iOS
-  - Windows
-  
-
+- Browser
+- iOS
+- Windows
 

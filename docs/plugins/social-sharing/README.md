@@ -16,10 +16,8 @@ For Browser usage check out the Web Share API docs: https://github.com/EddyVerbr
 ## Supported platforms
 
 - Android
-  - Browser
-  - iOS
-  - Windows
-  - Windows Phone
-  
-
+- Browser
+- iOS
+- Windows
+- Windows Phone
 

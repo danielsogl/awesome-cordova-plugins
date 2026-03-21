@@ -33,12 +33,11 @@ Supports:
  - **macOS** version 10
  - **Xbox One**
    - (and any platform supporting Microsoft's UWP)
+ - **cordova-plugin-purchase** version 12 or lower.
 
 ## Supported platforms
 
 - iOS
-  - Android
-  - Windows
-  
-
+- Android
+- Windows
 

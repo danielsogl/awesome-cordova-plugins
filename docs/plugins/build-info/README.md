@@ -14,11 +14,9 @@ This plugin provides build information.
 ## Supported platforms
 
 - Android
-  - iOS
-  - Windows
-  - macOS
-  - browser
-  - Electron
-  
-
+- iOS
+- Windows
+- macOS
+- browser
+- Electron
 

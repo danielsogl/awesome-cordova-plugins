@@ -14,7 +14,5 @@ This plugin allows you to start a local dynamic content web server for android a
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

@@ -48,7 +48,5 @@ or you can remove DEFERRED replacement options from your app.
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

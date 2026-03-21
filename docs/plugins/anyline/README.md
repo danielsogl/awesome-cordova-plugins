@@ -14,7 +14,5 @@ Anyline provides an easy-to-use SDK for applications to enable Optical Character
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

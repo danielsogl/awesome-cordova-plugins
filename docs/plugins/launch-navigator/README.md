@@ -14,9 +14,7 @@ Requires Cordova plugin: uk.co.workingedge.phonegap.plugin.launchnavigator. For 
 ## Supported platforms
 
 - Android
-  - iOS
-  - Windows
-  - Windows Phone 8
-  
-
+- iOS
+- Windows
+- Windows Phone 8
 

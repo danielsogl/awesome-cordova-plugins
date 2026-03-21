@@ -14,7 +14,5 @@ Google Analytics Firebase plugin for Ionic Native apps.
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

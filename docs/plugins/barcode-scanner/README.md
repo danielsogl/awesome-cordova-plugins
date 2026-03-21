@@ -16,10 +16,8 @@ Requires Cordova plugin: `phonegap-plugin-barcodescanner`. For more info, please
 ## Supported platforms
 
 - Android
-  - BlackBerry 10
-  - Browser
-  - iOS
-  - Windows
-  
-
+- BlackBerry 10
+- Browser
+- iOS
+- Windows
 

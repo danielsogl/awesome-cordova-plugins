@@ -14,7 +14,5 @@ This plugin provides the time spent in milliseconds since boot (uptime).
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

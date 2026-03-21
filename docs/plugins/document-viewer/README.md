@@ -14,8 +14,6 @@ This plugin offers a slim API to view PDF files which are either stored in the a
 ## Supported platforms
 
 - Android
-  - iOS
-  - Windows
-  
-
+- iOS
+- Windows
 

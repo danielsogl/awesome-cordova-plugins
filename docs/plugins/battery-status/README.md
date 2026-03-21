@@ -14,9 +14,7 @@ Requires Cordova plugin: cordova-plugin-batterystatus. For more info, please see
 ## Supported platforms
 
 - iOS
-  - Android
-  - Windows
-  - Browser
-  
-
+- Android
+- Windows
+- Browser
 

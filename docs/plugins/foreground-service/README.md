@@ -27,6 +27,4 @@ For android API 28+, the following xml snippet should be inserted into ```config
 ## Supported platforms
 
 - Android
-  
-
 

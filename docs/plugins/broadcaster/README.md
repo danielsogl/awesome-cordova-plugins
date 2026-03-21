@@ -14,8 +14,6 @@ This plugin adds exchanging events between native code and your app.
 ## Supported platforms
 
 - Android
-  - iOS
-  - Browser
-  
-
+- iOS
+- Browser
 

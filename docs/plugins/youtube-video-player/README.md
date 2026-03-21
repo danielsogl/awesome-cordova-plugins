@@ -14,7 +14,5 @@ Plays YouTube videos in Native YouTube App
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

@@ -1,7 +1,7 @@
 # Checkout
 
 ```
-$ ''
+$ 
 $ npm install @awesome-cordova-plugins/checkout
 ```
 
@@ -14,7 +14,5 @@ Checkout.com cordova plugin
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

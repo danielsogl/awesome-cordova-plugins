@@ -16,7 +16,5 @@ Assists in leaving user reviews/ratings in the App Stores.
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

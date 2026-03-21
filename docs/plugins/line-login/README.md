@@ -14,7 +14,5 @@ The function login, logs out, acquires, verifies, and refreshes the access token
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

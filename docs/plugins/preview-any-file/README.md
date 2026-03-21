@@ -1,7 +1,7 @@
 # PreviewAnyFile
 
 ```
-$ ''
+$ 
 $ npm install @awesome-cordova-plugins/preview-any-file
 ```
 
@@ -9,12 +9,8 @@ $ npm install @awesome-cordova-plugins/preview-any-file
 
 Plugin Repo: [https://github.com/mostafa-mansour1/previewAnyFile](https://github.com/mostafa-mansour1/previewAnyFile)
 
-
-
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

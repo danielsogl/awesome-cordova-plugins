@@ -14,7 +14,5 @@ Text to Speech plugin
 ## Supported platforms
 
 - Android
-  - iOS
-  
-
+- iOS
 

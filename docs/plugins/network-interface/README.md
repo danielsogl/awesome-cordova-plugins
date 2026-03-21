@@ -14,11 +14,9 @@ Network interface information plugin for Cordova/PhoneGap that supports Android,
 ## Supported platforms
 
 - Android
-  - BlackBerry 10
-  - Browser
-  - iOS
-  - Windows
-  - Windows Phone
-  
-
+- BlackBerry 10
+- Browser
+- iOS
+- Windows
+- Windows Phone
 

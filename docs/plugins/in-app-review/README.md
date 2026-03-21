@@ -16,6 +16,4 @@ This functionality only works on iOS devices
 ## Supported platforms
 
 - iOS
-  
-
 
