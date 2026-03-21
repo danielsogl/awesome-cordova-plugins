@@ -6,22 +6,21 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "noImplicitAny": true,
-    "module": "es2015",
-    "moduleResolution": "node",
+    "module": "es2022",
+    "moduleResolution": "bundler",
     "paths": {
       "@awesome-cordova-plugins/core": ["./dist/@awesome-cordova-plugins/core"]
     },
     "outDir": "./dist",
     "rootDir": "src",
-    "target": "es5",
+    "target": "es2022",
     "skipLibCheck": true,
-    "lib": ["es2017", "dom"],
+    "lib": ["es2022", "dom"],
     "inlineSources": true,
     "inlineSourceMap": true
   },
   "include": ["src/@awesome-cordova-plugins/plugins/**/*.ts"],
   "angularCompilerOptions": {
-    "genDir": "aot",
     "compilationMode": "partial"
   }
 }
