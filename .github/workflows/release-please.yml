@@ -2,7 +2,7 @@ name: Release Please
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
