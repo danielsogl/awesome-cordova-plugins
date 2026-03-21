@@ -1,0 +1,63 @@
+name: Bug Report
+description: Report a bug in an Awesome Cordova Plugins wrapper
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please fill out the sections below.
+
+  - type: input
+    id: plugin
+    attributes:
+      label: Plugin
+      description: Which @awesome-cordova-plugins/* package is affected?
+      placeholder: e.g. @awesome-cordova-plugins/camera
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-behavior
+    attributes:
+      label: Current behavior
+      description: Describe what happens.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected behavior
+      description: Describe what you expected to happen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: How can we reproduce the issue?
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: |
+        Relevant versions (fill in what you can):
+      value: |
+        - @awesome-cordova-plugins/core version:
+        - Cordova / Capacitor version:
+        - Angular version:
+        - Platform (iOS / Android / Browser):
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Any other information, stack traces, or screenshots.
+    validations:
+      required: false

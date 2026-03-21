@@ -2,9 +2,7 @@ name: Release Please
 
 on:
   push:
-    branches:
-      - master
-  # Manual trigger as backup
+    branches: [master]
   workflow_dispatch:
 
 permissions:
@@ -19,58 +17,42 @@ jobs:
       release_created: ${{ steps.release.outputs.release_created }}
       tag_name: ${{ steps.release.outputs.tag_name }}
       version: ${{ steps.release.outputs.version }}
-      pr: ${{ steps.release.outputs.pr }}
     steps:
       - name: Run Release Please
         id: release
-        uses: googleapis/release-please-action@v4
+        uses: googleapis/release-please-action@v4.4.0
         with:
-          # GitHub token for creating PRs and releases
           token: ${{ secrets.GITHUB_TOKEN }}
-          # Use manifest-based configuration (advanced setup)
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
-      - name: Show Release Info
-        if: ${{ steps.release.outputs.release_created }}
-        run: |
-          echo "Release created: ${{ steps.release.outputs.release_created }}"
-          echo "Tag: ${{ steps.release.outputs.tag_name }}"
-          echo "Version: ${{ steps.release.outputs.version }}"
-          echo "PR: ${{ steps.release.outputs.pr }}"
-
-  # Trigger the existing build and publish workflow when a release is created
-  build-and-publish:
+  publish:
     runs-on: ubuntu-latest
     needs: release-please
     if: ${{ needs.release-please.outputs.release_created }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4.3.1
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v4.4.0
         with:
-          node-version: "20"
-          cache: "npm"
-          registry-url: "https://registry.npmjs.org"
+          node-version: 22
+          cache: npm
+          registry-url: https://registry.npmjs.org
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Run linting
-        run: npm run lint
+      - name: Lint
+        run: npm run lint -- --quiet
 
-      - name: Run tests
+      - name: Test
         run: npm test
 
-      - name: Build packages
+      - name: Build
         run: npm run build
 
-      - name: Generate README files
-        run: npm run readmes
-
-      - name: Publish all packages to NPM
+      - name: Publish to npm
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm run npmpub

@@ -1,22 +1,30 @@
-name: Mark stale issues and pull requests
+name: Stale issues and PRs
 
 on:
   schedule:
-  - cron: '0 0 * * *'
+    - cron: "0 6 * * 1"
+
+permissions:
+  issues: write
+  pull-requests: write
 
 jobs:
   stale:
-
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
-      pull-requests: write
-
     steps:
-    - uses: actions/stale@v9
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        stale-issue-message: 'There has been no recent activity and this issue has been marked inactive.'
-        stale-pr-message: 'There has been no recent activity and this PR has been marked inactive.'
-        stale-issue-label: 'status: inactive'
-        stale-pr-label: 'status: inactive'
+      - uses: actions/stale@v9.1.0
+        with:
+          stale-issue-message: >
+            This issue has been automatically marked as inactive due to lack of
+            recent activity. It will be closed in 14 days if no further activity
+            occurs.
+          stale-pr-message: >
+            This PR has been automatically marked as inactive due to lack of
+            recent activity. It will be closed in 14 days if no further activity
+            occurs.
+          stale-issue-label: "status: inactive"
+          stale-pr-label: "status: inactive"
+          days-before-stale: 60
+          days-before-close: 14
+          exempt-issue-labels: "pinned,keep"
+          exempt-pr-labels: "pinned,keep"
