@@ -1,8 +1,6 @@
 import { CompilerHost, CompilerOptions, createCompilerHost, createProgram, EmitFlags } from '@angular/compiler-cli';
-import { copyFileSync, mkdirpSync, readJSONSync, writeJSONSync } from 'fs-extra';
-import { clone } from 'lodash';
-import { dirname, join, resolve } from 'path';
-import { sync } from 'rimraf';
+import { copyFileSync, mkdirSync, rmSync } from 'node:fs';
+import { dirname, join, resolve } from 'node:path';
 import { rollup } from 'rollup';
 import { ModuleKind, ModuleResolutionKind, ScriptTarget } from 'typescript';
 
@@ -12,16 +10,15 @@ import { pluginClassTransformer } from './transformers/plugin-class';
 import { generateDeclarations } from './transpile';
 
 export function getProgram(rootNames: string[] = createSourceFiles()) {
-  const options: CompilerOptions = clone(COMPILER_OPTIONS);
+  const options: CompilerOptions = structuredClone(COMPILER_OPTIONS);
   options.basePath = ROOT;
-  options.moduleResolution = ModuleResolutionKind.NodeJs;
-  options.module = ModuleKind.ES2015;
-  options.target = ScriptTarget.ES5;
-  options.lib = ['dom', 'es2017'];
+  options.moduleResolution = ModuleResolutionKind.Node16;
+  options.module = ModuleKind.ES2022;
+  options.target = ScriptTarget.ES2022;
+  options.lib = ['dom', 'es2022'];
   options.inlineSourceMap = true;
   options.importHelpers = true;
   options.inlineSources = true;
-  options.enableIvy = true;
   options.compilationMode = 'partial';
 
   delete options.baseUrl;
@@ -84,8 +81,8 @@ function createSourceFiles(): string[] {
       newPath = resolve(ngxPath, 'index.ts');
 
     // delete directory
-    sync(ngxPath);
-    mkdirpSync(ngxPath);
+    rmSync(ngxPath, { recursive: true, force: true });
+    mkdirSync(ngxPath, { recursive: true });
     copyFileSync(indexPath, newPath);
 
     return newPath;
@@ -93,5 +90,7 @@ function createSourceFiles(): string[] {
 }
 
 export function cleanupNgx() {
-  PLUGIN_PATHS.forEach((indexPath: string) => sync(indexPath.replace('index.ts', 'ngx')));
+  PLUGIN_PATHS.forEach((indexPath: string) =>
+    rmSync(indexPath.replace('index.ts', 'ngx'), { recursive: true, force: true })
+  );
 }

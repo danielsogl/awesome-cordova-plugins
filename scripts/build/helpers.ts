@@ -1,11 +1,13 @@
-import { readdirSync } from 'fs-extra';
-import { camelCase, clone } from 'lodash';
-import { join, resolve } from 'path';
+import { readdirSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
+import { join, resolve } from 'node:path';
 import {
   ArrayLiteralExpression,
+  canHaveDecorators,
   Decorator,
   Expression,
   factory,
+  getDecorators as tsGetDecorators,
   Node,
   ObjectLiteralElementLike,
   ObjectLiteralExpression,
@@ -15,24 +17,21 @@ import {
 import { Logger } from '../logger';
 
 export const ROOT = resolve(__dirname, '../../');
-// tslint:disable-next-line:no-var-requires
-export const TS_CONFIG = clone(require(resolve(ROOT, 'tsconfig.json')));
+export const TS_CONFIG = JSON.parse(readFileSync(resolve(ROOT, 'tsconfig.json'), 'utf-8'));
 export const COMPILER_OPTIONS = TS_CONFIG.compilerOptions;
 export const PLUGINS_ROOT = join(ROOT, 'src/@awesome-cordova-plugins/plugins/');
 export const PLUGIN_PATHS = readdirSync(PLUGINS_ROOT).map((d) => join(PLUGINS_ROOT, d, 'index.ts'));
 
 export function getDecorator(node: Node, index = 0): Decorator {
-  if (node.decorators && node.decorators[index]) {
-    return node.decorators[index];
+  const decorators = canHaveDecorators(node) ? tsGetDecorators(node) : undefined;
+  if (decorators && decorators[index]) {
+    return decorators[index];
   }
 }
 
 export function hasDecorator(decoratorName: string, node: Node): boolean {
-  return (
-    node.decorators &&
-    node.decorators.length &&
-    node.decorators.findIndex((d) => getDecoratorName(d) === decoratorName) > -1
-  );
+  const decorators = canHaveDecorators(node) ? tsGetDecorators(node) : undefined;
+  return decorators && decorators.length > 0 && decorators.findIndex((d) => getDecoratorName(d) === decoratorName) > -1;
 }
 
 export function getDecoratorName(decorator: any) {
@@ -148,5 +147,5 @@ export function getMethodsForDecorator(decoratorName: string) {
       return ['instanceAvailability'];
   }
 
-  return [camelCase(decoratorName)];
+  return [decoratorName.charAt(0).toLowerCase() + decoratorName.slice(1)];
 }

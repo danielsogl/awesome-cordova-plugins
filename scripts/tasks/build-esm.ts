@@ -1,5 +1,5 @@
-import { readFileSync, readJSONSync, writeFileSync } from 'fs-extra';
-import { join } from 'path';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
 
 import { PLUGIN_PATHS, ROOT } from '../build/helpers';
 import { EMIT_PATH } from '../build/transformers/extract-injectables';
@@ -9,7 +9,7 @@ generateDeclarations();
 transpile();
 
 const outDirs = PLUGIN_PATHS.map((p) => p.replace(join(ROOT, 'src'), join(ROOT, 'dist')).replace(/[\\/]index.ts/, ''));
-const injectableClasses = readJSONSync(EMIT_PATH);
+const injectableClasses = JSON.parse(readFileSync(EMIT_PATH, 'utf-8'));
 
 outDirs.forEach((dir) => {
   const classes = injectableClasses.filter((entry) => entry.dirName === dir.split(/[\\/]+/).pop());
