@@ -1,4 +1,4 @@
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) ![](https://img.shields.io/npm/v/@awesome-cordova-plugins/core.svg)
+![](https://img.shields.io/npm/v/@awesome-cordova-plugins/core.svg)
 
 # Awesome Cordova Plugins
 

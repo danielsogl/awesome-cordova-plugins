@@ -396,7 +396,7 @@ export class Facebook extends AwesomeCordovaNativePlugin {
    * @param {Object}  userData An object containing data about the user
    */
   @Cordova()
-  setUserData(userData: Object): Promise<void> {
+  setUserData(userData: object): Promise<void> {
     return;
   }
 
@@ -420,7 +420,7 @@ export class Facebook extends AwesomeCordovaNativePlugin {
     successIndex: 3,
     errorIndex: 4,
   })
-  logEvent(name: string, params?: Object, valueToSum?: number): Promise<any> {
+  logEvent(name: string, params?: object, valueToSum?: number): Promise<any> {
     return;
   }
 
@@ -466,7 +466,7 @@ export class Facebook extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  logPurchase(value: number, currency: string, params?: Object): Promise<any> {
+  logPurchase(value: number, currency: string, params?: object): Promise<any> {
     return;
   }
 

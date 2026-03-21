@@ -4,7 +4,7 @@ node_modules
 .vscode
 dist
 CHANGELOG.md
-.husky
+lefthook.yml
 .prettierignore
 LICENSE
 docs/

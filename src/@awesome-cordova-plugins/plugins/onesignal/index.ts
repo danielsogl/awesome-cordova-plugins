@@ -851,7 +851,7 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
   @Cordova({
     sync: true,
   })
-  addTrigger(key: string, value: string | number | Object): void {}
+  addTrigger(key: string, value: string | number | object): void {}
 
   /**
    * Add a map of triggers. May show an In-App Message if its trigger conditions were met.
@@ -861,7 +861,7 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
   @Cordova({
     sync: true,
   })
-  addTriggers(triggers: Object): void {}
+  addTriggers(triggers: object): void {}
 
   /**
    * Removes a single trigger for the given key. May show an In-App Message if its trigger conditions were met.
@@ -890,7 +890,7 @@ export class OneSignal extends AwesomeCordovaNativePlugin {
    * @returns {Promise<string | number | Object>} Return value set with `addTrigger`, or `null`/`nil` (iOS) if never set or removed.
    */
   @Cordova()
-  getTriggerValueForKey(key: string): Promise<string | number | Object> {
+  getTriggerValueForKey(key: string): Promise<string | number | object> {
     return;
   }
 

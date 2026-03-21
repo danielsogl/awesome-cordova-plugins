@@ -208,5 +208,5 @@ export class Appsflyer extends AwesomeCordovaNativePlugin {
    * @param {Object} options Additional Parameters to track
    */
   @Cordova({ sync: true })
-  logCrossPromotionAndOpenStore(appId: string, campaign: string, options: Object): void {}
+  logCrossPromotionAndOpenStore(appId: string, campaign: string, options: object): void {}
 }

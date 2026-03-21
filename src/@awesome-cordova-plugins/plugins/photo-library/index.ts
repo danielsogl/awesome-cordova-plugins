@@ -24,7 +24,7 @@ export interface CordovaFiniteObservableOptions extends CordovaOptions {
  */
 export function CordovaFiniteObservable(opts: CordovaFiniteObservableOptions = {}) {
   opts.observable = true;
-  return (target: Object, methodName: string, descriptor: TypedPropertyDescriptor<any>) => {
+  return (target: object, methodName: string, descriptor: TypedPropertyDescriptor<any>) => {
     return {
       value(...args: any[]) {
         const wrappedObservable: Observable<any> = wrap(this, methodName, opts).apply(this, args);

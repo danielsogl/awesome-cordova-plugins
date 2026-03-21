@@ -174,7 +174,7 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
   @Cordova({
     sync: true,
   })
-  recordMetric(name: string, category: any, value: Number, countUnit: string, valueUnit: string): void {
+  recordMetric(name: string, category: any, value: number, countUnit: string, valueUnit: string): void {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
 
@@ -197,7 +197,7 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
   @Cordova({
     sync: true,
   })
-  setMaxEventPoolSize(maxPoolSize: Number): void {
+  setMaxEventPoolSize(maxPoolSize: number): void {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
 
@@ -211,7 +211,7 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
   @Cordova({
     sync: true,
   })
-  setMaxEventBufferTime(maxBufferTimeInSeconds: Number): void {
+  setMaxEventBufferTime(maxBufferTimeInSeconds: number): void {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
 
@@ -223,7 +223,7 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
   @Cordova({
     sync: true,
   })
-  analyticsEventEnabled(enabled: Boolean): void {
+  analyticsEventEnabled(enabled: boolean): void {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
 
@@ -234,7 +234,7 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
   @Cordova({
     sync: true,
   })
-  networkRequestEnabled(enabled: Boolean): void {
+  networkRequestEnabled(enabled: boolean): void {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
 
@@ -245,7 +245,7 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
   @Cordova({
     sync: true,
   })
-  networkErrorRequestEnabled(enabled: Boolean): void {
+  networkErrorRequestEnabled(enabled: boolean): void {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
 
@@ -256,7 +256,7 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
   @Cordova({
     sync: true,
   })
-  httpRequestBodyCaptureEnabled(enabled: Boolean): void {
+  httpRequestBodyCaptureEnabled(enabled: boolean): void {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
 
@@ -277,11 +277,11 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
   noticeHttpTransaction(
     url: string,
     method: string,
-    status: Number,
-    startTime: Number,
-    endTime: Number,
-    bytesSent: Number,
-    bytesReceived: Number,
+    status: number,
+    startTime: number,
+    endTime: number,
+    bytesSent: number,
+    bytesReceived: number,
     body: string
   ): void {
     return; // We add return; here to avoid any IDE / Compiler errors
@@ -300,7 +300,7 @@ export class NewRelic extends AwesomeCordovaNativePlugin {
   @Cordova({
     sync: true,
   })
-  noticeNetworkFailure(url: string, method: string, startTime: Number, endTime: Number, failure: string): void {
+  noticeNetworkFailure(url: string, method: string, startTime: number, endTime: number, failure: string): void {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
 

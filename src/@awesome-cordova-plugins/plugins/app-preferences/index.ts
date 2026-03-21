@@ -140,7 +140,7 @@ export class AppPreferences extends AwesomeCordovaNativePlugin {
   @Cordova({
     platforms: ['iOS', 'Windows', 'Windows Phone 8'],
   })
-  cloudSync(): Object {
+  cloudSync(): object {
     return;
   }
 
@@ -153,7 +153,7 @@ export class AppPreferences extends AwesomeCordovaNativePlugin {
   @Cordova({
     platforms: ['iOS', 'Windows', 'Windows Phone 8'],
   })
-  defaults(): Object {
+  defaults(): object {
     return;
   }
 }

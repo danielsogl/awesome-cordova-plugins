@@ -208,7 +208,11 @@ export interface IContactField {
  * @hidden
  */
 export class ContactField implements IContactField {
-  constructor(public type?: string, public value?: string, public pref?: boolean) {}
+  constructor(
+    public type?: string,
+    public value?: string,
+    public pref?: boolean
+  ) {}
 }
 
 export interface IContactAddress {
@@ -307,7 +311,7 @@ export class ContactFindOptions implements IContactFindOptions {
  * @usage
  *
  * ```typescript
- * import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts/ngx';
+ * import { Contacts, Contact, ContactField, ContactName } from '@awesome-cordova-plugins/contacts/ngx';
  *
  * constructor(private contacts: Contacts) { }
  *

@@ -725,7 +725,7 @@ export class HTTP extends AwesomeCordovaNativePlugin {
   }
 
   @Cordova({ sync: false })
-  approovGetDeviceID(): Promise<String> {
+  approovGetDeviceID(): Promise<string> {
     return;
   }
 
@@ -735,22 +735,22 @@ export class HTTP extends AwesomeCordovaNativePlugin {
   }
 
   @Cordova({ sync: false })
-  approovFetchToken(url: string): Promise<String> {
+  approovFetchToken(url: string): Promise<string> {
     return;
   }
 
   @Cordova({ sync: false })
-  approovGetMessageSignature(message: string): Promise<String> {
+  approovGetMessageSignature(message: string): Promise<string> {
     return;
   }
 
   @Cordova({ sync: false })
-  approovFetchSecureString(key: string, newDef: string): Promise<String> {
+  approovFetchSecureString(key: string, newDef: string): Promise<string> {
     return;
   }
 
   @Cordova({ sync: false })
-  approovFetchCustomJWT(payload: string): Promise<String> {
+  approovFetchCustomJWT(payload: string): Promise<string> {
     return;
   }
 }

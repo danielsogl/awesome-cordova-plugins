@@ -44,7 +44,7 @@ export interface Shortcut {
  * Please do refer to the original plugin's repo for detailed usage. The usage example here might not be sufficient.
  *
  * ```typescript
- * import { ShortcutsAndroid } from '@ionic-native/shortcuts-android/ngx';
+ * import { ShortcutsAndroid } from '@awesome-cordova-plugins/shortcuts-android/ngx';
  *
  *
  * constructor(private shortcutsAndroid: ShortcutsAndroid) { }
