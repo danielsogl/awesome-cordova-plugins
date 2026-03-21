@@ -5,85 +5,53 @@
   "homepage": "https://awesome-cordova-plugins.com",
   "author": "Daniel Sogl <me@danielsogl.com> (https://danielsogl.com)",
   "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
-    "prepare": "is-ci || husky install",
+    "prepare": "lefthook install",
     "test": "jest",
     "test:watch": "jest --watch",
     "build:core": "tsc -p tsconfig.core.json",
-    "build:esm": "ts-node -P scripts/tsconfig.json scripts/tasks/build-esm",
-    "build:es5": "ts-node -P scripts/tsconfig.json scripts/tasks/build-es5",
-    "build:ngx": "ts-node -P scripts/tsconfig.json scripts/tasks/build-ngx",
-    "build": "npm run build:core && npm run build:esm && npm run build:ngx && npm run build:es5",
-    "prebuild": "rimraf -rf dist",
-    "npmpub": "ts-node -P scripts/tsconfig.json scripts/tasks/publish",
-    "shipit": "npm run npmpub",
+    "build:esm": "tsx scripts/tasks/build-esm",
+    "build:ngx": "tsx scripts/tasks/build-ngx",
+    "build": "npm run build:core && npm run build:esm && npm run build:ngx",
+    "prebuild": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
+    "npmpub": "tsx scripts/tasks/publish",
     "lint": "eslint src/**/*.ts",
-    "readmes": "gulp readmes",
-    "docs-json": "ts-node -P scripts/tsconfig.json scripts/docs-json",
-    "generate-release-config": "ts-node -P scripts/tsconfig.json scripts/tasks/generate-release-config",
-    "generate-release-manifest": "ts-node -P scripts/tsconfig.json scripts/tasks/generate-release-manifest",
-    "prepare-release": "npm run generate-release-config && npm run generate-release-manifest",
+    "readmes": "tsx scripts/docs/generate-readmes",
+    "plugin:create": "tsx scripts/tasks/plugin-create",
     "prettier": "prettier --write --ignore-unknown \"**/*\""
   },
   "dependencies": {
     "tslib": "2.8.1"
   },
   "devDependencies": {
-    "@angular/common": "12.2.17",
-    "@angular/compiler": "12.2.17",
-    "@angular/compiler-cli": "12.2.17",
-    "@angular/core": "12.2.17",
+    "@angular/common": "20.3.18",
+    "@angular/compiler": "20.3.18",
+    "@angular/compiler-cli": "20.3.18",
+    "@angular/core": "20.3.18",
+    "@eslint/js": "^10.0.0",
+    "@swc/core": "^1.15.18",
+    "@swc/jest": "^0.2.39",
     "@types/cordova": "11.0.3",
-    "@types/fs-extra": "11.0.4",
-    "@types/jest": "27.5.2",
-    "@types/lodash": "4.17.5",
-    "@types/node": "20.14.10",
-    "@typescript-eslint/eslint-plugin": "5.62.0",
-    "@typescript-eslint/parser": "5.62.0",
-    "async-promise-queue": "1.0.5",
-    "cz-conventional-changelog": "3.3.0",
-    "dgeni": "0.4.14",
-    "dgeni-packages": "0.16.10",
-    "eslint": "8.57.1",
-    "eslint-config-prettier": "10.1.5",
-    "eslint-plugin-jsdoc": "50.6.17",
-    "fs-extra": "11.3.0",
-    "gulp": "^5.0.1",
-    "gulp-rename": "2.0.0",
-    "gulp-replace": "1.1.4",
-    "husky": "9.1.7",
-    "is-ci": "4.1.0",
-    "jest": "27.5.1",
-    "lint-staged": "^16.4.0",
-    "lodash": "4.17.21",
-    "minimist": "1.2.8",
-    "prettier": "2.8.8",
-    "release-please": "^17.3.0",
-    "rimraf": "^6.1.3",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^22.0.0",
+    "eslint": "^10.1.0",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-jsdoc": "^62.8.0",
+    "jest": "^30.3.0",
+    "jest-environment-jsdom": "^30.3.0",
+    "lefthook": "^2.1.4",
+    "prettier": "^3.5.0",
     "rollup": "^4.59.0",
-    "rxjs": "6.6.7",
-    "terser-webpack-plugin": "5.3.14",
-    "ts-jest": "27.1.5",
-    "ts-node": "10.9.2",
-    "typescript": "4.2.4",
-    "unminified-webpack-plugin": "3.0.0",
-    "webpack": "^5.105.4",
-    "winston": "3.17.0",
-    "zone.js": "0.11.8"
-  },
-  "jest": {
-    "testEnvironment": "jsdom",
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(js?|ts?)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json"
-    ]
+    "rxjs": "^7.8.0",
+    "tsx": "^4.21.0",
+    "typedoc": "^0.28.17",
+    "typedoc-plugin-markdown": "^4.11.0",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.57.1",
+    "zone.js": "~0.15.0"
   },
   "repository": {
     "type": "git",
@@ -91,13 +59,5 @@
   },
   "bugs": {
     "url": "https://github.com/danielsogl/awesome-cordova-plugins/issues"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
   }
 }
