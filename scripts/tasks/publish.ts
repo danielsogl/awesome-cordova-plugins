@@ -11,7 +11,7 @@ import { Logger } from '../logger';
 
 const MAIN_PACKAGE_JSON = JSON.parse(readFileSync(resolve(__dirname, '../../package.json'), 'utf-8'));
 const VERSION = MAIN_PACKAGE_JSON.version;
-const FLAGS = '--access public';
+const FLAGS = '--access public --provenance';
 
 const PACKAGE_JSON_BASE = {
   description: 'Awesome Cordova Plugins - Native plugins for ionic apps',
@@ -44,7 +44,7 @@ const DIST = resolve(ROOT, 'dist/@awesome-cordova-plugins');
 
 const PACKAGES = [];
 
-const MIN_CORE_VERSION = '^8.0.2';
+const MIN_CORE_VERSION = '^' + VERSION;
 const RXJS_VERSION = '^5.5.0 || ^6.5.0 || ^7.3.0';
 
 const PLUGIN_PEER_DEPENDENCIES = {
