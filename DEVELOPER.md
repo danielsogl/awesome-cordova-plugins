@@ -1,6 +1,6 @@
-# Ionic Native Developer Guide
+# Awesome Cordova Plugins Developer Guide
 
-This is a short guide on creating new plugin wrappers for Ionic Native.
+This is a short guide on creating new plugin wrappers for Awesome Cordova Plugins.
 
 ## Creating Plugin Wrappers
 

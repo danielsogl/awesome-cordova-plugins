@@ -8,68 +8,56 @@ These plugins are submitted and maintained by the Ionic community. While communi
 
 For professional developers and teams that require dedicated native plugin support & SLAs, ongoing maintenance, and security patches, please explore our [premium options](https://ionicframework.com/native), including plugin support and pre-built solutions for common native use cases.
 
-> These docs are for apps built with Ionic Framework 4.0.0 and greater. For older Ionic v3 projects, please [see here](https://ionicframework.com/docs/v3/native).
-
 ### [Capacitor Support](https://ionicframework.com/docs/native/community#capacitor-support) <a id="capacitor-support"></a>
 
-In addition to Cordova, Ionic Native also works with [Capacitor](https://capacitor.ionicframework.com/), Ionic's official native runtime. Basic usage below. For complete details, [see the Capacitor documentation](https://capacitor.ionicframework.com/docs/cordova/using-cordova-plugins).
+In addition to Cordova, Awesome Cordova Plugins also works with [Capacitor](https://capacitorjs.com/), Ionic's official native runtime. Basic usage below. For complete details, [see the Capacitor documentation](https://capacitorjs.com/docs/cordova/using-cordova-plugins).
 
 ### [Usage](https://ionicframework.com/docs/native/community#usage) <a id="usage"></a>
 
-All plugins have two components - the native code \(Cordova\) and the TypeScript code \(Ionic Native\). Cordova plugins are also wrapped in a `Promise` or `Observable` in order to provide a common plugin interface and modernized development approach.
+All plugins have two components - the native code (Cordova) and the TypeScript code (Awesome Cordova Plugins). Cordova plugins are also wrapped in a `Promise` or `Observable` in order to provide a common plugin interface and modernized development approach.
 
-Using the [Camera plugin](https://ionicframework.com/docs/native/camera) as an example, first install it:CORDOVACAPACITOR
+Using the [Camera plugin](https://ionicframework.com/docs/native/camera) as an example, first install it:
 
-```text
-// Install Cordova plugin
-$ ionic cordova plugin add cordova-plugin-camera
+```bash
+# Install Cordova plugin
+ionic cordova plugin add cordova-plugin-camera
 
-// Install Ionic Native TypeScript wrapper
-$ npm install @ionic-native/camera
+# Install Awesome Cordova Plugins TypeScript wrapper
+npm install @awesome-cordova-plugins/camera
 
-// Install Ionic Native core library (once per project)
-$ npm install @ionic-native/core
+# Install Awesome Cordova Plugins core library (once per project)
+npm install @awesome-cordova-plugins/core
 ```
 
 Next, begin using the plugin, following the various framework usage options below. For FAQ, see [here](https://ionicframework.com/docs/native/faq).
 
-### [Angular](https://ionicframework.com/docs/native/community#angular) <a id="angular"></a>
+### [Angular (Standalone)](https://ionicframework.com/docs/native/community#angular) <a id="angular"></a>
 
-Angular apps can use either Cordova or Capacitor to build native mobile apps. Import the plugin in a `@NgModule` and add it to the list of Providers. For Angular, the import path should end with `/ngx`. Angular's change detection is automatically handled.
+Angular apps can use either Cordova or Capacitor to build native mobile apps. Register the plugin as a provider in your application bootstrap. For Angular, the import path should end with `/ngx`. Angular's change detection is automatically handled.
 
-```text
-// app.module.ts
-import { Camera } from '@ionic-native/camera/ngx';
+```typescript
+// main.ts
+import { bootstrapApplication } from '@angular/platform-browser';
+import { Camera } from '@awesome-cordova-plugins/camera/ngx';
+import { AppComponent } from './app/app.component';
 
-...
-
-@NgModule({
-  ...
-
-  providers: [
-    ...
-    Camera
-    ...
-  ]
-  ...
-})
-export class AppModule { }
+bootstrapApplication(AppComponent, {
+  providers: [Camera],
+});
 ```
 
-CopyCopied
+After the plugin has been registered, inject it in any component or service using Angular's `inject()` function:
 
-After the plugin has been declared, it can be imported and injected like any other service:
-
-```text
+```typescript
 // camera.service.ts
-import { Injectable } from "@angular/core";
-import { Camera, CameraOptions } from "@ionic-native/camera/ngx";
+import { Injectable, inject } from '@angular/core';
+import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class PhotoService {
-  constructor(private camera: Camera) {}
+  private camera = inject(Camera);
 
   takePicture() {
     const options: CameraOptions = {
@@ -85,26 +73,35 @@ export class PhotoService {
       },
       (err) => {
         // Handle error
-        console.log("Camera issue: " + err);
+        console.log('Camera issue: ' + err);
       }
     );
   }
 }
 ```
 
-CopyCopied
-
 ### [React](https://ionicframework.com/docs/native/community#react) <a id="react"></a>
 
-React apps must use Capacitor to build native mobile apps. However, Ionic Native \(and therefore, Cordova plugins\) can still be used.// Install Core library \(once per project\)npm install @ionic-native/core  
-// Install Ionic Native TypeScript wrappernpm install @ionic-native/barcode-scanner  
-// Install Cordova pluginnpm install phonegap-plugin-barcodescanner  
-// Update native platform project\(s\) to include newly added pluginionic cap sync
+React apps must use Capacitor to build native mobile apps. However, Awesome Cordova Plugins (and therefore, Cordova plugins) can still be used.
+
+```bash
+# Install Core library (once per project)
+npm install @awesome-cordova-plugins/core
+
+# Install Awesome Cordova Plugins TypeScript wrapper
+npm install @awesome-cordova-plugins/barcode-scanner
+
+# Install Cordova plugin
+npm install phonegap-plugin-barcodescanner
+
+# Update native platform project(s) to include newly added plugin
+ionic cap sync
+```
 
 Import the plugin object then use its static methods:
 
-```text
-import { BarcodeScanner } from "@ionic-native/barcode-scanner";
+```typescript
+import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner';
 
 const Tab1: React.FC = () => {
   const openScanner = async () => {
@@ -126,19 +123,17 @@ const Tab1: React.FC = () => {
 };
 ```
 
-CopyCopied
+### [ES2015+/TypeScript](https://ionicframework.com/docs/native/community#vanilla-javascript) <a id="vanilla-javascript"></a>
 
-### [Vanilla JavaScript](https://ionicframework.com/docs/native/community#vanilla-javascript) <a id="vanilla-javascript"></a>
+ES2015+ and TypeScript apps can use either Cordova or Capacitor to build native mobile apps. To use any plugin, import the class from the appropriate package and use its static methods:
 
-Vanilla JavaScript apps, targeting ES2015+ and/or TypeScript, can use either Cordova or Capacitor to build native mobile apps. To use any plugin, import the class from the appropriate package and use its static methods:
+```typescript
+import { Camera } from '@awesome-cordova-plugins/camera';
 
-```text
-import { Camera } from "@ionic-native/camera";
-
-document.addEventListener("deviceready", () => {
+document.addEventListener('deviceready', () => {
   Camera.getPicture()
-    .then((data) => console.log("Took a picture!", data))
-    .catch((e) => console.log("Error occurred while taking a picture", e));
+    .then((data) => console.log('Took a picture!', data))
+    .catch((e) => console.log('Error occurred while taking a picture', e));
 });
 ```
 

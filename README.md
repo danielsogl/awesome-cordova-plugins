@@ -28,58 +28,53 @@ For the full Awesome Cordova Plugins documentation, please visit [https://ionicf
 
 ### Basic Usage
 
-#### Ionic/Angular apps
+#### Ionic/Angular apps (Standalone)
 
-To use a plugin, import and add the plugin provider to your `@NgModule`, and then inject it where you wish to use it.
+Angular v14+ uses standalone components by default. To use a plugin, register it as a provider in your application bootstrap and inject it using Angular's `inject()` function.
 Make sure to import the injectable class from the `/ngx` directory as shown in the following examples:
 
 ```typescript
-// app.module.ts
+// main.ts
+import { bootstrapApplication } from '@angular/platform-browser';
 import { Camera } from '@awesome-cordova-plugins/camera/ngx';
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+import { AppComponent } from './app/app.component';
 
-...
-
-@NgModule({
-  ...
-
-  providers: [
-    ...
-    Camera
-    ...
-  ]
-  ...
-})
-export class AppModule { }
+bootstrapApplication(AppComponent, {
+  providers: [Camera, Geolocation],
+});
 ```
 
 ```typescript
+import { Component, OnInit } from '@angular/core';
+import { inject } from '@angular/core';
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
-import { Platform } from 'ionic-angular';
+import { Platform } from '@ionic/angular';
 
-@Component({ ... })
-export class MyComponent {
+@Component({
+  selector: 'app-my-component',
+  standalone: true,
+  template: `<p>My Component</p>`,
+})
+export class MyComponent implements OnInit {
+  private geolocation = inject(Geolocation);
+  private platform = inject(Platform);
 
-  constructor(private geolocation: Geolocation, private platform: Platform) {
+  async ngOnInit() {
+    await this.platform.ready();
 
-    this.platform.ready().then(() => {
+    // get position
+    const pos = await this.geolocation.getCurrentPosition();
+    console.log(`lat: ${pos.coords.latitude}, lon: ${pos.coords.longitude}`);
 
-      // get position
-      this.geolocation.getCurrentPosition().then(pos => {
-        console.log(`lat: ${pos.coords.latitude}, lon: ${pos.coords.longitude}`)
-      });
-
-
-      // watch position
-      const watch = geolocation.watchPosition().subscribe(pos => {
-        console.log(`lat: ${pos.coords.latitude}, lon: ${pos.coords.longitude}`)
-      });
-
-      // to stop watching
-      watch.unsubscribe();
+    // watch position
+    const watch = this.geolocation.watchPosition().subscribe((pos) => {
+      console.log(`lat: ${pos.coords.latitude}, lon: ${pos.coords.longitude}`);
     });
 
+    // to stop watching
+    watch.unsubscribe();
   }
-
 }
 ```
 
@@ -126,9 +121,9 @@ const Tab1: React.FC = () => {
 };
 ```
 
-#### ES2015+/TypeScript
+#### ES2015+/TypeScript (without Angular)
 
-These modules can work in any ES2015+/TypeScript app (including Angular/Ionic apps). To use any plugin, import the class from the appropriate package, and use it's static methods.
+These modules can also be used without Angular by calling static methods directly:
 
 ```js
 import { Camera } from '@awesome-cordova-plugins/camera';
@@ -140,64 +135,17 @@ document.addEventListener('deviceready', () => {
 });
 ```
 
-#### AngularJS
-
-Awesome Cordova Plugins generates an AngularJS module in runtime and prepares a service for each plugin. To use the plugins in your AngularJS app:
-
-1. Download the latest bundle from the [Github releases](https://github.com/danielsogl/awesome-cordova-plugins/releases) page.
-2. Include it in `index.html` before your app's code.
-3. Inject `ionic.native` module in your app.
-4. Inject any plugin you would like to use with a `$cordova` prefix.
-
-```js
-angular.module('myApp', ['ionic.native']).controller('MyPageController', function ($cordovaCamera) {
-  $cordovaCamera.getPicture().then(
-    function (data) {
-      console.log('Took a picture!', data);
-    },
-    function (err) {
-      console.log('Error occurred while taking a picture', err);
-    }
-  );
-});
-```
-
-#### Vanilla JS
-
-To use Awesome Cordova Plugins in any other setup:
-
-1. Download the latest bundle from the [Github releases](https://github.com/danielsogl/awesome-cordova-plugins/releases) page.
-2. Include it in `index.html` before your app's code.
-3. Access any plugin using the global `IonicNative` variable.
-
-```js
-document.addEventListener('deviceready', function () {
-  IonicNative.Camera.getPicture().then(
-    function (data) {
-      console.log('Took a picture!', data);
-    },
-    function (err) {
-      console.log('Error occurred while taking a picture', err);
-    }
-  );
-});
-```
-
 ### Mocking and Browser Development (Ionic/Angular apps only)
 
 Awesome Cordova Plugins makes it possible to mock plugins and develop nearly the entirety of your app in the browser or in `ionic serve`.
 
 To do this, you need to provide a mock implementation of the plugins you wish to use. Here's an example of mocking the `Camera` plugin to return a stock image while in development:
 
-First import the `Camera` class in your `src/app/app.module.ts` file:
+First create a mock class that extends the `Camera` class:
 
 ```typescript
 import { Camera } from '@awesome-cordova-plugins/camera/ngx';
-```
 
-Then create a new class that extends the `Camera` class with a mock implementation:
-
-```typescript
 class CameraMock extends Camera {
   getPicture(options) {
     return new Promise((resolve, reject) => {
@@ -207,45 +155,23 @@ class CameraMock extends Camera {
 }
 ```
 
-Finally, override the previous `Camera` class in your `providers` for this module:
+Then override the `Camera` provider in your application bootstrap:
 
 ```typescript
-providers: [{ provide: Camera, useClass: CameraMock }];
-```
-
-Here's the full example:
-
-```typescript
-import { ErrorHandler, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-
+// main.ts
+import { bootstrapApplication } from '@angular/platform-browser';
 import { Camera } from '@awesome-cordova-plugins/camera/ngx';
-
-import { HomePage } from '../pages/home/home';
-import { MyApp } from './app.component';
+import { AppComponent } from './app/app.component';
 
 class CameraMock extends Camera {
   getPicture(options) {
-    return new Promise((resolve, reject) => {
-      resolve('BASE_64_ENCODED_DATA_GOES_HERE');
-    });
+    return Promise.resolve('BASE_64_ENCODED_DATA_GOES_HERE');
   }
 }
 
-@NgModule({
-  declarations: [MyApp, HomePage],
-  imports: [BrowserModule, IonicModule.forRoot(MyApp)],
-  bootstrap: [IonicApp],
-  entryComponents: [MyApp, HomePage],
-  providers: [
-    { provide: ErrorHandler, useClass: IonicErrorHandler },
-    { provide: Camera, useClass: CameraMock },
-  ],
-})
-export class AppModule {}
+bootstrapApplication(AppComponent, {
+  providers: [{ provide: Camera, useClass: CameraMock }],
+});
 ```
 
 ### Runtime Diagnostics
