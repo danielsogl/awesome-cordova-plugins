@@ -46,7 +46,7 @@ function transformImports(file: SourceFile, _ctx: TransformationContext, ngcBuil
     decorators.forEach((d) => (methods = getMethodsForDecorator(d).concat(methods)));
 
     const methodElements = methods.map((name: string) => factory.createIdentifier(name));
-    const methodNames = methodElements.map((el: Identifier) => el.escapedText);
+    const methodNames = methodElements.map((el: Identifier) => String(el.escapedText));
 
     importStatement.importClause.namedBindings.elements = [
       factory.createIdentifier('AwesomeCordovaNativePlugin'),

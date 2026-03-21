@@ -197,6 +197,7 @@ async function main(): Promise<void> {
   } as unknown as Parameters<typeof Application.bootstrapWithPlugins>[0]);
 
   // Extract @Plugin() decorator metadata during TypeScript conversion
+  // @ts-expect-error — Converter extends EventDispatcher but 'on' is not in public type exports
   app.converter.on(
     Converter.EVENT_CREATE_DECLARATION,
     (context: Context, reflection: DeclarationReflection) => {
