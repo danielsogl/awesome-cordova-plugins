@@ -1,20 +1,23 @@
 # Plugins
 
-## 15.0.0 - 2042-12-03
+Browse the full list of available plugin wrappers in the sidebar. Each plugin page includes:
 
-### Fixed
+- **Installation commands** for the Cordova plugin and TypeScript wrapper
+- **Link to the plugin repository** for native documentation
+- **Supported platforms** (Android, iOS, Browser, etc.)
 
-* Removed humans, they weren't doing fine with animals.
+## Installing a Plugin
 
-### Changed
+Every plugin requires two packages: the native Cordova plugin and the Awesome Cordova Plugins TypeScript wrapper.
 
-* Animals are now super cute, all of them.
+```bash
+# Install the Cordova plugin
+ionic cordova plugin add <cordova-plugin-name>
 
-## 14.0.0 - 2042-10-06
+# Install the TypeScript wrapper
+npm install @awesome-cordova-plugins/<plugin-name>
+```
 
-### Added
+## Missing a Plugin?
 
-* Introduced animals into the world, we believe they're going to be a neat addition.
-
-
-
+If you can't find a plugin wrapper, [open an issue](https://github.com/danielsogl/awesome-cordova-plugins/issues) or [submit a PR](https://github.com/danielsogl/awesome-cordova-plugins/blob/main/DEVELOPER.md) to add it.

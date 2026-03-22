@@ -1,22 +1,18 @@
 # Installation
 
-[Apache Cordova](https://cordova.apache.org/) is an open source native runtime that allows developers to build native mobile apps with HTML, CSS, and JavaScript. Similar to [Capacitor](https://capacitorjs.com/), Ionic’s own native runtime, Cordova allows developers to access native device features, such as camera, keyboard, and geolocation, using a system of plugins. A plugin is a small amount of add-on code that provides JavaScript interface to native components. They allow your app to use native device capabilities beyond what is available to pure web apps.
+[Apache Cordova](https://cordova.apache.org/) is an open source native runtime that allows developers to build native mobile apps with HTML, CSS, and JavaScript. Similar to [Capacitor](https://capacitorjs.com/), Ionic's own native runtime, Cordova allows developers to access native device features, such as camera, keyboard, and geolocation, using a system of plugins. A plugin is a small amount of add-on code that provides JavaScript interface to native components. They allow your app to use native device capabilities beyond what is available to pure web apps.
 
-For developers using Ionic with Cordova, our team has developed a collection of TypeScript wrappers for open source Cordova plugins that make it easy to add native functionality to any Ionic app. See [Ionic Native](https://github.com/ionic-team/ionic-native).
+These plugins are submitted and maintained by the community. While community members are generally quick to find and fix issues, certain plugins may not function properly.
 
-These plugins are submitted and maintained by the Ionic community. While community members are generally quick to find and fix issues, certain plugins may not function properly.
-
-For professional developers and teams that require dedicated native plugin support & SLAs, ongoing maintenance, and security patches, please explore our [premium options](https://ionicframework.com/native), including plugin support and pre-built solutions for common native use cases.
-
-### [Capacitor Support](https://ionicframework.com/docs/native/community#capacitor-support) <a id="capacitor-support"></a>
+### Capacitor Support
 
 In addition to Cordova, Awesome Cordova Plugins also works with [Capacitor](https://capacitorjs.com/), Ionic's official native runtime. Basic usage below. For complete details, [see the Capacitor documentation](https://capacitorjs.com/docs/cordova/using-cordova-plugins).
 
-### [Usage](https://ionicframework.com/docs/native/community#usage) <a id="usage"></a>
+### Usage
 
 All plugins have two components - the native code (Cordova) and the TypeScript code (Awesome Cordova Plugins). Cordova plugins are also wrapped in a `Promise` or `Observable` in order to provide a common plugin interface and modernized development approach.
 
-Using the [Camera plugin](https://ionicframework.com/docs/native/camera) as an example, first install it:
+Using the [Camera plugin](plugins/camera.md) as an example, first install it:
 
 ```bash
 # Install Cordova plugin
@@ -29,9 +25,9 @@ npm install @awesome-cordova-plugins/camera
 npm install @awesome-cordova-plugins/core
 ```
 
-Next, begin using the plugin, following the various framework usage options below. For FAQ, see [here](https://ionicframework.com/docs/native/faq).
+Next, begin using the plugin, following the various framework usage options below. For FAQ, see [here](faq.md).
 
-### [Angular (Standalone)](https://ionicframework.com/docs/native/community#angular) <a id="angular"></a>
+### Angular (Standalone)
 
 Angular apps can use either Cordova or Capacitor to build native mobile apps. Register the plugin as a provider in your application bootstrap. For Angular, the import path should end with `/ngx`. Angular's change detection is automatically handled.
 
@@ -80,7 +76,7 @@ export class PhotoService {
 }
 ```
 
-### [React](https://ionicframework.com/docs/native/community#react) <a id="react"></a>
+### React
 
 React apps must use Capacitor to build native mobile apps. However, Awesome Cordova Plugins (and therefore, Cordova plugins) can still be used.
 
@@ -123,7 +119,7 @@ const Tab1: React.FC = () => {
 };
 ```
 
-### [ES2015+/TypeScript](https://ionicframework.com/docs/native/community#vanilla-javascript) <a id="vanilla-javascript"></a>
+### ES2015+/TypeScript
 
 ES2015+ and TypeScript apps can use either Cordova or Capacitor to build native mobile apps. To use any plugin, import the class from the appropriate package and use its static methods:
 
@@ -136,4 +132,3 @@ document.addEventListener('deviceready', () => {
     .catch((e) => console.log('Error occurred while taking a picture', e));
 });
 ```
-

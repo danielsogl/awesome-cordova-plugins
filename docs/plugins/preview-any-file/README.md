@@ -1,4 +1,4 @@
-# PreviewAnyFile
+# Preview/Open Any File
 
 ```
 $ 

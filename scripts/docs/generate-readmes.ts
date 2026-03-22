@@ -27,6 +27,7 @@ import {
 
 const ROOT = resolve(__dirname, '../..');
 const PLUGINS_SRC = join(ROOT, 'src/@awesome-cordova-plugins/plugins');
+const DOCS_DIR = join(ROOT, 'docs');
 const DOCS_OUT = join(ROOT, 'docs/plugins');
 
 interface PluginMeta {
@@ -57,30 +58,37 @@ function parseLiteralValue(node: Node): string | number | boolean | string[] | u
 
 function extractPluginMeta(symbol: TsSymbol | undefined): PluginMeta | undefined {
   if (!symbol) return undefined;
-  const decl = symbol.declarations?.[0];
-  if (!decl || !isClassDeclaration(decl)) return undefined;
+  const declarations = symbol.declarations;
+  if (!declarations) return undefined;
 
-  const decorators = getDecorators(decl);
-  if (!decorators) return undefined;
+  // A symbol may have multiple declarations (e.g. an interface and a class
+  // sharing the same name). Search all declarations for the @Plugin() decorator.
+  for (const decl of declarations) {
+    if (!isClassDeclaration(decl)) continue;
 
-  const pluginDec = decorators.find((d) => {
-    const expr = d.expression;
-    return isCallExpression(expr) && isIdentifier(expr.expression) && expr.expression.text === 'Plugin';
-  });
-  if (!pluginDec) return undefined;
+    const decorators = getDecorators(decl);
+    if (!decorators) continue;
 
-  const callExpr = pluginDec.expression;
-  if (!isCallExpression(callExpr)) return undefined;
+    const pluginDec = decorators.find((d) => {
+      const expr = d.expression;
+      return isCallExpression(expr) && isIdentifier(expr.expression) && expr.expression.text === 'Plugin';
+    });
+    if (!pluginDec) continue;
 
-  const args = callExpr.arguments[0];
-  if (!args || !isObjectLiteralExpression(args)) return undefined;
+    const callExpr = pluginDec.expression;
+    if (!isCallExpression(callExpr)) continue;
 
-  const meta: Record<string, string | number | boolean | string[] | undefined> = {};
-  for (const prop of args.properties) {
-    if (!isPropertyAssignment(prop) || !isIdentifier(prop.name)) continue;
-    meta[prop.name.text] = parseLiteralValue(prop.initializer);
+    const args = callExpr.arguments[0];
+    if (!args || !isObjectLiteralExpression(args)) continue;
+
+    const meta: Record<string, string | number | boolean | string[] | undefined> = {};
+    for (const prop of args.properties) {
+      if (!isPropertyAssignment(prop) || !isIdentifier(prop.name)) continue;
+      meta[prop.name.text] = parseLiteralValue(prop.initializer);
+    }
+    return meta as unknown as PluginMeta;
   }
-  return meta as unknown as PluginMeta;
+  return undefined;
 }
 
 function getCommentText(reflection: DeclarationReflection): string {
@@ -197,7 +205,6 @@ async function main(): Promise<void> {
   } as unknown as Parameters<typeof Application.bootstrapWithPlugins>[0]);
 
   // Extract @Plugin() decorator metadata during TypeScript conversion
-  // @ts-expect-error — Converter extends EventDispatcher but 'on' is not in public type exports
   app.converter.on(
     Converter.EVENT_CREATE_DECLARATION,
     (context: Context, reflection: DeclarationReflection) => {
@@ -224,6 +231,8 @@ async function main(): Promise<void> {
   mkdirSync(coreDocsDir, { recursive: true });
   cpSync(join(ROOT, 'README.md'), join(coreDocsDir, 'README.md'));
 
+  // Track one entry per plugin slug for SUMMARY.md generation
+  const pluginEntries = new Map<string, string>();
   let count = 0;
 
   for (const reflection of project.getReflectionsByKind(ReflectionKind.Class)) {
@@ -239,8 +248,12 @@ async function main(): Promise<void> {
     if (!slugMatch) continue;
     const pluginSlug = slugMatch[1];
 
-    const pluginName = getTagValue(classRef, 'name') ?? classRef.name;
+    const pluginName = getTagValue(classRef, 'name') ?? meta.pluginName ?? classRef.name;
     const description = getCommentText(classRef);
+
+    // Only use the first class encountered per plugin slug (the main plugin class)
+    if (pluginEntries.has(pluginSlug)) continue;
+    pluginEntries.set(pluginSlug, pluginName);
 
     const readmeContent = generateReadme(pluginName, pluginSlug, description, meta);
     const outDir = join(DOCS_OUT, pluginSlug);
@@ -249,7 +262,25 @@ async function main(): Promise<void> {
     count++;
   }
 
-  console.log(`${count} README files generated`);
+  // Generate SUMMARY.md
+  const sortedEntries = [...pluginEntries.entries()].sort((a, b) =>
+    a[1].localeCompare(b[1], undefined, { sensitivity: 'base' })
+  );
+
+  let summary = `# Table of contents\n\n`;
+  summary += `* [Welcome](README.md)\n`;
+  summary += `* [Installation](installation.md)\n`;
+  summary += `* [FAQ](faq.md)\n\n`;
+  summary += `## Plugins\n\n`;
+  summary += `* [Overview](plugins/README.md)\n`;
+
+  for (const [slug, name] of sortedEntries) {
+    summary += `  * [${name}](plugins/${slug}/README.md)\n`;
+  }
+
+  writeFileSync(join(DOCS_DIR, 'SUMMARY.md'), summary, 'utf-8');
+  console.log(`${count} plugin README files generated`);
+  console.log(`SUMMARY.md generated with ${sortedEntries.length} plugin entries`);
 }
 
 main().catch((err: unknown) => {

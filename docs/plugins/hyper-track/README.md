@@ -1,4 +1,4 @@
-# HyperTrackPlugin
+# cordova-plugin-hypertrack-v3
 
 ```
 $ ionic cordova plugin add cordova-plugin-hypertrack-v3
