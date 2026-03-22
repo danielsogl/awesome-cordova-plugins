@@ -256,6 +256,23 @@
 
 
 
+## [9.1.1](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.1.0...awesome-cordova-plugins-v9.1.1) (2026-03-22)
+
+
+### Miscellaneous Chores
+
+* add FUNDING.yml for GitHub sponsorship ([968cb6e](https://github.com/danielsogl/awesome-cordova-plugins/commit/968cb6eec20b918be5db37fd8a4278f14723e8ab))
+
+
+### Documentation
+
+* add pull request template for better contribution guidelines ([7ce821c](https://github.com/danielsogl/awesome-cordova-plugins/commit/7ce821ca488ed9b25e2b687b67c6fc428aa95b32))
+* add security policy for vulnerability reporting ([a72284b](https://github.com/danielsogl/awesome-cordova-plugins/commit/a72284b499c6ac261645991b3cefc603840c639e))
+* optimize docs for SEO ([1a351b5](https://github.com/danielsogl/awesome-cordova-plugins/commit/1a351b50f40488226799e14633f6c7749bb473b3))
+* remove deprecated docs ([e546d24](https://github.com/danielsogl/awesome-cordova-plugins/commit/e546d24411147b372bf417d8271aecd8af432763))
+* update developer guide for plugin wrapper creation ([ae46a50](https://github.com/danielsogl/awesome-cordova-plugins/commit/ae46a50dc81562486f6b7931a2b32379d4847691))
+* update documentation ([d892dda](https://github.com/danielsogl/awesome-cordova-plugins/commit/d892dda49730425139b20ecaccc398947d5d4704))
+
 ## [9.1.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.0.1...awesome-cordova-plugins-v9.1.0) (2026-03-21)
 
 
