@@ -1,17 +1,22 @@
+---
+description: >-
+  Insomnia plugin for Cordova and Ionic. Prevent the screen of the mobile device from falling asleep.
+---
+
 # Insomnia
-
-```
-$ ionic cordova plugin add cordova-plugin-insomnia
-$ npm install @awesome-cordova-plugins/insomnia
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/insomnia/)
-
-Plugin Repo: [https://github.com/EddyVerbruggen/Insomnia-PhoneGap-Plugin](https://github.com/EddyVerbruggen/Insomnia-PhoneGap-Plugin)
 
 Prevent the screen of the mobile device from falling asleep.
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-insomnia
+npm install @awesome-cordova-plugins/insomnia
+```
+
+**Plugin Repo:** [https://github.com/EddyVerbruggen/Insomnia-PhoneGap-Plugin](https://github.com/EddyVerbruggen/Insomnia-PhoneGap-Plugin)
+
+## Supported Platforms
 
 - Android
 - Browser
@@ -20,3 +25,7 @@ Prevent the screen of the mobile device from falling asleep.
 - Windows
 - Windows Phone 8
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

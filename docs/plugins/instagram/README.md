@@ -1,18 +1,27 @@
+---
+description: >-
+  Instagram plugin for Cordova and Ionic. Share a photo with the instagram app
+---
+
 # Instagram
-
-```
-$ ionic cordova plugin add cordova-instagram-plugin
-$ npm install @awesome-cordova-plugins/instagram
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/instagram/)
-
-Plugin Repo: [https://github.com/vstirbu/InstagramPlugin](https://github.com/vstirbu/InstagramPlugin)
 
 Share a photo with the instagram app
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-instagram-plugin
+npm install @awesome-cordova-plugins/instagram
+```
+
+**Plugin Repo:** [https://github.com/vstirbu/InstagramPlugin](https://github.com/vstirbu/InstagramPlugin)
+
+## Supported Platforms
 
 - Android
 - iOS
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

@@ -1,13 +1,9 @@
+---
+description: >-
+  "In App Purchase 3" plugin for Cordova and Ionic. In-App Purchase on iOS, Android, Windows, macOS and XBox.  This plugin replace the previous InAppPurchase2,…
+---
+
 # "In App Purchase 3"
-
-```
-$ ionic cordova plugin add cordova-plugin-purchase --variable BILLING_KEY="<ANDROID_BILLING_KEY>"
-$ npm install @awesome-cordova-plugins/in-app-purchase-3
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/in-app-purchase-3/)
-
-Plugin Repo: [https://github.com/j3k0/cordova-plugin-purchase](https://github.com/j3k0/cordova-plugin-purchase)
 
 In-App Purchase on iOS, Android, Windows, macOS and XBox.
 
@@ -37,9 +33,22 @@ Supports:
    - (and any platform supporting Microsoft's UWP)
  - **cordova-plugin-purchase** version 13.0 or higher
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-purchase --variable BILLING_KEY="<ANDROID_BILLING_KEY>"
+npm install @awesome-cordova-plugins/in-app-purchase-3
+```
+
+**Plugin Repo:** [https://github.com/j3k0/cordova-plugin-purchase](https://github.com/j3k0/cordova-plugin-purchase)
+
+## Supported Platforms
 
 - iOS
 - Android
 - Windows
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

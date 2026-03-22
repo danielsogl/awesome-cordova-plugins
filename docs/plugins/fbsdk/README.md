@@ -1,13 +1,9 @@
+---
+description: >-
+  FbSdk plugin for Cordova and Ionic. Use the Facebook SDK plugin to obtain access to the native FB application on iOS and Android.  Requires Cordova plugin:…
+---
+
 # FbSdk
-
-```
-$ ionic cordova plugin add cordova-plugin-fbsdk --variable APP_ID="123456789" --variable APP_NAME="myApplication" --variable CLIENT_TOKEN="abcd1234"
-$ npm install @awesome-cordova-plugins/fbsdk
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/fbsdk/)
-
-Plugin Repo: [https://github.com/MaximBelov/cordova-plugin-fbsdk](https://github.com/MaximBelov/cordova-plugin-fbsdk)
 
 Use the Facebook SDK plugin to obtain access to the native FB application on iOS and Android.
 
@@ -79,9 +75,22 @@ Events are listed on the [insights page](https://www.facebook.com/insights/).
 
 For tracking events, see `logEvent` and `logPurchase`.
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-fbsdk --variable APP_ID="123456789" --variable APP_NAME="myApplication" --variable CLIENT_TOKEN="abcd1234"
+npm install @awesome-cordova-plugins/fbsdk
+```
+
+**Plugin Repo:** [https://github.com/MaximBelov/cordova-plugin-fbsdk](https://github.com/MaximBelov/cordova-plugin-fbsdk)
+
+## Supported Platforms
 
 - Android
 - iOS
 - Browser
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

@@ -1,12 +1,19 @@
+---
+description: >-
+  Awesome Cordova Plugins provides TypeScript wrappers for Cordova and Ionic
+  native plugins with Promise and Observable support for Angular, React, and
+  Capacitor apps.
+---
+
 # Awesome Cordova Plugins
 
-Awesome Cordova Plugins is a curated set of wrappers for Cordova plugins that make adding any native functionality you need to your [Ionic](https://ionicframework.com/) mobile app easy.
+Awesome Cordova Plugins is a curated set of TypeScript wrappers for Cordova plugins that make adding native functionality to your [Ionic](https://ionicframework.com/) mobile app easy.
 
-Awesome Cordova Plugins wraps plugin callbacks in a Promise or Observable, providing a common interface for all plugins and making it easy to use plugins with Angular change detection.
+Every Cordova plugin callback is wrapped in a Promise or Observable, providing a common interface and seamless integration with Angular change detection.
 
 ## Features
 
-- **TypeScript wrappers** for all major Cordova plugins
+- **TypeScript wrappers** for over 250 Cordova plugins
 - **Promise and Observable** support for modern async patterns
 - **Angular integration** with automatic change detection via `/ngx` imports
 - **Framework-agnostic** — works with Angular, React, or plain TypeScript

@@ -1,18 +1,27 @@
+---
+description: >-
+  Text To Speech Advanced plugin for Cordova and Ionic. Text to Speech plugin
+---
+
 # Text To Speech Advanced
-
-```
-$ ionic cordova plugin add cordova-plugin-tts-advanced
-$ npm install @awesome-cordova-plugins/text-to-speech-advanced
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/text-to-speech-advanced/)
-
-Plugin Repo: [https://github.com/spasma/cordova-plugin-tts-advanced](https://github.com/spasma/cordova-plugin-tts-advanced)
 
 Text to Speech plugin
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-tts-advanced
+npm install @awesome-cordova-plugins/text-to-speech-advanced
+```
+
+**Plugin Repo:** [https://github.com/spasma/cordova-plugin-tts-advanced](https://github.com/spasma/cordova-plugin-tts-advanced)
+
+## Supported Platforms
 
 - Android
 - iOS
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

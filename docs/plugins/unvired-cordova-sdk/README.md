@@ -1,13 +1,9 @@
+---
+description: >-
+  Unvired Cordova SDK plugin for Cordova and Ionic. This plugin lets you build apps which connect to Unvired Mobile Platform (UMP). - iOS Requirements - Update…
+---
+
 # Unvired Cordova SDK
-
-```
-$ ionic cordova plugin add @awesome-cordova-plugins/unvired-cordova-sdk
-$ npm install @awesome-cordova-plugins/unvired-cordova-sdk
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/unvired-cordova-sdk/)
-
-Plugin Repo: [https://github.com/unvired/cordova-plugin-unvired-sdk/](https://github.com/unvired/cordova-plugin-unvired-sdk/)
 
 This plugin lets you build apps which connect to Unvired Mobile Platform (UMP).
 -
@@ -28,10 +24,23 @@ After you install the plugin, for Ionic/Angular projects, please add a reference
 <script src="assets/js/jquery-3.2.1.js"></script>
 ```
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add @awesome-cordova-plugins/unvired-cordova-sdk
+npm install @awesome-cordova-plugins/unvired-cordova-sdk
+```
+
+**Plugin Repo:** [https://github.com/unvired/cordova-plugin-unvired-sdk/](https://github.com/unvired/cordova-plugin-unvired-sdk/)
+
+## Supported Platforms
 
 - iOS
 - Android
 - Windows
 - Browser
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

@@ -1,16 +1,25 @@
+---
+description: >-
+  Google Plus — Awesome Cordova Plugins wrapper for Ionic and Cordova apps.
+---
+
 # Google Plus
 
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-googleplus --variable REVERSED_CLIENT_ID=myreversedclientid
+npm install @awesome-cordova-plugins/google-plus
 ```
-$ ionic cordova plugin add cordova-plugin-googleplus --variable REVERSED_CLIENT_ID=myreversedclientid
-$ npm install @awesome-cordova-plugins/google-plus
-```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/google-plus/)
+**Plugin Repo:** [https://github.com/EddyVerbruggen/cordova-plugin-googleplus](https://github.com/EddyVerbruggen/cordova-plugin-googleplus)
 
-Plugin Repo: [https://github.com/EddyVerbruggen/cordova-plugin-googleplus](https://github.com/EddyVerbruggen/cordova-plugin-googleplus)
-
-## Supported platforms
+## Supported Platforms
 
 - Android
 - iOS
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

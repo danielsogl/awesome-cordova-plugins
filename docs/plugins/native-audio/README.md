@@ -1,19 +1,28 @@
+---
+description: >-
+  Native Audio plugin for Cordova and Ionic. Native Audio Playback
+---
+
 # Native Audio
-
-```
-$ ionic cordova plugin add cordova-plugin-nativeaudio
-$ npm install @awesome-cordova-plugins/native-audio
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/native-audio/)
-
-Plugin Repo: [https://github.com/floatinghotpot/cordova-plugin-nativeaudio](https://github.com/floatinghotpot/cordova-plugin-nativeaudio)
 
 Native Audio Playback
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-nativeaudio
+npm install @awesome-cordova-plugins/native-audio
+```
+
+**Plugin Repo:** [https://github.com/floatinghotpot/cordova-plugin-nativeaudio](https://github.com/floatinghotpot/cordova-plugin-nativeaudio)
+
+## Supported Platforms
 
 - Android
 - Browser
 - iOS
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

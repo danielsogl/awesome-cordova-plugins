@@ -1,17 +1,26 @@
+---
+description: >-
+  In App Update plugin for Cordova and Ionic. This pluging enabels In app update For cordova.
+---
+
 # In App Update
-
-```
-$ ionic cordova plugin add cordova-in-app-update
-$ npm install @awesome-cordova-plugins/in-app-update
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/in-app-update/)
-
-Plugin Repo: [https://github.com/itsLucario/cordova-app-update-plugin](https://github.com/itsLucario/cordova-app-update-plugin)
 
 This pluging enabels In app update For cordova.
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-in-app-update
+npm install @awesome-cordova-plugins/in-app-update
+```
+
+**Plugin Repo:** [https://github.com/itsLucario/cordova-app-update-plugin](https://github.com/itsLucario/cordova-app-update-plugin)
+
+## Supported Platforms
 
 - Android
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

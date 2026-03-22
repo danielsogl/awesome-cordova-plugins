@@ -1,13 +1,9 @@
+---
+description: >-
+  HTTP plugin for Cordova and Ionic. Cordova / Phonegap plugin for communicating with HTTP servers. Supports iOS and Android.  Advantages over Javascript…
+---
+
 # HTTP
-
-```
-$ ionic cordova plugin add @approov/cordova-plugin-advanced-http
-$ npm install @awesome-cordova-plugins/approov-advanced-http
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/approov-advanced-http/)
-
-Plugin Repo: [https://github.com/approov/quickstart-cordova-advancedhttp](https://github.com/approov/quickstart-cordova-advancedhttp)
 
 Cordova / Phonegap plugin for communicating with HTTP servers. Supports iOS and Android.
 
@@ -19,8 +15,21 @@ Advantages over Javascript requests:
 Note: This plugin extends the pre-existing [cordova-advanced-http-plugin](https://github.com/silkimen/cordova-plugin-advanced-http),
 we have only added approov functionality on top of it. All credit goes to the actual plugin developer.
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add @approov/cordova-plugin-advanced-http
+npm install @awesome-cordova-plugins/approov-advanced-http
+```
+
+**Plugin Repo:** [https://github.com/approov/quickstart-cordova-advancedhttp](https://github.com/approov/quickstart-cordova-advancedhttp)
+
+## Supported Platforms
 
 - Android
 - iOS
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

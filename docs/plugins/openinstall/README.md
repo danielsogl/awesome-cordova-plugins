@@ -1,16 +1,25 @@
+---
+description: >-
+  OpenInstall — Awesome Cordova Plugins wrapper for Ionic and Cordova apps.
+---
+
 # OpenInstall
 
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-openinstall
+npm install @awesome-cordova-plugins/openinstall
 ```
-$ ionic cordova plugin add cordova-plugin-openinstall
-$ npm install @awesome-cordova-plugins/openinstall
-```
 
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/openinstall/)
+**Plugin Repo:** [https://github.com/openinstall/cordova-plugin-openinstall](https://github.com/openinstall/cordova-plugin-openinstall)
 
-Plugin Repo: [https://github.com/openinstall/cordova-plugin-openinstall](https://github.com/openinstall/cordova-plugin-openinstall)
-
-## Supported platforms
+## Supported Platforms
 
 - Android
 - iOS
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

@@ -1,17 +1,22 @@
+---
+description: >-
+  In App Browser plugin for Cordova and Ionic. Launches in app Browser
+---
+
 # In App Browser
-
-```
-$ ionic cordova plugin add cordova-plugin-inappbrowser
-$ npm install @awesome-cordova-plugins/in-app-browser
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/in-app-browser/)
-
-Plugin Repo: [https://github.com/apache/cordova-plugin-inappbrowser](https://github.com/apache/cordova-plugin-inappbrowser)
 
 Launches in app Browser
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-inappbrowser
+npm install @awesome-cordova-plugins/in-app-browser
+```
+
+**Plugin Repo:** [https://github.com/apache/cordova-plugin-inappbrowser](https://github.com/apache/cordova-plugin-inappbrowser)
+
+## Supported Platforms
 
 - AmazonFire OS
 - Android
@@ -20,3 +25,7 @@ Launches in app Browser
 - macOS
 - Windows
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

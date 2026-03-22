@@ -188,7 +188,7 @@ Let us know or submit a PR! Take a look at [the Developer Guide](https://github.
 
 Ibby Hadeed - [@ihadeed](https://github.com/ihadeed)
 
-Daniel Sogl - [@sogldaniel](https://twitter.com/sogldaniel)
+Daniel Sogl - [LinkedIn](https://www.linkedin.com/in/daniel-sogl)
 
 Tim Lancina - [@timlancina](https://twitter.com/timlancina)
 

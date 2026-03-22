@@ -1,19 +1,28 @@
+---
+description: >-
+  Printer plugin for Cordova and Ionic. Prints documents or HTML rendered content
+---
+
 # Printer
-
-```
-$ ionic cordova plugin add cordova-plugin-printer
-$ npm install @awesome-cordova-plugins/printer
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/printer/)
-
-Plugin Repo: [https://github.com/katzer/cordova-plugin-printer](https://github.com/katzer/cordova-plugin-printer)
 
 Prints documents or HTML rendered content
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-printer
+npm install @awesome-cordova-plugins/printer
+```
+
+**Plugin Repo:** [https://github.com/katzer/cordova-plugin-printer](https://github.com/katzer/cordova-plugin-printer)
+
+## Supported Platforms
 
 - Android
 - iOS
 - Windows
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

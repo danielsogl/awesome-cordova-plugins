@@ -1,13 +1,9 @@
+---
+description: >-
+  Firebase Analytics plugin for Cordova and Ionic. Cordova plugin for Firebase Analytics  Go to firebase console and export google-services.json and…
+---
+
 # Firebase Analytics
-
-```
-$ ionic cordova plugin add cordova-plugin-firebase-analytics
-$ npm install @awesome-cordova-plugins/firebase-analytics
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/firebase-analytics/)
-
-Plugin Repo: [https://github.com/chemerisuk/cordova-plugin-firebase-analytics](https://github.com/chemerisuk/cordova-plugin-firebase-analytics)
 
 Cordova plugin for Firebase Analytics
 
@@ -31,8 +27,21 @@ For Android you'll have to add in __android/app/src/main/AndroidManifest.xml__ u
 
 And in the same file, you'll have to add `xmlns:tools="http://schemas.android.com/tools"` to your _manifest_ tag.
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-firebase-analytics
+npm install @awesome-cordova-plugins/firebase-analytics
+```
+
+**Plugin Repo:** [https://github.com/chemerisuk/cordova-plugin-firebase-analytics](https://github.com/chemerisuk/cordova-plugin-firebase-analytics)
+
+## Supported Platforms
 
 - Android
 - iOS
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

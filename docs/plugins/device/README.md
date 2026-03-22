@@ -1,17 +1,22 @@
+---
+description: >-
+  Device plugin for Cordova and Ionic. Access information about the underlying device and platform.
+---
+
 # Device
-
-```
-$ ionic cordova plugin add cordova-plugin-device
-$ npm install @awesome-cordova-plugins/device
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/device/)
-
-Plugin Repo: [https://github.com/apache/cordova-plugin-device](https://github.com/apache/cordova-plugin-device)
 
 Access information about the underlying device and platform.
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-device
+npm install @awesome-cordova-plugins/device
+```
+
+**Plugin Repo:** [https://github.com/apache/cordova-plugin-device](https://github.com/apache/cordova-plugin-device)
+
+## Supported Platforms
 
 - Android
 - Browser
@@ -19,3 +24,7 @@ Access information about the underlying device and platform.
 - macOS
 - Windows
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

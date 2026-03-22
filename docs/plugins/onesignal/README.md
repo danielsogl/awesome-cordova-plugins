@@ -1,13 +1,9 @@
+---
+description: >-
+  OneSignal plugin for Cordova and Ionic. The OneSignal plugin is an client implementation for using the [OneSignal](https://onesignal.com/) Service. OneSignal…
+---
+
 # OneSignal
-
-```
-$ ionic cordova plugin add onesignal-cordova-plugin
-$ npm install @awesome-cordova-plugins/onesignal
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/onesignal/)
-
-Plugin Repo: [https://github.com/OneSignal/OneSignal-Cordova-SDK](https://github.com/OneSignal/OneSignal-Cordova-SDK)
 
 The OneSignal plugin is an client implementation for using the [OneSignal](https://onesignal.com/) Service.
 OneSignal is a simple implementation for delivering push notifications.
@@ -77,10 +73,23 @@ module.exports = function(context) {
 3. From the root of your project make the file executable:
 `$ chmod +x hooks/copy_android_notification_icons.js`
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add onesignal-cordova-plugin
+npm install @awesome-cordova-plugins/onesignal
+```
+
+**Plugin Repo:** [https://github.com/OneSignal/OneSignal-Cordova-SDK](https://github.com/OneSignal/OneSignal-Cordova-SDK)
+
+## Supported Platforms
 
 - Amazon Fire OS
 - Android
 - iOS
 - Windows
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

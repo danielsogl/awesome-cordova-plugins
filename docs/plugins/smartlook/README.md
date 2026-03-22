@@ -1,19 +1,28 @@
+---
+description: >-
+  Smartlook plugin for Cordova and Ionic. Official Smartlook SDK plugin. Full documentation can be found here:…
+---
+
 # Smartlook
-
-```
-$ ionic cordova plugin add https://github.com/smartlook/cordova-smartlook.git
-$ npm install @awesome-cordova-plugins/smartlook
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/smartlook/)
-
-Plugin Repo: [https://github.com/smartlook/cordova-smartlook.git](https://github.com/smartlook/cordova-smartlook.git)
 
 Official Smartlook SDK plugin.
 Full documentation can be found here: https://mobile.developer.smartlook.com/reference/ionic-sdk-installation
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add https://github.com/smartlook/cordova-smartlook.git
+npm install @awesome-cordova-plugins/smartlook
+```
+
+**Plugin Repo:** [https://github.com/smartlook/cordova-smartlook.git](https://github.com/smartlook/cordova-smartlook.git)
+
+## Supported Platforms
 
 - Android
 - iOS
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

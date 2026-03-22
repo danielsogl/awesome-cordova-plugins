@@ -1,3 +1,10 @@
+---
+description: >-
+  Browse over 250 Cordova plugin wrappers for Ionic with TypeScript support.
+  Each plugin includes installation instructions, supported platforms, and usage
+  documentation.
+---
+
 # Plugins
 
 Browse the full list of available plugin wrappers in the sidebar. Each plugin page includes:

@@ -1,18 +1,27 @@
+---
+description: >-
+  Speech Recognition plugin for Cordova and Ionic. This plugin does speech recognition using cloud services
+---
+
 # Speech Recognition
-
-```
-$ ionic cordova plugin add cordova-plugin-speechrecognition
-$ npm install @awesome-cordova-plugins/speech-recognition
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/speech-recognition/)
-
-Plugin Repo: [https://github.com/pbakondy/cordova-plugin-speechrecognition](https://github.com/pbakondy/cordova-plugin-speechrecognition)
 
 This plugin does speech recognition using cloud services
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-speechrecognition
+npm install @awesome-cordova-plugins/speech-recognition
+```
+
+**Plugin Repo:** [https://github.com/pbakondy/cordova-plugin-speechrecognition](https://github.com/pbakondy/cordova-plugin-speechrecognition)
+
+## Supported Platforms
 
 - Android
 - iOS
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

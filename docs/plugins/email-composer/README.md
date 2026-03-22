@@ -1,17 +1,22 @@
+---
+description: >-
+  Email Composer plugin for Cordova and Ionic. Requires Cordova plugin: cordova-plugin-email-composer. For more info, please see the [Email Composer plugin…
+---
+
 # Email Composer
-
-```
-$ ionic cordova plugin add cordova-plugin-email-composer
-$ npm install @awesome-cordova-plugins/email-composer
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/email-composer/)
-
-Plugin Repo: [https://github.com/katzer/cordova-plugin-email-composer](https://github.com/katzer/cordova-plugin-email-composer)
 
 Requires Cordova plugin: cordova-plugin-email-composer. For more info, please see the [Email Composer plugin docs](https://github.com/hypery2k/cordova-email-plugin).
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-email-composer
+npm install @awesome-cordova-plugins/email-composer
+```
+
+**Plugin Repo:** [https://github.com/katzer/cordova-plugin-email-composer](https://github.com/katzer/cordova-plugin-email-composer)
+
+## Supported Platforms
 
 - Amazon Fire OS
 - Android
@@ -20,3 +25,7 @@ Requires Cordova plugin: cordova-plugin-email-composer. For more info, please se
 - Windows
 - macOS
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

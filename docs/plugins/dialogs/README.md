@@ -1,19 +1,24 @@
+---
+description: >-
+  Dialogs plugin for Cordova and Ionic. This plugin gives you ability to access and customize the device native dialogs.  Requires Cordova plugin:…
+---
+
 # Dialogs
-
-```
-$ ionic cordova plugin add cordova-plugin-dialogs
-$ npm install @awesome-cordova-plugins/dialogs
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/dialogs/)
-
-Plugin Repo: [https://github.com/apache/cordova-plugin-dialogs](https://github.com/apache/cordova-plugin-dialogs)
 
 This plugin gives you ability to access and customize the device native dialogs.
 
 Requires Cordova plugin: `cordova-plugin-dialogs`. For more info, please see the [Dialogs plugin docs](https://github.com/apache/cordova-plugin-dialogs).
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-dialogs
+npm install @awesome-cordova-plugins/dialogs
+```
+
+**Plugin Repo:** [https://github.com/apache/cordova-plugin-dialogs](https://github.com/apache/cordova-plugin-dialogs)
+
+## Supported Platforms
 
 - Amazon Fire OS
 - Android
@@ -21,3 +26,7 @@ Requires Cordova plugin: `cordova-plugin-dialogs`. For more info, please see the
 - iOS
 - Windows
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

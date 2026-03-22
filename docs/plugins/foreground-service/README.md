@@ -1,13 +1,9 @@
+---
+description: >-
+  Foreground Service plugin for Cordova and Ionic. This plugin allows for android devices to continue running services in the background, using a foreground…
+---
+
 # Foreground Service
-
-```
-$ ionic cordova plugin add cordova-plugin-foreground-service
-$ npm install @awesome-cordova-plugins/foreground-service
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/foreground-service/)
-
-Plugin Repo: [https://github.com/DavidBriglio/cordova-plugin-foreground-service](https://github.com/DavidBriglio/cordova-plugin-foreground-service)
 
 This plugin allows for android devices to continue running services in the background, using a
 foreground ongoing notification. This is targeted towards use with plugins such as
@@ -24,7 +20,20 @@ For android API 28+, the following xml snippet should be inserted into ```config
   ...
 ```
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-foreground-service
+npm install @awesome-cordova-plugins/foreground-service
+```
+
+**Plugin Repo:** [https://github.com/DavidBriglio/cordova-plugin-foreground-service](https://github.com/DavidBriglio/cordova-plugin-foreground-service)
+
+## Supported Platforms
 
 - Android
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

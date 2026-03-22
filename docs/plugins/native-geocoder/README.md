@@ -1,18 +1,27 @@
+---
+description: >-
+  Native Geocoder plugin for Cordova and Ionic. Cordova plugin for native forward and reverse geocoding
+---
+
 # Native Geocoder
-
-```
-$ ionic cordova plugin add cordova-plugin-nativegeocoder
-$ npm install @awesome-cordova-plugins/native-geocoder
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/native-geocoder/)
-
-Plugin Repo: [https://github.com/sebastianbaar/cordova-plugin-nativegeocoder](https://github.com/sebastianbaar/cordova-plugin-nativegeocoder)
 
 Cordova plugin for native forward and reverse geocoding
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-nativegeocoder
+npm install @awesome-cordova-plugins/native-geocoder
+```
+
+**Plugin Repo:** [https://github.com/sebastianbaar/cordova-plugin-nativegeocoder](https://github.com/sebastianbaar/cordova-plugin-nativegeocoder)
+
+## Supported Platforms
 
 - iOS
 - Android
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

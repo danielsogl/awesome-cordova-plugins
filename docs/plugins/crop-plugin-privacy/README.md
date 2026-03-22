@@ -1,17 +1,26 @@
+---
+description: >-
+  Crop Plugin Privacy plugin for Cordova and Ionic. This plugin does something
+---
+
 # Crop Plugin Privacy
-
-```
-$ ionic cordova plugin add cordova-plugin-crop-privacy
-$ npm install @awesome-cordova-plugins/crop-plugin-privacy
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/crop-plugin-privacy/)
-
-Plugin Repo: [https://github.com/BaraAksayeth25/cordova-plugin-crop-privacy](https://github.com/BaraAksayeth25/cordova-plugin-crop-privacy)
 
 This plugin does something
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-crop-privacy
+npm install @awesome-cordova-plugins/crop-plugin-privacy
+```
+
+**Plugin Repo:** [https://github.com/BaraAksayeth25/cordova-plugin-crop-privacy](https://github.com/BaraAksayeth25/cordova-plugin-crop-privacy)
+
+## Supported Platforms
 
 - Android
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

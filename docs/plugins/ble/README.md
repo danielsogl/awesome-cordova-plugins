@@ -1,13 +1,9 @@
+---
+description: >-
+  BLE plugin for Cordova and Ionic. This plugin enables communication between a phone and Bluetooth Low Energy (BLE) peripherals.  The plugin provides a simple…
+---
+
 # BLE
-
-```
-$ ionic cordova plugin add cordova-plugin-ble-central
-$ npm install @awesome-cordova-plugins/ble
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/ble/)
-
-Plugin Repo: [https://github.com/don/cordova-plugin-ble-central](https://github.com/don/cordova-plugin-ble-central)
 
 This plugin enables communication between a phone and Bluetooth Low Energy (BLE) peripherals.
 
@@ -23,8 +19,21 @@ Advertising information is returned when scanning for peripherals. Service, char
 
 Simultaneous connections to multiple peripherals are supported.
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-ble-central
+npm install @awesome-cordova-plugins/ble
+```
+
+**Plugin Repo:** [https://github.com/don/cordova-plugin-ble-central](https://github.com/don/cordova-plugin-ble-central)
+
+## Supported Platforms
 
 - Android
 - iOS
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

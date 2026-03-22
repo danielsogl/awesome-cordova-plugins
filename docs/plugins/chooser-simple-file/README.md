@@ -1,13 +1,9 @@
+---
+description: >-
+  Chooser plugin for Cordova and Ionic. File chooser plugin for Cordova.  The following must be added to config.xml to prevent crashing when selecting large…
+---
+
 # Chooser
-
-```
-$ ionic cordova plugin add cordova-plugin-simple-file-chooser
-$ npm install @awesome-cordova-plugins/chooser-simple-file
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/chooser-simple-file/)
-
-Plugin Repo: [https://github.com/hc-oss/cordova-plugin-simple-file-chooser](https://github.com/hc-oss/cordova-plugin-simple-file-chooser)
 
 File chooser plugin for Cordova.
 
@@ -23,8 +19,21 @@ The following must be added to config.xml to prevent crashing when selecting lar
 </platform>
 ```
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-simple-file-chooser
+npm install @awesome-cordova-plugins/chooser-simple-file
+```
+
+**Plugin Repo:** [https://github.com/hc-oss/cordova-plugin-simple-file-chooser](https://github.com/hc-oss/cordova-plugin-simple-file-chooser)
+
+## Supported Platforms
 
 - Android
 - iOS
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

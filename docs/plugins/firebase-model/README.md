@@ -1,11 +1,9 @@
+---
+description: >-
+  Firebase Model plugin for Cordova and Ionic. This plugin downloads the TensorFlow model from firebase and classify the images.  ```typescript import {…
+---
+
 # Firebase Model
-
-```
-$ ionic cordova plugin add cordova-plugin-firebase-model
-$ npm install @awesome-cordova-plugins/firebase-model
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/firebase-model/)
 
 This plugin downloads the TensorFlow model from firebase and classify the images.
 
@@ -35,7 +33,18 @@ catch (e) {
 
 ```
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-firebase-model
+npm install @awesome-cordova-plugins/firebase-model
+```
+
+## Supported Platforms
 
 - iOS
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

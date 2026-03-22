@@ -1,13 +1,9 @@
+---
+description: >-
+  Firebase Dynamic Links plugin for Cordova and Ionic. Cordova plugin for Firebase Dynamic Links  Variables APP_DOMAIN and APP_PATH specify web URL where your…
+---
+
 # Firebase Dynamic Links
-
-```
-$ ionic cordova plugin add cordova-plugin-firebase-dynamiclinks --save --variable APP_DOMAIN="example.com" --variable APP_PATH="/"
-$ npm install @awesome-cordova-plugins/firebase-dynamic-links
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/firebase-dynamic-links/)
-
-Plugin Repo: [https://github.com/chemerisuk/cordova-plugin-firebase-dynamiclinks](https://github.com/chemerisuk/cordova-plugin-firebase-dynamiclinks)
 
 Cordova plugin for Firebase Dynamic Links
 
@@ -29,8 +25,21 @@ config.xml:
 </platform>
 ```
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-firebase-dynamiclinks --save --variable APP_DOMAIN="example.com" --variable APP_PATH="/"
+npm install @awesome-cordova-plugins/firebase-dynamic-links
+```
+
+**Plugin Repo:** [https://github.com/chemerisuk/cordova-plugin-firebase-dynamiclinks](https://github.com/chemerisuk/cordova-plugin-firebase-dynamiclinks)
+
+## Supported Platforms
 
 - Android
 - iOS
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

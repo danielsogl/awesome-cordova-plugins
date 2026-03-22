@@ -1,13 +1,9 @@
+---
+description: >-
+  Camera plugin for Cordova and Ionic. Take a photo or capture video.  Requires the Cordova plugin: `cordova-plugin-camera`. For more info, please see the…
+---
+
 # Camera
-
-```
-$ ionic cordova plugin add cordova-plugin-camera
-$ npm install @awesome-cordova-plugins/camera
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/camera/)
-
-Plugin Repo: [https://github.com/apache/cordova-plugin-camera](https://github.com/apache/cordova-plugin-camera)
 
 Take a photo or capture video.
 
@@ -21,10 +17,23 @@ Requires the Cordova plugin: `cordova-plugin-camera`. For more info, please see 
 ```
 inside of the `<platform name='ios>` section
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-camera
+npm install @awesome-cordova-plugins/camera
+```
+
+**Plugin Repo:** [https://github.com/apache/cordova-plugin-camera](https://github.com/apache/cordova-plugin-camera)
+
+## Supported Platforms
 
 - Android
 - Browser
 - iOS
 - Windows
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

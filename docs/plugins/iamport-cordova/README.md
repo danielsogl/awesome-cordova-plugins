@@ -1,18 +1,27 @@
+---
+description: >-
+  Iamport Cordova plugin for Cordova and Ionic. This plugin does something
+---
+
 # Iamport Cordova
-
-```
-$ ionic cordova plugin add iamport-cordova
-$ npm install @awesome-cordova-plugins/iamport-cordova
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/iamport-cordova/)
-
-Plugin Repo: [https://github.com/iamport/iamport-cordova](https://github.com/iamport/iamport-cordova)
 
 This plugin does something
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add iamport-cordova
+npm install @awesome-cordova-plugins/iamport-cordova
+```
+
+**Plugin Repo:** [https://github.com/iamport/iamport-cordova](https://github.com/iamport/iamport-cordova)
+
+## Supported Platforms
 
 - ios
 - android
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

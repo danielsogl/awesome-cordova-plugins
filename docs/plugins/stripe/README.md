@@ -1,19 +1,28 @@
+---
+description: >-
+  Stripe plugin for Cordova and Ionic. A plugin that allows you to use Stripe's Native SDKs for Android and iOS.
+---
+
 # Stripe
-
-```
-$ ionic cordova plugin add cordova-plugin-stripe
-$ npm install @awesome-cordova-plugins/stripe
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/stripe/)
-
-Plugin Repo: [https://github.com/zyramedia/cordova-plugin-stripe](https://github.com/zyramedia/cordova-plugin-stripe)
 
 A plugin that allows you to use Stripe's Native SDKs for Android and iOS.
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-stripe
+npm install @awesome-cordova-plugins/stripe
+```
+
+**Plugin Repo:** [https://github.com/zyramedia/cordova-plugin-stripe](https://github.com/zyramedia/cordova-plugin-stripe)
+
+## Supported Platforms
 
 - Android
 - Browser
 - iOS
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

@@ -1,19 +1,28 @@
+---
+description: >-
+  Broadcaster plugin for Cordova and Ionic. This plugin adds exchanging events between native code and your app.
+---
+
 # Broadcaster
-
-```
-$ ionic cordova plugin add cordova-plugin-broadcaster
-$ npm install @awesome-cordova-plugins/broadcaster
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/broadcaster/)
-
-Plugin Repo: [https://github.com/bsorrentino/cordova-broadcaster](https://github.com/bsorrentino/cordova-broadcaster)
 
 This plugin adds exchanging events between native code and your app.
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-broadcaster
+npm install @awesome-cordova-plugins/broadcaster
+```
+
+**Plugin Repo:** [https://github.com/bsorrentino/cordova-broadcaster](https://github.com/bsorrentino/cordova-broadcaster)
+
+## Supported Platforms
 
 - Android
 - iOS
 - Browser
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

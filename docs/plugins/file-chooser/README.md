@@ -1,17 +1,26 @@
+---
+description: >-
+  FileChooser Plugin plugin for Cordova and Ionic. Cordova FileChooser Plugin
+---
+
 # FileChooser Plugin
-
-```
-$ ionic cordova plugin add cordova-plugin-filechooser
-$ npm install @awesome-cordova-plugins/file-chooser
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/file-chooser/)
-
-Plugin Repo: [https://github.com/ihadeed/cordova-filechooser](https://github.com/ihadeed/cordova-filechooser)
 
 Cordova FileChooser Plugin
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-filechooser
+npm install @awesome-cordova-plugins/file-chooser
+```
+
+**Plugin Repo:** [https://github.com/ihadeed/cordova-filechooser](https://github.com/ihadeed/cordova-filechooser)
+
+## Supported Platforms
 
 - Android
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

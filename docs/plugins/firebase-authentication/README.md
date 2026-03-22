@@ -1,18 +1,27 @@
+---
+description: >-
+  Firebase Authentication plugin for Cordova and Ionic. Cordova plugin for Firebase Authentication
+---
+
 # Firebase Authentication
-
-```
-$ ionic cordova plugin add cordova-plugin-firebase-authentication --variable FIREBASE_AUTH_VERSION=version
-$ npm install @awesome-cordova-plugins/firebase-authentication
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/firebase-authentication/)
-
-Plugin Repo: [https://github.com/chemerisuk/cordova-plugin-firebase-authentication](https://github.com/chemerisuk/cordova-plugin-firebase-authentication)
 
 Cordova plugin for Firebase Authentication
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-firebase-authentication --variable FIREBASE_AUTH_VERSION=version
+npm install @awesome-cordova-plugins/firebase-authentication
+```
+
+**Plugin Repo:** [https://github.com/chemerisuk/cordova-plugin-firebase-authentication](https://github.com/chemerisuk/cordova-plugin-firebase-authentication)
+
+## Supported Platforms
 
 - Android
 - iOS
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

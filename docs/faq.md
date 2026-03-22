@@ -1,6 +1,12 @@
+---
+description: >-
+  Frequently asked questions about Awesome Cordova Plugins — troubleshooting
+  builds, resolving plugin conflicts, and recommended upgrade strategies.
+---
+
 # FAQ
 
-### Cordova Management Tips
+## Cordova Management Tips
 
 **1) Use the [Ionic CLI](https://ionicframework.com/docs/cli) to add/update/delete plugins.**
 
@@ -30,7 +36,7 @@ Useful when adding new developers to a project. `ionic cordova prepare` restores
 * `ionic doctor list`: Detects [common issues](https://ionicframework.com/docs/cli/commands/doctor-list) and suggests steps to fix them
 * `ionic repair`: Remove, then [regenerate](https://ionicframework.com/docs/cli/commands/repair) all dependencies
 
-### Understanding Version Numbers
+## Understanding Version Numbers
 
 For any given plugin, the Awesome Cordova Plugins (TypeScript code) and Cordova (native code) version numbers will not match. The Awesome Cordova Plugins version number is found in `package.json`:
 
@@ -52,7 +58,7 @@ When checking for new native functionality or bug fixes, look for new versions o
 
 To check for new Awesome Cordova Plugins releases (may include exposing methods recently added by the Cordova plugin, etc.), see the [releases page](https://github.com/danielsogl/awesome-cordova-plugins/releases).
 
-### Troubleshooting Failed Builds
+## Troubleshooting Failed Builds
 
 Research the build error(s) by checking out these resources:
 
@@ -60,19 +66,19 @@ Research the build error(s) by checking out these resources:
 * Ask the [Ionic Community Forum](https://forum.ionicframework.com/)
 * Check the plugin's GitHub issues page
 
-#### Cordova Plugin Conflicts
+### Cordova Plugin Conflicts
 
 Plugins can conflict with each other when they share the same underlying native dependencies or when more than one plugin tries to access the same native code at once. For example, common libraries like the Google Play Services version (Google Maps is using GPS v24.2 but Firebase wants GPS v27.1). Keeping these plugins updated regularly can help with this.
 
 Another tip is to ensure that your app uses only one plugin per specific feature/functionality (example: Push Notifications).
 
-### Recommended Upgrade Strategy
+## Recommended Upgrade Strategy
 
 The most stable apps are routinely updated, especially at the native layer. Keeping native plugins up to date ensures your project has the latest security fixes, new features, and improved performance.
 
 Update your project's plugins one at a time, ideally in separate code branches. This reduces the surface area that issues can arise from — if you update everything in your project at once, it's sometimes hard to tell where the problem stems from.
 
-#### When should I update?
+### When should I update?
 
 * When a new feature/bug fix is released: Run `npm outdated` to see a list of available updates.
 * When new major versions are released: Official blogs, such as the [Cordova blog](https://cordova.apache.org/blog/) and [Ionic blog](https://ionicframework.com/blog/), will publish announcements and news.

@@ -1,13 +1,9 @@
+---
+description: >-
+  Purchases plugin for Cordova and Ionic. *Purchases* is a client for the [RevenueCat](https://www.revenuecat.com/) subscription and purchase tracking system.…
+---
+
 # Purchases
-
-```
-$ ionic cordova plugin add cordova-plugin-purchases@5.0.0
-$ npm install @awesome-cordova-plugins/purchases
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/purchases/)
-
-Plugin Repo: [https://github.com/RevenueCat/cordova-plugin-purchases](https://github.com/RevenueCat/cordova-plugin-purchases)
 
 *Purchases* is a client for the [RevenueCat](https://www.revenuecat.com/) subscription and purchase tracking system.
 It is an open source framework that provides a wrapper around `BillingClient`, `StoreKit` and the RevenueCat backend
@@ -45,8 +41,21 @@ If your app supports product changes using [DEFERRED replacement mode](https://w
 then you can either stick with the previous major version until support for DEFERRED is re-introduced in this major version,
 or you can remove DEFERRED replacement options from your app.
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-purchases@5.0.0
+npm install @awesome-cordova-plugins/purchases
+```
+
+**Plugin Repo:** [https://github.com/RevenueCat/cordova-plugin-purchases](https://github.com/RevenueCat/cordova-plugin-purchases)
+
+## Supported Platforms
 
 - Android
 - iOS
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

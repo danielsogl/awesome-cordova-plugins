@@ -1,18 +1,27 @@
+---
+description: >-
+  WheelSelector Plugin plugin for Cordova and Ionic. Native wheel selector for Cordova (Android/iOS).
+---
+
 # WheelSelector Plugin
-
-```
-$ ionic cordova plugin add cordova-wheel-selector-plugin
-$ npm install @awesome-cordova-plugins/wheel-selector
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/wheel-selector/)
-
-Plugin Repo: [https://github.com/jasonmamy/cordova-wheel-selector-plugin](https://github.com/jasonmamy/cordova-wheel-selector-plugin)
 
 Native wheel selector for Cordova (Android/iOS).
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-wheel-selector-plugin
+npm install @awesome-cordova-plugins/wheel-selector
+```
+
+**Plugin Repo:** [https://github.com/jasonmamy/cordova-wheel-selector-plugin](https://github.com/jasonmamy/cordova-wheel-selector-plugin)
+
+## Supported Platforms
 
 - Android
 - iOS
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

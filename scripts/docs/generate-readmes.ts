@@ -124,34 +124,49 @@ function getTagValue(reflection: DeclarationReflection, tagName: string): string
     .trim();
 }
 
+function truncate(text: string, maxLen: number): string {
+  if (text.length <= maxLen) return text;
+  return text.slice(0, maxLen - 1).replace(/\s+\S*$/, '') + '…';
+}
+
 function generateReadme(name: string, pluginSlug: string, description: string, meta: PluginMeta): string {
   const installCmd = meta.install ?? `ionic cordova plugin add ${meta.plugin ?? 'PLUGIN_NAME'}`;
   const npmPkg = `@awesome-cordova-plugins/${pluginSlug}`;
 
-  let readme = `# ${name}\n\n`;
+  const metaDescription = description
+    ? truncate(`${name} plugin for Cordova and Ionic. ${description.replace(/\n/g, ' ')}`, 160)
+    : `${name} — Awesome Cordova Plugins wrapper for Ionic and Cordova apps.`;
 
-  readme += '```\n';
-  readme += `$ ${installCmd}\n`;
-  readme += `$ npm install ${npmPkg}\n`;
-  readme += '```\n\n';
+  // GitBook YAML frontmatter for SEO meta description
+  let readme = `---\ndescription: >-\n  ${metaDescription}\n---\n\n`;
 
-  readme += `## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/${pluginSlug}/)\n\n`;
-
-  if (meta.repo) {
-    readme += `Plugin Repo: [${meta.repo}](${meta.repo})\n\n`;
-  }
+  readme += `# ${name}\n\n`;
 
   if (description) {
     readme += `${description}\n\n`;
   }
 
+  readme += '## Installation\n\n';
+  readme += '```bash\n';
+  readme += `${installCmd}\n`;
+  readme += `npm install ${npmPkg}\n`;
+  readme += '```\n\n';
+
+  if (meta.repo) {
+    readme += `**Plugin Repo:** [${meta.repo}](${meta.repo})\n\n`;
+  }
+
   if (meta.platforms && meta.platforms.length > 0) {
-    readme += '## Supported platforms\n\n';
+    readme += '## Supported Platforms\n\n';
     for (const platform of meta.platforms) {
       readme += `- ${platform}\n`;
     }
     readme += '\n';
   }
+
+  readme += '## Further Information\n\n';
+  readme += `- [Installation Guide](../../installation.md)\n`;
+  readme += `- [FAQ](../../faq.md)\n`;
 
   return readme;
 }

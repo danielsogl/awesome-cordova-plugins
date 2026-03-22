@@ -1,13 +1,9 @@
+---
+description: >-
+  File plugin for Cordova and Ionic. This plugin implements a File API allowing read/write access to files residing on the device.  The File class implements…
+---
+
 # File
-
-```
-$ ionic cordova plugin add cordova-plugin-file
-$ npm install @awesome-cordova-plugins/file
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/file/)
-
-Plugin Repo: [https://github.com/apache/cordova-plugin-file](https://github.com/apache/cordova-plugin-file)
 
 This plugin implements a File API allowing read/write access to files residing on the device.
 
@@ -32,7 +28,16 @@ this.file.checkDir(this.file.dataDirectory, 'mydir').then(_ => console.log('Dire
   //www.w3.org/TR/2011/WD-file-system-api-20110419/ It also implements the FileWriter spec : http:
   //dev.w3.org/2009/dap/file-system/file-writer.html
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-file
+npm install @awesome-cordova-plugins/file
+```
+
+**Plugin Repo:** [https://github.com/apache/cordova-plugin-file](https://github.com/apache/cordova-plugin-file)
+
+## Supported Platforms
 
 - Android
 - Browser
@@ -40,3 +45,7 @@ this.file.checkDir(this.file.dataDirectory, 'mydir').then(_ => console.log('Dire
 - macOS
 - Windows
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

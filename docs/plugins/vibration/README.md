@@ -1,19 +1,28 @@
+---
+description: >-
+  Vibration plugin for Cordova and Ionic. Vibrates the device
+---
+
 # Vibration
-
-```
-$ ionic cordova plugin add cordova-plugin-vibration
-$ npm install @awesome-cordova-plugins/vibration
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/vibration/)
-
-Plugin Repo: [https://github.com/apache/cordova-plugin-vibration](https://github.com/apache/cordova-plugin-vibration)
 
 Vibrates the device
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-vibration
+npm install @awesome-cordova-plugins/vibration
+```
+
+**Plugin Repo:** [https://github.com/apache/cordova-plugin-vibration](https://github.com/apache/cordova-plugin-vibration)
+
+## Supported Platforms
 
 - Android
 - iOS
 - Windows
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

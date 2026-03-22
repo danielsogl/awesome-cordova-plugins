@@ -1,17 +1,22 @@
+---
+description: >-
+  File Transfer plugin for Cordova and Ionic. This plugin allows you to upload and download files.
+---
+
 # File Transfer
-
-```
-$ ionic cordova plugin add cordova-plugin-file-transfer
-$ npm install @awesome-cordova-plugins/file-transfer
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/file-transfer/)
-
-Plugin Repo: [https://github.com/apache/cordova-plugin-file-transfer](https://github.com/apache/cordova-plugin-file-transfer)
 
 This plugin allows you to upload and download files.
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-file-transfer
+npm install @awesome-cordova-plugins/file-transfer
+```
+
+**Plugin Repo:** [https://github.com/apache/cordova-plugin-file-transfer](https://github.com/apache/cordova-plugin-file-transfer)
+
+## Supported Platforms
 
 - Amazon Fire OS
 - Android
@@ -21,3 +26,7 @@ This plugin allows you to upload and download files.
 - Windows
 - Windows Phone
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

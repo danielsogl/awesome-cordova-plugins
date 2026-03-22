@@ -1,13 +1,9 @@
+---
+description: >-
+  Geolocation plugin for Cordova and Ionic. This plugin provides information about the device's location, such as latitude and longitude. Common sources of…
+---
+
 # Geolocation
-
-```
-$ ionic cordova plugin add cordova-plugin-geolocation --variable GEOLOCATION_USAGE_DESCRIPTION="To locate you"
-$ npm install @awesome-cordova-plugins/geolocation
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/geolocation/)
-
-Plugin Repo: [https://github.com/apache/cordova-plugin-geolocation](https://github.com/apache/cordova-plugin-geolocation)
 
 This plugin provides information about the device's location, such as latitude and longitude. Common sources of location information include Global Positioning System (GPS) and location inferred from network signals such as IP address, RFID, WiFi and Bluetooth MAC addresses, and GSM/CDMA cell IDs.
 
@@ -20,7 +16,16 @@ For iOS you have to add this configuration to your configuration.xml file
 </edit-config>
 ```
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-geolocation --variable GEOLOCATION_USAGE_DESCRIPTION="To locate you"
+npm install @awesome-cordova-plugins/geolocation
+```
+
+**Plugin Repo:** [https://github.com/apache/cordova-plugin-geolocation](https://github.com/apache/cordova-plugin-geolocation)
+
+## Supported Platforms
 
 - Amazon Fire OS
 - Android
@@ -28,3 +33,7 @@ For iOS you have to add this configuration to your configuration.xml file
 - iOS
 - Windows
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

@@ -1,18 +1,27 @@
+---
+description: >-
+  Checkout plugin for Cordova and Ionic. Checkout.com cordova plugin
+---
+
 # Checkout
-
-```
-$ 
-$ npm install @awesome-cordova-plugins/checkout
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/checkout/)
-
-Plugin Repo: [https://github.com/checkout/frames-cordova](https://github.com/checkout/frames-cordova)
 
 Checkout.com cordova plugin
 
-## Supported platforms
+## Installation
+
+```bash
+
+npm install @awesome-cordova-plugins/checkout
+```
+
+**Plugin Repo:** [https://github.com/checkout/frames-cordova](https://github.com/checkout/frames-cordova)
+
+## Supported Platforms
 
 - Android
 - iOS
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

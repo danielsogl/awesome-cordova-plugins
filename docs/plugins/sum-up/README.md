@@ -1,18 +1,27 @@
+---
+description: >-
+  SumUp plugin for Cordova and Ionic. Plugin to communicate with a SumUp payment terminal
+---
+
 # SumUp
-
-```
-$ cordova plugin add cordova-sumup-plugin --variable SUMUP_API_KEY=INSERT_YOUR_KEY
-$ npm install @awesome-cordova-plugins/sum-up
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/sum-up/)
-
-Plugin Repo: [https://github.com/mariusbackes/cordova-plugin-sumup](https://github.com/mariusbackes/cordova-plugin-sumup)
 
 Plugin to communicate with a SumUp payment terminal
 
-## Supported platforms
+## Installation
+
+```bash
+cordova plugin add cordova-sumup-plugin --variable SUMUP_API_KEY=INSERT_YOUR_KEY
+npm install @awesome-cordova-plugins/sum-up
+```
+
+**Plugin Repo:** [https://github.com/mariusbackes/cordova-plugin-sumup](https://github.com/mariusbackes/cordova-plugin-sumup)
+
+## Supported Platforms
 
 - Android
 - iOS
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

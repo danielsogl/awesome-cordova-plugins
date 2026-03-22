@@ -1,17 +1,22 @@
+---
+description: >-
+  App Preferences plugin for Cordova and Ionic. This plugin allows you to read and write app preferences
+---
+
 # App Preferences
-
-```
-$ ionic cordova plugin add cordova-plugin-app-preferences
-$ npm install @awesome-cordova-plugins/app-preferences
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/app-preferences/)
-
-Plugin Repo: [https://github.com/apla/me.apla.cordova.app-preferences](https://github.com/apla/me.apla.cordova.app-preferences)
 
 This plugin allows you to read and write app preferences
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-app-preferences
+npm install @awesome-cordova-plugins/app-preferences
+```
+
+**Plugin Repo:** [https://github.com/apla/me.apla.cordova.app-preferences](https://github.com/apla/me.apla.cordova.app-preferences)
+
+## Supported Platforms
 
 - Android
 - BlackBerry 10
@@ -21,3 +26,7 @@ This plugin allows you to read and write app preferences
 - Windows 8
 - Windows Phone
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)

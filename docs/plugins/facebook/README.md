@@ -1,13 +1,9 @@
+---
+description: >-
+  Facebook plugin for Cordova and Ionic. Use the Facebook Connect plugin to obtain access to the native FB application on iOS and Android.  Requires Cordova…
+---
+
 # Facebook
-
-```
-$ ionic cordova plugin add cordova-plugin-facebook-connect --variable APP_ID="123456789" --variable APP_NAME="myApplication"
-$ npm install @awesome-cordova-plugins/facebook
-```
-
-## [Usage Documentation](https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/facebook/)
-
-Plugin Repo: [https://github.com/cordova-plugin-facebook-connect/cordova-plugin-facebook-connect](https://github.com/cordova-plugin-facebook-connect/cordova-plugin-facebook-connect)
 
 Use the Facebook Connect plugin to obtain access to the native FB application on iOS and Android.
 
@@ -74,9 +70,22 @@ Events are listed on the [insights page](https://www.facebook.com/insights/).
 
 For tracking events, see `logEvent` and `logPurchase`.
 
-## Supported platforms
+## Installation
+
+```bash
+ionic cordova plugin add cordova-plugin-facebook-connect --variable APP_ID="123456789" --variable APP_NAME="myApplication"
+npm install @awesome-cordova-plugins/facebook
+```
+
+**Plugin Repo:** [https://github.com/cordova-plugin-facebook-connect/cordova-plugin-facebook-connect](https://github.com/cordova-plugin-facebook-connect/cordova-plugin-facebook-connect)
+
+## Supported Platforms
 
 - Android
 - iOS
 - Browser
 
+## Further Information
+
+- [Installation Guide](../../installation.md)
+- [FAQ](../../faq.md)
