@@ -4,230 +4,193 @@ This is a short guide on creating new plugin wrappers for Awesome Cordova Plugin
 
 ## Creating Plugin Wrappers
 
-First, let's start by creating a new plugin wrapper from template.
+First, create a new plugin wrapper from the template:
 
-```
-// Call this command, and replace PluginName with the name of the plugin you wish to add
-// Make sure to capitalize the first letter, or use CamelCase if necessary.
-
-gulp plugin:create -n PluginName
-
-// add -m flag to get a minimal template to start with
-gulp plugin:create -m -n PluginName
+```bash
+# Replace PluginName with the name of the plugin you wish to add.
+# Use CamelCase for the name (e.g. BarcodeScanner, NativeAudio).
+npm run plugin:create -- -n PluginName
 ```
 
-Running the command above will create a new directory `src/@ionic-native/plugins/plugin-name/` with a single file in there: `index.ts`. This file is where all the plugin definitions should be.
+This creates a new directory `src/@awesome-cordova-plugins/plugins/plugin-name/` with a single `index.ts` file where all plugin definitions go.
 
-Let's take a look at the existing plugin wrapper for Geolocation to see what goes into an Ionic Native plugin (comments have been removed for clarity):
+## Plugin Anatomy
 
-```
+Let's look at the Geolocation plugin wrapper as an example:
+
+```typescript
 @Plugin({
+  pluginName: 'Geolocation',
   plugin: 'cordova-plugin-geolocation',
-  pluginRef: 'navigator.geolocation'
+  pluginRef: 'navigator.geolocation',
+  repo: 'https://github.com/apache/cordova-plugin-geolocation',
+  platforms: ['Android', 'iOS', 'Browser'],
 })
 @Injectable()
-export class Geolocation {
-
+export class Geolocation extends AwesomeCordovaNativePlugin {
   @Cordova()
-  getCurrentPosition(options?: GeolocationOptions): Promise<Geoposition> { return; }
+  getCurrentPosition(options?: GeolocationOptions): Promise<Geoposition> {
+    return;
+  }
 
   @Cordova({
     callbackOrder: 'reverse',
     observable: true,
-    clearFunction: 'clearWatch'
+    clearFunction: 'clearWatch',
   })
-  watchPosition(options?: GeolocationOptions): Observable<Geoposition> { return; }
+  watchPosition(options?: GeolocationOptions): Observable<Geoposition> {
+    return;
+  }
 }
 ```
 
 ### The Plugin Class
 
-First and foremost, we want to create a class representing our plugin, in this case Geolocation.
+Every plugin wrapper extends `AwesomeCordovaNativePlugin` and uses the `@Injectable()` decorator for Angular DI support:
 
-```
+```typescript
 @Injectable()
-class Geolocation {
-
-}
+export class MyPlugin extends AwesomeCordovaNativePlugin {}
 ```
 
-#### Class Metadata
+### @Plugin Decorator
 
-Next, we need to specify some information about this plugin. Ionic Native is written in [TypeScript](http://www.typescriptlang.org/) and makes use of a feature called [decorators](https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Decorators.md). Long story short, decorators allow us to modify or add info to classes and properties using a declarative syntax.
+The `@Plugin` decorator provides metadata about the Cordova plugin:
 
-For example, the `@Plugin` decorator adds information about the plugin to our Geolocation class:
+| Property     | Description                            | Example                          |
+| ------------ | -------------------------------------- | -------------------------------- |
+| `pluginName` | Display name (should match class name) | `'Camera'`                       |
+| `plugin`     | npm package name                       | `'cordova-plugin-camera'`        |
+| `pluginRef`  | Global reference on `window`           | `'navigator.camera'`             |
+| `repo`       | GitHub repository URL                  | `'https://github.com/...'`       |
+| `platforms`  | Supported platforms                    | `['Android', 'iOS']`             |
+| `install`    | Custom install command (optional)      | `'ionic cordova plugin add ...'` |
 
-```
-@Plugin({
-  plugin: 'cordova-plugin-geolocation',
-  pluginRef: 'navigator.geolocation'
-})
-@Injectable()
-export class Geolocation {
+The `pluginRef` tells Awesome Cordova Plugins where the Cordova plugin attaches itself. For example, `cordova-plugin-camera` is available at `window.navigator.camera`, so `pluginRef` is `'navigator.camera'`.
 
-}
-```
+### @Cordova Decorator
 
-Here, `plugin` is the name of the plugin package on npm and used when calling `cordova plugin add`.
+Wraps a stub method in a call to the Cordova plugin. By default it returns a Promise that resolves on the success callback and rejects on the error callback. It also checks that Cordova and the plugin are installed, printing diagnostics if not.
 
-`pluginRef` refers to the where on `window` the underlying Cordova plugin is normally exposed. For example, in the case of the Cordova Geolocation plugin, normally you would make calls like `window.navigator.geolocation.getCurrentPosition({}, success, error)`, so the `pluginRef` in this case is `navigator.geolocation`.
+**Options:**
 
-#### Class Methods
+| Option            | Type                 | Description                                                               |
+| ----------------- | -------------------- | ------------------------------------------------------------------------- |
+| `observable`      | `boolean`            | Return an Observable instead of a Promise                                 |
+| `sync`            | `boolean`            | Return the value directly (no Promise/Observable)                         |
+| `methodName`      | `string`             | Cordova method name if different from wrapper method                      |
+| `callbackOrder`   | `'reverse'`          | Set if success/error callbacks come before other args                     |
+| `callbackStyle`   | `'node' \| 'object'` | `'node'` for `(err, result)` style, `'object'` for callbacks in an object |
+| `successName`     | `string`             | Success callback property name (with `callbackStyle: 'object'`)           |
+| `errorName`       | `string`             | Error callback property name (with `callbackStyle: 'object'`)             |
+| `successIndex`    | `number`             | Custom position of success callback                                       |
+| `errorIndex`      | `number`             | Custom position of error callback                                         |
+| `clearFunction`   | `string`             | Method to call when Observable is unsubscribed                            |
+| `clearWithArgs`   | `boolean`            | Call `clearFunction` with the same args as the initial call               |
+| `eventObservable` | `boolean`            | Wrap an event listener in an Observable                                   |
+| `event`           | `string`             | Event name (required if `eventObservable: true`)                          |
+| `element`         | `string`             | Element to attach event listener to (default: `window`)                   |
+| `otherPromise`    | `boolean`            | Set if the Cordova method already returns a Promise                       |
+| `platforms`       | `string[]`           | Override supported platforms for this method                              |
 
-Now all that's left is to add the plugin methods, in this case `getCurrentPosition` and `watchPosition`.
+**Examples:**
 
-Let's take a look at `getCurrentPosition` first.
-
-```
-  @Cordova()
-  getCurrentPosition(options?: GeolocationOptions): Promise<Geoposition> { return }
-```
-
-It's just a stub. The `return` is only there to keep the TypeScript type-checker from complaining since we indicate that `getCurrentPosition` returns a `Promise<Geoposition>`.
-
-By default, the `@Cordova` decorator wraps the plugin callbacks in a Promise that resolves when the success callback is called and rejects when the error callback is called. It also ensures that Cordova and the underlying plugin are available, and prints helpful diagnostics if they aren't.
-
-Next, let's look at the `watchPosition` method.
-
-```
-  @Cordova({
-    callbackOrder: 'reverse',
-    observable: true,
-    clearFunction: 'clearWatch'
-  })
-  watchPosition(options?: GeolocationOptions): Observable<Geoposition> { return }
-```
-
-The `@Cordova` decorator has a few more options now.
-
-`observable` indicates that this method may call its callbacks multiple times, so `@Cordova` wraps it in an [`Observable`](https://github.com/ionic-team/ionic-native#promises-and-observables) instead of a Promise.
-
-`callbackOrder` refers to the method signature of the underlying Cordova plugin, and tells Ionic Native which arguments are the callbacks to map to the wrapping Promise or Observable. In this case, the signature is [`watchPosition(success, error, options)`](https://github.com/apache/cordova-plugin-geolocation#navigatorgeolocationwatchposition), so we need to tell `@Cordova` that the callbacks are the first arguments, not the last arguments. For rare cases, you can also specify the options `successIndex` and `errorIndex` to indicate where in the argument list the callbacks are located.
-
-`clearFunction` is used in conjunction with the `observable` option and indicates the function to be called when the Observable is disposed.
-
-### Testing your changes
-
-You need to run `npm run build` in the `ionic-native` project, this will create a `dist` directory. The `dist` directory will contain a sub directory `@ionic-native` with all the packages compiled in there. Copy the package(s) you created/modified to your app's node_modules under the `@ionic-native` directory. (e.g. `cp -r dist/@ionic-native/plugin-name ../my-app/node_modules/@ionic-native/`).
-
-### Cleaning the code
-
-You need to run `npm run lint` to analyze the code and ensure its consistency with the repository style. Fix any errors before submitting a PR.
-
-### 'Wrapping' Up
-
-That's it! The only thing left to do is rigorously document the plugin and its usage. Take a look at some of the other plugins for good documentation styles.
-
-## Commit Message Format
-
-We have very precise rules over how our git commit messages can be formatted. This leads to more readable messages that are easy to follow when looking through the project history. But also, we use the git commit messages to generate the our change log. (Ok you got us, it's basically Angular's commit message format).
-
-`type(scope): subject`
-
-#### Type
-
-Must be one of the following:
-
-- **fix**: A bug fix
-- **feat**: A new feature
-- **docs**: Documentation only changes
-- **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-- **refactor**: A code change that neither fixes a bug nor adds a feature
-- **perf**: A code change that improves performance
-- **test**: Adding missing tests
-- **chore**: Changes to the build process or auxiliary tools and libraries such as documentation generation
-
-#### Scope
-
-The scope could be anything specifying place of the commit change. For example, the name of the plugin being changed
-
-#### Subject
-
-The subject contains succinct description of the change:
-
-- use the imperative, present tense: "change" not "changed" nor "changes"
-- do not capitalize first letter
-- do not place a period (.) at the end
-- entire length of the commit message must not go over 50 characters
-
-### Ionic Native Decorators
-
-#### Plugin
-
-A decorator to wrap the main plugin class, and any other classes that will use `@Cordova` or `@CordovaProperty` decorators. This decorator accepts the following configuration:
-
-- _pluginName_: Plugin name, this should match the class name
-- _plugin_: The plugin's NPM package, or Github URL if NPM is not available.
-- _pluginRef_: The plugin object reference. Example: 'cordova.file'.
-- _repo_: The plugin's Github Repository URL
-- _install_: (optional) Install command. This is used in case a plugin has a custom install command (takes variables).
-- _platforms_: An array of strings indicating the supported platforms.
-
-#### Cordova
-
-Checks if the plugin and the method are available before executing. By default, the decorator will wrap the callbacks of the function and return a Promise. This decorator takes the following configuration options:
-
-- **observable**: set to true to return an Observable
-- **methodName**: an optional name of the cordova plugins method name (if different from wrappers method name)
-- **clearFunction**: an optional name of a method to clear the observable we returned
-- **clearWithArgs**: This can be used if clearFunction is set. Set this to true to call the clearFunction with the same arguments used in the initial function.
-- **sync**: set to true if the method should return the value as-is without wrapping with Observable/Promise
-- **callbackOrder**: set to `reverse` if the success and error callbacks are the first two arguements of the method
-- **callbackStyle**: set to `node` if the plugin has one callback with a node style (e.g: `function(err, result){}`), or set to `object` if the callbacks are part of an object
-- **successName**: Success function property name. This must be set if callbackStyle is set to object.
-- **errorName**: Error function property name. This must be set if callbackStyle is set to object.
-- **successIndex**: Set a custom index for the success callback function. This doesn't work if callbackOrder or callbackStyle are set.
-- **errorIndex**: Set a custom index for the error callback function. This doesn't work if callbackOrder or callbackStyle are set.
-- **eventObservable**: set to true to return an observable that wraps an event listener
-- **event**: Event name, this must be set if eventObservable is set to true
-- **element**: Element to attach the event listener to, this is optional, defaults to `window`
-- **otherPromise**: Set to true if the wrapped method returns a promise
-- **platforms**: array of strings indicating supported platforms. Specify this if the supported platforms doesn't match the plugin's supported platforms.
-
-Example:
-
-```ts
+```typescript
+// Default: returns a Promise
 @Cordova()
 someMethod(): Promise<any> { return; }
 
+// Synchronous return
 @Cordova({ sync: true })
-syncMethod(): number { }
+getVersion(): string { }
+
+// Observable with cleanup
+@Cordova({ observable: true, clearFunction: 'clearWatch' })
+watchChanges(): Observable<any> { return; }
+
+// Event-based Observable
+@Cordova({ eventObservable: true, event: 'onresult' })
+onResult(): Observable<any> { return; }
 ```
 
-#### CordovaProperty
+### @CordovaProperty
 
-Checks if the plugin and property exist before getting/setting the property's value
+Gets/sets a property on the Cordova plugin object after checking the plugin exists:
 
-Example:
-
-```ts
+```typescript
 @CordovaProperty()
 someProperty: string;
 ```
 
-#### CordovaCheck
+### @CordovaCheck
 
-Checks if the plugin exists before performing a custom written method. By default, the method will return a promise that will reject with an error if the plugin is not available. This wrapper accepts two optional configurations:
+Checks if the plugin exists before running custom logic. Rejects with an error if the plugin is unavailable:
 
-- **observable**: set to true to return an empty Observable if the plugin isn't available
-- **sync**: set to true to return nothing if the plugin isn't available
-
-Example:
-
-```ts
+```typescript
 @CordovaCheck()
 someMethod(): Promise<any> {
-  // anything here will only run if the plugin is available
+  // Custom logic — only runs if the plugin is available
 }
 ```
 
-#### CordovaFunctionOverride
+Options: `observable` (return empty Observable) or `sync` (return nothing) if plugin is missing.
 
-Wrap a stub function in a call to a Cordova plugin, checking if both Cordova and the required plugin are installed.
+### @CordovaFunctionOverride
 
-Example:
+Wraps a stub function in a Cordova plugin call and returns an Observable:
 
-```ts
+```typescript
 @CordovaFunctionOverride()
 someMethod(): Observable<any> { return; }
+```
+
+## Testing Your Changes
+
+```bash
+# Build all packages
+npm run build
+
+# Run tests
+npm test
+
+# Lint your code
+npm run lint
+```
+
+To test in a real app, copy the built package to your app's `node_modules`:
+
+```bash
+cp -r dist/@awesome-cordova-plugins/plugin-name ../my-app/node_modules/@awesome-cordova-plugins/
+```
+
+## Regenerating Documentation
+
+After adding or modifying a plugin, regenerate the documentation:
+
+```bash
+npm run readmes
+```
+
+This generates plugin README files and updates the GitBook SUMMARY.md from the source code.
+
+## Commit Message Format
+
+Follow the [Conventional Commits](https://www.conventionalcommits.org/) format:
+
+```
+type(scope): subject
+```
+
+**Types:** `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `chore`
+
+**Scope:** The plugin name or area being changed (e.g. `camera`, `core`, `build`)
+
+**Subject:** Imperative, present tense, lowercase, no period at end.
+
+Examples:
+
+```
+feat(camera): add support for front-facing camera option
+fix(geolocation): handle timeout error on Android
+docs(nfc): update installation instructions
 ```
