@@ -256,6 +256,26 @@
 
 
 
+## [9.1.2](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.1.1...awesome-cordova-plugins-v9.1.2) (2026-03-23)
+
+
+### Bug Fixes
+
+* **tts-advanced:** use promise-based API ([#5131](https://github.com/danielsogl/awesome-cordova-plugins/issues/5131)) ([fc67fb8](https://github.com/danielsogl/awesome-cordova-plugins/commit/fc67fb81742496f118dc6791fea96dc36bd013f8))
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency @swc/core to ^1.15.21 ([#5127](https://github.com/danielsogl/awesome-cordova-plugins/issues/5127)) ([30b872c](https://github.com/danielsogl/awesome-cordova-plugins/commit/30b872c00d2142958f05a7375e2d090271a0abae))
+* **deps:** update dependency @types/node to ^22.19.15 ([#5128](https://github.com/danielsogl/awesome-cordova-plugins/issues/5128)) ([129a72b](https://github.com/danielsogl/awesome-cordova-plugins/commit/129a72b6f53f120e7b66b6c859afeb1b1e3b6416))
+* **deps:** update dependency prettier to ^3.8.1 ([#5129](https://github.com/danielsogl/awesome-cordova-plugins/issues/5129)) ([7b77fc1](https://github.com/danielsogl/awesome-cordova-plugins/commit/7b77fc17a2634f1cdb3020ebb0cd562e16dae9a0))
+* **deps:** update dependency rxjs to ^7.8.2 ([#5130](https://github.com/danielsogl/awesome-cordova-plugins/issues/5130)) ([91743e7](https://github.com/danielsogl/awesome-cordova-plugins/commit/91743e7e03c0153559a4c6ed0ad1ee73e382fa3d))
+
+
+### Documentation
+
+* add context7 configuration file ([7aa69c6](https://github.com/danielsogl/awesome-cordova-plugins/commit/7aa69c6795600dd1e54629ca28077d38927ea488))
+
 ## [9.1.1](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.1.0...awesome-cordova-plugins-v9.1.1) (2026-03-22)
 
 
