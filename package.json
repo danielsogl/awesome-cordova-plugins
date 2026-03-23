@@ -45,7 +45,7 @@
     "lefthook": "^2.1.4",
     "prettier": "^3.8.1",
     "rollup": "^4.59.0",
-    "rxjs": "^7.8.0",
+    "rxjs": "^7.8.2",
     "tsx": "^4.21.0",
     "typedoc": "^0.28.17",
     "typedoc-plugin-markdown": "^4.11.0",
