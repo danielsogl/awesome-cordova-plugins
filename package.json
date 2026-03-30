@@ -39,7 +39,7 @@
     "@types/node": "^22.19.15",
     "eslint": "^10.1.0",
     "eslint-config-prettier": "10.1.8",
-    "eslint-plugin-jsdoc": "^62.8.0",
+    "eslint-plugin-jsdoc": "^62.8.1",
     "jest": "^30.3.0",
     "jest-environment-jsdom": "^30.3.0",
     "lefthook": "^2.1.4",
@@ -50,7 +50,7 @@
     "typedoc": "^0.28.18",
     "typedoc-plugin-markdown": "^4.11.0",
     "typescript": "~5.8.3",
-    "typescript-eslint": "^8.57.1"
+    "typescript-eslint": "^8.57.2"
   },
   "repository": {
     "type": "git",
