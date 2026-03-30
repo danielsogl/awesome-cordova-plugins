@@ -256,6 +256,14 @@
 
 
 
+## [9.1.3](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.1.2...awesome-cordova-plugins-v9.1.3) (2026-03-30)
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** bump picomatch from 2.3.1 to 2.3.2 ([#5132](https://github.com/danielsogl/awesome-cordova-plugins/issues/5132)) ([ac35af8](https://github.com/danielsogl/awesome-cordova-plugins/commit/ac35af8abf33534782d44cf24785cd991202d03b))
+* **deps:** update dependency typedoc to ^0.28.18 ([#5134](https://github.com/danielsogl/awesome-cordova-plugins/issues/5134)) ([87e1f12](https://github.com/danielsogl/awesome-cordova-plugins/commit/87e1f1299331d3e1eef498b559c477e7d22388b3))
+
 ## [9.1.2](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.1.1...awesome-cordova-plugins-v9.1.2) (2026-03-23)
 
 
