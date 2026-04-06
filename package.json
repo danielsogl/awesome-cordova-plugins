@@ -36,7 +36,7 @@
     "@swc/jest": "^0.2.39",
     "@types/cordova": "11.0.3",
     "@types/jest": "^30.0.0",
-    "@types/node": "^22.19.15",
+    "@types/node": "^22.19.17",
     "eslint": "^10.1.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-jsdoc": "^62.8.1",
