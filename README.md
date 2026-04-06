@@ -8,6 +8,7 @@ Awesome Cordova Plugins wraps plugin callbacks in a Promise or Observable, provi
 
 To learn more about the reasons why Ionic Native was renamed to Awesome Cordova Plugins, read the official [Ionic blog](https://ionicframework.com/blog/a-new-chapter-for-ionic-native/) post by Max Lyncht.
 
+- [guardian-agent-prompts](https://github.com/milkomida77/guardian-agent-prompts) - 49 production-tested AI agent system prompts for Cordova plugin workflow orchestration, automated hybrid app development management, and multi-agent coordination. MIT licensed.
 ## Capacitor Support
 
 In addition to Cordova, Awesome Cordova Plugins also works with [Capacitor](https://capacitorjs.com), Ionic's official native runtime. Basic usage below. For complete details, [see the Capacitor documentation](https://capacitorjs.com/docs/v2/cordova/using-cordova-plugins).
