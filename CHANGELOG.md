@@ -256,6 +256,24 @@
 
 
 
+## [9.1.3](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.1.2...awesome-cordova-plugins-v9.1.3) (2026-04-15)
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** bump picomatch from 2.3.1 to 2.3.2 ([#5132](https://github.com/danielsogl/awesome-cordova-plugins/issues/5132)) ([ac35af8](https://github.com/danielsogl/awesome-cordova-plugins/commit/ac35af8abf33534782d44cf24785cd991202d03b))
+* **deps:** update dependency @swc/core to ^1.15.24 ([#5136](https://github.com/danielsogl/awesome-cordova-plugins/issues/5136)) ([3447bd3](https://github.com/danielsogl/awesome-cordova-plugins/commit/3447bd33f5fbe6faacb495a3546db9d97723d687))
+* **deps:** update dependency @types/node to ^22.19.17 ([#5137](https://github.com/danielsogl/awesome-cordova-plugins/issues/5137)) ([412320d](https://github.com/danielsogl/awesome-cordova-plugins/commit/412320dd447ded3bc36e1051b496b146f9a21937))
+* **deps:** update dependency rollup to ^4.60.1 ([#5142](https://github.com/danielsogl/awesome-cordova-plugins/issues/5142)) ([c6c21ac](https://github.com/danielsogl/awesome-cordova-plugins/commit/c6c21acf37fefa169ceba0d6a73e5ac0602fa21d))
+* **deps:** update dependency typedoc to ^0.28.18 ([#5134](https://github.com/danielsogl/awesome-cordova-plugins/issues/5134)) ([87e1f12](https://github.com/danielsogl/awesome-cordova-plugins/commit/87e1f1299331d3e1eef498b559c477e7d22388b3))
+* **deps:** update dependency typedoc to ^0.28.19 ([#5141](https://github.com/danielsogl/awesome-cordova-plugins/issues/5141)) ([8e54b98](https://github.com/danielsogl/awesome-cordova-plugins/commit/8e54b98941b8df3a348e0a54b235829dc6cd1903))
+* **deps:** update linting and formatting ([#5135](https://github.com/danielsogl/awesome-cordova-plugins/issues/5135)) ([d2fb499](https://github.com/danielsogl/awesome-cordova-plugins/commit/d2fb499b30fbc1728b72e2c592dac01abef5741a))
+
+
+### Documentation
+
+* **core:** fix dead link to Capacitor docs ([#5143](https://github.com/danielsogl/awesome-cordova-plugins/issues/5143)) ([b7d9d90](https://github.com/danielsogl/awesome-cordova-plugins/commit/b7d9d9022fe98938f94c9c338f1e0cfffd535ff4))
+
 ## [9.1.2](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.1.1...awesome-cordova-plugins-v9.1.2) (2026-03-23)
 
 
