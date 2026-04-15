@@ -256,6 +256,13 @@
 
 
 
+## [9.1.4](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.1.3...awesome-cordova-plugins-v9.1.4) (2026-04-15)
+
+
+### Bug Fixes
+
+* restore v9 plugin exports ([#5144](https://github.com/danielsogl/awesome-cordova-plugins/issues/5144)) ([ff293a9](https://github.com/danielsogl/awesome-cordova-plugins/commit/ff293a931e135d86e4f8b16f75fd2e8a3e42c11a))
+
 ## [9.1.3](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.1.2...awesome-cordova-plugins-v9.1.3) (2026-04-15)
 
 
