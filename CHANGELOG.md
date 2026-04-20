@@ -256,6 +256,14 @@
 
 
 
+## [9.1.5](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.1.4...awesome-cordova-plugins-v9.1.5) (2026-04-20)
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency @swc/core to ^1.15.30 ([#5146](https://github.com/danielsogl/awesome-cordova-plugins/issues/5146)) ([ee64b91](https://github.com/danielsogl/awesome-cordova-plugins/commit/ee64b913711da74c0d76709c15bcc48abec702d8))
+* **deps:** update dependency rollup to ^4.60.2 ([#5147](https://github.com/danielsogl/awesome-cordova-plugins/issues/5147)) ([5b4a0a4](https://github.com/danielsogl/awesome-cordova-plugins/commit/5b4a0a4efff086c91424bbf53667d57d17103e3d))
+
 ## [9.1.4](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.1.3...awesome-cordova-plugins-v9.1.4) (2026-04-15)
 
 
