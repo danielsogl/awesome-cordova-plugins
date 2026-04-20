@@ -32,7 +32,7 @@
     "@angular/compiler-cli": "20.3.18",
     "@angular/core": "20.3.18",
     "@eslint/js": "^10.0.0",
-    "@swc/core": "^1.15.24",
+    "@swc/core": "^1.15.30",
     "@swc/jest": "^0.2.39",
     "@types/cordova": "11.0.3",
     "@types/jest": "^30.0.0",
