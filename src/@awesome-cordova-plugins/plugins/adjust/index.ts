@@ -27,6 +27,7 @@ export class AdjustConfig {
   private sessionTrackingSucceededCallback: (session: AdjustSessionSuccess) => void = null;
   private sessionTrackingFailedCallback: (session: AdjustSessionFailure) => void = null;
   private deferredDeeplinkCallback: (deeplink: string) => void = null;
+  private remoteTriggerCallback: (remoteTrigger: AdjustRemoteTrigger) => void = null;
 
   // android only
   private processName: string = null;
@@ -34,6 +35,7 @@ export class AdjustConfig {
   private preinstallFilePath: string = null;
   private isPlayStoreKidsComplianceEnabled: boolean = null;
   private fbAppId: string = null;
+  private isAppSetIdReadingEnabled: boolean = null;
 
   // ios only
   private isAdServicesEnabled: boolean = null;
@@ -125,6 +127,10 @@ export class AdjustConfig {
     this.deferredDeeplinkCallback = deferredDeeplinkCallback;
   }
 
+  setRemoteTriggerCallback(remoteTriggerCallback: (remoteTrigger: AdjustRemoteTrigger) => void): void {
+    this.remoteTriggerCallback = remoteTriggerCallback;
+  }
+
   private getAttributionCallback(): ((attribution: AdjustAttribution) => void) | null {
     return this.attributionCallback;
   }
@@ -147,6 +153,10 @@ export class AdjustConfig {
 
   private getDeferredDeeplinkCallback(): ((deeplink: string) => void) | null {
     return this.deferredDeeplinkCallback;
+  }
+
+  private getRemoteTriggerCallback(): ((remoteTrigger: AdjustRemoteTrigger) => void) | null {
+    return this.remoteTriggerCallback;
   }
 
   private hasAttributionCallback(): boolean {
@@ -173,6 +183,10 @@ export class AdjustConfig {
     return this.deferredDeeplinkCallback !== null;
   }
 
+  private hasRemoteTriggerCallback(): boolean {
+    return this.remoteTriggerCallback !== null;
+  }
+
   // android only
   setProcessName(processName: string): void {
     this.processName = processName;
@@ -188,6 +202,10 @@ export class AdjustConfig {
 
   setFbAppId(fbAppId: string): void {
     this.fbAppId = fbAppId;
+  }
+
+  disableAppSetIdReading(): void {
+    this.isAppSetIdReadingEnabled = false;
   }
 
   // ios only
@@ -525,6 +543,11 @@ export interface AdjustSkanData {
   error: string;
 }
 
+export interface AdjustRemoteTrigger {
+  label: string;
+  payloadJson: string;
+}
+
 export interface AdjustPurchaseVerificationResult {
   verificationStatus: string;
   code: number;
@@ -574,6 +597,7 @@ export enum AdjustLogLevel {
  * AdjustEventSuccess
  * AdjustEventFailure
  * AdjustSkanData
+ * AdjustRemoteTrigger
  * AdjustPurchaseVerificationResult
  * @classes
  * AdjustConfig
@@ -679,10 +703,22 @@ export class Adjust extends AwesomeCordovaNativePlugin {
    * This method is used to send and potentially resolve shortened deep links
    *
    * @param {AdjustDeeplink} adjustDeeplink AdjustDeeplink instance containing shortened deep link that has opened your app
-   * @returns {Promise<string>} Returns a promise with either resolved (if it was resolved) or echoed deep link
+   * @returns {Promise<string | null>} Returns a promise with either resolved (if it was resolved) or echoed deep link
    */
   @Cordova()
-  processAndResolveDeeplink(adjustDeeplink: AdjustDeeplink): Promise<string> {
+  processAndResolveDeeplink(adjustDeeplink: AdjustDeeplink): Promise<string | null> {
+    return;
+  }
+
+  /**
+   * This method resolves the underlying Adjust link from other links that wrap Adjust links.
+   *
+   * @param {string} url URL to resolve
+   * @param {string[]} resolveUrlSuffixArray Array of URL suffixes to resolve
+   * @returns {Promise<string | null>} Returns a promise with resolved link or null
+   */
+  @Cordova()
+  resolveLinkWithUrl(url: string, resolveUrlSuffixArray: string[]): Promise<string | null> {
     return;
   }
 
@@ -727,40 +763,40 @@ export class Adjust extends AwesomeCordovaNativePlugin {
   /**
    * Function used to get Google AdId
    *
-   * @returns {Promise<string>} Returns a promise with Google advertising ID value
+   * @returns {Promise<string | null>} Returns a promise with Google advertising ID value
    */
   @Cordova()
-  getGoogleAdId(): Promise<string> {
+  getGoogleAdId(): Promise<string | null> {
     return;
   }
 
   /**
    * If you need to obtain the Amazon Fire Advertising ID, you can make a call to this function.
    *
-   * @returns {Promise<string>} Returns a promise with Amazon Fire advertising ID
+   * @returns {Promise<string | null>} Returns a promise with Amazon Fire advertising ID
    */
   @Cordova()
-  getAmazonAdId(): Promise<string> {
+  getAmazonAdId(): Promise<string | null> {
     return;
   }
 
   /**
    * To obtain the IDFA, call this function
    *
-   * @returns {Promise<string>} Returns a promise with IDFA string value
+   * @returns {Promise<string | null>} Returns a promise with IDFA string value
    */
   @Cordova()
-  getIdfa(): Promise<string> {
+  getIdfa(): Promise<string | null> {
     return;
   }
 
   /**
    * To obtain the IDFV, call this function
    *
-   * @returns {Promise<string>} Returns a promise with IDFV string value
+   * @returns {Promise<string | null>} Returns a promise with IDFV string value
    */
   @Cordova()
-  getIdfv(): Promise<string> {
+  getIdfv(): Promise<string | null> {
     return;
   }
 
@@ -768,30 +804,52 @@ export class Adjust extends AwesomeCordovaNativePlugin {
    * For every device with your app installed on it, the Adjust backend generates a unique Adjust device identifier (adid).
    * In order to obtain this identifier, call this function
    *
-   * @returns {Promise<string>} Returns a promise with adid value
+   * @returns {Promise<string | null>} Returns a promise with adid value
    */
   @Cordova()
-  getAdid(): Promise<string> {
+  getAdid(): Promise<string | null> {
+    return;
+  }
+
+  /**
+   * This method allows retrieving the ADID with a specified timeout. If the value is not obtained in time, null is returned.
+   *
+   * @param {number} timeoutInMilliseconds Timeout in milliseconds
+   * @returns {Promise<string | null>} Returns a promise with adid value or null if timeout
+   */
+  @Cordova()
+  getAdidWithTimeout(timeoutInMilliseconds: number): Promise<string | null> {
     return;
   }
 
   /**
    * If you want to access information about a user's current attribution whenever you need it, you can make a call to this function
    *
-   * @returns {Promise<AdjustAttribution>} Returns a promise with AdjustAttribution object
+   * @returns {Promise<AdjustAttribution | null>} Returns a promise with AdjustAttribution object
    */
   @Cordova()
-  getAttribution(): Promise<AdjustAttribution> {
+  getAttribution(): Promise<AdjustAttribution | null> {
+    return;
+  }
+
+  /**
+   * This method allows retrieving the current attribution information with a specified timeout. If the value is not obtained in time, null is returned.
+   *
+   * @param {number} timeoutInMilliseconds Timeout in milliseconds
+   * @returns {Promise<AdjustAttribution | null>} Returns a promise with AdjustAttribution object or null if timeout
+   */
+  @Cordova()
+  getAttributionWithTimeout(timeoutInMilliseconds: number): Promise<AdjustAttribution | null> {
     return;
   }
 
   /**
    * Get the information about version of the SDK used
    *
-   * @returns {Promise<string>} Returns a promise with SDK version information
+   * @returns {Promise<string | null>} Returns a promise with SDK version information
    */
   @Cordova()
-  getSdkVersion(): Promise<string> {
+  getSdkVersion(): Promise<string | null> {
     return;
   }
 
@@ -875,10 +933,10 @@ export class Adjust extends AwesomeCordovaNativePlugin {
   /**
    * To obtain the last deep link which has opened your app, call this function
    *
-   * @returns {Promise<string>} Returns a promise with last opened deep link string value
+   * @returns {Promise<string | null>} Returns a promise with last opened deep link string value
    */
   @Cordova()
-  getLastDeeplink(): Promise<string> {
+  getLastDeeplink(): Promise<string | null> {
     return;
   }
 
