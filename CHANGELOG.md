@@ -256,6 +256,25 @@
 
 
 
+## [9.2.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.1.4...awesome-cordova-plugins-v9.2.0) (2026-05-11)
+
+
+### Features
+
+* **adjust:** update adjust sdk index.ts api to v5.6.0 ([#5154](https://github.com/danielsogl/awesome-cordova-plugins/issues/5154)) ([fa13dd1](https://github.com/danielsogl/awesome-cordova-plugins/commit/fa13dd16f44dd8163854039877ff019e3b461892))
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency @swc/core to ^1.15.30 ([#5146](https://github.com/danielsogl/awesome-cordova-plugins/issues/5146)) ([ee64b91](https://github.com/danielsogl/awesome-cordova-plugins/commit/ee64b913711da74c0d76709c15bcc48abec702d8))
+* **deps:** update dependency @swc/core to ^1.15.33 ([#5155](https://github.com/danielsogl/awesome-cordova-plugins/issues/5155)) ([0ef3fa9](https://github.com/danielsogl/awesome-cordova-plugins/commit/0ef3fa9655477d457401e230053f410058186641))
+* **deps:** update dependency @types/node to ^22.19.18 ([#5157](https://github.com/danielsogl/awesome-cordova-plugins/issues/5157)) ([694078a](https://github.com/danielsogl/awesome-cordova-plugins/commit/694078a325882872a80997434d3a2731754271e2))
+* **deps:** update dependency rollup to ^4.60.2 ([#5147](https://github.com/danielsogl/awesome-cordova-plugins/issues/5147)) ([5b4a0a4](https://github.com/danielsogl/awesome-cordova-plugins/commit/5b4a0a4efff086c91424bbf53667d57d17103e3d))
+* **deps:** update dependency rollup to ^4.60.3 ([#5158](https://github.com/danielsogl/awesome-cordova-plugins/issues/5158)) ([0c5380f](https://github.com/danielsogl/awesome-cordova-plugins/commit/0c5380ff10adb71000218af62785b7ca893b44d2))
+* **deps:** update dependency typescript to ~5.9.3 ([#5151](https://github.com/danielsogl/awesome-cordova-plugins/issues/5151)) ([70d5b1e](https://github.com/danielsogl/awesome-cordova-plugins/commit/70d5b1e2f2382ed06c4d7ab269a51bc4735c6319))
+* **deps:** update linting and formatting ([#5152](https://github.com/danielsogl/awesome-cordova-plugins/issues/5152)) ([cc08738](https://github.com/danielsogl/awesome-cordova-plugins/commit/cc087382e4f6e458d3a2fad000cd3ca3895e4873))
+* **deps:** update linting and formatting ([#5156](https://github.com/danielsogl/awesome-cordova-plugins/issues/5156)) ([4597727](https://github.com/danielsogl/awesome-cordova-plugins/commit/459772772581a20b54d2f73c508fcfd7b6286f09))
+
 ## [9.1.4](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.1.3...awesome-cordova-plugins-v9.1.4) (2026-04-15)
 
 
