@@ -46,7 +46,7 @@
     "prettier": "^3.8.3",
     "rollup": "^4.60.4",
     "rxjs": "^7.8.2",
-    "tsx": "^4.22.1",
+    "tsx": "^4.22.3",
     "typedoc": "^0.28.19",
     "typedoc-plugin-markdown": "^4.11.0",
     "typescript": "~5.9.3",
