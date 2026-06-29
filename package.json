@@ -39,7 +39,7 @@
     "@types/node": "^24.13.2",
     "eslint": "^10.6.0",
     "eslint-config-prettier": "10.1.8",
-    "eslint-plugin-jsdoc": "^62.9.0",
+    "eslint-plugin-jsdoc": "^63.0.10",
     "jest": "^30.4.2",
     "jest-environment-jsdom": "^30.4.1",
     "lefthook": "^2.1.9",
