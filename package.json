@@ -39,18 +39,18 @@
     "@types/node": "^24.13.2",
     "eslint": "^10.6.0",
     "eslint-config-prettier": "10.1.8",
-    "eslint-plugin-jsdoc": "^63.0.10",
+    "eslint-plugin-jsdoc": "^63.0.12",
     "jest": "^30.4.2",
     "jest-environment-jsdom": "^30.4.1",
     "lefthook": "^2.1.9",
-    "prettier": "^3.9.1",
+    "prettier": "^3.9.4",
     "rollup": "^4.62.2",
     "rxjs": "^7.8.2",
     "tsx": "^4.22.4",
     "typedoc": "^0.28.20",
     "typedoc-plugin-markdown": "^4.12.0",
     "typescript": "~5.9.3",
-    "typescript-eslint": "^8.62.0"
+    "typescript-eslint": "^8.62.1"
   },
   "repository": {
     "type": "git",
