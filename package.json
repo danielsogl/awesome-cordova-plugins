@@ -27,7 +27,7 @@
     "tslib": "2.8.1"
   },
   "devDependencies": {
-    "@angular/common": "20.3.18",
+    "@angular/common": "20.3.25",
     "@angular/compiler": "20.3.18",
     "@angular/compiler-cli": "20.3.18",
     "@angular/core": "20.3.18",
