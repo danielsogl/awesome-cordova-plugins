@@ -101,7 +101,7 @@
   "prHourlyLimit": 2,
   "prConcurrentLimit": 5,
   "updatePinnedDependencies": false,
-  "enabledManagers": ["npm"],
+  "enabledManagers": ["npm", "github-actions"],
   "ignoreDeps": [],
   "ignorePaths": ["**/node_modules/**", "**/dist/**", "**/coverage/**"]
 }
