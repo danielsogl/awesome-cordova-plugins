@@ -52,7 +52,7 @@
     },
     {
       "groupName": "Angular",
-      "allowedVersions": "<=20",
+      "allowedVersions": "<=21",
       "automerge": false,
       "matchPackageNames": ["/^@angular//", "/^@angular-devkit//", "/@schematics/angular/"]
     },
