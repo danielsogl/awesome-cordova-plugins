@@ -256,6 +256,49 @@
 
 
 
+## [9.4.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.3.0...awesome-cordova-plugins-v9.4.0) (2026-07-27)
+
+
+### Features
+
+* **airship:** add Live Activities/Live Updates and other 19.1.0 additions ([#5213](https://github.com/danielsogl/awesome-cordova-plugins/issues/5213)) ([c550363](https://github.com/danielsogl/awesome-cordova-plugins/commit/c55036392c482441b10beb71a5a096ce3e3251c3))
+* **anyline:** add setDefaultScanStartPlatformOptions and note legacy API deprecation ([#5207](https://github.com/danielsogl/awesome-cordova-plugins/issues/5207)) ([9513fd7](https://github.com/danielsogl/awesome-cordova-plugins/commit/9513fd7dbaf6140d824d8b870655dc8ada258df0))
+* **applovin:** sync wrapper with cordova-plugin-applovin-max@2.1.0 ([#5216](https://github.com/danielsogl/awesome-cordova-plugins/issues/5216)) ([c061770](https://github.com/danielsogl/awesome-cordova-plugins/commit/c061770c00841c5ca0ecc6774bd93ac7f62f84dd))
+* **appsflyer:** add missing v6.18.1 SDK methods ([#5209](https://github.com/danielsogl/awesome-cordova-plugins/issues/5209)) ([6b5df9a](https://github.com/danielsogl/awesome-cordova-plugins/commit/6b5df9a2d330b53a47f4c91903e383f9394dba97))
+* **background-fetch:** update wrapper to match cordova-plugin-background-fetch 7.3.1 API ([#5210](https://github.com/danielsogl/awesome-cordova-plugins/issues/5210)) ([d189208](https://github.com/danielsogl/awesome-cordova-plugins/commit/d189208630956fddd94a82f8db2e89a41553e370))
+* **background-upload:** add uploadDuration and finishUploadTime to UploadEvent ([#5204](https://github.com/danielsogl/awesome-cordova-plugins/issues/5204)) ([6d674c7](https://github.com/danielsogl/awesome-cordova-plugins/commit/6d674c74eb575b1427737c40d636386628a7aab7))
+* **barkoder:** sync wrapper with barkoder-cordova 1.6.8 API ([#5219](https://github.com/danielsogl/awesome-cordova-plugins/issues/5219)) ([5129756](https://github.com/danielsogl/awesome-cordova-plugins/commit/512975647e125e566346293301d5a4004ca20662))
+* **branch-io:** sync wrapper with branch-cordova-sdk v6.6.1 API ([#5205](https://github.com/danielsogl/awesome-cordova-plugins/issues/5205)) ([040df10](https://github.com/danielsogl/awesome-cordova-plugins/commit/040df107aeecfb3b93f8f223be3ebce60d2cfe60))
+* **camera-preview:** add white balance controls, getSupportedColorEffects and getBlob ([#5200](https://github.com/danielsogl/awesome-cordova-plugins/issues/5200)) ([451be4b](https://github.com/danielsogl/awesome-cordova-plugins/commit/451be4b3d67637838e3f3ad280fe8f5e81541729))
+* **clevertap:** add variants and unmute APIs, support discardInAppNotifications param (upstream 5.0.0) ([#5202](https://github.com/danielsogl/awesome-cordova-plugins/issues/5202)) ([1e0af65](https://github.com/danielsogl/awesome-cordova-plugins/commit/1e0af65c7929a113d9f519d918c1028287faa1ab))
+* **diagnostic:** sync wrapper with cordova.plugins.diagnostic 7.3.1 ([#5203](https://github.com/danielsogl/awesome-cordova-plugins/issues/5203)) ([1d2465d](https://github.com/danielsogl/awesome-cordova-plugins/commit/1d2465d18c51d263f20855ae7e21856f93fd6153))
+* **firebase-x:** add methods added upstream since last sync, deprecate getByteArray ([#5211](https://github.com/danielsogl/awesome-cordova-plugins/issues/5211)) ([bd8aff2](https://github.com/danielsogl/awesome-cordova-plugins/commit/bd8aff2414d44209b80788073b329daddec33241))
+* **genius-scan:** add barcode scanning and sync ScanConfiguration/result types with 6.3.0 ([#5214](https://github.com/danielsogl/awesome-cordova-plugins/issues/5214)) ([a053001](https://github.com/danielsogl/awesome-cordova-plugins/commit/a0530015d243666170d33e8aaf03ebc64050dd29))
+* **in-app-browser:** add zoomcontrols option and download event, fix stale platform docs for cordova-plugin-inappbrowser 7.0.0 ([#5196](https://github.com/danielsogl/awesome-cordova-plugins/issues/5196)) ([81dc871](https://github.com/danielsogl/awesome-cordova-plugins/commit/81dc871d8ea349c6f8aa2088b76b519eb9152566))
+* **in-app-purchase-2:** add missing classic store API surface ([#5215](https://github.com/danielsogl/awesome-cordova-plugins/issues/5215)) ([2a3521a](https://github.com/danielsogl/awesome-cordova-plugins/commit/2a3521abdffac0921cce170f58d4b21e14612120))
+* **in-app-purchase-3:** sync wrapper with cordova-plugin-purchase 13.18.0 ([#5218](https://github.com/danielsogl/awesome-cordova-plugins/issues/5218)) ([366c511](https://github.com/danielsogl/awesome-cordova-plugins/commit/366c5115e3b544da680cca36793e065f88e7d28f))
+* **intercom:** add suppressProactiveContent method ([#5198](https://github.com/danielsogl/awesome-cordova-plugins/issues/5198)) ([3d4909d](https://github.com/danielsogl/awesome-cordova-plugins/commit/3d4909d8de9f8f70ae2ebccb6cff635b48771fa3))
+* **local-notifications:** sync wrapper with cordova-plugin-local-notification 1.2.3 ([#5206](https://github.com/danielsogl/awesome-cordova-plugins/issues/5206)) ([93fe3ac](https://github.com/danielsogl/awesome-cordova-plugins/commit/93fe3ac6b2ec35058e657219e99fdc800f167d2a))
+* **mobile-messaging:** sync wrapper with upstream SDK v8.6.0 ([#5217](https://github.com/danielsogl/awesome-cordova-plugins/issues/5217)) ([d2c9ca6](https://github.com/danielsogl/awesome-cordova-plugins/commit/d2c9ca6f4ee5fff2df9e9b0ae70231b92d3a4bce))
+* **network:** add 5G connection type support ([#5194](https://github.com/danielsogl/awesome-cordova-plugins/issues/5194)) ([201d73b](https://github.com/danielsogl/awesome-cordova-plugins/commit/201d73b39ec97d43027ab0fa825245824c64d897))
+* **onesignal:** add OneSignal v5 user-centric API, deprecate removed v2 flat API ([#5212](https://github.com/danielsogl/awesome-cordova-plugins/issues/5212)) ([b624a9b](https://github.com/danielsogl/awesome-cordova-plugins/commit/b624a9b374e3a4d9a37893307fd938f233a3de09))
+* **sms:** add requestPermission method and android slot option ([#5201](https://github.com/danielsogl/awesome-cordova-plugins/issues/5201)) ([3143a63](https://github.com/danielsogl/awesome-cordova-plugins/commit/3143a63955597970dc70e201fb934a1a33f8d074))
+* **sqlite:** add Android provider options, fix abort call, add Browser platform ([#5197](https://github.com/danielsogl/awesome-cordova-plugins/issues/5197)) ([3fc9fc1](https://github.com/danielsogl/awesome-cordova-plugins/commit/3fc9fc1ecbe8c76427d22b322d340577ccbd3ec3))
+* **tealium:** add missing v2.5.0 APIs and remote command params ([#5195](https://github.com/danielsogl/awesome-cordova-plugins/issues/5195)) ([70e904e](https://github.com/danielsogl/awesome-cordova-plugins/commit/70e904ebb7c64248af08fa50019fcc644ad5ee96))
+* **wonderpush:** add credential-remembering init and subscribeToNotifications fallback param ([#5199](https://github.com/danielsogl/awesome-cordova-plugins/issues/5199)) ([053f4f8](https://github.com/danielsogl/awesome-cordova-plugins/commit/053f4f887f91530095e9ca6db57195b2a954eba0))
+
+
+### Bug Fixes
+
+* **cashfree-pg:** mark doDropPayment as deprecated per upstream 1.1.0 ([#5208](https://github.com/danielsogl/awesome-cordova-plugins/issues/5208)) ([63802d1](https://github.com/danielsogl/awesome-cordova-plugins/commit/63802d1ee104feb3a688c5df74d79efebbcb4d78))
+* **deps:** update angular to 20.3.26 to patch @babel/core advisory ([8b997cf](https://github.com/danielsogl/awesome-cordova-plugins/commit/8b997cf357e821484d2147eedd3860e7d85ce8af))
+* **media-capture:** correct CaptureError.code type to number ([#5193](https://github.com/danielsogl/awesome-cordova-plugins/issues/5193)) ([9cf7e6a](https://github.com/danielsogl/awesome-cordova-plugins/commit/9cf7e6a9852e8525aebcb1eeddc926c422e52579))
+
+
+### Miscellaneous Chores
+
+* **deps:** update angular to 21.2.18 ([1204bc5](https://github.com/danielsogl/awesome-cordova-plugins/commit/1204bc52e746bb5fc918faf4a8dd70a9ce75d55d))
+
 ## [9.3.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.2.0...awesome-cordova-plugins-v9.3.0) (2026-07-27)
 
 
