@@ -32,6 +32,13 @@ import { Cordova, CordovaProperty, AwesomeCordovaNativePlugin, Plugin } from '@a
  *
  * ```
  */
+export interface DiagnosticLocalNetworkAuthorizationOptions {
+  /**
+   * Override the default fallback timeout (2000ms) before treating a slow response as indeterminate (`UNKNOWN`).
+   */
+  timeoutMs?: number;
+}
+
 @Plugin({
   pluginName: 'Diagnostic',
   plugin: 'cordova.plugins.diagnostic',
@@ -46,6 +53,7 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
     ACCESS_BACKGROUND_LOCATION: 'ACCESS_BACKGROUND_LOCATION',
     ACCESS_COARSE_LOCATION: 'ACCESS_COARSE_LOCATION',
     ACCESS_FINE_LOCATION: 'ACCESS_FINE_LOCATION',
+    ACCESS_LOCAL_NETWORK: 'ACCESS_LOCAL_NETWORK',
     ACCESS_MEDIA_LOCATION: 'ACCESS_MEDIA_LOCATION',
     ACTIVITY_RECOGNITION: 'ACTIVITY_RECOGNITION',
     ADD_VOICEMAIL: 'ADD_VOICEMAIL',
@@ -61,6 +69,7 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
     NEARBY_WIFI_DEVICES: 'NEARBY_WIFI_DEVICES',
     POST_NOTIFICATIONS: 'POST_NOTIFICATIONS',
     PROCESS_OUTGOING_CALLS: 'PROCESS_OUTGOING_CALLS',
+    RANGING: 'RANGING',
     READ_CALENDAR: 'READ_CALENDAR',
     READ_CALL_LOG: 'READ_CALL_LOG',
     READ_CONTACTS: 'READ_CONTACTS',
@@ -68,6 +77,7 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
     READ_MEDIA_AUDIO: 'READ_MEDIA_AUDIO',
     READ_MEDIA_IMAGES: 'READ_MEDIA_IMAGES',
     READ_MEDIA_VIDEO: 'READ_MEDIA_VIDEO',
+    READ_MEDIA_VISUAL_USER_SELECTED: 'READ_MEDIA_VISUAL_USER_SELECTED',
     READ_PHONE_NUMBERS: 'READ_PHONE_NUMBERS',
     READ_PHONE_STATE: 'READ_PHONE_STATE',
     READ_SMS: 'READ_SMS',
@@ -99,6 +109,11 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
     EPHEMERAL: string;
     PROVISIONAL: string;
     LIMITED: string;
+    /**
+     * Returned when the underlying OS has not yet provided a concrete status (for example, if an iOS
+     * Local Network probe timed out). Treat this as a transient state and retry before surfacing a denial to the user.
+     */
+    UNKNOWN: string;
   };
 
   locationAuthorizationMode = {
@@ -110,8 +125,22 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    * Location accuracy authorization
    */
   locationAccuracyAuthorization = {
+    /** Alias for BEST. On iOS, sets `kCLLocationAccuracyBest`. */
     FULL: 'full',
+    /** On iOS, sets `kCLLocationAccuracyReduced` - approximate location, no GPS. */
     REDUCED: 'reduced',
+    /** On iOS, sets `kCLLocationAccuracyBest`. May engage GPS hardware. */
+    BEST: 'best',
+    /** On iOS, sets `kCLLocationAccuracyBestForNavigation`. Highest accuracy using additional sensor data. */
+    BEST_FOR_NAVIGATION: 'bestForNavigation',
+    /** On iOS, sets `kCLLocationAccuracyNearestTenMeters`. */
+    NEAREST_TEN_METERS: 'nearestTenMeters',
+    /** On iOS, sets `kCLLocationAccuracyHundredMeters`. */
+    HUNDRED_METERS: 'hundredMeters',
+    /** On iOS, sets `kCLLocationAccuracyKilometer`. */
+    KILOMETER: 'kilometer',
+    /** On iOS, sets `kCLLocationAccuracyThreeKilometers`. */
+    THREE_KILOMETERS: 'threeKilometers',
   };
 
   permissionGroups = {
@@ -132,7 +161,7 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
     SENSORS: ['BODY_SENSORS'],
     SMS: ['SEND_SMS', 'RECEIVE_SMS', 'READ_SMS', 'RECEIVE_WAP_PUSH', 'RECEIVE_MMS'],
     STORAGE: ['READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE'],
-    NEARBY_DEVICES: ["BLUETOOTH_ADVERTISE", "BLUETOOTH_SCAN", "BLUETOOTH_CONNECT"],
+    NEARBY_DEVICES: ['BLUETOOTH_ADVERTISE', 'BLUETOOTH_SCAN', 'BLUETOOTH_CONNECT'],
   };
 
   locationMode = {
@@ -164,21 +193,21 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
 
   @CordovaProperty()
   cpuArchitecture: {
-      MIPS: string;
-      MIPS_64: string;
-      UNKNOWN: string;
-      ARMv6: string;
-      ARMv7: string;
-      ARMv8: string;
-      X86: string;
-      X86_64: string;
+    MIPS: string;
+    MIPS_64: string;
+    UNKNOWN: string;
+    ARMv6: string;
+    ARMv7: string;
+    ARMv8: string;
+    X86: string;
+    X86_64: string;
   };
 
   @CordovaProperty()
   remoteNotificationType: {
-      ALERT: string;
-      SOUND: string;
-      BADGE: string;
+    ALERT: string;
+    SOUND: string;
+    BADGE: string;
   };
 
   @CordovaProperty()
@@ -307,7 +336,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
     return;
   }
 
-
   // ANDROID AND IOS ONLY
 
   /**
@@ -359,7 +387,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   getLocationAuthorizationStatuses(): Promise<any> {
     return;
   }
-
 
   /**
    * Returns the location authorization status for the application.
@@ -578,7 +605,7 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   @Cordova({ platforms: ['Android', 'iOS'] })
   getArchitecture(): Promise<any> {
     return;
-  }  
+  }
 
   /**
    * Returns the current battery level of the device as a percentage.
@@ -588,7 +615,62 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   @Cordova({ platforms: ['Android', 'iOS'] })
   getCurrentBatteryLevel(): Promise<any> {
     return;
-  }  
+  }
+
+  /**
+   * Checks if low power mode is currently enabled on the device.
+   *
+   * @returns {Promise<boolean>}
+   */
+  @Cordova({ platforms: ['Android', 'iOS'] })
+  isLowPowerModeEnabled(): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * Registers a function to be called whenever the device low power mode status changes.
+   *
+   * @param {Function} handler
+   */
+  @Cordova({ platforms: ['Android', 'iOS'], sync: true })
+  onLowPowerModeChange(handler: Function): void {}
+
+  /**
+   * Checks if currently running app build is a debug build.
+   *
+   * @returns {Promise<boolean>}
+   */
+  @Cordova({ platforms: ['Android', 'iOS'] })
+  isDebugBuild(): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * Checks if Accessibility Mode (Talkback on Android, VoiceOver on iOS) is currently enabled on the device.
+   *
+   * @returns {Promise<boolean>}
+   */
+  @Cordova({ platforms: ['Android', 'iOS'] })
+  isAccessibilityModeEnabled(): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * Checks if app is able to access device heading.
+   *
+   * @returns {Promise<boolean>}
+   */
+  @Cordova({ platforms: ['Android', 'iOS'] })
+  isCompassAvailable(): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * Opens notification settings for your app.
+   * On Android versions lower than O and on iOS versions lower than 15.4, this will open the same page as `switchToSettings()`.
+   */
+  @Cordova({ platforms: ['Android', 'iOS'], sync: true })
+  switchToNotificationSettings(): void {}
 
   // ANDROID ONLY
 
@@ -604,7 +686,6 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   restart(cold: boolean): Promise<any> {
     return;
   }
-
 
   /**
    * Checks if high-accuracy locations are available to the app from GPS hardware.
@@ -664,13 +745,44 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
     return;
   }
 
-  /** 
+  /**
    * Checks if mobile data is enabled on device.
    *
    * @returns {Promise<any>}
    */
   @Cordova({ platforms: ['Android'] })
   isMobileDataEnabled(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Checks if the app is currently ignoring battery optimizations.
+   *
+   * @returns {Promise<boolean>}
+   */
+  @Cordova({ platforms: ['Android'] })
+  isIgnoringBatteryOptimizations(): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * Prompts the user to allow the app to ignore battery optimizations.
+   * Requires permission `<uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />`
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova({ platforms: ['Android'] })
+  requestIgnoreBatteryOptimizations(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Checks if touch exploration (in accessibility mode) is currently enabled on the device.
+   *
+   * @returns {Promise<boolean>}
+   */
+  @Cordova({ platforms: ['Android'] })
+  isTouchExplorationEnabled(): Promise<boolean> {
     return;
   }
 
@@ -689,7 +801,7 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    *
    * @returns {Promise<any>}
    */
-  @Cordova({ platforms: ['Android'] })
+  @Cordova({ platforms: ['Android', 'iOS'] })
   getDeviceOSVersion(): Promise<any> {
     return;
   }
@@ -699,7 +811,7 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    *
    * @returns {Promise<any>}
    */
-  @Cordova({ platforms: ['Android'] })
+  @Cordova({ platforms: ['Android', 'iOS'] })
   getBuildOSVersion(): Promise<any> {
     return;
   }
@@ -826,7 +938,7 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   getBluetoothAuthorizationStatus(): Promise<any> {
     return;
   }
-  
+
   /**
    * Returns the individual authorization status for each Bluetooth run-time permission on Android 12+ / API 31+
    * On Android 11 / API 30 and below, all will be returned as GRANTED if the manifest has BLUETOOTH since they are implicitly granted at build-time.
@@ -835,6 +947,19 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    */
   @Cordova({ platforms: ['Android'] })
   getBluetoothAuthorizationStatuses(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Returns the individual camera authorization statuses for each of the relevant permissions.
+   * Note for Android: this is intended for Android 6 / API 23 and above. Calling on Android 5.1 / API 22 and below will always return GRANTED status as permissions are already granted at installation time.
+   *
+   * @param {boolean} [storage] Android only: If true, requests storage permissions in addition to CAMERA run-time permission.
+   *  cordova-plugin-camera@2.2+ requires both of these permissions. Defaults to true.
+   * @returns {Promise<any>}
+   */
+  @Cordova({ platforms: ['Android'], callbackOrder: 'reverse' })
+  getCameraAuthorizationStatuses(storage?: boolean): Promise<any> {
     return;
   }
 
@@ -1031,7 +1156,7 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
     return;
   }
 
- /**
+  /**
    * Presents limited library picker UI on iOS 14+
    *
    * @returns {Promise<any>}
@@ -1237,4 +1362,53 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    */
   @Cordova({ platforms: ['iOS'], sync: true })
   registerLocationAccuracyAuthorizationChangeHandler(handler: Function): void {}
+
+  /**
+   * Checks if mobile data is authorized for this app.
+   * Returns true if the per-app Mobile Data setting is set to enabled (regardless of whether the device is currently connected to a cellular network)
+   *
+   * @returns {Promise<boolean>}
+   */
+  @Cordova({ platforms: ['iOS'] })
+  isMobileDataAuthorized(): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * Checks if the app is authorised to access devices on the local network (iOS 14+).
+   * On iOS versions prior to 14 this will always return TRUE as no local network authorization is required.
+   *
+   * @param {DiagnosticLocalNetworkAuthorizationOptions} [options] Optional timeout control - provide `timeoutMs` to override the default 2000ms timeout.
+   * @returns {Promise<boolean>}
+   */
+  @Cordova({ platforms: ['iOS'], callbackOrder: 'reverse' })
+  isLocalNetworkAuthorized(options?: DiagnosticLocalNetworkAuthorizationOptions): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * Returns the app's Local Network authorization status (iOS 14+).
+   * On iOS 14+ this returns one of: NOT_REQUESTED, GRANTED, DENIED_ALWAYS, UNKNOWN (this.permissionStatus).
+   * `UNKNOWN` indicates that iOS did not return a definitive answer before the timeout elapsed, so the app can retry before warning the user.
+   * On iOS versions prior to 14 this will always return GRANTED as no authorization is required.
+   *
+   * @param {DiagnosticLocalNetworkAuthorizationOptions} [options] Optional timeout override (defaults to 2000ms).
+   * @returns {Promise<string>}
+   */
+  @Cordova({ platforms: ['iOS'], callbackOrder: 'reverse' })
+  getLocalNetworkAuthorizationStatus(options?: DiagnosticLocalNetworkAuthorizationOptions): Promise<string> {
+    return;
+  }
+
+  /**
+   * Requests the user to authorise the app to access devices on the local network (iOS 14+).
+   * On iOS versions prior to 14 this does nothing and will return success as no authorization is required.
+   * May return UNKNOWN if iOS does not respond before the native APIs time out, allowing the app to retry.
+   *
+   * @returns {Promise<string>}
+   */
+  @Cordova({ platforms: ['iOS'] })
+  requestLocalNetworkAuthorization(): Promise<string> {
+    return;
+  }
 }
