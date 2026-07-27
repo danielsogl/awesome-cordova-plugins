@@ -27,8 +27,45 @@ jobs:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
+  # npm trusted publishing validates the OIDC claim of the *entry point* workflow,
+  # not the one that runs `npm publish`. Keep this job inline — a reusable workflow
+  # here breaks the trust check. See https://github.com/npm/documentation/issues/1755
   publish:
     needs: release-please
     if: ${{ needs.release-please.outputs.release_created }}
-    uses: ./.github/workflows/publish.yml
-    secrets: inherit
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4.3.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4.4.0
+        with:
+          node-version: 22
+          cache: npm
+          registry-url: https://registry.npmjs.org
+
+      # node 22 ships npm 10.x; trusted publishing (OIDC) requires npm >= 11.5.1
+      - name: Update npm
+        run: npm install -g npm@latest
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint -- --quiet
+
+      - name: Test
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Publish to npm
+        env:
+          # fallback for packages without a trusted publisher yet (e.g. brand new plugins).
+          # OIDC takes precedence whenever the package has one configured.
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm run npmpub

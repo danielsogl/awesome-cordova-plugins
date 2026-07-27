@@ -7,3 +7,5 @@ src/@awesome-cordova-plugins/plugins/**/ngx
 *.d.ts
 injectable-classes.json
 
+# npm trust bulk setup progress
+.npm-trust-done
