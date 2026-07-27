@@ -35,6 +35,17 @@ export interface SQLiteDatabaseConfig {
    * support encrypted databases with https://github.com/litehelpers/Cordova-sqlcipher-adapter
    */
   key?: string;
+  /**
+   * Use the Android system database provider instead of the default lightweight NDK connector.
+   * Set to 'system' to avoid multiple-SQLite-connection corruption issues on Android. Example: 'system'
+   */
+  androidDatabaseProvider?: string;
+  /**
+   * Android-only workaround that closes and reopens the database file at the end of every committed
+   * transaction, to work around a database locking issue when `androidDatabaseProvider: 'system'` is used.
+   * Set to 1 to enable. Only applied to `sqlBatch`/`transaction`, not to `executeSql`.
+   */
+  androidLockWorkaround?: number;
 }
 
 /**
@@ -135,8 +146,13 @@ export class SQLiteObject {
     return;
   }
 
+  /**
+   * The underlying plugin method is named `abortAllPendingTransactions`; mapped explicitly here since this
+   * method's name differs in casing.
+   */
   @CordovaInstance({
     sync: true,
+    methodName: 'abortAllPendingTransactions',
   })
   abortallPendingTransactions(): void {}
 }
@@ -181,7 +197,7 @@ export class SQLiteObject {
   pluginRef: 'sqlitePlugin',
   plugin: 'cordova-sqlite-storage',
   repo: 'https://github.com/litehelpers/Cordova-sqlite-storage',
-  platforms: ['Android', 'iOS', 'macOS', 'Windows'],
+  platforms: ['Android', 'Browser', 'iOS', 'macOS', 'Windows'],
 })
 @Injectable()
 export class SQLite extends AwesomeCordovaNativePlugin {
