@@ -61,7 +61,16 @@ export interface MediaFileData {
 }
 
 export interface CaptureError {
-  code: string;
+  /**
+   * One of the `CaptureError` codes:
+   * - `0` - CAPTURE_INTERNAL_ERR: Camera or microphone failed to capture image or sound.
+   * - `1` - CAPTURE_APPLICATION_BUSY: Camera application or audio capture application is currently serving other capture request.
+   * - `2` - CAPTURE_INVALID_ARGUMENT: Invalid use of the API (e.g. limit parameter has value less than one).
+   * - `3` - CAPTURE_NO_MEDIA_FILES: User exited camera application or audio capture application before capturing anything.
+   * - `4` - CAPTURE_PERMISSION_DENIED: User denied permissions required to perform the capture request.
+   * - `20` - CAPTURE_NOT_SUPPORTED: The requested capture operation is not supported.
+   */
+  code: number;
 }
 
 export interface CaptureAudioOptions {
