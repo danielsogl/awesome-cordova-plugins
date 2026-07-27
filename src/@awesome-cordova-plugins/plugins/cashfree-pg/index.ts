@@ -304,6 +304,7 @@ export class CFPaymentGateway extends AwesomeCordovaNativePlugin {
   /**
    * Initiate Drop Payment.
    * @param {CFDropCheckoutPayment} [dropObject] dropPaymentObject information
+   * @deprecated Use doWebCheckoutPayment instead. Deprecated upstream as of cordova-plugin-cashfree-pg 1.1.0.
    */
   @Cordova()
   doDropPayment(dropObject: CFDropCheckoutPayment) {
