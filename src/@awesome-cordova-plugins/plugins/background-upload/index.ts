@@ -21,6 +21,8 @@ export interface UploadEvent {
   errorCode?: number; // error code for any exception encountered
   progress?: any; // progress for ongoing upload
   eventId?: string; // id of the event
+  uploadDuration?: number; // duration of the upload in milliseconds (UPLOADED state only)
+  finishUploadTime?: number; // timestamp (ms) at which the upload finished (UPLOADED state only)
 }
 
 export interface FTMPayloadOptions {
