@@ -14,6 +14,14 @@ export interface IAPAdapter {
 
   isSupported: boolean;
 
+  /**
+   * Returns true if the adapter can skip the native finish method for a transaction.
+   *
+   * Some platforms (e.g. Apple AppStore) require explicit acknowledgement of a purchase so it can be removed from
+   * the queue of pending transactions, regardless of whether the transaction is acknowledged or consumed already.
+   */
+  canSkipFinish?: boolean;
+
   initialize(): Promise<IAPError | undefined>;
 
   loadProducts(products: IAPProductOptions[]): Promise<(IAPProduct | IAPError)[]>;
@@ -31,7 +39,7 @@ export interface IAPAdapter {
   handleReceiptValidationResponse(receipt: IAPReceipt, response: object): Promise<void>;
 
   requestPayment(
-    payment: PaymentRequest,
+    payment: IAPPaymentRequest,
     additionalData?: IAPAdditionalData
   ): Promise<IAPError | IAPTransaction | undefined>;
 
@@ -42,6 +50,14 @@ export interface IAPAdapter {
   checkSupport(functionality: string): boolean;
 
   restorePurchases(): Promise<IAPError | undefined>;
+
+  /**
+   * Retrieve the billing country code from the platform's storefront.
+   *
+   * Returns an ISO 3166-1 alpha-2 country code (e.g., "US", "FR"),
+   * or undefined if the storefront information is not available.
+   */
+  getStorefront?(): Promise<string | undefined>;
 }
 
 export interface IAPProductOptions {
@@ -59,8 +75,25 @@ export interface IAPProductOptions {
  * @see {@link InAppPurchase3.requestPayment}
  */
 export interface IAPAdditionalData {
-  /** The application's user identifier, will be obfuscated with md5 to fill `accountId` if necessary */
+  /**
+   * The application's user identifier, will be obfuscated with md5 to fill `accountId` if necessary
+   *
+   * @deprecated Set {@link InAppPurchase3.applicationUsername} instead. The per-transaction value is
+   * ignored by upstream adapters, which always read the store-level username so receipt validation later
+   * (which doesn't have access to the original additionalData) sees the same value that was sent to the
+   * native API at purchase time.
+   */
   applicationUsername?: string;
+
+  /**
+   * Quantity of items to purchase.
+   *
+   * Only supported on platforms that report the `'orderQuantity'` capability.
+   * Platforms without support will ignore this field.
+   *
+   * @see {@link InAppPurchase3.checkSupport}
+   */
+  quantity?: number;
 
   /** GooglePlay specific additional data. See cordova-plugin-purchase documentation.*/
   googlePlay?: object;
@@ -127,9 +160,10 @@ export interface IAPPricingPhase {
 
   priceMicros: number;
 
-  currency: string;
+  currency?: string;
 
-  billingPeriod?: number;
+  /** ISO 8601 duration of the period (https://en.wikipedia.org/wiki/ISO_8601#Durations) */
+  billingPeriod?: string;
 
   billingCycles?: number;
 
@@ -205,6 +239,17 @@ export interface IAPTransaction {
 
   currency?: string;
 
+  /**
+   * Quantity of items purchased in a single transaction.
+   *
+   * For consumable products, this value represents the number of items purchased.
+   * For non-consumable products and subscriptions, this value is always 1.
+   *
+   * Supported on Android (Google Play) and iOS (Apple AppStore).
+   * Use `additionalData.quantity` when placing an order to purchase multiple units in a single transaction.
+   */
+  quantity?: number;
+
   products: { id: string; offerId?: string }[];
 
   /**
@@ -243,11 +288,20 @@ export interface IAPVerifiedPurchase {
 
   purchaseId?: string;
 
+  /** Identifier of the last transaction (optional) */
+  transactionId?: string;
+
   purchaseDate?: number;
 
   expiryDate?: number;
 
   isExpired?: boolean;
+
+  /** True when a purchase has been acknowledged to the platform. */
+  isAcknowledged?: boolean;
+
+  /** True when a purchase has been consumed (for consumable products). */
+  isConsumed?: boolean;
 
   renewalIntent?: string;
 
@@ -266,6 +320,14 @@ export interface IAPVerifiedPurchase {
   priceConsentStatus?: PriceConsentStatus;
 
   lastRenewalDate?: number;
+
+  /**
+   * Quantity of items purchased in a single transaction.
+   *
+   * For consumable products, this value represents the number of items purchased.
+   * For non-consumable products and subscriptions, this value is always 1.
+   */
+  quantity?: number;
 }
 
 export interface IAPProductEvents {
@@ -321,6 +383,17 @@ export interface IAPProductEvents {
    * If no platforms have any receipts (user made no purchase), this will also get called.
    */
   receiptsVerified(cb: Callback<void>, callbackName?: string): IAPProductEvents;
+
+  /**
+   * Register a function called when a platform's storefront country code changes.
+   *
+   * Fires when a platform's cached value transitions to a different non-empty
+   * string. Does not fire for no-op refreshes, failed refreshes, or transitions
+   * to undefined (the cache preserves the last-known value).
+   *
+   * @param cb - Callback invoked with the updated {@link IAPStorefront}
+   */
+  storefrontUpdated(cb: Callback<IAPStorefront>, callbackName?: string): IAPProductEvents;
 }
 
 export interface IAPPaymentRequest {
@@ -372,6 +445,67 @@ export interface IAPPaymentRequest {
 }
 
 /**
+ * Result of a call to {@link InAppPurchase3.requestPayment}.
+ *
+ * A chainable set of event registration methods, each returning the same instance.
+ *
+ * @example
+ * store.requestPayment(paymentRequest)
+ *   .cancelled(() => { // user cancelled by closing the window
+ *   })
+ *   .failed(error => { // payment request failed
+ *   })
+ *   .initiated(transaction => { // transaction initiated
+ *   })
+ *   .approved(transaction => { // transaction approved
+ *   })
+ *   .finished(transaction => { // transaction finished
+ *   });
+ */
+export interface IAPPaymentRequestPromise {
+  /** Register a function called when the payment request failed. */
+  failed(callback: Callback<IAPError>): IAPPaymentRequestPromise;
+
+  /** Register a function called when the payment request has been initiated. */
+  initiated(callback: Callback<IAPTransaction>): IAPPaymentRequestPromise;
+
+  /** Register a function called when the payment request has been approved. */
+  approved(callback: Callback<IAPTransaction>): IAPPaymentRequestPromise;
+
+  /** Register a function called when the payment request has been finished. */
+  finished(callback: Callback<IAPTransaction>): IAPPaymentRequestPromise;
+
+  /** Register a function called when the payment request was cancelled by the user. */
+  cancelled(callback: Callback<void>): IAPPaymentRequestPromise;
+}
+
+/**
+ * A storefront country code, scoped to a specific payment platform.
+ *
+ * @see {@link InAppPurchase3.getStorefront}
+ */
+export interface IAPStorefront {
+  /** The platform this storefront belongs to. */
+  platform: Platform;
+
+  /**
+   * ISO 3166-1 alpha-2 country code (e.g., "US", "FR").
+   *
+   * Undefined if the value has not been fetched yet, or if the fetch failed.
+   */
+  countryCode?: string;
+}
+
+/**
+ * Obfuscation strategy for the application username.
+ *
+ * Controls how `applicationUsername` is transformed before being sent to each platform's native API.
+ *
+ * @see {@link InAppPurchase3.obfuscator}
+ */
+export type Obfuscator = 'legacy' | 'uuid' | 'disabled' | ((applicationUsername: string, platform: Platform) => string);
+
+/**
  * Purchase platforms supported by the plugin
  */
 export enum Platform {
@@ -392,6 +526,9 @@ export enum Platform {
 
   /** Test platform */
   TEST = 'test',
+
+  /** Iaptic.js */
+  IAPTIC_JS = 'iaptic-js',
 }
 
 /** Types of In-App Products */
@@ -513,10 +650,90 @@ export enum LogLevel {
 }
 
 /**
+ * Error codes returned by the plugin.
+ *
+ * @see {@link IAPError.code}
+ * @see https://github.com/j3k0/cordova-plugin-purchase/blob/master/doc/api.md#error-codes
+ */
+export enum ErrorCode {
+  /** Error: Failed to intialize the in-app purchase library */
+  SETUP,
+  /** Error: Failed to load in-app products metadata */
+  LOAD,
+  /** Error: Failed to make a purchase */
+  PURCHASE,
+  /** Error: Failed to load the purchase receipt */
+  LOAD_RECEIPTS,
+  /** Error: Client is not allowed to issue the request */
+  CLIENT_INVALID,
+  /** Error: Purchase flow has been cancelled by user */
+  PAYMENT_CANCELLED,
+  /** Error: Something is suspicious about a purchase */
+  PAYMENT_INVALID,
+  /** Error: The user is not allowed to make a payment */
+  PAYMENT_NOT_ALLOWED,
+  /** Error: Unknown error */
+  UNKNOWN,
+  /** Error: Failed to refresh the purchase receipt */
+  REFRESH_RECEIPTS,
+  /** Error: The product identifier is invalid */
+  INVALID_PRODUCT_ID,
+  /** Error: Cannot finalize a transaction or acknowledge a purchase */
+  FINISH,
+  /** Error: Failed to communicate with the server */
+  COMMUNICATION,
+  /** Error: Subscriptions are not available */
+  SUBSCRIPTIONS_NOT_AVAILABLE,
+  /** Error: Purchase information is missing token */
+  MISSING_TOKEN,
+  /** Error: Verification of store data failed */
+  VERIFICATION_FAILED,
+  /** Error: Bad response from the server */
+  BAD_RESPONSE,
+  /** Error: Failed to refresh the store */
+  REFRESH,
+  /** Error: Payment has expired */
+  PAYMENT_EXPIRED,
+  /** Error: Failed to download the content */
+  DOWNLOAD,
+  /** Error: Failed to update a subscription */
+  SUBSCRIPTION_UPDATE_NOT_AVAILABLE,
+  /** Error: The requested product is not available in the store. */
+  PRODUCT_NOT_AVAILABLE,
+  /** Error: The user has not allowed access to Cloud service information */
+  CLOUD_SERVICE_PERMISSION_DENIED,
+  /** Error: The device could not connect to the network. */
+  CLOUD_SERVICE_NETWORK_CONNECTION_FAILED,
+  /** Error: The user has revoked permission to use this cloud service. */
+  CLOUD_SERVICE_REVOKED,
+  /** Error: The user has not yet acknowledged Apple's privacy policy */
+  PRIVACY_ACKNOWLEDGEMENT_REQUIRED,
+  /** Error: The app is attempting to use a property for which it does not have the required entitlement. */
+  UNAUTHORIZED_REQUEST_DATA,
+  /** Error: The offer identifier is invalid. */
+  INVALID_OFFER_IDENTIFIER,
+  /** Error: The price you specified in App Store Connect is no longer valid. */
+  INVALID_OFFER_PRICE,
+  /** Error: The signature in a payment discount is not valid. */
+  INVALID_SIGNATURE,
+  /** Error: Parameters are missing in a payment discount. */
+  MISSING_OFFER_PARAMS,
+  /** Error: The store is blocked (e.g. Google Play blocking purchases). */
+  STORE_BLOCKED,
+  /**
+   * Server code used when a subscription expired.
+   *
+   * @deprecated Validator should now return the transaction in the collection as expired.
+   */
+  VALIDATOR_SUBSCRIPTION_EXPIRED = 6778003,
+}
+
+/**
  * @hidden
  */
 export class IAPError {
   isError: true;
+  /** @see {@link ErrorCode} */
   code: number;
   message: string;
   platform: Platform | null;
@@ -874,6 +1091,8 @@ export class IAPError {
  * IAPVerifiedPurchase
  * IAPProductEvents
  * IAPPaymentRequest
+ * IAPPaymentRequestPromise
+ * IAPStorefront
  * ```
  */
 @Plugin({
@@ -914,17 +1133,37 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
   @CordovaProperty()
   verbosity: number;
 
-  /** Return the identifier of the user for your application */
+  /**
+   * Return the identifier of the user for your application.
+   *
+   * This value is obfuscated according to {@link InAppPurchase3.obfuscator} before being
+   * sent to the native platform API.
+   */
   @CordovaProperty()
-  applicationUsername: string | (() => string);
+  applicationUsername: string | (() => string | undefined) | undefined;
 
   /**
    * Get the application username as a string by either calling or returning {@link InAppPurchase3.applicationUsername}
    */
   @Cordova({ sync: true })
-  getApplicationUsername(): string {
+  getApplicationUsername(): string | undefined {
     return;
   }
+
+  /**
+   * Obfuscation strategy for the application username.
+   *
+   * Controls how `applicationUsername` is transformed before being sent
+   * to each platform's native API. `'uuid'` is the recommended setting
+   * for new integrations; the default `'legacy'` exists only for
+   * backward compatibility with server-side modules that already
+   * correlate against the raw 32-hex MD5 value.
+   *
+   * @default 'legacy'
+   * @see {@link Obfuscator}
+   */
+  @CordovaProperty()
+  obfuscator: Obfuscator | undefined;
 
   /**
    * URL or implementation of the receipt validation service
@@ -971,12 +1210,7 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
    */
   @CordovaProperty()
   validator_privacy_policy:
-    | 'fraud'
-    | 'support'
-    | 'analytics'
-    | 'tracking'
-    | ('fraud' | 'support' | 'analytics' | 'tracking')[]
-    | undefined;
+    'fraud' | 'support' | 'analytics' | 'tracking' | ('fraud' | 'support' | 'analytics' | 'tracking')[] | undefined;
 
   /**
    * Register a product.
@@ -1003,10 +1237,10 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
    * Call to initialize the in-app purchase plugin.
    *
    * @param platforms - List of payment platforms to initialize, default to Store.defaultPlatform().
-   * @returns {Promise<IAPError | undefined>}
+   * @returns {Promise<IAPError[]>}
    */
   @Cordova({ sync: true })
-  initialize(platforms: (Platform | { platform: Platform; options?: object })[]): Promise<IAPError | undefined> {
+  initialize(platforms?: (Platform | { platform: Platform; options?: object })[]): Promise<IAPError[]> {
     return;
   }
 
@@ -1170,7 +1404,7 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
    * @param {IAPAdditionalData?} additionalData Additional parameters
    */
   @Cordova({ sync: false })
-  requestPayment(paymentRequest: IAPPaymentRequest, additionalData?: IAPAdditionalData): object {
+  requestPayment(paymentRequest: IAPPaymentRequest, additionalData?: IAPAdditionalData): IAPPaymentRequestPromise {
     return;
   }
 
@@ -1222,9 +1456,34 @@ export class InAppPurchase3 extends AwesomeCordovaNativePlugin {
    * @example
    * if (purchase.isBillingRetryPeriod)
    *     store.manageBilling(purchase.platform);
+   * @param {Platform?} platform
    */
   @Cordova({ sync: false })
-  manageBilling(): Promise<IAPError | undefined> {
+  manageBilling(platform?: Platform): Promise<IAPError | undefined> {
+    return;
+  }
+
+  /**
+   * Retrieve the billing country code from the platform's storefront.
+   *
+   * Returns a `IAPStorefront` object with the platform and its ISO 3166-1
+   * alpha-2 country code (e.g., "US", "FR"). The country code may be
+   * undefined if the underlying fetch has not yet completed or failed —
+   * the platform is still reported. Returns `undefined` only when no
+   * matching adapter is ready.
+   *
+   * @param platform - Optional platform. If omitted, returns the first
+   *                   cached non-empty storefront, or a `{ platform, countryCode: undefined }`
+   *                   object for the first ready adapter.
+   *
+   * @example
+   * const storefront = store.getStorefront();
+   * if (storefront?.countryCode) {
+   *     console.log(`Billing country: ${storefront.countryCode}`);
+   * }
+   */
+  @Cordova({ sync: true })
+  getStorefront(platform?: Platform): IAPStorefront | undefined {
     return;
   }
 
