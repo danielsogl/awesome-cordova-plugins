@@ -5,6 +5,12 @@ export interface IAPProductOptions {
   id: string;
   alias?: string;
   type: string;
+  /**
+   * Name of the group your subscription product is a member of (default to "default").
+   *
+   * If you don't set anything, all subscription will be members of the same group.
+   */
+  group?: string;
 }
 
 export interface IRefeshResult {
@@ -31,12 +37,40 @@ export type IAPProducts = IAPProduct[] & {
 
 export type IAPQueryCallback = ((product: IAPProduct) => void) | ((error: IAPError) => void);
 
+export interface IAPProductDiscount {
+  /** The discount identifier */
+  id: string;
+
+  /** Localized price, with currency symbol */
+  price: string;
+
+  /** Price in micro-units (divide by 1000000 to get numeric price) */
+  priceMicros: number;
+
+  /** Number of subscription periods */
+  period: number;
+
+  /** Unit of the subcription period ("Day", "Week", "Month" or "Year") */
+  periodUnit: string;
+
+  /** "PayAsYouGo", "UpFront", or "FreeTrial" */
+  paymentMode: string;
+
+  /** True if the user is deemed eligible for this discount by the platform */
+  eligible: boolean;
+}
+
 export interface IAPProduct {
   id: string;
 
   alias?: string;
 
   type: string;
+
+  /**
+   * Name of the group your subscription product is a member of (default to "default").
+   */
+  group?: string;
 
   state: string;
 
@@ -50,6 +84,9 @@ export interface IAPProduct {
 
   currency: string;
 
+  /** Country code. Available only on iOS */
+  countryCode?: string;
+
   loaded: boolean;
 
   valid: boolean;
@@ -57,6 +94,9 @@ export interface IAPProduct {
   canPurchase: boolean;
 
   owned: boolean;
+
+  /** Purchase has been initiated but is waiting for external action (for example, Ask to Buy on iOS) */
+  deferred?: boolean;
 
   downloading?: boolean;
 
@@ -74,9 +114,18 @@ export interface IAPProduct {
 
   introPriceSubscriptionPeriod?: string;
 
+  /** Duration the introductory price is available (in period-unit) */
+  introPricePeriod?: string;
+
+  /** Period for the introductory price ("Day", "Week", "Month" or "Year") */
+  introPricePeriodUnit?: string;
+
   introPricePaymentMode?: string;
 
   ineligibleForIntroPrice?: boolean;
+
+  /** Array of discounts available for the product. */
+  discounts?: IAPProductDiscount[];
 
   billingPeriod?: number;
 
@@ -563,6 +612,7 @@ export class IAPError {
  * IAPProduct
  * IAPProductOptions
  * IAPProductEvents
+ * IAPProductDiscount
  * ```
  */
 @Plugin({
@@ -594,7 +644,7 @@ export class InAppPurchase2 extends AwesomeCordovaNativePlugin {
    * Debug level. Use QUIET, ERROR, WARNING, INFO or DEBUG constants
    */
   @CordovaProperty()
-  verbosity: number;
+  verbosity: number | boolean;
 
   /**
    * Set to true to clear the transaction queue. Not recommended for production.
@@ -616,6 +666,14 @@ export class InAppPurchase2 extends AwesomeCordovaNativePlugin {
   @CordovaProperty()
   disableHostedContent: boolean;
 
+  /**
+   * An optional string of developer profile name. This value can be used for payment risk evaluation.
+   *
+   * Do not use the user account ID for this field.
+   */
+  @CordovaProperty()
+  developerName: string;
+
   @CordovaProperty()
   FREE_SUBSCRIPTION: string;
 
@@ -630,6 +688,10 @@ export class InAppPurchase2 extends AwesomeCordovaNativePlugin {
 
   @CordovaProperty()
   NON_CONSUMABLE: string;
+
+  /** Type: The application bundle */
+  @CordovaProperty()
+  APPLICATION: string;
 
   @CordovaProperty()
   ERR_SETUP: number;
@@ -693,6 +755,46 @@ export class InAppPurchase2 extends AwesomeCordovaNativePlugin {
 
   @CordovaProperty()
   ERR_SUBSCRIPTION_UPDATE_NOT_AVAILABLE: number;
+
+  /** Error: The requested product is not available in the store. */
+  @CordovaProperty()
+  ERR_PRODUCT_NOT_AVAILABLE: number;
+
+  /** Error: The user has not allowed access to Cloud service information */
+  @CordovaProperty()
+  ERR_CLOUD_SERVICE_PERMISSION_DENIED: number;
+
+  /** Error: The device could not connect to the network. */
+  @CordovaProperty()
+  ERR_CLOUD_SERVICE_NETWORK_CONNECTION_FAILED: number;
+
+  /** Error: The user has revoked permission to use this cloud service. */
+  @CordovaProperty()
+  ERR_CLOUD_SERVICE_REVOKED: number;
+
+  /** Error: The user has not yet acknowledged Apple's privacy policy */
+  @CordovaProperty()
+  ERR_PRIVACY_ACKNOWLEDGEMENT_REQUIRED: number;
+
+  /** Error: The app is attempting to use a property for which it does not have the required entitlement. */
+  @CordovaProperty()
+  ERR_UNAUTHORIZED_REQUEST_DATA: number;
+
+  /** Error: The offer identifier is invalid. */
+  @CordovaProperty()
+  ERR_INVALID_OFFER_IDENTIFIER: number;
+
+  /** Error: The price you specified in App Store Connect is no longer valid. */
+  @CordovaProperty()
+  ERR_INVALID_OFFER_PRICE: number;
+
+  /** Error: The signature in a payment discount is not valid. */
+  @CordovaProperty()
+  ERR_INVALID_SIGNATURE: number;
+
+  /** Error: Parameters are missing in a payment discount. */
+  @CordovaProperty()
+  ERR_MISSING_OFFER_PARAMS: number;
 
   @CordovaProperty()
   REGISTERED: string;
@@ -783,12 +885,25 @@ export class InAppPurchase2 extends AwesomeCordovaNativePlugin {
   }
 
   /**
-   * Register error handler
+   * Register error handler.
    *
-   * @param onError {Function} function to call on error
+   * Can also be called with an error code as the first argument to only listen to a specific error code.
+   *
+   * @param onErrorOrErrorCode {Function | number} function to call on error, or an error code to filter on
+   * @param [onError] {Function} function to call on error, when the first argument is an error code
    */
   @Cordova({ sync: true })
-  error(onError: Function): void {}
+  error(onErrorOrErrorCode: Function | number, onError?: (err: IAPError) => void): void {}
+
+  /**
+   * Return all products member of a given subscription group.
+   *
+   * @param groupId
+   */
+  @Cordova({ sync: true })
+  getGroup(groupId: string): IAPProduct[] {
+    return;
+  }
 
   /**
    * Add or register a product
