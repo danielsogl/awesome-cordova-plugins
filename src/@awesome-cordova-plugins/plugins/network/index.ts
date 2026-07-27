@@ -18,6 +18,7 @@ export enum Connection {
   CELL_2G = '2g',
   CELL_3G = '3g',
   CELL_4G = '4g',
+  CELL_5G = '5g',
   CELL = 'cellular',
   NONE = 'none',
 }
@@ -62,7 +63,7 @@ export enum Connection {
  *
  * ```
  * @advanced
- * The `type` property will return one of the following connection types: `unknown`, `ethernet`, `wifi`, `2g`, `3g`, `4g`, `cellular`, `none`
+ * The `type` property will return one of the following connection types: `unknown`, `ethernet`, `wifi`, `2g`, `3g`, `4g`, `5g`, `cellular`, `none`
  */
 @Plugin({
   pluginName: 'Network',
@@ -83,6 +84,7 @@ export class Network extends AwesomeCordovaNativePlugin {
     CELL_2G: '2g',
     CELL_3G: '3g',
     CELL_4G: '4g',
+    CELL_5G: '5g',
     CELL: 'cellular',
     NONE: 'none',
   };
@@ -98,6 +100,7 @@ export class Network extends AwesomeCordovaNativePlugin {
    * Downlink Max Speed
    *
    * @returns {string}
+   * @deprecated Not part of the upstream cordova-plugin-network-information API (verified against v3.1.0 types/index.d.ts and README). Retained for backwards compatibility only.
    */
   @CordovaProperty() downlinkMax: string;
 
@@ -109,7 +112,7 @@ export class Network extends AwesomeCordovaNativePlugin {
   @CordovaCheck()
   onChange(): Observable<'connected' | 'disconnected'> {
     return merge(
-      this.onConnect().pipe(mapTo('connected')),
+      this.onConnect().pipe(mapTo('connected')) as Observable<'connected'>,
       this.onDisconnect().pipe(mapTo('disconnected')) as Observable<'disconnected'>
     );
   }
