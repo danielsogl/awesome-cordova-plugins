@@ -43,13 +43,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4.4.0
         with:
-          node-version: 22
+          # node 24 bundles npm 11.16, over the >= 11.5.1 that trusted publishing needs
+          node-version: 24
           cache: npm
           registry-url: https://registry.npmjs.org
-
-      # node 22 ships npm 10.x; trusted publishing (OIDC) requires npm >= 11.5.1
-      - name: Update npm
-        run: npm install -g npm@latest
 
       - name: Install dependencies
         run: npm ci
