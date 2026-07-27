@@ -30,9 +30,9 @@ export interface CameraPreviewOptions {
 
   /** Preview box drag across the screen, default 'false' */
   previewDrag?: boolean;
-  
-  /** Capture images to a file and return back the file path instead of returning base64 encoded data. */
-  storeToFile: boolean;
+
+  /** Capture images to a file and return back the file path instead of returning base64 encoded data. Defaults to false */
+  storeToFile?: boolean;
 
   /** Preview box to the back of the webview (true => back, false => front) , default false */
   toBack?: boolean;
@@ -166,6 +166,19 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
     CUSTOM: 'custom',
   };
 
+  WHITE_BALANCE_MODE = {
+    LOCK: 'lock',
+    AUTO: 'auto',
+    CONTINUOUS: 'continuous',
+    INCANDESCENT: 'incandescent',
+    CLOUDY_DAYLIGHT: 'cloudy-daylight',
+    DAYLIGHT: 'daylight',
+    FLUORESCENT: 'fluorescent',
+    SHADE: 'shade',
+    TWILIGHT: 'twilight',
+    WARM_FLUORESCENT: 'warm-fluorescent',
+  };
+
   FLASH_MODE = {
     OFF: 'off',
     ON: 'on',
@@ -294,6 +307,16 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
     errorIndex: 2,
   })
   takeSnapshot(options?: CameraPreviewPictureOptions): Promise<any> {
+    return;
+  }
+
+  /**
+   * Get color effects supported by the camera device currently started. Android only.
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getSupportedColorEffects(): Promise<any> {
     return;
   }
 
@@ -508,6 +531,40 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Get white balance modes supported by the camera device currently started.
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getSupportedWhiteBalanceModes(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Get the current white balance mode of the camera device currently started.
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getWhiteBalanceMode(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Set the white balance mode for the camera device currently started.
+   *
+   * @param {string} [whiteBalanceMode] 'lock', 'auto', 'continuous', 'incandescent', 'cloudy-daylight', 'daylight', 'fluorescent', 'shade', 'twilight' or 'warm-fluorescent'
+   * @returns {Promise<any>}
+   */
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2,
+  })
+  setWhiteBalanceMode(whiteBalanceMode?: string): Promise<any> {
+    return;
+  }
+
+  /**
    * Set specific focus point. Note, this assumes the camera is full-screen.
    *
    * @param {number} xPoint
@@ -546,6 +603,20 @@ export class CameraPreview extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   getCameraCharacteristics(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Convert a local file (e.g. a `file://` path returned by takePicture with storeToFile) into a Blob.
+   *
+   * @param {string} path the local url to convert
+   * @returns {Promise<any>}
+   */
+  @Cordova({
+    successIndex: 1,
+    errorIndex: 2,
+  })
+  getBlob(path: string): Promise<any> {
     return;
   }
 }
