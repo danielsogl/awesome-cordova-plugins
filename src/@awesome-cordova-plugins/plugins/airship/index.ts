@@ -35,7 +35,7 @@ declare const window: Window & { Airship: any };
   pluginName: 'Airship',
   plugin: '@ua/cordova-airship',
   pluginRef: 'Airship',
-  repo: 'https://www.npmjs.com/package/@ua/cordova-airship',
+  repo: 'https://github.com/urbanairship/urbanairship-cordova',
   install: 'ionic cordova plugin add @ua/cordova-airship',
   platforms: ['Android', 'iOS'],
 })
@@ -52,6 +52,14 @@ export class Airship extends AwesomeCordovaNativePlugin {
   public preferenceCenter: AirshipPreferenceCenter;
   public privacyManager: AirshipPrivacyManager;
   public push: AirshipPush;
+  /**
+   * Live Activity manager. iOS only.
+   */
+  public liveActivityManager: AirshipLiveActivityManager;
+  /**
+   * Live Update manager. Android only.
+   */
+  public liveUpdateManager: AirshipLiveUpdateManager;
 
   /**
    * Call after platform ready
@@ -258,6 +266,252 @@ export interface DisplayPreferenceCenterEvent {
 }
 
 /**
+ * Event fired when Live Activities are updated. iOS only.
+ */
+export interface LiveActivitiesUpdatedEvent {
+  /**
+   * The Live Activities.
+   */
+  activities: LiveActivity[];
+}
+
+/**
+ * Live Activity info. iOS only.
+ */
+export interface LiveActivity {
+  /**
+   * The activity ID.
+   */
+  id: string;
+  /**
+   * The attribute types.
+   */
+  attributeTypes: string;
+  /**
+   * The content.
+   */
+  content: LiveActivityContent;
+  /**
+   * The attributes.
+   */
+  attributes: JsonObject;
+}
+
+/**
+ * Live Activity content. iOS only.
+ */
+export interface LiveActivityContent {
+  /**
+   * The content state.
+   */
+  state: JsonObject;
+  /**
+   * Optional ISO 8601 date string that defines when the Live Activity will be stale.
+   */
+  staleDate?: string;
+  /**
+   * The relevance score.
+   */
+  relevanceScore: number;
+}
+
+/**
+ * Base Live Activity request. iOS only.
+ */
+export interface LiveActivityRequest {
+  /**
+   * Attributes type. This should match the Activity type of your Live Activity.
+   */
+  attributesType: string;
+}
+
+/**
+ * Live Activity list request. iOS only.
+ */
+export type LiveActivityListRequest = LiveActivityRequest;
+
+/**
+ * Live Activity start request. iOS only.
+ */
+export interface LiveActivityStartRequest extends LiveActivityRequest {
+  /**
+   * Dynamic content.
+   */
+  content: LiveActivityContent;
+  /**
+   * Fixed attributes.
+   */
+  attributes: JsonObject;
+}
+
+/**
+ * Live Activity update request. iOS only.
+ */
+export interface LiveActivityUpdateRequest extends LiveActivityRequest {
+  /**
+   * The Live Activity ID to update.
+   */
+  activityId: string;
+  /**
+   * Dynamic content.
+   */
+  content: LiveActivityContent;
+}
+
+/**
+ * Live Activity end request. iOS only.
+ */
+export interface LiveActivityEndRequest extends LiveActivityRequest {
+  /**
+   * The Live Activity ID to end.
+   */
+  activityId: string;
+  /**
+   * Dynamic content.
+   */
+  content?: LiveActivityContent;
+  /**
+   * Dismissal policy. Defaults to `LiveActivityDismissalPolicyDefault`.
+   */
+  dismissalPolicy?: LiveActivityDismissalPolicy;
+}
+
+export type LiveActivityDismissalPolicy =
+  LiveActivityDismissalPolicyImmediate | LiveActivityDismissalPolicyDefault | LiveActivityDismissalPolicyAfterDate;
+
+/**
+ * Dismissal policy to immediately dismiss the Live Activity on end.
+ */
+export interface LiveActivityDismissalPolicyImmediate {
+  type: 'immediate';
+}
+
+/**
+ * Dismissal policy to dismiss the Live Activity after the expiration.
+ */
+export interface LiveActivityDismissalPolicyDefault {
+  type: 'default';
+}
+
+/**
+ * Dismissal policy to dismiss the Live Activity after a given date.
+ */
+export interface LiveActivityDismissalPolicyAfterDate {
+  type: 'after';
+  /**
+   * ISO 8601 date string.
+   */
+  date: string;
+}
+
+/**
+ * Live Update info. Android only.
+ */
+export interface LiveUpdate {
+  /**
+   * The Live Update name.
+   */
+  name: string;
+  /**
+   * The Live Update type.
+   */
+  type: string;
+  /**
+   * Dynamic content.
+   */
+  content: JsonObject;
+  /**
+   * ISO 8601 date string of the last content update.
+   */
+  lastContentUpdateTimestamp: string;
+  /**
+   * ISO 8601 date string of the last state update.
+   */
+  lastStateChangeTimestamp: string;
+  /**
+   * Optional ISO 8601 date string that defines when to end this Live Update.
+   */
+  dismissTimestamp?: string;
+}
+
+/**
+ * Live Update list request. Android only.
+ */
+export interface LiveUpdateListRequest {
+  type: string;
+}
+
+/**
+ * Live Update start request. Android only.
+ */
+export interface LiveUpdateStartRequest {
+  /**
+   * The Live Update name.
+   */
+  name: string;
+  /**
+   * The Live Update type.
+   */
+  type: string;
+  /**
+   * Dynamic content.
+   */
+  content: JsonObject;
+  /**
+   * Optional ISO 8601 date string, used to filter out of order updates.
+   */
+  timestamp?: string;
+  /**
+   * Optional ISO 8601 date string that defines when to end this Live Update.
+   */
+  dismissTimestamp?: string;
+}
+
+/**
+ * Live Update update request. Android only.
+ */
+export interface LiveUpdateUpdateRequest {
+  /**
+   * The Live Update name.
+   */
+  name: string;
+  /**
+   * Dynamic content.
+   */
+  content: JsonObject;
+  /**
+   * Optional ISO 8601 date string, used to filter out of order updates.
+   */
+  timestamp?: string;
+  /**
+   * Optional ISO 8601 date string that defines when to end this Live Update.
+   */
+  dismissTimestamp?: string;
+}
+
+/**
+ * Live Update end request. Android only.
+ */
+export interface LiveUpdateEndRequest {
+  /**
+   * The Live Update name.
+   */
+  name: string;
+  /**
+   * Dynamic content.
+   */
+  content?: JsonObject;
+  /**
+   * Optional ISO 8601 date string, used to filter out of order updates.
+   */
+  timestamp?: string;
+  /**
+   * Optional ISO 8601 date string that defines when to end this Live Update.
+   */
+  dismissTimestamp?: string;
+}
+
+/**
  * iOS options
  */
 export namespace iOS {
@@ -448,6 +702,18 @@ export interface ConfigEnvironment {
    * Optional log level.
    */
   logLevel?: LogLevel;
+
+  /**
+   * Optional iOS config.
+   */
+  ios?: {
+    /**
+     * Log privacy level. By default it logs at `private`, not logging anything lower than info to the console
+     * and redacting logs with string interpolation. `public` will log all configured log levels to the console
+     * without redacting any of the log lines.
+     */
+    logPrivacyLevel?: 'private' | 'public';
+  };
 }
 
 /**
@@ -619,12 +885,14 @@ export namespace Android {
  * Enum of authorized Features.
  */
 export enum Feature {
+  All = 'all',
   InAppAutomation = 'in_app_automation',
   MessageCenter = 'message_center',
   Push = 'push',
   Analytics = 'analytics',
   TagsAndAttributes = 'tags_and_attributes',
   Contacts = 'contacts',
+  FeatureFlags = 'feature_flags',
 }
 
 /**
@@ -997,11 +1265,30 @@ export interface AttributeEditor {
   setAttribute(name: string, value: string | number | boolean | Date): AttributeEditor;
 
   /**
+   * Adds a JSON attribute.
+   *
+   * @param name The attribute name.
+   * @param instanceId The instance ID.
+   * @param json The json value. Must not contain `exp` as top level key.
+   * @param expiration Optional expiration.
+   * @return The attribute editor instance.
+   */
+  setJsonAttribute(name: string, instanceId: string, json: Record<string, any>, expiration?: Date): AttributeEditor;
+
+  /**
    * Removes an attribute.
    * @param name The name of the attribute to remove.
    * @return The attribute editor instance.
    */
   removeAttribute(name: string): AttributeEditor;
+
+  /**
+   * Removes a JSON attribute.
+   * @param name The name of the attribute to remove.
+   * @param instanceId The instance ID.
+   * @return The attribute editor instance.
+   */
+  removeJsonAttribute(name: string, instanceId: string): AttributeEditor;
 
   /**
    * Applies the attribute operations.
@@ -1041,6 +1328,15 @@ class AirshipPush {
    */
   @CordovaInstance()
   isUserNotificationsEnabled(): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * Enables user notifications and prompts the user for permission, if needed.
+   * @returns Whether user notifications are enabled after the request.
+   */
+  @CordovaInstance()
+  enableUserNotifications(): Promise<boolean> {
     return;
   }
 
@@ -1185,6 +1481,13 @@ export interface AirshipPushIOS {
    * @param error Error callback.
    */
   getBadgeNumber(success: (badge: number) => void, error?: (err: string) => void): void;
+
+  /**
+   * Resets the badge number to zero.
+   * @param success Success callback.
+   * @param error Error callback.
+   */
+  resetBadge(success?: () => void, error?: (err: string) => void): void;
 
   /**
    * Gets the list of authorized notification settings.
@@ -1551,6 +1854,41 @@ export interface AirshipFeatureFlagManager {
 }
 
 /**
+ * Options for email channel registration.
+ */
+export interface EmailRegistrationOptions {
+  /**
+   * Transactional opt-in date as milliseconds since epoch.
+   */
+  transactionalOptedIn?: number;
+
+  /**
+   * Commercial opt-in date as milliseconds since epoch.
+   */
+  commercialOptedIn?: number;
+
+  /**
+   * Custom properties for the email channel.
+   */
+  properties?: Record<string, string>;
+
+  /**
+   * Request double opt-in for commercial messages when `commercialOptedIn` is not set.
+   */
+  doubleOptIn?: boolean;
+}
+
+/**
+ * Options for SMS channel registration.
+ */
+export interface SmsRegistrationOptions {
+  /**
+   * The sender ID.
+   */
+  senderId: string;
+}
+
+/**
  * Airship contact.
  */
 class AirshipContact {
@@ -1618,6 +1956,26 @@ class AirshipContact {
    */
   @CordovaInstance()
   reset(): Promise<void> {
+    return;
+  }
+
+  /**
+   * Registers an email channel for the contact.
+   * @param email The email address.
+   * @param options Registration options.
+   */
+  @CordovaInstance()
+  registerEmail(email: string, options: EmailRegistrationOptions): Promise<void> {
+    return;
+  }
+
+  /**
+   * Registers an SMS channel for the contact.
+   * @param msisdn The MSISDN, including country code.
+   * @param options Registration options.
+   */
+  @CordovaInstance()
+  registerSMS(msisdn: string, options: SmsRegistrationOptions): Promise<void> {
     return;
   }
 }
@@ -1764,4 +2122,115 @@ export interface AirshipActions {
     success?: (result: JsonValue | null | undefined) => void,
     error?: (err: string) => void
   ): void;
+}
+
+/**
+ * Live Activity manager. iOS only.
+ */
+export interface AirshipLiveActivityManager {
+  /**
+   * Lists any Live Activities for the request.
+   * @param request The request options.
+   * @param success Success callback with the list.
+   * @param error Error callback.
+   */
+  list(
+    request: LiveActivityListRequest,
+    success: (activities: LiveActivity[]) => void,
+    error?: (err: string) => void
+  ): void;
+
+  /**
+   * Lists all Live Activities.
+   * @param success Success callback with the list.
+   * @param error Error callback.
+   */
+  listAll(success: (activities: LiveActivity[]) => void, error?: (err: string) => void): void;
+
+  /**
+   * Starts a Live Activity.
+   * @param request The request options.
+   * @param success Success callback with the started activity.
+   * @param error Error callback.
+   */
+  start(
+    request: LiveActivityStartRequest,
+    success: (activity: LiveActivity) => void,
+    error?: (err: string) => void
+  ): void;
+
+  /**
+   * Updates a Live Activity.
+   * @param request The request options.
+   * @param success Success callback.
+   * @param error Error callback.
+   */
+  update(request: LiveActivityUpdateRequest, success?: () => void, error?: (err: string) => void): void;
+
+  /**
+   * Ends a Live Activity.
+   * @param request The request options.
+   * @param success Success callback.
+   * @param error Error callback.
+   */
+  end(request: LiveActivityEndRequest, success?: () => void, error?: (err: string) => void): void;
+
+  /**
+   * Live Activities updated listener.
+   *
+   * @param callback The callback.
+   * @return A cancellable that can be used to cancel the listener.
+   */
+  onLiveActivitiesUpdated(callback: (event: LiveActivitiesUpdatedEvent) => void): Cancellable;
+}
+
+/**
+ * Live Update manager. Android only.
+ */
+export interface AirshipLiveUpdateManager {
+  /**
+   * Lists any Live Updates for the request.
+   * @param request The request options.
+   * @param success Success callback with the list.
+   * @param error Error callback.
+   */
+  list(request: LiveUpdateListRequest, success: (updates: LiveUpdate[]) => void, error?: (err: string) => void): void;
+
+  /**
+   * Lists all Live Updates.
+   * @param success Success callback with the list.
+   * @param error Error callback.
+   */
+  listAll(success: (updates: LiveUpdate[]) => void, error?: (err: string) => void): void;
+
+  /**
+   * Starts a Live Update.
+   * @param request The request options.
+   * @param success Success callback.
+   * @param error Error callback.
+   */
+  start(request: LiveUpdateStartRequest, success?: () => void, error?: (err: string) => void): void;
+
+  /**
+   * Updates a Live Update.
+   * @param request The request options.
+   * @param success Success callback.
+   * @param error Error callback.
+   */
+  update(request: LiveUpdateUpdateRequest, success?: () => void, error?: (err: string) => void): void;
+
+  /**
+   * Ends a Live Update.
+   * @param request The request options.
+   * @param success Success callback.
+   * @param error Error callback.
+   */
+  end(request: LiveUpdateEndRequest, success?: () => void, error?: (err: string) => void): void;
+
+  /**
+   * Clears all Live Updates.
+   * @param success Success callback.
+   * @param error Error callback.
+   */
+  clearAll(success?: () => void, error?: (err: string) => void): void;
 }
