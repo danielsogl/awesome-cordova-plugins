@@ -40,7 +40,15 @@ export class GeniusScan extends AwesomeCordovaNativePlugin {
   }
 
   @Cordova()
-  scanWithConfiguration(configuration: ScanConfiguration): Promise<SuccessScanResult> {
+  scanWithConfiguration(configuration?: ScanConfiguration): Promise<SuccessScanResult> {
+    return;
+  }
+
+  /**
+   * Starts the barcode scanner module.
+   */
+  @Cordova()
+  scanBarcodesWithConfiguration(configuration?: BarcodeConfiguration): Promise<BarcodeResult> {
     return;
   }
 
@@ -74,14 +82,30 @@ interface ScanConfiguration {
   multiPageFormat?: 'pdf' | 'tiff' | 'none';
 
   /**
-   *  (by default, the filter is chosen automatically)
+   * The filter that will be applied by default to enhance scans, or 'none' if no
+   * enhancement should be performed by default. Possible values include 'automatic',
+   * 'automaticColor', 'automaticBlackAndWhite', 'automaticMonochrome', 'photo',
+   * 'softBlackAndWhite', 'softColor', 'strongMonochrome', 'strongBlackAndWhite',
+   * 'strongColor', 'darkBackground' and 'none' (defaults to 'automatic').
    */
-  defaultFilter?: 'none' | 'blackAndWhite' | 'monochrome' | 'color' | 'photo';
+  defaultFilter?: string;
+
+  /**
+   * an array of filters that the user can select when they tap on the edit filter button.
+   * Defaults to ['none', 'automatic', 'automaticMonochrome', 'automaticBlackAndWhite', 'automaticColor', 'photo'].
+   */
+  availableFilters?: string[];
 
   /**
    * defaults to fit
    */
   pdfPageSize?: 'fit' | 'a4' | 'letter';
+
+  /**
+   * Optional password used to protect generated PDF documents. Empty passwords are
+   * treated as no password. Only applies when multiPageFormat is 'pdf'.
+   */
+  pdfPassword?: string;
 
   /**
    * max dimension in pixels when images are scaled before PDF generation,
@@ -104,10 +128,40 @@ interface ScanConfiguration {
   jpegQuality?: number;
 
   /**
+   * Whether to skip showing the post-processing screen. Only recommended when
+   * scanning structured data; generally the user should visually confirm each scan.
+   */
+  skipPostProcessingScreen?: boolean;
+
+  /**
    * an array with the desired actions to display during the post processing screen
    * (defaults to all actions).
    */
   postProcessingActions?: ('rotate' | 'editFilter' | 'correctDistortion')[];
+
+  /**
+   * whether a curvature correction should be applied by default (defaults to 'disabled').
+   */
+  defaultCurvatureCorrection?: 'enabled' | 'disabled';
+
+  /**
+   * automatically show crop validation after capture. 'never', 'always', or an object
+   * with a confidence threshold below which validation should be shown.
+   */
+  showCropValidation?:
+    'never' | 'always' | { whenConfidenceBelowOrEqual: 'lowest' | 'low' | 'medium' | 'high' | 'highest' };
+
+  /**
+   * 'automatic' to rotate scan automatically after capture or 'original' to keep the
+   * original scan orientation (defaults to 'automatic').
+   */
+  defaultScanOrientation?: 'automatic' | 'original';
+
+  /**
+   * whether the button allowing the user to pick an image on the Camera screen
+   * should be hidden (defaults to false).
+   */
+  photoLibraryButtonHidden?: boolean;
 
   /**
    * (default to false)
@@ -160,13 +214,68 @@ interface ScanConfiguration {
      */
     outputFormats?: ('rawText' | 'hOCR' | 'textLayerInPDF')[];
   };
+
+  /**
+   * an array of the structured data you want to extract. E.g.: ['receipt', 'businessCard'].
+   * Possible values are 'receipt', 'barcode', 'bankDetails' (iOS only), 'businessCard' (iOS only).
+   */
+  structuredData?: string[];
+
+  /**
+   * an array of the barcode types to extract, e.g. ['qr', 'code39']. Possible values are
+   * 'aztec', 'code39', 'code93', 'code128', 'dataMatrix', 'ean8', 'ean13', 'itf', 'pdf417',
+   * 'qr', 'upca' (Android only), 'upce', 'codabar' (iOS 15+ only), 'gs1DataBar' (iOS 15+ only),
+   * 'microPDF417' (iOS 15+ only), 'microQR' (iOS 15+ only), 'msiPlessey' (iOS 17+ only).
+   */
+  structuredDataBarcodeTypes?: string[];
+
+  /**
+   * the required readability level below which a warning will be displayed to the user
+   * (defaults to 'lowest', which means the warning will never be displayed).
+   */
+  requiredReadabilityLevel?: 'lowest' | 'low' | 'medium' | 'high' | 'highest';
+
+  /**
+   * whether the final review screen should be displayed before submission (default to false).
+   */
+  showFinalReview?: boolean;
+}
+
+interface BarcodeConfiguration {
+  /**
+   * whether the barcode scanner should keep scanning and accumulating results after
+   * detecting a first barcode.
+   */
+  isBatchModeEnabled?: boolean;
+
+  /**
+   * an array of the barcode types to detect. Defaults to all supported types.
+   */
+  supportedCodeTypes?: string[];
+}
+
+interface BarcodeResult {
+  /**
+   * an array of the detected barcodes.
+   */
+  barcodes: {
+    /**
+     * the decoded value of the barcode.
+     */
+    value: string;
+
+    /**
+     * the type of the barcode, e.g. 'qr', 'code128'.
+     */
+    type: string;
+  }[];
 }
 
 interface SuccessScanResult {
   /**
    * a document containing all the scanned pages (example: "file://.pdf")
    */
-  multiPageDocumentUrl: string;
+  multiPageDocumentUrl?: string;
 
   /**
    * an array of scan objects.
@@ -183,9 +292,9 @@ interface SuccessScanResult {
     enhancedUrl: string;
 
     /**
-     * the result of text recognition for this scan
+     * the result of text recognition for this scan, present when ocrConfiguration was set.
      */
-    ocrResult: {
+    ocrResult?: {
       /**
        * the raw text that was recognized
        */
@@ -194,8 +303,14 @@ interface SuccessScanResult {
       /**
        * the recognized text in hOCR format (with position, style…)
        */
-      hocrTextLayout: string;
+      hocrTextLayout?: string;
     };
+
+    /**
+     * the result of the structured data extraction, present when structuredData was set.
+     * A subdictionary is present for each type of structured data detected.
+     */
+    structuredData?: any;
   }[];
 }
 
@@ -209,7 +324,7 @@ interface GenerateDocumentPages {
     /**
      * the text layout in hOCR format
      */
-    hocrTextLayout: string;
+    hocrTextLayout?: string;
   }[];
 }
 
