@@ -443,8 +443,22 @@ export class LoginParameters {
    */
   dbUpdateStatements: string;
 
-  
+  /**
+   * Specify Firebase push configuration for Web/Elector Push.
+   */
+  firebasePushConfig: FirebasePushConfig;
 }
+
+export interface FirebasePushConfig {
+  apiKey: string;
+  authDomain: string;
+  projectId: string;
+  storageBucket: string;
+  messagingSenderId: string;
+  appId: string;
+  vapidKey: string; // VAPID public key for Web Push
+}
+
 export class LoginResult extends UnviredResult {
   type: LoginListenerType;
 }
@@ -1858,6 +1872,68 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   getUMPRequestConfig(endpoint: string, options?: { customUrl?: string }): Promise<UMPRequestConfig> {
+    return;
+  }
+
+  /**
+   * Check connection status.
+   * Returns networkNotReachable, umpNotReachable, or connected.
+   */
+  @Cordova()
+  checkConnectionStatus(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Get database directory path.
+   */
+  @Cordova()
+  getDatabasePath(): Promise<string> {
+    return;
+  }
+
+  /**
+   * Download attachment synchronously.
+   * @param structureObject Attachment Item JSON object containing field name-value.
+   */
+  @Cordova()
+  downloadAttachmentSync(structureObject: any): Promise<any> {
+    return;
+  }
+
+  /**
+   * Unregister for callback on GetMessage status (Mobile only).
+   */
+  @Cordova({ sync: true })
+  unRegisterNotifListener(): void {
+    return;
+  }
+
+  /**
+   * Prepare database for export.
+   */
+  @Cordova()
+  prepareDatabaseForExport(): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * Register a callback to listen for sync items count updates.
+   */
+  @Cordova({
+    observable: true,
+  })
+  updateSyncItemsCount(): Observable<any> {
+    return;
+  }
+
+  /**
+   * Set authentication credentials.
+   * @param username Username
+   * @param password Password
+   */
+  @Cordova()
+  setAuthCredentials(username: string, password: string): Promise<boolean> {
     return;
   }
 }
