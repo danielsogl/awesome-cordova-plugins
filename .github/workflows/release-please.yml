@@ -38,10 +38,10 @@ jobs:
       contents: read
       id-token: write
     steps:
-      - uses: actions/checkout@v4.3.1
+      - uses: actions/checkout@v7.0.1
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4.4.0
+        uses: actions/setup-node@v7.0.0
         with:
           # node 24 bundles npm 11.16, over the >= 11.5.1 that trusted publishing needs
           node-version: 24
