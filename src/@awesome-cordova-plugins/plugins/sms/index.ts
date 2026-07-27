@@ -18,6 +18,12 @@ export interface SmsOptionsAndroid {
    * Set to "INTENT" to send SMS with the native android SMS messaging. Leaving it empty will send the SMS without opening any app.
    */
   intent?: string;
+
+  /**
+   * Selects which SIM to use on dual-SIM devices when sending with no intent. Use "0" for the primary SIM slot and "1" for the secondary SIM slot.
+   * If no slot is specified the default SIM slot will be used.
+   */
+  slot?: string;
 }
 
 /**
@@ -76,6 +82,18 @@ export class SMS extends AwesomeCordovaNativePlugin {
     platforms: ['Android'],
   })
   hasPermission(): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * Requests permission to send SMS (Android Marshmallow and later)
+   *
+   * @returns {Promise<boolean>} returns a promise that resolves with a boolean that indicates if permission was granted
+   */
+  @Cordova({
+    platforms: ['Android'],
+  })
+  requestPermission(): Promise<boolean> {
     return;
   }
 }
