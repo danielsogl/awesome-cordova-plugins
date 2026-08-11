@@ -1,5 +1,3 @@
-declare const window: any;
-
 /**
  * @param element
  * @param path
@@ -22,17 +20,7 @@ export function get(element: Element | Window, path: string) {
  * @private
  */
 export function getPromise(callback: Function = () => {}): Promise<any> {
-  const tryNativePromise = () => {
-    if (typeof Promise === 'function' || (typeof window !== 'undefined' && window.Promise)) {
-      return new Promise<any>((resolve, reject) => {
-        callback(resolve, reject);
-      });
-    } else {
-      console.error(
-        'No Promise support or polyfill found. To enable Ionic Native support, please add the es6-promise polyfill before this script, or run with a library like Angular or on a recent browser.'
-      );
-    }
-  };
-
-  return tryNativePromise();
+  return new Promise<any>((resolve, reject) => {
+    callback(resolve, reject);
+  });
 }

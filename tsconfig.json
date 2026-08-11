@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "declaration": true,
     "stripInternal": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+    "strict": false,
     "noImplicitAny": true,
+    "types": ["cordova"],
     "module": "es2022",
     "moduleResolution": "bundler",
     "paths": {

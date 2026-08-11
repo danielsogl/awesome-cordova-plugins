@@ -52,13 +52,13 @@
     },
     {
       "groupName": "Angular",
-      "allowedVersions": "<=21",
+      "allowedVersions": "<=22",
       "automerge": false,
       "matchPackageNames": ["/^@angular//", "/^@angular-devkit//", "/@schematics/angular/"]
     },
     {
       "matchPackageNames": ["typescript"],
-      "allowedVersions": "<=5",
+      "allowedVersions": "<6.1",
       "groupName": "TypeScript core",
       "automerge": false
     },
@@ -78,7 +78,7 @@
       "groupName": "Documentation tools",
       "automerge": true,
       "platformAutomerge": true,
-      "matchPackageNames": ["typedoc", "typedoc-plugin-markdown"]
+      "matchPackageNames": ["typedoc"]
     },
     {
       "matchManagers": ["npm"],

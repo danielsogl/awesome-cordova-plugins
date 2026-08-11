@@ -21,8 +21,6 @@ export function getProgram(rootNames: string[] = createSourceFiles()) {
   options.inlineSources = true;
   options.compilationMode = 'partial';
 
-  delete options.baseUrl;
-
   const host: CompilerHost = createCompilerHost({ options });
   return createProgram({
     rootNames,

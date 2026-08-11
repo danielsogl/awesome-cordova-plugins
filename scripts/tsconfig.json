@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "types": ["node", "jest"],
+    "module": "es2022",
+    "moduleResolution": "bundler",
+    "target": "es2022",
+    "lib": ["es2022"],
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "noEmit": true
+  },
+  "include": ["**/*.ts"]
+}
