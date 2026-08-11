@@ -1248,7 +1248,7 @@ export class File extends AwesomeCordovaNativePlugin {
           }
         );
       } catch (xc) {
-        this.fillErrorMessage(xc);
+        this.fillErrorMessage(xc as FileError);
         reject(xc);
       }
     });
@@ -1297,7 +1297,7 @@ export class File extends AwesomeCordovaNativePlugin {
           }
         );
       } catch (xc) {
-        this.fillErrorMessage(xc);
+        this.fillErrorMessage(xc as FileError);
         reject(xc);
       }
     });
@@ -1320,7 +1320,7 @@ export class File extends AwesomeCordovaNativePlugin {
           reject(err);
         });
       } catch (xc) {
-        this.fillErrorMessage(xc);
+        this.fillErrorMessage(xc as FileError);
         reject(xc);
       }
     });
