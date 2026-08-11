@@ -1,7 +1,6 @@
 import { CompilerHost, CompilerOptions, createCompilerHost, createProgram, EmitFlags } from '@angular/compiler-cli';
 import { copyFileSync, mkdirSync, rmSync } from 'node:fs';
-import { dirname, join, resolve } from 'node:path';
-import { rollup } from 'rollup';
+import { resolve } from 'node:path';
 import { ModuleKind, ModuleResolutionKind, ScriptTarget } from 'typescript';
 
 import { COMPILER_OPTIONS, PLUGIN_PATHS, ROOT } from './helpers';
@@ -74,27 +73,6 @@ export function transpileNgx() {
 
 export function generateDeclarationFiles() {
   generateDeclarations(PLUGIN_PATHS.map((p) => p.replace('index.ts', 'ngx/index.ts')));
-}
-
-export function generateLegacyBundles() {
-  [
-    resolve(ROOT, 'dist/@awesome-cordova-plugins/core/index.js'),
-    ...PLUGIN_PATHS.map((p) => p.replace(join(ROOT, 'src'), join(ROOT, 'dist')).replace('index.ts', 'ngx/index.js')),
-  ].forEach((p) =>
-    rollup({
-      input: p,
-      onwarn(warning, warn) {
-        if (warning.code === 'UNUSED_EXTERNAL_IMPORT') return;
-        warn(warning);
-      },
-      external: ['@angular/core', '@awesome-cordova-plugins/core', 'rxjs', 'tslib'],
-    }).then((bundle) =>
-      bundle.write({
-        file: join(dirname(p), 'bundle.js'),
-        format: 'cjs',
-      })
-    )
-  );
 }
 
 function createSourceFiles(): string[] {

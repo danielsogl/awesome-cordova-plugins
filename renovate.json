@@ -66,7 +66,7 @@
       "groupName": "Build and bundling tools",
       "automerge": true,
       "platformAutomerge": true,
-      "matchPackageNames": ["rollup", "tsx"]
+      "matchPackageNames": ["tsx"]
     },
     {
       "groupName": "Testing framework",
