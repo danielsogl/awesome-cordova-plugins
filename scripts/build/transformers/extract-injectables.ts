@@ -14,12 +14,13 @@ const injectableClasses: InjectableClassEntry[] = [];
 export const EMIT_PATH = resolve(ROOT, 'injectable-classes.json');
 
 /**
- * This transformer extracts all the injectable classes
- * so we can use all the names later on when we compile
- * an es5 bundle.
+ * Records every @Injectable class it walks past, keyed by the directory it came from, and writes
+ * the list to EMIT_PATH. build-esm.ts reads that file back and hands it to rewriteInjectableExports,
+ * which turns `export class Foo` in the emitted plain (non-ngx) entry point into a `FooOriginal`
+ * class plus an eagerly instantiated `export const Foo`, so the plain entry point can be used
+ * without Angular DI.
  *
- * Every injectable class will end up in the
- * window['IonicNative'] object.
+ * There is no es5 bundle and no window['IonicNative'] object; both are long gone.
  */
 export function extractInjectables() {
   return (ctx: TransformationContext) => {

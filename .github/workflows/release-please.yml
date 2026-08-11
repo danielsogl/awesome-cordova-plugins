@@ -43,8 +43,9 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v7.0.0
         with:
-          # node 24 bundles npm 11.16, over the >= 11.5.1 that trusted publishing needs
-          node-version: 24
+          # .nvmrc pins node 24, which bundles npm 11.16 — over the >= 11.5.1 that
+          # trusted publishing needs. Do not lower it below that.
+          node-version-file: .nvmrc
           cache: npm
           registry-url: https://registry.npmjs.org
 

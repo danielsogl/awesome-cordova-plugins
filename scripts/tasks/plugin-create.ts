@@ -15,7 +15,7 @@ const { values } = parseArgs({
 });
 
 if (!values.n) {
-  console.log('Usage: tsx scripts/tasks/plugin-create -n PluginName [-m]');
+  console.error('Usage: tsx scripts/tasks/plugin-create -n PluginName [-m]');
   process.exit(1);
 }
 

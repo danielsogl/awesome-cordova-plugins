@@ -56,5 +56,6 @@
   },
   "bugs": {
     "url": "https://github.com/danielsogl/awesome-cordova-plugins/issues"
-  }
+  },
+  "private": true
 }

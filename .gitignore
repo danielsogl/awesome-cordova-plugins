@@ -4,7 +4,8 @@ node_modules/
 .tmp
 dist/
 src/@awesome-cordova-plugins/plugins/**/ngx
-*.d.ts
+# only build output; a hand-written ambient declaration in src/ must stay tracked
+src/**/*.d.ts
 injectable-classes.json
 
 # npm trust bulk setup progress
