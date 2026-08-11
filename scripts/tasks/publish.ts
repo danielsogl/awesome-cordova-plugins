@@ -184,38 +184,83 @@ function prepare() {
   });
 }
 
-async function publishPackage(pkg: string, ignoreErrors: boolean): Promise<void> {
-  try {
-    const { stdout } = await exec(`npm publish ${pkg} ${FLAGS}`);
-    if (stdout) Logger.verbose(stdout.trim());
-  } catch (err: unknown) {
-    const message = err instanceof Error ? err.message : String(err);
-    if (message.includes('You cannot publish over the previously published version')) {
-      Logger.verbose('Ignoring duplicate version error.');
-      return;
-    }
-    if (!ignoreErrors) throw err;
-  }
+const RETRIES = 3;
+const RETRY_BASE_MS = 1000;
+
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+/**
+ * Publishing 267 packages is not atomic, so re-running the release job is the only recovery when
+ * it dies halfway. Treating "already published" as success is what makes that re-run idempotent —
+ * do not turn this into a failure.
+ */
+function isDuplicateVersion(message: string): boolean {
+  return message.includes('EPUBLISHCONFLICT') || message.includes('You cannot publish over the previously published');
 }
 
-async function publish(ignoreErrors = false) {
-  Logger.profile('Publishing');
-  const concurrency = availableParallelism();
-  const queue = [...PACKAGES];
+type Outcome = 'published' | 'skipped' | 'failed';
 
-  try {
-    while (queue.length > 0) {
-      const batch = queue.splice(0, concurrency);
-      await Promise.all(batch.map((pkg) => publishPackage(pkg, ignoreErrors)));
+async function publishPackage(pkg: string): Promise<Outcome> {
+  const name = pkg.split(/[\\/]/).pop();
+
+  for (let attempt = 1; attempt <= RETRIES; attempt++) {
+    try {
+      const { stdout } = await exec(`npm publish ${pkg} ${FLAGS}`);
+      if (stdout) Logger.verbose(stdout.trim());
+      return 'published';
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : String(err);
+
+      if (isDuplicateVersion(message)) {
+        Logger.verbose(`${name}: already published, skipping`);
+        return 'skipped';
+      }
+
+      if (attempt === RETRIES) {
+        Logger.error(`${name}: failed after ${RETRIES} attempts\n${message}`);
+        return 'failed';
+      }
+
+      // the registry rate limits and 5xxs under a burst of 267 publishes
+      const wait = RETRY_BASE_MS * 2 ** (attempt - 1);
+      Logger.verbose(`${name}: attempt ${attempt} failed, retrying in ${wait}ms`);
+      await sleep(wait);
     }
-    Logger.info('Done publishing!');
-  } catch (e) {
-    Logger.error('Error publishing!');
-    Logger.error(e);
+  }
+
+  return 'failed';
+}
+
+async function publish() {
+  Logger.profile('Publishing');
+
+  const queue = [...PACKAGES];
+  const results: { pkg: string; outcome: Outcome }[] = [];
+
+  // a worker pool keeps every slot busy; batching made each round wait for its slowest member
+  const workers = Array.from({ length: availableParallelism() }, async () => {
+    for (let pkg = queue.shift(); pkg !== undefined; pkg = queue.shift()) {
+      results.push({ pkg, outcome: await publishPackage(pkg) });
+    }
+  });
+  await Promise.all(workers);
+
+  const count = (o: Outcome) => results.filter((r) => r.outcome === o).length;
+  const failed = results.filter((r) => r.outcome === 'failed');
+
+  Logger.info(`published: ${count('published')}, skipped: ${count('skipped')}, failed: ${failed.length}`);
+  Logger.profile('Publishing');
+
+  if (failed.length > 0) {
+    Logger.error(`Failed packages:\n${failed.map((f) => `  ${f.pkg.split(/[\\/]/).pop()}`).join('\n')}`);
     process.exit(1);
   }
-  Logger.profile('Publishing');
 }
 
 prepare();
-publish();
+// tsx emits CJS here, so no top-level await; catch instead of leaving the promise floating
+publish().catch((err: unknown) => {
+  Logger.error('Error publishing!');
+  Logger.error(err);
+  process.exit(1);
+});
