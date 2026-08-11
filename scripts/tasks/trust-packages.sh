@@ -80,6 +80,38 @@ if [ ${#todo[@]} -eq 0 ]; then
   exit 0
 fi
 
+# npm trust attaches a publisher to an *existing* package; for anything unpublished the registry
+# answers E404. Filter those out up front rather than letting them fail one by one — and, more
+# importantly, so the 2FA-priming call below lands on a package that actually exists. A run whose
+# first package 404s never opens the 5-minute window, and the whole parallel batch then stalls on
+# individual prompts.
+echo "Checking which of the ${#todo[@]} are published..."
+unpublished=()
+existing=()
+while read -r state pkg; do
+  case "$state" in
+    ok) existing+=("$pkg") ;;
+    *) unpublished+=("$pkg") ;;
+  esac
+done < <(printf '%s\n' "${todo[@]}" | xargs -P 8 -n1 sh -c 'npm view "$0" version >/dev/null 2>&1 && echo "ok $0" || echo "missing $0"' | sort -k2)
+
+if [ ${#unpublished[@]} -gt 0 ]; then
+  echo
+  echo "${#unpublished[@]} not on npm yet, skipping:"
+  printf '  %s\n' "${unpublished[@]}"
+  echo
+  echo "A new plugin has no package to trust until it ships. It publishes via the NPM_TOKEN"
+  echo "fallback in $WORKFLOW on its first release; re-run this afterwards."
+fi
+
+if [ ${#existing[@]} -eq 0 ]; then
+  echo
+  echo "Nothing left to configure."
+  exit 0
+fi
+
+todo=("${existing[@]}")
+echo
 echo "${#todo[@]} of ${#packages[@]} packages left for $REPO/.github/workflows/$WORKFLOW"
 echo
 echo ">> ${todo[0]} runs first. Approve in the browser and tick"
@@ -106,4 +138,6 @@ if [ ${#failed[@]} -gt 0 ]; then
   echo "Re-run retries only the failures; successes are recorded in $DONE."
   exit 1
 fi
+
 echo "Done."
+[ ${#unpublished[@]} -eq 0 ] || echo "Still waiting on ${#unpublished[@]} unpublished package(s) — see above."
