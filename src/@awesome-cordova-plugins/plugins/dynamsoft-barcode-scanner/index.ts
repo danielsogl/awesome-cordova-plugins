@@ -71,6 +71,7 @@ export enum EnumResolution {
    });
  *
  * ```
+ * @deprecated The underlying `cordova-plugin-dynamsoft-barcode-reader` plugin is no longer maintained; use Dynamsoft's `dynamsoft-capture-vision-cordova` instead.
  */
 @Plugin({
   pluginName: 'dynamsoft-barcode-scanner',

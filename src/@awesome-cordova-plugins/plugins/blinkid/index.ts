@@ -2744,6 +2744,7 @@ export type BlinkIdRecognizerResultCtor = RecognizerResultCtor<BlinkIdRecognizer
  *     }
  *   }
  * ```
+ * @deprecated The underlying `blinkid-cordova` plugin is no longer maintained by Microblink and has no official successor; the third-party fork `blinkid-cordova-plugin` is still published.
  */
 @Plugin({
   pluginName: 'BlinkId',

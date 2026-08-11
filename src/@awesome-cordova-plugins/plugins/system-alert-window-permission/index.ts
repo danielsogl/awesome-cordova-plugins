@@ -24,6 +24,7 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
  *   .catch((error: any) => console.error(error));
  *
  * ```
+ * @deprecated The underlying `cordova-plugin-system-alert-window-permission` plugin is deprecated and unmaintained since 2021; there is no maintained successor.
  */
 
 @Plugin({

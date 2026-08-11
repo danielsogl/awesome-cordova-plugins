@@ -321,6 +321,7 @@ export type PushEvent = string;
  * AndroidPushOptions
  * BrowserPushOptions
  * PushOptions
+ * @deprecated The underlying `phonegap-plugin-push` plugin is deprecated following the PhoneGap shutdown; use the maintained fork `@havesource/cordova-plugin-push` instead.
  */
 @Plugin({
   pluginName: 'Push',

@@ -30,6 +30,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
  *     (no: boolean) => console.log(app + ' is NOT available')
  *   );
  * ```
+ * @deprecated The underlying `cordova-plugin-appavailability` plugin is deprecated and unmaintained since 2015; there is no maintained successor.
  */
 @Plugin({
   pluginName: 'AppAvailability',

@@ -335,6 +335,7 @@ export class ContactFindOptions implements IContactFindOptions {
  * IContactAddress
  * IContactOrganization
  * IContactFindOptions
+ * @deprecated The underlying `cordova-plugin-contacts` plugin is deprecated by Apache with no official replacement; the maintained community fork `@herdwatch/cordova-plugin-contacts` can be used instead.
  */
 @Plugin({
   pluginName: 'Contacts',

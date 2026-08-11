@@ -136,7 +136,13 @@ function truncate(text: string, maxLen: number): string {
   return text.slice(0, maxLen - 1).replace(/\s+\S*$/, '') + '…';
 }
 
-function generateReadme(name: string, pluginSlug: string, description: string, meta: PluginMeta): string {
+function generateReadme(
+  name: string,
+  pluginSlug: string,
+  description: string,
+  meta: PluginMeta,
+  deprecated?: string
+): string {
   const installCmd = meta.install ?? `ionic cordova plugin add ${meta.plugin ?? 'PLUGIN_NAME'}`;
   const npmPkg = `@awesome-cordova-plugins/${pluginSlug}`;
 
@@ -148,6 +154,10 @@ function generateReadme(name: string, pluginSlug: string, description: string, m
   let readme = `---\ndescription: >-\n  ${metaDescription}\n---\n\n`;
 
   readme += `# ${name}\n\n`;
+
+  if (deprecated) {
+    readme += `> **Deprecated.** ${deprecated}\n\n`;
+  }
 
   if (description) {
     readme += `${description}\n\n`;
@@ -290,7 +300,13 @@ async function main(): Promise<void> {
     if (pluginEntries.has(pluginSlug)) continue;
     pluginEntries.set(pluginSlug, pluginName);
 
-    const readmeContent = generateReadme(pluginName, pluginSlug, description, meta);
+    const readmeContent = generateReadme(
+      pluginName,
+      pluginSlug,
+      description,
+      meta,
+      getTagValue(classRef, 'deprecated')
+    );
     const outDir = join(DOCS_OUT, pluginSlug);
     mkdirSync(outDir, { recursive: true });
     writeFileSync(join(outDir, 'README.md'), readmeContent, 'utf-8');

@@ -22,6 +22,7 @@ declare const window: any;
  *   .catch(err => console.log(err));
  *
  * ```
+ * @deprecated The underlying `cordova-plugin-filepath` plugin is no longer maintained and has no successor; use `cordova-plugin-file` (`resolveLocalFileSystemURL`) where possible.
  */
 @Plugin({
   pluginName: 'FilePath',

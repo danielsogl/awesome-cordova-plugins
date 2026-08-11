@@ -13,6 +13,7 @@ export type AdUnitIDOption =
  * @name AdMob Plus
  * @description
  * AdMob Plus is the successor of cordova-plugin-admob-free, which provides a cleaner API and build with modern tools.
+ * @deprecated The underlying `cordova-admob-plus` plugin is deprecated; use `admob-plus-cordova` instead.
  */
 @Plugin({
   plugin: 'cordova-admob-plus',
