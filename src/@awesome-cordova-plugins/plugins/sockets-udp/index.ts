@@ -179,7 +179,7 @@ export class SocketsUdp extends AwesomeCordovaNativePlugin {
    * Watch all incoming data event
    */
   public onReceiveData(): Observable<SocketUdpDataInfo> {
-    return fromEventPattern(
+    return fromEventPattern<SocketUdpDataInfo>(
       (eventHandler) => this.onReceive.addListener(eventHandler),
       (errorEventHandler) => this.onReceive.removeListener(errorEventHandler)
     ).pipe(
