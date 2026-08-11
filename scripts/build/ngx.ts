@@ -7,15 +7,32 @@ import { ModuleKind, ModuleResolutionKind, ScriptTarget } from 'typescript';
 import { COMPILER_OPTIONS, PLUGIN_PATHS, ROOT } from './helpers';
 import { importsTransformer } from './transformers/imports';
 import { pluginClassTransformer } from './transformers/plugin-class';
-import { generateDeclarations } from './transpile';
+import { assertNoDiagnostics, generateDeclarations } from './transpile';
+
+type NgProgram = ReturnType<typeof createProgram>;
+
+function ngDiagnostics(program: NgProgram) {
+  return [
+    ...program.getTsOptionDiagnostics(),
+    ...program.getNgOptionDiagnostics(),
+    ...program.getTsSyntacticDiagnostics(),
+    ...program.getTsSemanticDiagnostics(),
+    ...program.getNgSemanticDiagnostics(),
+  ];
+}
 
 export function getProgram(rootNames: string[] = createSourceFiles()) {
   const options: CompilerOptions = structuredClone(COMPILER_OPTIONS);
   options.basePath = ROOT;
-  options.moduleResolution = ModuleResolutionKind.Node16;
+  options.pathsBasePath = ROOT;
+  options.moduleResolution = ModuleResolutionKind.Bundler;
   options.module = ModuleKind.ES2022;
   options.target = ScriptTarget.ES2022;
-  options.lib = ['dom', 'es2022'];
+  // Programmatic programs need lib *file* names; 'dom'/'es2022' silently resolve to nothing,
+  // which left the program without any standard library at all.
+  options.lib = ['lib.dom.d.ts', 'lib.es2022.d.ts'];
+  // core/ guards on `process` to stay quiet under SSR, so this program needs the node types too.
+  options.types = ['node', 'cordova'];
   options.inlineSourceMap = true;
   options.importHelpers = true;
   options.inlineSources = true;
@@ -29,23 +46,30 @@ export function getProgram(rootNames: string[] = createSourceFiles()) {
   });
 }
 
-// hacky way to export metadata only for core package
+// EmitFlags.Metadata is a ViewEngine-era flag that emits nothing of its own under Ivy. It is kept
+// because the ng program derives `emitOnlyDtsFiles` from `(flags & (DTS | JS)) === DTS`, and
+// Metadata sets neither bit — which is what makes JS fall out here. Declarations come from
+// generateDeclarationFiles() instead.
 export function transpileNgxCore() {
-  getProgram([resolve(ROOT, 'src/@awesome-cordova-plugins/core/index.ts')]).emit({
+  const program = getProgram([resolve(ROOT, 'src/@awesome-cordova-plugins/core/index.ts')]);
+  const result = program.emit({
     emitFlags: EmitFlags.Metadata,
     emitCallback: ({ program, writeFile, customTransformers, cancellationToken, targetSourceFile }) => {
       return program.emit(targetSourceFile, writeFile, cancellationToken, true, customTransformers);
     },
   });
+  assertNoDiagnostics('transpileNgxCore', [...ngDiagnostics(program), ...result.diagnostics]);
 }
 
 export function transpileNgx() {
-  getProgram().emit({
+  const program = getProgram();
+  const result = program.emit({
     emitFlags: EmitFlags.Metadata,
     customTransformers: {
       beforeTs: [importsTransformer(true), pluginClassTransformer(true)],
     },
   });
+  assertNoDiagnostics('transpileNgx', [...ngDiagnostics(program), ...result.diagnostics]);
 }
 
 export function generateDeclarationFiles() {
