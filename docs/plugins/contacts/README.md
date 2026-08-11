@@ -5,6 +5,8 @@ description: >-
 
 # Contacts
 
+> **Deprecated.** The underlying `cordova-plugin-contacts` plugin is deprecated by Apache with no official replacement; the maintained community fork `@herdwatch/cordova-plugin-contacts` can be used instead.
+
 Access and manage Contacts on the device.
 
 ## Installation

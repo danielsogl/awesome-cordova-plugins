@@ -5,6 +5,10 @@ description: >-
 
 # Anyline
 
+> **Deprecated.** since v56.0.0. This legacy `AnylineSDK` API remains functional but upstream recommends migrating to the
+new `AnylineInfinityPlugin` API (exposed natively as `window.AnylineInfinity`), which is not covered by this wrapper.
+See https://documentation.anyline.com/cordova-plugin-component/latest/infinity-plugins/upgrade-guide.html
+
 Anyline provides an easy-to-use SDK for applications to enable Optical Character Recognition (OCR) on mobile devices.
 
 ## Installation

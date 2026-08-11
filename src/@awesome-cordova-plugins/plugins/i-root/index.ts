@@ -25,7 +25,7 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
  */
 @Plugin({
   pluginName: 'IRoot',
-  plugin: 'cordova-plugin-IRoot',
+  plugin: 'cordova-plugin-iroot',
   pluginRef: 'IRoot',
   repo: 'https://github.com/WuglyakBolgoink/cordova-plugin-IRoot',
   platforms: ['Android', 'iOS'],

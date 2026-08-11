@@ -5,6 +5,8 @@ description: >-
 
 # Push
 
+> **Deprecated.** The underlying `phonegap-plugin-push` plugin is deprecated following the PhoneGap shutdown; use the maintained fork `@havesource/cordova-plugin-push` instead.
+
 Register and receive push notifications.
 
 Requires Cordova plugin: `phonegap-plugin-push`. For more info, please see the [Push plugin docs](https://github.com/phonegap/phonegap-plugin-push).

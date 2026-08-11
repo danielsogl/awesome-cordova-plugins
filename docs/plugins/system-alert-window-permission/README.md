@@ -5,6 +5,8 @@ description: >-
 
 # System Alert Window Permission
 
+> **Deprecated.** The underlying `cordova-plugin-system-alert-window-permission` plugin is deprecated and unmaintained since 2021; there is no maintained successor.
+
 This plugin does something
 
 ## Installation
