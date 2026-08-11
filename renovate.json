@@ -8,11 +8,8 @@
     ":separateMajorReleases",
     ":combinePatchMinorReleases",
     ":ignoreUnstable",
-    ":prImmediately",
     ":updateNotScheduled",
-    ":automergeDisabled",
-    ":maintainLockFilesWeekly",
-    ":prConcurrentLimit10"
+    ":maintainLockFilesWeekly"
   ],
   "platformAutomerge": true,
   "rangeStrategy": "bump",
@@ -100,8 +97,6 @@
   "prCreation": "immediate",
   "prHourlyLimit": 2,
   "prConcurrentLimit": 5,
-  "updatePinnedDependencies": false,
   "enabledManagers": ["npm", "github-actions"],
-  "ignoreDeps": [],
   "ignorePaths": ["**/node_modules/**", "**/dist/**", "**/coverage/**"]
 }
