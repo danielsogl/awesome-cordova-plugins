@@ -256,6 +256,53 @@
 
 
 
+## [9.5.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.4.0...awesome-cordova-plugins-v9.5.0) (2026-08-11)
+
+
+### Features
+
+* **firebasex:** add wrappers for the modular firebasex plugins ([#5228](https://github.com/danielsogl/awesome-cordova-plugins/issues/5228)) ([e1f50b0](https://github.com/danielsogl/awesome-cordova-plugins/commit/e1f50b01a1e64166313ed356148800e976b000ce))
+
+
+### Bug Fixes
+
+* **blinkid:** rename the duplicated CyprusIdFront declarations to CzechiaIdFront ([0abd67b](https://github.com/danielsogl/awesome-cordova-plugins/commit/0abd67b1a5d8fb13c4514f6663168d03cb4ad456))
+* **ci:** drop the last reference to the removed jest types ([c0dc43d](https://github.com/danielsogl/awesome-cordova-plugins/commit/c0dc43dd35215ab2206d75148bc22ba81290d721))
+* drop discontinued platforms from plugin metadata ([ec2eedc](https://github.com/danielsogl/awesome-cordova-plugins/commit/ec2eedc1d6934405cbd54b57e99463abc5d5edf8))
+* **file:** type the catch variables handed to fillErrorMessage ([77577ea](https://github.com/danielsogl/awesome-cordova-plugins/commit/77577ead7871395ff75433892daaa945807b5305))
+* **ibeacon:** return a valid teardown from the delegate observables ([508955e](https://github.com/danielsogl/awesome-cordova-plugins/commit/508955e7540a19db2503d160ff9c897c0134e5d3))
+* point five wrappers at package names that still exist ([4602b91](https://github.com/danielsogl/awesome-cordova-plugins/commit/4602b9146666813a38f7085e927c4d222464577e))
+* **publish:** correct package metadata for all 267 packages ([5a6ae3a](https://github.com/danielsogl/awesome-cordova-plugins/commit/5a6ae3a35f8eb99b9317f96b5d6f3f8508ce1548))
+* **publish:** make releasing 267 packages survive a flaky registry ([e6e7447](https://github.com/danielsogl/awesome-cordova-plugins/commit/e6e744737a324f5dd76f09ad5cb454a17a6ba2ab))
+* **scripts:** skip unpublished packages in the trust setup ([308193c](https://github.com/danielsogl/awesome-cordova-plugins/commit/308193c960939bd209e0d112fa31e2ab655ce87f))
+* **sockets-tcp:** give fromEventPattern its element type ([2121a81](https://github.com/danielsogl/awesome-cordova-plugins/commit/2121a810e45d257fcc1c6f531e1c74d774f02cca))
+* **sockets-udp:** give fromEventPattern its element type ([a86b7ea](https://github.com/danielsogl/awesome-cordova-plugins/commit/a86b7ea00eade451279cc0cadfcdaafa8b8bdc64))
+* **unvired-cordova-sdk:** mark the narrowed base properties as declare ([c8682b7](https://github.com/danielsogl/awesome-cordova-plugins/commit/c8682b716c6d3e9f2b5ad998de0a156af86659fd))
+
+
+### Miscellaneous Chores
+
+* **deps:** update build and bundling tools ([#5220](https://github.com/danielsogl/awesome-cordova-plugins/issues/5220)) ([cf31209](https://github.com/danielsogl/awesome-cordova-plugins/commit/cf31209d56e5d3ada3150d423235d25d0718a33c))
+* **deps:** update dependency @swc/core to ^1.15.47 ([#5221](https://github.com/danielsogl/awesome-cordova-plugins/issues/5221)) ([3bfb723](https://github.com/danielsogl/awesome-cordova-plugins/commit/3bfb7237687bc9ed8b9ff61a88fa0ae6a8a298d6))
+* **deps:** update dependency tsx to ^4.23.12 ([#5225](https://github.com/danielsogl/awesome-cordova-plugins/issues/5225)) ([b9da210](https://github.com/danielsogl/awesome-cordova-plugins/commit/b9da2102245e8b5ebfb42d5669e2c4e8d2085913))
+* **deps:** update linting and formatting ([#5226](https://github.com/danielsogl/awesome-cordova-plugins/issues/5226)) ([d50593b](https://github.com/danielsogl/awesome-cordova-plugins/commit/d50593b42ff32c380f1425dd7bf2216b2f5ba183))
+* enable strict type checking across all three projects ([b96aae3](https://github.com/danielsogl/awesome-cordova-plugins/commit/b96aae37ab3fca11b337591a28e3d9b124bcced7))
+* **lint:** lint the build pipeline, with type-aware rules ([eb3a7ad](https://github.com/danielsogl/awesome-cordova-plugins/commit/eb3a7ad1c56932bef847da202c3dd4cc04e00f74))
+* **renovate:** stop excluding every pinned dependency ([22fe28f](https://github.com/danielsogl/awesome-cordova-plugins/commit/22fe28f8204d11c5b96b27d420fdbb6f00229c7e))
+* repo hygiene ([ba654df](https://github.com/danielsogl/awesome-cordova-plugins/commit/ba654df938290745c5ff0f96a7089fe11acd5408))
+* upgrade toolchain to Angular 22 and TypeScript 6 ([94ace6d](https://github.com/danielsogl/awesome-cordova-plugins/commit/94ace6dda3de43a754d7477d9a5506602212b6cb))
+
+
+### Documentation
+
+* flag wrappers whose underlying Cordova plugin is deprecated ([e7bec7b](https://github.com/danielsogl/awesome-cordova-plugins/commit/e7bec7bedcfea9ab4d602ab43348dd80d81d04ca))
+* regenerate plugin READMEs ([7a919ba](https://github.com/danielsogl/awesome-cordova-plugins/commit/7a919baae4e3fdd35cfac2ccd496881af3edabf6))
+
+
+### Code Refactoring
+
+* **core:** remove dead code the coverage work surfaced ([9a7314a](https://github.com/danielsogl/awesome-cordova-plugins/commit/9a7314a486f4ea813fefcd071976fbed8aba68d0))
+
 ## [9.4.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.3.0...awesome-cordova-plugins-v9.4.0) (2026-07-27)
 
 
