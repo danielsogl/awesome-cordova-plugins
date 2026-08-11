@@ -1,9 +1,19 @@
+# Sequential on purpose: readmes reads the plugin sources, so prettier has to
+# finish rewriting them first.
 pre-commit:
-  parallel: true
+  parallel: false
   jobs:
     - name: prettier
       run: npx prettier --write --ignore-unknown {staged_files}
       stage_fixed: true
+
+    # docs/ is generated from the @Plugin decorators and JSDoc of the plugin
+    # sources. Regenerate and stage it so it can never drift from the sources.
+    - name: readmes
+      glob:
+        - 'src/@awesome-cordova-plugins/plugins/**/*.ts'
+        - 'scripts/docs/**/*.ts'
+      run: npm run readmes && git add docs
 
 pre-push:
   jobs:

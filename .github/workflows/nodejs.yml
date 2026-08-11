@@ -29,6 +29,14 @@ jobs:
       - name: Lint
         run: npm run lint -- --quiet
 
+      - name: Check formatting
+        run: npx prettier --check --ignore-unknown "**/*"
+
+      # The ngx build emits via EmitFlags.Metadata without reporting diagnostics,
+      # so without this step type errors ship silently. See scripts/build/ngx.ts.
+      - name: Type check
+        run: npm run typecheck
+
       - name: Test
         run: npm test
 

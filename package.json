@@ -19,6 +19,7 @@
     "prebuild": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
     "npmpub": "tsx scripts/tasks/publish",
     "lint": "eslint src/**/*.ts",
+    "typecheck": "npm run build:core && tsc -p tsconfig.json --noEmit && tsc -p scripts/tsconfig.json --noEmit",
     "readmes": "tsx scripts/docs/generate-readmes",
     "plugin:create": "tsx scripts/tasks/plugin-create",
     "prettier": "prettier --write --ignore-unknown \"**/*\""

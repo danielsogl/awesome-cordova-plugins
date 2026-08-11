@@ -54,6 +54,9 @@ jobs:
       - name: Lint
         run: npm run lint -- --quiet
 
+      - name: Type check
+        run: npm run typecheck
+
       - name: Test
         run: npm test
 

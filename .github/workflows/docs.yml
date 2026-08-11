@@ -1,0 +1,50 @@
+name: Docs
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/@awesome-cordova-plugins/plugins/**'
+      - 'scripts/docs/**'
+  workflow_dispatch:
+
+concurrency:
+  group: docs-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  readmes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7.0.0
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate plugin READMEs
+        run: npm run readmes
+
+      # The lefthook pre-commit hook already regenerates docs/ for anyone
+      # committing locally. This catches what bypasses it: fork PRs without the
+      # hook installed, --no-verify commits, edits via the GitHub web UI.
+      - name: Commit if changed
+        run: |
+          if [ -z "$(git status --porcelain docs)" ]; then
+            echo "docs/ already up to date"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs
+          git commit -m "docs: regenerate plugin READMEs [skip ci]"
+          git push
