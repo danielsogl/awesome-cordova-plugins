@@ -328,7 +328,7 @@ export type PushEvent = string;
   pluginRef: 'PushNotification',
   repo: 'https://github.com/phonegap/phonegap-plugin-push',
   install: 'ionic cordova plugin add phonegap-plugin-push',
-  platforms: ['Android', 'Browser', 'iOS', 'Windows'],
+  platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
 export class Push extends AwesomeCordovaNativePlugin {

@@ -16,7 +16,8 @@ npm install @awesome-cordova-plugins/custom-ui-sdk
 
 ## Supported Platforms
 
-- Android, iOS
+- Android
+- iOS
 
 ## Further Information
 

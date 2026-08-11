@@ -18,7 +18,8 @@ npm install @awesome-cordova-plugins/custom-uisdk
 
 ## Supported Platforms
 
-- Android, iOS
+- Android
+- iOS
 
 ## Further Information
 

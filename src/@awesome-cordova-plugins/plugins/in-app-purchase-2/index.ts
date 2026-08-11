@@ -620,7 +620,7 @@ export class IAPError {
   plugin: 'cordova-plugin-purchase',
   pluginRef: 'store',
   repo: 'https://github.com/j3k0/cordova-plugin-purchase',
-  platforms: ['iOS', 'Android', 'Windows'],
+  platforms: ['iOS', 'Android'],
   install: 'ionic cordova plugin add cordova-plugin-purchase --variable BILLING_KEY="<ANDROID_BILLING_KEY>"',
 })
 @Injectable()

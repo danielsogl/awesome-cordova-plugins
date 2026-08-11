@@ -37,7 +37,6 @@ npm install @awesome-cordova-plugins/unvired-cordova-sdk
 
 - iOS
 - Android
-- Windows
 - Browser
 
 ## Further Information

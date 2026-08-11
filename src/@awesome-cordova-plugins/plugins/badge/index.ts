@@ -28,7 +28,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
   plugin: 'cordova-plugin-badge',
   pluginRef: 'cordova.plugins.notification.badge',
   repo: 'https://github.com/katzer/cordova-plugin-badge',
-  platforms: ['Android', 'Browser', 'iOS', 'Windows'],
+  platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
 export class Badge extends AwesomeCordovaNativePlugin {

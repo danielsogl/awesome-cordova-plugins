@@ -27,7 +27,7 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
   repo: 'https://github.com/Paldom/UniqueDeviceID',
   install: '', // OPTIONAL install command, in case the plugin requires variables
   installVariables: [], // OPTIONAL the plugin requires variables
-  platforms: ['Android', 'iOS', 'Windows Phone 8'], // Array of platforms supported, example: ['Android', 'iOS']
+  platforms: ['Android', 'iOS'], // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable()
 export class UniqueDeviceID extends AwesomeCordovaNativePlugin {

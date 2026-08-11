@@ -33,7 +33,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
   plugin: 'cordova-plugin-vibration',
   pluginRef: 'navigator',
   repo: 'https://github.com/apache/cordova-plugin-vibration',
-  platforms: ['Android', 'iOS', 'Windows'],
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Vibration extends AwesomeCordovaNativePlugin {

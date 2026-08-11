@@ -20,7 +20,6 @@ npm install @awesome-cordova-plugins/vibration
 
 - Android
 - iOS
-- Windows
 
 ## Further Information
 

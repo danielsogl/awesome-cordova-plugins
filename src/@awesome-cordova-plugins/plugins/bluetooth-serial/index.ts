@@ -35,7 +35,7 @@ import { Observable } from 'rxjs';
   repo: 'https://github.com/don/BluetoothSerial',
   plugin: 'cordova-plugin-bluetooth-serial',
   pluginRef: 'bluetoothSerial',
-  platforms: ['Android', 'iOS', 'Windows Phone 8'],
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class BluetoothSerial extends AwesomeCordovaNativePlugin {
@@ -46,7 +46,7 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
    * @returns {Observable<any>} Subscribe to connect, unsubscribe to disconnect.
    */
   @Cordova({
-    platforms: ['Android', 'iOS', 'Windows Phone'],
+    platforms: ['Android', 'iOS'],
     observable: true,
     clearFunction: 'disconnect',
   })
@@ -86,7 +86,7 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>} returns a promise when data has been written
    */
   @Cordova({
-    platforms: ['Android', 'iOS', 'Windows Phone'],
+    platforms: ['Android', 'iOS'],
   })
   write(data: any): Promise<any> {
     return;
@@ -98,7 +98,7 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>} returns a promise that contains the available bytes
    */
   @Cordova({
-    platforms: ['Android', 'iOS', 'Windows Phone'],
+    platforms: ['Android', 'iOS'],
   })
   available(): Promise<any> {
     return;
@@ -110,7 +110,7 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>} returns a promise with data from the buffer
    */
   @Cordova({
-    platforms: ['Android', 'iOS', 'Windows Phone'],
+    platforms: ['Android', 'iOS'],
   })
   read(): Promise<any> {
     return;
@@ -123,7 +123,7 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>} returns a promise
    */
   @Cordova({
-    platforms: ['Android', 'iOS', 'Windows Phone'],
+    platforms: ['Android', 'iOS'],
   })
   readUntil(delimiter: string): Promise<any> {
     return;
@@ -136,7 +136,7 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
    * @returns {Observable<any>} returns an observable.
    */
   @Cordova({
-    platforms: ['Android', 'iOS', 'Windows Phone'],
+    platforms: ['Android', 'iOS'],
     observable: true,
     clearFunction: 'unsubscribe',
   })
@@ -150,7 +150,7 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
    * @returns {Observable<any>} returns an observable
    */
   @Cordova({
-    platforms: ['Android', 'iOS', 'Windows Phone'],
+    platforms: ['Android', 'iOS'],
     observable: true,
     clearFunction: 'unsubscribeRawData',
   })
@@ -164,7 +164,7 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>} returns a promise when completed
    */
   @Cordova({
-    platforms: ['Android', 'iOS', 'Windows Phone'],
+    platforms: ['Android', 'iOS'],
   })
   clear(): Promise<any> {
     return;
@@ -176,7 +176,7 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>} returns a promise
    */
   @Cordova({
-    platforms: ['Android', 'iOS', 'Windows Phone'],
+    platforms: ['Android', 'iOS'],
   })
   list(): Promise<any> {
     return;
@@ -188,7 +188,7 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>} returns a promise
    */
   @Cordova({
-    platforms: ['Android', 'iOS', 'Windows Phone'],
+    platforms: ['Android', 'iOS'],
   })
   isEnabled(): Promise<any> {
     return;
@@ -200,7 +200,7 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>} returns a promise
    */
   @Cordova({
-    platforms: ['Android', 'iOS', 'Windows Phone'],
+    platforms: ['Android', 'iOS'],
   })
   isConnected(): Promise<any> {
     return;
@@ -212,7 +212,7 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>} returns a promise
    */
   @Cordova({
-    platforms: ['Android', 'iOS', 'Windows Phone'],
+    platforms: ['Android', 'iOS'],
   })
   readRSSI(): Promise<any> {
     return;
@@ -224,7 +224,7 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>} returns a promise
    */
   @Cordova({
-    platforms: ['Android', 'iOS', 'Windows Phone'],
+    platforms: ['Android', 'iOS'],
   })
   showBluetoothSettings(): Promise<any> {
     return;
@@ -236,7 +236,7 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>} returns a promise
    */
   @Cordova({
-    platforms: ['Android', 'iOS', 'Windows Phone'],
+    platforms: ['Android', 'iOS'],
   })
   enable(): Promise<any> {
     return;
@@ -248,7 +248,7 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>} returns a promise
    */
   @Cordova({
-    platforms: ['Android', 'iOS', 'Windows Phone'],
+    platforms: ['Android', 'iOS'],
   })
   discoverUnpaired(): Promise<any> {
     return;
@@ -260,7 +260,7 @@ export class BluetoothSerial extends AwesomeCordovaNativePlugin {
    * @returns {Observable<any>} Returns an observable
    */
   @Cordova({
-    platforms: ['Android', 'iOS', 'Windows Phone'],
+    platforms: ['Android', 'iOS'],
     observable: true,
     clearFunction: 'clearDeviceDiscoveredListener',
   })

@@ -43,7 +43,6 @@ npm install @awesome-cordova-plugins/file
 - Browser
 - iOS
 - macOS
-- Windows
 
 ## Further Information
 

@@ -19,14 +19,8 @@ npm install @awesome-cordova-plugins/contacts
 ## Supported Platforms
 
 - Android
-- BlackBerry 10
 - Browser
-- Firefox OS
 - iOS
-- Ubuntu
-- Windows
-- Windows 8
-- Windows Phone
 
 ## Further Information
 

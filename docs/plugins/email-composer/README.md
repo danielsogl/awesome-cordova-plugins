@@ -18,11 +18,9 @@ npm install @awesome-cordova-plugins/email-composer
 
 ## Supported Platforms
 
-- Amazon Fire OS
 - Android
 - Browser
 - iOS
-- Windows
 - macOS
 
 ## Further Information

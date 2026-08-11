@@ -664,7 +664,7 @@ declare const window: Window;
   plugin: 'cordova-plugin-file',
   pluginRef: 'cordova.file',
   repo: 'https://github.com/apache/cordova-plugin-file',
-  platforms: ['Android', 'Browser', 'iOS', 'macOS', 'Windows'],
+  platforms: ['Android', 'Browser', 'iOS', 'macOS'],
 })
 @Injectable()
 export class File extends AwesomeCordovaNativePlugin {

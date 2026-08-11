@@ -20,9 +20,8 @@ npm install @awesome-cordova-plugins/build-info
 
 - Android
 - iOS
-- Windows
 - macOS
-- browser
+- Browser
 - Electron
 
 ## Further Information

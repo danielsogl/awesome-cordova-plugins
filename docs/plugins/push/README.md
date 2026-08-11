@@ -25,7 +25,6 @@ npm install @awesome-cordova-plugins/push
 - Android
 - Browser
 - iOS
-- Windows
 
 ## Further Information
 

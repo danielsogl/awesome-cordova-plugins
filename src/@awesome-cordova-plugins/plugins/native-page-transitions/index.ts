@@ -65,7 +65,7 @@ export interface NativeTransitionOptions {
   plugin: 'com.telerik.plugins.nativepagetransitions',
   pluginRef: 'plugins.nativepagetransitions',
   repo: 'https://github.com/Telerik-Verified-Plugins/NativePageTransitions',
-  platforms: ['Android', 'iOS', 'Windows Phone 8'],
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class NativePageTransitions extends AwesomeCordovaNativePlugin {

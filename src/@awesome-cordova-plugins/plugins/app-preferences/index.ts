@@ -23,7 +23,7 @@ import { Injectable } from '@angular/core';
   plugin: 'cordova-plugin-app-preferences',
   pluginRef: 'plugins.appPreferences',
   repo: 'https://github.com/apla/me.apla.cordova.app-preferences',
-  platforms: ['Android', 'BlackBerry 10', 'Browser', 'iOS', 'macOS', 'Windows 8', 'Windows Phone'],
+  platforms: ['Android', 'Browser', 'iOS', 'macOS'],
 })
 @Injectable()
 export class AppPreferences extends AwesomeCordovaNativePlugin {
@@ -138,7 +138,7 @@ export class AppPreferences extends AwesomeCordovaNativePlugin {
    * @returns {Object} Custom object, bound to that suite
    */
   @Cordova({
-    platforms: ['iOS', 'Windows', 'Windows Phone 8'],
+    platforms: ['iOS'],
   })
   cloudSync(): object {
     return;
@@ -151,7 +151,7 @@ export class AppPreferences extends AwesomeCordovaNativePlugin {
    * @returns {Object} Custom Object, bound to that suite
    */
   @Cordova({
-    platforms: ['iOS', 'Windows', 'Windows Phone 8'],
+    platforms: ['iOS'],
   })
   defaults(): object {
     return;

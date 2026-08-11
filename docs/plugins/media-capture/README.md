@@ -23,7 +23,6 @@ npm install @awesome-cordova-plugins/media-capture
 - Android
 - Browser
 - iOS
-- Windows
 
 ## Further Information
 

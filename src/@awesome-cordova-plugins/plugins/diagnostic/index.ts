@@ -44,7 +44,7 @@ export interface DiagnosticLocalNetworkAuthorizationOptions {
   plugin: 'cordova.plugins.diagnostic',
   pluginRef: 'cordova.plugins.diagnostic',
   repo: 'https://github.com/dpa99c/cordova-diagnostic-plugin',
-  platforms: ['Android', 'iOS', 'Windows'],
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Diagnostic extends AwesomeCordovaNativePlugin {
@@ -281,25 +281,25 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
   /**
    * Displays the device location settings to allow user to enable location services/change location mode.
    */
-  @Cordova({ sync: true, platforms: ['Android', 'Windows 10', 'iOS'] })
+  @Cordova({ sync: true, platforms: ['Android', 'iOS'] })
   switchToLocationSettings(): void {}
 
   /**
    * Displays mobile settings to allow user to enable mobile data.
    */
-  @Cordova({ sync: true, platforms: ['Android', 'Windows 10'] })
+  @Cordova({ sync: true, platforms: ['Android'] })
   switchToMobileDataSettings(): void {}
 
   /**
    * Displays Bluetooth settings to allow user to enable Bluetooth.
    */
-  @Cordova({ sync: true, platforms: ['Android', 'Windows 10'] })
+  @Cordova({ sync: true, platforms: ['Android'] })
   switchToBluetoothSettings(): void {}
 
   /**
    * Displays WiFi settings to allow user to enable WiFi.
    */
-  @Cordova({ sync: true, platforms: ['Android', 'Windows 10'] })
+  @Cordova({ sync: true, platforms: ['Android'] })
   switchToWifiSettings(): void {}
 
   /**
@@ -307,7 +307,7 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    *
    * @returns {Promise<boolean>}
    */
-  @Cordova({ platforms: ['Android', 'Windows 10'] })
+  @Cordova({ platforms: ['Android'] })
   isWifiEnabled(): Promise<boolean> {
     return;
   }
@@ -319,7 +319,7 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    * @param {boolean} state
    * @returns {Promise<any>}
    */
-  @Cordova({ callbackOrder: 'reverse', platforms: ['Android', 'Windows 10'] })
+  @Cordova({ callbackOrder: 'reverse', platforms: ['Android'] })
   setWifiState(state: boolean): Promise<any> {
     return;
   }
@@ -331,7 +331,7 @@ export class Diagnostic extends AwesomeCordovaNativePlugin {
    * @param {boolean} state
    * @returns {Promise<any>}
    */
-  @Cordova({ callbackOrder: 'reverse', platforms: ['Android', 'Windows 10'] })
+  @Cordova({ callbackOrder: 'reverse', platforms: ['Android'] })
   setBluetoothState(state: boolean): Promise<any> {
     return;
   }

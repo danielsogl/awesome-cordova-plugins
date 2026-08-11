@@ -22,7 +22,6 @@ npm install @awesome-cordova-plugins/app-version
 
 - Android
 - iOS
-- Windows
 
 ## Further Information
 

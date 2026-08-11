@@ -49,7 +49,7 @@ export interface SpinnerDialogIOSOptions {
   plugin: 'cordova-plugin-native-spinner',
   pluginRef: 'SpinnerDialog',
   repo: 'https://github.com/greybax/cordova-plugin-native-spinner',
-  platforms: ['Android', 'iOS', 'Windows Phone 8', 'Windows'],
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class SpinnerDialog extends AwesomeCordovaNativePlugin {

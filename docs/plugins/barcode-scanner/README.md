@@ -21,10 +21,8 @@ npm install @awesome-cordova-plugins/barcode-scanner
 ## Supported Platforms
 
 - Android
-- BlackBerry 10
 - Browser
 - iOS
-- Windows
 
 ## Further Information
 

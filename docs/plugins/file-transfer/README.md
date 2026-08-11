@@ -18,13 +18,9 @@ npm install @awesome-cordova-plugins/file-transfer
 
 ## Supported Platforms
 
-- Amazon Fire OS
 - Android
 - Browser
 - iOS
-- Ubuntu
-- Windows
-- Windows Phone
 
 ## Further Information
 

@@ -23,8 +23,6 @@ npm install @awesome-cordova-plugins/action-sheet
 - Android
 - Browser
 - iOS
-- Windows
-- Windows Phone 8
 
 ## Further Information
 

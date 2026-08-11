@@ -18,7 +18,6 @@ npm install @awesome-cordova-plugins/diagnostic
 
 - Android
 - iOS
-- Windows
 
 ## Further Information
 

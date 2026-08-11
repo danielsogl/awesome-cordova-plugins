@@ -27,7 +27,7 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
   repo: 'https://github.com/phonegap/phonegap-mobile-accessibility',
   install: '',
   installVariables: [],
-  platforms: ['Android', 'iOS', 'Amazon Fire OS'],
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class MobileAccessibility extends AwesomeCordovaNativePlugin {

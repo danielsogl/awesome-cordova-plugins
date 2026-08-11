@@ -20,7 +20,6 @@ npm install @awesome-cordova-plugins/document-viewer
 
 - Android
 - iOS
-- Windows
 
 ## Further Information
 

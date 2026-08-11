@@ -42,7 +42,7 @@ import { Injectable } from '@angular/core';
   plugin: 'uk.co.workingedge.cordova.plugin.sqliteporter',
   pluginRef: 'cordova.plugins.sqlitePorter',
   repo: 'https://github.com/dpa99c/cordova-sqlite-porter',
-  platforms: ['Amazon Fire OS', 'Android', 'BlackBerry 10', 'Browser', 'iOS', 'Tizen', 'Windows', 'Windows Phone'],
+  platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
 export class SQLitePorter extends AwesomeCordovaNativePlugin {

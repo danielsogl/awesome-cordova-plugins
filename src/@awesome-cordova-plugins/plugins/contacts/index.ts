@@ -341,17 +341,7 @@ export class ContactFindOptions implements IContactFindOptions {
   plugin: 'cordova-plugin-contacts',
   pluginRef: 'navigator.contacts',
   repo: 'https://github.com/herdwatch-apps/cordova-plugin-contacts',
-  platforms: [
-    'Android',
-    'BlackBerry 10',
-    'Browser',
-    'Firefox OS',
-    'iOS',
-    'Ubuntu',
-    'Windows',
-    'Windows 8',
-    'Windows Phone',
-  ],
+  platforms: ['Android', 'Browser', 'iOS'],
 })
 export class Contacts extends AwesomeCordovaNativePlugin {
   /**

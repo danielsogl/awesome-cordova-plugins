@@ -650,7 +650,7 @@ export class UMPRequestConfig {
   repo: 'https://github.com/unvired/cordova-plugin-unvired-sdk/', // the github repository URL for the plugin
   install: 'ionic cordova plugin add @awesome-cordova-plugins/unvired-cordova-sdk', // OPTIONAL install command, in case the plugin requires variables
   installVariables: [], // OPTIONAL the plugin requires variables
-  platforms: ['iOS', 'Android', 'Windows', 'Browser'], // Array of platforms supported, example: ['Android', 'iOS']
+  platforms: ['iOS', 'Android', 'Browser'], // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable()
 export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {

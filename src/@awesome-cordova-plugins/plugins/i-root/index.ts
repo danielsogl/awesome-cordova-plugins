@@ -46,7 +46,7 @@ export class IRoot extends AwesomeCordovaNativePlugin {
    * @return {Promise<boolean>} Resolves to true if the device is Jailbroken/rooted, otherwise false.
    */
   @Cordova({
-    platforms: ['android'],
+    platforms: ['Android'],
   })
   isRootedWithBusyBox(): Promise<boolean> {
     return;

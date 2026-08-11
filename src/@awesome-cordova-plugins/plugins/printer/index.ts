@@ -163,7 +163,7 @@ export interface PrintOptions {
   plugin: 'cordova-plugin-printer',
   pluginRef: 'cordova.plugins.printer',
   repo: 'https://github.com/katzer/cordova-plugin-printer',
-  platforms: ['Android', 'iOS', 'Windows'],
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Printer extends AwesomeCordovaNativePlugin {

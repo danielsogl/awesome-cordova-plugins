@@ -25,7 +25,6 @@ npm install @awesome-cordova-plugins/secure-storage
 - Android
 - Browser
 - iOS
-- Windows
 
 ## Further Information
 

@@ -39,8 +39,15 @@ interface PluginMeta {
   install?: string;
 }
 
+// Platforms Cordova still ships. Anything else — Windows Phone, Amazon Fire OS,
+// BlackBerry 10, Firefox OS, Ubuntu, Tizen — was discontinued years ago and used
+// to leak into the generated "Supported Platforms" lists, as did casing variants
+// like 'ios' and 'IOS'. Keep this list closed so that cannot come back.
+const KNOWN_PLATFORMS = new Set(['Android', 'iOS', 'Browser', 'macOS', 'Electron']);
+
 // Map from reflection id to extracted decorator metadata
 const pluginMetaMap = new Map<number, PluginMeta>();
+const unknownPlatforms: string[] = [];
 
 function parseLiteralValue(node: Node): string | number | boolean | string[] | undefined {
   if (isStringLiteral(node)) return node.text;
@@ -230,6 +237,11 @@ async function main(): Promise<void> {
 
       const meta = extractPluginMeta(symbol);
       if (meta) {
+        for (const platform of meta.platforms ?? []) {
+          if (!KNOWN_PLATFORMS.has(platform)) {
+            unknownPlatforms.push(`${meta.pluginName ?? reflection.name}: '${platform}'`);
+          }
+        }
         pluginMetaMap.set(reflection.id, meta);
       }
     }
@@ -238,6 +250,14 @@ async function main(): Promise<void> {
   const project: ProjectReflection | undefined = await app.convert();
   if (!project) {
     console.error('TypeDoc conversion failed');
+    process.exit(1);
+  }
+
+  if (unknownPlatforms.length > 0) {
+    console.error(
+      `Unknown platform(s) in @Plugin metadata. Allowed: ${[...KNOWN_PLATFORMS].join(', ')}\n` +
+        unknownPlatforms.map((p) => `  ${p}`).join('\n')
+    );
     process.exit(1);
   }
 

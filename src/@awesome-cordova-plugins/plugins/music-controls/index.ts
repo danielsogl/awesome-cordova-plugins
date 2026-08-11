@@ -150,7 +150,7 @@ export interface MusicControlsOptions {
   plugin: 'cordova-plugin-music-controls2',
   pluginRef: 'MusicControls',
   repo: 'https://github.com/ghenry22/cordova-plugin-music-controls2',
-  platforms: ['Android', 'iOS', 'Windows'],
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class MusicControls extends AwesomeCordovaNativePlugin {

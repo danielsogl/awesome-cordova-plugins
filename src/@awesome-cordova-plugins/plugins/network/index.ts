@@ -70,7 +70,7 @@ export enum Connection {
   plugin: 'cordova-plugin-network-information',
   pluginRef: 'navigator.connection',
   repo: 'https://github.com/apache/cordova-plugin-network-information',
-  platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows'],
+  platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
 export class Network extends AwesomeCordovaNativePlugin {

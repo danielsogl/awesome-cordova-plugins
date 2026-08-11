@@ -41,7 +41,7 @@ import { Observable } from 'rxjs';
   repo: '',
   install: '',
   installVariables: [],
-  platforms: ['Android, iOS'],
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class CustomUiSdk extends AwesomeCordovaNativePlugin {

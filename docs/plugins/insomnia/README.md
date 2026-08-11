@@ -20,10 +20,7 @@ npm install @awesome-cordova-plugins/insomnia
 
 - Android
 - Browser
-- Firefox OS
 - iOS
-- Windows
-- Windows Phone 8
 
 ## Further Information
 
