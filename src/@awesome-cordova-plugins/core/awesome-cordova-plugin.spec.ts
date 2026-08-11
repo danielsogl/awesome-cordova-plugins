@@ -3,7 +3,10 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import { AwesomeCordovaNativePlugin } from './awesome-cordova-plugin';
 import { checkAvailability } from './decorators/common';
 
-vi.mock('./decorators/common', () => ({
+// Only checkAvailability is stubbed; get() has to stay real because getPlugin() resolves the
+// plugin ref through it.
+vi.mock('./decorators/common', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('./decorators/common')>()),
   checkAvailability: vi.fn(),
 }));
 

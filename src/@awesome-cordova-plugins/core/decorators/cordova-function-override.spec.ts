@@ -50,9 +50,7 @@ describe('cordovaFunctionOverride', () => {
     window.mockOverridePlugin = { onEvent: () => 'original' };
 
     const values: any[] = [];
-    const subscription = cordovaFunctionOverride(plugin, 'onEvent', ['unused']).subscribe((value) =>
-      values.push(value)
-    );
+    const subscription = cordovaFunctionOverride(plugin, 'onEvent').subscribe((value) => values.push(value));
     subscription.unsubscribe();
 
     expect(typeof window.mockOverridePlugin.onEvent).toBe('function');
