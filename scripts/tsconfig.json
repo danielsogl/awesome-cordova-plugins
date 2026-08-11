@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "strict": true,
-    "types": ["node", "jest"],
+    "types": ["node", "vitest/globals"],
     "module": "es2022",
     "moduleResolution": "bundler",
     "target": "es2022",
