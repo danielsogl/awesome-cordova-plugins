@@ -4,8 +4,11 @@
     "stripInternal": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "strict": false,
-    "noImplicitAny": true,
+    "strict": true,
+    // Plugin methods are decorator stubs (`method(): Promise<T> { return; }`) whose bodies are
+    // replaced at build time, so every one of them is a strictNullChecks error by design (~2700).
+    "strictNullChecks": false,
+    // TypeScript 6 no longer auto-includes every @types package; they must be listed.
     "types": ["cordova"],
     "module": "es2022",
     "moduleResolution": "bundler",
