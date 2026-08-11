@@ -1,5 +1,5 @@
 import { exec as execCb } from 'node:child_process';
-import { readFileSync, writeFileSync } from 'node:fs';
+import { copyFileSync, existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { availableParallelism } from 'node:os';
 import { join, resolve } from 'node:path';
 import { promisify } from 'node:util';
@@ -100,11 +100,38 @@ function writeNGXPackageJson(data: PackageJson, dir: string) {
   writeFileSync(filePath, JSON.stringify(data, null, 2));
 }
 
+const LICENSE_PATH = resolve(ROOT, 'LICENSE');
+const DOCS_PLUGINS = resolve(ROOT, 'docs/plugins');
+
+/**
+ * npm renders README.md from the tarball, so without this every package page is blank, and a
+ * package claiming `license: MIT` should carry the licence text. Both already exist in the repo —
+ * the per-plugin READMEs are what `npm run readmes` generates.
+ */
+const DOCS_SITE = 'https://danielsogl.gitbook.io/awesome-cordova-plugins';
+
+function copyDocs(dir: string, docsName: string) {
+  if (existsSync(LICENSE_PATH)) copyFileSync(LICENSE_PATH, join(dir, 'LICENSE'));
+
+  const readme = resolve(DOCS_PLUGINS, docsName, 'README.md');
+  if (!existsSync(readme)) {
+    Logger.verbose(`No generated README for ${docsName}`);
+    return;
+  }
+
+  const body = readFileSync(readme, 'utf-8')
+    // GitBook frontmatter renders as stray text on npm
+    .replace(/^---\n[\s\S]*?\n---\n+/, '')
+    // links are relative to the docs site, which does not exist inside the tarball
+    .replace(/\]\(\.\.\/\.\.\/([a-z-]+)\.md\)/g, `](${DOCS_SITE}/$1)`);
+
+  writeFileSync(join(dir, 'README.md'), body);
+}
+
 function prepare() {
-  writePackageJson(
-    getPackageJsonContent('core', { rxjs: RXJS_VERSION }, { '@types/cordova': 'latest' }),
-    resolve(DIST, 'core')
-  );
+  const coreDir = resolve(DIST, 'core');
+  writePackageJson(getPackageJsonContent('core', { rxjs: RXJS_VERSION }, { '@types/cordova': 'latest' }), coreDir);
+  copyDocs(coreDir, 'core');
 
   PLUGIN_PATHS.forEach((pluginPath: string) => {
     const pluginName = pluginPath.split(/[\/\\]+/).slice(-2)[0];
@@ -113,6 +140,7 @@ function prepare() {
     const ngxDir = join(dir, 'ngx');
     writePackageJson(packageJsonContents, dir);
     writeNGXPackageJson(packageJsonContents, ngxDir);
+    copyDocs(dir, pluginName);
   });
 }
 
