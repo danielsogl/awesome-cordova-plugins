@@ -40,8 +40,9 @@ jobs:
       - name: Type check
         run: npm run typecheck
 
+      # thresholds in vitest.config.ts fail the run if core/ drops below 100%
       - name: Test
-        run: npm test
+        run: npm run test:coverage
 
       - name: Build
         run: npm run build

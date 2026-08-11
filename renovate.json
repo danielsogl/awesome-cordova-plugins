@@ -69,7 +69,7 @@
       "groupName": "Testing framework",
       "automerge": true,
       "platformAutomerge": true,
-      "matchPackageNames": ["jest", "@swc/jest", "@swc/core", "@types/jest", "jest-environment-jsdom"]
+      "matchPackageNames": ["vitest", "/^@vitest//", "jsdom"]
     },
     {
       "groupName": "Documentation tools",

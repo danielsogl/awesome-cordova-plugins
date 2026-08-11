@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.core.json",
   "compilerOptions": {
-    "types": ["node", "cordova", "jest"],
+    "types": ["node", "cordova", "vitest/globals"],
     "noEmit": true
   },
   "include": ["src/**/*.spec.ts"],

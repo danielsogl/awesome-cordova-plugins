@@ -1,8 +1,7 @@
 /**
- * Guards the SWC decorator settings in jest.config.ts. Without
- * `jsc.parser.decorators`, SWC fails to parse this file with
- * "Unexpected token `@`", so any spec that so much as imports a source file
- * containing decorator syntax cannot compile.
+ * Guards the decorator settings in vitest.config.ts. Vite 8 transforms with oxc, which defaults to
+ * TC39 decorators; without `oxc.decorator.legacy` this file fails to transform, so any spec that
+ * so much as imports a source file containing decorator syntax cannot compile.
  *
  * Note this only covers the syntax. The `@Cordova`/`@Plugin` decorators the
  * plugins use are `export declare const` in decorators/interfaces.ts — types

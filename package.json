@@ -10,8 +10,8 @@
   },
   "scripts": {
     "prepare": "lefthook install",
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "build:core": "tsc -p tsconfig.core.json",
     "build:esm": "tsx scripts/tasks/build-esm",
     "build:ngx": "tsx scripts/tasks/build-ngx",
@@ -22,7 +22,8 @@
     "typecheck": "npm run build:core && tsc -p tsconfig.json --noEmit && tsc -p tsconfig.spec.json && tsc -p scripts/tsconfig.json --noEmit",
     "readmes": "tsx scripts/docs/generate-readmes",
     "plugin:create": "tsx scripts/tasks/plugin-create",
-    "prettier": "prettier --write --ignore-unknown \"**/*\""
+    "prettier": "prettier --write --ignore-unknown \"**/*\"",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "tslib": "2.8.1"
@@ -32,23 +33,22 @@
     "@angular/compiler-cli": "22.1.1",
     "@angular/core": "22.1.1",
     "@eslint/js": "^10.0.1",
-    "@swc/core": "^1.15.47",
-    "@swc/jest": "^0.2.39",
+    "@oxc-project/runtime": "^0.144.0",
     "@types/cordova": "11.0.3",
-    "@types/jest": "^30.0.0",
     "@types/node": "^26.2.0",
+    "@vitest/coverage-v8": "^4.1.10",
     "eslint": "^10.8.1",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-jsdoc": "^64.1.0",
-    "jest": "^30.4.2",
-    "jest-environment-jsdom": "^30.4.1",
+    "jsdom": "^30.0.1",
     "lefthook": "^2.1.10",
     "prettier": "^3.9.6",
     "rxjs": "^7.8.2",
     "tsx": "^4.23.12",
     "typedoc": "^0.28.20",
     "typescript": "~6.0.3",
-    "typescript-eslint": "^8.67.0"
+    "typescript-eslint": "^8.67.0",
+    "vitest": "^4.1.10"
   },
   "repository": {
     "type": "git",

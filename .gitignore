@@ -10,3 +10,4 @@ injectable-classes.json
 
 # npm trust bulk setup progress
 .npm-trust-done
+coverage/
