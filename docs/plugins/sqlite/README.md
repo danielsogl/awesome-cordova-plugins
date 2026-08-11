@@ -19,6 +19,7 @@ npm install @awesome-cordova-plugins/sqlite
 ## Supported Platforms
 
 - Android
+- Browser
 - iOS
 - macOS
 - Windows

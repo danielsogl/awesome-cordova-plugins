@@ -20,7 +20,6 @@ npm install @awesome-cordova-plugins/local-notifications
 
 - Android
 - iOS
-- Windows
 
 ## Further Information
 

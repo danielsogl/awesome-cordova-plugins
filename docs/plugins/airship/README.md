@@ -14,7 +14,7 @@ ionic cordova plugin add @ua/cordova-airship
 npm install @awesome-cordova-plugins/airship
 ```
 
-**Plugin Repo:** [https://www.npmjs.com/package/@ua/cordova-airship](https://www.npmjs.com/package/@ua/cordova-airship)
+**Plugin Repo:** [https://github.com/urbanairship/urbanairship-cordova](https://github.com/urbanairship/urbanairship-cordova)
 
 ## Supported Platforms
 
