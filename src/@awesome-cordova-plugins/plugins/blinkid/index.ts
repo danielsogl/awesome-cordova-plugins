@@ -781,7 +781,7 @@ export interface CzechiaIdBackRecognizer extends Recognizer<CzechiaIdBackRecogni
   returnFullDocumentImage: boolean;
 }
 
-export interface CyprusIdFrontRecognizerResult extends RecognizerResult {
+export interface CzechiaIdFrontRecognizerResult extends RecognizerResult {
   dateOfBirth: Date;
   dateOfExpiry: Date;
   dateOfIssue: Date;
@@ -794,9 +794,9 @@ export interface CyprusIdFrontRecognizerResult extends RecognizerResult {
   sex: string;
   signatureImage: string;
 }
-export type CyprusIdFrontRecognizerResultCtor = RecognizerResultCtor<CyprusIdFrontRecognizerResult>;
+export type CzechiaIdFrontRecognizerResultCtor = RecognizerResultCtor<CzechiaIdFrontRecognizerResult>;
 
-export interface CyprusIdFrontRecognizer extends Recognizer<CyprusIdFrontRecognizerResult> {
+export interface CzechiaIdFrontRecognizer extends Recognizer<CzechiaIdFrontRecognizerResult> {
   detectGlare: boolean;
   extractDateOfBirth: boolean;
   extractDateOfExpiry: boolean;
@@ -809,7 +809,7 @@ export interface CyprusIdFrontRecognizer extends Recognizer<CyprusIdFrontRecogni
   returnFullDocumentImage: boolean;
   returnSignatureImage: boolean;
 }
-export type CyprusIdFrontRecognizerCtor = RecognizerCtor<CyprusIdFrontRecognizer>;
+export type CzechiaIdFrontRecognizerCtor = RecognizerCtor<CzechiaIdFrontRecognizer>;
 
 export interface DocumentFaceRecognizerResult extends RecognizerResult {
   documentLocation: string;
