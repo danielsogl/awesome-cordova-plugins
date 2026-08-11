@@ -216,7 +216,7 @@ export enum NotificationListenerType {
   /**
    * Notify that the JWT token is expired
    */
-  jwtTokenExpired = 13
+  jwtTokenExpired = 13,
 }
 
 export enum AttachmentItemStatus {
@@ -267,31 +267,31 @@ export class UnviredResult {
 }
 
 export class OutboxLockResult extends UnviredResult {
-  type: ResultType;
-  data: OutboxLockStatus;
+  declare type: ResultType;
+  declare data: OutboxLockStatus;
 }
 
 export class LogResult extends UnviredResult {
-  type: ResultType;
-  data: LogLevel;
+  declare type: ResultType;
+  declare data: LogLevel;
 }
 
 export class LogDataResult extends UnviredResult {
-  type: ResultType;
-  data: string;
+  declare type: ResultType;
+  declare data: string;
 }
 
 export class NotifResult extends UnviredResult {
-  type: NotificationListenerType;
+  declare type: NotificationListenerType;
 }
 
 export class SettingsResult extends UnviredResult {
-  data: Settings;
-  type: ResultType;
+  declare data: Settings;
+  declare type: ResultType;
 }
 
 export class SyncResult extends UnviredResult {
-  type: ResultType;
+  declare type: ResultType;
   /**
    * This code refers to the HTTP status code obtained during the network call.
    */
@@ -299,7 +299,7 @@ export class SyncResult extends UnviredResult {
 }
 
 export class DbResult extends UnviredResult {
-  type: ResultType;
+  declare type: ResultType;
 }
 
 export class LoginParameters {
@@ -460,15 +460,15 @@ export interface FirebasePushConfig {
 }
 
 export class LoginResult extends UnviredResult {
-  type: LoginListenerType;
+  declare type: LoginListenerType;
 }
 
 export class AuthenticateActivateResult extends UnviredResult {
-  type: AuthenticateAndActivateResultType;
+  declare type: AuthenticateAndActivateResultType;
 }
 
 export class AuthenticateLocalResult extends UnviredResult {
-  type: AuthenticateLocalResultType;
+  declare type: AuthenticateLocalResultType;
 }
 
 export class UnviredCredential {
@@ -1512,8 +1512,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
   })
   getPushNotificationListener(): Observable<string> {
     return;
-  };
-
+  }
 
   /**
    * For Browser platform only.
