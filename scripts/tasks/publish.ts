@@ -176,7 +176,7 @@ function prepare() {
   );
 
   PLUGIN_PATHS.forEach((pluginPath: string) => {
-    const pluginName = pluginPath.split(/[\/\\]+/).slice(-2)[0];
+    const pluginName = pluginPath.split(/[/\\]+/).slice(-2)[0];
     const dir = resolve(DIST, 'plugins', pluginName);
     const description = copyDocs(dir, pluginName);
     writePackageJson(getPackageJsonContent(pluginName, PLUGIN_PEER_DEPENDENCIES, {}, description), dir);

@@ -93,7 +93,7 @@ function extractPluginMeta(symbol: TsSymbol | undefined): PluginMeta | undefined
       if (!isPropertyAssignment(prop) || !isIdentifier(prop.name)) continue;
       meta[prop.name.text] = parseLiteralValue(prop.initializer);
     }
-    return meta as unknown as PluginMeta;
+    return meta;
   }
   return undefined;
 }

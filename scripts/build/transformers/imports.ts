@@ -61,7 +61,7 @@ function transformImports(file: SourceFile, _ctx: TransformationContext, ngcBuil
         (binding: Identifier & { name?: { text: string } }) => {
           if (binding.escapedText) {
             binding.name = {
-              text: binding.escapedText as string,
+              text: binding.escapedText,
             };
           }
           return binding;

@@ -18,7 +18,7 @@
     "build": "npm run build:core && npm run build:esm && npm run build:ngx",
     "prebuild": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
     "npmpub": "tsx scripts/tasks/publish",
-    "lint": "eslint src/**/*.ts",
+    "lint": "eslint .",
     "typecheck": "npm run build:core && tsc -p tsconfig.json --noEmit && tsc -p tsconfig.spec.json && tsc -p scripts/tsconfig.json --noEmit",
     "readmes": "tsx scripts/docs/generate-readmes",
     "plugin:create": "tsx scripts/tasks/plugin-create",
