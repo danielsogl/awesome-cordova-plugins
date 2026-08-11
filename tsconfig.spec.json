@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.core.json",
+  "compilerOptions": {
+    "types": ["node", "cordova", "jest"],
+    "noEmit": true
+  },
+  "include": ["src/**/*.spec.ts"],
+  "exclude": []
+}
