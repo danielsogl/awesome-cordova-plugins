@@ -5,6 +5,8 @@ description: >-
 
 # BlinkId
 
+> **Deprecated.** The underlying `blinkid-cordova` plugin is no longer maintained by Microblink and has no official successor; the third-party fork `blinkid-cordova-plugin` is still published.
+
 Microblink SDK wrapper for barcode and document scanning. See the
 blinkid-phonegap repository for available recognizers and other settings
 

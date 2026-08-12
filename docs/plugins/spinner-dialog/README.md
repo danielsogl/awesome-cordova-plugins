@@ -22,8 +22,6 @@ npm install @awesome-cordova-plugins/spinner-dialog
 
 - Android
 - iOS
-- Windows Phone 8
-- Windows
 
 ## Further Information
 

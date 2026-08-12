@@ -209,10 +209,10 @@ export class SumUp extends AwesomeCordovaNativePlugin {
    *
    * @returns {Promise<SumUpResponse>} Return a SumUpResponse object
    */
-   @Cordova()
-   setup(): Promise<SumUpResponse> {
-     return;
-   }
+  @Cordova()
+  setup(): Promise<SumUpResponse> {
+    return;
+  }
 
   /**
    * Test the SumUp integration using SDK tests.

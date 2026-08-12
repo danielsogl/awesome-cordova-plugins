@@ -20,8 +20,6 @@ npm install @awesome-cordova-plugins/video-editor
 
 - Android
 - iOS
-- Windows
-- Windows Phone 8
 
 ## Further Information
 

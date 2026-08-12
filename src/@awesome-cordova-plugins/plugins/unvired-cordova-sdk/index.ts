@@ -216,7 +216,7 @@ export enum NotificationListenerType {
   /**
    * Notify that the JWT token is expired
    */
-  jwtTokenExpired = 13
+  jwtTokenExpired = 13,
 }
 
 export enum AttachmentItemStatus {
@@ -267,31 +267,31 @@ export class UnviredResult {
 }
 
 export class OutboxLockResult extends UnviredResult {
-  type: ResultType;
-  data: OutboxLockStatus;
+  declare type: ResultType;
+  declare data: OutboxLockStatus;
 }
 
 export class LogResult extends UnviredResult {
-  type: ResultType;
-  data: LogLevel;
+  declare type: ResultType;
+  declare data: LogLevel;
 }
 
 export class LogDataResult extends UnviredResult {
-  type: ResultType;
-  data: string;
+  declare type: ResultType;
+  declare data: string;
 }
 
 export class NotifResult extends UnviredResult {
-  type: NotificationListenerType;
+  declare type: NotificationListenerType;
 }
 
 export class SettingsResult extends UnviredResult {
-  data: Settings;
-  type: ResultType;
+  declare data: Settings;
+  declare type: ResultType;
 }
 
 export class SyncResult extends UnviredResult {
-  type: ResultType;
+  declare type: ResultType;
   /**
    * This code refers to the HTTP status code obtained during the network call.
    */
@@ -299,7 +299,7 @@ export class SyncResult extends UnviredResult {
 }
 
 export class DbResult extends UnviredResult {
-  type: ResultType;
+  declare type: ResultType;
 }
 
 export class LoginParameters {
@@ -443,18 +443,32 @@ export class LoginParameters {
    */
   dbUpdateStatements: string;
 
-  
+  /**
+   * Specify Firebase push configuration for Web/Elector Push.
+   */
+  firebasePushConfig: FirebasePushConfig;
 }
+
+export interface FirebasePushConfig {
+  apiKey: string;
+  authDomain: string;
+  projectId: string;
+  storageBucket: string;
+  messagingSenderId: string;
+  appId: string;
+  vapidKey: string; // VAPID public key for Web Push
+}
+
 export class LoginResult extends UnviredResult {
-  type: LoginListenerType;
+  declare type: LoginListenerType;
 }
 
 export class AuthenticateActivateResult extends UnviredResult {
-  type: AuthenticateAndActivateResultType;
+  declare type: AuthenticateAndActivateResultType;
 }
 
 export class AuthenticateLocalResult extends UnviredResult {
-  type: AuthenticateLocalResultType;
+  declare type: AuthenticateLocalResultType;
 }
 
 export class UnviredCredential {
@@ -636,7 +650,7 @@ export class UMPRequestConfig {
   repo: 'https://github.com/unvired/cordova-plugin-unvired-sdk/', // the github repository URL for the plugin
   install: 'ionic cordova plugin add @awesome-cordova-plugins/unvired-cordova-sdk', // OPTIONAL install command, in case the plugin requires variables
   installVariables: [], // OPTIONAL the plugin requires variables
-  platforms: ['iOS', 'Android', 'Windows', 'Browser'], // Array of platforms supported, example: ['Android', 'iOS']
+  platforms: ['iOS', 'Android', 'Browser'], // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable()
 export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
@@ -1498,8 +1512,7 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
   })
   getPushNotificationListener(): Observable<string> {
     return;
-  };
-
+  }
 
   /**
    * For Browser platform only.
@@ -1858,6 +1871,68 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   getUMPRequestConfig(endpoint: string, options?: { customUrl?: string }): Promise<UMPRequestConfig> {
+    return;
+  }
+
+  /**
+   * Check connection status.
+   * Returns networkNotReachable, umpNotReachable, or connected.
+   */
+  @Cordova()
+  checkConnectionStatus(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Get database directory path.
+   */
+  @Cordova()
+  getDatabasePath(): Promise<string> {
+    return;
+  }
+
+  /**
+   * Download attachment synchronously.
+   * @param structureObject Attachment Item JSON object containing field name-value.
+   */
+  @Cordova()
+  downloadAttachmentSync(structureObject: any): Promise<any> {
+    return;
+  }
+
+  /**
+   * Unregister for callback on GetMessage status (Mobile only).
+   */
+  @Cordova({ sync: true })
+  unRegisterNotifListener(): void {
+    return;
+  }
+
+  /**
+   * Prepare database for export.
+   */
+  @Cordova()
+  prepareDatabaseForExport(): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * Register a callback to listen for sync items count updates.
+   */
+  @Cordova({
+    observable: true,
+  })
+  updateSyncItemsCount(): Observable<any> {
+    return;
+  }
+
+  /**
+   * Set authentication credentials.
+   * @param username Username
+   * @param password Password
+   */
+  @Cordova()
+  setAuthCredentials(username: string, password: string): Promise<boolean> {
     return;
   }
 }

@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "declaration": true,
     "stripInternal": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "noImplicitAny": true,
+    "strict": true,
+    // TypeScript 6 no longer auto-includes every @types package; they must be listed.
+    "types": ["node", "cordova"],
     "module": "es2022",
     "moduleResolution": "bundler",
     "outDir": "./dist",

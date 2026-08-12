@@ -30,7 +30,7 @@ import { Plugin, CordovaProperty, AwesomeCordovaNativePlugin } from '@awesome-co
   plugin: 'cordova-plugin-buildinfo',
   pluginRef: 'BuildInfo',
   repo: 'https://github.com/lynrin/cordova-plugin-buildinfo',
-  platforms: ['Android', 'iOS', 'Windows', 'macOS', 'browser', 'Electron'],
+  platforms: ['Android', 'iOS', 'macOS', 'Browser', 'Electron'],
 })
 @Injectable()
 export class BuildInfo extends AwesomeCordovaNativePlugin {

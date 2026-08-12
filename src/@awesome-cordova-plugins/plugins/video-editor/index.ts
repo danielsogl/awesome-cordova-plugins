@@ -142,7 +142,7 @@ export interface VideoInfo {
   plugin: 'cordova-plugin-video-editor',
   pluginRef: 'VideoEditor',
   repo: 'https://github.com/jbavari/cordova-plugin-video-editor',
-  platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8'],
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class VideoEditor extends AwesomeCordovaNativePlugin {

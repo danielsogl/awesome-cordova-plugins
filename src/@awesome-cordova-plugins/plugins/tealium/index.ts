@@ -41,7 +41,10 @@ export interface TealiumDispatch {
 
 export class TealiumView implements TealiumDispatch {
   public type = 'view';
-  constructor(public viewName: string, public dataLayer: Map<string, any>) {}
+  constructor(
+    public viewName: string,
+    public dataLayer: Map<string, any>
+  ) {}
   toJson() {
     const dictionary: any = {};
     dictionary['type'] = this.type;
@@ -57,7 +60,10 @@ export class TealiumView implements TealiumDispatch {
 
 export class TealiumEvent implements TealiumDispatch {
   public type = 'event';
-  constructor(public eventName: string, public dataLayer: Map<string, any>) {}
+  constructor(
+    public eventName: string,
+    public dataLayer: Map<string, any>
+  ) {}
   toJson() {
     const dictionary: any = {};
     dictionary['type'] = this.type;
@@ -72,7 +78,21 @@ export class TealiumEvent implements TealiumDispatch {
 }
 
 export class ConsentExpiry {
-  constructor(public time: number, public unit: TimeUnit) {}
+  constructor(
+    public time: number,
+    public unit: TimeUnit
+  ) {}
+}
+
+export interface RemoteCommand {
+  /** The ID used to invoke the remote command */
+  id: string;
+  /** Path to a local JSON file mapping, relative to the app bundle */
+  path?: string;
+  /** URL to a remote JSON file mapping */
+  url?: string;
+  /** Callback invoked when the remote command is triggered */
+  callback?: Function;
 }
 
 export enum TimeUnit {
@@ -130,6 +150,7 @@ export interface TealiumConfig {
   memoryReportingEnabled?: boolean;
   overrideCollectURL?: string;
   overrideCollectBatchURL?: string;
+  overrideCollectProfile?: string;
   overrideCollectDomain?: string;
   overrideLibrarySettingsURL?: string;
   overrideTagManagementURL?: string;
@@ -143,6 +164,12 @@ export interface TealiumConfig {
   useRemoteLibrarySettings?: boolean;
   visitorServiceEnabled?: boolean;
   visitorServiceRefreshInterval?: string;
+  /** Remote commands to register automatically on initialize */
+  remoteCommands?: RemoteCommand[];
+  /** Whether session counting is enabled */
+  sessionCountingEnabled?: boolean;
+  /** Whether dispatch batching is enabled */
+  batchingEnabled?: boolean;
 }
 
 /**
@@ -252,6 +279,16 @@ export class Tealium extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Gathers the current track data (data layer merged with library data) without dispatching a track call
+   * @param callback
+   * @return {Promise<any>} Returns a promise that resolves when something happens
+   */
+  @Cordova()
+  gatherTrackData(callback?: Function): Promise<any> {
+    return;
+  }
+
+  /**
    * Retrieves the user's consent status
    * @param callback
    * @return {Promise<any>} Returns a promise that resolves when something happens
@@ -311,6 +348,16 @@ export class Tealium extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Passes a deep link URI to the Tealium library for tracking
+   * @param uri The deep link URI
+   * @return {Promise<any>} Returns a promise that resolves when something happens
+   */
+  @Cordova()
+  handleDeepLink(uri: string): Promise<any> {
+    return;
+  }
+
+  /**
    * Retrieves the Tealium Visitor ID
    * @param callback
    * @return {Promise<any>} Returns a promise that resolves when something happens
@@ -321,12 +368,40 @@ export class Tealium extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Resets the Tealium Visitor ID, generating a new one
+   * @return {Promise<any>} Returns a promise that resolves when something happens
+   */
+  @Cordova()
+  resetVisitorId(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Clears all previously-stored visitor IDs
+   * @return {Promise<any>} Returns a promise that resolves when something happens
+   */
+  @Cordova()
+  clearStoredVisitorIds(): Promise<any> {
+    return;
+  }
+
+  /**
    * Sets a listener to be called when the AudienceStream visitor profile is updated
    * @param callback
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
   setVisitorServiceListener(callback?: Function): Promise<any> {
+    return;
+  }
+
+  /**
+   * Sets a listener to be called when the Visitor ID changes
+   * @param callback
+   * @return {Promise<any>} Returns a promise that resolves when something happens
+   */
+  @Cordova()
+  setVisitorIdListener(callback?: Function): Promise<any> {
     return;
   }
 
@@ -344,10 +419,12 @@ export class Tealium extends AwesomeCordovaNativePlugin {
    * Adds a remote command for later execution
    * @param id The ID used to invoke the remote command
    * @param callback
+   * @param path Path to a local JSON file mapping, relative to the app bundle
+   * @param url URL to a remote JSON file mapping
    * @return {Promise<any>} Returns a promise that resolves when something happens
    */
   @Cordova()
-  addRemoteCommand(id: string, callback?: Function): Promise<any> {
+  addRemoteCommand(id: string, callback?: Function, path?: string, url?: string): Promise<any> {
     return;
   }
 

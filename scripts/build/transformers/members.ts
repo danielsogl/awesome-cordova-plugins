@@ -32,7 +32,7 @@ export function transformMembers(cls: ClassDeclaration): ClassElement[] {
       default:
         return member;
     }
-  }) as ClassElement[];
+  });
 
   propertyIndices.forEach((i: number) => {
     const result = transformProperty(members, i);

@@ -132,6 +132,7 @@ export interface StripeCardTokenRes {
  * ```
  * @interfaces
  * StripeCardTokenParams
+ * @deprecated The underlying `cordova-plugin-stripe` plugin is deprecated and no longer maintained; for Ionic/Capacitor apps use `@capacitor-community/stripe` instead.
  */
 @Plugin({
   pluginName: 'Stripe',

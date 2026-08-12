@@ -35,13 +35,12 @@ import { Observable } from 'rxjs';
  * ```
  */
 @Plugin({
-  pluginName: 'cordova-paytmpayments-customuisdk',
-  plugin: 'cordova-paytmpayments-customuisdk',
-  pluginRef: 'paytmpayments.customuisdk',
-  repo: '',
-  install: '',
+  pluginName: 'cordova-paytm-customuisdk',
+  plugin: 'cordova-paytm-customuisdk',
+  pluginRef: 'paytm.customuisdk',
+  repo: 'https://github.com/paytm/paytm-customuisdk-cordova',
   installVariables: [],
-  platforms: ['Android, iOS'],
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class CustomUiSdk extends AwesomeCordovaNativePlugin {

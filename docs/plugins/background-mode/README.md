@@ -19,11 +19,9 @@ npm install @awesome-cordova-plugins/background-mode
 
 ## Supported Platforms
 
-- AmazonFire OS
 - Android
 - Browser
 - iOS
-- Windows
 
 ## Further Information
 

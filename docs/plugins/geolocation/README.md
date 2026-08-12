@@ -27,11 +27,9 @@ npm install @awesome-cordova-plugins/geolocation
 
 ## Supported Platforms
 
-- Amazon Fire OS
 - Android
 - Browser
 - iOS
-- Windows
 
 ## Further Information
 

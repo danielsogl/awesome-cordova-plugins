@@ -56,7 +56,7 @@ export interface DocumentViewerOptions {
   plugin: 'cordova-plugin-document-viewer',
   pluginRef: 'SitewaertsDocumentViewer',
   repo: 'https://github.com/sitewaerts/cordova-plugin-document-viewer',
-  platforms: ['Android', 'iOS', 'Windows'],
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class DocumentViewer extends AwesomeCordovaNativePlugin {

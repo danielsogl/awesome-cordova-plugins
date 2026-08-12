@@ -18,7 +18,6 @@ npm install @awesome-cordova-plugins/streaming-media
 
 ## Supported Platforms
 
-- Amazon Fire OS
 - Android
 - iOS
 

@@ -44,7 +44,7 @@ export interface BatteryStatusResponse {
   plugin: 'cordova-plugin-battery-status',
   pluginRef: 'navigator.battery',
   repo: 'https://github.com/apache/cordova-plugin-battery-status',
-  platforms: ['iOS', 'Android', 'Windows', 'Browser'],
+  platforms: ['iOS', 'Android', 'Browser'],
 })
 @Injectable()
 export class BatteryStatus extends AwesomeCordovaNativePlugin {

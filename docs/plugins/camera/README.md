@@ -31,7 +31,6 @@ npm install @awesome-cordova-plugins/camera
 - Android
 - Browser
 - iOS
-- Windows
 
 ## Further Information
 

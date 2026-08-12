@@ -21,10 +21,7 @@ npm install @awesome-cordova-plugins/toast
 ## Supported Platforms
 
 - Android
-- BlackBerry 10
 - iOS
-- Windows
-- Windows Phone 8
 
 ## Further Information
 

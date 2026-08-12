@@ -72,18 +72,7 @@ export interface DeviceOrientationCompassOptions {
   plugin: 'cordova-plugin-device-orientation',
   pluginRef: 'navigator.compass',
   repo: 'https://github.com/apache/cordova-plugin-device-orientation',
-  platforms: [
-    'Amazon Fire OS',
-    'Android',
-    'BlackBerry 10',
-    'Browser',
-    'Firefox OS',
-    'iOS',
-    'Tizen',
-    'Ubuntu',
-    'Windows',
-    'Windows Phone',
-  ],
+  platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
 export class DeviceOrientation extends AwesomeCordovaNativePlugin {

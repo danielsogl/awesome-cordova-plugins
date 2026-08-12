@@ -25,7 +25,7 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
  */
 @Plugin({
   pluginName: 'IRoot',
-  plugin: 'cordova-plugin-IRoot',
+  plugin: 'cordova-plugin-iroot',
   pluginRef: 'IRoot',
   repo: 'https://github.com/WuglyakBolgoink/cordova-plugin-IRoot',
   platforms: ['Android', 'iOS'],
@@ -46,7 +46,7 @@ export class IRoot extends AwesomeCordovaNativePlugin {
    * @return {Promise<boolean>} Resolves to true if the device is Jailbroken/rooted, otherwise false.
    */
   @Cordova({
-    platforms: ['android'],
+    platforms: ['Android'],
   })
   isRootedWithBusyBox(): Promise<boolean> {
     return;

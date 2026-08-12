@@ -29,7 +29,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
   plugin: 'cordova-plugin-app-version',
   pluginRef: 'cordova.getAppVersion',
   repo: 'https://github.com/whiteoctober/cordova-plugin-app-version',
-  platforms: ['Android', 'iOS', 'Windows'],
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class AppVersion extends AwesomeCordovaNativePlugin {

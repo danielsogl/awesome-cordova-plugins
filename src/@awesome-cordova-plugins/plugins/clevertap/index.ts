@@ -62,35 +62,35 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
     return;
   }
 
-/**
-* Sets the user's consent for event and profile tracking.
-*
-* You must call this method separately for each active user profile,
-* for example, when switching user profiles using `onUserLogin`.
-*
-* Consent Scenarios:
-*
-* 1. **Complete Opt-Out**
-*    `userOptOut = true`, `allowSystemEvents = false`
-*    → No events (custom or system) are saved locally or remotely. Maximum privacy.
-*
-* 2. **Full Opt-In**
-*    `userOptOut = false`, `allowSystemEvents = true`
-*    → All events (custom and system) are tracked. Default behavior.
-*
-* 3. **Partial Opt-In**
-*    `userOptOut = true`, `allowSystemEvents = true`
-*    → Only system events (e.g., app launch, notification viewed) are tracked. Custom events are ignored.
-*
-* ⚠️ The combination `userOptOut = false` and `allowSystemEvents = false` is invalid.
-* In such cases, the SDK defaults to **Full Opt-In**.
-*
-* To re-enable full tracking after opting out, call with:
-* `userOptOut = false`, `allowSystemEvents = true`.
-*
-* @param {boolean} userOptOut - Set to `true` to disable custom event tracking.
-* @param {boolean} allowSystemEvents - Set to `true` to allow system-level event tracking.
-*/
+  /**
+   * Sets the user's consent for event and profile tracking.
+   *
+   * You must call this method separately for each active user profile,
+   * for example, when switching user profiles using `onUserLogin`.
+   *
+   * Consent Scenarios:
+   *
+   * 1. **Complete Opt-Out**
+   *    `userOptOut = true`, `allowSystemEvents = false`
+   *    → No events (custom or system) are saved locally or remotely. Maximum privacy.
+   *
+   * 2. **Full Opt-In**
+   *    `userOptOut = false`, `allowSystemEvents = true`
+   *    → All events (custom and system) are tracked. Default behavior.
+   *
+   * 3. **Partial Opt-In**
+   *    `userOptOut = true`, `allowSystemEvents = true`
+   *    → Only system events (e.g., app launch, notification viewed) are tracked. Custom events are ignored.
+   *
+   * ⚠️ The combination `userOptOut = false` and `allowSystemEvents = false` is invalid.
+   * In such cases, the SDK defaults to **Full Opt-In**.
+   *
+   * To re-enable full tracking after opting out, call with:
+   * `userOptOut = false`, `allowSystemEvents = true`.
+   *
+   * @param {boolean} userOptOut - Set to `true` to disable custom event tracking.
+   * @param {boolean} allowSystemEvents - Set to `true` to allow system-level event tracking.
+   */
   @Cordova()
   setOptOut(optOut: boolean, allowSystemEvents?: boolean): Promise<any> {
     return;
@@ -361,7 +361,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   getUserEventLog(eventName: string): Promise<any> {
-      return;
+    return;
   }
 
   /**
@@ -372,7 +372,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   getUserEventLogCount(eventName: string): Promise<any> {
-      return;
+    return;
   }
 
   /**
@@ -382,7 +382,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   getUserLastVisitTs(): Promise<any> {
-      return;
+    return;
   }
 
   /**
@@ -392,7 +392,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   getUserAppLaunchCount(): Promise<any> {
-      return;
+    return;
   }
 
   /**
@@ -402,9 +402,8 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   getUserEventLogHistory(): Promise<any> {
-      return;
+    return;
   }
-
 
   /**
    * @deprecated - Use getUserEventLog() instead
@@ -670,7 +669,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  profileIncrementValueBy(key: string,value: number): Promise<any> {
+  profileIncrementValueBy(key: string, value: number): Promise<any> {
     return;
   }
 
@@ -682,7 +681,7 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova()
-  profileDecrementValueBy(key: string,value: number): Promise<any> {
+  profileDecrementValueBy(key: string, value: number): Promise<any> {
     return;
   }
 
@@ -706,9 +705,12 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    * Discards inApp notifications until 'resumeInAppNotifications' is called for current session.
    * Automatically resumes InApp notifications display on CleverTap shared instance creation.
    * Pending inApp notifications are not displayed.
+   *
+   * @param dismissInAppIfVisible {boolean} - Optional. If true, also dismisses the currently visible InApp notification.
+   * @returns {Promise<any>}
    */
   @Cordova()
-  discardInAppNotifications(): Promise<any> {
+  discardInAppNotifications(dismissInAppIfVisible?: boolean): Promise<any> {
     return;
   }
 
@@ -739,10 +741,10 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    * @param expiredOnly {boolean} - to clear only assets which will not be needed further for inapps
    * @returns {Promise<any>}
    */
-    @Cordova()
-    clearFileResources(expiredOnly: boolean): Promise<any> {
-      return;
-    }
+  @Cordova()
+  clearFileResources(expiredOnly: boolean): Promise<any> {
+    return;
+  }
 
   /**
    * Fetches In Apps from server.
@@ -753,7 +755,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   fetchInApps(): Promise<any> {
     return;
   }
-
 
   /*******************
    * Session
@@ -1221,10 +1222,10 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>}
    * @param {string} variable The String specifying the name of file varible to be created.
    */
-    @Cordova()
-    defineFileVariable(variable: string): Promise<any> {
-      return;
-    }
+  @Cordova()
+  defineFileVariable(variable: string): Promise<any> {
+    return;
+  }
 
   /**
    * Get a variable or a group for the specified name.
@@ -1246,6 +1247,28 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Returns information about the active A/B experiment variants for the current user.
+   * Each variant object contains an "id" key mapping to the numeric ID of the variant.
+   *
+   * @returns {Promise<any>} - Returns an array of variant objects.
+   */
+  @Cordova()
+  variants(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Clears any active mute state set by the backend, allowing the SDK to resume
+   * normal event tracking and network operations immediately.
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  unmute(): Promise<any> {
+    return;
+  }
+
+  /**
    * Adds a callback to be invoked when variables are initialised with server values. Will be called each time new values are fetched.
    * @returns {Promise<any>}
    */
@@ -1263,7 +1286,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   onValueChanged(name: string): Promise<any> {
     return;
   }
-
 
   /**
    * Called when the value of the file variable is downloaded and ready
@@ -1302,7 +1324,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
     return;
   }
 
-
   /****************************
    * Custom Templates methods
    ****************************/
@@ -1331,105 +1352,104 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /**
-  * Notify the SDK that an active custom template is dismissed. The active custom template is considered to be
-  * visible to the user until this method is called. Since the SDK can show only one InApp message at a time, all
-  * other messages will be queued until the current one is dismissed.
-  * @param {string} templateName The name of the active template
-  * @returns {Promise<any>}
-  */
+   * Notify the SDK that an active custom template is dismissed. The active custom template is considered to be
+   * visible to the user until this method is called. Since the SDK can show only one InApp message at a time, all
+   * other messages will be queued until the current one is dismissed.
+   * @param {string} templateName The name of the active template
+   * @returns {Promise<any>}
+   */
   @Cordova()
   customTemplateSetDismissed(templateName: string): Promise<any> {
     return;
   }
 
-
   /**
-  * Notify the SDK that an active custom template is presented to the user.
-  * @param {string} templateName The name of the active template
-  * @returns {Promise<any>}
-  */
+   * Notify the SDK that an active custom template is presented to the user.
+   * @param {string} templateName The name of the active template
+   * @returns {Promise<any>}
+   */
   @Cordova()
   customTemplateSetPresented(templateName: string): Promise<any> {
     return;
   }
 
   /**
-  * Trigger a custom template action argument by name.
-  *
-  * @param {string} templateName The name of an active template for which the action is defined
-  * @param {string} argName The action argument na
-  * @returns {Promise<any>}
-  */
+   * Trigger a custom template action argument by name.
+   *
+   * @param {string} templateName The name of an active template for which the action is defined
+   * @param {string} argName The action argument na
+   * @returns {Promise<any>}
+   */
   @Cordova()
   customTemplateRunAction(templateName: string, argName: string): Promise<any> {
     return;
   }
 
   /**
-  * Retrieve a string argument by name.
-  *
-  * @param {string} templateName The name of an active template for which the argument is defined
-  * @param {string} argName The action argument name
-  * @returns {Promise<any>}
-  */
+   * Retrieve a string argument by name.
+   *
+   * @param {string} templateName The name of an active template for which the argument is defined
+   * @param {string} argName The action argument name
+   * @returns {Promise<any>}
+   */
   @Cordova()
   customTemplateGetStringArg(templateName: string, argName: string): Promise<any> {
     return;
   }
 
   /**
-  * Retrieve a number argument by name.
-  *
-  * @param {string} templateName The name of an active template for which the argument is defined
-  * @param {string} argName The action argument name
-  * @returns {Promise<any>}
-  */
+   * Retrieve a number argument by name.
+   *
+   * @param {string} templateName The name of an active template for which the argument is defined
+   * @param {string} argName The action argument name
+   * @returns {Promise<any>}
+   */
   @Cordova()
   customTemplateGetNumberArg(templateName: string, argName: string): Promise<any> {
     return;
   }
 
   /**
-  * Retrieve a boolean argument by name.
-  *
-  * @param {string} templateName The name of an active template for which the argument is defined
-  * @param {string} argName The action argument name
-  * @returns {Promise<any>}
-  */
+   * Retrieve a boolean argument by name.
+   *
+   * @param {string} templateName The name of an active template for which the argument is defined
+   * @param {string} argName The action argument name
+   * @returns {Promise<any>}
+   */
   @Cordova()
   customTemplateGetBooleanArg(templateName: string, argName: string): Promise<any> {
     return;
   }
 
   /**
-  * Retrieve a file argument by name.
-  *
-  * @param {string} templateName The name of an active template for which the argument is defined
-  * @param {string} argName The action argument name
-  * @returns {Promise<any>}
-  */
+   * Retrieve a file argument by name.
+   *
+   * @param {string} templateName The name of an active template for which the argument is defined
+   * @param {string} argName The action argument name
+   * @returns {Promise<any>}
+   */
   @Cordova()
   customTemplateGetFileArg(templateName: string, argName: string): Promise<any> {
     return;
   }
 
   /**
-  * Retrieve an object argument by name.
-  *
-  * @param {string} templateName The name of an active template for which the argument is defined
-  * @param {string} argName The action argument name
-  * @returns {Promise<any>}
-  */
+   * Retrieve an object argument by name.
+   *
+   * @param {string} templateName The name of an active template for which the argument is defined
+   * @param {string} argName The action argument name
+   * @returns {Promise<any>}
+   */
   @Cordova()
   customTemplateGetObjectArg(templateName: string, argName: string): Promise<any> {
     return;
   }
 
   /**
-  * Get a string representation of an active's template context with information about all arguments.
-  * @param {string} templateName The name of an active template
-  * @returns {Promise<any>}
-  */
+   * Get a string representation of an active's template context with information about all arguments.
+   * @param {string} templateName The name of an active template
+   * @returns {Promise<any>}
+   */
   @Cordova()
   customTemplateContextToString(templateName: string): Promise<any> {
     return;
@@ -1468,7 +1488,6 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   isPushPermissionGranted(): Promise<any> {
     return;
   }
-
 
   /*******************
    * Developer Options

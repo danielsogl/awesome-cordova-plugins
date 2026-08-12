@@ -125,7 +125,7 @@ export interface EmailComposerOptions {
   plugin: 'cordova-plugin-email-composer',
   pluginRef: 'cordova.plugins.email',
   repo: 'https://github.com/katzer/cordova-plugin-email-composer',
-  platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows', 'macOS'],
+  platforms: ['Android', 'Browser', 'iOS', 'macOS'],
 })
 @Injectable()
 export class EmailComposer extends AwesomeCordovaNativePlugin {

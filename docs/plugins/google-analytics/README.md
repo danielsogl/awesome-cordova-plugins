@@ -25,7 +25,6 @@ npm install @awesome-cordova-plugins/google-analytics
 - Android
 - Browser
 - iOS
-- Windows Phone 8
 
 ## Further Information
 

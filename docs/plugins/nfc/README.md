@@ -28,7 +28,6 @@ npm install @awesome-cordova-plugins/nfc
 
 - Android
 - iOS
-- Windows
 
 ## Further Information
 

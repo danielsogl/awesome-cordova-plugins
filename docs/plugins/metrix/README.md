@@ -12,7 +12,7 @@ Requires Cordova plugin: `ir.metrix.sdk`. For more info, please see the [Metrix 
 ## Installation
 
 ```bash
-ionic cordova plugin add ir.metrix.sdk
+ionic cordova plugin add @metrixorg/cordova-metrix
 npm install @awesome-cordova-plugins/metrix
 ```
 

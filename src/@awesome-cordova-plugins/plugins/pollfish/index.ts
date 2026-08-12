@@ -56,6 +56,7 @@ import { Plugin, Cordova, CordovaProperty, AwesomeCordovaNativePlugin } from '@a
  * });
  *
  * ```
+ * @deprecated The underlying `com.pollfish.cordova_plugin` plugin has been moved; use `cordova-plugin-pollfish` instead.
  */
 @Plugin({
   pluginName: 'Pollfish',

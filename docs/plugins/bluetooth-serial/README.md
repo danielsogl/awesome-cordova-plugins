@@ -20,7 +20,6 @@ npm install @awesome-cordova-plugins/bluetooth-serial
 
 - Android
 - iOS
-- Windows Phone 8
 
 ## Further Information
 

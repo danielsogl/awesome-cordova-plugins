@@ -88,7 +88,7 @@ export enum BIOMETRIC_ERRORS {
    *
    * @type {number}
    */
-  BIOMETRIC_SECRET_NOT_FOUND = -113
+  BIOMETRIC_SECRET_NOT_FOUND = -113,
 }
 
 export interface FingerprintOptions {
@@ -159,17 +159,17 @@ export interface FingerprintSecretOptions extends FingerprintOptions {
 
 export interface FingerprintAvailableOptions {
   /**
-  * (Android): If true will only return success if Class 3 (BIOMETRIC_STRONG) Biometrics are enrolled on the device. 
-  * It is reccomended you use this if planning on using the registerBiometricSecret and loadBiometricSecret methods.
-  */
+   * (Android): If true will only return success if Class 3 (BIOMETRIC_STRONG) Biometrics are enrolled on the device.
+   * It is reccomended you use this if planning on using the registerBiometricSecret and loadBiometricSecret methods.
+   */
   requireStrongBiometrics: boolean;
 
   /**
-  * (iOS): If true checks if backup authentication option is available, e.g. passcode. 
-  * Default: false, which means check for biometrics only.
-  * 
-  * @default false
-  */
+   * (iOS): If true checks if backup authentication option is available, e.g. passcode.
+   * Default: false, which means check for biometrics only.
+   *
+   * @default false
+   */
   allowBackup?: boolean;
 }
 
@@ -236,7 +236,6 @@ export interface FingerprintAvailableOptions {
 })
 @Injectable()
 export class FingerprintAIO extends AwesomeCordovaNativePlugin {
-
   /**
    * Check if fingerprint authentication is available
    *
@@ -245,7 +244,7 @@ export class FingerprintAIO extends AwesomeCordovaNativePlugin {
    * iPhone X will return 'face' other Android or iOS devices will return 'finger' Android P+ will return 'biometric'
    */
   @Cordova({
-    callbackOrder: 'reverse'
+    callbackOrder: 'reverse',
   })
   isAvailable(options: FingerprintAvailableOptions): Promise<BIOMETRIC_TYPE> {
     return;

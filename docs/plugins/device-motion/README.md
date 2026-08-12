@@ -19,14 +19,8 @@ npm install @awesome-cordova-plugins/device-motion
 ## Supported Platforms
 
 - Android
-- BlackBerry 10
 - Browser
-- Firefox OS
 - iOS
-- Tizen
-- Ubuntu
-- Windows
-- Windows Phone 8
 
 ## Further Information
 

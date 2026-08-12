@@ -36,7 +36,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
   plugin: 'cordova-plugin-x-socialsharing',
   pluginRef: 'plugins.socialsharing',
   repo: 'https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin',
-  platforms: ['Android', 'Browser', 'iOS', 'Windows', 'Windows Phone'],
+  platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
 export class SocialSharing extends AwesomeCordovaNativePlugin {

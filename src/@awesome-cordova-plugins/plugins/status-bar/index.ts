@@ -29,7 +29,7 @@ import { Cordova, CordovaProperty, AwesomeCordovaNativePlugin, Plugin } from '@a
   plugin: 'cordova-plugin-statusbar',
   pluginRef: 'StatusBar',
   repo: 'https://github.com/apache/cordova-plugin-statusbar',
-  platforms: ['Android', 'iOS', 'Windows'],
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class StatusBar extends AwesomeCordovaNativePlugin {

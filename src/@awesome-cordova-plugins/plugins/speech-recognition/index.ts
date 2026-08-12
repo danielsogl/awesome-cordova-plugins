@@ -3,8 +3,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 import { Observable } from 'rxjs';
 
 export type SpeechRecognitionListeningOptions =
-  | SpeechRecognitionListeningOptionsIOS
-  | SpeechRecognitionListeningOptionsAndroid;
+  SpeechRecognitionListeningOptionsIOS | SpeechRecognitionListeningOptionsAndroid;
 
 export interface SpeechRecognitionListeningOptionsIOS {
   /**

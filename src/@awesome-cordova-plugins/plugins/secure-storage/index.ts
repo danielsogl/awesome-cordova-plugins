@@ -138,7 +138,7 @@ export class SecureStorageObject {
   plugin: 'cordova-plugin-secure-storage-echo',
   pluginRef: 'cordova.plugins.SecureStorage',
   repo: 'https://github.com/mibrito707/cordova-plugin-secure-storage-echo',
-  platforms: ['Android', 'Browser', 'iOS', 'Windows'],
+  platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
 export class SecureStorage extends AwesomeCordovaNativePlugin {

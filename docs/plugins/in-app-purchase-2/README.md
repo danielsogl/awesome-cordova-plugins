@@ -44,7 +44,6 @@ npm install @awesome-cordova-plugins/in-app-purchase-2
 
 - iOS
 - Android
-- Windows
 
 ## Further Information
 

@@ -44,12 +44,11 @@ export interface InAppBrowserOptions {
   /** (Android Only) Set to a valid hex color string, for example #00ff00 or #CC00ff00 (#aarrggbb), and it will change the footer color from default. Only has effect if user has footer set to yes */
   footercolor?: string;
   /**
-   * (Windows only) Set to yes to create the browser control without a border around it.
-   * Please note that if location=no is also specified, there will be no control presented to user to close IAB window.
+   * (Android Only) Sets whether the InappBrowser WebView is displayed fullscreen or not. In fullscreen mode, the status bar is hidden. Default value is yes.
    */
   fullscreen?: 'yes' | 'no';
   /**
-   * (Android & Windows Only) Set to yes to use the hardware back button to navigate backwards through the InAppBrowser's history.
+   * (Android Only) Set to yes to use the hardware back button to navigate backwards through the InAppBrowser's history.
    * If there is no previous page, the InAppBrowser will close. The default value is yes, so you must set it to no if you want the back button to simply close the InAppBrowser.
    */
   hardwareback?: 'yes' | 'no';
@@ -69,7 +68,11 @@ export interface InAppBrowserOptions {
   hidespinner?: 'yes' | 'no';
   /** (Android) Set to yes to hide the url bar on the location toolbar, only has effect if user has location set to yes. The default value is no. */
   hideurlbar?: 'yes' | 'no';
-  /** (iOS Only) Set to yes or no to open the keyboard when form elements receive focus via JavaScript's focus() call (defaults to yes). */
+  /**
+   * (iOS Only) Set to yes or no to open the keyboard when form elements receive focus via JavaScript's focus() call (defaults to yes).
+   *
+   * @deprecated UIWebView-only option, removed upstream in cordova-plugin-inappbrowser 4.0.0. iOS always uses WKWebView now.
+   */
   keyboardDisplayRequiresUserAction?: 'yes' | 'no';
   /**
    * (Android) Set to yes to swap positions of the navigation buttons and the close button. Specifically, navigation buttons go to the left and close button to the right.
@@ -91,7 +94,11 @@ export interface InAppBrowserOptions {
   presentationstyle?: 'pagesheet' | 'formsheet' | 'fullscreen';
   /** (Android Only) Set to yes to make InAppBrowser WebView to pause/resume with the app to stop background audio (this may be required to avoid Google Play issues) */
   shouldPauseOnSuspend?: 'yes' | 'no';
-  /** (iOS Only) Set to yes or no to wait until all new view content is received before being rendered (defaults to no). */
+  /**
+   * (iOS Only) Set to yes or no to wait until all new view content is received before being rendered (defaults to no).
+   *
+   * @deprecated UIWebView-only option, removed upstream in cordova-plugin-inappbrowser 4.0.0. iOS always uses WKWebView now.
+   */
   suppressesIncrementalRendering?: 'yes' | 'no';
   /** (iOS Only) Set to yes or no to turn the toolbar on or off for the InAppBrowser (defaults to yes) */
   toolbar?: 'yes' | 'no';
@@ -108,10 +115,19 @@ export interface InAppBrowserOptions {
   transitionstyle?: 'fliphorizontal' | 'crossdissolve' | 'coververtical';
   /** (Android Only) Sets whether the WebView should enable support for the "viewport" HTML meta tag or should use a wide viewport. When the value of the setting is no, the layout width is always set to the width of the WebView control in device-independent (CSS) pixels. When the value is yes and the page contains the viewport meta tag, the value of the width specified in the tag is used. If the page does not contain the tag or does not provide a width, then a wide viewport will be used. (defaults to yes). */
   useWideViewPort?: 'yes' | 'no';
-  /** (iOS Only) Set to yes to use WKWebView engine for the InappBrowser. Omit or set to no (default) to use UIWebView. */
+  /**
+   * (iOS Only) Set to yes to use WKWebView engine for the InappBrowser. Omit or set to no (default) to use UIWebView.
+   *
+   * @deprecated UIWebView was removed upstream in cordova-plugin-inappbrowser 4.0.0. iOS always uses WKWebView now, making this option a no-op.
+   */
   usewkwebview?: 'yes' | 'no';
-  /** (Android Only) Set to yes to show Android browser's zoom controls, set to no to hide them. Default value is yes. */
+  /** (Android Only) Enables the pinch-to-zoom gesture. Set to no to disable it. Default value is yes. */
   zoom?: 'yes' | 'no';
+  /**
+   * (Android Only) Set to yes to show Android browser's zoom controls, set to no to hide them. Default value is yes.
+   * The zoom controls are deprecated since Android API Level 26 (Android 8); Google recommends disabling them.
+   */
+  zoomcontrols?: 'yes' | 'no';
   /**
    * @hidden
    */
@@ -126,7 +142,9 @@ export type InAppBrowserEventType =
   | 'beforeload'
   | 'message'
   | 'customscheme'
-  | string
+  /** (Android Only) Fires when the InAppBrowser loads a URL that leads to downloading of a file. */
+  | 'download'
+  | string;
 
 export interface InAppBrowserEvent extends Event {
   /** the event name */
@@ -245,7 +263,6 @@ export class InAppBrowserObject {
       return () => this._objectInstance.removeEventListener(event, observer.next.bind(observer));
     });
   }
-
 }
 
 /**
@@ -285,7 +302,7 @@ export class InAppBrowserObject {
   plugin: 'cordova-plugin-inappbrowser',
   pluginRef: 'cordova.InAppBrowser',
   repo: 'https://github.com/apache/cordova-plugin-inappbrowser',
-  platforms: ['AmazonFire OS', 'Android', 'Browser', 'iOS', 'macOS', 'Windows'],
+  platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
 export class InAppBrowser extends AwesomeCordovaNativePlugin {

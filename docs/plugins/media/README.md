@@ -21,7 +21,6 @@ npm install @awesome-cordova-plugins/media
 - Android
 - Browser
 - iOS
-- Windows
 
 ## Further Information
 

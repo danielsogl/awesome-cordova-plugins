@@ -18,10 +18,8 @@ npm install @awesome-cordova-plugins/splash-screen
 
 ## Supported Platforms
 
-- Amazon Fire OS
 - Android
 - iOS
-- Windows
 
 ## Further Information
 

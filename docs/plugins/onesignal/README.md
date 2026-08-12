@@ -8,6 +8,12 @@ description: >-
 The OneSignal plugin is an client implementation for using the [OneSignal](https://onesignal.com/) Service.
 OneSignal is a simple implementation for delivering push notifications.
 
+As of onesignal-cordova-plugin v5.0.0, OneSignal moved to a user-centric API split across the `OneSignal`,
+`OneSignalUser`, `OneSignalUserPushSubscription`, `OneSignalNotifications`, `OneSignalSession`, `OneSignalLocation`,
+`OneSignalInAppMessages`, `OneSignalDebug` and `OneSignalLiveActivities` injectables in this package. The flat
+methods below (`startInit`, `sendTag`, etc.) were removed upstream in v5.0.0 and are kept here only for backwards
+compatibility; they are marked `@deprecated` with their v5+ replacement.
+
 Please view the official [OneSignal Ionic SDK Installation](https://documentation.onesignal.com/docs/ionic-sdk-setup) guide
 for more information.
 
@@ -84,10 +90,8 @@ npm install @awesome-cordova-plugins/onesignal
 
 ## Supported Platforms
 
-- Amazon Fire OS
 - Android
 - iOS
-- Windows
 
 ## Further Information
 

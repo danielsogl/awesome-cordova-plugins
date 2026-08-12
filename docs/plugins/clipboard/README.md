@@ -20,7 +20,6 @@ npm install @awesome-cordova-plugins/clipboard
 
 - Android
 - iOS
-- Windows Phone 8
 
 ## Further Information
 

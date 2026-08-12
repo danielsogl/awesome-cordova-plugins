@@ -8,11 +8,8 @@
     ":separateMajorReleases",
     ":combinePatchMinorReleases",
     ":ignoreUnstable",
-    ":prImmediately",
     ":updateNotScheduled",
-    ":automergeDisabled",
-    ":maintainLockFilesWeekly",
-    ":prConcurrentLimit10"
+    ":maintainLockFilesWeekly"
   ],
   "platformAutomerge": true,
   "rangeStrategy": "bump",
@@ -52,13 +49,13 @@
     },
     {
       "groupName": "Angular",
-      "allowedVersions": "<=20",
+      "allowedVersions": "<=22",
       "automerge": false,
       "matchPackageNames": ["/^@angular//", "/^@angular-devkit//", "/@schematics/angular/"]
     },
     {
       "matchPackageNames": ["typescript"],
-      "allowedVersions": "<=5",
+      "allowedVersions": "<6.1",
       "groupName": "TypeScript core",
       "automerge": false
     },
@@ -66,19 +63,19 @@
       "groupName": "Build and bundling tools",
       "automerge": true,
       "platformAutomerge": true,
-      "matchPackageNames": ["rollup", "tsx"]
+      "matchPackageNames": ["tsx"]
     },
     {
       "groupName": "Testing framework",
       "automerge": true,
       "platformAutomerge": true,
-      "matchPackageNames": ["jest", "@swc/jest", "@swc/core", "@types/jest", "jest-environment-jsdom"]
+      "matchPackageNames": ["vitest", "/^@vitest//", "jsdom"]
     },
     {
       "groupName": "Documentation tools",
       "automerge": true,
       "platformAutomerge": true,
-      "matchPackageNames": ["typedoc", "typedoc-plugin-markdown"]
+      "matchPackageNames": ["typedoc"]
     },
     {
       "matchManagers": ["npm"],
@@ -100,8 +97,6 @@
   "prCreation": "immediate",
   "prHourlyLimit": 2,
   "prConcurrentLimit": 5,
-  "updatePinnedDependencies": false,
-  "enabledManagers": ["npm"],
-  "ignoreDeps": [],
+  "enabledManagers": ["npm", "github-actions"],
   "ignorePaths": ["**/node_modules/**", "**/dist/**", "**/coverage/**"]
 }

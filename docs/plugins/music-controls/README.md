@@ -22,7 +22,6 @@ npm install @awesome-cordova-plugins/music-controls
 
 - Android
 - iOS
-- Windows
 
 ## Further Information
 

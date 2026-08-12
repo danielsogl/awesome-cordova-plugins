@@ -28,8 +28,8 @@ import { Plugin, Cordova, AwesomeCordovaNativePlugin } from '@awesome-cordova-pl
  */
 @Plugin({
   pluginName: 'SSLCertificateChecker',
-  plugin: 'SSLCertificateChecker-PhoneGap-Plugin',
-  pluginRef: 'SSLCertificateChecker',
+  plugin: 'cordova-plugin-sslcertificatechecker',
+  pluginRef: 'plugins.sslCertificateChecker',
   repo: 'https://github.com/EddyVerbruggen/SSLCertificateChecker-PhoneGap-Plugin',
   platforms: ['Android', 'iOS'],
 })

@@ -18,11 +18,9 @@ npm install @awesome-cordova-plugins/network
 
 ## Supported Platforms
 
-- Amazon Fire OS
 - Android
 - Browser
 - iOS
-- Windows
 
 ## Further Information
 

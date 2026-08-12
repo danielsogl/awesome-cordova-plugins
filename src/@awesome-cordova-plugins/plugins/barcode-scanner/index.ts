@@ -104,13 +104,14 @@ export interface BarcodeScanResult {
  * @interfaces
  * BarcodeScannerOptions
  * BarcodeScanResult
+ * @deprecated The underlying `phonegap-plugin-barcodescanner` plugin is deprecated following the PhoneGap shutdown and has no maintained Cordova successor.
  */
 @Plugin({
   pluginName: 'BarcodeScanner',
   plugin: 'phonegap-plugin-barcodescanner',
   pluginRef: 'cordova.plugins.barcodeScanner',
   repo: 'https://github.com/phonegap/phonegap-plugin-barcodescanner',
-  platforms: ['Android', 'BlackBerry 10', 'Browser', 'iOS', 'Windows'],
+  platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
 export class BarcodeScanner extends AwesomeCordovaNativePlugin {

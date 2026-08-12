@@ -21,7 +21,6 @@ npm install @awesome-cordova-plugins/mobile-accessibility
 
 - Android
 - iOS
-- Amazon Fire OS
 
 ## Further Information
 

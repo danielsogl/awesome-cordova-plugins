@@ -5,6 +5,8 @@ description: >-
 
 # Pollfish
 
+> **Deprecated.** The underlying `com.pollfish.cordova_plugin` plugin has been moved; use `cordova-plugin-pollfish` instead.
+
 Pollfish Ionic Native plugin wrapper
 
 ## Installation

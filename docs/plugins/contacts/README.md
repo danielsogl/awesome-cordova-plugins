@@ -5,6 +5,8 @@ description: >-
 
 # Contacts
 
+> **Deprecated.** The underlying `cordova-plugin-contacts` plugin is deprecated by Apache with no official replacement; the maintained community fork `@herdwatch/cordova-plugin-contacts` can be used instead.
+
 Access and manage Contacts on the device.
 
 ## Installation
@@ -19,14 +21,8 @@ npm install @awesome-cordova-plugins/contacts
 ## Supported Platforms
 
 - Android
-- BlackBerry 10
 - Browser
-- Firefox OS
 - iOS
-- Ubuntu
-- Windows
-- Windows 8
-- Windows Phone
 
 ## Further Information
 

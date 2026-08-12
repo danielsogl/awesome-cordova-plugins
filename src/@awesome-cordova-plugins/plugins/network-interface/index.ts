@@ -31,7 +31,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
   plugin: 'cordova-plugin-networkinterface',
   pluginRef: 'networkinterface',
   repo: 'https://github.com/salbahra/cordova-plugin-networkinterface',
-  platforms: ['Android', 'BlackBerry 10', 'Browser', 'iOS', 'Windows', 'Windows Phone'],
+  platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
 export class NetworkInterface extends AwesomeCordovaNativePlugin {

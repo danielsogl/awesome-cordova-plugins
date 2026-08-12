@@ -21,9 +21,7 @@ npm install @awesome-cordova-plugins/app-rate
 ## Supported Platforms
 
 - Android
-- BlackBerry 10
 - iOS
-- Windows
 
 ## Further Information
 

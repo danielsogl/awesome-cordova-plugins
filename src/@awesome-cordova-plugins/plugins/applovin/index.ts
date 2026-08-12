@@ -3,10 +3,27 @@ import { AwesomeCordovaNativePlugin, Cordova, Plugin } from '@awesome-cordova-pl
 import { Observable } from 'rxjs';
 
 export interface InitializeConfig {
-  hasUserConsentValue: boolean;
-  isAgeRestrictedUserValue: boolean;
-  isDoNotSellValue: boolean;
-  isTabletValue: boolean;
+  /**
+   * @deprecated Never populated by the native SDKs. Use `hasUserConsent` instead.
+   */
+  hasUserConsentValue?: boolean;
+  /**
+   * @deprecated Never populated by the native SDKs, and the underlying `isAgeRestrictedUser`
+   * field was removed upstream in cordova-plugin-applovin-max@2.0.0.
+   */
+  isAgeRestrictedUserValue?: boolean;
+  /**
+   * @deprecated Never populated by the native SDKs. Use `isDoNotSell` instead.
+   */
+  isDoNotSellValue?: boolean;
+  /**
+   * @deprecated Never populated by the native SDKs. Use `isTablet` instead.
+   */
+  isTabletValue?: boolean;
+  hasUserConsent: boolean;
+  isDoNotSell: boolean;
+  isTablet: boolean;
+  countryCode: string;
 }
 
 export interface AdInfo {
@@ -15,6 +32,11 @@ export interface AdInfo {
   networkName: string;
   placement: string;
   revenue: number;
+}
+
+export interface AdRewardInfo extends AdInfo {
+  rewardLabel: string;
+  rewardAmount: number;
 }
 
 export enum AdViewPosition {
@@ -28,6 +50,10 @@ export enum AdViewPosition {
   BOTTOM_RIGHT = 'bottom_right',
 }
 
+/**
+ * @deprecated Only produced by the now-removed `getConsentDialogState` method
+ * (removed upstream in cordova-plugin-applovin-max@2.0.0).
+ */
 export enum ConsentDialogState {
   UNKNOWN = 0,
   APPLIES = 1,
@@ -80,11 +106,22 @@ export class Applovin extends AwesomeCordovaNativePlugin {
     return;
   }
 
+  /**
+   * Check whether the SDK has been initialized.
+   */
+  @Cordova()
+  isInitialized(): Promise<boolean> {
+    return;
+  }
+
   @Cordova()
   showMediationDebugger(): Promise<any> {
     return;
   }
 
+  /**
+   * @deprecated Removed upstream in cordova-plugin-applovin-max@2.0.0.
+   */
   @Cordova()
   getConsentDialogState(): Promise<ConsentDialogState> {
     return;
@@ -100,11 +137,17 @@ export class Applovin extends AwesomeCordovaNativePlugin {
     return;
   }
 
+  /**
+   * @deprecated Removed upstream in cordova-plugin-applovin-max@2.0.0.
+   */
   @Cordova()
   setIsAgeRestrictedUser(isAgeRestrictedUser: boolean): Promise<any> {
     return;
   }
 
+  /**
+   * @deprecated Removed upstream in cordova-plugin-applovin-max@2.0.0.
+   */
   @Cordova()
   isAgeRestrictedUser(): Promise<boolean> {
     return;
@@ -130,8 +173,11 @@ export class Applovin extends AwesomeCordovaNativePlugin {
     return;
   }
 
+  /**
+   * @param {boolean} muted Whether ads should be muted.
+   */
   @Cordova()
-  setMuted(): Promise<boolean> {
+  setMuted(muted: boolean): Promise<any> {
     return;
   }
 
@@ -142,6 +188,19 @@ export class Applovin extends AwesomeCordovaNativePlugin {
 
   @Cordova()
   setTestDeviceAdvertisingIds(advertisingIds: string[]): Promise<any> {
+    return;
+  }
+
+  /** SEGMENT TARGETING */
+
+  /**
+   * Add a segment for segment targeting. Must be called before `initialize()`.
+   *
+   * @param {number} key The segment key.
+   * @param {number[]} values The segment values.
+   */
+  @Cordova()
+  addSegment(key: number, values: number[]): Promise<any> {
     return;
   }
 
@@ -168,6 +227,11 @@ export class Applovin extends AwesomeCordovaNativePlugin {
   }
 
   @Cordova()
+  updateBannerPosition(adUnitId: string, position: AdViewPosition): Promise<any> {
+    return;
+  }
+
+  @Cordova()
   setBannerExtraParameter(adUnitId: string, key: string, value: string): Promise<any> {
     return;
   }
@@ -187,6 +251,46 @@ export class Applovin extends AwesomeCordovaNativePlugin {
     return;
   }
 
+  @Cordova({
+    eventObservable: true,
+    event: 'OnBannerAdLoadedEvent',
+  })
+  onBannerAdLoaded(): Observable<AdInfo> {
+    return;
+  }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'OnBannerAdLoadFailedEvent',
+  })
+  onBannerAdLoadFailed(): Observable<AdInfo> {
+    return;
+  }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'OnBannerAdClickedEvent',
+  })
+  onBannerAdClicked(): Observable<AdInfo> {
+    return;
+  }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'OnBannerAdExpandedEvent',
+  })
+  onBannerAdExpanded(): Observable<AdInfo> {
+    return;
+  }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'OnBannerAdCollapsedEvent',
+  })
+  onBannerAdCollapsed(): Observable<AdInfo> {
+    return;
+  }
+
   /** MRECS */
 
   @Cordova()
@@ -201,6 +305,11 @@ export class Applovin extends AwesomeCordovaNativePlugin {
 
   @Cordova()
   setMRecPlacement(adUnitId: string, placement: string): Promise<any> {
+    return;
+  }
+
+  @Cordova()
+  updateMRecPosition(adUnitId: string, position: AdViewPosition): Promise<any> {
     return;
   }
 
@@ -224,10 +333,58 @@ export class Applovin extends AwesomeCordovaNativePlugin {
     return;
   }
 
+  @Cordova({
+    eventObservable: true,
+    event: 'OnMRecAdLoadedEvent',
+  })
+  onMRecAdLoaded(): Observable<AdInfo> {
+    return;
+  }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'OnMRecAdLoadFailedEvent',
+  })
+  onMRecAdLoadFailed(): Observable<AdInfo> {
+    return;
+  }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'OnMRecAdClickedEvent',
+  })
+  onMRecAdClicked(): Observable<AdInfo> {
+    return;
+  }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'OnMRecAdExpandedEvent',
+  })
+  onMRecAdExpanded(): Observable<AdInfo> {
+    return;
+  }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'OnMRecAdCollapsedEvent',
+  })
+  onMRecAdCollapsed(): Observable<AdInfo> {
+    return;
+  }
+
   /** INTERSTITIALS */
 
   @Cordova()
   loadInterstitial(adUnitId: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * @param {string} adUnitId The ad unit id to check.
+   */
+  @Cordova()
+  isInterstitialReady(adUnitId: string): Promise<boolean> {
     return;
   }
 
@@ -246,6 +403,14 @@ export class Applovin extends AwesomeCordovaNativePlugin {
     event: 'OnInterstitialLoadedEvent',
   })
   onInterstitialLoaded(): Observable<AdInfo> {
+    return;
+  }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'OnInterstitialClickedEvent',
+  })
+  onInterstitialClicked(): Observable<AdInfo> {
     return;
   }
 
@@ -288,6 +453,14 @@ export class Applovin extends AwesomeCordovaNativePlugin {
     return;
   }
 
+  /**
+   * @param {string} adUnitId The ad unit id to check.
+   */
+  @Cordova()
+  isRewardedAdReady(adUnitId: string): Promise<boolean> {
+    return;
+  }
+
   @Cordova()
   showRewardedAd(adUnitId: string, placement?: string): Promise<any> {
     return;
@@ -303,6 +476,14 @@ export class Applovin extends AwesomeCordovaNativePlugin {
     event: 'OnRewardedAdLoadedEvent',
   })
   onRewardedAdLoaded(): Observable<AdInfo> {
+    return;
+  }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'OnRewardedAdClickedEvent',
+  })
+  onRewardedAdClicked(): Observable<AdInfo> {
     return;
   }
 
@@ -332,9 +513,17 @@ export class Applovin extends AwesomeCordovaNativePlugin {
 
   @Cordova({
     eventObservable: true,
-    event: 'OnRewardedAdAdFailedToDisplayEvent',
+    event: 'OnRewardedAdFailedToDisplayEvent',
   })
   onRewardedAdAdFailedToDisplay(): Observable<AdInfo> {
+    return;
+  }
+
+  @Cordova({
+    eventObservable: true,
+    event: 'OnRewardedAdReceivedRewardEvent',
+  })
+  onRewardedAdReceivedReward(): Observable<AdRewardInfo> {
     return;
   }
 }

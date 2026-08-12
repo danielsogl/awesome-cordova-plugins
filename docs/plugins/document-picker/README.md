@@ -11,7 +11,7 @@ Allows the user to upload files from iCloud
 ## Installation
 
 ```bash
-ionic cordova plugin add cordova-plugin-documentpicker.DocumentPicker
+ionic cordova plugin add cordova-documentpicker
 npm install @awesome-cordova-plugins/document-picker
 ```
 

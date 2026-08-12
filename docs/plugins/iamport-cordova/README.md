@@ -18,8 +18,8 @@ npm install @awesome-cordova-plugins/iamport-cordova
 
 ## Supported Platforms
 
-- ios
-- android
+- iOS
+- Android
 
 ## Further Information
 

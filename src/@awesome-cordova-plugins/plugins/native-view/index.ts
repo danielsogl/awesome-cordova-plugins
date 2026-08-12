@@ -140,7 +140,7 @@ export class NativeView extends AwesomeCordovaNativePlugin {
    * @returns {Promise<string>} Returns a current FLAVOR string
    */
   @Cordova({
-    platforms: ['android'],
+    platforms: ['Android'],
   })
   getBuildVariant(config: { catchError?: boolean }, success?: Function, error?: Function): Promise<string> {
     return;

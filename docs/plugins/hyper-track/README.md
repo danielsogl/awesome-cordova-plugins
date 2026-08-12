@@ -16,7 +16,8 @@ npm install @awesome-cordova-plugins/hyper-track
 
 ## Supported Platforms
 
-- Android, iOS
+- Android
+- iOS
 
 ## Further Information
 

@@ -34,7 +34,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
   plugin: 'cordova-plugin-google-analytics',
   pluginRef: 'ga',
   repo: 'https://github.com/danwilson/google-analytics-plugin',
-  platforms: ['Android', 'Browser', 'iOS', 'Windows Phone 8'],
+  platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
 export class GoogleAnalytics extends AwesomeCordovaNativePlugin {
@@ -301,7 +301,7 @@ export class GoogleAnalytics extends AwesomeCordovaNativePlugin {
    * @platform
    */
   @Cordova({
-    platforms: ['Android', 'iOS', 'Windows'],
+    platforms: ['Android', 'iOS'],
   })
   dispatch(): Promise<any> {
     return;

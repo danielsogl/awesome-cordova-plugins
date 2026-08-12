@@ -53,7 +53,7 @@ import { Observable } from 'rxjs';
   plugin: 'cordova-plugin-screen-orientation',
   pluginRef: 'screen.orientation',
   repo: 'https://github.com/apache/cordova-plugin-screen-orientation',
-  platforms: ['Android', 'iOS', 'Windows'],
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class ScreenOrientation extends AwesomeCordovaNativePlugin {

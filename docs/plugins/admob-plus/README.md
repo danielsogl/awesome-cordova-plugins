@@ -5,6 +5,8 @@ description: >-
 
 # AdMob Plus
 
+> **Deprecated.** The underlying `cordova-admob-plus` plugin is deprecated; use `admob-plus-cordova` instead.
+
 AdMob Plus is the successor of cordova-plugin-admob-free, which provides a cleaner API and build with modern tools.
 
 ## Installation
