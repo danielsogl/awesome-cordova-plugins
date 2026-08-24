@@ -33,7 +33,7 @@
     "@angular/compiler-cli": "22.1.1",
     "@angular/core": "22.1.1",
     "@eslint/js": "^10.0.1",
-    "@oxc-project/runtime": "^0.144.0",
+    "@oxc-project/runtime": "^0.146.0",
     "@types/cordova": "11.0.3",
     "@types/node": "^26.2.0",
     "@vitest/coverage-v8": "^4.1.11",
