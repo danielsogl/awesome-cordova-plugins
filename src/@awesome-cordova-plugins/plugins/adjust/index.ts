@@ -14,6 +14,8 @@ export class AdjustConfig {
   private isCostDataInAttributionEnabled: boolean = null;
   private isCoppaComplianceEnabled: boolean = null;
   private isDeviceIdsReadingOnceEnabled: boolean = null;
+  private isDeviceIdsReadingEnabled: boolean = null;
+  private isFbIdReadingEnabled: boolean = null;
   private eventDeduplicationIdsMaxSize: number = null;
   private urlStrategyDomains: string[] = [];
   private useSubdomains: boolean = null;
@@ -28,6 +30,9 @@ export class AdjustConfig {
   private sessionTrackingFailedCallback: (session: AdjustSessionFailure) => void = null;
   private deferredDeeplinkCallback: (deeplink: string) => void = null;
   private remoteTriggerCallback: (remoteTrigger: AdjustRemoteTrigger) => void = null;
+  private thirdPartySharingSettingsChangedCallback: (
+    thirdPartySharingSettings: AdjustThirdPartySharingSettings
+  ) => void = null;
 
   // android only
   private processName: string = null;
@@ -36,6 +41,10 @@ export class AdjustConfig {
   private isPlayStoreKidsComplianceEnabled: boolean = null;
   private fbAppId: string = null;
   private isAppSetIdReadingEnabled: boolean = null;
+  private isGoogleAdIdReadingEnabled: boolean = null;
+  private isAndroidIdReadingEnabled: boolean = null;
+  private isFireAdIdReadingEnabled: boolean = null;
+  private isDeviceIdsFromPluginsReadingEnabled: boolean = null;
 
   // ios only
   private isAdServicesEnabled: boolean = null;
@@ -87,6 +96,14 @@ export class AdjustConfig {
     this.isDeviceIdsReadingOnceEnabled = true;
   }
 
+  disableDeviceIdsReading(): void {
+    this.isDeviceIdsReadingEnabled = false;
+  }
+
+  disableFbIdReading(): void {
+    this.isFbIdReadingEnabled = false;
+  }
+
   enablePlayStoreKidsCompliance(): void {
     this.isPlayStoreKidsComplianceEnabled = true;
   }
@@ -129,6 +146,12 @@ export class AdjustConfig {
 
   setRemoteTriggerCallback(remoteTriggerCallback: (remoteTrigger: AdjustRemoteTrigger) => void): void {
     this.remoteTriggerCallback = remoteTriggerCallback;
+  }
+
+  setThirdPartySharingSettingsChangedCallback(
+    thirdPartySharingSettingsChangedCallback: (thirdPartySharingSettings: AdjustThirdPartySharingSettings) => void
+  ): void {
+    this.thirdPartySharingSettingsChangedCallback = thirdPartySharingSettingsChangedCallback;
   }
 
   private getAttributionCallback(): ((attribution: AdjustAttribution) => void) | null {
@@ -187,6 +210,15 @@ export class AdjustConfig {
     return this.remoteTriggerCallback !== null;
   }
 
+  private getThirdPartySharingSettingsChangedCallback():
+    ((thirdPartySharingSettings: AdjustThirdPartySharingSettings) => void) | null {
+    return this.thirdPartySharingSettingsChangedCallback;
+  }
+
+  private hasThirdPartySharingSettingsChangedCallback(): boolean {
+    return this.thirdPartySharingSettingsChangedCallback !== null;
+  }
+
   // android only
   setProcessName(processName: string): void {
     this.processName = processName;
@@ -206,6 +238,22 @@ export class AdjustConfig {
 
   disableAppSetIdReading(): void {
     this.isAppSetIdReadingEnabled = false;
+  }
+
+  disableGoogleAdIdReading(): void {
+    this.isGoogleAdIdReadingEnabled = false;
+  }
+
+  disableAndroidIdReading(): void {
+    this.isAndroidIdReadingEnabled = false;
+  }
+
+  disableFireAdIdReading(): void {
+    this.isFireAdIdReadingEnabled = false;
+  }
+
+  disableDeviceIdsFromPluginsReading(): void {
+    this.isDeviceIdsFromPluginsReadingEnabled = false;
   }
 
   // ios only
@@ -548,6 +596,10 @@ export interface AdjustRemoteTrigger {
   payloadJson: string;
 }
 
+export interface AdjustThirdPartySharingSettings {
+  thirdPartySharingSettingsJson: string;
+}
+
 export interface AdjustPurchaseVerificationResult {
   verificationStatus: string;
   code: number;
@@ -598,6 +650,7 @@ export enum AdjustLogLevel {
  * AdjustEventFailure
  * AdjustSkanData
  * AdjustRemoteTrigger
+ * AdjustThirdPartySharingSettings
  * AdjustPurchaseVerificationResult
  * @classes
  * AdjustConfig
@@ -937,6 +990,17 @@ export class Adjust extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   getLastDeeplink(): Promise<string | null> {
+    return;
+  }
+
+  /**
+   * This method allows retrieving the current third party sharing settings with a specified timeout. If the value is not obtained in time, null is returned.
+   *
+   * @param {number} timeoutInMilliseconds Timeout in milliseconds
+   * @returns {Promise<string | null>} Returns a promise with third party sharing settings JSON string or null if timeout
+   */
+  @Cordova()
+  getThirdPartySharingSettingsWithTimeout(timeoutInMilliseconds: number): Promise<string | null> {
     return;
   }
 
