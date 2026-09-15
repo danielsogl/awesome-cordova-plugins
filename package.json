@@ -36,7 +36,7 @@
     "@oxc-project/runtime": "^0.149.0",
     "@types/cordova": "11.0.3",
     "@types/node": "^26.4.1",
-    "@vitest/coverage-v8": "^4.1.11",
+    "@vitest/coverage-v8": "^5.0.0",
     "eslint": "^10.9.1",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-jsdoc": "^64.3.2",
@@ -48,7 +48,7 @@
     "typedoc": "^0.28.20",
     "typescript": "~6.0.3",
     "typescript-eslint": "^8.68.0",
-    "vitest": "^4.1.11"
+    "vitest": "^5.0.0"
   },
   "repository": {
     "type": "git",
