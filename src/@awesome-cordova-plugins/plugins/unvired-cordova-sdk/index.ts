@@ -917,6 +917,25 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Save data for key
+   * @param {string} key - The key to store the value under
+   * @param {any} value - The value to store
+   */
+  @Cordova()
+  setUserSetting(key: string, value: any): Promise<void> {
+    return;
+  }
+
+  /**
+   * Get data based on key
+   * @param {string} key - The key to retrieve the value for
+   */
+  @Cordova()
+  getUserSetting(key: string): Promise<string> {
+    return;
+  }
+
+  /**
    * Update System Credential
    *
    * @param credentials The credential to update to
