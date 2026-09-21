@@ -44,7 +44,7 @@
     "lefthook": "^2.1.12",
     "prettier": "^3.9.6",
     "rxjs": "^7.8.2",
-    "tsx": "^4.23.13",
+    "tsx": "^4.23.15",
     "typedoc": "^0.28.20",
     "typescript": "~6.0.3",
     "typescript-eslint": "^8.68.0",
