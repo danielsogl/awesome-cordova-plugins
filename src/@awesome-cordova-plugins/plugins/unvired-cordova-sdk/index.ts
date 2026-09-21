@@ -916,11 +916,11 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
     return;
   }
 
-/**
- * Save data for key
- * @param {string} key - The key to store the value under
- * @param {any} value - The value to store
- */
+  /**
+   * Save data for key
+   * @param {string} key - The key to store the value under
+   * @param {any} value - The value to store
+   */
   @Cordova()
   setUserSetting(key: string, value: any): Promise<void> {
     return;
@@ -934,7 +934,6 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
   getUserSetting(key: string): Promise<string> {
     return;
   }
-
 
   /**
    * Update System Credential
