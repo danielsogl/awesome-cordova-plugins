@@ -22,10 +22,13 @@ function overrideFunction(pluginObj: any, methodName: string): Observable<any> {
 }
 
 /**
+ * The generated call site passes the same four arguments as `cordova()` — `(this, methodName,
+ * config, arguments)` — but this helper only ever needed the first two. The extra arguments are
+ * harmless at the call site and were never read.
+ *
  * @param pluginObj
  * @param methodName
- * @param args
  */
-export function cordovaFunctionOverride(pluginObj: any, methodName: string, args: IArguments | any[] = []) {
+export function cordovaFunctionOverride(pluginObj: any, methodName: string) {
   return overrideFunction(pluginObj, methodName);
 }

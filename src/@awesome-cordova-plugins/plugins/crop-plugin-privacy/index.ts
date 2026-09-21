@@ -38,11 +38,10 @@ export interface CropOption {
   plugin: 'cordova-plugin-crop-privacy',
   pluginRef: 'crop',
   repo: 'https://github.com/BaraAksayeth25/cordova-plugin-crop-privacy',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class CropPluginPrivacy extends AwesomeCordovaNativePlugin {
-
   /**
    * This function does something
    * @param arg1 {string} path destination
@@ -53,5 +52,4 @@ export class CropPluginPrivacy extends AwesomeCordovaNativePlugin {
   cropImage(arg1: string, arg2: CropOption): Promise<any> {
     return; // We add return; here to avoid any IDE / Compiler errors
   }
-
 }

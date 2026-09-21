@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync } from 'node:fs';
+import { readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import {
   ArrayLiteralExpression,
@@ -10,13 +10,16 @@ import {
   Node,
   ObjectLiteralElementLike,
   ObjectLiteralExpression,
+  readConfigFile,
+  sys,
   SyntaxKind,
 } from 'typescript';
 
 import { Logger } from '../logger';
 
 export const ROOT = resolve(__dirname, '../../');
-export const TS_CONFIG = JSON.parse(readFileSync(resolve(ROOT, 'tsconfig.json'), 'utf-8'));
+// readConfigFile handles JSONC, so tsconfig.json may carry comments.
+export const TS_CONFIG = readConfigFile(resolve(ROOT, 'tsconfig.json'), (path) => sys.readFile(path)).config;
 export const COMPILER_OPTIONS = TS_CONFIG.compilerOptions;
 export const PLUGINS_ROOT = join(ROOT, 'src/@awesome-cordova-plugins/plugins/');
 export const PLUGIN_PATHS = readdirSync(PLUGINS_ROOT).map((d: string) => join(PLUGINS_ROOT, d, 'index.ts'));
@@ -100,7 +103,7 @@ export function convertValueToLiteral(
     return arrayToArrayLiteral(val);
   }
   if (typeof val === 'object' && val !== null) {
-    return objectToObjectLiteral(val as Record<string, unknown>);
+    return objectToObjectLiteral(val);
   }
   if (typeof val === 'number') {
     return factory.createNumericLiteral(val);

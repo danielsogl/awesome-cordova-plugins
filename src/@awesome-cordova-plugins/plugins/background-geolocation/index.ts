@@ -828,7 +828,7 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
    * @returns {Promise<number>} taskKey
    */
   @Cordova({
-    platforms: ['IOS'],
+    platforms: ['iOS'],
   })
   startTask(): Promise<number> {
     return;
@@ -840,7 +840,7 @@ export class BackgroundGeolocation extends AwesomeCordovaNativePlugin {
    * @param taskKey
    */
   @Cordova({
-    platforms: ['IOS'],
+    platforms: ['iOS'],
   })
   endTask(taskKey: number): Promise<any> {
     return;

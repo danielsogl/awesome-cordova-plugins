@@ -283,7 +283,7 @@ export interface AppSelection {
   plugin: 'uk.co.workingedge.phonegap.plugin.launchnavigator',
   pluginRef: 'launchnavigator',
   repo: 'https://github.com/dpa99c/phonegap-launch-navigator',
-  platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8'],
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class LaunchNavigator extends AwesomeCordovaNativePlugin {

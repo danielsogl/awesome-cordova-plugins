@@ -36,6 +36,40 @@ export interface BranchIoProperties {
   [x: string]: any;
 }
 
+export interface BranchIoQRCodeSettings {
+  codeColor?: string;
+  backgroundColor?: string;
+  centerLogo?: string;
+  width?: number;
+  margin?: number;
+  imageFormat?: 'PNG' | 'JPEG';
+  [x: string]: any;
+}
+
+export interface BranchIoStandardEvents {
+  STANDARD_EVENT_ADD_TO_CART: string;
+  STANDARD_EVENT_ADD_TO_WISHLIST: string;
+  STANDARD_EVENT_VIEW_CART: string;
+  STANDARD_EVENT_INITIATE_PURCHASE: string;
+  STANDARD_EVENT_ADD_PAYMENT_INFO: string;
+  STANDARD_EVENT_PURCHASE: string;
+  STANDARD_EVENT_SEARCH: string;
+  STANDARD_EVENT_VIEW_ITEM: string;
+  STANDARD_EVENT_VIEW_ITEMS: string;
+  STANDARD_EVENT_RATE: string;
+  STANDARD_EVENT_SHARE: string;
+  STANDARD_EVENT_INITIATE_STREAM: string;
+  STANDARD_EVENT_COMPLETE_STREAM: string;
+  STANDARD_EVENT_COMPLETE_REGISTRATION: string;
+  STANDARD_EVENT_COMPLETE_TUTORIAL: string;
+  STANDARD_EVENT_ACHIEVE_LEVEL: string;
+  STANDARD_EVENT_UNLOCK_ACHIEVEMENT: string;
+  STANDARD_EVENT_INVITE: string;
+  STANDARD_EVENT_LOGIN: string;
+  STANDARD_EVENT_SUBSCRIBE: string;
+  STANDARD_EVENT_START_TRIAL: string;
+}
+
 export interface BranchUniversalObject {
   generateShortUrl(analytics: BranchIoAnalytics, properties: BranchIoProperties): Promise<any>;
   registerView(): Promise<any>;
@@ -63,6 +97,8 @@ export interface BranchUniversalObject {
  * BranchIoPromise
  * BranchIoAnalytics
  * BranchIoProperties
+ * BranchIoQRCodeSettings
+ * BranchIoStandardEvents
  * BranchUniversalObject
  */
 @Plugin({
@@ -77,11 +113,33 @@ export class BranchIo extends AwesomeCordovaNativePlugin {
   /**
    * for development and debugging only
    *
+   * @deprecated since branch-cordova-sdk v6.1.0. Use setLogging instead.
    * @param {boolean} enable Enable debug
    * @returns {Promise<any>}
    */
   @Cordova({ otherPromise: true })
   setDebug(enable: boolean): Promise<any> {
+    return;
+  }
+
+  /**
+   * Enables debug logging in the native layer. Must be called before initSession.
+   *
+   * @param {boolean} enable Enable logging
+   * @returns {Promise<any>}
+   */
+  @Cordova({ otherPromise: true })
+  setLogging(enable: boolean): Promise<any> {
+    return;
+  }
+
+  /**
+   * Enables test mode. Must be called before initSession.
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova({ otherPromise: true })
+  enableTestMode(): Promise<any> {
     return;
   }
 
@@ -109,6 +167,7 @@ export class BranchIo extends AwesomeCordovaNativePlugin {
   /**
    * Initializes Branch with callback
    *
+   * @deprecated not present in branch-cordova-sdk (absent since at least v3.4.0, still absent in v6.6.1). Use initSession instead.
    * @returns {Observable<any>}
    */
   @Cordova({ observable: true })
@@ -119,10 +178,12 @@ export class BranchIo extends AwesomeCordovaNativePlugin {
   /**
    * Set Request Metadata
    *
+   * @param {string} key
+   * @param {string} val
    * @returns {Promise<any>}
    */
   @Cordova({ otherPromise: true })
-  setRequestMetadata(): Promise<any> {
+  setRequestMetadata(key: string, val: string): Promise<any> {
     return;
   }
 
@@ -158,6 +219,26 @@ export class BranchIo extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Get the cross platform and developer identity data most recently set
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova({ otherPromise: true })
+  crossPlatformIds(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Get the last attributed touch data
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova({ otherPromise: true })
+  lastAttributedTouchData(): Promise<any> {
+    return;
+  }
+
+  /**
    * Set identy of user
    *
    * @param {string} userId
@@ -181,6 +262,7 @@ export class BranchIo extends AwesomeCordovaNativePlugin {
   /**
    * Registers a custom event
    *
+   * @deprecated since branch-cordova-sdk v5.0.0. Use sendBranchEvent instead.
    * @param {string} eventName
    * @param {any} metaData
    * @returns {Promise<any>}
@@ -216,6 +298,16 @@ export class BranchIo extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Get the map of Branch standard event names
+   *
+   * @returns {Promise<BranchIoStandardEvents>}
+   */
+  @Cordova({ otherPromise: true })
+  getStandardEvents(): Promise<BranchIoStandardEvents> {
+    return;
+  }
+
+  /**
    * create a branchUniversalObj variable to reference with other Branch methods
    *
    * @param {BranchIoProperties} properties
@@ -227,8 +319,28 @@ export class BranchIo extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Generate a Branch QR code as a base64 encoded image
+   *
+   * @param {BranchIoQRCodeSettings} qrCodeSettings
+   * @param {BranchUniversalObject} branchUniversalObject
+   * @param {BranchIoAnalytics} analytics
+   * @param {BranchIoProperties} properties
+   * @returns {Promise<string>}
+   */
+  @Cordova({ otherPromise: true })
+  getBranchQRCode(
+    qrCodeSettings: BranchIoQRCodeSettings,
+    branchUniversalObject: BranchUniversalObject,
+    analytics: BranchIoAnalytics,
+    properties: BranchIoProperties
+  ): Promise<string> {
+    return;
+  }
+
+  /**
    * Load credits
    *
+   * @deprecated since branch-cordova-sdk v5.0.0. Branch's Rewards/Credits feature was removed upstream.
    * @param {any} bucket
    * @returns {Promise<any>}
    */
@@ -240,6 +352,7 @@ export class BranchIo extends AwesomeCordovaNativePlugin {
   /**
    * Redeem Rewards
    *
+   * @deprecated since branch-cordova-sdk v5.0.0. Branch's Rewards/Credits feature was removed upstream.
    * @param {string} value
    * @param {any} bucket
    * @returns {Promise<any>}
@@ -252,10 +365,73 @@ export class BranchIo extends AwesomeCordovaNativePlugin {
   /**
    * Show credit history
    *
+   * @deprecated since branch-cordova-sdk v5.0.0. Branch's Rewards/Credits feature was removed upstream.
    * @returns {Promise<any>}
    */
   @Cordova({ otherPromise: true })
   creditHistory(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Sets Digital Markets Act (DMA) consent parameters for users in the European Economic Area
+   *
+   * @param {boolean} eeaRegion whether the user is in the EEA
+   * @param {boolean} adPersonalizationConsent whether the user has consented to ad personalization
+   * @param {boolean} adUserDataUsageConsent whether the user has consented to ad user data usage
+   * @returns {Promise<any>}
+   */
+  @Cordova({ otherPromise: true })
+  setDMAParamsForEEA(
+    eeaRegion: boolean,
+    adPersonalizationConsent: boolean,
+    adUserDataUsageConsent: boolean
+  ): Promise<any> {
+    return;
+  }
+
+  /**
+   * Sets the Consumer Protection Attribution (CPP) level
+   *
+   * @param {string} level one of 'FULL', 'REDUCED', 'MINIMAL', 'NONE'
+   * @returns {Promise<any>}
+   */
+  @Cordova({ otherPromise: true })
+  setConsumerProtectionAttributionLevel(level: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Sets the SDK wait time, in seconds, for third party API responses (Google On Device Measurement). iOS only.
+   *
+   * @param {number} waitTime
+   * @returns {Promise<any>}
+   */
+  @Cordova({ otherPromise: true, platforms: ['iOS'] })
+  setSDKWaitTimeForThirdPartyAPIs(waitTime: number): Promise<any> {
+    return;
+  }
+
+  /**
+   * Sets a custom Meta anonymous ID for the current user. iOS only.
+   *
+   * @param {string} anonID
+   * @returns {Promise<any>}
+   */
+  @Cordova({ otherPromise: true, platforms: ['iOS'] })
+  setAnonID(anonID: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Passes Google On Device Measurement (ODM) event data and the app's first-open timestamp. iOS only.
+   *
+   * @param {string} odmInfo
+   * @param {number} firstOpenTimeStamp
+   * @returns {Promise<any>}
+   */
+  @Cordova({ otherPromise: true, platforms: ['iOS'] })
+  setODMInfo(odmInfo: string, firstOpenTimeStamp: number): Promise<any> {
     return;
   }
 }

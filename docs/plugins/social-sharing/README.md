@@ -23,8 +23,6 @@ npm install @awesome-cordova-plugins/social-sharing
 - Android
 - Browser
 - iOS
-- Windows
-- Windows Phone
 
 ## Further Information
 

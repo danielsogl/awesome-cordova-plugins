@@ -19,11 +19,8 @@ npm install @awesome-cordova-plugins/network-interface
 ## Supported Platforms
 
 - Android
-- BlackBerry 10
 - Browser
 - iOS
-- Windows
-- Windows Phone
 
 ## Further Information
 

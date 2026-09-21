@@ -9,6 +9,9 @@ export type Event =
   | 'notificationTapped'
   | 'tokenReceived'
   | 'registrationUpdated'
+  /**
+   * @deprecated No longer part of the supported events list in the upstream SDK (confirmed absent as of v8.6.0, and as far back as v5.0.0).
+   */
   | 'geofenceEntered'
   | 'actionTapped'
   | 'installationUpdated'
@@ -18,6 +21,9 @@ export type Event =
   | 'inAppChat.availabilityUpdated'
   | 'inAppChat.unreadMessageCounterUpdated'
   | 'deeplink'
+  /**
+   * @deprecated No longer part of the supported events list in the upstream SDK (confirmed absent as of v8.6.0, and as far back as v5.0.0).
+   */
   | 'inAppChat.viewStateChanged';
 
 export interface CustomEvent {
@@ -35,6 +41,14 @@ export interface Configuration {
   inAppChatEnabled?: boolean;
   fullFeaturedInAppsEnabled?: boolean | undefined;
   /**
+   * Set to true to enable debug logging.
+   */
+  loggingEnabled?: boolean;
+  /**
+   * List of trusted domain strings for web views, e.g. ['example.com', 'trusted.org']
+   */
+  trustedDomains?: string[];
+  /**
    * Message storage save callback
    */
   messageStorage?: CustomMessageStorage;
@@ -42,12 +56,40 @@ export interface Configuration {
   ios?: {
     notificationTypes?: string[]; // ['alert', 'badge', 'sound']
     forceCleanup?: boolean;
+    /**
+     * @deprecated Removed upstream in v7.3.0. Replaced by the top-level `loggingEnabled` option.
+     */
     logging?: boolean;
+    /**
+     * Set to true to disable automatic registration for remote notifications. Default: false
+     */
+    registeringForRemoteNotificationsDisabled?: boolean;
+    /**
+     * Set to true to prevent the SDK from overriding UNUserNotificationCenterDelegate. Default: false
+     */
+    overridingNotificationCenterDelegateDisabled?: boolean;
+    /**
+     * Set to true to prevent the SDK from unregistering for remote notifications when stopping the SDK or after depersonalization. Default: false
+     */
+    unregisteringForRemoteNotificationsDisabled?: boolean;
+    /**
+     * Settings for web view configuration in in-app messages
+     */
+    webViewSettings?: {
+      title?: string;
+      barTintColor?: string;
+      titleColor?: string;
+      tintColor?: string;
+    };
   };
   android?: {
     notificationIcon?: string; // a resource name for a status bar icon (without extension), located in '/platforms/android/app/src/main/res/mipmap'
+    notificationChannelId?: string; // identifier for notification channel
+    notificationChannelName?: string; // user visible name for notification channel
+    notificationSound?: string; // a resource name for a notification sound (without extension), located in '/platforms/android/app/src/main/res/raw'
     multipleNotifications?: boolean; // set to 'true' to enable multiple notifications
     notificationAccentColor?: string; // set to hex color value in format '#RRGGBB' or '#AARRGGBB'
+    withBannerForegroundNotificationsEnabled?: boolean; // set to true to always display Push notifications as Banner
     firebaseOptions?: {
       apiKey: string;
       applicationId: string;
@@ -78,9 +120,9 @@ export interface Configuration {
           icon?: string;
           textInputActionButtonTitle?: string;
           textInputPlaceholder?: string;
-        }
+        },
       ];
-    }
+    },
   ];
 }
 
@@ -110,7 +152,14 @@ export interface Installation {
   deviceModel?: string;
   deviceSecure?: boolean;
   language?: string;
+  /**
+   * @deprecated Renamed upstream in v7.9.1 to `deviceTimezoneOffset`.
+   */
   deviceTimezoneId?: string;
+  /**
+   * UTC-related timezone offset that identifies the current timezone of a device.
+   */
+  deviceTimezoneOffset?: string;
   applicationUserId?: string;
   deviceName?: string;
   customAttributes?: Record<string, string | number | boolean>;
@@ -129,6 +178,14 @@ export interface PersonalizeContext {
   userIdentity: UserIdentity;
   userAttributes?: Record<string, string | number | boolean | any[]>;
   forceDepersonalize?: boolean;
+  /**
+   * Set to true if you want to keep the installation as a lead when personalizing it. Default: false
+   */
+  keepAsLead?: boolean;
+  /**
+   * Set to true to mark this installation as primary for the personalized user. Default: false
+   */
+  setDeviceAsPrimary?: boolean;
 }
 
 export interface GeoData {
@@ -274,6 +331,17 @@ export interface ChatSettingsIOS {
   navigationBarItemsColor: string;
   navigationBarColor: string;
   navigationBarTitleColor: string;
+}
+
+/**
+ * Exception raised by the in-app chat widget and passed to the handler registered via `setChatExceptionHandler`.
+ */
+export interface ChatException {
+  code: string;
+  name: string;
+  message: string;
+  origin: string;
+  platform: string;
 }
 
 /**
@@ -665,13 +733,136 @@ export class MobileMessaging extends AwesomeCordovaNativePlugin {
 
   /**
    * Updates JWT used for user data fetching and personalization.
-   * 
+   *
    * @name setUserDataJwt
    * @param jwt - JWT in a predefined format
    * @param {Function} errorCallback will be called on error
    */
   @Cordova()
   setUserDataJwt(jwt: string, errorCallback?: (error: MobileMessagingError) => void) {
+    return;
+  }
+
+  /**
+   * Un register all handlers for a MobileMessaging library event.
+   *
+   * @name unregisterAllHandlers
+   * @param event
+   */
+  @Cordova({
+    sync: true,
+  })
+  unregisterAllHandlers(event: Event): void {
+    return;
+  }
+
+  /**
+   * Sets the JWT provider used to authenticate in-app chat sessions.
+   *
+   * The `jwtProvider` callback returns a JSON Web Token (JWT) used for chat authentication,
+   * either synchronously (returning a string) or asynchronously (returning a Promise<string>).
+   * It may be invoked multiple times during the widget's lifecycle, so it should always return
+   * a fresh and valid JWT.
+   *
+   * @param jwtProvider A callback function that returns a JWT string or a Promise that resolves to one.
+   * @param errorCallback Optional error handler for catching exceptions thrown during JWT generation.
+   */
+  @Cordova({
+    sync: true,
+  })
+  setChatJwtProvider(jwtProvider: () => string | Promise<string>, errorCallback?: (error: any) => void): void {
+    return;
+  }
+
+  /**
+   * Sets the chat exception handler in case you want to intercept and display errors coming
+   * from the chat on your own (instead of relying on the prebuilt error banners).
+   * Passing `null` removes the previously set handler.
+   *
+   * @param exceptionHandler A function called with the chat exception when it is triggered, or `null` to remove the handler.
+   * @param errorCallback Optional error handler for catching exceptions thrown when handling exceptions from the native side.
+   */
+  @Cordova({
+    sync: true,
+  })
+  setChatExceptionHandler(
+    exceptionHandler: ((exception: ChatException) => void) | null,
+    errorCallback?: (error: any) => void
+  ): void {
+    return;
+  }
+
+  /**
+   * Checks if in-app chat is currently available.
+   *
+   * @name isChatAvailable
+   * @param resultCallback will be called upon completion with the boolean availability value.
+   */
+  @Cordova({ sync: true })
+  isChatAvailable(resultCallback: (available: boolean) => void): void {
+    return;
+  }
+
+  /**
+   * Sets chat language.
+   *
+   * @name setLanguage
+   * @param language to be set
+   * @param {Function} errorCallback will be called on error
+   */
+  @Cordova()
+  setLanguage(language: string, errorCallback?: (error: MobileMessagingError) => void) {
+    return;
+  }
+
+  /**
+   * Set contextual data of the widget.
+   *
+   * @param data contextual data in the form of a JSON string
+   * @param allMultiThreadStrategy multi-thread strategy flag, true -> ALL, false -> ACTIVE
+   * @param {Function} errorCallback will be called on error
+   */
+  @Cordova()
+  sendContextualData(
+    data: string,
+    allMultiThreadStrategy: boolean,
+    errorCallback?: (error: MobileMessagingError) => void
+  ) {
+    return;
+  }
+
+  /**
+   * Cleans up the SDK, removing all data and stopping all services.
+   * After cleanup, you should call `init()` again with a new configuration to restart the SDK.
+   * The JWT supplier is also cleared during cleanup.
+   *
+   * @name cleanup
+   */
+  @Cordova()
+  cleanup(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Sets chat customization.
+   *
+   * @name setChatCustomization
+   * @param customization Chat customization JSON object.
+   */
+  @Cordova()
+  setChatCustomization(customization: any): Promise<any> {
+    return;
+  }
+
+  /**
+   * Sets widget theme.
+   *
+   * @name setWidgetTheme
+   * @param widgetTheme Widget theme name.
+   * @param {Function} errorCallback will be called on error
+   */
+  @Cordova()
+  setWidgetTheme(widgetTheme: string, errorCallback?: (error: MobileMessagingError) => void) {
     return;
   }
 }

@@ -44,7 +44,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
   plugin: 'clovelced-plugin-audiomanagement',
   pluginRef: 'AudioManagement',
   repo: 'https://github.com/clovelCed/cordova-plugin-audiomanagement',
-  platforms: ['Android']
+  platforms: ['Android'],
 })
 @Injectable()
 export class AudioManagement extends AwesomeCordovaNativePlugin {
@@ -56,7 +56,7 @@ export class AudioManagement extends AwesomeCordovaNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   setAudioMode(mode: AudioMode): Promise<void> {
     return;
@@ -82,7 +82,7 @@ export class AudioManagement extends AwesomeCordovaNativePlugin {
    */
   @Cordova({
     successIndex: 2,
-    errorIndex: 3
+    errorIndex: 3,
   })
   setVolume(type: VolumeType, volume: number): Promise<void> {
     return;
@@ -97,7 +97,7 @@ export class AudioManagement extends AwesomeCordovaNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   getVolume(type: VolumeType): Promise<{ volume: number }> {
     return;
@@ -112,25 +112,24 @@ export class AudioManagement extends AwesomeCordovaNativePlugin {
    */
   @Cordova({
     successIndex: 1,
-    errorIndex: 2
+    errorIndex: 2,
   })
   getMaxVolume(type: VolumeType): Promise<{ maxVolume: number }> {
     return;
   }
 }
 
-
 export enum AudioMode {
   SILENT = 0,
   VIBRATE,
-  NORMAL
+  NORMAL,
 }
 
 export enum VolumeType {
   RING = 0,
   MUSIC,
   NOTIFICATION,
-  SYSTEM
+  SYSTEM,
 }
 
 export interface AudioModeReturn {

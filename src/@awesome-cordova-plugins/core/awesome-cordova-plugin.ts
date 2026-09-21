@@ -1,5 +1,4 @@
-import { checkAvailability } from './decorators/common';
-import { get } from './util';
+import { checkAvailability, get } from './decorators/common';
 
 export class AwesomeCordovaNativePlugin {
   static pluginName = '';

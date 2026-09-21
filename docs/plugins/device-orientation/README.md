@@ -18,16 +18,9 @@ npm install @awesome-cordova-plugins/device-orientation
 
 ## Supported Platforms
 
-- Amazon Fire OS
 - Android
-- BlackBerry 10
 - Browser
-- Firefox OS
 - iOS
-- Tizen
-- Ubuntu
-- Windows
-- Windows Phone
 
 ## Further Information
 

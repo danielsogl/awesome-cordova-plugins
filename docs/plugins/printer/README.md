@@ -20,7 +20,6 @@ npm install @awesome-cordova-plugins/printer
 
 - Android
 - iOS
-- Windows
 
 ## Further Information
 

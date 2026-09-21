@@ -85,7 +85,7 @@ export interface CertificationData {
   plugin: 'iamport-cordova',
   pluginRef: 'cordova.plugins.IamportCordova',
   repo: 'https://github.com/iamport/iamport-cordova',
-  platforms: ['ios', 'android'],
+  platforms: ['iOS', 'Android'],
 })
 @Injectable()
 export class IamportCordova extends AwesomeCordovaNativePlugin {

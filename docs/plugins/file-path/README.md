@@ -5,6 +5,8 @@ description: >-
 
 # File Path
 
+> **Deprecated.** The underlying `cordova-plugin-filepath` plugin is no longer maintained and has no successor; use `cordova-plugin-file` (`resolveLocalFileSystemURL`) where possible.
+
 This plugin allows you to resolve the native filesystem path for Android content URIs and is based on code in the aFileChooser library.
 
 ## Installation

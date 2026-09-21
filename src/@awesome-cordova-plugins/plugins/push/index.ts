@@ -321,6 +321,7 @@ export type PushEvent = string;
  * AndroidPushOptions
  * BrowserPushOptions
  * PushOptions
+ * @deprecated The underlying `phonegap-plugin-push` plugin is deprecated following the PhoneGap shutdown; use the maintained fork `@havesource/cordova-plugin-push` instead.
  */
 @Plugin({
   pluginName: 'Push',
@@ -328,7 +329,7 @@ export type PushEvent = string;
   pluginRef: 'PushNotification',
   repo: 'https://github.com/phonegap/phonegap-plugin-push',
   install: 'ionic cordova plugin add phonegap-plugin-push',
-  platforms: ['Android', 'Browser', 'iOS', 'Windows'],
+  platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
 export class Push extends AwesomeCordovaNativePlugin {

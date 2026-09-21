@@ -62,7 +62,7 @@ export class TextToSpeechAdvanced extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>} Returns a promise that resolves when the speaking finishes
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   speak(textOrOptions: string | TTSOptions): Promise<any> {
     return;
@@ -74,7 +74,7 @@ export class TextToSpeechAdvanced extends AwesomeCordovaNativePlugin {
    * @returns {Promise<any>}
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   stop(): Promise<any> {
     return;
@@ -86,7 +86,7 @@ export class TextToSpeechAdvanced extends AwesomeCordovaNativePlugin {
    * @returns {Promise<TTSVoice[]>}
    */
   @Cordova({
-    otherPromise: true
+    otherPromise: true,
   })
   getVoices(): Promise<TTSVoice[]> {
     return;

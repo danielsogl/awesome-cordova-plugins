@@ -22,7 +22,6 @@ npm install @awesome-cordova-plugins/native-storage
 - Browser
 - iOS
 - macOS
-- Windows
 
 ## Further Information
 

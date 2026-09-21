@@ -92,7 +92,7 @@ export interface ActionSheetOptions {
   plugin: 'cordova-plugin-actionsheet',
   pluginRef: 'plugins.actionsheet',
   repo: 'https://github.com/EddyVerbruggen/cordova-plugin-actionsheet',
-  platforms: ['Android', 'Browser', 'iOS', 'Windows', 'Windows Phone 8'],
+  platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
 export class ActionSheet extends AwesomeCordovaNativePlugin {

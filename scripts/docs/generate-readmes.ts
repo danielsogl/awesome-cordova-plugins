@@ -39,8 +39,15 @@ interface PluginMeta {
   install?: string;
 }
 
+// Platforms Cordova still ships. Anything else — Windows Phone, Amazon Fire OS,
+// BlackBerry 10, Firefox OS, Ubuntu, Tizen — was discontinued years ago and used
+// to leak into the generated "Supported Platforms" lists, as did casing variants
+// like 'ios' and 'IOS'. Keep this list closed so that cannot come back.
+const KNOWN_PLATFORMS = new Set(['Android', 'iOS', 'Browser', 'macOS', 'Electron']);
+
 // Map from reflection id to extracted decorator metadata
 const pluginMetaMap = new Map<number, PluginMeta>();
+const unknownPlatforms: string[] = [];
 
 function parseLiteralValue(node: Node): string | number | boolean | string[] | undefined {
   if (isStringLiteral(node)) return node.text;
@@ -86,7 +93,7 @@ function extractPluginMeta(symbol: TsSymbol | undefined): PluginMeta | undefined
       if (!isPropertyAssignment(prop) || !isIdentifier(prop.name)) continue;
       meta[prop.name.text] = parseLiteralValue(prop.initializer);
     }
-    return meta as unknown as PluginMeta;
+    return meta;
   }
   return undefined;
 }
@@ -129,7 +136,13 @@ function truncate(text: string, maxLen: number): string {
   return text.slice(0, maxLen - 1).replace(/\s+\S*$/, '') + '…';
 }
 
-function generateReadme(name: string, pluginSlug: string, description: string, meta: PluginMeta): string {
+function generateReadme(
+  name: string,
+  pluginSlug: string,
+  description: string,
+  meta: PluginMeta,
+  deprecated?: string
+): string {
   const installCmd = meta.install ?? `ionic cordova plugin add ${meta.plugin ?? 'PLUGIN_NAME'}`;
   const npmPkg = `@awesome-cordova-plugins/${pluginSlug}`;
 
@@ -141,6 +154,10 @@ function generateReadme(name: string, pluginSlug: string, description: string, m
   let readme = `---\ndescription: >-\n  ${metaDescription}\n---\n\n`;
 
   readme += `# ${name}\n\n`;
+
+  if (deprecated) {
+    readme += `> **Deprecated.** ${deprecated}\n\n`;
+  }
 
   if (description) {
     readme += `${description}\n\n`;
@@ -230,6 +247,11 @@ async function main(): Promise<void> {
 
       const meta = extractPluginMeta(symbol);
       if (meta) {
+        for (const platform of meta.platforms ?? []) {
+          if (!KNOWN_PLATFORMS.has(platform)) {
+            unknownPlatforms.push(`${meta.pluginName ?? reflection.name}: '${platform}'`);
+          }
+        }
         pluginMetaMap.set(reflection.id, meta);
       }
     }
@@ -238,6 +260,14 @@ async function main(): Promise<void> {
   const project: ProjectReflection | undefined = await app.convert();
   if (!project) {
     console.error('TypeDoc conversion failed');
+    process.exit(1);
+  }
+
+  if (unknownPlatforms.length > 0) {
+    console.error(
+      `Unknown platform(s) in @Plugin metadata. Allowed: ${[...KNOWN_PLATFORMS].join(', ')}\n` +
+        unknownPlatforms.map((p) => `  ${p}`).join('\n')
+    );
     process.exit(1);
   }
 
@@ -270,7 +300,13 @@ async function main(): Promise<void> {
     if (pluginEntries.has(pluginSlug)) continue;
     pluginEntries.set(pluginSlug, pluginName);
 
-    const readmeContent = generateReadme(pluginName, pluginSlug, description, meta);
+    const readmeContent = generateReadme(
+      pluginName,
+      pluginSlug,
+      description,
+      meta,
+      getTagValue(classRef, 'deprecated')
+    );
     const outDir = join(DOCS_OUT, pluginSlug);
     mkdirSync(outDir, { recursive: true });
     writeFileSync(join(outDir, 'README.md'), readmeContent, 'utf-8');

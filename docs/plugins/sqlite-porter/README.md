@@ -18,14 +18,9 @@ npm install @awesome-cordova-plugins/sqlite-porter
 
 ## Supported Platforms
 
-- Amazon Fire OS
 - Android
-- BlackBerry 10
 - Browser
 - iOS
-- Tizen
-- Windows
-- Windows Phone
 
 ## Further Information
 

@@ -1,56 +1,54 @@
 {
   "name": "awesome-cordova-plugins",
-  "version": "9.1.2",
+  "version": "9.6.0",
   "description": "Native plugin wrappers for Cordova and Ionic with TypeScript, ES6+, Promise and Observable support",
   "homepage": "https://awesome-cordova-plugins.com",
   "author": "Daniel Sogl <me@danielsogl.com> (https://danielsogl.com)",
   "license": "MIT",
   "engines": {
-    "node": ">=20"
+    "node": "^22.22.3 || ^24.15.0 || >=26.0.0"
   },
   "scripts": {
     "prepare": "lefthook install",
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "build:core": "tsc -p tsconfig.core.json",
     "build:esm": "tsx scripts/tasks/build-esm",
     "build:ngx": "tsx scripts/tasks/build-ngx",
     "build": "npm run build:core && npm run build:esm && npm run build:ngx",
     "prebuild": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
     "npmpub": "tsx scripts/tasks/publish",
-    "lint": "eslint src/**/*.ts",
+    "lint": "eslint .",
+    "typecheck": "npm run build:core && tsc -p tsconfig.json --noEmit && tsc -p tsconfig.spec.json && tsc -p scripts/tsconfig.json --noEmit",
     "readmes": "tsx scripts/docs/generate-readmes",
     "plugin:create": "tsx scripts/tasks/plugin-create",
-    "prettier": "prettier --write --ignore-unknown \"**/*\""
+    "prettier": "prettier --write --ignore-unknown \"**/*\"",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "tslib": "2.8.1"
   },
   "devDependencies": {
-    "@angular/common": "20.3.18",
-    "@angular/compiler": "20.3.18",
-    "@angular/compiler-cli": "20.3.18",
-    "@angular/core": "20.3.18",
-    "@eslint/js": "^10.0.0",
-    "@swc/core": "^1.15.21",
-    "@swc/jest": "^0.2.39",
+    "@angular/compiler": "22.1.6",
+    "@angular/compiler-cli": "22.1.6",
+    "@angular/core": "22.1.6",
+    "@eslint/js": "^10.0.1",
+    "@oxc-project/runtime": "^0.149.0",
     "@types/cordova": "11.0.3",
-    "@types/jest": "^30.0.0",
-    "@types/node": "^22.19.15",
-    "eslint": "^10.1.0",
+    "@types/node": "^26.4.1",
+    "@vitest/coverage-v8": "^5.0.0",
+    "eslint": "^10.9.1",
     "eslint-config-prettier": "10.1.8",
-    "eslint-plugin-jsdoc": "^62.8.0",
-    "jest": "^30.3.0",
-    "jest-environment-jsdom": "^30.3.0",
-    "lefthook": "^2.1.4",
-    "prettier": "^3.8.1",
-    "rollup": "^4.59.0",
+    "eslint-plugin-jsdoc": "^64.3.2",
+    "jsdom": "^30.0.1",
+    "lefthook": "^2.1.12",
+    "prettier": "^3.9.6",
     "rxjs": "^7.8.2",
-    "tsx": "^4.21.0",
-    "typedoc": "^0.28.17",
-    "typedoc-plugin-markdown": "^4.11.0",
-    "typescript": "~5.8.3",
-    "typescript-eslint": "^8.57.1"
+    "tsx": "^4.23.15",
+    "typedoc": "^0.28.20",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.68.0",
+    "vitest": "^5.0.0"
   },
   "repository": {
     "type": "git",
@@ -58,5 +56,6 @@
   },
   "bugs": {
     "url": "https://github.com/danielsogl/awesome-cordova-plugins/issues"
-  }
+  },
+  "private": true
 }

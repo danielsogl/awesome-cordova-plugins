@@ -172,7 +172,7 @@ export interface FileTransferError {
   plugin: 'cordova-plugin-file-transfer',
   pluginRef: 'FileTransfer',
   repo: 'https://github.com/apache/cordova-plugin-file-transfer',
-  platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Ubuntu', 'Windows', 'Windows Phone'],
+  platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
 export class FileTransfer extends AwesomeCordovaNativePlugin {

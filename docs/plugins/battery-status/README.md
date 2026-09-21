@@ -20,7 +20,6 @@ npm install @awesome-cordova-plugins/battery-status
 
 - iOS
 - Android
-- Windows
 - Browser
 
 ## Further Information

@@ -111,6 +111,26 @@ export interface FirebaseUser {
    * name
    */
   name?: string;
+
+  /**
+   * whether the user is anonymous
+   */
+  isAnonymous?: boolean;
+
+  /**
+   * account creation timestamp in milliseconds
+   */
+  creationTimestamp?: number;
+
+  /**
+   * last sign-in timestamp in milliseconds
+   */
+  lastSignInTimestamp?: number;
+
+  /**
+   * array of linked provider info objects
+   */
+  providers?: any[];
 }
 export interface MessagePayloadAps {
   alert?: {
@@ -132,6 +152,59 @@ export interface MessagePayload {
   ttl?: string;
   tap?: 'background' | 'foreground';
   aps?: MessagePayloadAps;
+}
+
+export interface OnDeviceConversionUserIdentifier {
+  /**
+   * The user's email address. Mutually exclusive with phoneNumber.
+   */
+  emailAddress?: string;
+
+  /**
+   * The user's phone number in E.164 format. Mutually exclusive with emailAddress.
+   */
+  phoneNumber?: string;
+}
+
+export interface EnrollSecondAuthFactorOptions {
+  /**
+   * A display name for this factor. Auto-generated (masking all but the last 4 digits of the phone number) if not provided.
+   */
+  displayName?: string;
+}
+
+export interface VerifySecondAuthFactorParams {
+  /**
+   * Index of the enrolled factor to verify (for an MFA sign-in challenge).
+   */
+  selectedIndex?: number;
+
+  /**
+   * The verification ID from phone verification.
+   */
+  verificationId?: string;
+
+  /**
+   * The SMS verification code entered by the user.
+   */
+  code?: string;
+}
+
+export interface EnrolledSecondAuthFactor {
+  /**
+   * The factor's index.
+   */
+  index: number;
+
+  /**
+   * The enrolled phone number.
+   */
+  phoneNumber: string;
+
+  /**
+   * The display name for this factor, if set.
+   */
+  displayName?: string;
 }
 /**
  * @name Firebase X
@@ -160,6 +233,10 @@ export interface MessagePayload {
  * ```
  * @interfaces
  * IChannelOptions
+ * OnDeviceConversionUserIdentifier
+ * EnrollSecondAuthFactorOptions
+ * VerifySecondAuthFactorParams
+ * EnrolledSecondAuthFactor
  */
 @Plugin({
   pluginName: 'FirebaseX',
@@ -187,6 +264,66 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   getId(): Promise<null | string> {
+    return;
+  }
+
+  /**
+   * Alias for getId(). Returns the current Firebase Installation ID (FID).
+   *
+   * @returns {Promise<string>}
+   */
+  @Cordova()
+  getInstallationId(): Promise<string> {
+    return;
+  }
+
+  /**
+   * Returns a valid Firebase Installation auth token (always force-refreshed).
+   *
+   * @returns {Promise<string>}
+   */
+  @Cordova()
+  getInstallationToken(): Promise<string> {
+    return;
+  }
+
+  /**
+   * Deletes the current Firebase Installation ID and all associated data. Firebase will generate a new FID on next access.
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  deleteInstallationId(): Promise<any> {
+    return;
+  }
+
+  /**
+   * Registers a listener that is called whenever the Firebase Installation ID changes.
+   *
+   * @param {Function} fn - callback function to invoke with the new installation ID string
+   */
+  @Cordova()
+  registerInstallationIdChangeListener(fn: any): Promise<any> {
+    return;
+  }
+
+  /**
+   * Registers a listener that is called when the application transitions to the foreground (iOS applicationDidBecomeActive / Android onResume).
+   *
+   * @param {Function} fn - callback function to invoke when the app becomes active
+   */
+  @Cordova()
+  registerApplicationDidBecomeActiveListener(fn: any): Promise<any> {
+    return;
+  }
+
+  /**
+   * Registers a listener that is called when the application transitions to the background (iOS applicationDidEnterBackground / Android onPause).
+   *
+   * @param {Function} fn - callback function to invoke when the app enters the background
+   */
+  @Cordova()
+  registerApplicationDidEnterBackgroundListener(fn: any): Promise<any> {
     return;
   }
 
@@ -262,6 +399,20 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * iOS 12+ only.
+   * Get notified when the user taps the notification settings action in the system notification settings.
+   * Requires UNAuthorizationOptionProvidesAppNotificationSettings.
+   *
+   * @returns {Observable<any>}
+   */
+  @Cordova({
+    observable: true,
+  })
+  onOpenSettings(): Observable<any> {
+    return;
+  }
+
+  /**
    * Grant permission to receive push notifications (will trigger prompt) and return hasPermission: true. iOS only (Android will always return true).
    *
    * @returns {Promise<any>}
@@ -274,12 +425,35 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * iOS 12+ only. Grant critical alert permission (bypasses Do Not Disturb and the ringer switch). Requires a special Apple entitlement.
+   * On Android this is a no-op and returns false.
+   *
+   * @returns {Promise<boolean>}
+   */
+  @Cordova({
+    platforms: ['iOS'],
+  })
+  grantCriticalPermission(): Promise<boolean> {
+    return;
+  }
+
+  /**
    * Check permission to receive push notifications and return hasPermission: true. iOS only (Android will always return true).
    *
    * @returns {Promise<boolean>}
    */
   @Cordova()
   hasPermission(): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * iOS 12+ only. Check whether the app has critical alert permission. On Android this always returns false.
+   *
+   * @returns {Promise<boolean>}
+   */
+  @Cordova()
+  hasCriticalPermission(): Promise<boolean> {
     return;
   }
 
@@ -429,6 +603,16 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Get the current analytics data collection enabled state.
+   *
+   * @returns {Promise<boolean>}
+   */
+  @Cordova()
+  isAnalyticsCollectionEnabled(): Promise<boolean> {
+    return;
+  }
+
+  /**
    * Enable/disable Crashlytics collection.
    *
    * @param {boolean} enabled
@@ -440,6 +624,16 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Get the current Crashlytics data collection enabled state.
+   *
+   * @returns {Promise<boolean>}
+   */
+  @Cordova()
+  isCrashlyticsCollectionEnabled(): Promise<boolean> {
+    return;
+  }
+
+  /**
    * Enable/disable performance collection.
    *
    * @param {boolean} enabled
@@ -447,6 +641,16 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   setPerformanceCollectionEnabled(enabled: boolean): Promise<any> {
+    return;
+  }
+
+  /**
+   * Get the current performance data collection enabled state.
+   *
+   * @returns {Promise<boolean>}
+   */
+  @Cordova()
+  isPerformanceCollectionEnabled(): Promise<boolean> {
     return;
   }
 
@@ -497,6 +701,20 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * iOS only. Initiates on-device conversion measurement using an email address or phone number.
+   * Only one identifier type may be provided per call.
+   *
+   * @param {OnDeviceConversionUserIdentifier} userIdentifier
+   * @returns {Promise<any>}
+   */
+  @Cordova({
+    platforms: ['iOS'],
+  })
+  initiateOnDeviceConversionMeasurement(userIdentifier: OnDeviceConversionUserIdentifier): Promise<any> {
+    return;
+  }
+
+  /**
    * Set Crashlytics user identifier.
    * To diagnose an issue, it’s often helpful to know which of your users experienced a given crash.
    * Crashlytics includes a way to anonymously identify users in your crash reports.
@@ -509,6 +727,18 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   setCrashlyticsUserId(userId: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Set a custom key-value pair for Crashlytics crash reports. Appears in the "Keys" tab of a crash report.
+   *
+   * @param {string} key
+   * @param {string | number | boolean} value
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  setCrashlyticsCustomKey(key: string, value: string | number | boolean): Promise<any> {
     return;
   }
 
@@ -553,6 +783,16 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Returns whether the app crashed during the previous execution.
+   *
+   * @returns {Promise<boolean>}
+   */
+  @Cordova()
+  didCrashOnPreviousExecution(): Promise<boolean> {
+    return;
+  }
+
+  /**
    * Requests verification of a phone number in order to authenticate a user and sign then into Firebase in your app.
    *
    * NOTE: This will only work on physical devices with a SIM card (not iOS Simulator or Android Emulator)
@@ -580,6 +820,57 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
     callbackOrder: 'reverse',
   })
   verifyPhoneNumber(phoneNumber: string, timeOutDuration: number, fakeVerificationCode?: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Enrolls a phone number as a second authentication factor (MFA) for the current user.
+   *
+   * @param {string} number - phone number to enroll as a second factor, in E.164 format
+   * @param {EnrollSecondAuthFactorOptions} [opts] - optional parameters
+   * @returns {Promise<any>} resolves with the enrollment result (contains verificationId for SMS code entry)
+   */
+  @Cordova({
+    callbackOrder: 'reverse',
+  })
+  enrollSecondAuthFactor(number: string, opts?: EnrollSecondAuthFactorOptions): Promise<any> {
+    return;
+  }
+
+  /**
+   * Verifies a second authentication factor during an MFA sign-in challenge or enrollment.
+   *
+   * @param {VerifySecondAuthFactorParams} params
+   * @param {object} [opts] - reserved for future use
+   * @returns {Promise<any>}
+   */
+  @Cordova({
+    callbackOrder: 'reverse',
+  })
+  verifySecondAuthFactor(params: VerifySecondAuthFactorParams, opts?: object): Promise<any> {
+    return;
+  }
+
+  /**
+   * Lists the second authentication factors enrolled for the current user.
+   *
+   * @returns {Promise<EnrolledSecondAuthFactor[]>}
+   */
+  @Cordova()
+  listEnrolledSecondAuthFactors(): Promise<EnrolledSecondAuthFactor[]> {
+    return;
+  }
+
+  /**
+   * Removes an enrolled second authentication factor from the current user.
+   *
+   * @param {number} selectedIndex - index of the enrolled factor to remove (from listEnrolledSecondAuthFactors())
+   * @returns {Promise<any>}
+   */
+  @Cordova({
+    callbackOrder: 'reverse',
+  })
+  unenrollSecondAuthFactor(selectedIndex: number): Promise<any> {
     return;
   }
 
@@ -627,6 +918,19 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Creates an email/password credential without signing in. The returned credential can be used with
+   * signInWithCredential(), linkUserWithCredential(), or reauthenticateWithCredential().
+   *
+   * @param email
+   * @param password
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  authenticateUserWithEmailAndPassword(email: string, password: string): Promise<any> {
+    return;
+  }
+
+  /**
    * Signs in user with custom token.
    *
    * @param customToken
@@ -667,6 +971,43 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Authenticates the user with Microsoft Sign-In via Firebase OAuthProvider. Returns a credential for use with signInWithCredential().
+   *
+   * @param locale - optional locale to pass to the Microsoft sign-in provider
+   */
+  @Cordova({
+    callbackOrder: 'reverse',
+  })
+  authenticateUserWithMicrosoft(locale?: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Authenticates the user with Facebook using an access token obtained from the Facebook SDK.
+   * Returns a credential for use with signInWithCredential().
+   *
+   * @param accessToken - a Facebook access token obtained via the Facebook Login SDK
+   */
+  @Cordova()
+  authenticateUserWithFacebook(accessToken: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Authenticates the user with a generic OAuth provider via Firebase OAuthProvider. Returns a credential for use with signInWithCredential().
+   *
+   * @param providerId - the OAuth provider ID (e.g. "github.com", "twitter.com", "yahoo.com")
+   * @param customParameters - optional custom OAuth parameters to send to the provider
+   * @param scopes - optional OAuth scopes to request from the provider
+   */
+  @Cordova({
+    callbackOrder: 'reverse',
+  })
+  authenticateUserWithOAuth(providerId: string, customParameters?: object, scopes?: string[]): Promise<any> {
+    return;
+  }
+
+  /**
    * Links the user account to an existing Firebase user account with credentials obtained using verifyPhoneNumber().
    * See the Android- and iOS-specific Firebase documentation for more info.
    *
@@ -688,6 +1029,16 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   reauthenticateWithCredential(credential: any, success: () => void, error: (err: string) => void): Promise<any> {
+    return;
+  }
+
+  /**
+   * Unlinks a provider from the currently signed-in user, removing that sign-in method.
+   *
+   * @param {string} providerId - the provider ID to unlink (e.g. "google.com", "password", "phone")
+   */
+  @Cordova()
+  unlinkUserWithProvider(providerId: string): Promise<any> {
     return;
   }
 
@@ -726,6 +1077,17 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   updateUserEmail(email: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Sends a verification email to the specified new email address before updating.
+   * The email is only updated after the user clicks the verification link.
+   *
+   * @param email - the new email address to verify
+   */
+  @Cordova()
+  verifyBeforeUpdateEmail(email: string): Promise<any> {
     return;
   }
 
@@ -778,6 +1140,37 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Registers a callback that fires whenever the user's ID token changes (sign-in, sign-out, and token refresh events).
+   *
+   * @param {Function} fn - callback function to invoke when the ID token changes
+   */
+  @Cordova()
+  registerAuthIdTokenChangeListener(fn: any): Promise<any> {
+    return;
+  }
+
+  /**
+   * Configures Firebase Auth to connect to a local Auth emulator for testing. Must be called before any other auth operations.
+   *
+   * @param {string} host - the emulator host (e.g. "localhost" or "10.0.2.2" for Android emulator)
+   * @param {number} port - the emulator port (e.g. 9099)
+   */
+  @Cordova()
+  useAuthEmulator(host: string, port: number): Promise<any> {
+    return;
+  }
+
+  /**
+   * Retrieves the custom claims from the current user's ID token. Custom claims are set server-side using the Firebase Admin SDK.
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  getClaims(): Promise<any> {
+    return;
+  }
+
+  /**
    * Fetch Remote Config parameter values for your app.
    *
    * @param {number} cacheExpirationSeconds specify the cacheExpirationSeconds
@@ -810,6 +1203,16 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Reset all Remote Config values back to defaults. Note: not currently available on iOS.
+   *
+   * @returns {Promise<boolean>}
+   */
+  @Cordova()
+  resetRemoteConfig(): Promise<boolean> {
+    return;
+  }
+
+  /**
    * Returns a Map of Firebase Remote Config key value pairs.
    *
    * @param {Function} success - callback function which will be passed an {object} argument where key is the remote config key and value is the value as a string. If the expected key value is a different primitive type then cast it to the appropriate type.
@@ -834,6 +1237,7 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   /**
    * Android only. Retrieve a Remote Config byte array.
    *
+   * @deprecated Removed upstream in cordova-plugin-firebasex 20.0.0 (modular plugin rewrite); no longer present in the Remote Config API.
    * @param {string} key
    * @returns {Promise<any>}
    */
@@ -1033,6 +1437,86 @@ export class FirebaseX extends AwesomeCordovaNativePlugin {
   ): Promise<any> {
     return;
   }
+
+  /**
+   * Checks whether a document exists in a Firestore collection.
+   *
+   * @param {string} documentId - document ID of the document to check.
+   * @param {string} collection - name of top-level collection to check.
+   * @returns {Promise<boolean>}
+   */
+  @Cordova()
+  documentExistsInFirestoreCollection(documentId: string, collection: string): Promise<boolean> {
+    return;
+  }
+
+  /**
+   * Registers a real-time listener on a single document in a Firestore collection.
+   * The success callback is called multiple times: first with {eventType: "id", id: listenerId},
+   * then with {eventType: "change", snapshot, source, fromCache} on each change.
+   * Call removeFirestoreListener() with the returned listener ID to stop listening.
+   *
+   * @param {string} documentId - document ID of the document to listen to.
+   * @param {string} collection - name of top-level collection to listen to.
+   * @param {boolean} includeMetadata - whether to include metadata-only changes.
+   * @returns {Observable<any>}
+   */
+  @Cordova({
+    callbackOrder: 'reverse',
+    observable: true,
+  })
+  listenToDocumentInFirestoreCollection(
+    documentId: string,
+    collection: string,
+    includeMetadata?: boolean
+  ): Observable<any> {
+    return;
+  }
+
+  /**
+   * Registers a real-time listener on an entire Firestore collection, optionally filtered.
+   * The success callback is called multiple times: first with {eventType: "id", id: listenerId},
+   * then with {eventType: "change", documents: {...}} on each change.
+   * Call removeFirestoreListener() with the returned listener ID to stop listening.
+   *
+   * @param {string} collection - name of top-level collection to listen to.
+   * @param {Array} filters - filters to apply to the collection (same format as fetchFirestoreCollection()).
+   * @param {boolean} includeMetadata - whether to include metadata-only changes.
+   * @returns {Observable<any>}
+   */
+  @Cordova({
+    callbackOrder: 'reverse',
+    observable: true,
+  })
+  listenToFirestoreCollection(collection: string, filters?: any[], includeMetadata?: boolean): Observable<any> {
+    return;
+  }
+
+  /**
+   * Removes a previously registered Firestore snapshot listener.
+   *
+   * @param {string} listenerId - the listener ID returned in the initial listener response.
+   * @returns {Promise<any>}
+   */
+  @Cordova({
+    callbackOrder: 'reverse',
+  })
+  removeFirestoreListener(listenerId: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Invokes an HTTPS-callable Cloud Function by name.
+   *
+   * @param {string} name - the name of the Cloud Function to call.
+   * @param {any} args - arguments to pass to the function (any JSON-serialisable value).
+   * @returns {Promise<any>} the function's return value
+   */
+  @Cordova()
+  functionsHttpsCallable(name: string, args: any): Promise<any> {
+    return;
+  }
+
   /**
    * Set new V2 consent mode
    *

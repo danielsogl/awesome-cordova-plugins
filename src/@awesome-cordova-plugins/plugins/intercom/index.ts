@@ -220,6 +220,17 @@ export class Intercom extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Suppress the given proactive content types, independently of `setInAppMessageVisibility`.
+   * @note All proactive content is visible by default; pass an empty array to unsuppress all.
+   *
+   * @param types An array of content type strings to suppress, e.g. `[IntercomPresentContentType.Carousel, IntercomPresentContentType.Survey]`.
+   */
+  @Cordova()
+  suppressProactiveContent(types: IntercomPresentContentType[]): Promise<void> {
+    return;
+  }
+
+  /**
    * Hide all Intercom windows that are currently displayed.
    * This will hide the Messenger, Help Center, Articles, and in-product messages (eg. Mobile Carousels, chats, and posts).
    */
@@ -375,8 +386,7 @@ export enum IntercomPresentContentType {
 }
 
 export type IntercomPresentContent =
-  | { id: string; type: IntercomPresentContentType }
-  | { ids: string[]; type: IntercomPresentContentType };
+  { id: string; type: IntercomPresentContentType } | { ids: string[]; type: IntercomPresentContentType };
 
 export interface IntercomUserAttributes {
   email?: string;

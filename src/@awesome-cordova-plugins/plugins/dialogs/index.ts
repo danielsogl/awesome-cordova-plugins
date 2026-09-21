@@ -42,7 +42,7 @@ export interface DialogsPromptCallback {
   plugin: 'cordova-plugin-dialogs',
   pluginRef: 'navigator.notification',
   repo: 'https://github.com/apache/cordova-plugin-dialogs',
-  platforms: ['Amazon Fire OS', 'Android', 'Browser', 'iOS', 'Windows'],
+  platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
 export class Dialogs extends AwesomeCordovaNativePlugin {

@@ -170,7 +170,7 @@ export class SocketsTcp extends AwesomeCordovaNativePlugin {
    * Watch all incoming data event
    */
   public onReceiveData(): Observable<SocketTcpDataInfo> {
-    return fromEventPattern(
+    return fromEventPattern<SocketTcpDataInfo>(
       (eventHandler) => this.onReceive.addListener(eventHandler),
       (errorEventHandler) => this.onReceive.removeListener(errorEventHandler)
     ).pipe(

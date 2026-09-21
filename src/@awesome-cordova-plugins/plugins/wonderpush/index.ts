@@ -228,7 +228,6 @@ export class UserPreferencesMethods extends NestedObject {
 })
 @Injectable()
 export class WonderPush extends AwesomeCordovaNativePlugin {
-
   /**
    * Initializes the WonderPush SDK
    * @param clientId
@@ -239,6 +238,33 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   initialize(clientId: string, clientSecret: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Initializes the SDK and remembers credentials for subsequent auto-initialization.
+   *
+   * You can disable AUTO_INIT or instead use `"USE_REMEMBERED"` as a value for the Client ID and Client Secret.
+   * This is aimed at enabling complex integration scenarios where the Client ID and Client Secret are resolved dynamically and reused ever after.
+   * If you provide a null value, the credential will be forgotten and the SDK won't be initialized.
+   *
+   * @param {?string} clientId
+   * @param {?string} clientSecret
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  initializeAndRememberCredentials(clientId: string | null, clientSecret: string | null): Promise<any> {
+    return;
+  }
+
+  /**
+   * Returns the remembered Client ID given to `initializeAndRememberCredentials()`.
+   * There is no similar getter for the Client Secret.
+   *
+   * @returns {Promise<string | null>} The remembered Client ID if both a non-empty Client ID and Client Secret were last remembered, `null` otherwise.
+   */
+  @Cordova()
+  getRememberedClientId(): Promise<string | null> {
     return;
   }
 
@@ -553,10 +579,11 @@ export class WonderPush extends AwesomeCordovaNativePlugin {
    * Because in iOS you only have *one* chance for prompting the user, you should find a good timing for that.
    * For a start, you can systematically call it when the application starts, so that the user will be prompted directly at the first launch.
    *
+   * @param {boolean} [fallbackToSettings] - When true, WonderPush will show a dialog prompting the user to go to settings and activate push notifications
    * @returns {Promise<any>} Returns a promise that resolves upon successful subscription
    */
   @Cordova()
-  subscribeToNotifications(): Promise<any> {
+  subscribeToNotifications(fallbackToSettings?: boolean): Promise<any> {
     return;
   }
 

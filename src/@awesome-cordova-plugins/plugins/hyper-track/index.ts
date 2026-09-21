@@ -8,7 +8,7 @@ const hypertrackIonicPluginVersion = '0.2.0';
   plugin: 'cordova-plugin-hypertrack-v3',
   pluginRef: 'hypertrack',
   repo: 'https://github.com/hypertrack/cordova-plugin-hypertrack.git',
-  platforms: ['Android, iOS'],
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class HyperTrackPlugin extends AwesomeCordovaNativePlugin {

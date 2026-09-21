@@ -28,7 +28,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
   plugin: 'cordova-plugin-file-opener2',
   pluginRef: 'cordova.plugins.fileOpener2',
   repo: 'https://github.com/pwlin/cordova-plugin-file-opener2',
-  platforms: ['Android', 'iOS', 'Windows', 'Windows Phone 8'],
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class FileOpener extends AwesomeCordovaNativePlugin {

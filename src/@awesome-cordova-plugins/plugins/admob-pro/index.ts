@@ -3,13 +3,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
 import { Observable } from 'rxjs';
 
 export type AdSize =
-  | 'SMART_BANNER'
-  | 'BANNER'
-  | 'MEDIUM_RECTANGLE'
-  | 'FULL_BANNER'
-  | 'LEADERBOARD'
-  | 'SKYSCRAPER'
-  | 'CUSTOM';
+  'SMART_BANNER' | 'BANNER' | 'MEDIUM_RECTANGLE' | 'FULL_BANNER' | 'LEADERBOARD' | 'SKYSCRAPER' | 'CUSTOM';
 
 export interface AdMobOptions {
   /**
@@ -138,7 +132,7 @@ export interface AdExtras {
   plugin: 'cordova-plugin-admobpro',
   pluginRef: 'AdMob',
   repo: 'https://github.com/floatinghotpot/cordova-admob-pro',
-  platforms: ['Android', 'iOS', 'Windows Phone 8'],
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class AdMobPro extends AwesomeCordovaNativePlugin {

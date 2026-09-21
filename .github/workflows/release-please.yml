@@ -21,14 +21,52 @@ jobs:
     steps:
       - name: Run Release Please
         id: release
-        uses: googleapis/release-please-action@v4.4.0
+        uses: googleapis/release-please-action@v5.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
+  # npm trusted publishing validates the OIDC claim of the *entry point* workflow,
+  # not the one that runs `npm publish`. Keep this job inline — a reusable workflow
+  # here breaks the trust check. See https://github.com/npm/documentation/issues/1755
   publish:
     needs: release-please
     if: ${{ needs.release-please.outputs.release_created }}
-    uses: ./.github/workflows/publish.yml
-    secrets: inherit
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7.0.0
+        with:
+          # .nvmrc pins node 24, which bundles npm 11.16 — over the >= 11.5.1 that
+          # trusted publishing needs. Do not lower it below that.
+          node-version-file: .nvmrc
+          cache: npm
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint -- --quiet
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Test
+        run: npm run test:coverage
+
+      - name: Build
+        run: npm run build
+
+      - name: Publish to npm
+        env:
+          # fallback for packages without a trusted publisher yet (e.g. brand new plugins).
+          # OIDC takes precedence whenever the package has one configured.
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm run npmpub

@@ -10,19 +10,7 @@ export const ERR_PLUGIN_NOT_INSTALLED = { error: 'plugin_not_installed' };
 /**
  * @param callback
  */
-export function getPromise<T>(callback: (resolve: Function, reject?: Function) => any): Promise<T> {
-  const tryNativePromise = () => {
-    if (Promise) {
-      return new Promise<T>((resolve, reject) => {
-        callback(resolve, reject);
-      });
-    } else {
-      console.error(
-        'No Promise support or polyfill found. To enable Ionic Native support, please add the es6-promise polyfill before this script, or run with a library like Angular or on a recent browser.'
-      );
-    }
-  };
-
+export function getPromise<T>(callback: (resolve: Function, reject: Function) => any): Promise<T> {
   if (typeof window !== 'undefined' && window.angular) {
     const doc = window.document;
     const injector = window.angular.element(doc.querySelector('[ng-app]') || doc.body).injector();
@@ -37,7 +25,9 @@ export function getPromise<T>(callback: (resolve: Function, reject?: Function) =
     );
   }
 
-  return tryNativePromise();
+  return new Promise<T>((resolve, reject) => {
+    callback(resolve, reject);
+  });
 }
 
 /**
@@ -47,7 +37,7 @@ export function getPromise<T>(callback: (resolve: Function, reject?: Function) =
  * @param opts
  */
 export function wrapPromise(pluginObj: any, methodName: string, args: any[], opts: CordovaOptions = {}) {
-  let pluginResult: any, rej: Function;
+  let pluginResult: any, rej: Function | undefined;
   const p = getPromise((resolve: Function, reject: Function) => {
     if (opts.destruct) {
       pluginResult = callCordovaPlugin(
@@ -247,11 +237,12 @@ export function setIndex(args: any[], opts: any = {}, resolve?: Function, reject
     args.unshift(reject);
     args.unshift(resolve);
   } else if (opts.callbackStyle === 'node') {
+    // resolve/reject are always supplied for async calls; the sync path returned above
     args.push((err: any, result: any) => {
       if (err) {
-        reject(err);
+        reject!(err);
       } else {
-        resolve(result);
+        resolve!(result);
       }
     });
   } else if (opts.callbackStyle === 'object' && opts.successName && opts.errorName) {
@@ -381,7 +372,7 @@ export function get(element: Element | Window, path: string) {
  * @param plugin
  * @param method
  */
-export function pluginWarn(pluginName: string, plugin?: string, method?: string): void {
+export function pluginWarn(pluginName?: string, plugin?: string, method?: string): void {
   if (method) {
     console.warn(
       'Native: tried calling ' + pluginName + '.' + method + ', but the ' + pluginName + ' plugin is not installed.'
@@ -399,7 +390,7 @@ export function pluginWarn(pluginName: string, plugin?: string, method?: string)
  * @param pluginName
  * @param method
  */
-export function cordovaWarn(pluginName: string, method?: string): void {
+export function cordovaWarn(pluginName?: string, method?: string): void {
   if (typeof process === 'undefined') {
     if (method) {
       console.warn(
@@ -529,7 +520,7 @@ export function wrapInstance(pluginObj: any, methodName: string, opts: any = {})
         }
       });
     } else {
-      let pluginResult: any, rej: Function;
+      let pluginResult: any, rej: Function | undefined;
       const p = getPromise((resolve: Function, reject: Function) => {
         if (opts.destruct) {
           pluginResult = callInstance(

@@ -5,6 +5,8 @@ description: >-
 
 # dynamsoft-barcode-scanner
 
+> **Deprecated.** The underlying `cordova-plugin-dynamsoft-barcode-reader` plugin is no longer maintained; use Dynamsoft's `dynamsoft-capture-vision-cordova` instead.
+
 This plugin scans barcodes using Dynamsoft Barcode Reader
 
 ## Installation

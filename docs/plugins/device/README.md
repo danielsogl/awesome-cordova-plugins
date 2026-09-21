@@ -22,7 +22,6 @@ npm install @awesome-cordova-plugins/device
 - Browser
 - iOS
 - macOS
-- Windows
 
 ## Further Information
 

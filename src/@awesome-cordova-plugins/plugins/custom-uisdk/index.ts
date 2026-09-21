@@ -31,7 +31,7 @@ import {
   repo: 'https://github.com/paytm/paytm-customuisdk-cordova',
   install: '',
   installVariables: [],
-  platforms: ['Android, iOS'],
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class CustomUISDK extends AwesomeCordovaNativePlugin {

@@ -5,7 +5,7 @@ export enum NotificationVisibility {
   Visible = 0,
   VisibleNotifyCompleted = 1,
   VisibilityHidden = 2,
-  VisibleNotifyOnlyCompletion = 3
+  VisibleNotifyOnlyCompletion = 3,
 }
 
 export interface DownloadHttpHeader {

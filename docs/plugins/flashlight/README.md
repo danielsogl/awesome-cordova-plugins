@@ -22,7 +22,6 @@ npm install @awesome-cordova-plugins/flashlight
 
 - Android
 - iOS
-- Windows Phone 8
 
 ## Further Information
 

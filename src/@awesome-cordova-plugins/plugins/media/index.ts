@@ -294,7 +294,7 @@ export type MediaErrorCallback = (error: MediaError) => void;
   repo: 'https://github.com/apache/cordova-plugin-media',
   plugin: 'cordova-plugin-media',
   pluginRef: 'Media',
-  platforms: ['Android', 'Browser', 'iOS', 'Windows'],
+  platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
 export class Media extends AwesomeCordovaNativePlugin {

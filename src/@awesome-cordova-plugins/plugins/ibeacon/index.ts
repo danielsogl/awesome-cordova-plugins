@@ -3,6 +3,7 @@ import { Cordova, CordovaCheck, AwesomeCordovaNativePlugin, Plugin } from '@awes
 import { Observable } from 'rxjs';
 
 declare const cordova: any;
+declare const window: any;
 
 export interface Beacon {
   /**
@@ -296,63 +297,63 @@ export class IBeacon extends AwesomeCordovaNativePlugin {
     delegate.didChangeAuthorizationStatus = (pluginResult?: IBeaconPluginResult) => {
       return new Observable<IBeaconPluginResult>((observer: any) => {
         const cb = (data: IBeaconPluginResult) => observer.next(data);
-        return (delegate.didChangeAuthorizationStatus = cb);
+        delegate.didChangeAuthorizationStatus = cb;
       });
     };
 
     delegate.didDetermineStateForRegion = (pluginResult?: IBeaconPluginResult) => {
       return new Observable<IBeaconPluginResult>((observer: any) => {
         const cb = (data: IBeaconPluginResult) => observer.next(data);
-        return (delegate.didDetermineStateForRegion = cb);
+        delegate.didDetermineStateForRegion = cb;
       });
     };
 
     delegate.didEnterRegion = (pluginResult?: IBeaconPluginResult) => {
       return new Observable<IBeaconPluginResult>((observer: any) => {
         const cb = (data: IBeaconPluginResult) => observer.next(data);
-        return (delegate.didEnterRegion = cb);
+        delegate.didEnterRegion = cb;
       });
     };
 
     delegate.didExitRegion = (pluginResult?: IBeaconPluginResult) => {
       return new Observable<IBeaconPluginResult>((observer: any) => {
         const cb = (data: IBeaconPluginResult) => observer.next(data);
-        return (delegate.didExitRegion = cb);
+        delegate.didExitRegion = cb;
       });
     };
 
     delegate.didRangeBeaconsInRegion = (pluginResult?: IBeaconPluginResult) => {
       return new Observable<IBeaconPluginResult>((observer: any) => {
         const cb = (data: IBeaconPluginResult) => observer.next(data);
-        return (delegate.didRangeBeaconsInRegion = cb);
+        delegate.didRangeBeaconsInRegion = cb;
       });
     };
 
     delegate.didStartMonitoringForRegion = (pluginResult?: IBeaconPluginResult) => {
       return new Observable<IBeaconPluginResult>((observer: any) => {
         const cb = (data: IBeaconPluginResult) => observer.next(data);
-        return (delegate.didStartMonitoringForRegion = cb);
+        delegate.didStartMonitoringForRegion = cb;
       });
     };
 
     delegate.monitoringDidFailForRegionWithError = (pluginResult?: IBeaconPluginResult) => {
       return new Observable<IBeaconPluginResult>((observer: any) => {
         const cb = (data: IBeaconPluginResult) => observer.next(data);
-        return (delegate.monitoringDidFailForRegionWithError = cb);
+        delegate.monitoringDidFailForRegionWithError = cb;
       });
     };
 
     delegate.peripheralManagerDidStartAdvertising = (pluginResult?: IBeaconPluginResult) => {
       return new Observable<IBeaconPluginResult>((observer: any) => {
         const cb = (data: IBeaconPluginResult) => observer.next(data);
-        return (delegate.peripheralManagerDidStartAdvertising = cb);
+        delegate.peripheralManagerDidStartAdvertising = cb;
       });
     };
 
     delegate.peripheralManagerDidUpdateState = (pluginResult?: IBeaconPluginResult) => {
       return new Observable<IBeaconPluginResult>((observer: any) => {
         const cb = (data: IBeaconPluginResult) => observer.next(data);
-        return (delegate.peripheralManagerDidUpdateState = cb);
+        delegate.peripheralManagerDidUpdateState = cb;
       });
     };
 

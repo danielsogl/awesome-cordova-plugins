@@ -10,7 +10,7 @@ Use this plugin to add an extra layer of security for your app by detecting if t
 ## Installation
 
 ```bash
-ionic cordova plugin add cordova-plugin-IRoot
+ionic cordova plugin add cordova-plugin-iroot
 npm install @awesome-cordova-plugins/i-root
 ```
 

@@ -19,12 +19,9 @@ npm install @awesome-cordova-plugins/app-preferences
 ## Supported Platforms
 
 - Android
-- BlackBerry 10
 - Browser
 - iOS
 - macOS
-- Windows 8
-- Windows Phone
 
 ## Further Information
 

@@ -24,7 +24,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
   plugin: 'cordova-plugin-splashscreen',
   pluginRef: 'navigator.splashscreen',
   repo: 'https://github.com/apache/cordova-plugin-splashscreen',
-  platforms: ['Amazon Fire OS', 'Android', 'iOS', 'Windows'],
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class SplashScreen extends AwesomeCordovaNativePlugin {

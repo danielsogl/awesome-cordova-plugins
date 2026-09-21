@@ -7,7 +7,7 @@ import jsdoc from 'eslint-plugin-jsdoc';
 export default defineConfig(
   // Global ignores (replaces .eslintignore)
   {
-    ignores: ['scripts/', 'docs/', 'dist/', 'node_modules/'],
+    ignores: ['docs/', 'dist/', 'node_modules/'],
   },
 
   // Base configs
@@ -54,6 +54,34 @@ export default defineConfig(
       'jsdoc/require-returns': 'off',
       'jsdoc/check-param-names': 'off',
       'jsdoc/check-types': 'off',
+    },
+  },
+
+  // The build pipeline. Type-aware here because it is hand-written code doing real work — this is
+  // what catches the un-awaited promise chains that silently broke the ngx build.
+  {
+    files: ['scripts/**/*.ts'],
+    extends: [tseslint.configs.recommendedTypeChecked],
+    languageOptions: {
+      parserOptions: {
+        project: './scripts/tsconfig.json',
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+    rules: {
+      '@typescript-eslint/no-floating-promises': 'error',
+      '@typescript-eslint/no-misused-promises': 'error',
+      // comparing node.kind against SyntaxKind members is how you read a TS AST
+      '@typescript-eslint/no-unsafe-enum-comparison': 'off',
+      // the transformers walk untyped TS AST shapes and JSON config
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-unsafe-assignment': 'off',
+      '@typescript-eslint/no-unsafe-member-access': 'off',
+      '@typescript-eslint/no-unsafe-argument': 'off',
+      '@typescript-eslint/no-unsafe-call': 'off',
+      '@typescript-eslint/no-unsafe-return': 'off',
+      'jsdoc/require-param': 'off',
+      'jsdoc/require-returns': 'off',
     },
   }
 );

@@ -18,12 +18,9 @@ npm install @awesome-cordova-plugins/in-app-browser
 
 ## Supported Platforms
 
-- AmazonFire OS
 - Android
 - Browser
 - iOS
-- macOS
-- Windows
 
 ## Further Information
 

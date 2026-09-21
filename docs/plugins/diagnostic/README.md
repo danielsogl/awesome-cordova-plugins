@@ -1,11 +1,9 @@
 ---
 description: >-
-  Diagnostic plugin for Cordova and Ionic. Checks whether device hardware features are enabled or available to the app, e.g. camera, GPS, wifi
+  Diagnostic — Awesome Cordova Plugins wrapper for Ionic and Cordova apps.
 ---
 
 # Diagnostic
-
-Checks whether device hardware features are enabled or available to the app, e.g. camera, GPS, wifi
 
 ## Installation
 
@@ -20,7 +18,6 @@ npm install @awesome-cordova-plugins/diagnostic
 
 - Android
 - iOS
-- Windows
 
 ## Further Information
 

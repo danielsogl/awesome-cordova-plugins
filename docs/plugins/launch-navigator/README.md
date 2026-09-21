@@ -20,8 +20,6 @@ npm install @awesome-cordova-plugins/launch-navigator
 
 - Android
 - iOS
-- Windows
-- Windows Phone 8
 
 ## Further Information
 

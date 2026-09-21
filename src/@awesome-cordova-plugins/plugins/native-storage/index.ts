@@ -31,7 +31,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
   plugin: 'cordova-plugin-nativestorage',
   pluginRef: 'NativeStorage',
   repo: 'https://github.com/TheCocoaProject/cordova-plugin-nativestorage',
-  platforms: ['Android', 'Browser', 'iOS', 'macOS', 'Windows'],
+  platforms: ['Android', 'Browser', 'iOS', 'macOS'],
 })
 @Injectable()
 export class NativeStorage extends AwesomeCordovaNativePlugin {

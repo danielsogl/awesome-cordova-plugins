@@ -25,7 +25,6 @@ npm install @awesome-cordova-plugins/badge
 - Android
 - Browser
 - iOS
-- Windows
 
 ## Further Information
 

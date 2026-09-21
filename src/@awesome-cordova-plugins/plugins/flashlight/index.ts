@@ -23,7 +23,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
   plugin: 'cordova-plugin-flashlight',
   pluginRef: 'window.plugins.flashlight',
   repo: 'https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin',
-  platforms: ['Android', 'iOS', 'Windows Phone 8'],
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Flashlight extends AwesomeCordovaNativePlugin {

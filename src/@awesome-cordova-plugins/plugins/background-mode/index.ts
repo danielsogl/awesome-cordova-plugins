@@ -73,7 +73,7 @@ export interface BackgroundModeConfiguration {
   plugin: 'cordova-plugin-background-mode',
   pluginRef: 'cordova.plugins.backgroundMode',
   repo: 'https://github.com/katzer/cordova-plugin-background-mode',
-  platforms: ['AmazonFire OS', 'Android', 'Browser', 'iOS', 'Windows'],
+  platforms: ['Android', 'Browser', 'iOS'],
 })
 @Injectable()
 export class BackgroundMode extends AwesomeCordovaNativePlugin {

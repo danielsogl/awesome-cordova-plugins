@@ -33,7 +33,7 @@ import { Cordova, AwesomeCordovaNativePlugin, Plugin } from '@awesome-cordova-pl
   plugin: 'cordova-clipboard',
   pluginRef: 'cordova.plugins.clipboard',
   repo: 'https://github.com/ihadeed/cordova-clipboard',
-  platforms: ['Android', 'iOS', 'Windows Phone 8'],
+  platforms: ['Android', 'iOS'],
 })
 @Injectable()
 export class Clipboard extends AwesomeCordovaNativePlugin {

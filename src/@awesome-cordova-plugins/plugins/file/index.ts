@@ -664,7 +664,7 @@ declare const window: Window;
   plugin: 'cordova-plugin-file',
   pluginRef: 'cordova.file',
   repo: 'https://github.com/apache/cordova-plugin-file',
-  platforms: ['Android', 'Browser', 'iOS', 'macOS', 'Windows'],
+  platforms: ['Android', 'Browser', 'iOS', 'macOS'],
 })
 @Injectable()
 export class File extends AwesomeCordovaNativePlugin {
@@ -1248,7 +1248,7 @@ export class File extends AwesomeCordovaNativePlugin {
           }
         );
       } catch (xc) {
-        this.fillErrorMessage(xc);
+        this.fillErrorMessage(xc as FileError);
         reject(xc);
       }
     });
@@ -1297,7 +1297,7 @@ export class File extends AwesomeCordovaNativePlugin {
           }
         );
       } catch (xc) {
-        this.fillErrorMessage(xc);
+        this.fillErrorMessage(xc as FileError);
         reject(xc);
       }
     });
@@ -1320,7 +1320,7 @@ export class File extends AwesomeCordovaNativePlugin {
           reject(err);
         });
       } catch (xc) {
-        this.fillErrorMessage(xc);
+        this.fillErrorMessage(xc as FileError);
         reject(xc);
       }
     });

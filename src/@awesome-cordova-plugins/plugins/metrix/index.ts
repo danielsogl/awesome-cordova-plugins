@@ -172,7 +172,7 @@ export enum MetrixAttributionStatus {
  */
 @Plugin({
   pluginName: 'Metrix',
-  plugin: 'ir.metrix.sdk',
+  plugin: '@metrixorg/cordova-metrix',
   pluginRef: 'Metrix',
   repo: 'https://github.com/metrixorg/MetrixSDK-CordovaPlugin',
   platforms: ['Android'],
