@@ -256,6 +256,18 @@
 
 
 
+## [9.6.1](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.6.0...awesome-cordova-plugins-v9.6.1) (2026-09-28)
+
+
+### Miscellaneous Chores
+
+* **deps:** update angular to v22.1.6 ([#5244](https://github.com/danielsogl/awesome-cordova-plugins/issues/5244)) ([47673c7](https://github.com/danielsogl/awesome-cordova-plugins/commit/47673c7917a0eec296bfe8ecb178a21394eaa528))
+* **deps:** update dependency @oxc-project/runtime to ^0.149.0 ([#5245](https://github.com/danielsogl/awesome-cordova-plugins/issues/5245)) ([ceeda60](https://github.com/danielsogl/awesome-cordova-plugins/commit/ceeda60377ee19bb74770c096e05e8e7091df48d))
+* **deps:** update dependency @oxc-project/runtime to ^0.152.0 ([#5251](https://github.com/danielsogl/awesome-cordova-plugins/issues/5251)) ([7000983](https://github.com/danielsogl/awesome-cordova-plugins/commit/700098371ecb893cf287c0330c735495d2958ed0))
+* **deps:** update dependency tsx to ^4.23.15 ([#5248](https://github.com/danielsogl/awesome-cordova-plugins/issues/5248)) ([2c0b767](https://github.com/danielsogl/awesome-cordova-plugins/commit/2c0b76754905167435d9b97180f3d2a14254224b))
+* **deps:** update testing framework ([#5250](https://github.com/danielsogl/awesome-cordova-plugins/issues/5250)) ([6d10920](https://github.com/danielsogl/awesome-cordova-plugins/commit/6d1092070a969a048eb27ae6e651e67a95489693))
+* **deps:** update vitest to v5 ([a40d46f](https://github.com/danielsogl/awesome-cordova-plugins/commit/a40d46f2f689266b8175d61895c1334e1ed7ea2a))
+
 ## [9.6.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.5.0...awesome-cordova-plugins-v9.6.0) (2026-09-07)
 
 
