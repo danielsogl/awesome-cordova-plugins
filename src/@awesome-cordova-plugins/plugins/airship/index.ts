@@ -67,6 +67,7 @@ export class Airship extends AwesomeCordovaNativePlugin {
   initialize() {
     this.channel = new AirshipChannel();
     this.contact = new AirshipContact();
+    this.featureFlagManager = new AirshipFeatureFlagManager();
     this.push = new AirshipPush();
   }
 
@@ -1853,44 +1854,54 @@ export interface AirshipInApp {
 /**
  * Airship feature flag manager.
  */
-export interface AirshipFeatureFlagManager {
+export class AirshipFeatureFlagManager {
+  private _objectInstance = window.Airship.featureFlagManager;
+
   /**
    * Retrieve a given flag's status and associated data by its name.
    * @param flagName The flag name
-   * @param success Success callback.
-   * @param error Error callback.
    */
-  flag(flagName: string, success: (flag: FeatureFlag) => void, error?: (err: string) => void): void;
+  @CordovaInstance()
+  flag(flagName: string): Promise<FeatureFlag> {
+    return;
+  }
 
   /**
    * Tracks a feature flag interaction event.
    * @param flag The flag
-   * @param success Success callback.
-   * @param error Error callback.
    */
-  trackInteraction(flag: FeatureFlag, success?: () => void, error?: (err: string) => void): void;
+  @CordovaInstance()
+  trackInteraction(flag: FeatureFlag): Promise<void> {
+    return;
+  }
 
   /**
    * Retrieves the freshness of the feature flag data used to resolve flags.
-   * @param success Success callback.
-   * @param error Error callback.
    */
-  status(success: (status: FeatureFlagStatus) => void, error?: (err: string) => void): void;
+  @CordovaInstance()
+  status(): Promise<FeatureFlagStatus> {
+    return;
+  }
 
   /**
    * Suspends until the feature flag data is refreshed, or the given time elapses.
    * @param maxTimeMs The max time to wait, in milliseconds. If not provided,
    * waits until the data is refreshed with no timeout.
-   * @param success Success callback.
-   * @param error Error callback.
    */
-  waitRefresh(maxTimeMs?: number, success?: () => void, error?: (err: string) => void): void;
+  @CordovaInstance()
+  waitRefresh(maxTimeMs?: number): Promise<void> {
+    return;
+  }
 
   /**
    * Adds a listener for feature flag data status changes.
-   * @param callback The callback.
    */
-  onStatusChanged(callback: (event: FeatureFlagStatusChangedEvent) => void): Cancellable;
+  onStatusChanged(): Observable<FeatureFlagStatusChangedEvent> {
+    return new Observable<FeatureFlagStatusChangedEvent>((observer) => {
+      const cancellable: Cancellable = this._objectInstance.onStatusChanged(observer.next.bind(observer));
+      return () => cancellable.cancel();
+    });
+  }
 }
 
 /**
