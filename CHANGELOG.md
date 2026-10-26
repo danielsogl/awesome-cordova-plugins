@@ -256,6 +256,14 @@
 
 
 
+## [9.7.1](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.7.0...awesome-cordova-plugins-v9.7.1) (2026-10-26)
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency @oxc-project/runtime to ^0.155.0 ([#5265](https://github.com/danielsogl/awesome-cordova-plugins/issues/5265)) ([953d875](https://github.com/danielsogl/awesome-cordova-plugins/commit/953d8754d71791c3f2e433a9730be960d8b0441d))
+* **deps:** update linting and formatting ([#5266](https://github.com/danielsogl/awesome-cordova-plugins/issues/5266)) ([fb2122d](https://github.com/danielsogl/awesome-cordova-plugins/commit/fb2122d46c4c9613f65bc0235dfda6401b96b26a))
+
 ## [9.7.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.6.0...awesome-cordova-plugins-v9.7.0) (2026-10-20)
 
 
