@@ -40,7 +40,7 @@
     "eslint": "^10.14.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-jsdoc": "^65.4.5",
-    "jsdom": "^30.1.3",
+    "jsdom": "^31.0.0",
     "lefthook": "^2.2.2",
     "prettier": "^3.9.10",
     "rxjs": "^7.8.2",
