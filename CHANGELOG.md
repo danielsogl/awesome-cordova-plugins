@@ -256,6 +256,25 @@
 
 
 
+## [9.7.1](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.7.0...awesome-cordova-plugins-v9.7.1) (2026-11-10)
+
+
+### Bug Fixes
+
+* **deps:** update non-major dependencies ([#5271](https://github.com/danielsogl/awesome-cordova-plugins/issues/5271)) ([6da88d1](https://github.com/danielsogl/awesome-cordova-plugins/commit/6da88d166ae7e92ad68af34dcac1d5c0eabcf505))
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency @oxc-project/runtime to ^0.155.0 ([#5265](https://github.com/danielsogl/awesome-cordova-plugins/issues/5265)) ([953d875](https://github.com/danielsogl/awesome-cordova-plugins/commit/953d8754d71791c3f2e433a9730be960d8b0441d))
+* **deps:** update dependency @oxc-project/runtime to ^0.157.0 ([#5273](https://github.com/danielsogl/awesome-cordova-plugins/issues/5273)) ([abdc99a](https://github.com/danielsogl/awesome-cordova-plugins/commit/abdc99a78da255f4392df77d04310dda226e1a31))
+* **deps:** update dependency @types/node to ^26.6.6 ([#5269](https://github.com/danielsogl/awesome-cordova-plugins/issues/5269)) ([3722b91](https://github.com/danielsogl/awesome-cordova-plugins/commit/3722b917c6afb29c872cc108bf232f8d720449af))
+* **deps:** update dependency eslint-plugin-jsdoc to v65 ([#5275](https://github.com/danielsogl/awesome-cordova-plugins/issues/5275)) ([60cdd02](https://github.com/danielsogl/awesome-cordova-plugins/commit/60cdd0261558f036b68d638f53a59b6f29b862bd))
+* **deps:** update dependency jsdom to v31 ([#5276](https://github.com/danielsogl/awesome-cordova-plugins/issues/5276)) ([716af4d](https://github.com/danielsogl/awesome-cordova-plugins/commit/716af4d95dfdb543f2539a51bc56c848aa94f59c))
+* **deps:** update linting and formatting ([#5266](https://github.com/danielsogl/awesome-cordova-plugins/issues/5266)) ([fb2122d](https://github.com/danielsogl/awesome-cordova-plugins/commit/fb2122d46c4c9613f65bc0235dfda6401b96b26a))
+* **deps:** update linting and formatting ([#5270](https://github.com/danielsogl/awesome-cordova-plugins/issues/5270)) ([da6826f](https://github.com/danielsogl/awesome-cordova-plugins/commit/da6826fc443706d5c44569bbcb11e6eb3a390a1d))
+* **deps:** update testing framework to ^5.1.0 ([#5274](https://github.com/danielsogl/awesome-cordova-plugins/issues/5274)) ([a6f219d](https://github.com/danielsogl/awesome-cordova-plugins/commit/a6f219d81531c18382495caf2043a88ecc929a97))
+
 ## [9.7.0](https://github.com/danielsogl/awesome-cordova-plugins/compare/awesome-cordova-plugins-v9.6.0...awesome-cordova-plugins-v9.7.0) (2026-10-20)
 
 
