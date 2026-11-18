@@ -67,6 +67,7 @@ export class Airship extends AwesomeCordovaNativePlugin {
   initialize() {
     this.channel = new AirshipChannel();
     this.contact = new AirshipContact();
+    this.featureFlagManager = new AirshipFeatureFlagManager();
     this.push = new AirshipPush();
   }
 
@@ -1129,6 +1130,24 @@ export interface FeatureFlag {
 }
 
 /**
+ * The freshness of the feature flag data used to resolve flags.
+ * - `up_to_date` - The data is current.
+ * - `stale` - The data is out of date, but flags can still be resolved.
+ * - `out_of_date` - The data is out of date and flags should not be resolved.
+ */
+export type FeatureFlagStatus = 'up_to_date' | 'stale' | 'out_of_date';
+
+/**
+ * Event fired when the feature flag data status changes.
+ */
+export interface FeatureFlagStatusChangedEvent {
+  /**
+   * The feature flag data status.
+   */
+  status: FeatureFlagStatus;
+}
+
+/**
  * Editor for tag groups.
  */
 export interface TagGroupEditor {
@@ -1835,22 +1854,54 @@ export interface AirshipInApp {
 /**
  * Airship feature flag manager.
  */
-export interface AirshipFeatureFlagManager {
+export class AirshipFeatureFlagManager {
+  private _objectInstance = window.Airship.featureFlagManager;
+
   /**
    * Retrieve a given flag's status and associated data by its name.
    * @param flagName The flag name
-   * @param success Success callback.
-   * @param error Error callback.
    */
-  flag(flagName: string, success: (flag: FeatureFlag) => void, error?: (err: string) => void): void;
+  @CordovaInstance()
+  flag(flagName: string): Promise<FeatureFlag> {
+    return;
+  }
 
   /**
    * Tracks a feature flag interaction event.
    * @param flag The flag
-   * @param success Success callback.
-   * @param error Error callback.
    */
-  trackInteraction(flag: FeatureFlag, success?: () => void, error?: (err: string) => void): void;
+  @CordovaInstance()
+  trackInteraction(flag: FeatureFlag): Promise<void> {
+    return;
+  }
+
+  /**
+   * Retrieves the freshness of the feature flag data used to resolve flags.
+   */
+  @CordovaInstance()
+  status(): Promise<FeatureFlagStatus> {
+    return;
+  }
+
+  /**
+   * Suspends until the feature flag data is refreshed, or the given time elapses.
+   * @param maxTimeMs The max time to wait, in milliseconds. If not provided,
+   * waits until the data is refreshed with no timeout.
+   */
+  @CordovaInstance()
+  waitRefresh(maxTimeMs?: number): Promise<void> {
+    return;
+  }
+
+  /**
+   * Adds a listener for feature flag data status changes.
+   */
+  onStatusChanged(): Observable<FeatureFlagStatusChangedEvent> {
+    return new Observable<FeatureFlagStatusChangedEvent>((observer) => {
+      const cancellable: Cancellable = this._objectInstance.onStatusChanged(observer.next.bind(observer));
+      return () => cancellable.cancel();
+    });
+  }
 }
 
 /**

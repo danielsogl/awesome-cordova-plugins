@@ -1,6 +1,6 @@
 {
   "name": "awesome-cordova-plugins",
-  "version": "9.5.0",
+  "version": "9.7.0",
   "description": "Native plugin wrappers for Cordova and Ionic with TypeScript, ES6+, Promise and Observable support",
   "homepage": "https://awesome-cordova-plugins.com",
   "author": "Daniel Sogl <me@danielsogl.com> (https://danielsogl.com)",
@@ -26,29 +26,29 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "tslib": "2.8.1"
+    "tslib": "2.9.1"
   },
   "devDependencies": {
-    "@angular/compiler": "22.1.1",
-    "@angular/compiler-cli": "22.1.1",
-    "@angular/core": "22.1.1",
+    "@angular/compiler": "22.2.3",
+    "@angular/compiler-cli": "22.2.3",
+    "@angular/core": "22.2.3",
     "@eslint/js": "^10.0.1",
-    "@oxc-project/runtime": "^0.144.0",
+    "@oxc-project/runtime": "^0.159.0",
     "@types/cordova": "11.0.3",
-    "@types/node": "^26.2.0",
-    "@vitest/coverage-v8": "^4.1.10",
-    "eslint": "^10.8.1",
+    "@types/node": "^26.6.6",
+    "@vitest/coverage-v8": "^5.1.0",
+    "eslint": "^10.14.0",
     "eslint-config-prettier": "10.1.8",
-    "eslint-plugin-jsdoc": "^64.1.0",
-    "jsdom": "^30.0.1",
-    "lefthook": "^2.1.10",
-    "prettier": "^3.9.6",
+    "eslint-plugin-jsdoc": "^65.4.5",
+    "jsdom": "^31.0.1",
+    "lefthook": "^2.2.2",
+    "prettier": "^3.9.10",
     "rxjs": "^7.8.2",
-    "tsx": "^4.23.12",
+    "tsx": "^4.23.15",
     "typedoc": "^0.28.20",
     "typescript": "~6.0.3",
-    "typescript-eslint": "^8.67.0",
-    "vitest": "^4.1.10"
+    "typescript-eslint": "^8.72.1",
+    "vitest": "^5.1.0"
   },
   "repository": {
     "type": "git",

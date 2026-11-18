@@ -1,5 +1,5 @@
 /**
- * Guards the decorator settings in vitest.config.ts. Vite 8 transforms with oxc, which defaults to
+ * Guards the decorator settings in vitest.config.mts. Vite 8 transforms with oxc, which defaults to
  * TC39 decorators; without `oxc.decorator.legacy` this file fails to transform, so any spec that
  * so much as imports a source file containing decorator syntax cannot compile.
  *
