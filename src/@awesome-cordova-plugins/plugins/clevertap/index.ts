@@ -725,6 +725,17 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
   }
 
   /**
+   * Dismisses the currently visible Picture-in-Picture (PIP) In-App notification, if any.
+   * A no-op when no PIP is visible.
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  dismissPipInApp(): Promise<any> {
+    return;
+  }
+
+  /**
    * Deletes all images and gifs which are preloaded for inapps in cs mode.
    *
    * @param expiredOnly {boolean} - to clear only assets which will not be needed further for inapps
@@ -1015,6 +1026,40 @@ export class CleverTap extends AwesomeCordovaNativePlugin {
    */
   @Cordova()
   pushDisplayUnitClickedEventForID(id: string): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Push DisplayUnit Element Clicked Event for ID
+   *
+   * @param unitId {string}
+   * @param additionalProperties {any}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  pushDisplayUnitElementClickedEventForID(unitId: string, additionalProperties: any): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to Push DisplayUnit Element Viewed Event for ID
+   *
+   * @param unitId {string}
+   * @param additionalProperties {any}
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  pushDisplayUnitElementViewedEventForID(unitId: string, additionalProperties: any): Promise<any> {
+    return;
+  }
+
+  /**
+   * Call this to fetch Native Display metadata from the server
+   *
+   * @returns {Promise<any>}
+   */
+  @Cordova()
+  fetchNativeDisplayMeta(): Promise<any> {
     return;
   }
 
