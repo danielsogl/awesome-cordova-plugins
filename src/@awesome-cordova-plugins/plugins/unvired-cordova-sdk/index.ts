@@ -232,15 +232,23 @@ export enum AttachmentItemStatus {
 }
 
 export class Settings {
-  loginType: LoginType;
-  ADS_DOMAIN: string;
-  SAP_PORT_NAME: string;
-  EMAIL: string;
-  ADS_USER_ID: string;
-  SAP_USER_ID: string;
-  FULL_NAME: string;
-  SERVER_URL: string;
+  UNVIRED_ID: string;
   USER_ID: string;
+  FIRST_NAME: string;
+  LAST_NAME: string;
+  FULL_NAME: string;
+  EMAIL: string;
+  SERVER_URL: string;
+  SERVER_TYPE: string;
+  SAP_USER_ID: string;
+  SAP_PORT_NAME: string;
+  LOGIN_TYPE: LoginType;
+  ADS_USER_ID: string;
+  ADS_DOMAIN: string;
+  UNVIRED_PASSWORD: string;
+  JWT_TOKEN: string;
+  FE_USER_ID: string;
+  loginType?: LoginType;
 }
 
 export class UnviredResult {
@@ -900,14 +908,20 @@ export class UnviredCordovaSDK extends AwesomeCordovaNativePlugin {
    * {
    * "UNVIRED_ID": "",                               // The Unvired ID configured in UMP
    * "USER_ID": "",                                  // Deprecated. Select among UNVIRED_ID / EMAIL / ADS_USER_ID / SAP_USER_ID depending on the LoginType
+   * "FIRST_NAME": "",
+   * "LAST_NAME": "",
    * "FULL_NAME": "FirstName LastName",
    * "EMAIL": "abc@example.com",                     // Email id of the user as configurd in UMP
    * "SERVER_URL": "https://umpdev.unvired.io/UMP",  // UMP Server's URL
+   * "SERVER_TYPE": "",
    * "SAP_USER_ID": "SAP_ID",                        // If LoginType is SAP
    * "SAP_PORT_NAME": "",                            // If LoginType is SAP
    * "LOGIN_TYPE": "",                               // @see LoginType
    * "ADS_USER_ID": "ADS_USER_ID",                   // If LoginType is ADS
-   * "ADS_DOMAIN": "ADS_DOMAIN"                      // If LoginType is ADS
+   * "ADS_DOMAIN": "ADS_DOMAIN",                     // If LoginType is ADS
+   * "UNVIRED_PASSWORD": "",
+   * "JWT_TOKEN": "",
+   * "FE_USER_ID": ""
    * }
    * ```
    */
